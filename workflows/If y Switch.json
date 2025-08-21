@@ -1,0 +1,125 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Stop and Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-24T13:00:46.261Z",
+  "id": "7gxbKMVqC5XM2KlC",
+  "isArchived": false,
+  "meta": null,
+  "name": "If y Switch",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -416,
+        64
+      ],
+      "id": "01de3fd0-5c30-4e77-88a0-4f73c41c10b4",
+      "name": "When chat message received",
+      "webhookId": "3b479810-6ded-4bdf-9d35-510d91b470b6"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "029e8c9e-2360-40b6-a872-d28814c1a06c",
+              "leftValue": "={{ $json.chatInput }}",
+              "rightValue": "hola",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -208,
+        64
+      ],
+      "id": "0f3548fc-5cf8-4e11-a3a3-2715273ae111",
+      "name": "If"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "d9bfc5f8-a3dc-48b9-a862-9db102b7b22f",
+      "name": "No Operation, do nothing",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "errorMessage": "Error: Te lo mando al telegram"
+      },
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        0,
+        144
+      ],
+      "id": "b3296286-65e2-47df-b5a9-af7baecc12f7",
+      "name": "Stop and Error"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "T5jWH0y3ak9x4SZy"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-24T13:05:59.000Z",
+  "versionId": "d24260ae-1887-4ab1-89eb-8de791e23aa8"
+}
