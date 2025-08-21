@@ -117,6 +117,15 @@
     "callerPolicy": "workflowsFromSameOwner",
     "errorWorkflow": "T5jWH0y3ak9x4SZy"
   },
+  "shared": [
+    {
+      "createdAt": "2025-07-24T13:00:46.269Z",
+      "updatedAt": "2025-07-24T13:00:46.269Z",
+      "role": "workflow:owner",
+      "workflowId": "7gxbKMVqC5XM2KlC",
+      "projectId": "76fyU5IRbEoCs8Xl"
+    }
+  ],
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
