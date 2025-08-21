@@ -1,0 +1,116 @@
+{
+  "active": false,
+  "connections": {
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-03T15:00:36.784Z",
+  "id": "5dTNEB3RbpzCjaux",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Gmail y telegram",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "filters": {
+          "includeSpamTrash": true,
+          "q": "Código",
+          "readStatus": "unread"
+        }
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "1e67b5e2-e471-457a-bbae-eabcb1818683",
+      "name": "Gmail Trigger",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "FCbuNh7yBRMtK5lN",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const text = $json[\"snippet\"] || $json[\"body\"] || \"\";\nconst regex = /\\b\\d{4,8}\\b/g; // Códigos de 4 a 8 dígitos\nconst match = text.match(regex);\nreturn [\n  {\n    json: {\n      codigo: match ? match[0] : \"No se encontró código\"\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "f678451d-ad66-4805-bb79-271a9ab9229d",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "chatId": "7040481107",
+        "text": "={{ $('Gmail Trigger').item.json.From }} te ha enviado el siguiente código: ",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        448,
+        0
+      ],
+      "id": "82b04564-3808-4f8e-b113-4a74ccdb6be0",
+      "name": "Send a text message",
+      "webhookId": "37f88812-58f3-44cb-a384-4a7709e15d92",
+      "credentials": {
+        "telegramApi": {
+          "id": "LMFStuVXJKfeRhz1",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Gmail Trigger": {
+      "Gmail Trigger": {
+        "lastTimeChecked": 1754236306
+      }
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-08-05T09:31:19.000Z",
+  "versionId": "030e3c84-f187-4d97-84ca-d59eebf6fcf6"
+}
