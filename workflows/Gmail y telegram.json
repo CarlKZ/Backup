@@ -102,6 +102,15 @@
   "settings": {
     "executionOrder": "v1"
   },
+  "shared": [
+    {
+      "createdAt": "2025-08-03T15:00:36.799Z",
+      "updatedAt": "2025-08-03T15:00:36.799Z",
+      "role": "workflow:owner",
+      "workflowId": "5dTNEB3RbpzCjaux",
+      "projectId": "76fyU5IRbEoCs8Xl"
+    }
+  ],
   "staticData": {
     "node:Gmail Trigger": {
       "Gmail Trigger": {
