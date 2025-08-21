@@ -1,0 +1,171 @@
+{
+  "active": false,
+  "connections": {
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets Trigger": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2025-08-21T10:44:46.183Z",
+  "id": "XnsRWcOEcyrwDMTd",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Practica 1 Grupo",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "74649e2c-9ee2-4373-a2b6-5decda8b015d",
+              "leftValue": "={{ $json^[\"Presupuesto\"] }}",
+              "rightValue": 10000,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            },
+            {
+              "id": "55979f13-1622-48fe-9ecd-9254bd4463c3",
+              "leftValue": "={{ $json^[\"Pais\"] }}",
+              "rightValue": "España",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "adce6a9c-792d-4805-8125-5a93e7a77b27",
+              "leftValue": "={{ $json^[\"Pais\"] }}",
+              "rightValue": "España",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        112,
+        -176
+      ],
+      "id": "68851135-8d86-4c40-a72c-f3be0062d1d3",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "208b788f-5ff8-4a30-9245-317baca9c866",
+              "name": "Categoria",
+              "value": "Vip",
+              "type": "string"
+            },
+            {
+              "id": "67521f18-0ede-420c-a6d8-e299ba777142",
+              "name": "Nacional",
+              "value": "España",
+              "type": "string"
+            },
+            {
+              "id": "a4f2e268-7eb8-408d-a5d3-9bdedd1eebad",
+              "name": "Internacional",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        448,
+        -192
+      ],
+      "id": "3401cc68-55ed-4f1c-af97-9d7ae3a1ba7f",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [
+        -256,
+        -176
+      ],
+      "id": "ef91fb82-650c-4ddc-9b8e-88386f0d9831",
+      "name": "Google Sheets Trigger",
+      "credentials": {
+        "googleSheetsTriggerOAuth2Api": {
+          "id": "jF86WhiKlLRfLWrF",
+          "name": "Google Sheets Trigger account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-08-21T10:44:46.196Z",
+      "updatedAt": "2025-08-21T10:44:46.196Z",
+      "role": "workflow:owner",
+      "workflowId": "XnsRWcOEcyrwDMTd",
+      "projectId": "76fyU5IRbEoCs8Xl"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-21T18:08:51.000Z",
+  "versionId": "989dcf5d-e0c7-4f62-adce-ae36e67fe182"
+}
