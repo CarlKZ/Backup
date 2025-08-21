@@ -1,0 +1,424 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Create or update a record1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Create or update a record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create or update a record1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-23T20:12:11.262Z",
+  "id": "nQBDByrdtDwW3HtL",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Practica Airtable Chat",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        224,
+        0
+      ],
+      "id": "2b11d197-4566-48ef-b7d3-639965af705c",
+      "name": "When chat message received",
+      "webhookId": "3955ef4c-7bf0-4b4a-b5b1-1684a93827fb"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        576,
+        240
+      ],
+      "id": "f138d4cf-026d-4a3a-bbc1-8bb0f8d3d5e2",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "AnvOfJa6jhs1Ykcd",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('When chat message received').item.json.sessionId }}",
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        768,
+        240
+      ],
+      "id": "eee6e733-ec51-469b-808c-b075dcc5e719",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Eres un asistente experto en información de vehículos. Cuando se te proporcione una búsqueda de un vehiculo, tu tarea es extraer y presentar la siguiente información de manera concisa y estructurada. Si algún campo no se puede determinar, escribe en dicho campo la palabra 'no encontrado'.\n\nFormato de Salida Requerido:\n\nBúsqueda: [Aquí debe ir la consulta original del usuario, por ejemplo, \"Renault 5 turbo\"]\nMarca: [Marca del coche, por ejemplo, \"Renault\"]\nModelo: [Modelo específico del coche, por ejemplo, \"5 turbo\"]\nPrecio: [Un precio estimado o rango de precio. Si no se puede determinar, deja en blanco. Ejemplo: \"20.000€\" o \"18.000€ - 22.000€\"]\nOpinión: [Una breve opinión o descripción del coche. Por ejemplo, \"Un clásico deportivo...\"]\nLink compra: [Un enlace relevante para la compra o información. Si no se puede determinar, deja en blanco. Ejemplo: \"https://www.ejemplo.com/renault5turbo\"]\n\nEjemplo de interacción:\n\nUsuario: \"Renault 5 turbo\"\n\nTu respuesta esperada:\n\nBúsqueda: Renault 5 turbo\nMarca: Renault\nModelo: 5 turbo\nPrecio: 30.000€\nOpinión: Un clásico deportivo con un diseño icónico y un rendimiento emocionante para su época. Ideal para coleccionistas.\nLink compra: https://www.ejemplodecompra.com/renault5turbo\n\n---\n\nAhora, por favor, procesa la siguiente solicitud: {{ $('When chat message received').item.json.chatInput }}\n",
+        "options": {
+          "systemMessage": "Eres uno de los mejores mecánico español, y eres uno de los mejores mecanicos y vendedores de coche del Mundo, te conoces todos las marcas y modelos de vehiculos, el precio de cada uno tanto de salida como de 2º mano, eres capaz de dar una opinion del vehiculo resaltando las cosas buenas y malas, y eres capaz de proporcionar un link de compra oficial en españa.\nCuando el usuario te escriba una marca y modelo de su coche, devuélvele la siguiente información separada, resalta el titulo de cada apartado:\n\nMarca: 'Marca del vehiculo'\nModelo: 'Modelo del vehiculo'\nPrecio: 'Precio nuevo y precio 2º mano'\nOpinión: 'Descatar las cosas buenas y malas del vehiculo'\nLink: 'Link de compra oficial en españa'\n\nEJEMPLO:\n\nBusqueda: Honda civic Tipe R\n- Marca: Honda\n- Modelo: Civic Tipe R\n- Precio: Entre los 66.695 € y los 67.700 €\n- Opinión: El Honda Civic Type R destaca por su excelente rendimiento, manejo preciso y motor turbo potente, ideal para quienes buscan una experiencia deportiva. Su diseño agresivo y equipamiento tecnológico también son puntos a favor. Sin embargo, su consumo de combustible es elevado y la suspensión puede resultar dura en ciudad. Además, su precio es más alto que el de otros compactos similares. Aun así, es una opción muy valorada entre los entusiastas del motor.\n- Link compra: https://www.honda.es/cars/new/civic-type-r/overview.html"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.1,
+      "position": [
+        656,
+        0
+      ],
+      "id": "89c4a1db-2054-4765-bad2-e087d2f3a628",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "jsCode": "const output = $json[\"output\"] || \"\";\nconst busqueda = $json[\"busqueda\"] || $node[\"When chat message received\"].json.chatInput;\n\nlet marca = \"\";\nlet modelo = \"\";\nlet precio = \"\";\nlet opinion = \"\";\nlet link = \"\";\n\n// console.log(\"Salida del AI Agent:\\n\" + output); // Descomentar para depuración para ver el output exacto\n\n// Patrones ajustados para el formato de una sola línea del AI Agent\n\n// Captura 'Marca: [Valor] Modelo:'\nconst marcaMatch = output.match(/Marca:\\s*([^M]+?)Modelo:/i); // Captura hasta 'Modelo:'\nif (marcaMatch) {\n    marca = marcaMatch[1].trim();\n} else {\n    // Fallback si \"Modelo:\" no está inmediatamente después, capturar hasta \"Precio:\"\n    const fallbackMarcaMatch = output.match(/Marca:\\s*([^P]+?)Precio:/i);\n    if (fallbackMarcaMatch) {\n        marca = fallbackMarcaMatch[1].trim();\n    } else {\n        // Fallback más general si nada funciona, capturar hasta la siguiente etiqueta conocida o fin\n        const generalMarcaMatch = output.match(/Marca:\\s*(.+?)(?:\\s*(?:Modelo|Precio|Opinión|Link compra):|$)/i);\n        if (generalMarcaMatch) marca = generalMarcaMatch[1].trim();\n    }\n}\n\n\n// Captura 'Modelo: [Valor] Precio:'\nconst modeloMatch = output.match(/Modelo:\\s*([^P]+?)Precio:/i); // Captura hasta 'Precio:'\nif (modeloMatch) {\n    modelo = modeloMatch[1].trim();\n} else {\n    // Fallback si \"Precio:\" no está inmediatamente después, capturar hasta \"Opinión:\"\n    const fallbackModeloMatch = output.match(/Modelo:\\s*([^O]+?)Opinión:/i);\n    if (fallbackModeloMatch) {\n        modelo = fallbackModeloMatch[1].trim();\n    } else {\n         // Fallback más general\n        const generalModeloMatch = output.match(/Modelo:\\s*(.+?)(?:\\s*(?:Precio|Opinión|Link compra):|$)/i);\n        if (generalModeloMatch) modelo = generalModeloMatch[1].trim();\n    }\n}\n\n// Captura 'Precio: [Valor] Opinión:'\nconst precioMatch = output.match(/Precio:\\s*([^O]+?)Opinión:/i); // Captura hasta 'Opinión:'\nif (precioMatch) {\n    precio = precioMatch[1].trim();\n} else {\n    // Fallback más general\n    const generalPrecioMatch = output.match(/Precio:\\s*(.+?)(?:\\s*(?:Opinión|Link compra):|$)/i);\n    if (generalPrecioMatch) precio = generalPrecioMatch[1].trim();\n}\n\n// **CAMBIO AQUÍ: Expresión regular para Opinión**\n// Captura todo después de 'Opinión:' hasta 'Link compra:' o el final de la cadena.\n// Utiliza [^L] para asegurar que no se detenga antes si la opinión contiene 'Link'\nconst opinionMatch = output.match(/Opinión:\\s*(.+?)(?=\\s*Link compra:|$)/i);\nif (opinionMatch) {\n    opinion = opinionMatch[1].trim();\n}\n\n\n// El link de compra ya funciona, lo mantendremos como lo tienes.\n// Aunque el RegEx podría mejorarse para ser más robusto si el URL no siempre termina al final.\n// Current: const linkMatch = output.match(/Link compra:\\s*(.+?)$/i);\n// Better:  const linkMatch = output.match(/Link compra:\\s*(https?:\\/\\/\\S+)/i); // Captura una URL real\nconst linkMatch = output.match(/Link compra:\\s*(https?:\\/\\/\\S+)/i);\nif (linkMatch) link = linkMatch[1].trim();\nelse {\n    // Fallback para \"no encontrado\" si no hay URL\n    const noLinkMatch = output.match(/Link compra:\\s*(no encontrado)/i);\n    if (noLinkMatch) link = noLinkMatch[1].trim();\n}\n\n// console.log(`Marca: ${marca}, Modelo: ${modelo}, Precio: ${precio}, Opinión: ${opinion}, Link Compra: ${link}`); // Descomentar para depuración\n\nreturn [\n  {\n    json: {\n      \"Búsqueda\": busqueda,\n      \"Marca\": marca,\n      \"Modelo\": modelo,\n      \"Precio\": precio,\n      \"Opinión\": opinion,\n      \"Link Compra\": link\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1056,
+        0
+      ],
+      "id": "2d7a4cd4-68ab-481b-81bf-97041de0dd0f",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "base": {
+          "__rl": true,
+          "value": "applcbZboR60TgUBv",
+          "mode": "list",
+          "cachedResultName": "Practica Coches",
+          "cachedResultUrl": "https://airtable.com/applcbZboR60TgUBv"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblrzsOaDpeOJTxLh",
+          "mode": "list",
+          "cachedResultName": "Imported table",
+          "cachedResultUrl": "https://airtable.com/applcbZboR60TgUBv/tblrzsOaDpeOJTxLh"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Modelo": "={{ $json.Modelo }}",
+            "Precio": "={{ $json.Precio }}",
+            "Link Compra": "={{ $json['Link Compra'] }}",
+            "Búsqueda": "={{ $json['Búsqueda'] }}",
+            "Opinión": "={{ $json['Opinión'] }}",
+            "Marca": "={{ $json.Marca }}"
+          },
+          "matchingColumns": [
+            "Búsqueda"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Búsqueda",
+              "displayName": "Búsqueda",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Marca",
+              "displayName": "Marca",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Modelo",
+              "displayName": "Modelo",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Precio",
+              "displayName": "Precio",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Opinión",
+              "displayName": "Opinión",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Link Compra",
+              "displayName": "Link Compra",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1280,
+        0
+      ],
+      "id": "18d0f46e-5578-4779-a81d-1f4046f93a96",
+      "name": "Create or update a record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "PNxki9XX7pmUjHhC",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "base": {
+          "__rl": true,
+          "value": "applcbZboR60TgUBv",
+          "mode": "list",
+          "cachedResultName": "Practica Coches",
+          "cachedResultUrl": "https://airtable.com/applcbZboR60TgUBv"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblrzsOaDpeOJTxLh",
+          "mode": "list",
+          "cachedResultName": "Imported table",
+          "cachedResultUrl": "https://airtable.com/applcbZboR60TgUBv/tblrzsOaDpeOJTxLh"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Búsqueda": "={{ $json.chatInput }}"
+          },
+          "matchingColumns": [
+            "Búsqueda"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Búsqueda",
+              "displayName": "Búsqueda",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Marca",
+              "displayName": "Marca",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Modelo",
+              "displayName": "Modelo",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Precio",
+              "displayName": "Precio",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Opinión",
+              "displayName": "Opinión",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Link Compra",
+              "displayName": "Link Compra",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        432,
+        0
+      ],
+      "id": "b9cd9d28-a759-4c4e-92bc-a4436d031ea3",
+      "name": "Create or update a record1",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "PNxki9XX7pmUjHhC",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-28T11:24:21.000Z",
+  "versionId": "398d1d70-46df-4a20-a4d7-ce8880395ef1"
+}
