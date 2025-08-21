@@ -1,0 +1,336 @@
+{
+  "active": false,
+  "connections": {
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Create or update a record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Get a record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a record": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-28T11:24:41.843Z",
+  "id": "mP1xsztc8gGNQmOr",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Practica Airtable Clic",
+  "nodes": [
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -1072,
+        -64
+      ],
+      "id": "839759bf-f186-4bdb-92a4-1cb506e6896a",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "AnvOfJa6jhs1Ykcd",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('When chat message received').item.json.sessionId }}",
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        -944,
+        -16
+      ],
+      "id": "baceb66a-c285-40fd-9cfc-824f77227edd",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Eres un escritor y vendedor de libros, el cual conoces a todos los escritores, editoriales, y libros del mundo,  quiero que analices el nombre del libro que te llega y devuelvas los siguientes datos por separado:\n\n- Editorial: 'editorial del libro'\n- Escritor: 'escritor del libro'\n- Precio: 'Especifica el precio mas bajo en el mercado'\n- Sinopsis: 'La psinopsis del libro sin spoiler'\n- Opinión: 'explica de forma rapida, concisa y sin explicar nada importante de la historia (SIN SPOILER) los puntos fuertes y flojos de ese libro'\n- Link Amazon: 'link de compra del libro en amazon'\n\nInstrucciones Importantes:\nSi existe un libro de fantasía con ese título o uno muy similar, selecciona ese antes que otros géneros.\nSi el libro no es de fantasía, pero no existe alternativa de fantasía, devuelve la información correcta del libro más relevante.\nNunca inventes información. Si no tienes certeza, escribe \"Desconocido\".\nNo uses palabras como \"Resumen:\", \"Autor:\", \"Año de publicación:\" ni \"Output:\".\nUsa únicamente saltos de línea reales para separar cada dato.\n\n##EJEMPLO##\n\n- Búsqueda: Tu miedo es tu poder\n\n- Editorial: Planeta (Colección: Alienta)\n\n- Escritor: Pedro Rojas\n\n- Precio: Su precio más bajo suele oscilar entre 16,00€ y 17,95€ en formato tapa blanda o eBook\n\n- Sinopsis: \"Tu miedo es tu poder\" es una guía práctica que desafía la percepción tradicional del miedo, transformándolo de un obstáculo paralizante en una potente herramienta para el crecimiento personal y profesional. Pedro Rojas, experto en transformación digital y marca personal, propone un método para identificar, comprender y aprovechar el miedo como una señal y un catalizador para la acción. El libro invita al lector a reflexionar sobre sus temores y a utilizarlos como trampolín para superar límites, desarrollar nuevas habilidades y alcanzar objetivos. Es una lectura para quienes buscan una perspectiva diferente sobre la gestión emocional y la toma de decisiones en un entorno de constante cambio.\n\n- Opinión: Este libro destaca por su enfoque innovador y positivo sobre el miedo, presentándolo no como un enemigo a erradicar, sino como una fuerza intrínseca que puede ser redirigida. Su principal fortaleza reside en su pragmatismo, ofreciendo herramientas concretas y ejemplos claros para aplicar sus conceptos. El autor logra un equilibrio entre la reflexión profunda y la aplicabilidad inmediata, lo que lo hace muy útil para el desarrollo personal. Como punto a considerar, si bien es muy didáctico, la profundidad en algunos conceptos emocionales podría ser mayor para aquellos que busquen un análisis psicológico más denso. No obstante, para quien busca una guía práctica y motivadora, es un punto de partida excelente.\n\n- Link Amazon: https://www.amazon.es/Tu-miedo-poder-supera-crece/dp/8408272993",
+        "options": {
+          "systemMessage": "=Eres uno de los mejores mecánico español, y eres uno de los mejores mecanicos y vendedores de coche del Mundo, te conoces todos las marcas y modelos de vehiculos, el precio de cada uno tanto de salida como de 2º mano, eres capaz de dar una opinion del vehiculo resaltando las cosas buenas y malas, y eres capaz de proporcionar un link de compra oficial en españa.\nCuando el usuario te escriba una marca y modelo de su coche, devuélvele la siguiente información separada, resalta el titulo de cada apartado:\n\nMarca: 'Marca del vehiculo'\nModelo: 'Modelo del vehiculo'\nPrecio: 'Precio nuevo y precio 2º mano'\nOpinión: 'Descatar las cosas buenas y malas del vehiculo'\nLink: 'Link de compra oficial en españa'\n\nEJEMPLO:\n\nBusqueda: Honda civic Tipe R\n- Marca: Honda\n- Modelo: Civic Tipe R\n- Precio: Entre los 66.695 € y los 67.700 €\n- Opinión: El Honda Civic Type R destaca por su excelente rendimiento, manejo preciso y motor turbo potente, ideal para quienes buscan una experiencia deportiva. Su diseño agresivo y equipamiento tecnológico también son puntos a favor. Sin embargo, su consumo de combustible es elevado y la suspensión puede resultar dura en ciudad. Además, su precio es más alto que el de otros compactos similares. Aun así, es una opción muy valorada entre los entusiastas del motor.\n- Link compra: https://www.honda.es/cars/new/civic-type-r/overview.html"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.1,
+      "position": [
+        -1072,
+        -256
+      ],
+      "id": "f47e0e51-aec3-42f6-9646-e17b52153333",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "jsCode": "const output = $json[\"output\"] || \"\";\nconst busqueda = $json[\"busqueda\"] || $node[\"When chat message received\"].json.chatInput;\n\nlet marca = \"\";\nlet modelo = \"\";\nlet precio = \"\";\nlet opinion = \"\";\nlet link = \"\";\n\n// console.log(\"Salida del AI Agent:\\n\" + output); // Descomentar para depuración para ver el output exacto\n\n// Patrones ajustados para el formato de una sola línea del AI Agent\n\n// Captura 'Marca: [Valor] Modelo:'\nconst marcaMatch = output.match(/Marca:\\s*([^M]+?)Modelo:/i); // Captura hasta 'Modelo:'\nif (marcaMatch) {\n    marca = marcaMatch[1].trim();\n} else {\n    // Fallback si \"Modelo:\" no está inmediatamente después, capturar hasta \"Precio:\"\n    const fallbackMarcaMatch = output.match(/Marca:\\s*([^P]+?)Precio:/i);\n    if (fallbackMarcaMatch) {\n        marca = fallbackMarcaMatch[1].trim();\n    } else {\n        // Fallback más general si nada funciona, capturar hasta la siguiente etiqueta conocida o fin\n        const generalMarcaMatch = output.match(/Marca:\\s*(.+?)(?:\\s*(?:Modelo|Precio|Opinión|Link compra):|$)/i);\n        if (generalMarcaMatch) marca = generalMarcaMatch[1].trim();\n    }\n}\n\n\n// Captura 'Modelo: [Valor] Precio:'\nconst modeloMatch = output.match(/Modelo:\\s*([^P]+?)Precio:/i); // Captura hasta 'Precio:'\nif (modeloMatch) {\n    modelo = modeloMatch[1].trim();\n} else {\n    // Fallback si \"Precio:\" no está inmediatamente después, capturar hasta \"Opinión:\"\n    const fallbackModeloMatch = output.match(/Modelo:\\s*([^O]+?)Opinión:/i);\n    if (fallbackModeloMatch) {\n        modelo = fallbackModeloMatch[1].trim();\n    } else {\n         // Fallback más general\n        const generalModeloMatch = output.match(/Modelo:\\s*(.+?)(?:\\s*(?:Precio|Opinión|Link compra):|$)/i);\n        if (generalModeloMatch) modelo = generalModeloMatch[1].trim();\n    }\n}\n\n// Captura 'Precio: [Valor] Opinión:'\nconst precioMatch = output.match(/Precio:\\s*([^O]+?)Opinión:/i); // Captura hasta 'Opinión:'\nif (precioMatch) {\n    precio = precioMatch[1].trim();\n} else {\n    // Fallback más general\n    const generalPrecioMatch = output.match(/Precio:\\s*(.+?)(?:\\s*(?:Opinión|Link compra):|$)/i);\n    if (generalPrecioMatch) precio = generalPrecioMatch[1].trim();\n}\n\n// **CAMBIO AQUÍ: Expresión regular para Opinión**\n// Captura todo después de 'Opinión:' hasta 'Link compra:' o el final de la cadena.\n// Utiliza [^L] para asegurar que no se detenga antes si la opinión contiene 'Link'\nconst opinionMatch = output.match(/Opinión:\\s*(.+?)(?=\\s*Link compra:|$)/i);\nif (opinionMatch) {\n    opinion = opinionMatch[1].trim();\n}\n\n\n// El link de compra ya funciona, lo mantendremos como lo tienes.\n// Aunque el RegEx podría mejorarse para ser más robusto si el URL no siempre termina al final.\n// Current: const linkMatch = output.match(/Link compra:\\s*(.+?)$/i);\n// Better:  const linkMatch = output.match(/Link compra:\\s*(https?:\\/\\/\\S+)/i); // Captura una URL real\nconst linkMatch = output.match(/Link compra:\\s*(https?:\\/\\/\\S+)/i);\nif (linkMatch) link = linkMatch[1].trim();\nelse {\n    // Fallback para \"no encontrado\" si no hay URL\n    const noLinkMatch = output.match(/Link compra:\\s*(no encontrado)/i);\n    if (noLinkMatch) link = noLinkMatch[1].trim();\n}\n\n// console.log(`Marca: ${marca}, Modelo: ${modelo}, Precio: ${precio}, Opinión: ${opinion}, Link Compra: ${link}`); // Descomentar para depuración\n\nreturn [\n  {\n    json: {\n      \"Búsqueda\": busqueda,\n      \"Marca\": marca,\n      \"Modelo\": modelo,\n      \"Precio\": precio,\n      \"Opinión\": opinion,\n      \"Link Compra\": link\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -640,
+        -256
+      ],
+      "id": "ea05dde5-3520-4c97-bf43-bce94e7fb203",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "base": {
+          "__rl": true,
+          "value": "applcbZboR60TgUBv",
+          "mode": "list",
+          "cachedResultName": "Practica Coches",
+          "cachedResultUrl": "https://airtable.com/applcbZboR60TgUBv"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblrzsOaDpeOJTxLh",
+          "mode": "list",
+          "cachedResultName": "Imported table",
+          "cachedResultUrl": "https://airtable.com/applcbZboR60TgUBv/tblrzsOaDpeOJTxLh"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Modelo": "={{ $json.Modelo }}",
+            "Precio": "={{ $json.Precio }}",
+            "Link Compra": "={{ $json['Link Compra'] }}",
+            "Búsqueda": "={{ $json['Búsqueda'] }}",
+            "Opinión": "={{ $json['Opinión'] }}",
+            "Marca": "={{ $json.Marca }}"
+          },
+          "matchingColumns": [
+            "Búsqueda"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Búsqueda",
+              "displayName": "Búsqueda",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Marca",
+              "displayName": "Marca",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Modelo",
+              "displayName": "Modelo",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Precio",
+              "displayName": "Precio",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Opinión",
+              "displayName": "Opinión",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Link Compra",
+              "displayName": "Link Compra",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -336,
+        -256
+      ],
+      "id": "556ce49d-42ca-4dea-a6a9-05444e9be153",
+      "name": "Create or update a record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "PNxki9XX7pmUjHhC",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "Extraer_Datos",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1600,
+        -256
+      ],
+      "id": "e4f6da11-a298-4ca8-a9ef-8938730bbe2d",
+      "name": "Webhook",
+      "webhookId": "d646cce2-0458-4d1d-ba0b-95e3bdc762a9"
+    },
+    {
+      "parameters": {
+        "base": {
+          "__rl": true,
+          "value": "app99UTC43TPipd26",
+          "mode": "list",
+          "cachedResultName": "Libros",
+          "cachedResultUrl": "https://airtable.com/app99UTC43TPipd26"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl5UJWXbhUBL7EUX",
+          "mode": "list",
+          "cachedResultName": "Table 1",
+          "cachedResultUrl": "https://airtable.com/app99UTC43TPipd26/tbl5UJWXbhUBL7EUX"
+        },
+        "id": "={{ $json.query.recordId }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -1344,
+        -256
+      ],
+      "id": "1918d0a7-5c58-4b4e-a409-6cc7115981f2",
+      "name": "Get a record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "PNxki9XX7pmUjHhC",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-28T16:09:41.000Z",
+  "versionId": "78201e71-9662-47f4-b32a-3c0a212ec36e"
+}
