@@ -1,0 +1,188 @@
+{
+  "active": false,
+  "connections": {
+    "Google Sheets Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-04T10:18:03.064Z",
+  "id": "tsjiXpXTq6l37D6w",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Practica 1: Bot Google Sheets",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyHour"
+            }
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "value": "1WD4wHaebM0F-n5Vqt-bB2LV_YMLHiXlae1CCnrESVZk",
+          "mode": "list",
+          "cachedResultName": "Tienda Barrio",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WD4wHaebM0F-n5Vqt-bB2LV_YMLHiXlae1CCnrESVZk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 818637640,
+          "mode": "list",
+          "cachedResultName": "tienda_barrio",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WD4wHaebM0F-n5Vqt-bB2LV_YMLHiXlae1CCnrESVZk/edit#gid=818637640"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [
+        -768,
+        -64
+      ],
+      "id": "1c83bcea-177c-4709-bed6-0bc5121cab99",
+      "name": "Google Sheets Trigger1",
+      "credentials": {
+        "googleSheetsTriggerOAuth2Api": {
+          "id": "jF86WhiKlLRfLWrF",
+          "name": "Google Sheets Trigger account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "7040181107",
+        "text": "=Se ha modificado el inventario:\nID: {{ $json.ID }}\nProducto: {{ $json.Producto }}\nFecha: {{ new Date(Math.round(($json['Fecha Actualización'] - 25569) * 86400 * 1000)).toLocaleDateString('es-ES') }} {{ new Date(Math.round(($json['Fecha Actualización'] - 25569) * 86400 * 1000)).toLocaleTimeString('es-ES', {hour12: false}) }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "Markdown"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -48,
+        -80
+      ],
+      "id": "c66b265b-15eb-471e-b2a8-6c28d1036b89",
+      "name": "Send a text message",
+      "webhookId": "e68a7df5-e003-446f-a4df-629dc8d6864a",
+      "credentials": {
+        "telegramApi": {
+          "id": "LMFStuVXJKfeRhz1",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "43825572-8b77-438f-92db-b5eff6f89c97",
+              "leftValue": "={{ $json['Fecha Hoy'] }}",
+              "rightValue": "={{ Math.floor($json[\"Fecha Actualización\"]) }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -320,
+        -64
+      ],
+      "id": "034ea4ed-54d5-40c3-aeee-1d7c02aab66e",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "74660b80-8a05-4ea6-9c1b-2840a205c480",
+              "name": "Fecha Hoy",
+              "value": "={{ Math.floor((new Date().getTime() / 1000 / 60 / 60 / 24) + 25569) }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -528,
+        -64
+      ],
+      "id": "e1a1b2b2-3e27-4943-a986-b98aa2700bbd",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Google Sheets Trigger1": {
+      "documentId": "1WD4wHaebM0F-n5Vqt-bB2LV_YMLHiXlae1CCnrESVZk",
+      "sheetId": 818637640,
+      "lastRevision": 225,
+      "lastRevisionLink": "https://docs.google.com/spreadsheets/export?id=1WD4wHaebM0F-n5Vqt-bB2LV_YMLHiXlae1CCnrESVZk&revision=225&exportFormat=xlsx"
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-08-07T09:46:57.000Z",
+  "versionId": "1c51c899-7ca7-45f9-aef1-512499ebed06"
+}
