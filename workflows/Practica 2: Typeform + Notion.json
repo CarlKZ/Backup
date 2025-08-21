@@ -1,0 +1,142 @@
+{
+  "active": false,
+  "connections": {
+    "Typeform Trigger": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Create a database page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-05T09:50:29.009Z",
+  "id": "1qmiuvLt3k5ODnoH",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Practica 2: Typeform + Notion",
+  "nodes": [
+    {
+      "parameters": {
+        "formId": "r9ZUIyj8"
+      },
+      "type": "n8n-nodes-base.typeformTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        32,
+        16
+      ],
+      "id": "cd2207f6-4e2c-4b5e-a878-7d5dfedaf46e",
+      "name": "Typeform Trigger",
+      "webhookId": "641b9f32-520c-4268-9fc2-5c8e96e0b821",
+      "credentials": {
+        "typeformApi": {
+          "id": "t4kP8QtTbn67Y0Sk",
+          "name": "Typeform account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "39123358-ec00-4a14-bccd-9afd5ee1ca77",
+              "name": "Nombre",
+              "value": "={{ $json['¿Cuál es tu nombre?'] }}",
+              "type": "string"
+            },
+            {
+              "id": "38155977-e10c-495b-ba29-5791f27b4f08",
+              "name": "Email",
+              "value": "={{ $json.Email }}",
+              "type": "string"
+            },
+            {
+              "id": "a7353185-8f25-4609-ab76-947814057f89",
+              "name": "Comentarios",
+              "value": "={{ $json['Escribe un breve comentario sobre qué te ha parecido este cuestionario'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        224,
+        16
+      ],
+      "id": "dc64adfd-f161-4f38-a42d-da751244b91a",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "databaseId": {
+          "__rl": true,
+          "value": "2460a54d-bab0-80b4-a88d-d2c8e6b45596",
+          "mode": "list",
+          "cachedResultName": "Practica 2: Typeform + Notion",
+          "cachedResultUrl": "https://www.notion.so/2460a54dbab080b4a88dd2c8e6b45596"
+        },
+        "title": "={{ $json.Nombre }}",
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Email|url",
+              "urlValue": "={{ $json.Email }}"
+            },
+            {
+              "key": "Comentarios|rich_text",
+              "textContent": "={{ $json.Comentarios }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        432,
+        16
+      ],
+      "id": "030b9474-920c-4d36-998f-d47687699c4a",
+      "name": "Create a database page",
+      "credentials": {
+        "notionApi": {
+          "id": "AA4iDjygLUOkA8Bn",
+          "name": "Notion account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Typeform Trigger": {}
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-08-07T09:46:37.000Z",
+  "versionId": "ca9fd563-b7c2-4d1b-abb4-022ed92ed0f6"
+}
