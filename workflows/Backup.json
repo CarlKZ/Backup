@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "On clicking 'execute'": {
       "main": [
@@ -462,11 +462,22 @@
   ],
   "pinData": {},
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner"
   },
+  "shared": [
+    {
+      "createdAt": "2025-08-21T10:32:41.973Z",
+      "updatedAt": "2025-08-21T10:32:41.973Z",
+      "role": "workflow:owner",
+      "workflowId": "3zurMHCklwsouHYH",
+      "projectId": "76fyU5IRbEoCs8Xl"
+    }
+  ],
   "staticData": null,
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2025-08-21T10:35:22.000Z",
-  "versionId": "de05f085-5c7d-4b57-936b-b9e48091973b"
+  "triggerCount": 1,
+  "updatedAt": "2025-08-21T10:39:47.000Z",
+  "versionId": "347fb82d-826e-4497-b47b-226f96827306"
 }
