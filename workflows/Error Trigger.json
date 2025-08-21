@@ -1,0 +1,69 @@
+{
+  "active": false,
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-24T13:01:31.200Z",
+  "id": "T5jWH0y3ak9x4SZy",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Error Trigger",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "85d5a339-5912-4dc1-998a-d9d9d56c19cd",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "chatId": "7040181107",
+        "text": "=Error: fallo en el sistema \n\nMensaje: {{ $json.execution.error.message }}\n\nUltimo nodo activo: {{ $json.execution.lastNodeExecuted }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "d18d76f0-b4e0-4a8e-80bc-c91cf3101b1f",
+      "name": "Send a text message",
+      "webhookId": "d0ad2968-a66b-4f2e-b9ed-a4184101affa",
+      "credentials": {
+        "telegramApi": {
+          "id": "LMFStuVXJKfeRhz1",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-24T13:05:39.000Z",
+  "versionId": "83fbf76d-eb85-4b88-a757-b66d5d7b1ae9"
+}
