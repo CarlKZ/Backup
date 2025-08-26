@@ -1,29 +1,73 @@
 {
   "active": false,
   "connections": {
-    "Switch": {
+    "On form submission": {
       "main": [
         [
           {
-            "node": "Switch1",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Switch2",
+            "node": "If",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "On form submission": {
+    "Switch1": {
       "main": [
         [
           {
-            "node": "Switch",
+            "node": "Append or update row in sheet3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Append or update row in sheet2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append or update row in sheet3": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append or update row in sheet2": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append or update row in sheet1": {
+      "main": [
+        [
+          {
+            "node": "Send a message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append or update row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Send a message1",
             "type": "main",
             "index": 0
           }
@@ -48,18 +92,76 @@
         ]
       ]
     },
-    "Switch1": {
+    "Switch3": {
       "main": [
         [
           {
-            "node": "Append or update row in sheet3",
+            "node": "Switch1",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Append or update row in sheet2",
+            "node": "Switch2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch4": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Append or update row in sheet5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append or update row in sheet4": {
+      "main": [
+        [
+          {
+            "node": "Send a message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append or update row in sheet5": {
+      "main": [
+        [
+          {
+            "node": "Send a message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Switch3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Switch4",
             "type": "main",
             "index": 0
           }
@@ -77,74 +179,13 @@
   "nodes": [
     {
       "parameters": {
-        "rules": {
-          "values": [
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "leftValue": "={{ $json.Presupuesto }}",
-                    "rightValue": "={{ 10000 }}",
-                    "operator": {
-                      "type": "number",
-                      "operation": "gt"
-                    },
-                    "id": "861c0837-8bab-4bf8-a029-a5d1cce9a5aa"
-                  }
-                ],
-                "combinator": "and"
-              }
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "7e0ad678-b1d0-4b75-84bc-ddd21895a075",
-                    "leftValue": "={{ $json.Presupuesto }}",
-                    "rightValue": "={{ 9999 }}",
-                    "operator": {
-                      "type": "number",
-                      "operation": "lt"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              }
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 3.2,
-      "position": [
-        128,
-        -224
-      ],
-      "id": "30344f8e-4b3d-46d5-877d-bf7166d17b5f",
-      "name": "Switch"
-    },
-    {
-      "parameters": {
         "formTitle": "Recogida Presupuesto",
         "formDescription": "Recogemos los presupuestos para enumerarlos por orden de prioridad",
         "formFields": {
           "values": [
             {
-              "fieldLabel": "Nombre",
-              "placeholder": "Aquí tu nombre"
+              "fieldLabel": "Nombre Completo",
+              "placeholder": "Aquí tu nombre completo"
             },
             {
               "fieldLabel": "Email",
@@ -169,8 +210,8 @@
       "type": "n8n-nodes-base.formTrigger",
       "typeVersion": 2.2,
       "position": [
-        -96,
-        -224
+        -336,
+        -288
       ],
       "id": "ff140912-7b6d-49e9-91bd-93a053230b78",
       "name": "On form submission",
@@ -200,7 +241,9 @@
                   }
                 ],
                 "combinator": "and"
-              }
+              },
+              "renameOutput": true,
+              "outputKey": "Nacional"
             },
             {
               "conditions": {
@@ -222,7 +265,9 @@
                   }
                 ],
                 "combinator": "and"
-              }
+              },
+              "renameOutput": true,
+              "outputKey": "Internacional"
             }
           ]
         },
@@ -231,72 +276,11 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        352,
-        -416
+        336,
+        -672
       ],
       "id": "7a9341d7-65c6-4d4a-9d39-b0e56a746114",
       "name": "Switch1"
-    },
-    {
-      "parameters": {
-        "rules": {
-          "values": [
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "leftValue": "={{ $json.Pais }}",
-                    "rightValue": "=España",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals"
-                    },
-                    "id": "861c0837-8bab-4bf8-a029-a5d1cce9a5aa"
-                  }
-                ],
-                "combinator": "and"
-              }
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "7e0ad678-b1d0-4b75-84bc-ddd21895a075",
-                    "leftValue": "={{ $json.Pais }}",
-                    "rightValue": "=España",
-                    "operator": {
-                      "type": "string",
-                      "operation": "notEquals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              }
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 3.2,
-      "position": [
-        352,
-        -32
-      ],
-      "id": "04fd9e4c-3603-4907-917e-b1a312bcde89",
-      "name": "Switch2"
     },
     {
       "parameters": {
@@ -395,8 +379,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        576,
-        64
+        560,
+        -192
       ],
       "id": "56ed6a02-389e-4adf-903b-2bcf9ff55b63",
       "name": "Append or update row in sheet",
@@ -504,8 +488,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        576,
-        -128
+        560,
+        -384
       ],
       "id": "07c951aa-a767-447c-96da-25414ae0e69f",
       "name": "Append or update row in sheet1",
@@ -613,8 +597,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        576,
-        -320
+        560,
+        -576
       ],
       "id": "22fc8303-c8c2-4a3c-8a02-280ebc387c25",
       "name": "Append or update row in sheet2",
@@ -720,8 +704,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        576,
-        -512
+        560,
+        -768
       ],
       "id": "2c71ae82-b012-4be0-b5d1-69cbe991758a",
       "name": "Append or update row in sheet3",
@@ -731,6 +715,531 @@
           "name": "Google Sheets account 2"
         }
       }
+    },
+    {
+      "parameters": {
+        "sendTo": "carlgrimes2020@gmail.com",
+        "subject": "Cliente VIP ",
+        "message": "=Buenas, un nuevo cliente potencial llamado {{ $json.Nombre }} ha rellenado el formulario con un presupuesto de {{ $json.Presupuesto }}. Contactar de forma urgente.",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        784,
+        -672
+      ],
+      "id": "5b1567e2-c907-4f6f-8535-58a7c564839e",
+      "name": "Send a message",
+      "webhookId": "6c7c6de7-6b89-4fdb-b962-493a5f15abeb",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "FCbuNh7yBRMtK5lN",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "carlgrimes2020@gmail.com",
+        "subject": "Cliente General",
+        "message": "=Buenas, un nuevo cliente llamado {{ $json.Nombre }} ha rellenado el formulario con un presupuesto de {{ $json.Presupuesto }}. Contactar lo antes posible.",
+        "options": {
+          "appendAttribution": true
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        784,
+        -288
+      ],
+      "id": "fc7d8f38-e0aa-4c7d-9a58-077195f55d42",
+      "name": "Send a message1",
+      "webhookId": "6c7c6de7-6b89-4fdb-b962-493a5f15abeb",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "FCbuNh7yBRMtK5lN",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.Pais }}",
+                    "rightValue": "=España",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "861c0837-8bab-4bf8-a029-a5d1cce9a5aa"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Nacional"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "7e0ad678-b1d0-4b75-84bc-ddd21895a075",
+                    "leftValue": "={{ $json.Pais }}",
+                    "rightValue": "=España",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Internacional"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        336,
+        -288
+      ],
+      "id": "04fd9e4c-3603-4907-917e-b1a312bcde89",
+      "name": "Switch2"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.Presupuesto }}",
+                    "rightValue": "={{ 10000 }}",
+                    "operator": {
+                      "type": "number",
+                      "operation": "gt"
+                    },
+                    "id": "861c0837-8bab-4bf8-a029-a5d1cce9a5aa"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Vip"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "7e0ad678-b1d0-4b75-84bc-ddd21895a075",
+                    "leftValue": "={{ $json.Presupuesto }}",
+                    "rightValue": "={{ 9999 }}",
+                    "operator": {
+                      "type": "number",
+                      "operation": "lt"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "General"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        112,
+        -480
+      ],
+      "id": "554f7090-80ee-4a01-8c88-17d64ee4253f",
+      "name": "Switch3"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.Presupuesto }}",
+                    "rightValue": "={{ 10000 }}",
+                    "operator": {
+                      "type": "number",
+                      "operation": "gt"
+                    },
+                    "id": "861c0837-8bab-4bf8-a029-a5d1cce9a5aa"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Vip"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "7e0ad678-b1d0-4b75-84bc-ddd21895a075",
+                    "leftValue": "={{ $json.Presupuesto }}",
+                    "rightValue": "={{ 9999 }}",
+                    "operator": {
+                      "type": "number",
+                      "operation": "lt"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "General"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        112,
+        96
+      ],
+      "id": "9e1be4fe-5c48-4aec-90ab-db52fdb1f734",
+      "name": "Switch4"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "15JS_TCL1Q5i5rl-_8yPRcCQ_8Z6y2B3sdW_QSpfHYpc",
+          "mode": "list",
+          "cachedResultName": "Clasificación",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15JS_TCL1Q5i5rl-_8yPRcCQ_8Z6y2B3sdW_QSpfHYpc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15JS_TCL1Q5i5rl-_8yPRcCQ_8Z6y2B3sdW_QSpfHYpc/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nombre": "={{ $json.Nombre }}",
+            "Pais": "={{ $json.Pais }}",
+            "Presupuesto": "={{ $json.Presupuesto }}",
+            "Categoria": "=General",
+            "Email": "={{ $json.Email }}",
+            "Departamento": "Internacional"
+          },
+          "matchingColumns": [
+            "Email"
+          ],
+          "schema": [
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Pais",
+              "displayName": "Pais",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Presupuesto",
+              "displayName": "Presupuesto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Categoria",
+              "displayName": "Categoria",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Departamento",
+              "displayName": "Departamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        336,
+        0
+      ],
+      "id": "218d184b-ebcf-4710-aa55-2bc32d70d1ea",
+      "name": "Append or update row in sheet4",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "OQx52SMsKkOUpwda",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "15JS_TCL1Q5i5rl-_8yPRcCQ_8Z6y2B3sdW_QSpfHYpc",
+          "mode": "list",
+          "cachedResultName": "Clasificación",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15JS_TCL1Q5i5rl-_8yPRcCQ_8Z6y2B3sdW_QSpfHYpc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15JS_TCL1Q5i5rl-_8yPRcCQ_8Z6y2B3sdW_QSpfHYpc/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nombre": "={{ $json.Nombre }}",
+            "Pais": "={{ $json.Pais }}",
+            "Presupuesto": "={{ $json.Presupuesto }}",
+            "Categoria": "=General",
+            "Email": "={{ $json.Email }}",
+            "Departamento": "Internacional"
+          },
+          "matchingColumns": [
+            "Email"
+          ],
+          "schema": [
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Pais",
+              "displayName": "Pais",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Presupuesto",
+              "displayName": "Presupuesto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Categoria",
+              "displayName": "Categoria",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Departamento",
+              "displayName": "Departamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        336,
+        192
+      ],
+      "id": "a0f9725d-1f55-4561-bb28-ebcefa01ff48",
+      "name": "Append or update row in sheet5",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "OQx52SMsKkOUpwda",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "carlgrimes2020@gmail.com",
+        "subject": "Cliente General",
+        "message": "=Buenas, un nuevo cliente llamado {{ $json.Nombre }} ha rellenado el formulario con un presupuesto de {{ $json.Presupuesto }}. Contactar lo antes posible.",
+        "options": {
+          "appendAttribution": true
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        560,
+        96
+      ],
+      "id": "dd6ffdd7-2fe5-43bc-bde8-8e181bf75f8f",
+      "name": "Send a message2",
+      "webhookId": "6c7c6de7-6b89-4fdb-b962-493a5f15abeb",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "FCbuNh7yBRMtK5lN",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8c5b13e0-225d-474d-a165-061908e57b0e",
+              "leftValue": "={{ $json.Pais }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "ignoreCase": false
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -112,
+        -288
+      ],
+      "id": "bfd9d2d3-9211-4f21-8995-a5306bf62882",
+      "name": "If",
+      "alwaysOutputData": false
     }
   ],
   "pinData": {},
@@ -749,6 +1258,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-08-25T10:18:08.000Z",
-  "versionId": "1d82345a-b977-4b56-8d6f-fd5e21daf73b"
+  "updatedAt": "2025-08-26T11:11:43.000Z",
+  "versionId": "67ea643e-d9d0-45fb-a5b9-5b6ec674ea8b"
 }
