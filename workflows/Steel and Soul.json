@@ -33,6 +33,28 @@
           }
         ]
       ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-09-01T17:43:25.322Z",
@@ -59,12 +81,16 @@
     },
     {
       "parameters": {
-        "options": {}
+        "promptType": "define",
+        "text": "={{ $('When chat message received').item.json.chatInput }}",
+        "options": {
+          "systemMessage": "=Eres un asistente virtual de una peluquería con dos sucursales y varios empleados (Abraham, Antonio, Marco, Paco). Tu única función es ayudar a los clientes a agendar, consultar o cancelar citas.\n\nDebes siempre:\n\nPreguntar en qué sucursal desea reservar (ej: Coria del Río o Isla Mayor).\n\nPreguntar por el empleado (si el cliente lo prefiere) o asignar uno disponible de forma automática.\n\nSolicitar los datos de la cita:\n\nNombre del cliente\n\nServicio (ej: corte, tinte, peinado, barba, etc.)\n\nFecha y hora preferida\n\nValidar la disponibilidad según la sucursal y empleado elegidos.\n\nProponer horarios alternativos si no hay disponibilidad.\n\nConfirmar siempre la cita con un mensaje claro.\n\nEstilo de comunicación:\n\nAmable, directo y profesional.\n\nGuiar al cliente paso a paso sin dar información innecesaria.\n\nSiempre mantener el foco en la gestión de citas."
+        }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
       "position": [
-        -208,
+        -240,
         -16
       ],
       "id": "2b8794d0-30af-49f0-b366-f40657b67624",
@@ -77,7 +103,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        -256,
+        -304,
         208
       ],
       "id": "7fa3c322-af01-41ed-b9d9-6c4a28d19656",
@@ -94,11 +120,115 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        -112,
+        -128,
         208
       ],
       "id": "c8125e0e-f26d-4a4f-814f-bba7a41cdb8d",
       "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "878e62f0-9123-4979-bc36-37b05e718a02"
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        384,
+        -160
+      ],
+      "id": "e3eaaebe-240f-4148-adeb-02ecf7a32620",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "Coria del Rio",
+                    "rightValue": "Coria del Rio",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    },
+                    "id": "34db54ef-959f-47e4-a7a0-42d600cab646"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Coria del Río"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "3847f4f0-78bc-4f47-aeff-79f3e0e0d78c",
+                    "leftValue": "=Isla Mayor {{ $workflow.id }}",
+                    "rightValue": "Isla Mayor",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Isla Mayor"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        96,
+        -16
+      ],
+      "id": "40e02def-1ab0-46ac-bec6-b5c1c32b8c26",
+      "name": "Switch1"
     }
   ],
   "pinData": {},
@@ -117,6 +247,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-09-01T18:22:44.000Z",
-  "versionId": "a3c1f792-69d8-4e02-98d6-55c74c8b2480"
+  "updatedAt": "2025-09-02T12:48:11.000Z",
+  "versionId": "095f315d-d681-444c-9aa1-4a63d1dfc9ff"
 }
