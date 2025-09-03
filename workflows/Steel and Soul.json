@@ -1,17 +1,6 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
-    "When chat message received": {
-      "main": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Google Gemini Chat Model": {
       "ai_languageModel": [
         [
@@ -38,19 +27,149 @@
       "main": [
         [
           {
-            "node": "Switch1",
+            "node": "If1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Switch1": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch2": {
+      "main": [
+        []
+      ]
+    },
+    "agendar": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cancelar": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Create an event",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get an event1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete an event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create an event": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get an event1": {
+      "main": [
+        [
+          {
+            "node": "Send a text message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete an event": {
+      "main": [
+        [
+          {
+            "node": "Send a text message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
       "main": [
         [
           {
             "node": "Switch",
             "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "confirmar": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
             "index": 0
           }
         ]
@@ -67,20 +186,6 @@
   "nodes": [
     {
       "parameters": {
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
-      "typeVersion": 1.3,
-      "position": [
-        -464,
-        -16
-      ],
-      "id": "0de0a1bd-c9cd-4975-92b2-4d2a75c3317c",
-      "name": "When chat message received",
-      "webhookId": "6bcb447f-d907-4cb4-83d9-b5bc72228fe2"
-    },
-    {
-      "parameters": {
         "promptType": "define",
         "text": "={{ $('When chat message received').item.json.chatInput }}",
         "options": {
@@ -90,8 +195,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
       "position": [
-        -240,
-        -16
+        -976,
+        512
       ],
       "id": "2b8794d0-30af-49f0-b366-f40657b67624",
       "name": "AI Agent"
@@ -103,8 +208,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        -304,
-        208
+        -1216,
+        752
       ],
       "id": "7fa3c322-af01-41ed-b9d9-6c4a28d19656",
       "name": "Google Gemini Chat Model",
@@ -120,50 +225,27 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        -128,
-        208
+        -1088,
+        752
       ],
       "id": "c8125e0e-f26d-4a4f-814f-bba7a41cdb8d",
       "name": "Simple Memory"
     },
     {
       "parameters": {
-        "rules": {
-          "values": [
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "leftValue": "",
-                    "rightValue": "",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals"
-                    },
-                    "id": "878e62f0-9123-4979-bc36-37b05e718a02"
-                  }
-                ],
-                "combinator": "and"
-              }
-            }
-          ]
-        },
+        "httpMethod": "POST",
+        "path": "appointments",
         "options": {}
       },
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 3.2,
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
       "position": [
-        384,
-        -160
+        -1456,
+        640
       ],
-      "id": "e3eaaebe-240f-4148-adeb-02ecf7a32620",
-      "name": "Switch"
+      "id": "d8385279-6d52-484b-a281-4866a3ee8fd6",
+      "name": "Webhook",
+      "webhookId": "41400247-cf2e-44ca-adde-a64cc111a8d9"
     },
     {
       "parameters": {
@@ -179,19 +261,19 @@
                 },
                 "conditions": [
                   {
-                    "leftValue": "Coria del Rio",
-                    "rightValue": "Coria del Rio",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "agendar",
                     "operator": {
                       "type": "string",
                       "operation": "contains"
                     },
-                    "id": "34db54ef-959f-47e4-a7a0-42d600cab646"
+                    "id": "60442f01-a9d1-4621-8a5e-43e75508e7c2"
                   }
                 ],
                 "combinator": "and"
               },
               "renameOutput": true,
-              "outputKey": "Coria del Río"
+              "outputKey": "Agendar"
             },
             {
               "conditions": {
@@ -203,9 +285,9 @@
                 },
                 "conditions": [
                   {
-                    "id": "3847f4f0-78bc-4f47-aeff-79f3e0e0d78c",
-                    "leftValue": "=Isla Mayor {{ $workflow.id }}",
-                    "rightValue": "Isla Mayor",
+                    "id": "c28181ab-9870-423d-84fc-ae0999315009",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "confirmar",
                     "operator": {
                       "type": "string",
                       "operation": "contains"
@@ -215,7 +297,31 @@
                 "combinator": "and"
               },
               "renameOutput": true,
-              "outputKey": "Isla Mayor"
+              "outputKey": "Confirmar "
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "4fb1388d-98fb-4bc0-b9bc-87c393543795",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "cancelar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Cancelar"
             }
           ]
         },
@@ -224,11 +330,439 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        96,
-        -16
+        -832,
+        176
       ],
-      "id": "40e02def-1ab0-46ac-bec6-b5c1c32b8c26",
-      "name": "Switch1"
+      "id": "dc5d3a71-ca1a-49e0-a3fa-138904df6527",
+      "name": "Switch2"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "agendar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    },
+                    "id": "60442f01-a9d1-4621-8a5e-43e75508e7c2"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Agendar"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "c28181ab-9870-423d-84fc-ae0999315009",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "confirmar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Confirmar "
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "4fb1388d-98fb-4bc0-b9bc-87c393543795",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "cancelar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Cancelar"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -432,
+        480
+      ],
+      "id": "e17da383-9320-4abe-99a2-2ed202fb0c2a",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a92b8698-5820-4667-9186-144c88cf4426",
+              "leftValue": "={{ $json.output }}",
+              "rightValue": "Coria del Rio",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "e8860e6b-05d7-4ecd-8948-2a93e8e2d564",
+              "leftValue": "={{ $json.output }}",
+              "rightValue": "Isla Mayor",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1440,
+        208
+      ],
+      "id": "afe7db57-16be-4eb8-998e-a6bb56eedca3",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        -704,
+        752
+      ],
+      "id": "7fe99668-8fc1-4649-bf92-91b40831ab8b",
+      "name": "agendar",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "eventId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Event_ID', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        -576,
+        752
+      ],
+      "id": "c699fe2a-e0b4-4591-ac02-2a012c9a7276",
+      "name": "cancelar",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        -224,
+        320
+      ],
+      "id": "566e8039-9694-47c9-a64d-0d10a13c6e7e",
+      "name": "Create an event",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "eventId": "citas",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        -224,
+        496
+      ],
+      "id": "3d73720a-3a9d-4211-8d3a-60728f45d25e",
+      "name": "Get an event1",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "eventId": "Citas",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        -224,
+        704
+      ],
+      "id": "0fa8a3c1-c5a3-4745-ae02-6be17b7ea57b",
+      "name": "Delete an event",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -1456,
+        464
+      ],
+      "id": "3765fb57-8c2b-4875-a160-c832d9ca7753",
+      "name": "When chat message received",
+      "webhookId": "695379ad-592c-4219-9bcd-e9f7739bef33"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "7be00d91-c5f3-4aab-963f-7f5882f4e79d",
+              "leftValue": "={{ $json.output }}",
+              "rightValue": "agendar",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "80cc01cb-4c8a-4821-b3b9-fbdaed53c195",
+              "leftValue": "={{ $json.output }}",
+              "rightValue": "confirmar",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "dc7df206-d64e-4bc6-ab91-f2e2ce686b8d",
+              "leftValue": "={{ $json.output }}",
+              "rightValue": "cancelar",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -640,
+        512
+      ],
+      "id": "93142b4c-24d3-4eea-a538-60f0a0657047",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "eventId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Event_ID', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        -832,
+        752
+      ],
+      "id": "8126df3f-63f6-4e14-86e1-6d7024081943",
+      "name": "confirmar",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        -960,
+        752
+      ],
+      "id": "3095667f-3541-4491-92a8-4b2739f4c04c",
+      "name": "Calculator"
+    },
+    {
+      "parameters": {
+        "chatId": "8494452320:AAGHALaxguxk4m1R0Zz6RBTAFHAyPs7o5Lo",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        16,
+        320
+      ],
+      "id": "af745fcf-e93a-4024-9a5a-c2a32930de02",
+      "name": "Send a text message",
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475",
+      "credentials": {
+        "telegramApi": {
+          "id": "LMFStuVXJKfeRhz1",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "8494452320:AAGHALaxguxk4m1R0Zz6RBTAFHAyPs7o5Lo",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        16,
+        496
+      ],
+      "id": "37598b78-07a1-44ca-8965-e7f489667298",
+      "name": "Send a text message1",
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475",
+      "credentials": {
+        "telegramApi": {
+          "id": "LMFStuVXJKfeRhz1",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "8494452320:AAGHALaxguxk4m1R0Zz6RBTAFHAyPs7o5Lo",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        16,
+        704
+      ],
+      "id": "53c93f0c-7aaf-44d0-b5c4-4bbcdc34720c",
+      "name": "Send a text message2",
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475",
+      "credentials": {
+        "telegramApi": {
+          "id": "LMFStuVXJKfeRhz1",
+          "name": "Telegram account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -246,7 +780,7 @@
   ],
   "staticData": null,
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2025-09-02T12:48:11.000Z",
-  "versionId": "095f315d-d681-444c-9aa1-4a63d1dfc9ff"
+  "triggerCount": 2,
+  "updatedAt": "2025-09-03T13:17:00.000Z",
+  "versionId": "f311f3fa-f9b6-4bc5-b0f4-d56a789d4cc5"
 }
