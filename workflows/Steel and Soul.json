@@ -703,7 +703,7 @@
     },
     {
       "parameters": {
-        "chatId": "8494452320:AAGHALaxguxk4m1R0Zz6RBTAFHAyPs7o5Lo",
+        "chatId": "7040481107",
         "additionalFields": {}
       },
       "type": "n8n-nodes-base.telegram",
@@ -724,7 +724,7 @@
     },
     {
       "parameters": {
-        "chatId": "8494452320:AAGHALaxguxk4m1R0Zz6RBTAFHAyPs7o5Lo",
+        "chatId": "7040481107",
         "additionalFields": {}
       },
       "type": "n8n-nodes-base.telegram",
@@ -745,7 +745,7 @@
     },
     {
       "parameters": {
-        "chatId": "8494452320:AAGHALaxguxk4m1R0Zz6RBTAFHAyPs7o5Lo",
+        "chatId": "7040481107",
         "additionalFields": {}
       },
       "type": "n8n-nodes-base.telegram",
@@ -767,7 +767,9 @@
   ],
   "pinData": {},
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner"
   },
   "shared": [
     {
@@ -781,6 +783,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2025-09-03T13:17:00.000Z",
-  "versionId": "f311f3fa-f9b6-4bc5-b0f4-d56a789d4cc5"
+  "updatedAt": "2025-09-04T09:58:33.000Z",
+  "versionId": "32846ebc-6fe1-4d78-8883-17adb93c4aed"
 }
