@@ -1,0 +1,1605 @@
+{
+  "active": false,
+  "connections": {
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create an event": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete an event": {
+      "main": [
+        [
+          {
+            "node": "Send a text message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create an event1": {
+      "main": [
+        [
+          {
+            "node": "Send a text message3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete an event1": {
+      "main": [
+        [
+          {
+            "node": "Send a text message5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create an event2": {
+      "main": [
+        [
+          {
+            "node": "Send a text message6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete an event2": {
+      "main": [
+        [
+          {
+            "node": "Send a text message8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create an event3": {
+      "main": [
+        [
+          {
+            "node": "Send a text message9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete an event3": {
+      "main": [
+        [
+          {
+            "node": "Send a text message11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create an event4": {
+      "main": [
+        [
+          {
+            "node": "Send a text message12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete an event4": {
+      "main": [
+        [
+          {
+            "node": "Send a text message14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Abraham": {
+      "main": [
+        [
+          {
+            "node": "Create an event2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get an event2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete an event2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Benji": {
+      "main": [
+        [
+          {
+            "node": "Create an event3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get an event3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete an event3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mario": {
+      "main": [
+        [
+          {
+            "node": "Create an event1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get an event",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete an event1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Jesus": {
+      "main": [
+        [
+          {
+            "node": "Create an event4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get an event4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete an event4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Andres": {
+      "main": [
+        [
+          {
+            "node": "Create an event",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get an event1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete an event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a document in Google Docs": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Empleados": {
+      "main": [
+        [
+          {
+            "node": "Abraham",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Benji",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mario",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Andres",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Jesus",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get an event in Google Calendar": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Empleados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-09-04T14:26:24.455Z",
+  "id": "9aonyApi8RGsr2wl",
+  "isArchived": false,
+  "meta": null,
+  "name": "Steel & Soul 2",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -1616,
+        1312
+      ],
+      "id": "5d3eaba8-fec9-4e35-90ef-638cc32f663e",
+      "name": "Google Gemini Chat Model"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        -1488,
+        1312
+      ],
+      "id": "d16fc261-eddc-495a-a49a-46abd256ddc5",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "appointments",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -1840,
+        1184
+      ],
+      "id": "13353755-619d-47ad-857a-34412f337b7c",
+      "name": "Webhook",
+      "webhookId": "41400247-cf2e-44ca-adde-a64cc111a8d9"
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        656,
+        1424
+      ],
+      "id": "9c6a773c-67ee-48de-a635-64a6a5755d73",
+      "name": "Create an event"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "eventId": "citas",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        656,
+        1616
+      ],
+      "id": "9122cbcb-20d0-4353-ae06-39bcf92e2891",
+      "name": "Get an event1"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "eventId": "Citas",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        656,
+        1808
+      ],
+      "id": "18c1d3e4-534a-4903-8b5c-b3c9f399a39a",
+      "name": "Delete an event"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -1840,
+        992
+      ],
+      "id": "1203b6ab-6c7c-48c3-8e97-ea4d91a372a3",
+      "name": "When chat message received",
+      "webhookId": "695379ad-592c-4219-9bcd-e9f7739bef33"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        -1056,
+        1312
+      ],
+      "id": "42e1c096-0be4-44b7-9330-62604c70562f",
+      "name": "Calculator"
+    },
+    {
+      "parameters": {
+        "chatId": "7040481107",
+        "text": "[ CLIENTE ] Ha agendado una cita con Andres a las [ HORA, DIA y LUGAR ]",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        880,
+        1424
+      ],
+      "id": "97052ae3-6a25-4d84-b31d-ae977aa520c7",
+      "name": "Send a text message",
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475"
+    },
+    {
+      "parameters": {
+        "chatId": "7040481107",
+        "text": "[ CLIENTE ] Ha cancelado su cita con Andres a las [ HORA, DIA y LUGAR ]",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        880,
+        1808
+      ],
+      "id": "2162abd1-78b2-48d0-8e65-de572281b9fc",
+      "name": "Send a text message2",
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('When chat message received').item.json.chatInput }}",
+        "options": {
+          "systemMessage": "=Eres un asistente virtual de una peluquería con dos sucursales y varios empleados (Abraham, Benji, Mario, Andres y Jesus). Tu única función es ayudar a los clientes a agendar, consultar o cancelar citas.\n\nDebes siempre:\n\nPreguntar en qué sucursal desea reservar (ej: Coria del Río o Isla Mayor).\n\nPreguntar por el empleado (si el cliente lo prefiere) o asignar uno disponible de forma automática.\n\nSolicitar los datos de la cita:\n\nNombre del cliente\n\nServicio (ej: corte, tinte, peinado, barba, etc.)\n\nFecha y hora preferida\n\nValidar la disponibilidad según la sucursal y empleado elegidos.\n\nProponer horarios alternativos si no hay disponibilidad.\n\nConfirmar siempre la cita con un mensaje claro.\n\nEstilo de comunicación:\n\nAmable, directo y profesional.\n\nGuiar al cliente paso a paso sin dar información innecesaria.\n\nSiempre mantener el foco en la gestión de citas."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        -1376,
+        1088
+      ],
+      "id": "f5305dfa-d9f0-425a-b516-031a2b3b8d95",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        64,
+        896
+      ],
+      "id": "b4eb379c-ac4c-4378-b881-349751768b96",
+      "name": "Create an event1"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "eventId": "citas",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        64,
+        1088
+      ],
+      "id": "53431297-ec79-4c38-b052-12bd27067d89",
+      "name": "Get an event"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "eventId": "Citas",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        64,
+        1280
+      ],
+      "id": "f5567188-7793-4031-a6d7-68a2b08434c9",
+      "name": "Delete an event1"
+    },
+    {
+      "parameters": {
+        "chatId": "7040481107",
+        "text": "[ CLIENTE ] Ha agendado una cita con Mario a las [ HORA, DIA y LUGAR ]",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        288,
+        896
+      ],
+      "id": "5cb381db-cdf4-4955-96f5-b377d60776cf",
+      "name": "Send a text message3",
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475"
+    },
+    {
+      "parameters": {
+        "chatId": "7040481107",
+        "text": "[ CLIENTE ] Ha cancelado su cita con Benji a las [ HORA, DIA y LUGAR ]",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        288,
+        1280
+      ],
+      "id": "12b11e2a-aff1-44ae-866f-492038afa166",
+      "name": "Send a text message5",
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475"
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "d1c64624-2cf7-4e2e-b3f4-58914202d235",
+      "name": "Create an event2"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "eventId": "citas",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        192
+      ],
+      "id": "3a61450f-b908-468d-9fa6-b498b1faaf81",
+      "name": "Get an event2"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "eventId": "Citas",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        384
+      ],
+      "id": "3ce4dc82-2db2-4975-bf77-d54f89683f7b",
+      "name": "Delete an event2"
+    },
+    {
+      "parameters": {
+        "chatId": "7040481107",
+        "text": "[ CLIENTE ] Ha agendado una cita con Abraham a las [ Hora y lugar de la cita ]",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        224,
+        0
+      ],
+      "id": "4bbb1122-fa37-438a-8ec7-cf815ddfd1c3",
+      "name": "Send a text message6",
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475"
+    },
+    {
+      "parameters": {
+        "chatId": "7040481107",
+        "text": "[ CLIENTE ] Ha cancelado su cita con Abraham a las [ Hora y lugar de la cita ]",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        256,
+        384
+      ],
+      "id": "2918bd0c-0ebf-4f23-bd60-f99f54de3659",
+      "name": "Send a text message8",
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475"
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        656,
+        432
+      ],
+      "id": "64d1e68f-6a58-4e88-9a96-bf0c32d507e0",
+      "name": "Create an event3"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "eventId": "citas",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        656,
+        624
+      ],
+      "id": "8c01c268-e4d8-4350-a965-d3cefa31a68c",
+      "name": "Get an event3"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "eventId": "Citas",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        656,
+        816
+      ],
+      "id": "2735a961-ae64-430d-961e-eaace5506a16",
+      "name": "Delete an event3"
+    },
+    {
+      "parameters": {
+        "chatId": "7040481107",
+        "text": "[ CLIENTE ] Ha agendado una cita con Benji a las [ HORA, DIA y LUGAR ]",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        880,
+        432
+      ],
+      "id": "77a9eb81-2c82-4fa5-897d-2774d8ae4de5",
+      "name": "Send a text message9",
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475"
+    },
+    {
+      "parameters": {
+        "chatId": "7040481107",
+        "text": "[ CLIENTE ] Ha cancelado su cita con Benji a las [ HORA, DIA y LUGAR ]",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        880,
+        816
+      ],
+      "id": "4cb25522-e5c5-4dfd-a93b-0840bdb9d9f9",
+      "name": "Send a text message11",
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475"
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        112,
+        1840
+      ],
+      "id": "039663b8-8483-468b-9c80-0afecb2e6d29",
+      "name": "Create an event4"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "eventId": "citas",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        112,
+        2032
+      ],
+      "id": "ea004984-aa60-43d1-8df4-eed3098f0e4b",
+      "name": "Get an event4"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "eventId": "Citas",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        112,
+        2224
+      ],
+      "id": "8c7130b4-5c43-4251-a337-f75630e4f271",
+      "name": "Delete an event4"
+    },
+    {
+      "parameters": {
+        "chatId": "7040481107",
+        "text": "[ CLIENTE ] Ha agendado una cita con Jesus a las [ HORA, DIA y LUGAR ]",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        336,
+        1840
+      ],
+      "id": "e8f58aff-1153-43bb-82e4-54d2c37e5877",
+      "name": "Send a text message12",
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475"
+    },
+    {
+      "parameters": {
+        "chatId": "7040481107",
+        "text": "[ CLIENTE ] Ha cancelado su cita con Jesus a las [ HORA, DIA y LUGAR ]",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        336,
+        2224
+      ],
+      "id": "e12490ed-56ac-4408-9a44-fdb96c933d19",
+      "name": "Send a text message14",
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "agendar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    },
+                    "id": "60442f01-a9d1-4621-8a5e-43e75508e7c2"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Agendar"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "c28181ab-9870-423d-84fc-ae0999315009",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "confirmar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Confirmar "
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "4fb1388d-98fb-4bc0-b9bc-87c393543795",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "cancelar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Cancelar"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -224,
+        176
+      ],
+      "id": "847e3d45-74d7-4f18-83a8-f9e4009a993d",
+      "name": "Abraham"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "agendar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    },
+                    "id": "60442f01-a9d1-4621-8a5e-43e75508e7c2"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Agendar"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "c28181ab-9870-423d-84fc-ae0999315009",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "confirmar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Confirmar "
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "4fb1388d-98fb-4bc0-b9bc-87c393543795",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "cancelar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Cancelar"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        432,
+        608
+      ],
+      "id": "c3ebef91-ce44-4cf1-9221-798a76bfaad9",
+      "name": "Benji"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "agendar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    },
+                    "id": "60442f01-a9d1-4621-8a5e-43e75508e7c2"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Agendar"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "c28181ab-9870-423d-84fc-ae0999315009",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "confirmar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Confirmar "
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "4fb1388d-98fb-4bc0-b9bc-87c393543795",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "cancelar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Cancelar"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -160,
+        1072
+      ],
+      "id": "698f1d8d-793e-41d3-94f0-90494a782232",
+      "name": "Mario"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "agendar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    },
+                    "id": "60442f01-a9d1-4621-8a5e-43e75508e7c2"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Agendar"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "c28181ab-9870-423d-84fc-ae0999315009",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "confirmar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Confirmar "
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "4fb1388d-98fb-4bc0-b9bc-87c393543795",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "cancelar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Cancelar"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -112,
+        2016
+      ],
+      "id": "55061ed6-0212-47b1-9332-ccee98f8b7cd",
+      "name": "Jesus"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "agendar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    },
+                    "id": "60442f01-a9d1-4621-8a5e-43e75508e7c2"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Agendar"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "c28181ab-9870-423d-84fc-ae0999315009",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "confirmar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Confirmar "
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "4fb1388d-98fb-4bc0-b9bc-87c393543795",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "cancelar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Cancelar"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        432,
+        1600
+      ],
+      "id": "ed43e94a-6666-4b30-a27b-e8eaac08d21b",
+      "name": "Andres"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "documentURL": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Doc_ID_or_URL', ``, 'string') }}"
+      },
+      "type": "n8n-nodes-base.googleDocsTool",
+      "typeVersion": 2,
+      "position": [
+        -1200,
+        1312
+      ],
+      "id": "8a78b851-076c-4e64-a2b4-5e2d353fcaff",
+      "name": "Get a document in Google Docs"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6822fcd9-9afc-49f0-aee0-6f258120ac6f",
+              "name": "Respuesta",
+              "value": "Abraham",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -896,
+        912
+      ],
+      "id": "ce5a7a2f-b25f-41c5-9fa5-1d952a961403",
+      "name": "Edit Fields",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "Abraham",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    },
+                    "id": "d82b9fb3-aab5-4dac-b83c-a692f5377199"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Abraham"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "dff19182-43ac-46e7-a9c7-d10a7c7c7c69",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "Benji",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Benji"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "055aee37-a646-4d9b-8627-1998fd5afabb",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "Mario",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Mario"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "434e1ba9-c1f8-4249-9cfa-2a014790ddb0",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "Andres",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Andres"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "a2ecd642-cb20-4f60-974e-07fb189bbdc2",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "Jesus",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Jesus"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -768,
+        1040
+      ],
+      "id": "c446f823-4f92-46e9-8172-d77279f5c0af",
+      "name": "Empleados"
+    },
+    {
+      "parameters": {
+        "jsCode": "const userMessage = items[0].json.last_user_message.toLowerCase();\nconst barberos = [\"abraham\", \"benji\", \"mario\", \"andres\", \"jesus\"];\nlet selectedBarbero = null;\n\nfor (const barbero of barberos) {\n  if (userMessage.includes(barbero)) {\n    selectedBarbero = barbero;\n    break;\n  }\n}\n\nitems[0].json.selectedBarbero = selectedBarbero;\n\nreturn items;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1088,
+        912
+      ],
+      "id": "8fcf739e-c3df-43eb-954b-f8963268eeec",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "eventId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Event_ID', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        -1344,
+        1312
+      ],
+      "id": "a542b15c-835b-441d-a354-5b64a3570e38",
+      "name": "Get an event in Google Calendar"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-09-04T14:26:24.463Z",
+      "updatedAt": "2025-09-04T14:26:24.463Z",
+      "role": "workflow:owner",
+      "workflowId": "9aonyApi8RGsr2wl",
+      "projectId": "76fyU5IRbEoCs8Xl"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-09-04T14:26:46.000Z",
+  "versionId": "e51868b8-09c8-4069-91c1-19763749dfda"
+}
