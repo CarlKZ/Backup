@@ -3,14 +3,20 @@
   "connections": {
     "Create an event": {
       "main": [
-        []
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Webhook": {
       "main": [
         [
           {
-            "node": "Switch",
+            "node": "Switch2",
             "type": "main",
             "index": 0
           }
@@ -42,32 +48,125 @@
         ]
       ]
     },
-    "Create an event4": {
+    "Get many events": {
       "main": [
         [
           {
-            "node": "Send a text message",
+            "node": "Get an event",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Get many events": {
-      "main": [
-        []
-      ]
-    },
     "Get many events1": {
       "main": [
-        []
+        [
+          {
+            "node": "Delete an event",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Get an event": {
       "main": [
+        []
+      ]
+    },
+    "Delete an event": {
+      "main": [
+        [
+          {
+            "node": "Send a text message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch2": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create an event1": {
+      "main": [
         [
           {
             "node": "Send a text message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Create an event1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get many events2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get many events3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many events2": {
+      "main": [
+        [
+          {
+            "node": "Get an event1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many events3": {
+      "main": [
+        [
+          {
+            "node": "Delete an event1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete an event1": {
+      "main": [
+        [
+          {
+            "node": "Send a text message3",
             "type": "main",
             "index": 0
           }
@@ -92,8 +191,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        0,
-        0
+        -352,
+        304
       ],
       "id": "b828f41d-ab4b-463e-8d4b-e8f1b552862e",
       "name": "Webhook",
@@ -113,7 +212,7 @@
       "typeVersion": 1.3,
       "position": [
         576,
-        -160
+        -176
       ],
       "id": "41cbfa88-0271-4ffc-91d4-944549b7b52a",
       "name": "Create an event",
@@ -138,11 +237,11 @@
                 },
                 "conditions": [
                   {
-                    "leftValue": "",
+                    "leftValue": "={{ $json.body.name }}",
                     "rightValue": "Agendar",
                     "operator": {
                       "type": "string",
-                      "operation": "equals"
+                      "operation": "contains"
                     },
                     "id": "7180a638-3c08-4163-89b5-a8d54ac0069f"
                   }
@@ -163,12 +262,11 @@
                 "conditions": [
                   {
                     "id": "659866eb-c952-4806-9667-a40f385569e0",
-                    "leftValue": "",
+                    "leftValue": "={{ $json.body.name }}",
                     "rightValue": "Confirmar",
                     "operator": {
                       "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
+                      "operation": "contains"
                     }
                   }
                 ],
@@ -188,12 +286,11 @@
                 "conditions": [
                   {
                     "id": "36d5cc95-a9cc-4127-8b3e-ef83c9c501c6",
-                    "leftValue": "",
+                    "leftValue": "={{ $json.body.name }}",
                     "rightValue": "Cancelar",
                     "operator": {
                       "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
+                      "operation": "contains"
                     }
                   }
                 ],
@@ -214,90 +311,6 @@
       ],
       "id": "6c2b8dee-f179-4604-a68f-5338311fdb23",
       "name": "Switch"
-    },
-    {
-      "parameters": {
-        "calendar": {
-          "__rl": true,
-          "mode": "list",
-          "value": ""
-        },
-        "additionalFields": {}
-      },
-      "type": "n8n-nodes-base.googleCalendar",
-      "typeVersion": 1.3,
-      "position": [
-        816,
-        160
-      ],
-      "id": "6a26f7e9-68c1-4d7b-b3fc-0ee3a395d7ed",
-      "name": "Create an event4",
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "TOmUG1HvfAS01h77",
-          "name": "Google Calendar account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "additionalFields": {}
-      },
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        1040,
-        160
-      ],
-      "id": "6b96eefc-1dc2-45bd-8e1a-ee85fb5d42fc",
-      "name": "Send a text message",
-      "webhookId": "9d4405c5-a1d6-45a6-9b97-5b93c4515010",
-      "credentials": {
-        "telegramApi": {
-          "id": "LMFStuVXJKfeRhz1",
-          "name": "Telegram account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "additionalFields": {}
-      },
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        1040,
-        0
-      ],
-      "id": "80bda598-bc5a-4337-a53c-eaf2a9b3f944",
-      "name": "Send a text message1",
-      "webhookId": "9d4405c5-a1d6-45a6-9b97-5b93c4515010",
-      "credentials": {
-        "telegramApi": {
-          "id": "LMFStuVXJKfeRhz1",
-          "name": "Telegram account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "additionalFields": {}
-      },
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        816,
-        -160
-      ],
-      "id": "81ce1424-c14d-42b9-9f2d-13586d3baf6d",
-      "name": "Send a text message2",
-      "webhookId": "9d4405c5-a1d6-45a6-9b97-5b93c4515010",
-      "credentials": {
-        "telegramApi": {
-          "id": "LMFStuVXJKfeRhz1",
-          "name": "Telegram account"
-        }
-      }
     },
     {
       "parameters": {
@@ -340,7 +353,7 @@
       "typeVersion": 1.3,
       "position": [
         576,
-        160
+        176
       ],
       "id": "6c759154-3199-4a09-9126-316c4e3ef156",
       "name": "Get many events1",
@@ -360,6 +373,7 @@
           "mode": "list",
           "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
         },
+        "eventId": "={{ $json.id }}",
         "options": {}
       },
       "type": "n8n-nodes-base.googleCalendar",
@@ -368,12 +382,416 @@
         816,
         0
       ],
-      "id": "3f0441f9-5da9-4ec9-a337-066136bb4226",
+      "id": "3d83b5d0-4db1-4f2a-b508-9fe5f22a8a1c",
       "name": "Get an event",
       "credentials": {
         "googleCalendarOAuth2Api": {
           "id": "TOmUG1HvfAS01h77",
           "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "eventId": "={{ $json.id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        816,
+        176
+      ],
+      "id": "6343cb4e-85ee-4aa2-9ea2-f031d5c75df6",
+      "name": "Delete an event",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "7040181107",
+        "text": "El Cliente (NOMBRE CLIENTE) ha agendado una cita con (PELUQUERO) para el (FECHA Y HORA)",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        816,
+        -176
+      ],
+      "id": "97efb437-46ee-44ea-9b2f-6c264430b2b5",
+      "name": "Send a text message",
+      "webhookId": "58491cbd-d72b-4ac4-ab97-bed0b46302ff",
+      "credentials": {
+        "telegramApi": {
+          "id": "LMFStuVXJKfeRhz1",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "7040181107",
+        "text": "El cliente (NOMBRE DEL CLIENTE) ha cancelado su cita con (PELUQUERO) para el (FECHA Y HORA)",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1024,
+        176
+      ],
+      "id": "16176511-95f7-4c90-ac57-3ce25f20b286",
+      "name": "Send a text message2",
+      "webhookId": "58491cbd-d72b-4ac4-ab97-bed0b46302ff",
+      "credentials": {
+        "telegramApi": {
+          "id": "LMFStuVXJKfeRhz1",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.call.transcript_object[0].content }}",
+                    "rightValue": "Coria",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    },
+                    "id": "ecc71724-aed2-47dc-9ef2-b76887403828"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Coria del Río"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "2a5d8a7e-0f2d-4e38-b59d-3ed4e2054350",
+                    "leftValue": "={{ $json.body.call.transcript_object[0].content }}",
+                    "rightValue": "Isla Mayor",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Isla Mayor"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -48,
+        304
+      ],
+      "id": "f7ce1e43-21aa-4700-ae81-8b8cc724488e",
+      "name": "Switch2"
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        592,
+        432
+      ],
+      "id": "263fd6d4-471b-4cec-bc9e-0ccc872256f6",
+      "name": "Create an event1",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.name }}",
+                    "rightValue": "Agendar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    },
+                    "id": "7180a638-3c08-4163-89b5-a8d54ac0069f"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Agendar"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "659866eb-c952-4806-9667-a40f385569e0",
+                    "leftValue": "={{ $json.body.name }}",
+                    "rightValue": "Confirmar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Confirmar"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "36d5cc95-a9cc-4127-8b3e-ef83c9c501c6",
+                    "leftValue": "={{ $json.body.name }}",
+                    "rightValue": "Cancelar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Cancelar"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        272,
+        592
+      ],
+      "id": "8374b7cb-5cf1-4ba3-8e4e-ff3e0f242ab0",
+      "name": "Switch1"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        592,
+        608
+      ],
+      "id": "dfde4719-f890-4e86-bc42-b960c7676f8d",
+      "name": "Get many events2",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        592,
+        784
+      ],
+      "id": "273df043-a1a6-4239-bd59-2201f63faf3a",
+      "name": "Get many events3",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "eventId": "={{ $json.id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        832,
+        608
+      ],
+      "id": "4cb1a4f1-e467-4d32-ba96-61d218204e9c",
+      "name": "Get an event1",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "eventId": "={{ $json.id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        832,
+        784
+      ],
+      "id": "647833bf-efcb-416a-8287-d6e7b0e6ce85",
+      "name": "Delete an event1",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "7040181107",
+        "text": "El Cliente (NOMBRE CLIENTE) ha agendado una cita con (PELUQUERO) para el (FECHA Y HORA)",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        832,
+        432
+      ],
+      "id": "8d7c28f8-8440-40ad-9dee-4a16a66ddd83",
+      "name": "Send a text message1",
+      "webhookId": "58491cbd-d72b-4ac4-ab97-bed0b46302ff",
+      "credentials": {
+        "telegramApi": {
+          "id": "LMFStuVXJKfeRhz1",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "7040181107",
+        "text": "El cliente (NOMBRE DEL CLIENTE) ha cancelado su cita con (PELUQUERO) para el (FECHA Y HORA)",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1040,
+        784
+      ],
+      "id": "35b41330-f23c-45a6-b0db-c76367f1d3ca",
+      "name": "Send a text message3",
+      "webhookId": "58491cbd-d72b-4ac4-ab97-bed0b46302ff",
+      "credentials": {
+        "telegramApi": {
+          "id": "LMFStuVXJKfeRhz1",
+          "name": "Telegram account"
         }
       }
     }
@@ -394,6 +812,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-09-11T10:09:38.000Z",
-  "versionId": "9d8c8f68-7a8d-4421-bbcf-14044cff9c9a"
+  "updatedAt": "2025-09-11T11:18:56.000Z",
+  "versionId": "510e4157-143e-4467-8616-4fea64688f4c"
 }
