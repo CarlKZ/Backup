@@ -28,36 +28,14 @@
         ],
         [
           {
-            "node": "Create an event1",
+            "node": "Get many events",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Create an event2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Create an event1": {
-      "main": [
-        [
-          {
-            "node": "Create an event3",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Create an event2": {
-      "main": [
-        [
-          {
-            "node": "Create an event4",
+            "node": "Get many events1",
             "type": "main",
             "index": 0
           }
@@ -69,6 +47,27 @@
         [
           {
             "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many events": {
+      "main": [
+        []
+      ]
+    },
+    "Get many events1": {
+      "main": [
+        []
+      ]
+    },
+    "Get an event": {
+      "main": [
+        [
+          {
+            "node": "Send a text message1",
             "type": "main",
             "index": 0
           }
@@ -104,8 +103,9 @@
       "parameters": {
         "calendar": {
           "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
           "mode": "list",
-          "value": ""
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
         },
         "additionalFields": {}
       },
@@ -227,79 +227,7 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
       "position": [
-        576,
-        0
-      ],
-      "id": "ba4a6c79-2364-4d51-ad9a-0351ae553431",
-      "name": "Create an event1",
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "TOmUG1HvfAS01h77",
-          "name": "Google Calendar account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "calendar": {
-          "__rl": true,
-          "mode": "list",
-          "value": ""
-        },
-        "additionalFields": {}
-      },
-      "type": "n8n-nodes-base.googleCalendar",
-      "typeVersion": 1.3,
-      "position": [
-        576,
-        160
-      ],
-      "id": "6c759154-3199-4a09-9126-316c4e3ef156",
-      "name": "Create an event2",
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "TOmUG1HvfAS01h77",
-          "name": "Google Calendar account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "calendar": {
-          "__rl": true,
-          "mode": "list",
-          "value": ""
-        },
-        "additionalFields": {}
-      },
-      "type": "n8n-nodes-base.googleCalendar",
-      "typeVersion": 1.3,
-      "position": [
-        832,
-        0
-      ],
-      "id": "3f0441f9-5da9-4ec9-a337-066136bb4226",
-      "name": "Create an event3",
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "TOmUG1HvfAS01h77",
-          "name": "Google Calendar account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "calendar": {
-          "__rl": true,
-          "mode": "list",
-          "value": ""
-        },
-        "additionalFields": {}
-      },
-      "type": "n8n-nodes-base.googleCalendar",
-      "typeVersion": 1.3,
-      "position": [
-        832,
+        816,
         160
       ],
       "id": "6a26f7e9-68c1-4d7b-b3fc-0ee3a395d7ed",
@@ -330,6 +258,124 @@
           "name": "Telegram account"
         }
       }
+    },
+    {
+      "parameters": {
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1040,
+        0
+      ],
+      "id": "80bda598-bc5a-4337-a53c-eaf2a9b3f944",
+      "name": "Send a text message1",
+      "webhookId": "9d4405c5-a1d6-45a6-9b97-5b93c4515010",
+      "credentials": {
+        "telegramApi": {
+          "id": "LMFStuVXJKfeRhz1",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        816,
+        -160
+      ],
+      "id": "81ce1424-c14d-42b9-9f2d-13586d3baf6d",
+      "name": "Send a text message2",
+      "webhookId": "9d4405c5-a1d6-45a6-9b97-5b93c4515010",
+      "credentials": {
+        "telegramApi": {
+          "id": "LMFStuVXJKfeRhz1",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        576,
+        0
+      ],
+      "id": "ba4a6c79-2364-4d51-ad9a-0351ae553431",
+      "name": "Get many events",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        576,
+        160
+      ],
+      "id": "6c759154-3199-4a09-9126-316c4e3ef156",
+      "name": "Get many events1",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        816,
+        0
+      ],
+      "id": "3f0441f9-5da9-4ec9-a337-066136bb4226",
+      "name": "Get an event",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -348,6 +394,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-09-10T10:19:46.000Z",
-  "versionId": "e880c2c4-99eb-4962-a35c-6c5bb1bb3440"
+  "updatedAt": "2025-09-11T10:09:38.000Z",
+  "versionId": "9d8c8f68-7a8d-4421-bbcf-14044cff9c9a"
 }
