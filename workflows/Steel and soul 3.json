@@ -206,6 +206,8 @@
           "mode": "list",
           "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
         },
+        "start": "={{ $json.body.args.date }}",
+        "end": "={{ $json.body.args.date.plus(1, 'hour') }}",
         "additionalFields": {}
       },
       "type": "n8n-nodes-base.googleCalendar",
@@ -421,7 +423,7 @@
     {
       "parameters": {
         "chatId": "7040181107",
-        "text": "El Cliente (NOMBRE CLIENTE) ha agendado una cita con (PELUQUERO) para el (FECHA Y HORA)",
+        "text": "=El Cliente {{ $('Webhook').item.json.body.args.clientName }} ha agendado una cita con {{ $('Webhook').item.json.body.args.barberName }} para el {{ $('Webhook').item.json.body.args.date }} a las {{ $('Webhook').item.json.body.args.time }}",
         "additionalFields": {
           "appendAttribution": false
         }
@@ -445,7 +447,7 @@
     {
       "parameters": {
         "chatId": "7040181107",
-        "text": "El cliente (NOMBRE DEL CLIENTE) ha cancelado su cita con (PELUQUERO) para el (FECHA Y HORA)",
+        "text": "=El Cliente {{ $('Webhook').item.json.body.args.clientName }} ha agendado una cita con {{ $('Webhook').item.json.body.args.barberName }} para el {{ $('Webhook').item.json.body.args.date }} a las {{ $('Webhook').item.json.body.args.time }}",
         "additionalFields": {}
       },
       "type": "n8n-nodes-base.telegram",
@@ -478,8 +480,8 @@
                 },
                 "conditions": [
                   {
-                    "leftValue": "={{ $json.body.call.transcript_object[0].content }}",
-                    "rightValue": "Coria",
+                    "leftValue": "={{ $json.body.name }}",
+                    "rightValue": "Agendar_Citas_Coria",
                     "operator": {
                       "type": "string",
                       "operation": "contains"
@@ -504,7 +506,7 @@
                   {
                     "id": "2a5d8a7e-0f2d-4e38-b59d-3ed4e2054350",
                     "leftValue": "={{ $json.body.call.transcript_object[0].content }}",
-                    "rightValue": "Isla Mayor",
+                    "rightValue": "Agendar_Citas_Isla_Mayor",
                     "operator": {
                       "type": "string",
                       "operation": "contains"
@@ -752,7 +754,7 @@
     {
       "parameters": {
         "chatId": "7040181107",
-        "text": "El Cliente (NOMBRE CLIENTE) ha agendado una cita con (PELUQUERO) para el (FECHA Y HORA)",
+        "text": "=El Cliente {{ $('Webhook').item.json.body.args.clientName }} ha agendado una cita con {{ $('Webhook').item.json.body.args.barberName }} para el {{ $('Webhook').item.json.body.args.date }} a las {{ $('Webhook').item.json.body.args.time }}",
         "additionalFields": {
           "appendAttribution": false
         }
@@ -776,7 +778,7 @@
     {
       "parameters": {
         "chatId": "7040181107",
-        "text": "El cliente (NOMBRE DEL CLIENTE) ha cancelado su cita con (PELUQUERO) para el (FECHA Y HORA)",
+        "text": "=El Cliente {{ $('Webhook').item.json.body.args.clientName }} ha agendado una cita con {{ $('Webhook').item.json.body.args.barberName }} para el {{ $('Webhook').item.json.body.args.date }} a las {{ $('Webhook').item.json.body.args.time }}",
         "additionalFields": {}
       },
       "type": "n8n-nodes-base.telegram",
@@ -812,6 +814,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-09-12T10:00:44.000Z",
-  "versionId": "510e4157-143e-4467-8616-4fea64688f4c"
+  "updatedAt": "2025-09-12T17:34:05.000Z",
+  "versionId": "6b662d73-995d-481a-809e-c7f3ac217a54"
 }
