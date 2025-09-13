@@ -1,22 +1,11 @@
 {
   "active": false,
   "connections": {
-    "Create an event": {
-      "main": [
-        [
-          {
-            "node": "Send a text message",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Webhook": {
       "main": [
         [
           {
-            "node": "Switch2",
+            "node": "Edit Fields",
             "type": "main",
             "index": 0
           }
@@ -27,7 +16,7 @@
       "main": [
         [
           {
-            "node": "Create an event",
+            "node": "Get availability in a calendar",
             "type": "main",
             "index": 0
           }
@@ -172,6 +161,28 @@
           }
         ]
       ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Switch2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get availability in a calendar": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-09-10T10:14:30.664Z",
@@ -191,39 +202,12 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        -352,
+        -832,
         304
       ],
       "id": "b828f41d-ab4b-463e-8d4b-e8f1b552862e",
       "name": "Webhook",
       "webhookId": "d1ce4a41-3a63-49ec-978f-0a5afb682e4a"
-    },
-    {
-      "parameters": {
-        "calendar": {
-          "__rl": true,
-          "value": "carlosfernandezgonzalez18@gmail.com",
-          "mode": "list",
-          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
-        },
-        "start": "={{ $json.body.args.date }}",
-        "end": "={{ $json.body.args.date.plus(1, 'hour') }}",
-        "additionalFields": {}
-      },
-      "type": "n8n-nodes-base.googleCalendar",
-      "typeVersion": 1.3,
-      "position": [
-        576,
-        -176
-      ],
-      "id": "41cbfa88-0271-4ffc-91d4-944549b7b52a",
-      "name": "Create an event",
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "TOmUG1HvfAS01h77",
-          "name": "Google Calendar account"
-        }
-      }
     },
     {
       "parameters": {
@@ -239,7 +223,7 @@
                 },
                 "conditions": [
                   {
-                    "leftValue": "={{ $json.body.name }}",
+                    "leftValue": "={{ $('Webhook').item.json.body.name }}",
                     "rightValue": "Agendar",
                     "operator": {
                       "type": "string",
@@ -264,7 +248,7 @@
                 "conditions": [
                   {
                     "id": "659866eb-c952-4806-9667-a40f385569e0",
-                    "leftValue": "={{ $json.body.name }}",
+                    "leftValue": "={{ $('Webhook').item.json.body.name }}",
                     "rightValue": "Confirmar",
                     "operator": {
                       "type": "string",
@@ -288,7 +272,7 @@
                 "conditions": [
                   {
                     "id": "36d5cc95-a9cc-4127-8b3e-ef83c9c501c6",
-                    "leftValue": "={{ $json.body.name }}",
+                    "leftValue": "={{ $('Webhook').item.json.body.name }}",
                     "rightValue": "Cancelar",
                     "operator": {
                       "type": "string",
@@ -308,7 +292,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        256,
+        144,
         -16
       ],
       "id": "6c2b8dee-f179-4604-a68f-5338311fdb23",
@@ -480,8 +464,8 @@
                 },
                 "conditions": [
                   {
-                    "leftValue": "={{ $json.body.name }}",
-                    "rightValue": "Agendar_Citas_Coria",
+                    "leftValue": "={{ $('Webhook').item.json.body.name }}",
+                    "rightValue": "Coria",
                     "operator": {
                       "type": "string",
                       "operation": "contains"
@@ -505,8 +489,8 @@
                 "conditions": [
                   {
                     "id": "2a5d8a7e-0f2d-4e38-b59d-3ed4e2054350",
-                    "leftValue": "={{ $json.body.call.transcript_object[0].content }}",
-                    "rightValue": "Agendar_Citas_Isla_Mayor",
+                    "leftValue": "={{ $('Webhook').item.json.body.name }}",
+                    "rightValue": "Isla_Mayor",
                     "operator": {
                       "type": "string",
                       "operation": "contains"
@@ -525,7 +509,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -48,
+        -208,
         304
       ],
       "id": "f7ce1e43-21aa-4700-ae81-8b8cc724488e",
@@ -639,7 +623,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        272,
+        160,
         592
       ],
       "id": "8374b7cb-5cf1-4ba3-8e4e-ff3e0f242ab0",
@@ -796,6 +780,55 @@
           "name": "Telegram account"
         }
       }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b91fb8c8-0a47-48e7-ac47-fdd298fe655a",
+              "name": "Fecha Citas",
+              "value": "={{ $json.body.args.date }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -496,
+        304
+      ],
+      "id": "83ac8272-1e30-415b-a193-cc4558775965",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "resource": "calendar",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        576,
+        -176
+      ],
+      "id": "41cbfa88-0271-4ffc-91d4-944549b7b52a",
+      "name": "Get availability in a calendar",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -814,6 +847,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-09-12T17:34:05.000Z",
-  "versionId": "6b662d73-995d-481a-809e-c7f3ac217a54"
+  "updatedAt": "2025-09-13T13:32:19.000Z",
+  "versionId": "96236b31-2f7f-429e-9884-1ad1d649d590"
 }
