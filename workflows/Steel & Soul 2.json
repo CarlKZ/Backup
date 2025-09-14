@@ -1,33 +1,11 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
-    "Google Gemini Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Simple Memory": {
-      "ai_memory": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_memory",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Webhook": {
       "main": [
         [
           {
-            "node": "AI Agent",
+            "node": "Create spreadsheet",
             "type": "main",
             "index": 0
           }
@@ -45,34 +23,12 @@
         ]
       ]
     },
-    "When chat message received": {
-      "main": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Delete an event": {
       "main": [
         [
           {
             "node": "Send a text message2",
             "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Calculator": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
             "index": 0
           }
         ]
@@ -291,18 +247,25 @@
         ]
       ]
     },
-    "Get a document in Google Docs": {
-      "ai_tool": [
+    "Switch": {
+      "main": [
         [
           {
-            "node": "AI Agent",
-            "type": "ai_tool",
+            "node": "Empleados Coria",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Empleados Isla",
+            "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Empleados": {
+    "Empleados Coria": {
       "main": [
         [
           {
@@ -341,22 +304,128 @@
         ]
       ]
     },
-    "Get an event in Google Calendar": {
-      "ai_tool": [
+    "Create an event6": {
+      "main": [
         [
           {
-            "node": "AI Agent",
-            "type": "ai_tool",
+            "node": "Send a text message13",
+            "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "AI Agent": {
+    "Delete an event6": {
       "main": [
         [
           {
-            "node": "Empleados",
+            "node": "Send a text message15",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Jesus1": {
+      "main": [
+        [
+          {
+            "node": "Create an event6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get an event5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete an event6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create an event7": {
+      "main": [
+        [
+          {
+            "node": "Send a text message16",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete an event7": {
+      "main": [
+        [
+          {
+            "node": "Send a text message17",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Jesus2": {
+      "main": [
+        [
+          {
+            "node": "Create an event7",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get an event6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete an event7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Empleados Isla": {
+      "main": [
+        [
+          {
+            "node": "Jesus1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Jesus2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a text message17": {
+      "main": [
+        []
+      ]
+    },
+    "Create spreadsheet": {
+      "main": [
+        [
+          {
+            "node": "Switch",
             "type": "main",
             "index": 0
           }
@@ -364,51 +433,29 @@
       ]
     }
   },
-  "createdAt": "2025-09-04T14:26:24.455Z",
-  "id": "9aonyApi8RGsr2wl",
+  "createdAt": "2025-09-05T17:11:22.789Z",
+  "id": "v0PNbNt21kLrc4kL",
   "isArchived": false,
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Steel & Soul 2",
   "nodes": [
     {
       "parameters": {
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
-      "typeVersion": 1,
-      "position": [
-        -1616,
-        1312
-      ],
-      "id": "5d3eaba8-fec9-4e35-90ef-638cc32f663e",
-      "name": "Google Gemini Chat Model"
-    },
-    {
-      "parameters": {},
-      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
-      "typeVersion": 1.3,
-      "position": [
-        -1488,
-        1312
-      ],
-      "id": "d16fc261-eddc-495a-a49a-46abd256ddc5",
-      "name": "Simple Memory"
-    },
-    {
-      "parameters": {
         "httpMethod": "POST",
-        "path": "appointments",
+        "path": "aff3527e-8d80-4e97-af09-d82e272611bf",
         "options": {}
       },
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        -1840,
-        1184
+        -4016,
+        592
       ],
-      "id": "13353755-619d-47ad-857a-34412f337b7c",
+      "id": "3dbbb16d-811d-4888-9a05-22538e44a81e",
       "name": "Webhook",
-      "webhookId": "41400247-cf2e-44ca-adde-a64cc111a8d9"
+      "webhookId": "aff3527e-8d80-4e97-af09-d82e272611bf"
     },
     {
       "parameters": {
@@ -423,11 +470,17 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
       "position": [
-        656,
-        1424
+        -2880,
+        -176
       ],
-      "id": "9c6a773c-67ee-48de-a635-64a6a5755d73",
-      "name": "Create an event"
+      "id": "1b4bfa3b-9c23-41dd-b888-f4eb729afe62",
+      "name": "Create an event",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
     },
     {
       "parameters": {
@@ -444,11 +497,17 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
       "position": [
-        656,
-        1616
+        -2880,
+        16
       ],
-      "id": "9122cbcb-20d0-4353-ae06-39bcf92e2891",
-      "name": "Get an event1"
+      "id": "f170b5c9-d1ea-43bb-ade0-10636966b4dc",
+      "name": "Get an event1",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
     },
     {
       "parameters": {
@@ -465,36 +524,17 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
       "position": [
-        656,
-        1808
+        -2880,
+        208
       ],
-      "id": "18c1d3e4-534a-4903-8b5c-b3c9f399a39a",
-      "name": "Delete an event"
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
-      "typeVersion": 1.3,
-      "position": [
-        -1840,
-        992
-      ],
-      "id": "1203b6ab-6c7c-48c3-8e97-ea4d91a372a3",
-      "name": "When chat message received",
-      "webhookId": "695379ad-592c-4219-9bcd-e9f7739bef33"
-    },
-    {
-      "parameters": {},
-      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
-      "typeVersion": 1,
-      "position": [
-        -1056,
-        1312
-      ],
-      "id": "42e1c096-0be4-44b7-9330-62604c70562f",
-      "name": "Calculator"
+      "id": "adb9748a-870e-4035-a758-51b00f92e0c7",
+      "name": "Delete an event",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
     },
     {
       "parameters": {
@@ -505,12 +545,18 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        880,
-        1424
+        -2656,
+        -176
       ],
-      "id": "97052ae3-6a25-4d84-b31d-ae977aa520c7",
+      "id": "49263ea8-ae8c-451f-bfc8-70e238bc338a",
       "name": "Send a text message",
-      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475"
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475",
+      "credentials": {
+        "telegramApi": {
+          "id": "LMFStuVXJKfeRhz1",
+          "name": "Telegram account"
+        }
+      }
     },
     {
       "parameters": {
@@ -521,29 +567,18 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        880,
-        1808
+        -2656,
+        208
       ],
-      "id": "2162abd1-78b2-48d0-8e65-de572281b9fc",
+      "id": "24c7662f-69ce-4e9c-b169-e12604345ddc",
       "name": "Send a text message2",
-      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475"
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $('When chat message received').item.json.chatInput }}",
-        "options": {
-          "systemMessage": "=Eres un asistente virtual de una peluquería con dos sucursales y varios empleados (Abraham, Benji, Mario, Andres y Jesus). Tu única función es ayudar a los clientes a agendar, consultar o cancelar citas.\n\nDebes siempre:\n\nPreguntar en qué sucursal desea reservar (ej: Coria del Río o Isla Mayor).\n\nPreguntar por el empleado (si el cliente lo prefiere) o asignar uno disponible de forma automática.\n\nSolicitar los datos de la cita:\n\nNombre del cliente\n\nServicio (ej: corte, tinte, peinado, barba, etc.)\n\nFecha y hora preferida\n\nValidar la disponibilidad según la sucursal y empleado elegidos.\n\nProponer horarios alternativos si no hay disponibilidad.\n\nConfirmar siempre la cita con un mensaje claro.\n\nEstilo de comunicación:\n\nAmable, directo y profesional.\n\nGuiar al cliente paso a paso sin dar información innecesaria.\n\nSiempre mantener el foco en la gestión de citas."
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475",
+      "credentials": {
+        "telegramApi": {
+          "id": "LMFStuVXJKfeRhz1",
+          "name": "Telegram account"
         }
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 2.2,
-      "position": [
-        -1376,
-        1088
-      ],
-      "id": "f5305dfa-d9f0-425a-b516-031a2b3b8d95",
-      "name": "AI Agent"
+      }
     },
     {
       "parameters": {
@@ -558,11 +593,17 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
       "position": [
-        64,
-        896
+        -2880,
+        -752
       ],
-      "id": "b4eb379c-ac4c-4378-b881-349751768b96",
-      "name": "Create an event1"
+      "id": "de361099-017d-46ad-a4f6-14ea17b033ce",
+      "name": "Create an event1",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
     },
     {
       "parameters": {
@@ -579,11 +620,17 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
       "position": [
-        64,
-        1088
+        -2880,
+        -560
       ],
-      "id": "53431297-ec79-4c38-b052-12bd27067d89",
-      "name": "Get an event"
+      "id": "1cc21997-774f-4c1d-a7c7-d4305cc31300",
+      "name": "Get an event",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
     },
     {
       "parameters": {
@@ -600,11 +647,17 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
       "position": [
-        64,
-        1280
+        -2880,
+        -368
       ],
-      "id": "f5567188-7793-4031-a6d7-68a2b08434c9",
-      "name": "Delete an event1"
+      "id": "e12ccc55-63ee-49e2-8938-ca9330533349",
+      "name": "Delete an event1",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
     },
     {
       "parameters": {
@@ -615,12 +668,18 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        288,
-        896
+        -2656,
+        -752
       ],
-      "id": "5cb381db-cdf4-4955-96f5-b377d60776cf",
+      "id": "6599e0d7-213c-49c4-aae9-6291bb3816f4",
       "name": "Send a text message3",
-      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475"
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475",
+      "credentials": {
+        "telegramApi": {
+          "id": "LMFStuVXJKfeRhz1",
+          "name": "Telegram account"
+        }
+      }
     },
     {
       "parameters": {
@@ -631,12 +690,18 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        288,
-        1280
+        -2656,
+        -368
       ],
-      "id": "12b11e2a-aff1-44ae-866f-492038afa166",
+      "id": "3e9d7454-c25f-4fcb-9081-c34434d6f506",
       "name": "Send a text message5",
-      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475"
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475",
+      "credentials": {
+        "telegramApi": {
+          "id": "LMFStuVXJKfeRhz1",
+          "name": "Telegram account"
+        }
+      }
     },
     {
       "parameters": {
@@ -651,11 +716,17 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
       "position": [
-        0,
-        0
+        -2880,
+        -1904
       ],
-      "id": "d1c64624-2cf7-4e2e-b3f4-58914202d235",
-      "name": "Create an event2"
+      "id": "7bf51033-da14-4528-9bd1-fc13a30b59af",
+      "name": "Create an event2",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
     },
     {
       "parameters": {
@@ -672,11 +743,17 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
       "position": [
-        0,
-        192
+        -2880,
+        -1712
       ],
-      "id": "3a61450f-b908-468d-9fa6-b498b1faaf81",
-      "name": "Get an event2"
+      "id": "9563cd3f-4fae-422e-b147-5bab18bdee20",
+      "name": "Get an event2",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
     },
     {
       "parameters": {
@@ -693,11 +770,17 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
       "position": [
-        0,
-        384
+        -2880,
+        -1520
       ],
-      "id": "3ce4dc82-2db2-4975-bf77-d54f89683f7b",
-      "name": "Delete an event2"
+      "id": "d40058a8-1a4c-4b5f-8abe-009a115ee02d",
+      "name": "Delete an event2",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
     },
     {
       "parameters": {
@@ -708,12 +791,18 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        224,
-        0
+        -2656,
+        -1904
       ],
-      "id": "4bbb1122-fa37-438a-8ec7-cf815ddfd1c3",
+      "id": "c4233005-d459-4661-a3dd-4fb026293d81",
       "name": "Send a text message6",
-      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475"
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475",
+      "credentials": {
+        "telegramApi": {
+          "id": "LMFStuVXJKfeRhz1",
+          "name": "Telegram account"
+        }
+      }
     },
     {
       "parameters": {
@@ -724,12 +813,18 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        256,
-        384
+        -2656,
+        -1520
       ],
-      "id": "2918bd0c-0ebf-4f23-bd60-f99f54de3659",
+      "id": "96a45ead-9513-4d21-85af-c64518e38788",
       "name": "Send a text message8",
-      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475"
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475",
+      "credentials": {
+        "telegramApi": {
+          "id": "LMFStuVXJKfeRhz1",
+          "name": "Telegram account"
+        }
+      }
     },
     {
       "parameters": {
@@ -744,11 +839,17 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
       "position": [
-        656,
-        432
+        -2880,
+        -1328
       ],
-      "id": "64d1e68f-6a58-4e88-9a96-bf0c32d507e0",
-      "name": "Create an event3"
+      "id": "c9963728-2176-40dd-9892-c2bcd5f3e1d6",
+      "name": "Create an event3",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
     },
     {
       "parameters": {
@@ -765,11 +866,17 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
       "position": [
-        656,
-        624
+        -2880,
+        -1136
       ],
-      "id": "8c01c268-e4d8-4350-a965-d3cefa31a68c",
-      "name": "Get an event3"
+      "id": "7b55ce3d-76ae-41c6-b4c5-7a9e948e6dc7",
+      "name": "Get an event3",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
     },
     {
       "parameters": {
@@ -786,11 +893,17 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
       "position": [
-        656,
-        816
+        -2880,
+        -944
       ],
-      "id": "2735a961-ae64-430d-961e-eaace5506a16",
-      "name": "Delete an event3"
+      "id": "35e37ac7-9c14-4ba1-9fc0-87caa7642a8c",
+      "name": "Delete an event3",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
     },
     {
       "parameters": {
@@ -801,12 +914,18 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        880,
-        432
+        -2656,
+        -1328
       ],
-      "id": "77a9eb81-2c82-4fa5-897d-2774d8ae4de5",
+      "id": "89c4aefe-4a02-4dd2-aadc-59c5ebadf758",
       "name": "Send a text message9",
-      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475"
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475",
+      "credentials": {
+        "telegramApi": {
+          "id": "LMFStuVXJKfeRhz1",
+          "name": "Telegram account"
+        }
+      }
     },
     {
       "parameters": {
@@ -817,12 +936,18 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        880,
-        816
+        -2656,
+        -944
       ],
-      "id": "4cb25522-e5c5-4dfd-a93b-0840bdb9d9f9",
+      "id": "d05b542b-9e3d-4bfe-967c-d71f8384f82a",
       "name": "Send a text message11",
-      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475"
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475",
+      "credentials": {
+        "telegramApi": {
+          "id": "LMFStuVXJKfeRhz1",
+          "name": "Telegram account"
+        }
+      }
     },
     {
       "parameters": {
@@ -837,11 +962,17 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
       "position": [
-        112,
-        1840
+        -2880,
+        400
       ],
-      "id": "039663b8-8483-468b-9c80-0afecb2e6d29",
-      "name": "Create an event4"
+      "id": "3673674d-a76d-4caa-a7b5-f221384269fe",
+      "name": "Create an event4",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
     },
     {
       "parameters": {
@@ -858,11 +989,17 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
       "position": [
-        112,
-        2032
+        -2880,
+        592
       ],
-      "id": "ea004984-aa60-43d1-8df4-eed3098f0e4b",
-      "name": "Get an event4"
+      "id": "fc6216e5-ca7a-4a69-bcf4-703111941fa0",
+      "name": "Get an event4",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
     },
     {
       "parameters": {
@@ -879,11 +1016,17 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
       "position": [
-        112,
-        2224
+        -2880,
+        784
       ],
-      "id": "8c7130b4-5c43-4251-a337-f75630e4f271",
-      "name": "Delete an event4"
+      "id": "173754d3-9f73-4cf0-a63e-8489f520b0d8",
+      "name": "Delete an event4",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
     },
     {
       "parameters": {
@@ -894,12 +1037,18 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        336,
-        1840
+        -2656,
+        400
       ],
-      "id": "e8f58aff-1153-43bb-82e4-54d2c37e5877",
+      "id": "2efa8953-ede4-4672-9790-16abde635438",
       "name": "Send a text message12",
-      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475"
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475",
+      "credentials": {
+        "telegramApi": {
+          "id": "LMFStuVXJKfeRhz1",
+          "name": "Telegram account"
+        }
+      }
     },
     {
       "parameters": {
@@ -910,12 +1059,18 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        336,
-        2224
+        -2656,
+        784
       ],
-      "id": "e12490ed-56ac-4408-9a44-fdb96c933d19",
+      "id": "c20a1223-814f-49d0-bb9c-3358ea7dfcbc",
       "name": "Send a text message14",
-      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475"
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475",
+      "credentials": {
+        "telegramApi": {
+          "id": "LMFStuVXJKfeRhz1",
+          "name": "Telegram account"
+        }
+      }
     },
     {
       "parameters": {
@@ -995,17 +1150,15 @@
             }
           ]
         },
-        "options": {
-          "fallbackOutput": "extra"
-        }
+        "options": {}
       },
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -224,
-        176
+        -3104,
+        -1728
       ],
-      "id": "847e3d45-74d7-4f18-83a8-f9e4009a993d",
+      "id": "65e55778-abd0-4d9b-9923-8d93b049310e",
       "name": "Abraham"
     },
     {
@@ -1086,17 +1239,15 @@
             }
           ]
         },
-        "options": {
-          "fallbackOutput": "extra"
-        }
+        "options": {}
       },
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        432,
-        608
+        -3104,
+        -1152
       ],
-      "id": "c3ebef91-ce44-4cf1-9221-798a76bfaad9",
+      "id": "2cb14e87-f92c-4829-b0d2-9c1782e3eaf2",
       "name": "Benji"
     },
     {
@@ -1177,17 +1328,15 @@
             }
           ]
         },
-        "options": {
-          "fallbackOutput": "extra"
-        }
+        "options": {}
       },
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -160,
-        1072
+        -3104,
+        -576
       ],
-      "id": "698f1d8d-793e-41d3-94f0-90494a782232",
+      "id": "9701bd30-9850-43e1-a636-ab4da3d6de67",
       "name": "Mario"
     },
     {
@@ -1268,17 +1417,15 @@
             }
           ]
         },
-        "options": {
-          "fallbackOutput": "extra"
-        }
+        "options": {}
       },
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -112,
-        2016
+        -3104,
+        576
       ],
-      "id": "55061ed6-0212-47b1-9332-ccee98f8b7cd",
+      "id": "ea467618-0fb2-4494-b843-962c844f3059",
       "name": "Jesus"
     },
     {
@@ -1359,56 +1506,82 @@
             }
           ]
         },
-        "options": {
-          "fallbackOutput": "extra"
-        }
+        "options": {}
       },
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        432,
-        1600
+        -3104,
+        0
       ],
-      "id": "ed43e94a-6666-4b30-a27b-e8eaac08d21b",
+      "id": "53934342-e81d-4bc5-b9d6-21aa5c26483e",
       "name": "Andres"
     },
     {
       "parameters": {
-        "operation": "get",
-        "documentURL": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Doc_ID_or_URL', ``, 'string') }}"
-      },
-      "type": "n8n-nodes-base.googleDocsTool",
-      "typeVersion": 2,
-      "position": [
-        -1200,
-        1312
-      ],
-      "id": "8a78b851-076c-4e64-a2b4-5e2d353fcaff",
-      "name": "Get a document in Google Docs"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
+        "rules": {
+          "values": [
             {
-              "id": "6822fcd9-9afc-49f0-aee0-6f258120ac6f",
-              "name": "Respuesta",
-              "value": "Abraham",
-              "type": "string"
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "",
+                    "rightValue": "Sucursal Coria",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "95a3a78c-ff98-455a-9a48-381df819c3f0"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Coria del Rio"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "eb00e324-1483-4f8d-93eb-be6ec80b010a",
+                    "leftValue": "",
+                    "rightValue": "Sucursal Isla Mayor",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Isla Mayor"
             }
           ]
         },
         "options": {}
       },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
       "position": [
-        -896,
-        912
+        -3552,
+        592
       ],
-      "id": "ce5a7a2f-b25f-41c5-9fa5-1d952a961403",
-      "name": "Edit Fields",
-      "disabled": true
+      "id": "cfbeb4c0-08ab-435f-894f-3fae2798ca13",
+      "name": "Switch"
     },
     {
       "parameters": {
@@ -1536,31 +1709,107 @@
             }
           ]
         },
-        "options": {
-          "fallbackOutput": "extra"
-        }
+        "options": {}
       },
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -768,
-        1040
+        -3328,
+        -608
       ],
-      "id": "c446f823-4f92-46e9-8172-d77279f5c0af",
-      "name": "Empleados"
+      "id": "5c9bb91d-015f-4edb-8c84-a0dc69011c4b",
+      "name": "Empleados Coria"
     },
     {
       "parameters": {
-        "jsCode": "const userMessage = items[0].json.last_user_message.toLowerCase();\nconst barberos = [\"abraham\", \"benji\", \"mario\", \"andres\", \"jesus\"];\nlet selectedBarbero = null;\n\nfor (const barbero of barberos) {\n  if (userMessage.includes(barbero)) {\n    selectedBarbero = barbero;\n    break;\n  }\n}\n\nitems[0].json.selectedBarbero = selectedBarbero;\n\nreturn items;"
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "",
+                    "rightValue": "Abraham,",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "01ae23d5-eb9b-4b6a-bcba-0e941a6e0a72"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Abraham"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "4c08d2b8-caee-4dd5-b364-94c527f94859",
+                    "leftValue": "",
+                    "rightValue": "Miguel",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Miguel"
+            }
+          ]
+        },
+        "options": {}
       },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
       "position": [
-        -1088,
-        912
+        -3328,
+        1456
       ],
-      "id": "8fcf739e-c3df-43eb-954b-f8963268eeec",
-      "name": "Code"
+      "id": "265d2f27-48db-4c8a-be02-528b49f83811",
+      "name": "Empleados Isla"
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        -2880,
+        976
+      ],
+      "id": "1a4629b4-caf4-455e-89dc-5b12dc532859",
+      "name": "Create an event6",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
     },
     {
       "parameters": {
@@ -1571,17 +1820,415 @@
           "mode": "list",
           "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
         },
-        "eventId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Event_ID', ``, 'string') }}",
+        "eventId": "citas",
         "options": {}
       },
-      "type": "n8n-nodes-base.googleCalendarTool",
+      "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
       "position": [
-        -1344,
-        1312
+        -2880,
+        1168
       ],
-      "id": "a542b15c-835b-441d-a354-5b64a3570e38",
-      "name": "Get an event in Google Calendar"
+      "id": "dd45b8e9-f0da-4802-a763-c236ea3322ea",
+      "name": "Get an event5",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "eventId": "Citas",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        -2880,
+        1360
+      ],
+      "id": "0b6b40f6-e03e-480a-b0f6-996c08554ac3",
+      "name": "Delete an event6",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "7040481107",
+        "text": "[ CLIENTE ] Ha agendado una cita con Jesus a las [ HORA, DIA y LUGAR ]",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -2656,
+        976
+      ],
+      "id": "1bb82ef3-1e71-4dac-93b3-2d46b01f2705",
+      "name": "Send a text message13",
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475",
+      "credentials": {
+        "telegramApi": {
+          "id": "LMFStuVXJKfeRhz1",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "7040481107",
+        "text": "[ CLIENTE ] Ha cancelado su cita con Jesus a las [ HORA, DIA y LUGAR ]",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -2656,
+        1360
+      ],
+      "id": "8aee8474-af60-41a6-9e1e-04710735fdac",
+      "name": "Send a text message15",
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475",
+      "credentials": {
+        "telegramApi": {
+          "id": "LMFStuVXJKfeRhz1",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "agendar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    },
+                    "id": "60442f01-a9d1-4621-8a5e-43e75508e7c2"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Agendar"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "c28181ab-9870-423d-84fc-ae0999315009",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "confirmar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Confirmar "
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "4fb1388d-98fb-4bc0-b9bc-87c393543795",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "cancelar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Cancelar"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -3104,
+        1152
+      ],
+      "id": "64ba9a68-8a32-42ce-a70d-901f2ad5967e",
+      "name": "Jesus1"
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        -2880,
+        1552
+      ],
+      "id": "42703901-daeb-4e49-9fb3-57f1770f397e",
+      "name": "Create an event7",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "eventId": "citas",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        -2880,
+        1744
+      ],
+      "id": "6f166ff7-be7f-4cc5-8772-6bd426871916",
+      "name": "Get an event6",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "carlosfernandezgonzalez18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlosfernandezgonzalez18@gmail.com"
+        },
+        "eventId": "Citas",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        -2880,
+        1936
+      ],
+      "id": "40e83ad0-4276-4f0a-844a-9a69b69e0494",
+      "name": "Delete an event7",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "TOmUG1HvfAS01h77",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "7040481107",
+        "text": "[ CLIENTE ] Ha agendado una cita con Jesus a las [ HORA, DIA y LUGAR ]",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -2656,
+        1552
+      ],
+      "id": "81a0dda4-9410-47e0-a19d-51792113596f",
+      "name": "Send a text message16",
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475",
+      "credentials": {
+        "telegramApi": {
+          "id": "LMFStuVXJKfeRhz1",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "7040481107",
+        "text": "[ CLIENTE ] Ha cancelado su cita con Jesus a las [ HORA, DIA y LUGAR ]",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -2656,
+        1936
+      ],
+      "id": "7ce4fdf4-20b8-4fd7-805d-ce3711fe4de0",
+      "name": "Send a text message17",
+      "webhookId": "cd11056a-e1de-4513-8ff6-f577823d4475",
+      "credentials": {
+        "telegramApi": {
+          "id": "LMFStuVXJKfeRhz1",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "agendar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    },
+                    "id": "60442f01-a9d1-4621-8a5e-43e75508e7c2"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Agendar"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "c28181ab-9870-423d-84fc-ae0999315009",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "confirmar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Confirmar "
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "4fb1388d-98fb-4bc0-b9bc-87c393543795",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "cancelar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Cancelar"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -3104,
+        1728
+      ],
+      "id": "9cff50db-d51e-424a-b122-a7db4eea474a",
+      "name": "Jesus2"
+    },
+    {
+      "parameters": {
+        "resource": "spreadsheet",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -3776,
+        592
+      ],
+      "id": "c691c3cf-9273-4912-843e-9059e40bbca8",
+      "name": "Create spreadsheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "OQx52SMsKkOUpwda",
+          "name": "Google Sheets account 2"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -1590,16 +2237,16 @@
   },
   "shared": [
     {
-      "createdAt": "2025-09-04T14:26:24.463Z",
-      "updatedAt": "2025-09-04T14:26:24.463Z",
+      "createdAt": "2025-09-05T17:11:22.798Z",
+      "updatedAt": "2025-09-05T17:11:22.798Z",
       "role": "workflow:owner",
-      "workflowId": "9aonyApi8RGsr2wl",
+      "workflowId": "v0PNbNt21kLrc4kL",
       "projectId": "76fyU5IRbEoCs8Xl"
     }
   ],
   "staticData": null,
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2025-09-04T14:26:46.000Z",
-  "versionId": "e51868b8-09c8-4069-91c1-19763749dfda"
+  "triggerCount": 1,
+  "updatedAt": "2025-09-10T10:14:19.000Z",
+  "versionId": "f2d290d9-3d25-43dc-b4cd-2c956ba0ffee"
 }
