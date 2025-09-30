@@ -472,7 +472,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const workflow = $json;\nif(workflow.nodes){\n  workflow.nodes.forEach(node => {\n    if(node.credentials){\n      // Remplaza con valores dummy\n      Object.keys(node.credentials).forEach(cred => {\n        node.credentials[cred] = 'FILTERED';\n      });\n    }\n    if(node.parameters){\n      // Si hay secretos en parámetros, filtrarlos aquí de forma similar\n      // Ejemplo: node.parameters.apiKey = 'FILTERED';\n    }\n  });\n}\nreturn workflow;\n"
+        "jsCode": "const workflow = $json;\n\n// Detecta y anonimiza secretos en nodos\nif(workflow.nodes){\n  workflow.nodes.forEach(node => {\n    // Campos de credenciales (n8n los guarda en 'credentials')\n    if(node.credentials){\n      Object.keys(node.credentials).forEach(credKey => {\n        node.credentials[credKey] = 'FILTERED';\n      });\n    }\n    // Campos de parámetros con posibles secretos\n    if(node.parameters){\n      for (const param in node.parameters) {\n        // Filtra posibles nombres de campo con secreto\n        if (\n          param.toLowerCase().includes('apikey') ||\n          param.toLowerCase().includes('token') ||\n          param.toLowerCase().includes('password') ||\n          param.toLowerCase().includes('secret') ||\n          param.toLowerCase().includes('accesskey')\n        ) {\n          node.parameters[param] = 'FILTERED';\n        }\n      }\n    }\n  });\n}\n\nreturn workflow;\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -502,6 +502,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-09-30T12:35:24.000Z",
-  "versionId": "39bdd298-c67e-427f-a406-b0842a180983"
+  "updatedAt": "2025-09-30T12:38:55.000Z",
+  "versionId": "efc82270-3e54-4343-bff2-901324cd03c1"
 }
