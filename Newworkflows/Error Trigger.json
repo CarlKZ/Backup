@@ -1,0 +1,80 @@
+{
+  "active": false,
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-09-27T11:20:54.271Z",
+  "id": "G3LUdMqnpavs5AUk",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Error Trigger",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "fc64ea9e-7102-4961-a814-18fa5f0e3c37",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "chatId": "7040181107",
+        "text": "=Error: fallo en el sistema \n\nMensaje: {{ $json.execution.error.message }}\n\nUltimo nodo activo: {{ $json.execution.lastNodeExecuted }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "7c55b460-ae55-4b69-9648-097f442cd0de",
+      "name": "Send a text message",
+      "webhookId": "d0ad2968-a66b-4f2e-b9ed-a4184101affa",
+      "credentials": {
+        "telegramApi": {
+          "id": "KcOnwLzOSvSJfY1o",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-09-27T11:20:54.273Z",
+      "updatedAt": "2025-09-27T11:20:54.273Z",
+      "role": "workflow:owner",
+      "workflowId": "G3LUdMqnpavs5AUk",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-09-27T11:21:01.000Z",
+  "versionId": "e6f1bf5e-28d9-4f0e-91e6-64460defdc75"
+}
