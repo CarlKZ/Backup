@@ -140,7 +140,7 @@
       "main": [
         [
           {
-            "node": "n8n",
+            "node": "Code in JavaScript",
             "type": "main",
             "index": 0
           }
@@ -180,6 +180,17 @@
           }
         ]
       ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "n8n",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-09-27T10:32:55.864Z",
@@ -196,7 +207,7 @@
       "name": "On clicking 'execute'",
       "type": "n8n-nodes-base.manualTrigger",
       "position": [
-        -1536,
+        -1568,
         224
       ],
       "typeVersion": 1
@@ -225,7 +236,7 @@
       "name": "github_status",
       "type": "n8n-nodes-base.switch",
       "position": [
-        -160,
+        48,
         352
       ],
       "typeVersion": 1
@@ -236,7 +247,7 @@
       "name": "same",
       "type": "n8n-nodes-base.noOp",
       "position": [
-        0,
+        208,
         0
       ],
       "typeVersion": 1
@@ -247,7 +258,7 @@
       "name": "different",
       "type": "n8n-nodes-base.noOp",
       "position": [
-        0,
+        208,
         224
       ],
       "typeVersion": 1
@@ -258,7 +269,7 @@
       "name": "new",
       "type": "n8n-nodes-base.noOp",
       "position": [
-        0,
+        208,
         560
       ],
       "typeVersion": 1
@@ -277,7 +288,7 @@
       "name": "GitHub Edit",
       "type": "n8n-nodes-base.github",
       "position": [
-        160,
+        368,
         320
       ],
       "typeVersion": 1,
@@ -302,7 +313,7 @@
       "name": "GitHub Create",
       "type": "n8n-nodes-base.github",
       "position": [
-        160,
+        368,
         560
       ],
       "typeVersion": 1,
@@ -329,7 +340,7 @@
       "name": "Every 12 hours",
       "type": "n8n-nodes-base.cron",
       "position": [
-        -1536,
+        -1568,
         480
       ],
       "typeVersion": 1
@@ -343,7 +354,7 @@
       "name": "n8n",
       "type": "n8n-nodes-base.n8n",
       "position": [
-        -1168,
+        -960,
         352
       ],
       "typeVersion": 1,
@@ -362,7 +373,7 @@
       "name": "isDiffOrNew",
       "type": "n8n-nodes-base.code",
       "position": [
-        -320,
+        -112,
         352
       ],
       "typeVersion": 1
@@ -373,7 +384,7 @@
       "name": "Merge",
       "type": "n8n-nodes-base.merge",
       "position": [
-        -464,
+        -256,
         352
       ],
       "typeVersion": 2
@@ -402,7 +413,7 @@
       "name": "Variables",
       "type": "n8n-nodes-base.set",
       "position": [
-        -1360,
+        -1392,
         352
       ],
       "typeVersion": 1
@@ -414,7 +425,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        -816,
+        -608,
         128
       ]
     },
@@ -427,7 +438,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -960,
+        -752,
         352
       ]
     },
@@ -445,7 +456,7 @@
       "name": "Get a file",
       "type": "n8n-nodes-base.github",
       "position": [
-        -704,
+        -496,
         240
       ],
       "typeVersion": 1,
@@ -458,6 +469,19 @@
         }
       },
       "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const workflow = $json;\nif(workflow.nodes){\n  workflow.nodes.forEach(node => {\n    if(node.credentials){\n      // Remplaza con valores dummy\n      Object.keys(node.credentials).forEach(cred => {\n        node.credentials[cred] = 'FILTERED';\n      });\n    }\n    if(node.parameters){\n      // Si hay secretos en parámetros, filtrarlos aquí de forma similar\n      // Ejemplo: node.parameters.apiKey = 'FILTERED';\n    }\n  });\n}\nreturn workflow;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1184,
+        352
+      ],
+      "id": "9632fc8a-6c4c-44ab-ad68-5f784141df4e",
+      "name": "Code in JavaScript"
     }
   ],
   "pinData": {},
@@ -478,6 +502,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-09-30T12:25:19.000Z",
-  "versionId": "029261c7-e085-4e8a-bd4f-0688680019a5"
+  "updatedAt": "2025-09-30T12:35:24.000Z",
+  "versionId": "39bdd298-c67e-427f-a406-b0842a180983"
 }
