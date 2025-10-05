@@ -1,0 +1,28 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2025-10-05T09:09:26.804Z",
+  "id": "ZUUeU78C0pFAivxz",
+  "isArchived": false,
+  "meta": null,
+  "name": "Cuidador Perros",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-10-05T09:09:26.822Z",
+      "updatedAt": "2025-10-05T09:09:26.822Z",
+      "role": "workflow:owner",
+      "workflowId": "ZUUeU78C0pFAivxz",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-10-05T09:09:26.804Z",
+  "versionId": "2e321728-6dd8-449c-941c-ae1438b894e5"
+}
