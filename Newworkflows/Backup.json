@@ -318,6 +318,7 @@
       ],
       "typeVersion": 1,
       "webhookId": "6eb0df8b-0807-4440-9281-06510eae9c73",
+      "alwaysOutputData": true,
       "credentials": {
         "githubApi": {
           "id": "Sh1O5dMRTvhUpTYl",
@@ -502,6 +503,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-09-30T12:38:55.000Z",
-  "versionId": "efc82270-3e54-4343-bff2-901324cd03c1"
+  "updatedAt": "2025-10-24T13:35:15.000Z",
+  "versionId": "61c0b3c6-65aa-4e9e-a41c-e5525778a380"
 }
