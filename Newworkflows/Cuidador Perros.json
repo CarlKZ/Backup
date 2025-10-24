@@ -34,17 +34,6 @@
         ]
       ]
     },
-    "Disponibilidad": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Telegram Trigger": {
       "main": [
         [
@@ -56,7 +45,7 @@
         ]
       ]
     },
-    "Citas": {
+    "Cancelar": {
       "ai_tool": [
         [
           {
@@ -67,7 +56,18 @@
         ]
       ]
     },
-    "Cancelar": {
+    "Agendar": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Disponibilidad": {
       "ai_tool": [
         [
           {
@@ -98,7 +98,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
       "position": [
-        -640,
+        -488,
         16
       ],
       "id": "4bd3013d-3f41-4f4a-b626-9de7ecde9765",
@@ -112,7 +112,7 @@
       "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
       "typeVersion": 1.3,
       "position": [
-        -688,
+        -544,
         240
       ],
       "id": "39bdb1b9-afa4-47ea-84b8-9463bb063a2a",
@@ -136,7 +136,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        -816,
+        -672,
         240
       ],
       "id": "13327007-5ad6-47d9-a97f-9b85653ce014",
@@ -145,33 +145,6 @@
         "openAiApi": {
           "id": "WvSLkCujVhY8jIGz",
           "name": "OpenAi account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "getAll",
-        "calendar": {
-          "__rl": true,
-          "value": "carlos.f.g.work@gmail.com",
-          "mode": "list",
-          "cachedResultName": "carlos.f.g.work@gmail.com"
-        },
-        "timeMax": "={{ $now.plus({ hour: 1 }) }}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleCalendarTool",
-      "typeVersion": 1.3,
-      "position": [
-        -560,
-        240
-      ],
-      "id": "a9c0e3dd-cfcf-4bfd-bf4f-2c5c61b78d14",
-      "name": "Disponibilidad",
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "uibgZJgdZkL31iR6",
-          "name": "Google Calendar account"
         }
       }
     },
@@ -209,7 +182,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        -176,
+        48,
         16
       ],
       "id": "5c8fda3e-4bfd-4077-8a4b-15d7008c58d9",
@@ -224,57 +197,143 @@
     },
     {
       "parameters": {
-        "calendar": {
+        "workflowId": {
           "__rl": true,
-          "value": "carlos.f.g.work@gmail.com",
+          "value": "g2KbbNr4lQkV4W59",
           "mode": "list",
-          "cachedResultName": "carlos.f.g.work@gmail.com"
+          "cachedResultUrl": "/workflow/g2KbbNr4lQkV4W59",
+          "cachedResultName": "Cancelar"
         },
-        "end": "={{ $now.plus({ hour: 1 }) }}",
-        "useDefaultReminders": "={{ true }}",
-        "additionalFields": {}
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
       },
-      "type": "n8n-nodes-base.googleCalendarTool",
-      "typeVersion": 1.3,
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        -160,
+        240
+      ],
+      "id": "c0385b14-d4d8-4227-a16b-1c666908fefe",
+      "name": "Cancelar"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "HrzW3HnfrlGhgMYr",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/HrzW3HnfrlGhgMYr",
+          "cachedResultName": "Agendar"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Fecha": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha', `La fecha que eligió el usuario para agendar en formato yyyy-mm-dd`, 'string') }}",
+            "Horario": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Horario', `El horario que eligio el usuario en formato 00:00:00`, 'string') }}",
+            "Nombre Completo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Nombre_Completo', `Nombre completo del usuario`, 'string') }}",
+            "Email": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Email', `Email del usuario`, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Fecha",
+              "displayName": "Fecha",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Horario",
+              "displayName": "Horario",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Nombre Completo",
+              "displayName": "Nombre Completo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
       "position": [
         -432,
         240
       ],
-      "id": "42ba86fd-48b8-4a7b-9a2d-a0dd8ec1b5b4",
-      "name": "Citas",
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "uibgZJgdZkL31iR6",
-          "name": "Google Calendar account"
-        }
-      }
+      "id": "feb3ebc7-6348-43cd-ac7b-4a7abeb1ac89",
+      "name": "Agendar"
     },
     {
       "parameters": {
-        "operation": "delete",
-        "calendar": {
+        "workflowId": {
           "__rl": true,
-          "value": "carlos.f.g.work@gmail.com",
+          "value": "yhXuIj01hk0z5mQZ",
           "mode": "list",
-          "cachedResultName": "carlos.f.g.work@gmail.com"
+          "cachedResultUrl": "/workflow/yhXuIj01hk0z5mQZ",
+          "cachedResultName": "Disponibilidad"
         },
-        "eventId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Event_ID', ``, 'string') }}",
-        "options": {}
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Fecha": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha', `La fecha que eligió el usuario para agendar en formato yyyy-mm-dd`, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Fecha",
+              "displayName": "Fecha",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
       },
-      "type": "n8n-nodes-base.googleCalendarTool",
-      "typeVersion": 1.3,
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
       "position": [
         -304,
         240
       ],
-      "id": "bcaab7b2-de7a-4ebd-a248-6c11d7de5111",
-      "name": "Cancelar",
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "uibgZJgdZkL31iR6",
-          "name": "Google Calendar account"
-        }
-      }
+      "id": "b5269063-32c7-4f95-912b-b81f5ff3e077",
+      "name": "Disponibilidad"
     }
   ],
   "pinData": {},
@@ -295,6 +354,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-10-23T11:41:20.000Z",
-  "versionId": "784f6cb4-a4c3-4c32-8798-113d5db298f7"
+  "updatedAt": "2025-10-24T11:42:11.000Z",
+  "versionId": "dd29f4b8-a6a3-48db-8b24-8a29565474f2"
 }
