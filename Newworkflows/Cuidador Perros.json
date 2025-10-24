@@ -197,6 +197,7 @@
     },
     {
       "parameters": {
+        "description": "Esta herramienta se encarga para cancelar la agenda del usuario",
         "workflowId": {
           "__rl": true,
           "value": "g2KbbNr4lQkV4W59",
@@ -224,6 +225,7 @@
     },
     {
       "parameters": {
+        "description": "Esta herramienta se encarga de agendar al usuario en el calendario",
         "workflowId": {
           "__rl": true,
           "value": "HrzW3HnfrlGhgMYr",
@@ -297,6 +299,7 @@
     },
     {
       "parameters": {
+        "description": "Esta herramienta se encarga para ver la disponibilidad del calendario",
         "workflowId": {
           "__rl": true,
           "value": "yhXuIj01hk0z5mQZ",
@@ -354,6 +357,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-10-24T11:42:11.000Z",
-  "versionId": "dd29f4b8-a6a3-48db-8b24-8a29565474f2"
+  "updatedAt": "2025-10-24T13:35:21.000Z",
+  "versionId": "7a58bf77-79ac-492b-977c-161d64e0c186"
 }
