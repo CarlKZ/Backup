@@ -98,7 +98,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
       "position": [
-        -488,
+        -496,
         16
       ],
       "id": "4bd3013d-3f41-4f4a-b626-9de7ecde9765",
@@ -112,7 +112,7 @@
       "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
       "typeVersion": 1.3,
       "position": [
-        -544,
+        -560,
         240
       ],
       "id": "39bdb1b9-afa4-47ea-84b8-9463bb063a2a",
@@ -136,7 +136,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        -672,
+        -720,
         240
       ],
       "id": "13327007-5ad6-47d9-a97f-9b85653ce014",
@@ -158,7 +158,7 @@
       "type": "n8n-nodes-base.telegramTrigger",
       "typeVersion": 1.2,
       "position": [
-        -896,
+        -800,
         16
       ],
       "id": "4ed8a6d1-001f-4ff4-9205-10d6907c17d1",
@@ -182,7 +182,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        48,
+        -64,
         16
       ],
       "id": "5c8fda3e-4bfd-4077-8a4b-15d7008c58d9",
@@ -239,7 +239,8 @@
             "Fecha": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha', `La fecha que eligió el usuario para agendar en formato yyyy-mm-dd`, 'string') }}",
             "Horario": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Horario', `El horario que eligio el usuario en formato 00:00:00`, 'string') }}",
             "Nombre Completo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Nombre_Completo', `Nombre completo del usuario`, 'string') }}",
-            "Email": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Email', `Email del usuario`, 'string') }}"
+            "Email": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Email', `Email del usuario`, 'string') }}",
+            "Numero TLF": 0
           },
           "matchingColumns": [],
           "schema": [
@@ -281,6 +282,16 @@
               "display": true,
               "canBeUsedToMatch": true,
               "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Numero TLF",
+              "displayName": "Numero TLF",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
               "removed": false
             }
           ],
@@ -339,7 +350,31 @@
       "name": "Disponibilidad"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Telegram Trigger": [
+      {
+        "json": {
+          "update_id": 958910533,
+          "message": {
+            "message_id": 208,
+            "from": {
+              "id": 7040181107,
+              "is_bot": false,
+              "first_name": "KarZent",
+              "language_code": "es"
+            },
+            "chat": {
+              "id": 7040181107,
+              "first_name": "KarZent",
+              "type": "private"
+            },
+            "date": 1761967536,
+            "text": "mañana a las 5 de la tarde"
+          }
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "timezone": "Europe/Madrid",
@@ -357,6 +392,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-10-24T13:35:21.000Z",
-  "versionId": "7a58bf77-79ac-492b-977c-161d64e0c186"
+  "updatedAt": "2025-11-01T03:40:30.000Z",
+  "versionId": "45af5468-9380-4df2-9271-1e7de076c641"
 }
