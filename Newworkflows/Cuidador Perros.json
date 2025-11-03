@@ -207,9 +207,33 @@
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",
-          "value": {},
+          "value": {
+            "Numero TLF": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Numero_TLF', ``, 'number') }}",
+            "Nombre": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Nombre', ``, 'string') }}"
+          },
           "matchingColumns": [],
-          "schema": [],
+          "schema": [
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Numero TLF",
+              "displayName": "Numero TLF",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            }
+          ],
           "attemptToConvertTypes": false,
           "convertFieldsToString": false
         }
@@ -236,11 +260,11 @@
         "workflowInputs": {
           "mappingMode": "defineBelow",
           "value": {
-            "Fecha": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha', `La fecha que eligió el usuario para agendar en formato yyyy-mm-dd`, 'string') }}",
-            "Horario": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Horario', `El horario que eligio el usuario en formato 00:00:00`, 'string') }}",
-            "Nombre Completo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Nombre_Completo', `Nombre completo del usuario`, 'string') }}",
-            "Email": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Email', `Email del usuario`, 'string') }}",
-            "Numero TLF": 0
+            "Fecha": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha', ``, 'string') }}",
+            "Horario": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Horario', ``, 'string') }}",
+            "Nombre Completo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Nombre_Completo', ``, 'string') }}",
+            "Email": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Email', ``, 'string') }}",
+            "Numero TLF": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Numero_TLF', ``, 'number') }}"
           },
           "matchingColumns": [],
           "schema": [
@@ -354,9 +378,9 @@
     "Telegram Trigger": [
       {
         "json": {
-          "update_id": 958910533,
+          "update_id": 958910540,
           "message": {
-            "message_id": 208,
+            "message_id": 224,
             "from": {
               "id": 7040181107,
               "is_bot": false,
@@ -368,8 +392,8 @@
               "first_name": "KarZent",
               "type": "private"
             },
-            "date": 1761967536,
-            "text": "mañana a las 5 de la tarde"
+            "date": 1762139301,
+            "text": "puedes cancelar mi cita?"
           }
         }
       }
@@ -392,6 +416,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-11-01T03:40:30.000Z",
-  "versionId": "45af5468-9380-4df2-9271-1e7de076c641"
+  "updatedAt": "2025-11-03T03:11:33.000Z",
+  "versionId": "17da2ee2-dd3d-4b79-9597-dad2d3baeff2"
 }
