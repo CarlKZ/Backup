@@ -145,15 +145,7 @@
       }
     }
   ],
-  "pinData": {
-    "When Executed by Another Workflow": [
-      {
-        "json": {
-          "Fecha": "2025-11-02"
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "timezone": "Europe/Madrid",
@@ -171,6 +163,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-11-01T03:44:52.000Z",
-  "versionId": "b6623ae2-7347-441a-a307-cf7bfe0dcfdd"
+  "updatedAt": "2025-11-03T02:47:05.000Z",
+  "versionId": "38338aca-6858-4a2f-b407-b0aa27210ca9"
 }
