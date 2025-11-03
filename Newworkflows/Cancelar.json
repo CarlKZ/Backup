@@ -265,7 +265,16 @@
       }
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "Nombre": null,
+          "Numero TLF": null
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
@@ -281,6 +290,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-11-01T03:38:21.000Z",
-  "versionId": "f0cf0607-7f02-4ddf-bb29-646bfc8b504c"
+  "updatedAt": "2025-11-03T03:10:55.000Z",
+  "versionId": "33ef2ef6-3000-40da-890c-a9aa8323dec7"
 }
