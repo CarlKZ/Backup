@@ -85,7 +85,9 @@
         },
         "start": "={{ $json.Fecha }}T{{ $json.Horario }}",
         "end": "={{ new Date(Date.UTC(\n    Number($json.Fecha.split('-')[0]),\n    Number($json.Fecha.split('-')[1]) - 1,\n    Number($json.Fecha.split('-')[2]),\n    Number($json.Horario.split(':')[0]),\n    Number($json.Horario.split(':')[1]) + 30\n)).toISOString().slice(0,19) }}",
-        "additionalFields": {}
+        "additionalFields": {
+          "summary": "={{ $json['Nombre Completo'] }}+{{ $json['Numero TLF'] }}"
+        }
       },
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
@@ -230,6 +232,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-11-01T03:38:18.000Z",
-  "versionId": "e1a69145-2b72-4db9-966c-1ecbe164432f"
+  "updatedAt": "2025-11-03T03:08:35.000Z",
+  "versionId": "faaf51dc-93df-48e6-890b-87304b0a9198"
 }
