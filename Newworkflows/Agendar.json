@@ -57,9 +57,6 @@
               "name": "Nombre Completo"
             },
             {
-              "name": "Email"
-            },
-            {
               "name": "Numero TLF",
               "type": "number"
             }
@@ -86,7 +83,7 @@
         "start": "={{ $json.Fecha }}T{{ $json.Horario }}",
         "end": "={{ new Date(Date.UTC(\n    Number($json.Fecha.split('-')[0]),\n    Number($json.Fecha.split('-')[1]) - 1,\n    Number($json.Fecha.split('-')[2]),\n    Number($json.Horario.split(':')[0]),\n    Number($json.Horario.split(':')[1]) + 30\n)).toISOString().slice(0,19) }}",
         "additionalFields": {
-          "summary": "={{ $json['Nombre Completo'] }}+{{ $json['Numero TLF'] }}"
+          "summary": "=Nombre: {{ $json['Nombre Completo'] }}\nTlf: {{ $json['Numero TLF'] }}"
         }
       },
       "type": "n8n-nodes-base.googleCalendar",
@@ -126,22 +123,11 @@
           "mappingMode": "defineBelow",
           "value": {
             "ID Calendar": "={{ $json.id }}",
-            "Numero TLF": "1234",
-            "Email": "={{ $('When Executed by Another Workflow').item.json.Email }}",
-            "Nombre": "={{ $('When Executed by Another Workflow').item.json[\"Nombre Completo\"] }}"
+            "Nombre": "={{ $('When Executed by Another Workflow').item.json[\"Nombre Completo\"] }}",
+            "Numero TLF": "={{ $('When Executed by Another Workflow').item.json['Numero TLF'] }}"
           },
           "matchingColumns": [],
           "schema": [
-            {
-              "id": "Email",
-              "displayName": "Email",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            },
             {
               "id": "Nombre",
               "displayName": "Nombre",
@@ -232,6 +218,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-11-03T03:08:35.000Z",
-  "versionId": "faaf51dc-93df-48e6-890b-87304b0a9198"
+  "updatedAt": "2025-11-03T17:13:07.000Z",
+  "versionId": "0be879a5-95f8-4898-aaf9-0f41961c6932"
 }
