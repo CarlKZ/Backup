@@ -263,7 +263,6 @@
             "Fecha": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha', ``, 'string') }}",
             "Horario": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Horario', ``, 'string') }}",
             "Nombre Completo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Nombre_Completo', ``, 'string') }}",
-            "Email": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Email', ``, 'string') }}",
             "Numero TLF": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Numero_TLF', ``, 'number') }}"
           },
           "matchingColumns": [],
@@ -291,16 +290,6 @@
             {
               "id": "Nombre Completo",
               "displayName": "Nombre Completo",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
-            },
-            {
-              "id": "Email",
-              "displayName": "Email",
               "required": false,
               "defaultMatch": false,
               "display": true,
@@ -374,31 +363,7 @@
       "name": "Disponibilidad"
     }
   ],
-  "pinData": {
-    "Telegram Trigger": [
-      {
-        "json": {
-          "update_id": 958910540,
-          "message": {
-            "message_id": 224,
-            "from": {
-              "id": 7040181107,
-              "is_bot": false,
-              "first_name": "KarZent",
-              "language_code": "es"
-            },
-            "chat": {
-              "id": 7040181107,
-              "first_name": "KarZent",
-              "type": "private"
-            },
-            "date": 1762139301,
-            "text": "puedes cancelar mi cita?"
-          }
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "timezone": "Europe/Madrid",
@@ -416,6 +381,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-11-03T03:11:33.000Z",
-  "versionId": "17da2ee2-dd3d-4b79-9597-dad2d3baeff2"
+  "updatedAt": "2025-11-03T17:05:40.000Z",
+  "versionId": "21dd2713-0acc-420c-8a41-db4b120bfe92"
 }
