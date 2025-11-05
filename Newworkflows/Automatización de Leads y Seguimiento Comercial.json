@@ -1,0 +1,234 @@
+{
+  "active": false,
+  "connections": {
+    "Google Sheets Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-05T12:46:08.401Z",
+  "id": "VDnhle1M0IuhjIgU",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Automatización de Leads y Seguimiento Comercial",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "value": "1M4OFLl4EcAoJMhS0yDWXL3pnP5U_BU078gvcmqhcl_s",
+          "mode": "list",
+          "cachedResultName": " Automatización de Leads y Seguimiento Comercial",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1M4OFLl4EcAoJMhS0yDWXL3pnP5U_BU078gvcmqhcl_s/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 839295844,
+          "mode": "list",
+          "cachedResultName": "Respuestas de formulario 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1M4OFLl4EcAoJMhS0yDWXL3pnP5U_BU078gvcmqhcl_s/edit#gid=839295844"
+        },
+        "event": "rowAdded",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "0a119342-b48d-43c3-a8ea-859f68f1b775",
+      "name": "Google Sheets Trigger",
+      "credentials": {
+        "googleSheetsTriggerOAuth2Api": {
+          "id": "QaLLv866Dgh9N3cF",
+          "name": "Google Sheets Trigger account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1M4OFLl4EcAoJMhS0yDWXL3pnP5U_BU078gvcmqhcl_s",
+          "mode": "list",
+          "cachedResultName": " Automatización de Leads y Seguimiento Comercial",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1M4OFLl4EcAoJMhS0yDWXL3pnP5U_BU078gvcmqhcl_s/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 839295844,
+          "mode": "list",
+          "cachedResultName": "Respuestas de formulario 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1M4OFLl4EcAoJMhS0yDWXL3pnP5U_BU078gvcmqhcl_s/edit#gid=839295844"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Marca temporal",
+              "lookupValue": "={{ $json['Marca temporal'] }}"
+            },
+            {
+              "lookupColumn": "Nombre",
+              "lookupValue": "={{ $json.Nombre }}"
+            },
+            {
+              "lookupColumn": "Email",
+              "lookupValue": "={{ $json.Email }}"
+            },
+            {
+              "lookupColumn": "Empresa",
+              "lookupValue": "={{ $json.Empresa }}"
+            },
+            {
+              "lookupColumn": "Mensaje ",
+              "lookupValue": "={{ $json['Mensaje '] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        224,
+        0
+      ],
+      "id": "bafd470c-1dec-4e10-a563-18c55a18ce23",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "b3iIwyK8DLzQZxfk",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd00a62a-7adf-4ade-8f4c-1c7b8ac0046e",
+              "name": "Nombre",
+              "value": "={{ $json.Nombre }}",
+              "type": "string"
+            },
+            {
+              "id": "ff2d0150-adb2-4037-b6e5-63e0734fe965",
+              "name": "Email",
+              "value": "={{ $json.Email }}",
+              "type": "string"
+            },
+            {
+              "id": "f1b6717a-32e1-42e6-9bb9-76b678f31577",
+              "name": "Empresa",
+              "value": "={{ $json.Empresa }}",
+              "type": "string"
+            },
+            {
+              "id": "367ff923-92d0-4697-bdfc-0682e0f7495a",
+              "name": "Mensaje",
+              "value": "={{ $json['Mensaje '] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        448,
+        0
+      ],
+      "id": "d3b4eeef-6888-4c47-b2ee-b67db857278d",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "chatId": "7040181107",
+        "text": "=Nuevo lead recibido:\n\nNombre: {{$json.Nombre}}\nEmail: {{$json.Email}}\nEmpresa: {{$json.Empresa}}\nMensaje: {{$json.Mensaje}}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        672,
+        0
+      ],
+      "id": "03220833-deb6-455d-b7ab-2f2536bcd907",
+      "name": "Send a text message",
+      "webhookId": "1b1adfca-07e2-4495-a73f-2a25e61346e0",
+      "credentials": {
+        "telegramApi": {
+          "id": "KcOnwLzOSvSJfY1o",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-05T12:46:08.418Z",
+      "createdAt": "2025-11-05T12:46:08.418Z",
+      "role": "workflow:owner",
+      "workflowId": "VDnhle1M0IuhjIgU",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": {
+    "node:Google Sheets Trigger": {
+      "documentId": "1M4OFLl4EcAoJMhS0yDWXL3pnP5U_BU078gvcmqhcl_s",
+      "sheetId": 839295844,
+      "lastIndexChecked": 3
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-11-05T17:18:22.000Z",
+  "versionId": "5b51ee78-3e66-44bb-a978-d49cea5cbd65"
+}
