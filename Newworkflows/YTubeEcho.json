@@ -1,0 +1,123 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get many videos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many videos": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-05T17:59:38.799Z",
+  "id": "HTBBNAihOSRmupEO",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "YTubeEcho",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "80a0e478-8a0e-48b6-9bd6-a99b06cfaf11",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "resource": "video",
+        "limit": 1,
+        "filters": {
+          "channelId": "UCrTIZGUdgstCLdd_4c02Gew"
+        },
+        "options": {
+          "order": "date"
+        }
+      },
+      "type": "n8n-nodes-base.youTube",
+      "typeVersion": 1,
+      "position": [
+        224,
+        0
+      ],
+      "id": "d803136c-c291-4321-ae3d-83fdcf71273a",
+      "name": "Get many videos",
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "1HORbggBQwPDvc7m",
+          "name": "YouTube account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ac6d0f86-7331-4580-9ba0-b9bb743e8236",
+              "name": "LatestVideoId",
+              "value": "={{ $json.id.videoId }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        464,
+        0
+      ],
+      "id": "bd6b4f6a-aa1a-4f7e-9f0e-73d37607098d",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-05T17:59:38.814Z",
+      "createdAt": "2025-11-05T17:59:38.814Z",
+      "role": "workflow:owner",
+      "workflowId": "HTBBNAihOSRmupEO",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-05T18:33:14.000Z",
+  "versionId": "3ce20ccf-8254-4b9d-b9fa-1c09fe613348"
+}
