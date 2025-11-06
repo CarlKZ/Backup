@@ -22,6 +22,72 @@
           }
         ]
       ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append or update row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-11-05T17:59:38.799Z",
@@ -52,7 +118,6 @@
     {
       "parameters": {
         "resource": "video",
-        "limit": 1,
         "filters": {
           "channelId": "UCrTIZGUdgstCLdd_4c02Gew"
         },
@@ -80,6 +145,18 @@
         "assignments": {
           "assignments": [
             {
+              "id": "233a4bf0-f3c1-43a0-ba39-38e085401f14",
+              "name": "Titulo",
+              "value": "={{ $json.snippet.title }}",
+              "type": "string"
+            },
+            {
+              "id": "14833f64-fbbf-444e-9645-93ca7fccfca8",
+              "name": "Fecha",
+              "value": "={{ $json.snippet.publishTime }}",
+              "type": "string"
+            },
+            {
               "id": "ac6d0f86-7331-4580-9ba0-b9bb743e8236",
               "name": "LatestVideoId",
               "value": "={{ $json.id.videoId }}",
@@ -92,11 +169,195 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        464,
+        448,
         0
       ],
       "id": "bd6b4f6a-aa1a-4f7e-9f0e-73d37607098d",
       "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "jsCode": "const newVideoId = $json[\"LatestVideoId\"];\nconst lastVideoIdFromSheet = $json[\"Ultimo-VideoID\"]; // Ajusta al nombre de tu campo real\n\nreturn [\n  {\n    json: {\n      isNew: newVideoId !== lastVideoIdFromSheet,\n      newVideoId,\n      lastVideoIdFromSheet\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        0
+      ],
+      "id": "0604e7c0-57b1-4acf-b3d1-4d001bbdab63",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1yWO6adPtDY_kntuy5PVp6l743ukQWAO2j5agQ6bdqUg",
+          "mode": "list",
+          "cachedResultName": "YTubeEcho",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1yWO6adPtDY_kntuy5PVp6l743ukQWAO2j5agQ6bdqUg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1yWO6adPtDY_kntuy5PVp6l743ukQWAO2j5agQ6bdqUg/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "TItulo": "={{ $json.Titulo }}",
+            "Fecha": "={{ $json.FechaFormateada }}",
+            "Ultimo VideoID": "={{ $json.LatestVideoId }}"
+          },
+          "matchingColumns": [
+            "Ultimo VideoID"
+          ],
+          "schema": [
+            {
+              "id": "Ultimo VideoID",
+              "displayName": "Ultimo VideoID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "TItulo",
+              "displayName": "TItulo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Fecha",
+              "displayName": "Fecha",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        896,
+        0
+      ],
+      "id": "55944cdb-656e-45f1-adbd-e115cf17bbaf",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "b3iIwyK8DLzQZxfk",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Procesa todos los items entrantes, transforma fecha y devuelve una lista de videos formateados\nreturn items.map(item => {\n  // Cambia 'publishedAt' al nombre de tu campo original si es distinto\n  const iso = item.json[\"publishedAt\"] || item.json[\"Fecha\"];\n  const date = new Date(iso);\n\n  const dd = String(date.getDate()).padStart(2, '0');\n  const mm = String(date.getMonth() + 1).padStart(2, '0');\n  const yyyy = date.getFullYear();\n  const hh = String(date.getHours()).padStart(2, '0');\n  const min = String(date.getMinutes()).padStart(2, '0');\n  const ss = String(date.getSeconds()).padStart(2, '0');\n\n  const fechaFinal = `${dd}-${mm}-${yyyy} ${hh}:${min}:${ss}`;\n\n  // Incluye todos los campos originales y agrega la fecha formateada\n  return {\n    json: {\n      ...item.json,\n      FechaFormateada: fechaFinal\n    }\n  };\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        672,
+        0
+      ],
+      "id": "7e5f1f0e-fe1b-4936-8e21-09fa0eb012b6",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "16tKlXj9d-wXokHUaxbFpoCzRKVS0dkgzJWr93AAN5zk",
+          "mode": "list",
+          "cachedResultName": "Parametros Canal KarZent",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16tKlXj9d-wXokHUaxbFpoCzRKVS0dkgzJWr93AAN5zk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16tKlXj9d-wXokHUaxbFpoCzRKVS0dkgzJWr93AAN5zk/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        0,
+        224
+      ],
+      "id": "64057218-2fff-43f7-bab0-53de013f7bee",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "b3iIwyK8DLzQZxfk",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        208,
+        224
+      ],
+      "id": "b108bf08-177b-483a-b022-3f28c3f4f2dc",
+      "name": "Code in JavaScript2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "46ce2b05-8098-459f-b864-f02557bef3d9",
+              "leftValue": "={{ $json.isNew }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1328,
+        0
+      ],
+      "id": "bc781b58-5aae-421f-ae59-e981e8653951",
+      "name": "If"
     }
   ],
   "pinData": {},
@@ -118,6 +379,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-11-05T18:33:14.000Z",
-  "versionId": "3ce20ccf-8254-4b9d-b9fa-1c09fe613348"
+  "updatedAt": "2025-11-06T19:54:03.000Z",
+  "versionId": "2edf8388-d5ee-404a-81fc-8a96d6ac4324"
 }
