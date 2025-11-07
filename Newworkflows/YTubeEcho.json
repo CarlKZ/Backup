@@ -5,73 +5,7 @@
       "main": [
         [
           {
-            "node": "Get many videos",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get many videos": {
-      "main": [
-        [
-          {
-            "node": "Edit Fields",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Edit Fields": {
-      "main": [
-        [
-          {
-            "node": "Code in JavaScript1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code in JavaScript": {
-      "main": [
-        [
-          {
-            "node": "If",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Append or update row in sheet": {
-      "main": [
-        [
-          {
-            "node": "Code in JavaScript",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code in JavaScript1": {
-      "main": [
-        [
-          {
-            "node": "Append or update row in sheet",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get row(s) in sheet": {
-      "main": [
-        [
-          {
-            "node": "Code in JavaScript2",
+            "node": "Ultimos videos",
             "type": "main",
             "index": 0
           }
@@ -82,7 +16,113 @@
       "main": [
         [
           {
-            "node": "Get row(s) in sheet",
+            "node": "Parametros Canal",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Parametros Canal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ultimos videos": {
+      "main": [
+        [
+          {
+            "node": "Datos ultimo video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Datos ultimo video": {
+      "main": [
+        [
+          {
+            "node": "Cambiar formato fecha",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cambiar formato fecha": {
+      "main": [
+        [
+          {
+            "node": "Actualizar ultimo video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Actualizar ultimo video": {
+      "main": [
+        [
+          {
+            "node": "Verificar Video Nuevo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verificar Video Nuevo": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parametros Canal": {
+      "main": [
+        [
+          {
+            "node": "Configuracion canal video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Configuracion canal video": {
+      "main": [
+        [
+          {
+            "node": "CTA Automatico",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CTA Automatico": {
+      "main": [
+        [
+          {
+            "node": "Creatomate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Creatomate": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
             "type": "main",
             "index": 0
           }
@@ -117,6 +157,39 @@
     },
     {
       "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "46ce2b05-8098-459f-b864-f02557bef3d9",
+              "leftValue": "={{ $json.isNew }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1328,
+        0
+      ],
+      "id": "bc781b58-5aae-421f-ae59-e981e8653951",
+      "name": "If"
+    },
+    {
+      "parameters": {
         "resource": "video",
         "filters": {
           "channelId": "UCrTIZGUdgstCLdd_4c02Gew"
@@ -132,7 +205,7 @@
         0
       ],
       "id": "d803136c-c291-4321-ae3d-83fdcf71273a",
-      "name": "Get many videos",
+      "name": "Ultimos videos",
       "credentials": {
         "youTubeOAuth2Api": {
           "id": "1HORbggBQwPDvc7m",
@@ -173,20 +246,20 @@
         0
       ],
       "id": "bd6b4f6a-aa1a-4f7e-9f0e-73d37607098d",
-      "name": "Edit Fields"
+      "name": "Datos ultimo video"
     },
     {
       "parameters": {
-        "jsCode": "const newVideoId = $json[\"LatestVideoId\"];\nconst lastVideoIdFromSheet = $json[\"Ultimo-VideoID\"]; // Ajusta al nombre de tu campo real\n\nreturn [\n  {\n    json: {\n      isNew: newVideoId !== lastVideoIdFromSheet,\n      newVideoId,\n      lastVideoIdFromSheet\n    }\n  }\n];\n"
+        "jsCode": "// Procesa todos los items entrantes, transforma fecha y devuelve una lista de videos formateados\nreturn items.map(item => {\n  // Cambia 'publishedAt' al nombre de tu campo original si es distinto\n  const iso = item.json[\"publishedAt\"] || item.json[\"Fecha\"];\n  const date = new Date(iso);\n\n  const dd = String(date.getDate()).padStart(2, '0');\n  const mm = String(date.getMonth() + 1).padStart(2, '0');\n  const yyyy = date.getFullYear();\n  const hh = String(date.getHours()).padStart(2, '0');\n  const min = String(date.getMinutes()).padStart(2, '0');\n  const ss = String(date.getSeconds()).padStart(2, '0');\n\n  const fechaFinal = `${dd}-${mm}-${yyyy} ${hh}:${min}:${ss}`;\n\n  // Incluye todos los campos originales y agrega la fecha formateada\n  return {\n    json: {\n      ...item.json,\n      FechaFormateada: fechaFinal\n    }\n  };\n});\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1120,
+        672,
         0
       ],
-      "id": "0604e7c0-57b1-4acf-b3d1-4d001bbdab63",
-      "name": "Code in JavaScript"
+      "id": "7e5f1f0e-fe1b-4936-8e21-09fa0eb012b6",
+      "name": "Cambiar formato fecha"
     },
     {
       "parameters": {
@@ -259,7 +332,7 @@
         0
       ],
       "id": "55944cdb-656e-45f1-adbd-e115cf17bbaf",
-      "name": "Append or update row in sheet",
+      "name": "Actualizar ultimo video",
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "b3iIwyK8DLzQZxfk",
@@ -269,16 +342,16 @@
     },
     {
       "parameters": {
-        "jsCode": "// Procesa todos los items entrantes, transforma fecha y devuelve una lista de videos formateados\nreturn items.map(item => {\n  // Cambia 'publishedAt' al nombre de tu campo original si es distinto\n  const iso = item.json[\"publishedAt\"] || item.json[\"Fecha\"];\n  const date = new Date(iso);\n\n  const dd = String(date.getDate()).padStart(2, '0');\n  const mm = String(date.getMonth() + 1).padStart(2, '0');\n  const yyyy = date.getFullYear();\n  const hh = String(date.getHours()).padStart(2, '0');\n  const min = String(date.getMinutes()).padStart(2, '0');\n  const ss = String(date.getSeconds()).padStart(2, '0');\n\n  const fechaFinal = `${dd}-${mm}-${yyyy} ${hh}:${min}:${ss}`;\n\n  // Incluye todos los campos originales y agrega la fecha formateada\n  return {\n    json: {\n      ...item.json,\n      FechaFormateada: fechaFinal\n    }\n  };\n});\n"
+        "jsCode": "const newVideoId = $json[\"LatestVideoId\"];\nconst lastVideoIdFromSheet = $json[\"Ultimo-VideoID\"]; // Ajusta al nombre de tu campo real\n\nreturn [\n  {\n    json: {\n      isNew: newVideoId !== lastVideoIdFromSheet,\n      newVideoId,\n      lastVideoIdFromSheet\n    }\n  }\n];\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        672,
+        1120,
         0
       ],
-      "id": "7e5f1f0e-fe1b-4936-8e21-09fa0eb012b6",
-      "name": "Code in JavaScript1"
+      "id": "0604e7c0-57b1-4acf-b3d1-4d001bbdab63",
+      "name": "Verificar Video Nuevo"
     },
     {
       "parameters": {
@@ -302,10 +375,10 @@
       "typeVersion": 4.7,
       "position": [
         0,
-        224
+        272
       ],
       "id": "64057218-2fff-43f7-bab0-53de013f7bee",
-      "name": "Get row(s) in sheet",
+      "name": "Parametros Canal",
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "b3iIwyK8DLzQZxfk",
@@ -315,49 +388,78 @@
     },
     {
       "parameters": {
-        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
+        "jsCode": "// items = llega del nodo Google Sheets (tu tabla de parámetros)\n// $input = llega del nodo anterior (video a procesar)\n\n// 1. Obtenemos el único video entrante (siempre como objeto individual)\nconst video = $input.item;\n\n// 2. items es toda la lista de canales y parámetros (array de Google Sheets)\nconst parametrosCanales = items;\n\n// 3. Buscamos los datos de este canal concreto\nconst channelId = video.json.channelId;\nconst params = parametrosCanales.find(p =>\n  p.json.channelId === channelId\n);\n\n// 4. Devolvemos un único item: el video “mezclado” con su configuración\nreturn [\n  {\n    json: {\n      ...video.json,\n      ...params?.json     // Sobrescribe con los datos encontrados, si existen\n    }\n  }\n];\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
         208,
-        224
+        272
       ],
       "id": "b108bf08-177b-483a-b022-3f28c3f4f2dc",
-      "name": "Code in JavaScript2"
+      "name": "Configuracion canal video"
     },
     {
       "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
+        "jsCode": "const dias = [\n  '🎮 Lunes de respawn: ¡Arranca la semana con energía y dale follow al ultimo video! ⚡',\n  '🔥 Martes explosivo: ¡Nuevo video cargado de acción, no te lo pierdas! 💣',\n  '⚡ Miércoles de combo: ¿Ya viste el último video? ¡Está OP! 💥',\n  '💬 Jueves en misión: ¡Comenta, deja tu like y forma parte del team! 🚀',\n  '🏆 Viernes de estreno: ¡Nuevo video desbloqueado, entra ya! 🎬',\n  '🕹️ Sábado casual: ¡Relájate y disfruta del mejor contenido gamer! 😎',\n  '✨ Domingo de recap: ¡Revive lo más épico de la semana! 🔥'\n];\n\nconst ahoraMadrid = new Date(new Date().toLocaleString(\"en-US\", { timeZone: \"Europe/Madrid\" }));\nlet hoy = ahoraMadrid.getDay();\n\n// Restar 1 al día para ajustar desfase horario\nhoy = (hoy - 1 + 7) % 7;\n\nreturn items.map(i => ({\n  json: {\n    ...i.json,\n    textoCTA: dias[hoy]\n  }\n}));\n\nreturn items.map(i => ({\n  json: {\n    ...i.json,\n    textoCTA: dias[hoy]\n  }\n}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        416,
+        272
+      ],
+      "id": "c77448ad-15fe-443a-834b-2b2eb63fd915",
+      "name": "CTA Automatico"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.creatomate.com/v1/renders",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
             {
-              "id": "46ce2b05-8098-459f-b864-f02557bef3d9",
-              "leftValue": "={{ $json.isNew }}",
-              "rightValue": true,
-              "operator": {
-                "type": "boolean",
-                "operation": "equals"
-              }
+              "name": "Authorization",
+              "value": "Bearer c98148f0a9234e6a82ada4474f79103eb7f963ebfb2c2001d255a6bcbe40ea7506990fb65e2bfde6e3e25e1bb6edd6e6"
             }
-          ],
-          "combinator": "and"
+          ]
         },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"template_id\": \"48f5aaf5-adbf-4c14-88f8-63043d34ee90\",\n  \"modifications\": {\n    \"Video.source\": \"https://creatomate.com/files/assets/7347c3b7-e1a8-4439-96f1-f3dfc95c3d28\",\n    \"Text-1.text\": \"Nuevo video de {{ $json.streamerName }}\",\n    \"Text-2.text\": \"{{ $json.textoCTA }}\"\n  }\n}\n",
         "options": {}
       },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
       "position": [
-        1328,
-        0
+        624,
+        272
       ],
-      "id": "bc781b58-5aae-421f-ae59-e981e8653951",
-      "name": "If"
+      "id": "8fc9922d-d4bc-4de7-b5ad-c5bf1844d8c7",
+      "name": "Creatomate"
+    },
+    {
+      "parameters": {
+        "chatId": "7040181107",
+        "text": "=Nuevo video creado: {{$json.url}} Mensaje CTA: {{ $json.modifications['Text-1.text'] }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        832,
+        272
+      ],
+      "id": "655cc729-e712-490e-9a32-67ac61f196ce",
+      "name": "Send a text message",
+      "webhookId": "5cdc322c-4694-4e5a-a6bc-6b3235af7e4b",
+      "credentials": {
+        "telegramApi": {
+          "id": "KcOnwLzOSvSJfY1o",
+          "name": "Telegram account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -379,6 +481,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-11-06T19:54:03.000Z",
-  "versionId": "2edf8388-d5ee-404a-81fc-8a96d6ac4324"
+  "updatedAt": "2025-11-07T17:58:46.000Z",
+  "versionId": "17399410-aac4-423b-a4a1-fa646f3a4ef3"
 }
