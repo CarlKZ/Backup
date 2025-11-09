@@ -34,7 +34,7 @@
       "main": [
         [
           {
-            "node": "Datos ultimo video",
+            "node": "Duración",
             "type": "main",
             "index": 0
           }
@@ -111,7 +111,7 @@
       "main": [
         [
           {
-            "node": "Creatomate",
+            "node": "Short Dinamico",
             "type": "main",
             "index": 0
           }
@@ -123,6 +123,22 @@
         [
           {
             "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Short Dinamico": {
+      "main": [
+        []
+      ]
+    },
+    "Duración": {
+      "main": [
+        [
+          {
+            "node": "Datos ultimo video",
             "type": "main",
             "index": 0
           }
@@ -182,7 +198,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1328,
+        1536,
         0
       ],
       "id": "bc781b58-5aae-421f-ae59-e981e8653951",
@@ -220,19 +236,25 @@
             {
               "id": "233a4bf0-f3c1-43a0-ba39-38e085401f14",
               "name": "Titulo",
-              "value": "={{ $json.snippet.title }}",
+              "value": "={{ $('Ultimos videos').item.json.snippet.title }}",
               "type": "string"
             },
             {
               "id": "14833f64-fbbf-444e-9645-93ca7fccfca8",
               "name": "Fecha",
-              "value": "={{ $json.snippet.publishTime }}",
+              "value": "={{ $('Ultimos videos').item.json.snippet.publishedAt }}",
               "type": "string"
             },
             {
               "id": "ac6d0f86-7331-4580-9ba0-b9bb743e8236",
               "name": "LatestVideoId",
-              "value": "={{ $json.id.videoId }}",
+              "value": "={{ $('Ultimos videos').item.json.id.videoId }}",
+              "type": "string"
+            },
+            {
+              "id": "920b3850-04b9-4fdf-9a75-84b911381986",
+              "name": "Duración",
+              "value": "={{ $json.contentDetails.duration }}",
               "type": "string"
             }
           ]
@@ -242,7 +264,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        448,
+        656,
         0
       ],
       "id": "bd6b4f6a-aa1a-4f7e-9f0e-73d37607098d",
@@ -250,12 +272,12 @@
     },
     {
       "parameters": {
-        "jsCode": "// Procesa todos los items entrantes, transforma fecha y devuelve una lista de videos formateados\nreturn items.map(item => {\n  // Cambia 'publishedAt' al nombre de tu campo original si es distinto\n  const iso = item.json[\"publishedAt\"] || item.json[\"Fecha\"];\n  const date = new Date(iso);\n\n  const dd = String(date.getDate()).padStart(2, '0');\n  const mm = String(date.getMonth() + 1).padStart(2, '0');\n  const yyyy = date.getFullYear();\n  const hh = String(date.getHours()).padStart(2, '0');\n  const min = String(date.getMinutes()).padStart(2, '0');\n  const ss = String(date.getSeconds()).padStart(2, '0');\n\n  const fechaFinal = `${dd}-${mm}-${yyyy} ${hh}:${min}:${ss}`;\n\n  // Incluye todos los campos originales y agrega la fecha formateada\n  return {\n    json: {\n      ...item.json,\n      FechaFormateada: fechaFinal\n    }\n  };\n});\n"
+        "jsCode": "const item = items[0].json;\n\n// ------ Formato de fecha\nconst originalDate = item.Fecha || '';\nconst dateObj = new Date(originalDate);\nconst dd = String(dateObj.getDate()).padStart(2, '0');\nconst mm = String(dateObj.getMonth() + 1).padStart(2, '0');\nconst yyyy = dateObj.getFullYear();\nconst hh = String(dateObj.getHours()).padStart(2, '0');\nconst min = String(dateObj.getMinutes()).padStart(2, '0');\nconst ss = String(dateObj.getSeconds()).padStart(2, '0');\nconst FechaFormateada = `${dd}-${mm}-${yyyy} ${hh}:${min}:${ss}`;\n\n// ------ Conversión de duración ISO8601 a segundos\nfunction iso8601toSeconds(isoDuration) {\n    if (!isoDuration) return 0;\n    let match = isoDuration.match(/PT(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+)S)?/);\n    if (!match) return 0;\n    let hours = parseInt(match[1] || 0, 10);\n    let minutes = parseInt(match[2] || 0, 10);\n    let seconds = parseInt(match[3] || 0, 10);\n    return hours * 3600 + minutes * 60 + seconds;\n}\n\nconst DuracionISO = item.Duracion || '';\nconst DuracionSegundos = iso8601toSeconds(DuracionISO);\n\nreturn [\n  {\n    json: {\n      ...item,\n      FechaFormateada,\n      DuracionSegundos\n    }\n  }\n];\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        672,
+        880,
         0
       ],
       "id": "7e5f1f0e-fe1b-4936-8e21-09fa0eb012b6",
@@ -283,7 +305,8 @@
           "value": {
             "TItulo": "={{ $json.Titulo }}",
             "Fecha": "={{ $json.FechaFormateada }}",
-            "Ultimo VideoID": "={{ $json.LatestVideoId }}"
+            "Ultimo VideoID": "={{ $json.LatestVideoId }}",
+            "Duración": "={{ $('Schedule Trigger').item.json['Readable time'] }}"
           },
           "matchingColumns": [
             "Ultimo VideoID"
@@ -318,6 +341,16 @@
               "type": "string",
               "canBeUsedToMatch": true,
               "removed": false
+            },
+            {
+              "id": "Duración",
+              "displayName": "Duración",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -328,7 +361,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        896,
+        1104,
         0
       ],
       "id": "55944cdb-656e-45f1-adbd-e115cf17bbaf",
@@ -347,7 +380,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1120,
+        1328,
         0
       ],
       "id": "0604e7c0-57b1-4acf-b3d1-4d001bbdab63",
@@ -406,7 +439,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        416,
+        384,
         272
       ],
       "id": "c77448ad-15fe-443a-834b-2b2eb63fd915",
@@ -433,7 +466,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        624,
+        864,
         272
       ],
       "id": "8fc9922d-d4bc-4de7-b5ad-c5bf1844d8c7",
@@ -448,7 +481,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        832,
+        1040,
         272
       ],
       "id": "655cc729-e712-490e-9a32-67ac61f196ce",
@@ -458,6 +491,44 @@
         "telegramApi": {
           "id": "KcOnwLzOSvSJfY1o",
           "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Suponemos que tienes videoUrl, videoDuration, y textoCTA como datos de entrada\nconst videoUrl = $json.videoUrl; // URL del video completo\nconst videoDuration = $json.videoDuration; // duración total en segundos (ej: 120)\nconst textoCTA = $json.textoCTA; // texto generado para CTA\n\n// Define la duración del short (en segundos)\nconst shortDuration = 60; // puedes cambiar el valor si deseas otra duración\n// Calcula el punto de inicio (desde la mitad)\nconst trimStart = Math.max(0, Math.floor(videoDuration / 2 - shortDuration / 2));\n\n// Devuelve los parámetros que usará Creatomate\nreturn [\n  {\n    videoUrl,\n    trimStart,\n    trimDuration: shortDuration,\n    textoCTA\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        592,
+        272
+      ],
+      "id": "eca22d37-49b4-49b1-ae33-ea0763c9d715",
+      "name": "Short Dinamico"
+    },
+    {
+      "parameters": {
+        "resource": "video",
+        "operation": "get",
+        "videoId": "={{ $json.id.videoId }}",
+        "part": [
+          "contentDetails"
+        ],
+        "options": {}
+      },
+      "type": "n8n-nodes-base.youTube",
+      "typeVersion": 1,
+      "position": [
+        432,
+        0
+      ],
+      "id": "3daba360-2be8-476c-bde2-da732c0b4f99",
+      "name": "Duración",
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "1HORbggBQwPDvc7m",
+          "name": "YouTube account"
         }
       }
     }
@@ -481,6 +552,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-11-07T17:58:46.000Z",
-  "versionId": "17399410-aac4-423b-a4a1-fa646f3a4ef3"
+  "updatedAt": "2025-11-09T19:44:31.000Z",
+  "versionId": "2f9f8b1f-0aa4-4667-b80a-4adbd965bc81"
 }
