@@ -12,24 +12,6 @@
         ]
       ]
     },
-    "If": {
-      "main": [
-        [
-          {
-            "node": "Parametros Canal",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Parametros Canal",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Ultimos videos": {
       "main": [
         [
@@ -78,18 +60,7 @@
       "main": [
         [
           {
-            "node": "If",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Parametros Canal": {
-      "main": [
-        [
-          {
-            "node": "Configuracion canal video",
+            "node": "Confirmacion Ultimo ID",
             "type": "main",
             "index": 0
           }
@@ -111,7 +82,7 @@
       "main": [
         [
           {
-            "node": "Short Dinamico",
+            "node": "Code in JavaScript",
             "type": "main",
             "index": 0
           }
@@ -131,7 +102,13 @@
     },
     "Short Dinamico": {
       "main": [
-        []
+        [
+          {
+            "node": "Creatomate",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Duración": {
@@ -140,6 +117,73 @@
           {
             "node": "Datos ultimo video",
             "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Short Dinamico",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Configuracion canal video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parametros Canal": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Confirmacion Ultimo ID": {
+      "main": [
+        [],
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
             "index": 0
           }
         ]
@@ -165,44 +209,11 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        0,
-        0
+        -96,
+        -240
       ],
       "id": "80a0e478-8a0e-48b6-9bd6-a99b06cfaf11",
       "name": "Schedule Trigger"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "46ce2b05-8098-459f-b864-f02557bef3d9",
-              "leftValue": "={{ $json.isNew }}",
-              "rightValue": true,
-              "operator": {
-                "type": "boolean",
-                "operation": "equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        1536,
-        0
-      ],
-      "id": "bc781b58-5aae-421f-ae59-e981e8653951",
-      "name": "If"
     },
     {
       "parameters": {
@@ -217,8 +228,8 @@
       "type": "n8n-nodes-base.youTube",
       "typeVersion": 1,
       "position": [
-        224,
-        0
+        80,
+        -240
       ],
       "id": "d803136c-c291-4321-ae3d-83fdcf71273a",
       "name": "Ultimos videos",
@@ -256,6 +267,12 @@
               "name": "Duración",
               "value": "={{ $json.contentDetails.duration }}",
               "type": "string"
+            },
+            {
+              "id": "ff62896e-4292-494b-a0b7-dd10e8c3fbb4",
+              "name": "Descripción",
+              "value": "={{ $('Ultimos videos').item.json.snippet.description }}",
+              "type": "string"
             }
           ]
         },
@@ -264,21 +281,21 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        656,
-        0
+        432,
+        -240
       ],
       "id": "bd6b4f6a-aa1a-4f7e-9f0e-73d37607098d",
       "name": "Datos ultimo video"
     },
     {
       "parameters": {
-        "jsCode": "const item = items[0].json;\n\n// ------ Formato de fecha\nconst originalDate = item.Fecha || '';\nconst dateObj = new Date(originalDate);\nconst dd = String(dateObj.getDate()).padStart(2, '0');\nconst mm = String(dateObj.getMonth() + 1).padStart(2, '0');\nconst yyyy = dateObj.getFullYear();\nconst hh = String(dateObj.getHours()).padStart(2, '0');\nconst min = String(dateObj.getMinutes()).padStart(2, '0');\nconst ss = String(dateObj.getSeconds()).padStart(2, '0');\nconst FechaFormateada = `${dd}-${mm}-${yyyy} ${hh}:${min}:${ss}`;\n\n// ------ Conversión de duración ISO8601 a segundos\nfunction iso8601toSeconds(isoDuration) {\n    if (!isoDuration) return 0;\n    let match = isoDuration.match(/PT(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+)S)?/);\n    if (!match) return 0;\n    let hours = parseInt(match[1] || 0, 10);\n    let minutes = parseInt(match[2] || 0, 10);\n    let seconds = parseInt(match[3] || 0, 10);\n    return hours * 3600 + minutes * 60 + seconds;\n}\n\nconst DuracionISO = item.Duracion || '';\nconst DuracionSegundos = iso8601toSeconds(DuracionISO);\n\nreturn [\n  {\n    json: {\n      ...item,\n      FechaFormateada,\n      DuracionSegundos\n    }\n  }\n];\n"
+        "jsCode": "function iso8601toSeconds(isoDuration) {\n    if (!isoDuration) return 0;\n    let match = isoDuration.match(/PT(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+)S)?/);\n    if (!match) return 0;\n    let hours = parseInt(match[1] || 0, 10);\n    let minutes = parseInt(match[2] || 0, 10);\n    let seconds = parseInt(match[3] || 0, 10);\n    return hours * 3600 + minutes * 60 + seconds;\n}\n\nfunction iso8601toHHMMSS(isoDuration) {\n    if (!isoDuration) return \"0:00\";\n    let match = isoDuration.match(/PT(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+)S)?/);\n    if (!match) return \"0:00\";\n    let hours = parseInt(match[1] || 0, 10);\n    let minutes = parseInt(match[2] || 0, 10);\n    let seconds = parseInt(match[3] || 0, 10);\n    if (hours > 0) {\n        return `${hours}:${minutes.toString().padStart(2,\"0\")}:${seconds.toString().padStart(2,\"0\")}`;\n    }\n    return `${minutes}:${seconds.toString().padStart(2,\"0\")}`;\n}\n\nreturn items.map(entry => {\n    const item = entry.json;\n    const DuracionISO = item.Duración || item.Duracion || '';\n    const DuracionSegundos = iso8601toSeconds(DuracionISO);\n    const DuracionLegible = iso8601toHHMMSS(DuracionISO);\n\n    // Fecha formateada tipo DD-MM-YYYY HH:MM:SS\n    const originalDate = item.Fecha || '';\n    const dateObj = new Date(originalDate);\n    const dd = String(dateObj.getDate()).padStart(2, '0');\n    const mm = String(dateObj.getMonth() + 1).padStart(2, '0');\n    const yyyy = dateObj.getFullYear();\n    const hh = String(dateObj.getHours()).padStart(2, '0');\n    const min = String(dateObj.getMinutes()).padStart(2, '0');\n    const ss = String(dateObj.getSeconds()).padStart(2, '0');\n    const FechaFormateada = `${dd}-${mm}-${yyyy} ${hh}:${min}:${ss}`;\n\n    return {\n        json: {\n            ...item,\n            FechaFormateada,\n            DuracionSegundos,\n            DuracionLegible\n        }\n    };\n});\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        880,
-        0
+        592,
+        -240
       ],
       "id": "7e5f1f0e-fe1b-4936-8e21-09fa0eb012b6",
       "name": "Cambiar formato fecha"
@@ -303,18 +320,20 @@
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "TItulo": "={{ $json.Titulo }}",
             "Fecha": "={{ $json.FechaFormateada }}",
-            "Ultimo VideoID": "={{ $json.LatestVideoId }}",
-            "Duración": "={{ $('Schedule Trigger').item.json['Readable time'] }}"
+            "Duración": "={{ $json.DuracionLegible }}",
+            "VideoID": "={{ $json.LatestVideoId }}",
+            "Titulo": "={{ $json.Titulo }}",
+            "URL": "=https://www.youtube.com/watch?v={{ $json.LatestVideoId }}",
+            "Descripción": "={{ $json['Descripción'] }}"
           },
           "matchingColumns": [
-            "Ultimo VideoID"
+            "VideoID"
           ],
           "schema": [
             {
-              "id": "Ultimo VideoID",
-              "displayName": "Ultimo VideoID",
+              "id": "VideoID",
+              "displayName": "VideoID",
               "required": false,
               "defaultMatch": false,
               "display": true,
@@ -323,8 +342,8 @@
               "removed": false
             },
             {
-              "id": "TItulo",
-              "displayName": "TItulo",
+              "id": "Titulo",
+              "displayName": "Titulo",
               "required": false,
               "defaultMatch": false,
               "display": true,
@@ -351,6 +370,26 @@
               "type": "string",
               "canBeUsedToMatch": true,
               "removed": false
+            },
+            {
+              "id": "Descripción",
+              "displayName": "Descripción",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "URL",
+              "displayName": "URL",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -361,8 +400,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        1104,
-        0
+        784,
+        -240
       ],
       "id": "55944cdb-656e-45f1-adbd-e115cf17bbaf",
       "name": "Actualizar ultimo video",
@@ -375,49 +414,16 @@
     },
     {
       "parameters": {
-        "jsCode": "const newVideoId = $json[\"LatestVideoId\"];\nconst lastVideoIdFromSheet = $json[\"Ultimo-VideoID\"]; // Ajusta al nombre de tu campo real\n\nreturn [\n  {\n    json: {\n      isNew: newVideoId !== lastVideoIdFromSheet,\n      newVideoId,\n      lastVideoIdFromSheet\n    }\n  }\n];\n"
+        "jsCode": "const newVideoId = $json[\"VideoID\"]; // Ajusta basado en tu input real\nconst lastVideoIdFromSheet = $json[\"VideoID\"];\nconst titulo = $json[\"Titulo\"];\nconst fecha = $json[\"Fecha\"];\nconst duración = $json[\"Duración\"];\nconst URL = $json[\"URL\"];\nconst descripción = $json [\"Descripción\"]\n\nreturn [\n  {\n    json: {\n      isNew: newVideoId !== lastVideoIdFromSheet,\n      VideoID: newVideoId,        // Para mantener naming homogéneo\n      Titulo: titulo,\n      Fecha: fecha,\n      Duracion: duración,\n      URL: URL,\n      Descripción: descripción,\n      lastVideoIdFromSheet              // Referencia antigua, opcional para debug\n      // Añade aquí cualquier otro campo relevante\n    }\n  }\n];\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1328,
-        0
+        976,
+        -240
       ],
       "id": "0604e7c0-57b1-4acf-b3d1-4d001bbdab63",
       "name": "Verificar Video Nuevo"
-    },
-    {
-      "parameters": {
-        "documentId": {
-          "__rl": true,
-          "value": "16tKlXj9d-wXokHUaxbFpoCzRKVS0dkgzJWr93AAN5zk",
-          "mode": "list",
-          "cachedResultName": "Parametros Canal KarZent",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16tKlXj9d-wXokHUaxbFpoCzRKVS0dkgzJWr93AAN5zk/edit?usp=drivesdk"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": "gid=0",
-          "mode": "list",
-          "cachedResultName": "Hoja 1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16tKlXj9d-wXokHUaxbFpoCzRKVS0dkgzJWr93AAN5zk/edit#gid=0"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.7,
-      "position": [
-        0,
-        272
-      ],
-      "id": "64057218-2fff-43f7-bab0-53de013f7bee",
-      "name": "Parametros Canal",
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "b3iIwyK8DLzQZxfk",
-          "name": "Google Sheets account"
-        }
-      }
     },
     {
       "parameters": {
@@ -426,8 +432,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        208,
-        272
+        1152,
+        704
       ],
       "id": "b108bf08-177b-483a-b022-3f28c3f4f2dc",
       "name": "Configuracion canal video"
@@ -439,8 +445,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        384,
-        272
+        1376,
+        704
       ],
       "id": "c77448ad-15fe-443a-834b-2b2eb63fd915",
       "name": "CTA Automatico"
@@ -466,8 +472,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        864,
-        272
+        2032,
+        704
       ],
       "id": "8fc9922d-d4bc-4de7-b5ad-c5bf1844d8c7",
       "name": "Creatomate"
@@ -481,8 +487,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1040,
-        272
+        2256,
+        704
       ],
       "id": "655cc729-e712-490e-9a32-67ac61f196ce",
       "name": "Send a text message",
@@ -496,13 +502,13 @@
     },
     {
       "parameters": {
-        "jsCode": "// Suponemos que tienes videoUrl, videoDuration, y textoCTA como datos de entrada\nconst videoUrl = $json.videoUrl; // URL del video completo\nconst videoDuration = $json.videoDuration; // duración total en segundos (ej: 120)\nconst textoCTA = $json.textoCTA; // texto generado para CTA\n\n// Define la duración del short (en segundos)\nconst shortDuration = 60; // puedes cambiar el valor si deseas otra duración\n// Calcula el punto de inicio (desde la mitad)\nconst trimStart = Math.max(0, Math.floor(videoDuration / 2 - shortDuration / 2));\n\n// Devuelve los parámetros que usará Creatomate\nreturn [\n  {\n    videoUrl,\n    trimStart,\n    trimDuration: shortDuration,\n    textoCTA\n  }\n];\n"
+        "jsCode": "const dur = $json.Duracion || $json.Duración || \"\";\nconst textoCTA = $json.textoCTA;\nconst videoURL = $json.videoURL || $json.videoUrl || null;\n\nfunction hmsToSeconds(hms) {\n  if(typeof hms !== 'string') return 0;\n  const parts = hms.split(\":\").map(Number);\n  if(parts.length === 3) { \n    return parts[0]*3600 + parts[1]*60 + parts[2];\n  } else if(parts.length === 2) {\n    return parts[0]*60 + parts[1];\n  } else if(parts.length === 1 && !isNaN(parts[0])) {\n    return parts[0];\n  }\n  return 0;\n}\n\nconst videoDuration = hmsToSeconds(dur); // Duración total en segundos\nconst shortDuration = 120; // Puedes cambiar la duración a 30, 45, 120...\nconst trimStart = Math.max(\n  0,\n  Math.floor(videoDuration / 2 - shortDuration / 2)\n);\n\nreturn [{\n  json: {\n    videoURL,\n    trimStart,\n    trimDuration: shortDuration,\n    textoCTA,\n    videoDuration // Incluye la duración total en segundos por si la necesitas\n  }\n}];\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        592,
-        272
+        1808,
+        704
       ],
       "id": "eca22d37-49b4-49b1-ae33-ea0763c9d715",
       "name": "Short Dinamico"
@@ -520,8 +526,8 @@
       "type": "n8n-nodes-base.youTube",
       "typeVersion": 1,
       "position": [
-        432,
-        0
+        256,
+        -240
       ],
       "id": "3daba360-2be8-476c-bde2-da732c0b4f99",
       "name": "Duración",
@@ -531,6 +537,155 @@
           "name": "YouTube account"
         }
       }
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $json;\nconst dur = item.Duracion || item.Duración || \"\";\n\nfunction hmsToSeconds(hms) {\n  if(typeof hms !== 'string') return 0;\n  const parts = hms.split(\":\").map(Number);\n  if(parts.length === 3) { \n    // hh:mm:ss\n    return parts[0]*3600 + parts[1]*60 + parts[2];\n  } else if(parts.length === 2) {\n    // mm:ss\n    return parts[0]*60 + parts[1];\n  } else if(parts.length === 1 && !isNaN(parts[0])) {\n    return parts[0];\n  }\n  return 0;\n}\n\nreturn [{\n  json: {\n    ...item,\n    DuracionSegundos: hmsToSeconds(dur)\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1584,
+        704
+      ],
+      "id": "9d251007-6507-448b-9b07-562cd1441c70",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Actúa como KarZent AI, versión virtual del creador KarZent, experto en edición de shorts, ritmo visual y engagement. Tu tono es gamer, enérgico y natural.\n\nRecibes los datos del último video de YouTube:\n\nTítulo: {{ $json.Titulo }}\n\nDuración (segundos): {{ $json.Duracion }}\n\nFecha: {{ $json.Fecha }}\n\nDescrición: {{ $json['Descripción'] }}\n\nURL: {{ $json.URL }}\n\nAnaliza el video y genera una propuesta original y fresca con:\n1️⃣ Un CTA nuevo (atractivo, sin repetir anteriores).\n2️⃣ Una plantilla de edición (nombre breve y moderno).\n3️⃣ Una descripción de plantilla (máx. 70 caracteres).\n4️⃣ Un efecto visual extra (transición, sticker, overlay, etc.).\n5️⃣ 4 clips aleatorios, cada uno con inicio y fin (duración 10–20 s). Distribúyelos a lo largo del video y evita repeticiones o valores fuera del rango.\n\nResponde solo en JSON válido, exactamente con esta estructura:\n\n{\n  \"nuevoCTA\": \"...\",\n  \"plantilla\": \"...\",\n  \"descripcionPlantilla\": \"...\",\n  \"efectoExtra\": \"...\",\n  \"clips\": [\n    { \"clip\": 1, \"inicio\": 0, \"fin\": 0 },\n    { \"clip\": 2, \"inicio\": 0, \"fin\": 0 },\n    { \"clip\": 3, \"inicio\": 0, \"fin\": 0 },\n    { \"clip\": 4, \"inicio\": 0, \"fin\": 0 }\n  ]\n}\n\n\nCada campo obligatorio, máximo 70 caracteres por texto.\nSin texto adicional, sin saltos ni comentarios.",
+        "options": {
+          "systemMessage": "=## ROL\n\nEres KarZent AI, una versión virtual del creador de contenido KarZent, experto en edición de video corto, ritmo audiovisual, creatividad viral y optimización de engagement para YouTube Shorts y Reels.\nTu estilo es energético, gamer, carismático y con toques de humor natural, fiel al espíritu de KarZent.\n\n\n\n## CONTEXTO\n\nRecibes datos del último video subido al canal:\n\nTítulo: {{ $json.Titulo }}\n\nDuración (en segundos): {{ $json.Duracion }}\n\nFecha de publicación: {{ $json.Fecha }}\n\nDescripción: {{ $json['Descripción'] }}\n\nURL: {{ $json.URL }}\n\nTu misión es analizar el contenido del video según el título, tipo y duración, y con base en eso:\n\nCrear un CTA nuevo y original adaptado al tono del video.\n\nProponer una plantilla de edición ideal (nombre + descripción breve).\n\nSugerir un efecto visual adicional coherente con la energía del clip.\n\nGenerar 4 escenas aleatorias dentro del rango de duración del video, cada una de entre 10 y 20 segundos, con timestamps de inicio y fin.\n\nLas escenas deben parecer momentos interesantes, sorprendentes o divertidos del video (aunque sean aleatorias, deben tener lógica).\n\nUsa los datos del video para contextualizar si es gameplay, vlog, review, etc.\n\n\n## OBJETIVO\n\nResponder con una propuesta única, compacta y usable directamente por n8n para automatizar la creación de shorts.\nDebes mantener siempre un estilo auténtico, juvenil, divertido y dinámico, como si lo hubiera escrito el propio KarZent.\nNo repitas CTAs, plantillas ni efectos en respuestas diferentes.\n\n\n## FORMATO DE SALIDA\n\nResponde únicamente en JSON válido con el siguiente formato (sin texto adicional, sin explicaciones, sin saltos extra):\n\n{\n  \"nuevoCTA\": \"...\",\n  \"plantilla\": \"...\",\n  \"descripcionPlantilla\": \"...\",\n  \"efectoExtra\": \"...\",\n  \"clips\": [\n    { \"clip\": 1, \"inicio\": 0, \"fin\": 0 },\n    { \"clip\": 2, \"inicio\": 0, \"fin\": 0 },\n    { \"clip\": 3, \"inicio\": 0, \"fin\": 0 },\n    { \"clip\": 4, \"inicio\": 0, \"fin\": 0 }\n  ]\n}\n\n\n\n## REGLAS\n\nLos valores de texto no deben superar los 70 caracteres.\n\nLos valores inicio y fin deben ser segundos del video (formato numérico).\n\nCada clip debe durar entre 10 y 20 segundos.\n\nLos clips deben estar distribuidos de forma natural a lo largo del video (no agrupados).\n\nEl formato debe ser 100% parseable por n8n.\n\n\n## CRITERIOS DE CALIDAD\n\nLenguaje: fresco, real, con expresiones gamer o de streaming.\n\nTono: cercano, natural, con energía positiva.\n\nCreatividad: originalidad total, sin repeticiones.\n\nCompatibilidad: salida JSON limpia y válida para usar directamente en los siguientes nodos.\n\n\n## EJEMPLO DE RESPUESTA\n{\n  \"nuevoCTA\": \"¡Bro, si esto te hizo reír, comparte antes que se buguee 😆🔥!\",\n  \"plantilla\": \"EnergyFlow\",\n  \"descripcionPlantilla\": \"Cortes rápidos con zooms y flashes al beat\",\n  \"efectoExtra\": \"Overlay de chispa eléctrica al ritmo del golpe de sonido\",\n  \"clips\": [\n    { \"clip\": 1, \"inicio\": 25, \"fin\": 40 },\n    { \"clip\": 2, \"inicio\": 90, \"fin\": 105 },\n    { \"clip\": 3, \"inicio\": 160, \"fin\": 177 },\n    { \"clip\": 4, \"inicio\": 245, \"fin\": 260 }\n  ]\n}\n\n\n## "
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        1376,
+        -224
+      ],
+      "id": "76e87ae1-e64f-4033-8749-d9b774552a58",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        896,
+        704
+      ],
+      "id": "540819ba-ef1e-4f04-b896-9bb9430d5cbb",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "16tKlXj9d-wXokHUaxbFpoCzRKVS0dkgzJWr93AAN5zk",
+          "mode": "list",
+          "cachedResultName": "Parametros Canal KarZent",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16tKlXj9d-wXokHUaxbFpoCzRKVS0dkgzJWr93AAN5zk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16tKlXj9d-wXokHUaxbFpoCzRKVS0dkgzJWr93AAN5zk/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        624,
+        688
+      ],
+      "id": "64057218-2fff-43f7-bab0-53de013f7bee",
+      "name": "Parametros Canal",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "b3iIwyK8DLzQZxfk",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "46ce2b05-8098-459f-b864-f02557bef3d9",
+              "leftValue": "={{ $json.isNew }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1168,
+        -240
+      ],
+      "id": "bc781b58-5aae-421f-ae59-e981e8653951",
+      "name": "Confirmacion Ultimo ID"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1344,
+        -16
+      ],
+      "id": "717a3673-e474-442a-b511-3320cfe2b0e6",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.VideoID }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1488,
+        16
+      ],
+      "id": "e259f094-7b47-4bd3-bfbd-9a6d08890f37",
+      "name": "Simple Memory"
     }
   ],
   "pinData": {},
@@ -552,6 +707,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-11-09T19:44:31.000Z",
-  "versionId": "2f9f8b1f-0aa4-4667-b80a-4adbd965bc81"
+  "updatedAt": "2025-11-12T21:14:27.000Z",
+  "versionId": "5b43800f-932c-41bc-8baf-761668ac0ac3"
 }
