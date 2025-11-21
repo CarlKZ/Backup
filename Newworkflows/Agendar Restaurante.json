@@ -1,0 +1,259 @@
+{
+  "active": false,
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create an event": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Create an event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-21T19:05:55.796Z",
+  "id": "QnO0e45HCRNkTllN",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Agendar Restaurante",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "Fecha"
+            },
+            {
+              "name": "Horario"
+            },
+            {
+              "name": "Nombre Completo"
+            },
+            {
+              "name": "Numero TLF",
+              "type": "number"
+            }
+          ]
+        }
+      },
+      "id": "dc5eee5e-2a5c-4ccc-a0a8-d5c8971182e9",
+      "typeVersion": 1.1,
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        448,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "carlos.f.g.work@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlos.f.g.work@gmail.com"
+        },
+        "start": "={{ $json.Fecha }}T{{ $json.Horario }}",
+        "end": "={{ new Date(Date.UTC(\n    Number($json.Fecha.split('-')[0]),\n    Number($json.Fecha.split('-')[1]) - 1,\n    Number($json.Fecha.split('-')[2]),\n    Number($json.Horario.split(':')[0]),\n    Number($json.Horario.split(':')[1]) + 30\n)).toISOString().slice(0,19) }}",
+        "additionalFields": {
+          "summary": "=Nombre: {{ $json['Nombre Completo'] }}\nTlf: {{ $json['Numero TLF'] }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        896,
+        352
+      ],
+      "id": "a1c8c035-ca1f-480e-a57b-a3a39c7c3245",
+      "name": "Create an event",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "uibgZJgdZkL31iR6",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1ztOH1Om6N7m8oPUS4WOsBijiBBhowsfgDcJgOnjjvGo",
+          "mode": "list",
+          "cachedResultName": "Contactos Clientes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ztOH1Om6N7m8oPUS4WOsBijiBBhowsfgDcJgOnjjvGo/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ztOH1Om6N7m8oPUS4WOsBijiBBhowsfgDcJgOnjjvGo/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ID Calendar": "={{ $json.id }}",
+            "Nombre": "={{ $('When Executed by Another Workflow').item.json[\"Nombre Completo\"] }}",
+            "Numero TLF": "={{ $('When Executed by Another Workflow').item.json['Numero TLF'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Numero TLF",
+              "displayName": "Numero TLF",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ID Calendar",
+              "displayName": "ID Calendar",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1104,
+        352
+      ],
+      "id": "bb878c42-cd6e-4635-8790-3f714ecd6350",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "b3iIwyK8DLzQZxfk",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b27c0709-37dd-4a22-9867-30ddbdac35c9",
+              "name": "Listo",
+              "value": "Listo",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1312,
+        352
+      ],
+      "id": "4ddbbe3e-2dc7-4abb-a603-55c77f5e772b",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Ejemplo de entrada:\n// {\n//   \"Fecha\": \"22-11-2025\",\n//   \"Horario\": \"20:00\",\n//   \"Nombre Completo\": \"Carlos\",\n//   \"Numero TLF\": \"652254414\"\n// }\n\nconst [dia, mes, año] = items[0].json.Fecha.split('-');\nconst hora = items[0].json.Horario.length === 5 ? items[0].json.Horario + ':00' : items[0].json.Horario;\n\nconst fechaISO = `${año}-${mes}-${dia}T${hora}`;\nconst horaInicio = parseInt(hora.split(':')[0], 10);\nconst horaFin = (horaInicio + 2).toString().padStart(2, '0') + ':' + hora.split(':')[1] + ':00'; // Duración: 2 horas\n\nconst fechaISOFin = `${año}-${mes}-${dia}T${horaFin}`;\n\nreturn [\n  {\n    json: {\n      Start: fechaISO,\n      End: fechaISOFin,\n      Nombre: items[0].json['Nombre Completo'],\n      Telefono: items[0].json['Numero TLF']\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        656,
+        352
+      ],
+      "id": "05028e28-48a9-4fc2-8949-1e9d2baefa1a",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "Fecha": "22-11-2025",
+          "Horario": "20:00",
+          "Nombre Completo": "Carlos",
+          "Numero TLF": 652254414
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-21T19:05:55.802Z",
+      "createdAt": "2025-11-21T19:05:55.802Z",
+      "role": "workflow:owner",
+      "workflowId": "QnO0e45HCRNkTllN",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-21T19:29:51.000Z",
+  "versionId": "1706fab2-a838-4bdc-9501-bc12d6e0e0aa"
+}
