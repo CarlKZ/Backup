@@ -1,0 +1,177 @@
+{
+  "active": false,
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get availability in a calendar in Google Calendar": {
+      "ai_tool": [
+        [
+          {
+            "node": "Message a model",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-21T19:05:28.527Z",
+  "id": "LSP8QnuGv4Zfmqdf",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Disponibilidad Restaurante",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "Fecha"
+            }
+          ]
+        }
+      },
+      "id": "c058d7c2-8737-4e29-972e-69a7c9ec2289",
+      "typeVersion": 1.1,
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        272,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.Fecha }}",
+        "format": "yyyy-MM-dd",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        496,
+        352
+      ],
+      "id": "dfa63b09-6427-4429-ac3c-369a1abb08a4",
+      "name": "Date & Time"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Devuélveme los espacios libres en la fecha {{ $json.formattedDate }} en el calendario en espacios de 60 minutos"
+            },
+            {
+              "content": "=Instrucciones principales:\n\nActiva SIEMPRE la herramienta instalada para consultar la disponibilidad del calendario.\nEsta herramienta devuelve una lista de espacios ocupados dentro del horario comprendido entre las 08:00 AM y las 21:00 PM.\n\nCada turno tiene una duración fija de 30 minutos.\n\nTu tarea es:\n\nAnalizar los intervalos ocupados que devuelve la herramienta.\n\nCalcular todos los espacios disponibles de 30 minutos que no estén dentro de un intervalo ocupado.\n\nDevolver únicamente los espacios disponibles, ordenados cronológicamente, en formato legible y estructurado.\n\nCómo interpretar la información que devuelve la herramienta\n\nLa herramienta devuelve una lista de intervalos ocupados, cada uno con un start_date y un end_date.\n\nSi el intervalo abarca más de 30 minutos, significa que todos los bloques de 30 min dentro de ese rango están ocupados.\nEjemplo:\n\n{\n  \"start_date\": \"2025-10-24T09:00:00\",\n  \"end_date\": \"2025-10-24T11:00:00\"\n}\n\n\nEsto significa que están ocupados los bloques:\n\n09:00 – 09:30\n\n09:30 – 10:00\n\n10:00 – 10:30\n\n10:30 – 11:00\ny el siguiente espacio libre empieza a las 11:00 AM.\n\nRango horario total a evaluar\n\nDe 08:00 AM a 21:00 PM (13 horas = 26 bloques de 30 min cada uno).\n\nEjemplo de salida esperada\n\nSi la herramienta devuelve los siguientes espacios ocupados:\n\n[\n  {\"start_date\": \"2025-10-24T08:30:00\", \"end_date\": \"2025-10-24T09:30:00\"},\n  {\"start_date\": \"2025-10-24T11:00:00\", \"end_date\": \"2025-10-24T12:00:00\"}\n]\n\n\nTu salida debe ser:\n\n{\n  \"available_slots\": [\n    \"08:00 - 08:30\",\n    \"09:30 - 10:00\",\n    \"10:00 - 10:30\",\n    \"10:30 - 11:00\",\n    \"12:00 - 12:30\",\n    \"12:30 - 13:00\",\n    \"...\",\n    \"20:30 - 21:00\"\n  ]\n}\n\nResumen de reglas\n\nSiempre activa la herramienta de disponibilidad antes de responder.\n\nInterpreta correctamente los intervalos ocupados (pueden abarcar varios bloques).\n\nDevuelve únicamente los espacios libres de 30 minutos.\n\nEl formato de salida debe ser ordenado, limpio y fácil de leer.\n\nResponde de forma natural, como una persona real y amable, explicando claramente qué horarios están libres y cuáles no.\n\nPuedes usar frases coloquiales, emojis y tono conversacional.\n\nNo devuelvas JSON ni formato técnico.\n",
+              "role": "system"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        720,
+        352
+      ],
+      "id": "9d79b6d5-fafb-4aff-ac07-9a38bad16485",
+      "name": "Message a model",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "calendar",
+        "calendar": {
+          "__rl": true,
+          "value": "carlos.f.g.work@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlos.f.g.work@gmail.com"
+        },
+        "timeMin": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Start_Time', ``, 'string') }}",
+        "timeMax": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('End_Time', ``, 'string') }}",
+        "options": {
+          "outputFormat": "bookedSlots"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        864,
+        576
+      ],
+      "id": "1f3c83e9-deb5-4dac-b403-f01b6bc85519",
+      "name": "Get availability in a calendar in Google Calendar",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "uibgZJgdZkL31iR6",
+          "name": "Google Calendar account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "Fecha": null
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-21T19:05:28.536Z",
+      "createdAt": "2025-11-21T19:05:28.536Z",
+      "role": "workflow:owner",
+      "workflowId": "LSP8QnuGv4Zfmqdf",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-21T19:10:47.000Z",
+  "versionId": "016211e9-9015-4689-af15-60d54a9d8e98"
+}
