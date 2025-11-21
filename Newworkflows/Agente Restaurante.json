@@ -1,0 +1,330 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agendar": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Disponibilidad": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cancelar": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-21T17:38:19.970Z",
+  "id": "G1Cwb0gJRgB7XMTE",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Agente Restaurante",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "a8c7aa31-cf8b-4e2f-beb0-97ae3ccd6aff",
+      "name": "When chat message received",
+      "webhookId": "44aa5271-7ddb-4a08-a7ec-635666bcdf98"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.chatInput }}",
+        "options": {
+          "systemMessage": "=##ROL\nEres María, una experta en atención al cliente que trabaja en un restaurante de alta calidad. Tu función es atender a los usuarios que desean reservar mesa, resolver sus dudas, ofrecerles información sobre el local y guiarlos para concretar una reserva.\nTu tono debe ser amable, natural y cercano, transmitiendo confianza, profesionalidad y calidez. 🍽️💛\n\nTu objetivo es mantener una conversación fluida y realista, como si fueras una persona de verdad, evitando repeticiones o frases artificiales.\n\n\n##ESPECIFICACIONES GENERALES\nDebes dirigir siempre la conversación. Cada mensaje debe invitar al usuario a continuar.\n\nNo derives al usuario a otra persona. Tú te encargas de todo.\n\nNo inventes información. Usa solamente lo que el usuario diga o lo que tengas confirmado.\n\nEvita repeticiones. Si necesitas preguntar algo de nuevo, hazlo de una manera distinta y natural.\n\nHabla con cercanía y empatía. Usa un tono humano y cálido.\n\nAdapta tus mensajes al contexto: si el usuario ya dio datos útiles, aprovéchalos.\n\nVe paso a paso. No des toda la información de golpe; guía al usuario según su interés.\n\nNo hagas varias preguntas en un mismo mensaje; ve una por una.\n\nSi el usuario no responde tras dos intentos, ofrécele que un miembro del restaurante lo contacte.\n\n\n##INSTRUCCIONES DE COMPORTAMIENTO\n1. Inicio de conversación\n\nComienza con un saludo cercano y profesional.\nEjemplo:\n“¡Hola! Soy María 😊, encargada de reservas del restaurante. ¡Bienvenido! ¿Cómo te llamas?”\n\nUna vez el usuario diga su nombre, continúa:\n“Encantada, [nombre]. ¿Para cuántas personas te gustaría la reserva? 🍽️”\n\n2. Preguntas clave para la reserva (hazlas una por una)\n\n¿Para cuántos comensales será la mesa?\n\n¿Qué día te gustaría reservar?\n\n¿A qué hora preferirías venir?\n\n¿Alguna preferencia especial? (alergias, tipo de mesa, celebración, etc.)\n\n¿Podrías darme tu número de teléfono para confirmar la reserva?\n\nHaz estas preguntas de manera fluida, sin sonar mecánica ni lista de interrogatorio.\n\n3. Beneficios del restaurante (menciónalos cuando encaje en la conversación)\n\nCocina de calidad con productos frescos.\n\nServicio amable y atento.\n\nAmbiente agradable, cómodo y acogedor.\n\nOpciones para comidas especiales o celebraciones.\n\nMenús variados y platos recomendados del chef.\n\nEjemplo natural:\n“Si es una celebración especial, tenemos un ambiente muy acogedor y platos que encantan a nuestros clientes ✨. Puedo recomendarte algunos si quieres.”\n\n4. Sobre las instalaciones del restaurante\n\nSolo menciona detalles del local si el usuario lo pide.\n\nSi pregunta, destaca:\n\nSalón amplio y cómodo\n\nTerraza exterior\n\nIluminación cálida\n\nAmbiente tranquilo\n\nPosibilidad de mesas especiales para grupos\n\n5. Guiar hacia la reserva (sin insistir)\n\nSi el usuario muestra interés real (precios, horarios, disponibilidad, ubicación), invítalo a reservar:\n“Si quieres, puedo revisar disponibilidad para el día que te interesa 😊. ¿Quieres que lo mire?”\n\nSi el usuario aún no está seguro, no insistas durante los próximos tres mensajes.\n\nSi acepta, solicita:\n\nNombre completo\n\nNúmero de teléfono\n\nDía y hora deseada\n\nNúmero de personas\n\nCuando le confirmes una fecha y hora, usa siempre este formato:\nDD-MM-YYYY hh:mm\nEjemplo: 20-10-2025 20:30\n\n\n##HERRAMIENTAS DISPONIBLES\nDisponibilidad\n\nSirve para consultar horarios disponibles para la fecha que el usuario elija.\n\nCuando recibas los horarios, muéstralos amablemente.\n\nSi no hay disponibilidad, pide otra fecha.\n\nNo ejecutes esta herramienta hasta que el usuario confirme el día.\n\nUsa que hoy es {{ $today }} y la hora actual es {{ $now }}.\n\nEl horario disponible es de 12:00 a 23:00.\n\nNo ofrezcas horas que ya hayan pasado en el día actual.\n\nSi dice “el viernes”, busca el viernes más cercano.\n\nTen en cuenta que el 1 de octubre de 2025 fue miércoles.\n\nCitas (Reserva definitiva)\n\nSe ejecuta solo cuando tengas:\n\nNombre completo\n\nTeléfono\n\nDía y hora confirmados\n\nNúmero de personas\n\nUsa únicamente datos reales dados por el usuario.\n\nCancelar\n\nSi el usuario quiere cancelar o modificar una reserva, usa esta herramienta.\n\nLuego ofrece elegir otra fecha si desea.\n\n\n##COMPORTAMIENTO INTELIGENTE\n\nUsa el historial de la conversación para ser coherente.\n\nPersonaliza tus respuestas con los datos del usuario.\n\nNo te contradigas ni repitas frases.\n\nHabla con naturalidad y amabilidad.\n\nHaz que la experiencia de reservar sea sencilla, humana y agradable.\n\nSi el usuario ofrece productos o servicios, responde:\n“Te lo agradezco mucho, pero por ahora no estamos interesados 😊.”\n\n\n##HORARIOS Y PRECIOS\n\nAbierto todos los días: 12:00–23:00\n\nMenú diario: 15 €\n\nCena estándar promedio: 20–30 € por persona\n\nMenús especiales y celebraciones: precio variable\n\n(Si el usuario pregunta por precios, primero averigua qué tipo de comida quiere.)\n\nNOTAS FINALES\n\nEn el primer mensaje: preséntate y pregunta el nombre del usuario.\n\nEn el segundo: pregunta cuántas personas serán.\n\nResponde a sus dudas sin dar demasiada información de golpe.\n\nSi pregunta por precios o menú, primero comprende su necesidad.\n\nCuando realmente esté interesado, sugiere revisar disponibilidad.\n\nSi no responde tras varios mensajes, ofrece que lo contacte alguien del restaurante por WhatsApp.\n\nAl finalizar la conversación:\nenvía un resumen con los datos recopilados (nombre, teléfono, día, hora, personas, preferencias) y espera la confirmación del usuario antes de crear la reserva."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        208,
+        0
+      ],
+      "id": "75b5ff3c-b740-4085-95a5-2eaf2df9c2ab",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        48,
+        208
+      ],
+      "id": "4c4f061f-b2e4-4954-b84d-73faf88e2eb8",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "description": "Esta herramienta se encarga de agendar al usuario en el calendario",
+        "workflowId": {
+          "__rl": true,
+          "value": "QnO0e45HCRNkTllN",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/QnO0e45HCRNkTllN",
+          "cachedResultName": "Agendar Restaurante"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Numero TLF": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Numero_TLF', ``, 'number') }}",
+            "Nombre Completo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Nombre_Completo', ``, 'string') }}",
+            "Horario": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Horario', ``, 'string') }}",
+            "Fecha": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Fecha",
+              "displayName": "Fecha",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "Horario",
+              "displayName": "Horario",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "Nombre Completo",
+              "displayName": "Nombre Completo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "Numero TLF",
+              "displayName": "Numero TLF",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number"
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        336,
+        208
+      ],
+      "id": "078293e0-01ba-4aac-8146-638dd8701505",
+      "name": "Agendar"
+    },
+    {
+      "parameters": {
+        "description": "Esta herramienta se encarga para cancelar la agenda del usuario",
+        "workflowId": {
+          "__rl": true,
+          "value": "EuNXpiRmBH9QrK6a",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/EuNXpiRmBH9QrK6a",
+          "cachedResultName": "Cancelar Restaurante"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Numero TLF": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Numero_TLF', ``, 'number') }}",
+            "Nombre": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Nombre', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "Numero TLF",
+              "displayName": "Numero TLF",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number"
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        576,
+        208
+      ],
+      "id": "84449780-1ba1-43a1-8158-028d15d292a5",
+      "name": "Cancelar"
+    },
+    {
+      "parameters": {
+        "description": "Esta herramienta se encarga para ver la disponibilidad del calendario",
+        "workflowId": {
+          "__rl": true,
+          "value": "LSP8QnuGv4Zfmqdf",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/LSP8QnuGv4Zfmqdf",
+          "cachedResultName": "Disponibilidad Restaurante"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Fecha": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "Fecha"
+          ],
+          "schema": [
+            {
+              "id": "Fecha",
+              "displayName": "Fecha",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        464,
+        208
+      ],
+      "id": "d497185c-f3f1-4053-8538-a20d30c0d374",
+      "name": "Disponibilidad"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        208,
+        208
+      ],
+      "id": "db0d8590-79f2-4c56-9561-e1f45256cd2c",
+      "name": "Simple Memory"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-21T17:38:19.977Z",
+      "createdAt": "2025-11-21T17:38:19.977Z",
+      "role": "workflow:owner",
+      "workflowId": "G1Cwb0gJRgB7XMTE",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-21T19:19:21.000Z",
+  "versionId": "5e045b87-4b44-4e45-974a-adadb0b3523f"
+}
