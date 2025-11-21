@@ -1,0 +1,289 @@
+{
+  "active": false,
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Delete an event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete an event": {
+      "main": [
+        [
+          {
+            "node": "Update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-21T19:06:09.880Z",
+  "id": "EuNXpiRmBH9QrK6a",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Cancelar Restaurante",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "Nombre"
+            },
+            {
+              "name": "Numero TLF",
+              "type": "number"
+            }
+          ]
+        }
+      },
+      "id": "f3b888fd-ade0-494b-8112-9ab04fdbc48c",
+      "typeVersion": 1.1,
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        272,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1ztOH1Om6N7m8oPUS4WOsBijiBBhowsfgDcJgOnjjvGo",
+          "mode": "list",
+          "cachedResultName": "Contactos Clientes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ztOH1Om6N7m8oPUS4WOsBijiBBhowsfgDcJgOnjjvGo/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ztOH1Om6N7m8oPUS4WOsBijiBBhowsfgDcJgOnjjvGo/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Nombre",
+              "lookupValue": "={{ $json.Nombre }}"
+            },
+            {
+              "lookupColumn": "Numero TLF",
+              "lookupValue": "={{ $json[\"Numero TLF\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        496,
+        352
+      ],
+      "id": "2b06c950-c325-4141-ba65-f227af0a1134",
+      "name": "Get row(s) in sheet",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "b3iIwyK8DLzQZxfk",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "carlos.f.g.work@gmail.com",
+          "mode": "list",
+          "cachedResultName": "carlos.f.g.work@gmail.com"
+        },
+        "eventId": "={{ $json[\"ID Calendar\"] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        720,
+        352
+      ],
+      "id": "3b4570de-3916-488c-9343-efa049be293d",
+      "name": "Delete an event",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "uibgZJgdZkL31iR6",
+          "name": "Google Calendar account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9733941c-9233-4a5d-aceb-b896aa809dd2",
+              "name": "Hecho",
+              "value": "Hecho",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1168,
+        352
+      ],
+      "id": "21a2c288-67e6-41e6-8d08-635eaf0772e5",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1ztOH1Om6N7m8oPUS4WOsBijiBBhowsfgDcJgOnjjvGo",
+          "mode": "list",
+          "cachedResultName": "Contactos Clientes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ztOH1Om6N7m8oPUS4WOsBijiBBhowsfgDcJgOnjjvGo/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ztOH1Om6N7m8oPUS4WOsBijiBBhowsfgDcJgOnjjvGo/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Numero TLF": "={{ $('When Executed by Another Workflow').item.json[\"Numero TLF\"] }}",
+            "Nombre": "={{ $('When Executed by Another Workflow').item.json.Nombre }}",
+            "ID Calendar": "="
+          },
+          "matchingColumns": [
+            "Numero TLF"
+          ],
+          "schema": [
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Numero TLF",
+              "displayName": "Numero TLF",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "ID Calendar",
+              "displayName": "ID Calendar",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        944,
+        352
+      ],
+      "id": "97fb97d7-707c-4f46-9de9-12032af0fcac",
+      "name": "Update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "b3iIwyK8DLzQZxfk",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-21T19:06:09.886Z",
+      "createdAt": "2025-11-21T19:06:09.886Z",
+      "role": "workflow:owner",
+      "workflowId": "EuNXpiRmBH9QrK6a",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-21T19:07:36.000Z",
+  "versionId": "4b1556fd-d623-4b3d-835c-504518e9a683"
+}
