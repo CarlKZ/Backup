@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "AI Agent": {
       "main": [
@@ -381,6 +381,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-11-03T17:05:40.000Z",
+  "updatedAt": "2025-11-21T19:05:08.000Z",
   "versionId": "21dd2713-0acc-420c-8a41-db4b120bfe92"
 }
