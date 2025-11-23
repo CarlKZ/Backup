@@ -16,7 +16,7 @@
       "main": [
         [
           {
-            "node": "Append row in sheet",
+            "node": "Code in JavaScript1",
             "type": "main",
             "index": 0
           }
@@ -39,6 +39,17 @@
         [
           {
             "node": "Create an event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
             "type": "main",
             "index": 0
           }
@@ -70,6 +81,10 @@
             {
               "name": "Numero TLF",
               "type": "number"
+            },
+            {
+              "name": "Personas",
+              "type": "number"
             }
           ]
         }
@@ -91,10 +106,10 @@
           "mode": "list",
           "cachedResultName": "carlos.f.g.work@gmail.com"
         },
-        "start": "={{ $json.Fecha }}T{{ $json.Horario }}",
-        "end": "={{ new Date(Date.UTC(\n    Number($json.Fecha.split('-')[0]),\n    Number($json.Fecha.split('-')[1]) - 1,\n    Number($json.Fecha.split('-')[2]),\n    Number($json.Horario.split(':')[0]),\n    Number($json.Horario.split(':')[1]) + 30\n)).toISOString().slice(0,19) }}",
+        "start": "={{ $json.Start }}",
+        "end": "={{ $json.End }}",
         "additionalFields": {
-          "summary": "=Nombre: {{ $json['Nombre Completo'] }}\nTlf: {{ $json['Numero TLF'] }}"
+          "summary": "=Nombre: {{ $json.Nombre }}\nTlf: {{ $json.Telefono }}"
         }
       },
       "type": "n8n-nodes-base.googleCalendar",
@@ -118,30 +133,50 @@
         "operation": "append",
         "documentId": {
           "__rl": true,
-          "value": "1ztOH1Om6N7m8oPUS4WOsBijiBBhowsfgDcJgOnjjvGo",
+          "value": "1aJ0aV7wR97UGlsX8G143LVHh4J3IpYtTatCxOrhaSMk",
           "mode": "list",
-          "cachedResultName": "Contactos Clientes",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ztOH1Om6N7m8oPUS4WOsBijiBBhowsfgDcJgOnjjvGo/edit?usp=drivesdk"
+          "cachedResultName": "Reservas Restaurantes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aJ0aV7wR97UGlsX8G143LVHh4J3IpYtTatCxOrhaSMk/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
           "value": "gid=0",
           "mode": "list",
           "cachedResultName": "Hoja 1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ztOH1Om6N7m8oPUS4WOsBijiBBhowsfgDcJgOnjjvGo/edit#gid=0"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aJ0aV7wR97UGlsX8G143LVHh4J3IpYtTatCxOrhaSMk/edit#gid=0"
         },
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "ID Calendar": "={{ $json.id }}",
-            "Nombre": "={{ $('When Executed by Another Workflow').item.json[\"Nombre Completo\"] }}",
-            "Numero TLF": "={{ $('When Executed by Another Workflow').item.json['Numero TLF'] }}"
+            "Nombre Reserva": "={{ $json.Nombre }}",
+            "Numero TLF": "={{ $json.Telefono }}",
+            "Hora de Reserva": "={{ $json.FechaInicio }}",
+            "Personas": "={{ $('When Executed by Another Workflow').item.json.Personas }}",
+            "Estado": "={{ $json.Confirmado }}"
           },
           "matchingColumns": [],
           "schema": [
             {
-              "id": "Nombre",
-              "displayName": "Nombre",
+              "id": "Nombre Reserva",
+              "displayName": "Nombre Reserva",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Personas",
+              "displayName": "Personas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Hora de Reserva",
+              "displayName": "Hora de Reserva",
               "required": false,
               "defaultMatch": false,
               "display": true,
@@ -155,16 +190,18 @@
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
-              "id": "ID Calendar",
-              "displayName": "ID Calendar",
+              "id": "Estado",
+              "displayName": "Estado",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -175,7 +212,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        1104,
+        1360,
         352
       ],
       "id": "bb878c42-cd6e-4635-8790-3f714ecd6350",
@@ -204,7 +241,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1312,
+        1584,
         352
       ],
       "id": "4ddbbe3e-2dc7-4abb-a603-55c77f5e772b",
@@ -212,7 +249,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Ejemplo de entrada:\n// {\n//   \"Fecha\": \"22-11-2025\",\n//   \"Horario\": \"20:00\",\n//   \"Nombre Completo\": \"Carlos\",\n//   \"Numero TLF\": \"652254414\"\n// }\n\nconst [dia, mes, año] = items[0].json.Fecha.split('-');\nconst hora = items[0].json.Horario.length === 5 ? items[0].json.Horario + ':00' : items[0].json.Horario;\n\nconst fechaISO = `${año}-${mes}-${dia}T${hora}`;\nconst horaInicio = parseInt(hora.split(':')[0], 10);\nconst horaFin = (horaInicio + 2).toString().padStart(2, '0') + ':' + hora.split(':')[1] + ':00'; // Duración: 2 horas\n\nconst fechaISOFin = `${año}-${mes}-${dia}T${horaFin}`;\n\nreturn [\n  {\n    json: {\n      Start: fechaISO,\n      End: fechaISOFin,\n      Nombre: items[0].json['Nombre Completo'],\n      Telefono: items[0].json['Numero TLF']\n    }\n  }\n];\n"
+        "jsCode": "const [anio, mes, dia] = items[0].json.Fecha.split('-'); // fecha como '2025-11-24'\nconst hora = items[0].json.Horario.length === 5 ? items[0].json.Horario + ':00' : items[0].json.Horario;\nconst fechaISO = `${anio}-${mes}-${dia}T${hora}`;\nconst horaFin = (parseInt(hora.split(':')[0], 10) + 2).toString().padStart(2, '0') + ':' + hora.split(':')[1] + ':00';\nconst fechaISOFin = `${anio}-${mes}-${dia}T${horaFin}`;\n\nreturn [\n  {\n    json: {\n      Start: fechaISO,\n      End: fechaISOFin,\n      Nombre: items[0].json['Nombre Completo'],\n      Telefono: items[0].json['Numero TLF']\n    }\n  }\n];\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -222,20 +259,22 @@
       ],
       "id": "05028e28-48a9-4fc2-8949-1e9d2baefa1a",
       "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "jsCode": "function formatFechaHora(fechaIso) {\n  // Ejemplo: '2025-11-24T20:00:00+01:00'\n  if (!fechaIso || fechaIso.indexOf('T') === -1) return '';\n  // Quitar zona horaria si existe\n  const sinZona = fechaIso.split('+')[0]; // '2025-11-24T20:00:00'\n  const [fecha, hora] = sinZona.split('T');\n  const [anio, mes, dia] = fecha.split('-');\n  const horaMinutos = hora.slice(0,5); // '20:00'\n  return `${dia}-${mes}-${anio} ${horaMinutos}`;\n}\n\nconst fechaInicioISO = items[0].json.start?.dateTime || '';\nconst fechaFinISO = items[0].json.end?.dateTime || '';\nconst nombre = items[0].json.summary?.split('Nombre: ')[1]?.split('\\n')[0] || '';\nconst telefono = items[0].json.summary?.split('Tlf: ')[1] || '';\n\nreturn [\n  {\n    json: {\n      FechaInicio: formatFechaHora(fechaInicioISO),\n      FechaFin: formatFechaHora(fechaFinISO),\n      Nombre: nombre,\n      Telefono: telefono,\n      Estado: \"Confirmado\"\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1104,
+        352
+      ],
+      "id": "947cc6ad-ced7-4206-8092-f2774bc049a1",
+      "name": "Code in JavaScript1"
     }
   ],
-  "pinData": {
-    "When Executed by Another Workflow": [
-      {
-        "json": {
-          "Fecha": "22-11-2025",
-          "Horario": "20:00",
-          "Nombre Completo": "Carlos",
-          "Numero TLF": 652254414
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "timezone": "Europe/Madrid",
@@ -254,6 +293,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-11-21T19:29:51.000Z",
-  "versionId": "1706fab2-a838-4bdc-9501-bc12d6e0e0aa"
+  "updatedAt": "2025-11-23T20:20:48.000Z",
+  "versionId": "9f137af4-5424-4e88-9d00-9c6d7241fa90"
 }
