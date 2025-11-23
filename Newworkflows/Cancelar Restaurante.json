@@ -81,10 +81,10 @@
       "parameters": {
         "documentId": {
           "__rl": true,
-          "value": "1ztOH1Om6N7m8oPUS4WOsBijiBBhowsfgDcJgOnjjvGo",
+          "value": "1aJ0aV7wR97UGlsX8G143LVHh4J3IpYtTatCxOrhaSMk",
           "mode": "list",
-          "cachedResultName": "Contactos Clientes",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ztOH1Om6N7m8oPUS4WOsBijiBBhowsfgDcJgOnjjvGo/edit?usp=drivesdk"
+          "cachedResultName": "Reservas Restaurantes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aJ0aV7wR97UGlsX8G143LVHh4J3IpYtTatCxOrhaSMk/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
@@ -96,7 +96,7 @@
         "filtersUI": {
           "values": [
             {
-              "lookupColumn": "Nombre",
+              "lookupColumn": "Nombre Reserva",
               "lookupValue": "={{ $json.Nombre }}"
             },
             {
@@ -132,7 +132,7 @@
           "mode": "list",
           "cachedResultName": "carlos.f.g.work@gmail.com"
         },
-        "eventId": "={{ $json[\"ID Calendar\"] }}",
+        "eventId": "={{ $json['Numero TLF'] }}",
         "options": {}
       },
       "type": "n8n-nodes-base.googleCalendar",
@@ -180,10 +180,10 @@
         "operation": "update",
         "documentId": {
           "__rl": true,
-          "value": "1ztOH1Om6N7m8oPUS4WOsBijiBBhowsfgDcJgOnjjvGo",
+          "value": "1aJ0aV7wR97UGlsX8G143LVHh4J3IpYtTatCxOrhaSMk",
           "mode": "list",
-          "cachedResultName": "Contactos Clientes",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ztOH1Om6N7m8oPUS4WOsBijiBBhowsfgDcJgOnjjvGo/edit?usp=drivesdk"
+          "cachedResultName": "Reservas Restaurantes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aJ0aV7wR97UGlsX8G143LVHh4J3IpYtTatCxOrhaSMk/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
@@ -195,22 +195,46 @@
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "Numero TLF": "={{ $('When Executed by Another Workflow').item.json[\"Numero TLF\"] }}",
-            "Nombre": "={{ $('When Executed by Another Workflow').item.json.Nombre }}",
-            "ID Calendar": "="
+            "row_number": 0,
+            "Nombre Reserva": "={{ $('Get row(s) in sheet').item.json['Nombre Reserva'] }}",
+            "Numero TLF": "={{ $('Get row(s) in sheet').item.json['Numero TLF'] }}",
+            "Personas": "={{ $('Get row(s) in sheet').item.json.Personas }}",
+            "Hora de Reserva": "={{ $('Get row(s) in sheet').item.json['Hora de Reserva'] }}",
+            "Estado": "Cancelado"
           },
           "matchingColumns": [
             "Numero TLF"
           ],
           "schema": [
             {
-              "id": "Nombre",
-              "displayName": "Nombre",
+              "id": "Nombre Reserva",
+              "displayName": "Nombre Reserva",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Personas",
+              "displayName": "Personas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Hora de Reserva",
+              "displayName": "Hora de Reserva",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "Numero TLF",
@@ -223,8 +247,8 @@
               "removed": false
             },
             {
-              "id": "ID Calendar",
-              "displayName": "ID Calendar",
+              "id": "Estado",
+              "displayName": "Estado",
               "required": false,
               "defaultMatch": false,
               "display": true,
@@ -241,7 +265,7 @@
               "type": "number",
               "canBeUsedToMatch": true,
               "readOnly": true,
-              "removed": true
+              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -265,7 +289,16 @@
       }
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "Nombre": "Carlos Fernandez",
+          "Numero TLF": 654414457
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "timezone": "Europe/Madrid",
@@ -284,6 +317,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-11-21T19:07:36.000Z",
-  "versionId": "4b1556fd-d623-4b3d-835c-504518e9a683"
+  "updatedAt": "2025-11-23T20:19:42.000Z",
+  "versionId": "218b4ebf-7654-4148-89f6-c74d608cf7af"
 }
