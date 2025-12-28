@@ -1,7 +1,298 @@
 {
-  "active": false,
-  "activeVersion": null,
-  "activeVersionId": null,
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2025-12-15T15:26:37.071Z",
+    "createdAt": "2025-12-15T15:26:37.071Z",
+    "versionId": "218b4ebf-7654-4148-89f6-c74d608cf7af",
+    "workflowId": "EuNXpiRmBH9QrK6a",
+    "nodes": [
+      {
+        "parameters": {
+          "workflowInputs": {
+            "values": [
+              {
+                "name": "Nombre"
+              },
+              {
+                "name": "Numero TLF",
+                "type": "number"
+              }
+            ]
+          }
+        },
+        "id": "f3b888fd-ade0-494b-8112-9ab04fdbc48c",
+        "typeVersion": 1.1,
+        "name": "When Executed by Another Workflow",
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "position": [
+          272,
+          352
+        ]
+      },
+      {
+        "parameters": {
+          "documentId": {
+            "__rl": true,
+            "value": "1aJ0aV7wR97UGlsX8G143LVHh4J3IpYtTatCxOrhaSMk",
+            "mode": "list",
+            "cachedResultName": "Reservas Restaurantes",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aJ0aV7wR97UGlsX8G143LVHh4J3IpYtTatCxOrhaSMk/edit?usp=drivesdk"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "gid=0",
+            "mode": "list",
+            "cachedResultName": "Hoja 1",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ztOH1Om6N7m8oPUS4WOsBijiBBhowsfgDcJgOnjjvGo/edit#gid=0"
+          },
+          "filtersUI": {
+            "values": [
+              {
+                "lookupColumn": "Nombre Reserva",
+                "lookupValue": "={{ $json.Nombre }}"
+              },
+              {
+                "lookupColumn": "Numero TLF",
+                "lookupValue": "={{ $json[\"Numero TLF\"] }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.7,
+        "position": [
+          496,
+          352
+        ],
+        "id": "2b06c950-c325-4141-ba65-f227af0a1134",
+        "name": "Get row(s) in sheet",
+        "alwaysOutputData": true,
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "b3iIwyK8DLzQZxfk",
+            "name": "Google Sheets account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "delete",
+          "calendar": {
+            "__rl": true,
+            "value": "carlos.f.g.work@gmail.com",
+            "mode": "list",
+            "cachedResultName": "carlos.f.g.work@gmail.com"
+          },
+          "eventId": "={{ $json['Numero TLF'] }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleCalendar",
+        "typeVersion": 1.3,
+        "position": [
+          720,
+          352
+        ],
+        "id": "3b4570de-3916-488c-9343-efa049be293d",
+        "name": "Delete an event",
+        "alwaysOutputData": true,
+        "credentials": {
+          "googleCalendarOAuth2Api": {
+            "id": "uibgZJgdZkL31iR6",
+            "name": "Google Calendar account"
+          }
+        },
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "9733941c-9233-4a5d-aceb-b896aa809dd2",
+                "name": "Hecho",
+                "value": "Hecho",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          1168,
+          352
+        ],
+        "id": "21a2c288-67e6-41e6-8d08-635eaf0772e5",
+        "name": "Edit Fields"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "documentId": {
+            "__rl": true,
+            "value": "1aJ0aV7wR97UGlsX8G143LVHh4J3IpYtTatCxOrhaSMk",
+            "mode": "list",
+            "cachedResultName": "Reservas Restaurantes",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aJ0aV7wR97UGlsX8G143LVHh4J3IpYtTatCxOrhaSMk/edit?usp=drivesdk"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "gid=0",
+            "mode": "list",
+            "cachedResultName": "Hoja 1",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ztOH1Om6N7m8oPUS4WOsBijiBBhowsfgDcJgOnjjvGo/edit#gid=0"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "row_number": 0,
+              "Nombre Reserva": "={{ $('Get row(s) in sheet').item.json['Nombre Reserva'] }}",
+              "Numero TLF": "={{ $('Get row(s) in sheet').item.json['Numero TLF'] }}",
+              "Personas": "={{ $('Get row(s) in sheet').item.json.Personas }}",
+              "Hora de Reserva": "={{ $('Get row(s) in sheet').item.json['Hora de Reserva'] }}",
+              "Estado": "Cancelado"
+            },
+            "matchingColumns": [
+              "Numero TLF"
+            ],
+            "schema": [
+              {
+                "id": "Nombre Reserva",
+                "displayName": "Nombre Reserva",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "Personas",
+                "displayName": "Personas",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "Hora de Reserva",
+                "displayName": "Hora de Reserva",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "Numero TLF",
+                "displayName": "Numero TLF",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "Estado",
+                "displayName": "Estado",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "row_number",
+                "displayName": "row_number",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "readOnly": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.7,
+        "position": [
+          944,
+          352
+        ],
+        "id": "97fb97d7-707c-4f46-9de9-12032af0fcac",
+        "name": "Update row in sheet",
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "b3iIwyK8DLzQZxfk",
+            "name": "Google Sheets account"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "When Executed by Another Workflow": {
+        "main": [
+          [
+            {
+              "node": "Get row(s) in sheet",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get row(s) in sheet": {
+        "main": [
+          [
+            {
+              "node": "Delete an event",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Delete an event": {
+        "main": [
+          [
+            {
+              "node": "Update row in sheet",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Update row in sheet": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "system migration",
+    "name": null,
+    "description": null,
+    "autosaved": false
+  },
+  "activeVersionId": "218b4ebf-7654-4148-89f6-c74d608cf7af",
   "connections": {
     "When Executed by Another Workflow": {
       "main": [
