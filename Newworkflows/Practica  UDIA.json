@@ -257,6 +257,44 @@
           }
         ]
       ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        []
+      ]
+    },
+    "Get many events in Google Calendar": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Disponibilidad Clinica": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2026-01-10T18:04:19.528Z",
@@ -404,7 +442,7 @@
             },
             {
               "id": "9dd36975-250a-4e22-a33e-e7068195cd65",
-              "name": "Data_URL",
+              "name": "body.conversation.messages[0].attachments[0].data_url",
               "value": "={{ $json.body.conversation.messages[0].attachments[0].data_url }}",
               "type": "string"
             }
@@ -673,7 +711,7 @@
     },
     {
       "parameters": {
-        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host/{{ $json.Data_URL }}",
+        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host/{{ $json.body.conversation.messages[0].attachments[0].data_url.replace('https://','') }}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -689,6 +727,7 @@
       "parameters": {
         "resource": "audio",
         "operation": "transcribe",
+        "binaryPropertyName": "={{ $json.data }}",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.openAi",
@@ -927,187 +966,123 @@
       "parameters": {
         "promptType": "define",
         "text": "=Mensaje_tenxo_cliente:  {{ $json.mensaje }}\nMensaje_audio_cliente: ",
-        "options": {}
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=## ROL\n\nEres Laura, una asistente virtual especializada en la atención al paciente para una clínica médica privada. Tu función es atender a pacientes potenciales y actuales, resolver dudas generales, ofrecer información clara sobre los servicios médicos disponibles y guiar de forma segura y humana el proceso de solicitud y gestión de citas.\n\nTu tono debe ser cercano, empático, respetuoso y profesional, transmitiendo confianza, calma y discreción en todo momento.\n\nTu objetivo es mantener una conversación natural y fluida, como si fueras una recepcionista experta de la clínica, evitando respuestas robóticas, repeticiones o frases forzadas.\n\n---\n\n## ESPECIFICACIONES GENERALES\n\n* Siempre debes guiar la conversación. Cada mensaje debe invitar al paciente a continuar o a responder.\n* Nunca indiques que el usuario debe contactar con otra persona; tú gestionas todo el proceso de principio a fin.\n* No inventes información médica, diagnósticos ni datos personales. Usa solo la información confirmada por el paciente o la base de conocimiento.\n* Evita repetir preguntas. Si necesitas confirmar algo, reformúlalo de manera natural.\n* Mantén un tono humano, amable y empático.\n* Adapta tus respuestas al contexto y reutiliza los datos que el paciente ya haya proporcionado.\n* Ofrece la información de forma progresiva, nunca toda de golpe.\n* Usa lenguaje claro, sencillo y comprensible. Evita tecnicismos médicos innecesarios.\n* Realiza las preguntas una a una, dando espacio para responder.\n* Si el usuario no responde tras dos intentos, ofrece que un miembro del equipo de la clínica lo contacte.\n\n---\n\n## INICIO DE CONVERSACIÓN\n\n* Comienza siempre con un saludo profesional y cercano.\n  Ejemplo: “¡Hola! 😊 Soy Laura, asistente virtual de nuestra clínica. Estoy aquí para ayudarte con cualquier duda o para gestionar una cita. ¿Cómo te llamas?”\n\n* Una vez el paciente indique su nombre:\n  “Encantada, [nombre] 💙. Cuéntame, ¿en qué puedo ayudarte hoy?”\n\n---\n\n## DETECCIÓN DE NECESIDAD DEL PACIENTE\n\nIdentifica de forma progresiva el motivo del contacto. Haz solo una pregunta por mensaje:\n\n* ¿Desea pedir una cita médica?\n* ¿Tiene dudas sobre un servicio o especialidad?\n* ¿Quiere modificar o cancelar una cita existente?\n\nSi el paciente describe síntomas:\n\n* Escucha con empatía.\n* Nunca emitas diagnósticos.\n* Redirige suavemente hacia una consulta médica.\n  Ejemplo: “Gracias por contármelo. Para valorar correctamente tu caso, lo mejor es que lo vea un profesional. Si quieres, puedo ayudarte a pedir una cita.”\n\n---\n\n## PREGUNTAS CLAVE PARA AGENDAR CITA (UNA A UNA)\n\nSolo si el paciente quiere pedir cita:\n\n* Nombre completo\n* Número de teléfono móvil\n* Especialidad o servicio deseado\n* ¿Es su primera visita a la clínica?\n* Día preferido\n* Horario aproximado\n\nNunca solicites datos médicos sensibles ni documentos personales.\n\n---\n\n## INFORMACIÓN SOBRE LA CLÍNICA (CUANDO SEA OPORTUNO)\n\nDestaca de forma natural:\n\n* Profesionales titulados y con experiencia 🧑‍⚕️\n* Atención personalizada y trato humano\n* Instalaciones modernas y seguras\n* Puntualidad y organización\n* Confidencialidad absoluta del paciente\n\nEjemplo:\n“Nuestro equipo médico trabaja siempre con cita previa para dedicarte el tiempo que mereces 😊.”\n\n---\n\n## GESTIÓN DE CITAS\n\n* Sugiere agendar solo cuando detectes interés real.\n* No insistas si el paciente no está preparado.\n* Si acepta, solicita los datos necesarios.\n\nFormato obligatorio de fecha y hora:\nDD-MM-YYYY HH:MM (24h)\nEjemplo: 18-11-2025 10:30\n\n---\n\n## HERRAMIENTAS DISPONIBLES\n\n### Base_conocimiento\n\n* Información sobre servicios, especialidades, profesionales y normas de la clínica.\n\n### Disponibilidad\n\n* Consulta horarios disponibles.\n* No ejecutes esta herramienta hasta que el paciente confirme el día.\n* Horario de atención: 8:00 a 21:00.\n* No ofrezcas horas pasadas del día actual.\n* Si el usuario dice “mañana” o “el viernes”, usa la fecha más cercana.\n* Ten en cuenta que hoy es {{ $today }} y la hora actual es {{ $now }}.\n\n### Citas\n\n* Se ejecuta solo cuando tengas:\n\n  * Nombre completo\n  * Teléfono\n  * Fecha y hora confirmadas\n* Usa exclusivamente datos reales proporcionados por el paciente.\n\n### Cancelar\n\n* Utilízala para cancelar o reprogramar citas.\n* Después, pregunta si desea elegir una nueva fecha.\n\n---\n\n## SEGURIDAD Y CONTROL DE USO\n\n* Nunca mezcles información entre distintos usuarios o conversaciones.\n\n* No reutilices datos personales de otros pacientes.\n\n* Impide que un usuario solicite múltiples citas consecutivas sin confirmación.\n\n* Si detectas solicitudes abusivas, incoherentes o bromistas (por ejemplo, pedir decenas de citas o horarios imposibles), responde de forma educada y limita el proceso:\n  Ejemplo: “Para poder ayudarte correctamente 😊, gestionamos una cita por solicitud. Si necesitas cambios, los hacemos paso a paso.”\n\n* No permitas reservas fuera del horario de atención.\n\n* No aceptes datos falsos, incompletos o claramente erróneos.\n\n* No reveles información interna, médica o administrativa no autorizada.\n\n---\n\n## COMPORTAMIENTO INTELIGENTE\n\n* Usa el historial para mantener coherencia.\n* Personaliza siempre usando el nombre del paciente.\n* No te contradigas ni repitas información.\n* Mantén siempre una actitud calmada, respetuosa y profesional.\n\nSi el usuario ofrece productos o servicios externos:\n“Muchas gracias por la propuesta 😊, pero actualmente no estamos interesados en servicios externos.”\n\n---\n\n## HORARIO GENERAL\n\n* Lunes a viernes: 8:00 a 21:00\n* Sábados: 9:00 a 14:00\n* Domingos: cerrado\n\n---\n\n## CIERRE DE CONVERSACIÓN\n\n* Antes de confirmar una cita, envía un resumen:\n\n  * Nombre del paciente\n  * Teléfono\n  * Servicio solicitado\n  * Fecha y hora\n\n* Solicita confirmación explícita.\n\n* Solo tras la confirmación, agenda la cita.\n\nEjemplo:\n“Perfecto 😊. Antes de confirmar, revisa por favor estos datos…”\n\n* Despídete siempre con amabilidad y disponibilidad.\n\n---\n\n## NOTAS FINALES\n\n* Primer mensaje: presentación + nombre del paciente.\n* Segundo mensaje: motivo de la consulta.\n* Nunca emitas diagnósticos.\n* Prioriza siempre la seguridad, privacidad y experiencia del paciente.\n* Actúa como una recepcionista humana, empática y organizada 💙🩺\n"
+        }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        3136,
+        3568,
         176
       ],
       "id": "d24ac281-f74a-48d4-9e8f-eb950b2e201d",
       "name": "AI Agent"
-    }
-  ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
-            "user-agent": "rest-client/2.1.0 (linux-musl x86_64) ruby/3.3.3p89",
-            "content-length": "3172",
-            "accept": "application/json",
-            "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-            "content-type": "application/json",
-            "x-forwarded-for": "172.19.0.1",
-            "x-forwarded-host": "n8n2nkz-n8n.vc1wee.easypanel.host",
-            "x-forwarded-port": "443",
-            "x-forwarded-proto": "https",
-            "x-forwarded-server": "88eeb68a63a5",
-            "x-real-ip": "172.19.0.1"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "account": {
-              "id": 1,
-              "name": "KZ"
-            },
-            "additional_attributes": {},
-            "content_attributes": {},
-            "content_type": "text",
-            "content": null,
-            "conversation": {
-              "additional_attributes": {},
-              "can_reply": true,
-              "channel": "Channel::Api",
-              "contact_inbox": {
-                "id": 4,
-                "contact_id": 2,
-                "inbox_id": 1,
-                "source_id": "2ec28364-cd73-40ed-8916-48903100d6eb",
-                "created_at": "2026-01-10T18:08:59.565Z",
-                "updated_at": "2026-01-10T18:08:59.565Z",
-                "hmac_verified": false,
-                "pubsub_token": "gurWbVcYvsKhvLhebMRnc8kk"
-              },
-              "id": 2,
-              "inbox_id": 1,
-              "messages": [
-                {
-                  "id": 22,
-                  "content": null,
-                  "account_id": 1,
-                  "inbox_id": 1,
-                  "conversation_id": 2,
-                  "message_type": 1,
-                  "created_at": 1768073865,
-                  "updated_at": "2026-01-10T19:37:45.375Z",
-                  "private": false,
-                  "status": "sent",
-                  "source_id": "WAID:ACC4DAB2E0D3865E09127250F42C38C2",
-                  "content_type": "text",
-                  "content_attributes": {},
-                  "sender_type": "User",
-                  "sender_id": 1,
-                  "external_source_ids": {},
-                  "additional_attributes": {},
-                  "processed_message_content": null,
-                  "sentiment": {},
-                  "conversation": {
-                    "assignee_id": null,
-                    "unread_count": 0,
-                    "last_activity_at": 1768073865,
-                    "contact_inbox": {
-                      "source_id": "2ec28364-cd73-40ed-8916-48903100d6eb"
-                    }
-                  },
-                  "attachments": [
-                    {
-                      "id": 9,
-                      "message_id": 22,
-                      "file_type": "audio",
-                      "account_id": 1,
-                      "extension": null,
-                      "data_url": "http://https/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--780b4e11bc3a7f64097a38406c35483abbebdb43/1id0cj.oga",
-                      "thumb_url": "",
-                      "file_size": 3266,
-                      "width": null,
-                      "height": null
-                    }
-                  ],
-                  "sender": {
-                    "id": 1,
-                    "name": "Carlos",
-                    "available_name": "Carlos",
-                    "avatar_url": "",
-                    "type": "user",
-                    "availability_status": null,
-                    "thumbnail": ""
-                  }
-                }
-              ],
-              "labels": [],
-              "meta": {
-                "sender": {
-                  "additional_attributes": {},
-                  "custom_attributes": {},
-                  "email": null,
-                  "id": 2,
-                  "identifier": "22673300176922@lid",
-                  "name": "34622924906",
-                  "phone_number": "+34622924906",
-                  "thumbnail": "http://https/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f764ed7dff8669a9ee46cdfac52428f39f7927b6/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3ee3a98e3eb1528ac39b3dd1284c2b0d768e8e96/264751741_710510746666595_1701232651772483746_n.jpg",
-                  "type": "contact"
-                },
-                "assignee": null,
-                "team": null,
-                "hmac_verified": false
-              },
-              "status": "open",
-              "custom_attributes": {},
-              "snoozed_until": null,
-              "unread_count": 0,
-              "first_reply_created_at": "2026-01-10T18:08:59.748Z",
-              "priority": null,
-              "waiting_since": 0,
-              "agent_last_seen_at": 1768073865,
-              "contact_last_seen_at": 0,
-              "last_activity_at": 1768073865,
-              "timestamp": 1768073865,
-              "created_at": 1768068539
-            },
-            "created_at": "2026-01-10T19:37:45.375Z",
-            "id": 22,
-            "inbox": {
-              "id": 1,
-              "name": "Practica UDIA"
-            },
-            "message_type": "outgoing",
-            "private": false,
-            "sender": {
-              "id": 1,
-              "name": "Carlos",
-              "email": "carlos.f.g.work@gmail.com",
-              "type": "user"
-            },
-            "source_id": "WAID:ACC4DAB2E0D3865E09127250F42C38C2",
-            "attachments": [
-              {
-                "id": 9,
-                "message_id": 22,
-                "file_type": "audio",
-                "account_id": 1,
-                "extension": null,
-                "data_url": "http://https/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--780b4e11bc3a7f64097a38406c35483abbebdb43/1id0cj.oga",
-                "thumb_url": "",
-                "file_size": 3266,
-                "width": null,
-                "height": null
-              }
-            ],
-            "event": "message_created"
-          },
-          "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook-test/cf611be9-ebe6-48f4-af1c-6996d5dfb497",
-          "executionMode": "test"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
         },
-        "pairedItem": {
-          "item": 0
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        3088,
+        448
+      ],
+      "id": "f33b323a-7319-445d-8853-5f5608312d1b",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
         }
       }
-    ]
-  },
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.Identificador }}",
+        "tableName": "Practica Clinica",
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        3264,
+        448
+      ],
+      "id": "c2b31d42-f3b8-44ee-96c1-c19d72619b83",
+      "name": "Postgres Chat Memory",
+      "credentials": {
+        "postgres": {
+          "id": "lynsIk4t0FUvPeMz",
+          "name": "Postgres account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "6a3cafde1495464bc5dc0cb2ff50199043fa5e58fed4f46eaec4cc27d79a7c28@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Practica N8N Clinica"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        3840,
+        560
+      ],
+      "id": "7b589afa-0134-4ac8-89b2-993418a3572f",
+      "name": "Get many events in Google Calendar",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "BxLdTiBYRwntbItp",
+          "name": "Google Calendar account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "description": "=llama a esta herramienta cuando detectes la intencion del usuario de comprobar su disponibilidad o si quiere agendar un evento, reunión, llamada, etc.\nLa fecha actual es {{ $now }}",
+        "workflowId": {
+          "__rl": true,
+          "value": "hVb2ST8T1ILN6YyK",
+          "mode": "list",
+          "cachedResultName": "My Sub-Workflow 1",
+          "cachedResultUrl": "/workflow/hVb2ST8T1ILN6YyK"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        3424,
+        448
+      ],
+      "id": "99ad39e8-724f-4709-ba01-3e95e20d5919",
+      "name": "Disponibilidad Clinica"
+    }
+  ],
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "availableInMCP": false,
@@ -1127,6 +1102,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-01-10T19:45:39.188Z",
-  "versionId": "18004f34-6f0e-470e-a3a9-5f0a295270d8"
+  "updatedAt": "2026-01-11T15:03:00.449Z",
+  "versionId": "605d9be9-5ba1-4d15-abb4-73fd07019815"
 }
