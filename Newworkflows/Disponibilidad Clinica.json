@@ -1,0 +1,97 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Replace me with your logic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-01-11T14:38:21.689Z",
+  "id": "hVb2ST8T1ILN6YyK",
+  "isArchived": false,
+  "meta": null,
+  "name": "Disponibilidad Clinica",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "Fecha"
+            }
+          ]
+        }
+      },
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "typeVersion": 1.1,
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        272,
+        352
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "b5942df6-0160-4ef7-965d-57583acdc8aa",
+      "name": "Replace me with your logic",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        1296,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  const fecha = new Date(item.json.fecha);\n  \n  const fechaInicio = new Date(fecha);\n  \n  // Función para formatear fecha + horas\n  function formatFechaConHoras(fecha) {\n    return fecha.toISOString().slice(0, 19).replace('T', ' ');\n  }\n  \n  function fechaFinal(fecha) {\n    return (fecha.getHours() + ':' + fecha.getMinutes().toString().padStart(2,'0') + ':' + fecha.getSeconds().toString().padStart(2,'0'));\n  }\n  \n  return {\n    json: {\n      ...item.json,\n      fechaInicio: formatFechaConHoras(fechaInicio),\n      fechaFinal: fechaFinal(new Date(fechaInicio.getTime() + 30*60*1000)) // +30 min\n    }\n  };\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        352
+      ],
+      "id": "5dedb177-0094-4530-a956-4af009695b07",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-01-11T14:38:21.703Z",
+      "createdAt": "2026-01-11T14:38:21.703Z",
+      "role": "workflow:owner",
+      "workflowId": "hVb2ST8T1ILN6YyK",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-01-11T14:53:29.489Z",
+  "versionId": "60c0a7fa-1fdc-4777-bcd6-46f3bde739fa"
+}
