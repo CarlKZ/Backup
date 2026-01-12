@@ -1,0 +1,104 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Cancelar Clinica": {
+      "main": [
+        [
+          {
+            "node": "Delete an event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-01-12T12:39:52.050Z",
+  "id": "o3MKJB4AHrXJM0kZ",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Cancelar Clinica",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "Titulo"
+            },
+            {
+              "name": "Fecha Inicio"
+            },
+            {
+              "name": "Fecha Fin"
+            },
+            {
+              "name": "Descripción"
+            },
+            {
+              "name": "ID"
+            }
+          ]
+        }
+      },
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "typeVersion": 1.1,
+      "name": "Cancelar Clinica",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        272,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "6a3cafde1495464bc5dc0cb2ff50199043fa5e58fed4f46eaec4cc27d79a7c28@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Practica N8N Clinica"
+        },
+        "eventId": "={{ $json.ID }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        480,
+        352
+      ],
+      "id": "b60b406d-fe02-4d32-81d9-df8d5aeee44f",
+      "name": "Delete an event",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "BxLdTiBYRwntbItp",
+          "name": "Google Calendar account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-01-12T12:39:52.056Z",
+      "createdAt": "2026-01-12T12:39:52.056Z",
+      "role": "workflow:owner",
+      "workflowId": "o3MKJB4AHrXJM0kZ",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-01-12T12:41:47.463Z",
+  "versionId": "a9bdccf7-36c8-43fa-b29a-104cc2a156af"
+}
