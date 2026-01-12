@@ -1,0 +1,1275 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "If1": {
+      "main": [
+        []
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Redis1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis1": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "Redis2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Redis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Transcribe a recording",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis3": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Redis4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis4": {
+      "main": [
+        [
+          {
+            "node": "If4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If4": {
+      "main": [
+        [
+          {
+            "node": "Redis5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Redis3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis5": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcribe a recording": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        []
+      ]
+    },
+    "Get many events in Google Calendar": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Disponibilidad Clinica": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-01-10T18:04:19.528Z",
+  "id": "mJp5fbamZrQJccv1",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Practica  UDIA Clinica",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "cf611be9-ebe6-48f4-af1c-6996d5dfb497",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        176
+      ],
+      "id": "6150be02-ae4c-4823-a8ac-abb5da757e06",
+      "name": "Webhook",
+      "webhookId": "cf611be9-ebe6-48f4-af1c-6996d5dfb497"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "844d9ab8-f2dd-47b5-8f29-29ea70e52009",
+              "leftValue": "={{ $json.body.event }}",
+              "rightValue": "=message_created",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        224,
+        176
+      ],
+      "id": "b3767584-7fb6-4468-8750-608e1ee8790c",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "db7831e6-2930-4c9d-adbd-0b6cb1a0294b",
+              "leftValue": "={{ $json.body.conversation.messages[0].sender_type }}",
+              "rightValue": "Contacto",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        0,
+        -144
+      ],
+      "id": "44e23bde-c449-4ceb-942b-e8d7971a8379",
+      "name": "If1",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "34908a1a-910b-4240-b270-c5bae76d6672",
+              "name": "accountID",
+              "value": "={{ $json.body.account.id }}",
+              "type": "string"
+            },
+            {
+              "id": "861750b8-6d53-4256-833c-048704fb4711",
+              "name": "conversationID",
+              "value": "={{ $json.body.conversation.messages[0].conversation_id }}",
+              "type": "string"
+            },
+            {
+              "id": "db3956f9-9900-4b56-ac29-ffe7889b2299",
+              "name": "sessionID",
+              "value": "={{ $json.body.conversation.messages[0].source_id }}",
+              "type": "string"
+            },
+            {
+              "id": "cd35006e-6aca-472c-a395-8218acf4de48",
+              "name": "Identificador",
+              "value": "={{ $json.body.conversation.meta.sender.identifier }}",
+              "type": "string"
+            },
+            {
+              "id": "1f42345f-4d66-4ac4-9368-2b08b226d4b0",
+              "name": "telefono",
+              "value": "={{ $json.body.conversation.meta.sender.phone_number }}",
+              "type": "string"
+            },
+            {
+              "id": "55ad0e2a-09a6-42b7-925d-d30a4b19661b",
+              "name": "mensaje",
+              "value": "={{ $json.body.content }}",
+              "type": "string"
+            },
+            {
+              "id": "f1e69443-9dbe-4203-b32c-98bd1dcddbc1",
+              "name": "data_time",
+              "value": "={{ $json.body.conversation.timestamp.toDateTime('s').toLocal() }}",
+              "type": "string"
+            },
+            {
+              "id": "470e66ac-542e-461a-829b-aa96232dec8c",
+              "name": "tipo_mensaje",
+              "value": "={{ $json.body.conversation.messages[0].attachments[0].file_type }}",
+              "type": "string"
+            },
+            {
+              "id": "9dd36975-250a-4e22-a33e-e7068195cd65",
+              "name": "body.conversation.messages[0].attachments[0].data_url",
+              "value": "={{ $json.body.conversation.messages[0].attachments[0].data_url }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        448,
+        176
+      ],
+      "id": "2da19914-9f4f-4142-b40d-770d35ccea53",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "d6581874-f941-437c-b4a6-90cb46415c1d",
+              "leftValue": "={{ $json.tipo_mensaje }}",
+              "rightValue": "audio",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        672,
+        176
+      ],
+      "id": "ca53525b-fde1-47b1-9256-071612fb8ec0",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener el valor original del campo\nconst sender = $input.first().json.telefono;\n\n// Eliminar el prefijo \"34\" o \"49\" si existe, y quitar el dominio de whatsApp\nconst cleanedNumber = sender\n  .replace(/^(?:34|49)/, '')  // Quita el '+34', '34', '+49' o '49' al inicio\n  .replace(/@s.whatsapp.net$/, ''); // Quita el '@s.whatsapp.net' al final\n\n// Devolver el número limpio\nreturn [\n  {\n    json: {\n      cleanedNumber\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1344,
+        272
+      ],
+      "id": "13d99f4a-d139-47c5-8e89-1eeaf8ab1836",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $json.Identificador }}",
+        "messageData": "={{ $json.mensaje }}",
+        "tail": true
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1792,
+        272
+      ],
+      "id": "a101b8be-e8b7-416e-8c94-46cc3ad12b1d",
+      "name": "Redis",
+      "credentials": {
+        "redis": {
+          "id": "rmwGdInGMfi5lhMd",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2016,
+        272
+      ],
+      "id": "cb968fbd-72d0-46fc-af41-15e0603a4641",
+      "name": "Wait",
+      "webhookId": "71ac37ec-4a28-4234-a581-e5bf42c39a02"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "key": "={{ $json.Identificador }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2240,
+        272
+      ],
+      "id": "a17d4e65-30c7-4450-8c86-97ff6448e2c5",
+      "name": "Redis1",
+      "credentials": {
+        "redis": {
+          "id": "rmwGdInGMfi5lhMd",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "96158e05-c548-462c-94c3-8138dd2ceaf9",
+              "leftValue": "={{ $json.propertyName.last() }}",
+              "rightValue": "={{ $('Edit Fields1').item.json.mensaje }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        2464,
+        272
+      ],
+      "id": "87f36a24-6015-42ff-b4c2-b3db449f60fb",
+      "name": "If3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "34908a1a-910b-4240-b270-c5bae76d6672",
+              "name": "accountID",
+              "value": "={{ $('Edit Fields').item.json.accountID }}",
+              "type": "string"
+            },
+            {
+              "id": "861750b8-6d53-4256-833c-048704fb4711",
+              "name": "conversationID",
+              "value": "={{ $('Edit Fields').item.json.conversationID }}",
+              "type": "string"
+            },
+            {
+              "id": "db3956f9-9900-4b56-ac29-ffe7889b2299",
+              "name": "sessionID",
+              "value": "={{ $('Edit Fields').item.json.sessionID }}",
+              "type": "string"
+            },
+            {
+              "id": "cd35006e-6aca-472c-a395-8218acf4de48",
+              "name": "Identificador",
+              "value": "={{ $('Edit Fields').item.json.Identificador }}",
+              "type": "string"
+            },
+            {
+              "id": "54a552ab-1572-4814-8549-4887c93002c0",
+              "name": "telefono",
+              "value": "={{ $json.cleanedNumber }}",
+              "type": "string"
+            },
+            {
+              "id": "55ad0e2a-09a6-42b7-925d-d30a4b19661b",
+              "name": "mensaje",
+              "value": "={{ $('Edit Fields').item.json.mensaje }}",
+              "type": "string"
+            },
+            {
+              "id": "f1e69443-9dbe-4203-b32c-98bd1dcddbc1",
+              "name": "data_time",
+              "value": "={{ $('Edit Fields').item.json.data_time }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {
+          "ignoreConversionErrors": false
+        }
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1568,
+        272
+      ],
+      "id": "179e837c-255c-49bb-b8d6-75bf5042e65f",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('Edit Fields1').item.json.Identificador }}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2688,
+        272
+      ],
+      "id": "00fd0f52-d2b8-4bcb-a5db-37fd96e6eb34",
+      "name": "Redis2",
+      "credentials": {
+        "redis": {
+          "id": "rmwGdInGMfi5lhMd",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5a1e36e3-f8de-419c-83ae-5cc7fead47df",
+              "name": "mensaje",
+              "value": "={{ $json.propertyName.join(\" \") }}",
+              "type": "string"
+            },
+            {
+              "id": "ed4e679f-704c-454a-88e4-d46623e9b6dd",
+              "name": "telefono",
+              "value": "={{ $('Edit Fields1').item.json.telefono }}",
+              "type": "string"
+            },
+            {
+              "id": "67bac86b-a225-4b80-8f56-0544eb594701",
+              "name": "Identificador",
+              "value": "={{ $('Edit Fields1').item.json.Identificador }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2912,
+        272
+      ],
+      "id": "bd69cdd7-2980-4903-9f73-87fd89949d86",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host/{{ $json.body.conversation.messages[0].attachments[0].data_url.replace('https://','') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        896,
+        80
+      ],
+      "id": "d658b372-9c2b-42f2-b30c-d7836b8ef85d",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "binaryPropertyName": "={{ $json.data }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        1120,
+        80
+      ],
+      "id": "bf6a214d-709e-495a-a97f-21d94a964605",
+      "name": "Transcribe a recording",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener el valor original del campo\nconst sender = $input.first().json.telefono;\n\n// Eliminar el prefijo \"34\" o \"49\" si existe, y quitar el dominio de whatsApp\nconst cleanedNumber = sender\n  .replace(/^(?:34|49)/, '')  // Quita el '+34', '34', '+49' o '49' al inicio\n  .replace(/@s.whatsapp.net$/, ''); // Quita el '@s.whatsapp.net' al final\n\n// Devolver el número limpio\nreturn [\n  {\n    json: {\n      cleanedNumber\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1344,
+        80
+      ],
+      "id": "898042a6-b62d-46fc-acdc-d05ed861d991",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $json.Identificador }}",
+        "messageData": "={{ $json.mensaje }}",
+        "tail": true
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1792,
+        80
+      ],
+      "id": "bfdfc907-e976-4ef8-b326-813035dbcfc5",
+      "name": "Redis3",
+      "credentials": {
+        "redis": {
+          "id": "rmwGdInGMfi5lhMd",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2016,
+        80
+      ],
+      "id": "b9eada27-5df6-4608-9447-87ca35f2d63d",
+      "name": "Wait1",
+      "webhookId": "71ac37ec-4a28-4234-a581-e5bf42c39a02"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "key": "={{ $json.Identificador }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2240,
+        80
+      ],
+      "id": "f07ba84f-df8a-4479-8511-d15a024202e7",
+      "name": "Redis4",
+      "credentials": {
+        "redis": {
+          "id": "rmwGdInGMfi5lhMd",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "96158e05-c548-462c-94c3-8138dd2ceaf9",
+              "leftValue": "={{ $json.propertyName.last() }}",
+              "rightValue": "={{ $('Edit Fields3').item.json.mensaje }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        2464,
+        80
+      ],
+      "id": "0c94a833-5148-42b9-ae1a-1b2cd315e8df",
+      "name": "If4"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "34908a1a-910b-4240-b270-c5bae76d6672",
+              "name": "accountID",
+              "value": "={{ $('Edit Fields').item.json.accountID }}",
+              "type": "string"
+            },
+            {
+              "id": "861750b8-6d53-4256-833c-048704fb4711",
+              "name": "conversationID",
+              "value": "={{ $('Edit Fields').item.json.conversationID }}",
+              "type": "string"
+            },
+            {
+              "id": "db3956f9-9900-4b56-ac29-ffe7889b2299",
+              "name": "sessionID",
+              "value": "={{ $('Edit Fields').item.json.sessionID }}",
+              "type": "string"
+            },
+            {
+              "id": "cd35006e-6aca-472c-a395-8218acf4de48",
+              "name": "Identificador",
+              "value": "={{ $('Edit Fields').item.json.Identificador }}",
+              "type": "string"
+            },
+            {
+              "id": "54a552ab-1572-4814-8549-4887c93002c0",
+              "name": "telefono",
+              "value": "={{ $json.cleanedNumber }}",
+              "type": "string"
+            },
+            {
+              "id": "55ad0e2a-09a6-42b7-925d-d30a4b19661b",
+              "name": "mensaje_audio",
+              "value": "=",
+              "type": "string"
+            },
+            {
+              "id": "f1e69443-9dbe-4203-b32c-98bd1dcddbc1",
+              "name": "data_time",
+              "value": "={{ $('Edit Fields').item.json.data_time }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {
+          "ignoreConversionErrors": false
+        }
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1568,
+        80
+      ],
+      "id": "3115f3c6-85d3-44b2-8e71-1102456bbd2f",
+      "name": "Edit Fields3"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('Edit Fields3').item.json.Identificador }}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2688,
+        80
+      ],
+      "id": "581da7c6-31a3-46a1-8978-34c62be3599f",
+      "name": "Redis5",
+      "credentials": {
+        "redis": {
+          "id": "rmwGdInGMfi5lhMd",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5a1e36e3-f8de-419c-83ae-5cc7fead47df",
+              "name": "mensaje",
+              "value": "={{ $json.propertyName.join(\" \") }}",
+              "type": "string"
+            },
+            {
+              "id": "ed4e679f-704c-454a-88e4-d46623e9b6dd",
+              "name": "telefono",
+              "value": "={{ $('Edit Fields3').item.json.telefono }}",
+              "type": "string"
+            },
+            {
+              "id": "67bac86b-a225-4b80-8f56-0544eb594701",
+              "name": "Identificador",
+              "value": "={{ $('Edit Fields3').item.json.Identificador }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2912,
+        80
+      ],
+      "id": "10fab21e-ba62-4149-b541-0c8b711ff53f",
+      "name": "Edit Fields4"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Mensaje_tenxo_cliente:  {{ $json.mensaje }}\nMensaje_audio_cliente: ",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=## ROL\n\nEres Laura, una asistente virtual especializada en la atención al paciente para una clínica médica privada. Tu función es atender a pacientes potenciales y actuales, resolver dudas generales, ofrecer información clara sobre los servicios médicos disponibles y guiar de forma segura y humana el proceso de solicitud y gestión de citas.\n\nTu tono debe ser cercano, empático, respetuoso y profesional, transmitiendo confianza, calma y discreción en todo momento.\n\nTu objetivo es mantener una conversación natural y fluida, como si fueras una recepcionista experta de la clínica, evitando respuestas robóticas, repeticiones o frases forzadas.\n\n---\n\n## ESPECIFICACIONES GENERALES\n\n* Siempre debes guiar la conversación. Cada mensaje debe invitar al paciente a continuar o a responder.\n* Nunca indiques que el usuario debe contactar con otra persona; tú gestionas todo el proceso de principio a fin.\n* No inventes información médica, diagnósticos ni datos personales. Usa solo la información confirmada por el paciente o la base de conocimiento.\n* Evita repetir preguntas. Si necesitas confirmar algo, reformúlalo de manera natural.\n* Mantén un tono humano, amable y empático.\n* Adapta tus respuestas al contexto y reutiliza los datos que el paciente ya haya proporcionado.\n* Ofrece la información de forma progresiva, nunca toda de golpe.\n* Usa lenguaje claro, sencillo y comprensible. Evita tecnicismos médicos innecesarios.\n* Realiza las preguntas una a una, dando espacio para responder.\n* Si el usuario no responde tras dos intentos, ofrece que un miembro del equipo de la clínica lo contacte.\n\n---\n\n## INICIO DE CONVERSACIÓN\n\n* Comienza siempre con un saludo profesional y cercano.\n  Ejemplo: “¡Hola! 😊 Soy Laura, asistente virtual de nuestra clínica. Estoy aquí para ayudarte con cualquier duda o para gestionar una cita. ¿Cómo te llamas?”\n\n* Una vez el paciente indique su nombre:\n  “Encantada, [nombre] 💙. Cuéntame, ¿en qué puedo ayudarte hoy?”\n\n---\n\n## DETECCIÓN DE NECESIDAD DEL PACIENTE\n\nIdentifica de forma progresiva el motivo del contacto. Haz solo una pregunta por mensaje:\n\n* ¿Desea pedir una cita médica?\n* ¿Tiene dudas sobre un servicio o especialidad?\n* ¿Quiere modificar o cancelar una cita existente?\n\nSi el paciente describe síntomas:\n\n* Escucha con empatía.\n* Nunca emitas diagnósticos.\n* Redirige suavemente hacia una consulta médica.\n  Ejemplo: “Gracias por contármelo. Para valorar correctamente tu caso, lo mejor es que lo vea un profesional. Si quieres, puedo ayudarte a pedir una cita.”\n\n---\n\n## PREGUNTAS CLAVE PARA AGENDAR CITA (UNA A UNA)\n\nSolo si el paciente quiere pedir cita:\n\n* Nombre completo\n* Número de teléfono móvil\n* Especialidad o servicio deseado\n* ¿Es su primera visita a la clínica?\n* Día preferido\n* Horario aproximado\n\nNunca solicites datos médicos sensibles ni documentos personales.\n\n---\n\n## INFORMACIÓN SOBRE LA CLÍNICA (CUANDO SEA OPORTUNO)\n\nDestaca de forma natural:\n\n* Profesionales titulados y con experiencia 🧑‍⚕️\n* Atención personalizada y trato humano\n* Instalaciones modernas y seguras\n* Puntualidad y organización\n* Confidencialidad absoluta del paciente\n\nEjemplo:\n“Nuestro equipo médico trabaja siempre con cita previa para dedicarte el tiempo que mereces 😊.”\n\n---\n\n## GESTIÓN DE CITAS\n\n* Sugiere agendar solo cuando detectes interés real.\n* No insistas si el paciente no está preparado.\n* Si acepta, solicita los datos necesarios.\n\nFormato obligatorio de fecha y hora:\nDD-MM-YYYY HH:MM (24h)\nEjemplo: 18-11-2025 10:30\n\n---\n\n## HERRAMIENTAS DISPONIBLES\n\n### Base_conocimiento\n\n* Información sobre servicios, especialidades, profesionales y normas de la clínica.\n\n### Disponibilidad\n\n* Consulta horarios disponibles.\n* No ejecutes esta herramienta hasta que el paciente confirme el día.\n* Horario de atención: 8:00 a 21:00.\n* No ofrezcas horas pasadas del día actual.\n* Si el usuario dice “mañana” o “el viernes”, usa la fecha más cercana.\n* Ten en cuenta que hoy es {{ $today }} y la hora actual es {{ $now }}.\n\n### Citas\n\n* Se ejecuta solo cuando tengas:\n\n  * Nombre completo\n  * Teléfono\n  * Fecha y hora confirmadas\n* Usa exclusivamente datos reales proporcionados por el paciente.\n\n### Cancelar\n\n* Utilízala para cancelar o reprogramar citas.\n* Después, pregunta si desea elegir una nueva fecha.\n\n---\n\n## SEGURIDAD Y CONTROL DE USO\n\n* Nunca mezcles información entre distintos usuarios o conversaciones.\n\n* No reutilices datos personales de otros pacientes.\n\n* Impide que un usuario solicite múltiples citas consecutivas sin confirmación.\n\n* Si detectas solicitudes abusivas, incoherentes o bromistas (por ejemplo, pedir decenas de citas o horarios imposibles), responde de forma educada y limita el proceso:\n  Ejemplo: “Para poder ayudarte correctamente 😊, gestionamos una cita por solicitud. Si necesitas cambios, los hacemos paso a paso.”\n\n* No permitas reservas fuera del horario de atención.\n\n* No aceptes datos falsos, incompletos o claramente erróneos.\n\n* No reveles información interna, médica o administrativa no autorizada.\n\n---\n\n## COMPORTAMIENTO INTELIGENTE\n\n* Usa el historial para mantener coherencia.\n* Personaliza siempre usando el nombre del paciente.\n* No te contradigas ni repitas información.\n* Mantén siempre una actitud calmada, respetuosa y profesional.\n\nSi el usuario ofrece productos o servicios externos:\n“Muchas gracias por la propuesta 😊, pero actualmente no estamos interesados en servicios externos.”\n\n---\n\n## HORARIO GENERAL\n\n* Lunes a viernes: 8:00 a 21:00\n* Sábados: 9:00 a 14:00\n* Domingos: cerrado\n\n---\n\n## CIERRE DE CONVERSACIÓN\n\n* Antes de confirmar una cita, envía un resumen:\n\n  * Nombre del paciente\n  * Teléfono\n  * Servicio solicitado\n  * Fecha y hora\n\n* Solicita confirmación explícita.\n\n* Solo tras la confirmación, agenda la cita.\n\nEjemplo:\n“Perfecto 😊. Antes de confirmar, revisa por favor estos datos…”\n\n* Despídete siempre con amabilidad y disponibilidad.\n\n---\n\n## NOTAS FINALES\n\n* Primer mensaje: presentación + nombre del paciente.\n* Segundo mensaje: motivo de la consulta.\n* Nunca emitas diagnósticos.\n* Prioriza siempre la seguridad, privacidad y experiencia del paciente.\n* Actúa como una recepcionista humana, empática y organizada 💙🩺\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        3568,
+        176
+      ],
+      "id": "d24ac281-f74a-48d4-9e8f-eb950b2e201d",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        3088,
+        448
+      ],
+      "id": "f33b323a-7319-445d-8853-5f5608312d1b",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.Identificador }}",
+        "tableName": "Practica Clinica",
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        3264,
+        448
+      ],
+      "id": "c2b31d42-f3b8-44ee-96c1-c19d72619b83",
+      "name": "Postgres Chat Memory",
+      "credentials": {
+        "postgres": {
+          "id": "lynsIk4t0FUvPeMz",
+          "name": "Postgres account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "6a3cafde1495464bc5dc0cb2ff50199043fa5e58fed4f46eaec4cc27d79a7c28@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Practica N8N Clinica"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        3808,
+        448
+      ],
+      "id": "7b589afa-0134-4ac8-89b2-993418a3572f",
+      "name": "Get many events in Google Calendar",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "BxLdTiBYRwntbItp",
+          "name": "Google Calendar account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "description": "=llama a esta herramienta cuando detectes la intencion del usuario de comprobar su disponibilidad o si quiere agendar un evento, reunión, llamada, etc.\nLa fecha actual es {{ $now }}",
+        "workflowId": {
+          "__rl": true,
+          "value": "hVb2ST8T1ILN6YyK",
+          "mode": "list",
+          "cachedResultName": "My Sub-Workflow 1",
+          "cachedResultUrl": "/workflow/hVb2ST8T1ILN6YyK"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        3424,
+        448
+      ],
+      "id": "99ad39e8-724f-4709-ba01-3e95e20d5919",
+      "name": "Disponibilidad Clinica"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
+            "user-agent": "rest-client/2.1.0 (linux-musl x86_64) ruby/3.3.3p89",
+            "content-length": "3174",
+            "accept": "application/json",
+            "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.19.0.1",
+            "x-forwarded-host": "n8n2nkz-n8n.vc1wee.easypanel.host",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "88eeb68a63a5",
+            "x-real-ip": "172.19.0.1"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "account": {
+              "id": 1,
+              "name": "KZ"
+            },
+            "additional_attributes": {},
+            "content_attributes": {},
+            "content_type": "text",
+            "content": null,
+            "conversation": {
+              "additional_attributes": {},
+              "can_reply": true,
+              "channel": "Channel::Api",
+              "contact_inbox": {
+                "id": 4,
+                "contact_id": 2,
+                "inbox_id": 1,
+                "source_id": "2ec28364-cd73-40ed-8916-48903100d6eb",
+                "created_at": "2026-01-10T18:08:59.565Z",
+                "updated_at": "2026-01-10T18:08:59.565Z",
+                "hmac_verified": false,
+                "pubsub_token": "gurWbVcYvsKhvLhebMRnc8kk"
+              },
+              "id": 2,
+              "inbox_id": 1,
+              "messages": [
+                {
+                  "id": 34,
+                  "content": null,
+                  "account_id": 1,
+                  "inbox_id": 1,
+                  "conversation_id": 2,
+                  "message_type": 1,
+                  "created_at": 1768143385,
+                  "updated_at": "2026-01-11T14:56:25.196Z",
+                  "private": false,
+                  "status": "sent",
+                  "source_id": "WAID:AC6A14A0931518C02616F2E5CA483E4C",
+                  "content_type": "text",
+                  "content_attributes": {},
+                  "sender_type": "User",
+                  "sender_id": 1,
+                  "external_source_ids": {},
+                  "additional_attributes": {},
+                  "processed_message_content": null,
+                  "sentiment": {},
+                  "conversation": {
+                    "assignee_id": null,
+                    "unread_count": 0,
+                    "last_activity_at": 1768143385,
+                    "contact_inbox": {
+                      "source_id": "2ec28364-cd73-40ed-8916-48903100d6eb"
+                    }
+                  },
+                  "attachments": [
+                    {
+                      "id": 12,
+                      "message_id": 34,
+                      "file_type": "audio",
+                      "account_id": 1,
+                      "extension": null,
+                      "data_url": "http://https/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b9a310d2b034df76ac07dc76d597a2960398c5b1/7s4f8x.oga",
+                      "thumb_url": "",
+                      "file_size": 3697,
+                      "width": null,
+                      "height": null
+                    }
+                  ],
+                  "sender": {
+                    "id": 1,
+                    "name": "Carlos",
+                    "available_name": "Carlos",
+                    "avatar_url": "",
+                    "type": "user",
+                    "availability_status": null,
+                    "thumbnail": ""
+                  }
+                }
+              ],
+              "labels": [],
+              "meta": {
+                "sender": {
+                  "additional_attributes": {},
+                  "custom_attributes": {},
+                  "email": null,
+                  "id": 2,
+                  "identifier": "22673300176922@lid",
+                  "name": "34622924906",
+                  "phone_number": "+34622924906",
+                  "thumbnail": "http://https/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f764ed7dff8669a9ee46cdfac52428f39f7927b6/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3ee3a98e3eb1528ac39b3dd1284c2b0d768e8e96/264751741_710510746666595_1701232651772483746_n.jpg",
+                  "type": "contact"
+                },
+                "assignee": null,
+                "team": null,
+                "hmac_verified": false
+              },
+              "status": "open",
+              "custom_attributes": {},
+              "snoozed_until": null,
+              "unread_count": 0,
+              "first_reply_created_at": "2026-01-10T18:08:59.748Z",
+              "priority": null,
+              "waiting_since": 0,
+              "agent_last_seen_at": 1768143078,
+              "contact_last_seen_at": 0,
+              "last_activity_at": 1768143385,
+              "timestamp": 1768143385,
+              "created_at": 1768068539
+            },
+            "created_at": "2026-01-11T14:56:25.196Z",
+            "id": 34,
+            "inbox": {
+              "id": 1,
+              "name": "Practica UDIA"
+            },
+            "message_type": "outgoing",
+            "private": false,
+            "sender": {
+              "id": 1,
+              "name": "Carlos",
+              "email": "carlos.f.g.work@gmail.com",
+              "type": "user"
+            },
+            "source_id": "WAID:AC6A14A0931518C02616F2E5CA483E4C",
+            "attachments": [
+              {
+                "id": 12,
+                "message_id": 34,
+                "file_type": "audio",
+                "account_id": 1,
+                "extension": null,
+                "data_url": "http://https/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b9a310d2b034df76ac07dc76d597a2960398c5b1/7s4f8x.oga",
+                "thumb_url": "",
+                "file_size": 3697,
+                "width": null,
+                "height": null
+              }
+            ],
+            "event": "message_created"
+          },
+          "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook-test/cf611be9-ebe6-48f4-af1c-6996d5dfb497",
+          "executionMode": "test"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-01-10T18:04:19.579Z",
+      "createdAt": "2026-01-10T18:04:19.579Z",
+      "role": "workflow:owner",
+      "workflowId": "mJp5fbamZrQJccv1",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-01-12T11:41:11.655Z",
+  "versionId": "d7c403a4-e745-4f50-9a06-5c5aa8021aa4"
+}
