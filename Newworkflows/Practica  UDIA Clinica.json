@@ -271,7 +271,13 @@
     },
     "Postgres Chat Memory": {
       "ai_memory": [
-        []
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
       ]
     },
     "Get many events in Google Calendar": {
@@ -291,6 +297,55 @@
           {
             "node": "AI Agent",
             "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crear Eventos": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "Modificar Evento": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cancelar Evento": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Structured Output Parser",
+            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -315,7 +370,7 @@
       "typeVersion": 2.1,
       "position": [
         0,
-        176
+        184
       ],
       "id": "6150be02-ae4c-4823-a8ac-abb5da757e06",
       "name": "Webhook",
@@ -349,7 +404,7 @@
       "typeVersion": 2.3,
       "position": [
         224,
-        176
+        184
       ],
       "id": "b3767584-7fb6-4468-8750-608e1ee8790c",
       "name": "If"
@@ -454,7 +509,7 @@
       "typeVersion": 3.4,
       "position": [
         448,
-        176
+        184
       ],
       "id": "2da19914-9f4f-4142-b40d-770d35ccea53",
       "name": "Edit Fields"
@@ -487,7 +542,7 @@
       "typeVersion": 2.3,
       "position": [
         672,
-        176
+        184
       ],
       "id": "ca53525b-fde1-47b1-9256-071612fb8ec0",
       "name": "If2"
@@ -500,7 +555,7 @@
       "typeVersion": 2,
       "position": [
         1344,
-        272
+        280
       ],
       "id": "13d99f4a-d139-47c5-8e89-1eeaf8ab1836",
       "name": "Code in JavaScript"
@@ -516,7 +571,7 @@
       "typeVersion": 1,
       "position": [
         1792,
-        272
+        280
       ],
       "id": "a101b8be-e8b7-416e-8c94-46cc3ad12b1d",
       "name": "Redis",
@@ -533,7 +588,7 @@
       "typeVersion": 1.1,
       "position": [
         2016,
-        272
+        280
       ],
       "id": "cb968fbd-72d0-46fc-af41-15e0603a4641",
       "name": "Wait",
@@ -549,7 +604,7 @@
       "typeVersion": 1,
       "position": [
         2240,
-        272
+        280
       ],
       "id": "a17d4e65-30c7-4450-8c86-97ff6448e2c5",
       "name": "Redis1",
@@ -588,7 +643,7 @@
       "typeVersion": 2.3,
       "position": [
         2464,
-        272
+        280
       ],
       "id": "87f36a24-6015-42ff-b4c2-b3db449f60fb",
       "name": "If3"
@@ -649,7 +704,7 @@
       "typeVersion": 3.4,
       "position": [
         1568,
-        272
+        280
       ],
       "id": "179e837c-255c-49bb-b8d6-75bf5042e65f",
       "name": "Edit Fields1"
@@ -663,7 +718,7 @@
       "typeVersion": 1,
       "position": [
         2688,
-        272
+        280
       ],
       "id": "00fd0f52-d2b8-4bcb-a5db-37fd96e6eb34",
       "name": "Redis2",
@@ -704,7 +759,7 @@
       "typeVersion": 3.4,
       "position": [
         2912,
-        272
+        280
       ],
       "id": "bd69cdd7-2980-4903-9f73-87fd89949d86",
       "name": "Edit Fields2"
@@ -718,7 +773,7 @@
       "typeVersion": 4.3,
       "position": [
         896,
-        80
+        88
       ],
       "id": "d658b372-9c2b-42f2-b30c-d7836b8ef85d",
       "name": "HTTP Request"
@@ -734,7 +789,7 @@
       "typeVersion": 2.1,
       "position": [
         1120,
-        80
+        88
       ],
       "id": "bf6a214d-709e-495a-a97f-21d94a964605",
       "name": "Transcribe a recording",
@@ -753,7 +808,7 @@
       "typeVersion": 2,
       "position": [
         1344,
-        80
+        88
       ],
       "id": "898042a6-b62d-46fc-acdc-d05ed861d991",
       "name": "Code in JavaScript1"
@@ -769,7 +824,7 @@
       "typeVersion": 1,
       "position": [
         1792,
-        80
+        88
       ],
       "id": "bfdfc907-e976-4ef8-b326-813035dbcfc5",
       "name": "Redis3",
@@ -786,7 +841,7 @@
       "typeVersion": 1.1,
       "position": [
         2016,
-        80
+        88
       ],
       "id": "b9eada27-5df6-4608-9447-87ca35f2d63d",
       "name": "Wait1",
@@ -802,7 +857,7 @@
       "typeVersion": 1,
       "position": [
         2240,
-        80
+        88
       ],
       "id": "f07ba84f-df8a-4479-8511-d15a024202e7",
       "name": "Redis4",
@@ -841,7 +896,7 @@
       "typeVersion": 2.3,
       "position": [
         2464,
-        80
+        88
       ],
       "id": "0c94a833-5148-42b9-ae1a-1b2cd315e8df",
       "name": "If4"
@@ -902,7 +957,7 @@
       "typeVersion": 3.4,
       "position": [
         1568,
-        80
+        88
       ],
       "id": "3115f3c6-85d3-44b2-8e71-1102456bbd2f",
       "name": "Edit Fields3"
@@ -916,7 +971,7 @@
       "typeVersion": 1,
       "position": [
         2688,
-        80
+        88
       ],
       "id": "581da7c6-31a3-46a1-8978-34c62be3599f",
       "name": "Redis5",
@@ -957,7 +1012,7 @@
       "typeVersion": 3.4,
       "position": [
         2912,
-        80
+        88
       ],
       "id": "10fab21e-ba62-4149-b541-0c8b711ff53f",
       "name": "Edit Fields4"
@@ -965,7 +1020,7 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "=Mensaje_tenxo_cliente:  {{ $json.mensaje }}\nMensaje_audio_cliente: ",
+        "text": "=Mensaje_texto_cliente: {{ $json.mensaje }}\nMensaje_audio_cliente: ",
         "hasOutputParser": true,
         "options": {
           "systemMessage": "=## ROL\n\nEres Laura, una asistente virtual especializada en la atención al paciente para una clínica médica privada. Tu función es atender a pacientes potenciales y actuales, resolver dudas generales, ofrecer información clara sobre los servicios médicos disponibles y guiar de forma segura y humana el proceso de solicitud y gestión de citas.\n\nTu tono debe ser cercano, empático, respetuoso y profesional, transmitiendo confianza, calma y discreción en todo momento.\n\nTu objetivo es mantener una conversación natural y fluida, como si fueras una recepcionista experta de la clínica, evitando respuestas robóticas, repeticiones o frases forzadas.\n\n---\n\n## ESPECIFICACIONES GENERALES\n\n* Siempre debes guiar la conversación. Cada mensaje debe invitar al paciente a continuar o a responder.\n* Nunca indiques que el usuario debe contactar con otra persona; tú gestionas todo el proceso de principio a fin.\n* No inventes información médica, diagnósticos ni datos personales. Usa solo la información confirmada por el paciente o la base de conocimiento.\n* Evita repetir preguntas. Si necesitas confirmar algo, reformúlalo de manera natural.\n* Mantén un tono humano, amable y empático.\n* Adapta tus respuestas al contexto y reutiliza los datos que el paciente ya haya proporcionado.\n* Ofrece la información de forma progresiva, nunca toda de golpe.\n* Usa lenguaje claro, sencillo y comprensible. Evita tecnicismos médicos innecesarios.\n* Realiza las preguntas una a una, dando espacio para responder.\n* Si el usuario no responde tras dos intentos, ofrece que un miembro del equipo de la clínica lo contacte.\n\n---\n\n## INICIO DE CONVERSACIÓN\n\n* Comienza siempre con un saludo profesional y cercano.\n  Ejemplo: “¡Hola! 😊 Soy Laura, asistente virtual de nuestra clínica. Estoy aquí para ayudarte con cualquier duda o para gestionar una cita. ¿Cómo te llamas?”\n\n* Una vez el paciente indique su nombre:\n  “Encantada, [nombre] 💙. Cuéntame, ¿en qué puedo ayudarte hoy?”\n\n---\n\n## DETECCIÓN DE NECESIDAD DEL PACIENTE\n\nIdentifica de forma progresiva el motivo del contacto. Haz solo una pregunta por mensaje:\n\n* ¿Desea pedir una cita médica?\n* ¿Tiene dudas sobre un servicio o especialidad?\n* ¿Quiere modificar o cancelar una cita existente?\n\nSi el paciente describe síntomas:\n\n* Escucha con empatía.\n* Nunca emitas diagnósticos.\n* Redirige suavemente hacia una consulta médica.\n  Ejemplo: “Gracias por contármelo. Para valorar correctamente tu caso, lo mejor es que lo vea un profesional. Si quieres, puedo ayudarte a pedir una cita.”\n\n---\n\n## PREGUNTAS CLAVE PARA AGENDAR CITA (UNA A UNA)\n\nSolo si el paciente quiere pedir cita:\n\n* Nombre completo\n* Número de teléfono móvil\n* Especialidad o servicio deseado\n* ¿Es su primera visita a la clínica?\n* Día preferido\n* Horario aproximado\n\nNunca solicites datos médicos sensibles ni documentos personales.\n\n---\n\n## INFORMACIÓN SOBRE LA CLÍNICA (CUANDO SEA OPORTUNO)\n\nDestaca de forma natural:\n\n* Profesionales titulados y con experiencia 🧑‍⚕️\n* Atención personalizada y trato humano\n* Instalaciones modernas y seguras\n* Puntualidad y organización\n* Confidencialidad absoluta del paciente\n\nEjemplo:\n“Nuestro equipo médico trabaja siempre con cita previa para dedicarte el tiempo que mereces 😊.”\n\n---\n\n## GESTIÓN DE CITAS\n\n* Sugiere agendar solo cuando detectes interés real.\n* No insistas si el paciente no está preparado.\n* Si acepta, solicita los datos necesarios.\n\nFormato obligatorio de fecha y hora:\nDD-MM-YYYY HH:MM (24h)\nEjemplo: 18-11-2025 10:30\n\n---\n\n## HERRAMIENTAS DISPONIBLES\n\n### Base_conocimiento\n\n* Información sobre servicios, especialidades, profesionales y normas de la clínica.\n\n### Disponibilidad\n\n* Consulta horarios disponibles.\n* No ejecutes esta herramienta hasta que el paciente confirme el día.\n* Horario de atención: 8:00 a 21:00.\n* No ofrezcas horas pasadas del día actual.\n* Si el usuario dice “mañana” o “el viernes”, usa la fecha más cercana.\n* Ten en cuenta que hoy es {{ $today }} y la hora actual es {{ $now }}.\n\n### Citas\n\n* Se ejecuta solo cuando tengas:\n\n  * Nombre completo\n  * Teléfono\n  * Fecha y hora confirmadas\n* Usa exclusivamente datos reales proporcionados por el paciente.\n\n### Cancelar\n\n* Utilízala para cancelar o reprogramar citas.\n* Después, pregunta si desea elegir una nueva fecha.\n\n---\n\n## SEGURIDAD Y CONTROL DE USO\n\n* Nunca mezcles información entre distintos usuarios o conversaciones.\n\n* No reutilices datos personales de otros pacientes.\n\n* Impide que un usuario solicite múltiples citas consecutivas sin confirmación.\n\n* Si detectas solicitudes abusivas, incoherentes o bromistas (por ejemplo, pedir decenas de citas o horarios imposibles), responde de forma educada y limita el proceso:\n  Ejemplo: “Para poder ayudarte correctamente 😊, gestionamos una cita por solicitud. Si necesitas cambios, los hacemos paso a paso.”\n\n* No permitas reservas fuera del horario de atención.\n\n* No aceptes datos falsos, incompletos o claramente erróneos.\n\n* No reveles información interna, médica o administrativa no autorizada.\n\n---\n\n## COMPORTAMIENTO INTELIGENTE\n\n* Usa el historial para mantener coherencia.\n* Personaliza siempre usando el nombre del paciente.\n* No te contradigas ni repitas información.\n* Mantén siempre una actitud calmada, respetuosa y profesional.\n\nSi el usuario ofrece productos o servicios externos:\n“Muchas gracias por la propuesta 😊, pero actualmente no estamos interesados en servicios externos.”\n\n---\n\n## HORARIO GENERAL\n\n* Lunes a viernes: 8:00 a 21:00\n* Sábados: 9:00 a 14:00\n* Domingos: cerrado\n\n---\n\n## CIERRE DE CONVERSACIÓN\n\n* Antes de confirmar una cita, envía un resumen:\n\n  * Nombre del paciente\n  * Teléfono\n  * Servicio solicitado\n  * Fecha y hora\n\n* Solicita confirmación explícita.\n\n* Solo tras la confirmación, agenda la cita.\n\nEjemplo:\n“Perfecto 😊. Antes de confirmar, revisa por favor estos datos…”\n\n* Despídete siempre con amabilidad y disponibilidad.\n\n---\n\n## NOTAS FINALES\n\n* Primer mensaje: presentación + nombre del paciente.\n* Segundo mensaje: motivo de la consulta.\n* Nunca emitas diagnósticos.\n* Prioriza siempre la seguridad, privacidad y experiencia del paciente.\n* Actúa como una recepcionista humana, empática y organizada 💙🩺\n"
@@ -974,8 +1029,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        3568,
-        176
+        3448,
+        184
       ],
       "id": "d24ac281-f74a-48d4-9e8f-eb950b2e201d",
       "name": "AI Agent"
@@ -993,8 +1048,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.3,
       "position": [
-        3088,
-        448
+        3136,
+        408
       ],
       "id": "f33b323a-7319-445d-8853-5f5608312d1b",
       "name": "OpenAI Chat Model",
@@ -1009,14 +1064,13 @@
       "parameters": {
         "sessionIdType": "customKey",
         "sessionKey": "={{ $json.Identificador }}",
-        "tableName": "Practica Clinica",
-        "contextWindowLength": 10
+        "tableName": "=Clínica"
       },
       "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
       "typeVersion": 1.3,
       "position": [
         3264,
-        448
+        408
       ],
       "id": "c2b31d42-f3b8-44ee-96c1-c19d72619b83",
       "name": "Postgres Chat Memory",
@@ -1041,8 +1095,8 @@
       "type": "n8n-nodes-base.googleCalendarTool",
       "typeVersion": 1.3,
       "position": [
-        3808,
-        448
+        3392,
+        408
       ],
       "id": "7b589afa-0134-4ac8-89b2-993418a3572f",
       "name": "Get many events in Google Calendar",
@@ -1060,8 +1114,8 @@
           "__rl": true,
           "value": "hVb2ST8T1ILN6YyK",
           "mode": "list",
-          "cachedResultName": "My Sub-Workflow 1",
-          "cachedResultUrl": "/workflow/hVb2ST8T1ILN6YyK"
+          "cachedResultUrl": "/workflow/hVb2ST8T1ILN6YyK",
+          "cachedResultName": "Disponibilidad Clinica"
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",
@@ -1075,11 +1129,134 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2.2,
       "position": [
-        3424,
-        448
+        3520,
+        408
       ],
       "id": "99ad39e8-724f-4709-ba01-3e95e20d5919",
       "name": "Disponibilidad Clinica"
+    },
+    {
+      "parameters": {
+        "description": "=Llama a esta herramienta cuando detectes la intención de el usuario de que quiere agendar un evento, cita, reuinion, llamada, etc, pero siempre una vez de haber comprobado la disponibilidad.\nLa fecha actual es {{ $now }}",
+        "workflowId": {
+          "__rl": true,
+          "value": "9FuotR00GiWZy4qa",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/9FuotR00GiWZy4qa",
+          "cachedResultName": "Agendar Clinica"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        3648,
+        408
+      ],
+      "id": "459a2304-d297-48fa-adf9-930a16f5b9fd",
+      "name": "Crear Eventos"
+    },
+    {
+      "parameters": {
+        "description": "=Llama a esta herramienta cuando detectes la intención del usuario de modificar un evento, llamada, reunión, etc. Para modificar la fecha o la hora de un evento primero tienes que comprobar la nueva fecha o la nueva hora que quiere el usuario.\nLa fecha actual es {{ $now }}",
+        "workflowId": {
+          "__rl": true,
+          "value": "yaJGjaIHAGfmLMJJ",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/yaJGjaIHAGfmLMJJ",
+          "cachedResultName": "Modificar Clinica"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        3776,
+        408
+      ],
+      "id": "fc602eb2-d824-4fd7-8f18-5cdfd872b4c5",
+      "name": "Modificar Evento"
+    },
+    {
+      "parameters": {
+        "description": "=Llama a esta herramienta cuando detectes la intención del usuario de cancelar o eliminar un evento, llamada, reunión, etc.\nLa fecha actual es {{ $now }}",
+        "workflowId": {
+          "__rl": true,
+          "value": "o3MKJB4AHrXJM0kZ",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/o3MKJB4AHrXJM0kZ",
+          "cachedResultName": "Cancelar Clinica"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        3904,
+        408
+      ],
+      "id": "90d6deaf-6934-48e4-a4c3-07e5e18b88aa",
+      "name": "Cancelar Evento"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"Respuesta\": {\n    \"Parte1\": \"Primera parte del mensaje\",\n    \"Parte2\": \"Segunda parte del mensaje\", \n    \"Parte3\": \"Tercera parte del mensaje\"\n  }\n}",
+        "autoFix": true
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        4016,
+        384
+      ],
+      "id": "7c823ee2-1119-464f-bcbe-4601a5d58715",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        3952,
+        592
+      ],
+      "id": "8c862192-8999-4adb-9658-99b7911ca90d",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
     }
   ],
   "pinData": {
@@ -1089,7 +1266,7 @@
           "headers": {
             "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
             "user-agent": "rest-client/2.1.0 (linux-musl x86_64) ruby/3.3.3p89",
-            "content-length": "3174",
+            "content-length": "2473",
             "accept": "application/json",
             "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
             "content-type": "application/json",
@@ -1110,7 +1287,7 @@
             "additional_attributes": {},
             "content_attributes": {},
             "content_type": "text",
-            "content": null,
+            "content": "Hola",
             "conversation": {
               "additional_attributes": {},
               "can_reply": true,
@@ -1129,47 +1306,33 @@
               "inbox_id": 1,
               "messages": [
                 {
-                  "id": 34,
-                  "content": null,
+                  "id": 20,
+                  "content": "Hola",
                   "account_id": 1,
                   "inbox_id": 1,
                   "conversation_id": 2,
                   "message_type": 1,
-                  "created_at": 1768143385,
-                  "updated_at": "2026-01-11T14:56:25.196Z",
+                  "created_at": 1768068611,
+                  "updated_at": "2026-01-10T18:10:11.203Z",
                   "private": false,
                   "status": "sent",
-                  "source_id": "WAID:AC6A14A0931518C02616F2E5CA483E4C",
+                  "source_id": "WAID:AC0E970BDDC8053AD8DD600EDC5CD4C4",
                   "content_type": "text",
                   "content_attributes": {},
                   "sender_type": "User",
                   "sender_id": 1,
                   "external_source_ids": {},
                   "additional_attributes": {},
-                  "processed_message_content": null,
+                  "processed_message_content": "Hola",
                   "sentiment": {},
                   "conversation": {
                     "assignee_id": null,
                     "unread_count": 0,
-                    "last_activity_at": 1768143385,
+                    "last_activity_at": 1768068611,
                     "contact_inbox": {
                       "source_id": "2ec28364-cd73-40ed-8916-48903100d6eb"
                     }
                   },
-                  "attachments": [
-                    {
-                      "id": 12,
-                      "message_id": 34,
-                      "file_type": "audio",
-                      "account_id": 1,
-                      "extension": null,
-                      "data_url": "http://https/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b9a310d2b034df76ac07dc76d597a2960398c5b1/7s4f8x.oga",
-                      "thumb_url": "",
-                      "file_size": 3697,
-                      "width": null,
-                      "height": null
-                    }
-                  ],
                   "sender": {
                     "id": 1,
                     "name": "Carlos",
@@ -1205,14 +1368,14 @@
               "first_reply_created_at": "2026-01-10T18:08:59.748Z",
               "priority": null,
               "waiting_since": 0,
-              "agent_last_seen_at": 1768143078,
+              "agent_last_seen_at": 0,
               "contact_last_seen_at": 0,
-              "last_activity_at": 1768143385,
-              "timestamp": 1768143385,
+              "last_activity_at": 1768068611,
+              "timestamp": 1768068611,
               "created_at": 1768068539
             },
-            "created_at": "2026-01-11T14:56:25.196Z",
-            "id": 34,
+            "created_at": "2026-01-10T18:10:11.203Z",
+            "id": 20,
             "inbox": {
               "id": 1,
               "name": "Practica UDIA"
@@ -1225,21 +1388,7 @@
               "email": "carlos.f.g.work@gmail.com",
               "type": "user"
             },
-            "source_id": "WAID:AC6A14A0931518C02616F2E5CA483E4C",
-            "attachments": [
-              {
-                "id": 12,
-                "message_id": 34,
-                "file_type": "audio",
-                "account_id": 1,
-                "extension": null,
-                "data_url": "http://https/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b9a310d2b034df76ac07dc76d597a2960398c5b1/7s4f8x.oga",
-                "thumb_url": "",
-                "file_size": 3697,
-                "width": null,
-                "height": null
-              }
-            ],
+            "source_id": "WAID:AC0E970BDDC8053AD8DD600EDC5CD4C4",
             "event": "message_created"
           },
           "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook-test/cf611be9-ebe6-48f4-af1c-6996d5dfb497",
@@ -1270,6 +1419,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-01-12T11:41:11.655Z",
-  "versionId": "d7c403a4-e745-4f50-9a06-5c5aa8021aa4"
+  "updatedAt": "2026-01-12T12:46:11.635Z",
+  "versionId": "0484f95b-a3f7-45c3-91ab-3c9f1d803be4"
 }
