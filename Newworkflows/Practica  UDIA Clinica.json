@@ -304,7 +304,13 @@
     },
     "Crear Eventos": {
       "ai_tool": [
-        []
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
       ]
     },
     "Modificar Evento": {
@@ -350,6 +356,95 @@
           }
         ]
       ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If5": {
+      "main": [
+        [],
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "If6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If6": {
+      "main": [
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If7": {
+      "main": [
+        [
+          {
+            "node": "Wait3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "If7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2026-01-10T18:04:19.528Z",
@@ -370,7 +465,7 @@
       "typeVersion": 2.1,
       "position": [
         0,
-        184
+        288
       ],
       "id": "6150be02-ae4c-4823-a8ac-abb5da757e06",
       "name": "Webhook",
@@ -404,7 +499,7 @@
       "typeVersion": 2.3,
       "position": [
         224,
-        184
+        288
       ],
       "id": "b3767584-7fb6-4468-8750-608e1ee8790c",
       "name": "If"
@@ -509,7 +604,7 @@
       "typeVersion": 3.4,
       "position": [
         448,
-        184
+        288
       ],
       "id": "2da19914-9f4f-4142-b40d-770d35ccea53",
       "name": "Edit Fields"
@@ -542,7 +637,7 @@
       "typeVersion": 2.3,
       "position": [
         672,
-        184
+        288
       ],
       "id": "ca53525b-fde1-47b1-9256-071612fb8ec0",
       "name": "If2"
@@ -555,7 +650,7 @@
       "typeVersion": 2,
       "position": [
         1344,
-        280
+        384
       ],
       "id": "13d99f4a-d139-47c5-8e89-1eeaf8ab1836",
       "name": "Code in JavaScript"
@@ -571,7 +666,7 @@
       "typeVersion": 1,
       "position": [
         1792,
-        280
+        384
       ],
       "id": "a101b8be-e8b7-416e-8c94-46cc3ad12b1d",
       "name": "Redis",
@@ -588,7 +683,7 @@
       "typeVersion": 1.1,
       "position": [
         2016,
-        280
+        384
       ],
       "id": "cb968fbd-72d0-46fc-af41-15e0603a4641",
       "name": "Wait",
@@ -604,7 +699,7 @@
       "typeVersion": 1,
       "position": [
         2240,
-        280
+        384
       ],
       "id": "a17d4e65-30c7-4450-8c86-97ff6448e2c5",
       "name": "Redis1",
@@ -643,7 +738,7 @@
       "typeVersion": 2.3,
       "position": [
         2464,
-        280
+        384
       ],
       "id": "87f36a24-6015-42ff-b4c2-b3db449f60fb",
       "name": "If3"
@@ -704,7 +799,7 @@
       "typeVersion": 3.4,
       "position": [
         1568,
-        280
+        384
       ],
       "id": "179e837c-255c-49bb-b8d6-75bf5042e65f",
       "name": "Edit Fields1"
@@ -718,7 +813,7 @@
       "typeVersion": 1,
       "position": [
         2688,
-        280
+        384
       ],
       "id": "00fd0f52-d2b8-4bcb-a5db-37fd96e6eb34",
       "name": "Redis2",
@@ -759,7 +854,7 @@
       "typeVersion": 3.4,
       "position": [
         2912,
-        280
+        384
       ],
       "id": "bd69cdd7-2980-4903-9f73-87fd89949d86",
       "name": "Edit Fields2"
@@ -773,7 +868,7 @@
       "typeVersion": 4.3,
       "position": [
         896,
-        88
+        192
       ],
       "id": "d658b372-9c2b-42f2-b30c-d7836b8ef85d",
       "name": "HTTP Request"
@@ -789,7 +884,7 @@
       "typeVersion": 2.1,
       "position": [
         1120,
-        88
+        192
       ],
       "id": "bf6a214d-709e-495a-a97f-21d94a964605",
       "name": "Transcribe a recording",
@@ -808,7 +903,7 @@
       "typeVersion": 2,
       "position": [
         1344,
-        88
+        192
       ],
       "id": "898042a6-b62d-46fc-acdc-d05ed861d991",
       "name": "Code in JavaScript1"
@@ -824,7 +919,7 @@
       "typeVersion": 1,
       "position": [
         1792,
-        88
+        192
       ],
       "id": "bfdfc907-e976-4ef8-b326-813035dbcfc5",
       "name": "Redis3",
@@ -841,7 +936,7 @@
       "typeVersion": 1.1,
       "position": [
         2016,
-        88
+        192
       ],
       "id": "b9eada27-5df6-4608-9447-87ca35f2d63d",
       "name": "Wait1",
@@ -857,7 +952,7 @@
       "typeVersion": 1,
       "position": [
         2240,
-        88
+        192
       ],
       "id": "f07ba84f-df8a-4479-8511-d15a024202e7",
       "name": "Redis4",
@@ -896,7 +991,7 @@
       "typeVersion": 2.3,
       "position": [
         2464,
-        88
+        192
       ],
       "id": "0c94a833-5148-42b9-ae1a-1b2cd315e8df",
       "name": "If4"
@@ -957,7 +1052,7 @@
       "typeVersion": 3.4,
       "position": [
         1568,
-        88
+        192
       ],
       "id": "3115f3c6-85d3-44b2-8e71-1102456bbd2f",
       "name": "Edit Fields3"
@@ -971,7 +1066,7 @@
       "typeVersion": 1,
       "position": [
         2688,
-        88
+        192
       ],
       "id": "581da7c6-31a3-46a1-8978-34c62be3599f",
       "name": "Redis5",
@@ -1012,7 +1107,7 @@
       "typeVersion": 3.4,
       "position": [
         2912,
-        88
+        192
       ],
       "id": "10fab21e-ba62-4149-b541-0c8b711ff53f",
       "name": "Edit Fields4"
@@ -1029,11 +1124,12 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        3448,
-        184
+        3512,
+        288
       ],
       "id": "d24ac281-f74a-48d4-9e8f-eb950b2e201d",
-      "name": "AI Agent"
+      "name": "AI Agent",
+      "retryOnFail": false
     },
     {
       "parameters": {
@@ -1049,7 +1145,7 @@
       "typeVersion": 1.3,
       "position": [
         3136,
-        408
+        512
       ],
       "id": "f33b323a-7319-445d-8853-5f5608312d1b",
       "name": "OpenAI Chat Model",
@@ -1070,7 +1166,7 @@
       "typeVersion": 1.3,
       "position": [
         3264,
-        408
+        512
       ],
       "id": "c2b31d42-f3b8-44ee-96c1-c19d72619b83",
       "name": "Postgres Chat Memory",
@@ -1096,7 +1192,7 @@
       "typeVersion": 1.3,
       "position": [
         3392,
-        408
+        512
       ],
       "id": "7b589afa-0134-4ac8-89b2-993418a3572f",
       "name": "Get many events in Google Calendar",
@@ -1130,7 +1226,7 @@
       "typeVersion": 2.2,
       "position": [
         3520,
-        408
+        512
       ],
       "id": "99ad39e8-724f-4709-ba01-3e95e20d5919",
       "name": "Disponibilidad Clinica"
@@ -1158,7 +1254,7 @@
       "typeVersion": 2.2,
       "position": [
         3648,
-        408
+        512
       ],
       "id": "459a2304-d297-48fa-adf9-930a16f5b9fd",
       "name": "Crear Eventos"
@@ -1186,7 +1282,7 @@
       "typeVersion": 2.2,
       "position": [
         3776,
-        408
+        512
       ],
       "id": "fc602eb2-d824-4fd7-8f18-5cdfd872b4c5",
       "name": "Modificar Evento"
@@ -1214,24 +1310,25 @@
       "typeVersion": 2.2,
       "position": [
         3904,
-        408
+        512
       ],
       "id": "90d6deaf-6934-48e4-a4c3-07e5e18b88aa",
       "name": "Cancelar Evento"
     },
     {
       "parameters": {
-        "jsonSchemaExample": "{\n  \"Respuesta\": {\n    \"Parte1\": \"Primera parte del mensaje\",\n    \"Parte2\": \"Segunda parte del mensaje\", \n    \"Parte3\": \"Tercera parte del mensaje\"\n  }\n}",
+        "jsonSchemaExample": "{\n  \"Response\": {\n    \"Parte1\": \"Primera parte del mensaje\",\n    \"Parte2\": \"Segunda parte del mensaje\", \n    \"Parte3\": \"Tercera parte del mensaje\"\n  }\n}",
         "autoFix": true
       },
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
       "position": [
-        4016,
-        384
+        4032,
+        512
       ],
       "id": "7c823ee2-1119-464f-bcbe-4601a5d58715",
-      "name": "Structured Output Parser"
+      "name": "Structured Output Parser",
+      "alwaysOutputData": false
     },
     {
       "parameters": {
@@ -1246,8 +1343,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.3,
       "position": [
-        3952,
-        592
+        4112,
+        720
       ],
       "id": "8c862192-8999-4adb-9658-99b7911ca90d",
       "name": "OpenAI Chat Model1",
@@ -1255,6 +1352,237 @@
         "openAiApi": {
           "id": "WvSLkCujVhY8jIGz",
           "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "c536a974-fb1f-4d5b-9970-5d59a0121721",
+              "leftValue": "={{ $json.output.response.part }}",
+              "rightValue": "false",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        4400,
+        288
+      ],
+      "id": "ba26b4f8-e1ce-45d6-b5c6-f90746d548ac",
+      "name": "If5"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host//api/v1/accounts/{{ $('Edit Fields').item.json.accountID }}/conversations/{{ $('Edit Fields').item.json.conversationID }}/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"content\":{{ JSON.stringify($('AI Agent').item.json.output.Response.Parte1) }} ,\n  \"private\": false,\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        4624,
+        288
+      ],
+      "id": "8f648c1e-478d-48e4-8866-9187659dc888",
+      "name": "HTTP Request1",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Zhnapx6EMtJKOOW9",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "7371417a-70c7-4cb2-936c-5a09884e761b",
+              "leftValue": "={{ $('AI Agent').item.json.output.Response.Parte2 }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        4848,
+        288
+      ],
+      "id": "795edc27-8dae-4c85-a0d7-216e128be8ec",
+      "name": "If6"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        5072,
+        288
+      ],
+      "id": "25efc074-a9b9-4548-bf65-c2f7456df523",
+      "name": "Wait2",
+      "webhookId": "751bef90-71de-41d2-ac4f-795b995cc5dd"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "79d91a9e-b4fa-47bd-a54a-6dcf817d24b5",
+              "leftValue": "={{ $('AI Agent').item.json.output.Response.Parte3 }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        5520,
+        288
+      ],
+      "id": "f7333fa1-b8f5-44a1-98de-3369dd38791b",
+      "name": "If7"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        5744,
+        288
+      ],
+      "id": "e6316694-f051-4203-8ec1-a84528b3980e",
+      "name": "Wait3",
+      "webhookId": "751bef90-71de-41d2-ac4f-795b995cc5dd"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host//api/v1/accounts/{{ $('Edit Fields').item.json.accountID }}/conversations/{{ $('Edit Fields').item.json.conversationID }}/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"content\":{{ JSON.stringify($('AI Agent').item.json.output.Response.Parte2) }} ,\n  \"private\": false,\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        5296,
+        288
+      ],
+      "id": "1973bfa2-d90c-43db-a4dc-57ef239969ee",
+      "name": "HTTP Request2",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Zhnapx6EMtJKOOW9",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host//api/v1/accounts/{{ $('Edit Fields').item.json.accountID }}/conversations/{{ $('Edit Fields').item.json.conversationID }}/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"content\":{{ JSON.stringify($('AI Agent').item.json.output.Response.Parte3) }} ,\n  \"private\": false,\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        5936,
+        288
+      ],
+      "id": "a72cfda5-e979-42b5-8ab3-74530c6220cc",
+      "name": "HTTP Request3",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Zhnapx6EMtJKOOW9",
+          "name": "Header Auth account"
         }
       }
     }
@@ -1266,7 +1594,7 @@
           "headers": {
             "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
             "user-agent": "rest-client/2.1.0 (linux-musl x86_64) ruby/3.3.3p89",
-            "content-length": "2473",
+            "content-length": "2530",
             "accept": "application/json",
             "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
             "content-type": "application/json",
@@ -1287,7 +1615,7 @@
             "additional_attributes": {},
             "content_attributes": {},
             "content_type": "text",
-            "content": "Hola",
+            "content": "Hola quiero una cita",
             "conversation": {
               "additional_attributes": {},
               "can_reply": true,
@@ -1306,29 +1634,29 @@
               "inbox_id": 1,
               "messages": [
                 {
-                  "id": 20,
-                  "content": "Hola",
+                  "id": 65,
+                  "content": "Hola quiero una cita",
                   "account_id": 1,
                   "inbox_id": 1,
                   "conversation_id": 2,
                   "message_type": 1,
-                  "created_at": 1768068611,
-                  "updated_at": "2026-01-10T18:10:11.203Z",
+                  "created_at": 1768304138,
+                  "updated_at": "2026-01-13T11:35:38.353Z",
                   "private": false,
                   "status": "sent",
-                  "source_id": "WAID:AC0E970BDDC8053AD8DD600EDC5CD4C4",
+                  "source_id": "WAID:AC862A5E195C1594BAD7BF625843B15A",
                   "content_type": "text",
                   "content_attributes": {},
                   "sender_type": "User",
                   "sender_id": 1,
                   "external_source_ids": {},
                   "additional_attributes": {},
-                  "processed_message_content": "Hola",
+                  "processed_message_content": "Hola quiero una cita",
                   "sentiment": {},
                   "conversation": {
                     "assignee_id": null,
                     "unread_count": 0,
-                    "last_activity_at": 1768068611,
+                    "last_activity_at": 1768304138,
                     "contact_inbox": {
                       "source_id": "2ec28364-cd73-40ed-8916-48903100d6eb"
                     }
@@ -1368,14 +1696,14 @@
               "first_reply_created_at": "2026-01-10T18:08:59.748Z",
               "priority": null,
               "waiting_since": 0,
-              "agent_last_seen_at": 0,
+              "agent_last_seen_at": 1768303817,
               "contact_last_seen_at": 0,
-              "last_activity_at": 1768068611,
-              "timestamp": 1768068611,
+              "last_activity_at": 1768304138,
+              "timestamp": 1768304138,
               "created_at": 1768068539
             },
-            "created_at": "2026-01-10T18:10:11.203Z",
-            "id": 20,
+            "created_at": "2026-01-13T11:35:38.353Z",
+            "id": 65,
             "inbox": {
               "id": 1,
               "name": "Practica UDIA"
@@ -1388,7 +1716,7 @@
               "email": "carlos.f.g.work@gmail.com",
               "type": "user"
             },
-            "source_id": "WAID:AC0E970BDDC8053AD8DD600EDC5CD4C4",
+            "source_id": "WAID:AC862A5E195C1594BAD7BF625843B15A",
             "event": "message_created"
           },
           "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook-test/cf611be9-ebe6-48f4-af1c-6996d5dfb497",
@@ -1419,6 +1747,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-01-12T12:46:11.635Z",
-  "versionId": "0484f95b-a3f7-45c3-91ab-3c9f1d803be4"
+  "updatedAt": "2026-01-13T11:48:11.348Z",
+  "versionId": "a760c8b9-497a-4f4e-a7ac-f8608d33b41e"
 }
