@@ -1383,7 +1383,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        4400,
+        4032,
         288
       ],
       "id": "ba26b4f8-e1ce-45d6-b5c6-f90746d548ac",
@@ -1412,7 +1412,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        4624,
+        4256,
         288
       ],
       "id": "8f648c1e-478d-48e4-8866-9187659dc888",
@@ -1452,7 +1452,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        4848,
+        4480,
         288
       ],
       "id": "795edc27-8dae-4c85-a0d7-216e128be8ec",
@@ -1463,7 +1463,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        5072,
+        4704,
         288
       ],
       "id": "25efc074-a9b9-4548-bf65-c2f7456df523",
@@ -1498,7 +1498,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        5520,
+        5152,
         288
       ],
       "id": "f7333fa1-b8f5-44a1-98de-3369dd38791b",
@@ -1509,7 +1509,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        5744,
+        5376,
         288
       ],
       "id": "e6316694-f051-4203-8ec1-a84528b3980e",
@@ -1539,7 +1539,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        5296,
+        4928,
         288
       ],
       "id": "1973bfa2-d90c-43db-a4dc-57ef239969ee",
@@ -1574,7 +1574,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        5936,
+        5600,
         288
       ],
       "id": "a72cfda5-e979-42b5-8ab3-74530c6220cc",
@@ -1747,6 +1747,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-01-13T11:48:11.348Z",
-  "versionId": "a760c8b9-497a-4f4e-a7ac-f8608d33b41e"
+  "updatedAt": "2026-01-13T11:56:33.675Z",
+  "versionId": "75887d78-ee93-4bde-b217-61408c4b4d3c"
 }
