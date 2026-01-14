@@ -18,7 +18,7 @@
       "main": [
         [
           {
-            "node": "Edit Fields",
+            "node": "If1",
             "type": "main",
             "index": 0
           }
@@ -28,7 +28,13 @@
     },
     "If1": {
       "main": [
-        []
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Edit Fields": {
@@ -139,13 +145,7 @@
     },
     "Edit Fields2": {
       "main": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "HTTP Request": {
@@ -464,7 +464,7 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        0,
+        -192,
         288
       ],
       "id": "6150be02-ae4c-4823-a8ac-abb5da757e06",
@@ -498,7 +498,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        224,
+        0,
         288
       ],
       "id": "b3767584-7fb6-4468-8750-608e1ee8790c",
@@ -517,7 +517,7 @@
             {
               "id": "db7831e6-2930-4c9d-adbd-0b6cb1a0294b",
               "leftValue": "={{ $json.body.conversation.messages[0].sender_type }}",
-              "rightValue": "Contacto",
+              "rightValue": "Contact",
               "operator": {
                 "type": "string",
                 "operation": "equals"
@@ -531,8 +531,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        0,
-        -144
+        240,
+        288
       ],
       "id": "44e23bde-c449-4ceb-942b-e8d7971a8379",
       "name": "If1",
@@ -644,7 +644,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Obtener el valor original del campo\nconst sender = $input.first().json.telefono;\n\n// Eliminar el prefijo \"34\" o \"49\" si existe, y quitar el dominio de whatsApp\nconst cleanedNumber = sender\n  .replace(/^(?:34|49)/, '')  // Quita el '+34', '34', '+49' o '49' al inicio\n  .replace(/@s.whatsapp.net$/, ''); // Quita el '@s.whatsapp.net' al final\n\n// Devolver el número limpio\nreturn [\n  {\n    json: {\n      cleanedNumber\n    }\n  }\n];\n"
+        "jsCode": "// Obtener el valor original del campo\nconst sender = $input.first().json.telefono;\n\n// Limpiar el número:\n// - Eliminar el prefijo '34' o '49' si existe, y quitar el dominio de whatsapp\nconst cleanedNumber = sender\n  .replace(/^(\\+?34|\\+?49)/, '') // Quita el '+34', '34', '+49' o '49' al inicio\n  .replace(/@s\\.whatsapp\\.net$/, ''); // Quita el '@s.whatsapp.net' al final\n\n// Devolver el número limpio\nreturn [\n  {\n    json: {\n      cleanedNumber\n    }\n  }\n];\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -692,7 +692,8 @@
     {
       "parameters": {
         "operation": "get",
-        "key": "={{ $json.Identificador }}",
+        "propertyName": "message",
+        "key": "={{ $('Edit Fields1').item.json.Identificador }}",
         "options": {}
       },
       "type": "n8n-nodes-base.redis",
@@ -722,7 +723,7 @@
           "conditions": [
             {
               "id": "96158e05-c548-462c-94c3-8138dd2ceaf9",
-              "leftValue": "={{ $json.propertyName.last() }}",
+              "leftValue": "={{ $json.message.last() }}",
               "rightValue": "={{ $('Edit Fields1').item.json.mensaje }}",
               "operator": {
                 "type": "string",
@@ -861,7 +862,7 @@
     },
     {
       "parameters": {
-        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host/{{ $json.body.conversation.messages[0].attachments[0].data_url.replace('https://','') }}",
+        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host//{{ $json.body.conversation.messages[0].attachments[0].data_url.replace('http://https','') }}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -877,7 +878,7 @@
       "parameters": {
         "resource": "audio",
         "operation": "transcribe",
-        "binaryPropertyName": "={{ $json.data }}",
+        "binaryPropertyName": "=data",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.openAi",
@@ -897,7 +898,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Obtener el valor original del campo\nconst sender = $input.first().json.telefono;\n\n// Eliminar el prefijo \"34\" o \"49\" si existe, y quitar el dominio de whatsApp\nconst cleanedNumber = sender\n  .replace(/^(?:34|49)/, '')  // Quita el '+34', '34', '+49' o '49' al inicio\n  .replace(/@s.whatsapp.net$/, ''); // Quita el '@s.whatsapp.net' al final\n\n// Devolver el número limpio\nreturn [\n  {\n    json: {\n      cleanedNumber\n    }\n  }\n];\n"
+        "jsCode": "// Obtener el valor original del campo\nconst sender = $('If4').first().json.identificador;\n// Eliminar el prefijo '34' o '49' si existe, y quitar el dominio de whatsapp\nconst cleanedNumber = sender\n  .replace(/^(\\+?34|\\+?49)/, '') // Quita el '+34', '34', '+49' o '49' al inicio\n  .replace(/@s\\.whatsapp\\.net$/, ''); // Quita el '@s.whatsapp.net' al final\n\n// Devolver el número limpio\nreturn [\n  {\n    json: {\n      cleanedNumber\n    }\n  }\n]\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -1124,7 +1125,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        3512,
+        3520,
         288
       ],
       "id": "d24ac281-f74a-48d4-9e8f-eb950b2e201d",
@@ -1328,7 +1329,8 @@
       ],
       "id": "7c823ee2-1119-464f-bcbe-4601a5d58715",
       "name": "Structured Output Parser",
-      "alwaysOutputData": false
+      "alwaysOutputData": false,
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -1367,7 +1369,7 @@
           "conditions": [
             {
               "id": "c536a974-fb1f-4d5b-9970-5d59a0121721",
-              "leftValue": "={{ $json.output.response.part }}",
+              "leftValue": "={{ $json.output.Response.Parte1 }}",
               "rightValue": "false",
               "operator": {
                 "type": "string",
@@ -1594,7 +1596,7 @@
           "headers": {
             "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
             "user-agent": "rest-client/2.1.0 (linux-musl x86_64) ruby/3.3.3p89",
-            "content-length": "2530",
+            "content-length": "3178",
             "accept": "application/json",
             "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
             "content-type": "application/json",
@@ -1615,7 +1617,7 @@
             "additional_attributes": {},
             "content_attributes": {},
             "content_type": "text",
-            "content": "Hola quiero una cita",
+            "content": null,
             "conversation": {
               "additional_attributes": {},
               "can_reply": true,
@@ -1634,33 +1636,47 @@
               "inbox_id": 1,
               "messages": [
                 {
-                  "id": 65,
-                  "content": "Hola quiero una cita",
+                  "id": 100,
+                  "content": null,
                   "account_id": 1,
                   "inbox_id": 1,
                   "conversation_id": 2,
                   "message_type": 1,
-                  "created_at": 1768304138,
-                  "updated_at": "2026-01-13T11:35:38.353Z",
+                  "created_at": 1768390977,
+                  "updated_at": "2026-01-14T11:42:57.933Z",
                   "private": false,
                   "status": "sent",
-                  "source_id": "WAID:AC862A5E195C1594BAD7BF625843B15A",
+                  "source_id": "WAID:AC0B013508B46A65EF47B2EA18A792EF",
                   "content_type": "text",
                   "content_attributes": {},
                   "sender_type": "User",
                   "sender_id": 1,
                   "external_source_ids": {},
                   "additional_attributes": {},
-                  "processed_message_content": "Hola quiero una cita",
+                  "processed_message_content": null,
                   "sentiment": {},
                   "conversation": {
                     "assignee_id": null,
                     "unread_count": 0,
-                    "last_activity_at": 1768304138,
+                    "last_activity_at": 1768390977,
                     "contact_inbox": {
                       "source_id": "2ec28364-cd73-40ed-8916-48903100d6eb"
                     }
                   },
+                  "attachments": [
+                    {
+                      "id": 28,
+                      "message_id": 100,
+                      "file_type": "audio",
+                      "account_id": 1,
+                      "extension": null,
+                      "data_url": "http://https/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBNdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8f23263602085dc0d30a3a86f135a22aed319d1c/d5let9.oga",
+                      "thumb_url": "",
+                      "file_size": 5289,
+                      "width": null,
+                      "height": null
+                    }
+                  ],
                   "sender": {
                     "id": 1,
                     "name": "Carlos",
@@ -1696,14 +1712,14 @@
               "first_reply_created_at": "2026-01-10T18:08:59.748Z",
               "priority": null,
               "waiting_since": 0,
-              "agent_last_seen_at": 1768303817,
+              "agent_last_seen_at": 1768390994,
               "contact_last_seen_at": 0,
-              "last_activity_at": 1768304138,
-              "timestamp": 1768304138,
+              "last_activity_at": 1768390977,
+              "timestamp": 1768390977,
               "created_at": 1768068539
             },
-            "created_at": "2026-01-13T11:35:38.353Z",
-            "id": 65,
+            "created_at": "2026-01-14T11:42:57.933Z",
+            "id": 100,
             "inbox": {
               "id": 1,
               "name": "Practica UDIA"
@@ -1716,7 +1732,21 @@
               "email": "carlos.f.g.work@gmail.com",
               "type": "user"
             },
-            "source_id": "WAID:AC862A5E195C1594BAD7BF625843B15A",
+            "source_id": "WAID:AC0B013508B46A65EF47B2EA18A792EF",
+            "attachments": [
+              {
+                "id": 28,
+                "message_id": 100,
+                "file_type": "audio",
+                "account_id": 1,
+                "extension": null,
+                "data_url": "http://https/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBNdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8f23263602085dc0d30a3a86f135a22aed319d1c/d5let9.oga",
+                "thumb_url": "",
+                "file_size": 5289,
+                "width": null,
+                "height": null
+              }
+            ],
             "event": "message_created"
           },
           "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook-test/cf611be9-ebe6-48f4-af1c-6996d5dfb497",
@@ -1747,6 +1777,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-01-13T11:56:33.675Z",
-  "versionId": "75887d78-ee93-4bde-b217-61408c4b4d3c"
+  "updatedAt": "2026-01-14T17:04:27.105Z",
+  "versionId": "da6c161a-6694-42ad-a267-cc796c70c067"
 }
