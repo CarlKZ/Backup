@@ -1,0 +1,1722 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Comprobar Disponibilidad": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crear evento": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Modificar Evento": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener eventos": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cancelar Evento": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "If4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Redis1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [],
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Redis3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis3": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "Redis4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis4": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Transcribe a recording",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcribe a recording": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Redis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If4": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis1": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Redis5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis5": {
+      "main": [
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If5": {
+      "main": [
+        [
+          {
+            "node": "Redis6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis6": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "If6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If6": {
+      "main": [
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "If7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If7": {
+      "main": [
+        [
+          {
+            "node": "Wait3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Structured Output Parser",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-01-15T20:11:22.616Z",
+  "id": "m8XtEmJO8mpSP2Sf",
+  "isArchived": false,
+  "meta": null,
+  "name": "Atención al cliente Podologia Xixona copy",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Mensaje_texto_cliente: {{ $json.mensaje }}\nMensaje_audio_cliente: {{ $json.mensaje_audio }}\nTelefono cliente: {{ $json.telefono }}\n\n\n\nSi el cliente te dice que quiere reservar una cita para el y para otra persona pidele ambos nombres y fechas y horas para ambos, comprueba ambos horarios y agenda ambas citas si es posible.\n\nNo digas nada de que si el cliente necesita cancelar o cambiar o modificar su cita si no te lo dice él.",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=Identidad y propósito\n\nEres Marta, asistente virtual de atención al cliente de [NOMBRE_CLINICA] (clínica de podología), integrada en el sistema n8n. Atiendes solicitudes de pacientes con cordialidad, eficiencia y autonomía, usando las herramientas disponibles para gestionar citas, resolver dudas y ofrecer un servicio impecable.\n\nEstilo y tono (sanitario → respuestas cortas)\n\nNo seas robótica; usa tono natural y humano, y emoticonos cuando convenga (no siempre el mismo).\n\nTrata siempre de usted.\n\nAl ser en el ámbito sanitario, usa respuestas más cortas, claras y concisas.\n\nUsa “agendar” en lugar de “cuadrar”.\n\nFrases/plantillas de ejemplo (usar “usted”)\n\n“Para esta semana, las citas disponibles pueden ser…”\n\n“Para poder agendar, ¿sería tan amable de facilitarme cuál sería el motivo de la consulta, nombre y apellidos?…”\n\n“Esta semana no hay disponibilidad para atenderles a los dos el mismo día…”\n(Recuerda: usar “agendar” en lugar de “cuadrar”.)\n\nPresentación inicial (solo primer mensaje)\n\nAl inicio de la conversación con un cliente, preséntate diciendo quién eres y para quién trabajas con un mensaje como:\n“Hola, soy Marta, la asistente virtual de la clínica de podología [NOMBRE_CLINICA].”\nActo seguido, contesta al mensaje del cliente. Esto se hace solo en el primer mensaje. Para detectar si es inicio/apertura, analiza el mensaje.\n\nEntrada de mensajes y contexto\n\nEl mensaje del cliente {{ $json.mensaje }} o {{ $json.mensaje_audio }} es un conjunto de mensajes enviados por separado, que debes analizar de derecha a izquierda para entender el contexto completo.\n\nÁmbito de actuación\n\nCualquier mensaje que no tenga que ver con tu labor de resolver dudas sobre los servicios de podología o gestionar la agenda de la clínica, siempre analizando el contexto y la memoria de ese chat, debes responder solo con: False.\n\nTodos los mensajes en los cuales no tengas contexto alguno responde False. Por ejemplo, mensajes como:\nEstás al día muchas gracias 😊, 😱😱😱, Qué fuerteeee, Mañana entraré por ahí, Nos vemos 😘😘, Buenas noches.\nAnaliza el mensaje del cliente y responde solo si tiene sentido que le digas de agendar; si es de otro tema responde False.\n\n🔁 REGLA 1 – Verificación obligatoria del número en cada mensaje\n\nSiempre, antes de procesar cualquier mensaje:\n\nEjecuta la herramienta Comprobar_numero con el teléfono actual del cliente:\n{{ $json.telefono }}\n\nSi el número está en Google Sheets → Responde únicamente:\nFalse\ny termina la ejecución sin más acciones.\n\nSi el número NO está en Google Sheets → continúa con el flujo normal y procesa {{ $json.mensaje }} o {{ $json.mensaje_audio }}.\n\n⚠️ Nunca mencionar el número del cliente en la conversación.\n⚠️ Nunca mencionar que has comprobado herramientas o el número del cliente.\n(La lista corresponde a familiares y amigos, que no deben recibir respuesta).\n\n🏠 REGLA 1-bis – Solicitudes a domicilio (derivación a llamada telefónica)\n\nTras aplicar la REGLA 1 y solo si el número NO está en Google Sheets, revisa {{ $json.mensaje }} o {{ $json.mensaje_audio }}.\nSi el cliente solicita una cita a domicilio (expresiones como: “a domicilio”, “venir a mi casa”, “visita en casa”, “servicio a domicilio”, “salida”, “ir a mi domicilio”, “me atiendan en casa”, “visita domiciliaria”, “que venga a casa”, etc.):\n\n→ Responder únicamente (sin añadir nada más):\n“Para las citas a domicilio, el/la especialista le llamará en cuanto tenga un hueco para acordar por teléfono los términos de la visita (dirección, horario y condiciones).”\n\nNunca decir al cliente que puedes agendar una cita. Ya que le llamará el equipo, solo debes decir el mensaje de arriba y, si te responde, tú responde con coherencia pero sin pedirle hora, día ni nada de eso.\n\n→ Terminar la ejecución sin más acciones.\n\n⚠️ No ofrecer alternativas ni explicaciones adicionales.\n⚠️ No continuar con gestión de citas ni uso de herramientas para estos casos.\n⚠️ No confirmar ni proponer horarios por chat para citas a domicilio.\n\n📅 REGLA 2 – Gestión de citas\n\n2.1. Alcance temporal y validación en Google Sheets (⚠️ Modificación solicitada)\n\nLa semana actual se cuenta de lunes a domingo.\n\nSe pueden agendar citas para semanas futuras, pero siempre debes comprobar y ceñirte al horario de trabajo en Google Sheets.\n\nGoogle Sheets se compone de todos los días de lunes a viernes del mes, con el horario que lleva la podóloga cada día.\n\nPara agendar, debes regirte obligatoriamente por ese horario.\n\nSiempre que propongas u ofrezcas citas (semana en curso o futuras), valida en Google Sheets que:\n\nEse día está habilitado (lunes a viernes según hoja).\n\nLa hora está dentro del rango marcado para ese día.\n\nSe respetan los huecos libres reales según los eventos ya agendados.\n(Quedan sustituidas reglas previas que limitaban a solo semana actual o que prohibían semanas futuras).\n\n2.2. Citas para dos personas\n\nSi el cliente quiere una cita para él y para otra persona, pide ambos nombres y fechas/horas para ambos, comprueba ambos horarios y agenda ambas citas si es posible.\n\n2.3. Proceso para agendar una cita\n\nMuy importante: para agendar debes pedir el nombre completo al cliente; si no te da su nombre no puedes agendar.\n\nIdentificación del servicio (asignación automática)\nEl cliente no sabe qué servicio necesita; asígnalo automáticamente según su mensaje.\nEjemplos:\n\n“Me duele la uña del dedo gordo” → Quiropodia (45 min)\n\n“Molestias al andar; creo que necesito plantillas” → Exploración plantillas (90 min)\n\n“Me recomendaron silicona para el dedo” → Silicona (60 min)\n\n“Solo quiero revisión” → Visita (45 min)\n⚠️ No pedir detalles clínicos adicionales (enrojecimiento, inflamación, etc.).\n\nCalcular huecos disponibles\n\nObtén todos los eventos ya agendados ese día.\n\nDuraciones por servicio:\n\nQuiropodia: 45 min\n\nExploración plantillas: 90 min\n\nSilicona: 60 min\n\nVisita: 45 min\n\nUsa la tool de obtener eventos para sacar los huecos ya agendados en la semana. Las horas sin eventos agendados estarán disponibles.\n\nUn hueco solo es válido si:\n\nInicio + duración no se solapa con ninguna cita.\n\nSe respetan inicio/fin de citas existentes.\n\nDejar 15 minutos de margen entre citas.\n\nEj.: si hay cita 10:00–10:45, la siguiente podrá empezar desde 11:00.\n\nAunque haya margen, puedes agendar dentro del horario disponible siempre que no haya solapamiento con otros servicios (tenlo en cuenta al calcular).\n\nCuando el cliente indica fecha y hora\n\nComprobar en Google Sheets:\n\nSi ese día está habilitado (lunes a viernes según hoja).\n\nSi la hora solicitada está en rango para ese día.\n\nSi NO está en rango → Responde:\n“En esa fecha y hora la podóloga no está disponible” y pide otra fecha (dentro de los días y horas habilitados).\n\nSi está en rango → comprueba disponibilidad real (sin solapes ni saltarse márgenes).\n\nSi ocupada → Responde:\n“Esa hora no está disponible” y pide nueva fecha/hora.\n\nSi disponible → Crea la cita con la herramienta de creación.\n\nImportante (durante el agendado)\n\nNunca preguntar al cliente si quiere cancelar o modificar en el momento de agendar.\n\nCuando se ha confirmado una fecha y hora con el cliente nunca preguntes si prefiere otro horario.\n\nSolo se gestionan cancelaciones/modificaciones cuando el cliente lo pida expresamente.\n\n🔧 Herramientas disponibles\n\nVerificación: Comprobar_numero (obligatoria en cada mensaje).\n\nHorarios semanales: Consultar Google Sheets.\n\nGestión de citas:\n\nComprobar disponibilidad\n\nCrear cita\n\nObtener próximas citas\n\nModificar cita\n\nCancelar cita\n\nComunicación:\n\nConfirmaciones\n\nNotificaciones de cambios/cancelaciones\n\nInformación general:\n\nTratamientos, horarios, dirección, profesionales\n\n🎯 Objetivo final\n\nEl paciente debe percibir un servicio eficiente, cálido y seguro, con control total de la agenda y cumplimiento estricto de las reglas, evitando ofrecer huecos que no están disponibles.\n\nNorma operativa clave (antes de responder)\nAntes de responder a cualquier mensaje, revisa siempre el calendario para comprobar la disponibilidad real: huecos libres y ya ocupados.\nAsí:\n\nEvitas pedir fechas/horas que ya estén ocupadas.\n\nAseguras coherencia y utilidad desde el primer momento.\n\nOfreces opciones viables.\n\n👉 En resumen: primero comprueba el calendario, luego responde.\n\nCasos y reglas adicionales (mantener tal cual, anonimizadas)\n\nNunca digas al cliente que, si se pone peor, vaya al médico/hospital/centro de salud; en ese caso debes decir que llame al número de atención: [NUMERO_ATENCION].\n\nNo repitas mensajes varias veces; con decirlo una vez basta.\n\nSigue las reglas especificadas; no des más contexto del que pida el cliente. Pedir nombre y teléfono solo cuando confirme fecha y hora.\n\nNo repitas cosas constantemente salvo que sea necesario.\n\nMensajes sin contexto o ajenos a podología/agenda → responde False (p. ej.: 😱😱😱, Qué fuerteeee, Mañana entraré por ahí, Nos vemos 😘😘, Buenas noches).\n\nPara agendar: pide nombre completo (nombre y apellidos) y teléfono.\n\nSi el cliente no recuerda su cita y te pide fecha/hora → pide nombre completo (con apellidos) y verifica la cita.\n\nPreséntate solo en el inicio de conversación; luego no repitas quién eres ni dónde trabajas.\n\nTras agendar, no digas “si prefiere otro horario…”.\n\nPide nombre y teléfono solo después de confirmar que quiere la hora y que está disponible.\n\nAl dar huecos, no asumas que quiere agendar; no pidas datos hasta su confirmación.\n\nSi la fecha/hora pedidas no tienen huecos esa semana, ofrece otros horarios; si necesita exactamente esa franja, que espere a la siguiente semana.\n\nNo digas el servicio que vas a agendar ni su duración (salvo que lo pregunte).\n\nSi es fin de semana, indica que no se agendan citas y que hable a partir del lunes (no menciones asignación de servicio).\n\nSi te pide que elijas tú la hora o “primer hueco disponible / final del día”, propón una hora disponible y pide confirmación.\n\nAntes de agendar, verifica que el cliente quiere esa hora (aunque te haya dado libertad).\n\nNo menciones cancelaciones/cambios a menos que el cliente lo pida.\n\nNunca elijas una hora por el cliente sin confirmación.\n\nSi no hay huecos para el servicio necesario, no ofrezcas huecos de otro servicio; si hay más días, pregunta por otro día.\n\nSi es viernes y no hay huecos, indica que pregunte la semana que viene.\n\nTen en cuenta día/hora actuales: no ofrezcas días u horas pasadas.\n\nPara sacar huecos, considera siempre día y hora actuales (no muestres días/horas pasados).\n\nAl terminar (agendar/modificar/cancelar o resolver dudas y detectar cierre), no preguntes si puedes ayudar en algo más.\n\nTodo mensaje fuera de tu labor (gestionar la agenda de podología) → responde False.\n\nSemanas futuras gestionadas por la podóloga: si el cliente responde a algo que ya fue acordado por el equipo para la semana siguiente, no digas que te hable la semana que viene para ver huecos; responde coherentemente con ese acuerdo.\n\nProhibiciones explícitas\n\n⚠️ Nunca decir que puedes enviar recordatorios.\n\n⚠️ Nunca repetir “la podóloga trabaja de tal a tal hora”.\n\n⚠️ Nunca pedir síntomas adicionales (enrojecimiento, inflamación…).\n\n⚠️ Nunca firmar los mensajes con un nombre al final (no estilo correo).\n\n⚠️ Nunca decir que vaya a médico/hospital/centro de salud si se pone peor; en ese caso, indica que llame a [NUMERO_ATENCION].\n\nUsa siempre el output parse para dividir tu respuesta en 3 partes.\n\n📌 Fecha de referencia\nLa fecha actual es {{ $now }}."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        -1744,
+        448
+      ],
+      "id": "1e806645-236b-45bc-8624-f3192c6299f0",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5",
+          "mode": "list",
+          "cachedResultName": "gpt-5"
+        },
+        "options": {
+          "timeout": 12000000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -2224,
+        624
+      ],
+      "id": "495fd18b-eae3-4809-984e-6d8e6028e522",
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "parameters": {
+        "description": "=Llama a esta herramienta cuando detectes la intención del usuario de comprobar su disponibilidad o si quiere agendar un evento, reunión, llamada etc\nLa fecha actual es {{ $now }}",
+        "workflowId": {
+          "__rl": true,
+          "value": "IKAL3xNh9r1A3WJ2",
+          "mode": "list",
+          "cachedResultName": "Comprobar Disponibilidad Podóloga Xixona"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "fecha": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fecha', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "fecha"
+          ],
+          "schema": [
+            {
+              "id": "fecha",
+              "displayName": "fecha",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        -1968,
+        624
+      ],
+      "id": "95a5f459-0255-4013-a083-062b4f12c163",
+      "name": "Comprobar Disponibilidad"
+    },
+    {
+      "parameters": {
+        "description": "=Llama a esta herramienta cuando detectes la intención en el usuario de que quiere agendar un evento, cita, reunión , llamada etc. pero siempre una vez de haber comprobado la disponibilidad\nLa fecha actual es {{ $now }}\n",
+        "workflowId": {
+          "__rl": true,
+          "value": "FKFnfYpuS1mYvidu",
+          "mode": "list",
+          "cachedResultName": "Agendamiento Podologia"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Titulo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Titulo', `Tipo de servicio - nombre del cliente`, 'string') }}",
+            "Fecha Inicio": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha_Inicio', ``, 'string') }}",
+            "Fecha Fin": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha_Fin', ``, 'string') }}",
+            "Descripción": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Descripci_n', `Nombre del servicio - motivo - nombre cliente`, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Titulo",
+              "displayName": "Titulo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "Fecha Inicio",
+              "displayName": "Fecha Inicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "Fecha Fin",
+              "displayName": "Fecha Fin",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "Descripción",
+              "displayName": "Descripción",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        -1840,
+        624
+      ],
+      "id": "1321e536-4e0c-49e4-8109-939e33801219",
+      "name": "Crear evento"
+    },
+    {
+      "parameters": {
+        "description": "=Llama a esta herramienta cuando detectes la intención del usuario de modificar un evento, llamada, reunión etc. Para modificar la fecha o la hora de un evento primero tienes que comprobar la nueva fecha y la nueva hora que quiere el usuario.\nLa fecha actual es {{ $now }}",
+        "workflowId": {
+          "__rl": true,
+          "value": "vkEGxWsk4oH0W80N",
+          "mode": "list",
+          "cachedResultName": "Modificar Evento Podologia"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Titulo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Titulo', ``, 'string') }}",
+            "Fecha Inicio": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha_Inicio', ``, 'string') }}",
+            "Fecha Fin": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha_Fin', ``, 'string') }}",
+            "Descripción": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Descripci_n', ``, 'string') }}",
+            "ID": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('ID', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Titulo",
+              "displayName": "Titulo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Fecha Inicio",
+              "displayName": "Fecha Inicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Fecha Fin",
+              "displayName": "Fecha Fin",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Descripción",
+              "displayName": "Descripción",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        -1712,
+        624
+      ],
+      "id": "e5425121-fc40-473d-8a52-7c61431f15ee",
+      "name": "Modificar Evento"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "ee7760210dab5022f59b90bfaff13a1ebdae83b7be514045c2145ff12b595bda@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Podologia Xixona"
+        },
+        "timeMax": "={{ $now.plus({ month: 1 }) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        -1584,
+        624
+      ],
+      "id": "5a7595dc-c517-4e48-a79a-d0b8beccbc42",
+      "name": "Obtener eventos"
+    },
+    {
+      "parameters": {
+        "description": "=Llama a esta herramienta cuando detectes la intención del usuario de cancelar o eliminar un evento, llamada, reunión etc\n\nLa fecha actual es {{$now}}",
+        "workflowId": {
+          "__rl": true,
+          "value": "Asl28k4QPgEKrWjL",
+          "mode": "list",
+          "cachedResultName": "Cancelar evento Podologia"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Titulo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Titulo', ``, 'string') }}",
+            "Fecha Inicio": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha_Inicio', ``, 'string') }}",
+            "Fecha Fin": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha_Fin', ``, 'string') }}",
+            "Descripción": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Descripci_n', ``, 'string') }}",
+            "ID": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('ID', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Titulo",
+              "displayName": "Titulo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "Fecha Inicio",
+              "displayName": "Fecha Inicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "Fecha Fin",
+              "displayName": "Fecha Fin",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "Descripción",
+              "displayName": "Descripción",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        -1456,
+        624
+      ],
+      "id": "5ebc58ca-f05c-4b01-98a1-f93bdb9308ad",
+      "name": "Cancelar Evento"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "1eba1fcd-bb92-482a-b71c-746923f91f3a",
+              "leftValue": "={{ $json.body.event }}",
+              "rightValue": "message_created",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -5360,
+        400
+      ],
+      "id": "d09336d7-bbd2-42b5-89a6-9a2aadf63b04",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "4578a5f0-afa6-4be2-b0be-4f53e81cdc6b",
+              "leftValue": "={{ $json.body.conversation.messages[0].sender_type }}",
+              "rightValue": "Contact",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -5136,
+        400
+      ],
+      "id": "595379aa-6304-4174-a3fd-974b5929c2f9",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bc522005-da66-4eb3-b7e2-45385eebf91c",
+              "name": "accountID",
+              "value": "={{ $json.body.account.id }}",
+              "type": "string"
+            },
+            {
+              "id": "0b03f6c2-ae98-44fb-8282-e0ec4c9264e0",
+              "name": "conversationID",
+              "value": "={{ $json.body.conversation.messages[0].conversation_id }}",
+              "type": "string"
+            },
+            {
+              "id": "e43acd93-3b83-4203-b89e-e4597a34a109",
+              "name": "sessionid",
+              "value": "={{ $json.body.conversation.messages[0].source_id }}",
+              "type": "string"
+            },
+            {
+              "id": "5609978b-f5f3-4f8b-8f07-a852fba7b204",
+              "name": "identificador",
+              "value": "={{ $json.body.conversation.meta.sender.identifier }}",
+              "type": "string"
+            },
+            {
+              "id": "b376b635-4185-4d5d-a204-77c2cfa12b63",
+              "name": "telefono",
+              "value": "={{ $json.body.conversation.meta.sender.phone_number }}",
+              "type": "string"
+            },
+            {
+              "id": "e2d49fdd-014c-46fe-8e6a-e3000f293f78",
+              "name": "mensaje",
+              "value": "={{ $json.body.content }}",
+              "type": "string"
+            },
+            {
+              "id": "392c56d1-d054-46be-9677-f9c34db37a76",
+              "name": "data_time",
+              "value": "={{ $json.body.conversation.timestamp.toDateTime('s').toLocal() }}",
+              "type": "string"
+            },
+            {
+              "id": "e16baaa3-a9cb-43a4-a401-7facde6bf49b",
+              "name": "tipo_mensaje",
+              "value": "={{ $json.body.conversation.messages[0].attachments[0].file_type }}",
+              "type": "string"
+            },
+            {
+              "id": "58f57a6f-28a8-4778-ba0e-7e3fa645987e",
+              "name": "body.conversation.messages[0].attachments[0].data_url",
+              "value": "={{ $json.body.conversation.messages[0].attachments[0].data_url }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -4912,
+        400
+      ],
+      "id": "a08ff60c-4617-4273-9f55-24698d842904",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener el valor original del campo\nconst sender = $input.first().json.identificador;\n\n// Eliminar el prefijo '34' o '49' si existe, y quitar el dominio de WhatsApp\nconst cleanedNumber = sender\n  .replace(/^(\\+?34|\\+?49)/, '')       // Quita el '+34', '34', '+49' o '49' al inicio\n  .replace(/@s\\.whatsapp\\.net$/, ''); // Quita el '@s.whatsapp.net' al final\n\n// Devolver el número limpio\nreturn [\n  {\n    json: {\n      cleanedNumber\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -4016,
+        496
+      ],
+      "id": "1b68947a-e130-49c1-894a-b5c80b564aeb",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bc522005-da66-4eb3-b7e2-45385eebf91c",
+              "name": "accountID",
+              "value": "={{ $('Edit Fields').item.json.accountID }}",
+              "type": "string"
+            },
+            {
+              "id": "0b03f6c2-ae98-44fb-8282-e0ec4c9264e0",
+              "name": "conversationID",
+              "value": "={{ $('Edit Fields').item.json.conversationID }}",
+              "type": "string"
+            },
+            {
+              "id": "e43acd93-3b83-4203-b89e-e4597a34a109",
+              "name": "sessionid",
+              "value": "={{ $('Edit Fields').item.json.sessionid }}",
+              "type": "string"
+            },
+            {
+              "id": "5609978b-f5f3-4f8b-8f07-a852fba7b204",
+              "name": "identificador",
+              "value": "={{ $('Edit Fields').item.json.identificador }}",
+              "type": "string"
+            },
+            {
+              "id": "b376b635-4185-4d5d-a204-77c2cfa12b63",
+              "name": "telefono",
+              "value": "={{ $json.cleanedNumber }}",
+              "type": "string"
+            },
+            {
+              "id": "e2d49fdd-014c-46fe-8e6a-e3000f293f78",
+              "name": "mensaje",
+              "value": "={{ $('Edit Fields').item.json.mensaje }}",
+              "type": "string"
+            },
+            {
+              "id": "a17529a1-edf0-4bf5-a151-a043cc0a4d49",
+              "name": "data_time",
+              "value": "={{ $('Edit Fields').item.json.data_time }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -3792,
+        496
+      ],
+      "id": "f8eca04b-e5d0-4aa6-a9e2-b85f4d2c5dda",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://tu-url-de-chatwoot///api/v1/accounts/{{ $('Edit Fields').item.json.accountID }}/conversations/{{ $('Edit Fields').item.json.conversationID }}/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"content\": {{ JSON.stringify($('AI Agent').item.json.output.Response.Part1) }},\n  \"private\": false,\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}\n\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1008,
+        352
+      ],
+      "id": "b58ca9ea-0ee6-42d9-990c-c84bed751273",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "3c9b6c3c-2173-469e-a1f4-c337396f731f",
+              "leftValue": "={{ $json.output.Response.Part1 }}",
+              "rightValue": "False",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1248,
+        368
+      ],
+      "id": "5235b041-1b45-4d86-9240-be8a552116fb",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "2c646833-a9dd-47b3-83c1-4cc11c891cc6",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -5584,
+        400
+      ],
+      "id": "c3ece9db-668c-4013-b8f2-50d27724ac2c",
+      "name": "Webhook",
+      "webhookId": "2c646833-a9dd-47b3-83c1-4cc11c891cc6"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.identificador }}",
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        -2096,
+        624
+      ],
+      "id": "8cd163fd-9749-4ce2-a2b5-9b022eb19cdf",
+      "name": "Postgres Chat Memory"
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $json.identificador }}",
+        "messageData": "={{ $json.mensaje_audio }}",
+        "tail": true
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -3568,
+        304
+      ],
+      "id": "7ddc5cf7-982b-4e2d-8f67-b821aaf22ed6",
+      "name": "Redis"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d5a78e75-c919-4eca-b37b-97d443b9910f",
+              "name": "mensaje_audio",
+              "value": "={{ $json.message.join(\" \") }}",
+              "type": "string"
+            },
+            {
+              "id": "5d29cedb-8884-400c-b7bd-2841197378b1",
+              "name": "telefono",
+              "value": "={{ $('Edit Fields3').item.json.telefono }}",
+              "type": "string"
+            },
+            {
+              "id": "73c5d812-8858-447c-abea-a74d7acc737b",
+              "name": "identificador",
+              "value": "={{ $('Edit Fields3').item.json.identificador }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2448,
+        304
+      ],
+      "id": "f52fbdc0-de04-4616-afc5-4bf2da55f285",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "amount": 2,
+        "unit": "minutes"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -3344,
+        304
+      ],
+      "id": "a8e1fc4e-fdaf-4485-bffc-cdae2c8df3aa",
+      "name": "Wait1",
+      "webhookId": "5482c38f-bb81-4eea-ade4-e1c04eb17513"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "message",
+        "key": "={{ $('Edit Fields3').item.json.identificador }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -3120,
+        304
+      ],
+      "id": "90bd4530-317d-4651-89a6-9cea4063503e",
+      "name": "Redis3"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "43c1454a-dde6-4d56-9dff-6f48222277ac",
+              "leftValue": "={{ $json.message.last() }}",
+              "rightValue": "={{ $('Edit Fields3').item.json.mensaje_audio }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -2896,
+        304
+      ],
+      "id": "2d10912c-9390-46a5-983d-8169aa60d9ae",
+      "name": "If3"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('Edit Fields3').item.json.identificador }}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -2672,
+        304
+      ],
+      "id": "cffcd929-010e-4ef5-9e04-8376d0fb6ada",
+      "name": "Redis4"
+    },
+    {
+      "parameters": {
+        "url": "=https://Tu url de chatwoot{{ $json.body.conversation.messages[0].attachments[0].data_url.replace('http://https', '') }}\n\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -4464,
+        304
+      ],
+      "id": "3434fb88-fcb1-4b73-8c83-01428806d4a2",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -4240,
+        304
+      ],
+      "id": "3d009d67-7d07-4005-9960-b1227d936f96",
+      "name": "Transcribe a recording"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bc522005-da66-4eb3-b7e2-45385eebf91c",
+              "name": "accountID",
+              "value": "={{ $('Edit Fields').item.json.accountID }}",
+              "type": "string"
+            },
+            {
+              "id": "0b03f6c2-ae98-44fb-8282-e0ec4c9264e0",
+              "name": "conversationID",
+              "value": "={{ $('Edit Fields').item.json.conversationID }}",
+              "type": "string"
+            },
+            {
+              "id": "e43acd93-3b83-4203-b89e-e4597a34a109",
+              "name": "sessionid",
+              "value": "={{ $('Edit Fields').item.json.sessionid }}",
+              "type": "string"
+            },
+            {
+              "id": "5609978b-f5f3-4f8b-8f07-a852fba7b204",
+              "name": "identificador",
+              "value": "={{ $('Edit Fields').item.json.identificador }}",
+              "type": "string"
+            },
+            {
+              "id": "b376b635-4185-4d5d-a204-77c2cfa12b63",
+              "name": "telefono",
+              "value": "={{ $json.cleanedNumber }}",
+              "type": "string"
+            },
+            {
+              "id": "e2d49fdd-014c-46fe-8e6a-e3000f293f78",
+              "name": "mensaje_audio",
+              "value": "={{ $('Transcribe a recording').item.json.text }}",
+              "type": "string"
+            },
+            {
+              "id": "a17529a1-edf0-4bf5-a151-a043cc0a4d49",
+              "name": "data_time",
+              "value": "={{ $('Edit Fields').item.json.data_time }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -3792,
+        304
+      ],
+      "id": "ae84f666-f396-47aa-8f15-9b00834eed04",
+      "name": "Edit Fields3"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener el valor original del campo\nconst sender = $('If4').first().json.identificador;\n// Eliminar el prefijo '34' o '49' si existe, y quitar el dominio de WhatsApp\nconst cleanedNumber = sender\n  .replace(/^(\\+?34|\\+?49)/, '')       // Quita el '+34', '34', '+49' o '49' al inicio\n  .replace(/@s\\.whatsapp\\.net$/, ''); // Quita el '@s.whatsapp.net' al final\n\n// Devolver el número limpio\nreturn [\n  {\n    json: {\n      cleanedNumber\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -4016,
+        304
+      ],
+      "id": "5f66d085-0006-4550-8d25-02eebe362215",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "c4f6ac1f-9f6f-4ff4-898b-b66df62f3e5c",
+              "leftValue": "={{ $json.tipo_mensaje }}",
+              "rightValue": "audio",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -4688,
+        400
+      ],
+      "id": "8f855c49-a942-4f34-9013-ce360f93fca5",
+      "name": "If4"
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $json.identificador }}",
+        "messageData": "={{ $json.mensaje }}",
+        "tail": true
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -3568,
+        496
+      ],
+      "id": "d12be755-7d48-40d4-b139-5038aefd0ea6",
+      "name": "Redis1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d5a78e75-c919-4eca-b37b-97d443b9910f",
+              "name": "mensaje",
+              "value": "={{ $json.message.join(\" \") }}",
+              "type": "string"
+            },
+            {
+              "id": "5d29cedb-8884-400c-b7bd-2841197378b1",
+              "name": "telefono",
+              "value": "={{ $('Edit Fields1').item.json.telefono }}",
+              "type": "string"
+            },
+            {
+              "id": "73c5d812-8858-447c-abea-a74d7acc737b",
+              "name": "identificador",
+              "value": "={{ $('Edit Fields1').item.json.identificador }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2448,
+        496
+      ],
+      "id": "810bf188-496a-4a3c-922f-dd83c53c9c16",
+      "name": "Edit Fields4"
+    },
+    {
+      "parameters": {
+        "amount": 2,
+        "unit": "minutes"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -3344,
+        496
+      ],
+      "id": "f3f50d41-a96b-4f1b-964f-16568e43e115",
+      "name": "Wait",
+      "webhookId": "e6c8b23b-774b-4b85-bea5-4ca1071f55c3"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "message",
+        "key": "={{ $('Edit Fields1').item.json.identificador }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -3120,
+        496
+      ],
+      "id": "dae779cf-13a8-496d-ab8f-22f2a4580ea6",
+      "name": "Redis5"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "43c1454a-dde6-4d56-9dff-6f48222277ac",
+              "leftValue": "={{ $json.message.last() }}",
+              "rightValue": "={{ $('Edit Fields1').item.json.mensaje }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -2896,
+        496
+      ],
+      "id": "4b386d29-268e-4fd4-8fe4-58503798a749",
+      "name": "If5"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('Edit Fields1').item.json.identificador }}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -2672,
+        496
+      ],
+      "id": "df59976f-3451-4040-af4c-097bad6b9cf0",
+      "name": "Redis6"
+    },
+    {
+      "parameters": {
+        "description": "Usa esta herramienta cuando necesites más razonamiento"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1.1,
+      "position": [
+        -1072,
+        624
+      ],
+      "id": "99f2a102-bf26-4eb9-ad3f-22fe3ba41684",
+      "name": "Think"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"Response\": {\n    \"Part1\": \"Primera parte del mensaje\",\n    \"Part2\": \"Segunda parte del mensaje\",\n    \"Part3\": \"Tercera parte del mensaje\"\n  }\n}\n",
+        "autoFix": true
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        -864,
+        640
+      ],
+      "id": "02dcc890-5ed0-4362-ab5b-7afd22a2f557",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "c86fb161-cf13-4bb9-8601-5b42771b6658",
+              "leftValue": "={{ $(\"AI Agent\").item.json.output.Response.Part2 }}\n",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -768,
+        288
+      ],
+      "id": "83576562-f6a1-49a7-a5d4-1cc561f5b044",
+      "name": "If6"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https:/chatwoot-url///api/v1/accounts/{{ $('Edit Fields').item.json.accountID }}/conversations/{{ $('Edit Fields').item.json.conversationID }}/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"content\": {{ JSON.stringify($('AI Agent').item.json.output.Response.Part2) }},\n  \"private\": false,\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}\n\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -384,
+        192
+      ],
+      "id": "65dd3ac3-d8df-49c3-a732-1b6bba467ab3",
+      "name": "HTTP Request2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ab109b27-b35a-43bf-896a-78b44fa17acd",
+              "leftValue": "={{ $(\"AI Agent\").item.json.output.Response.Part3 }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -224,
+        112
+      ],
+      "id": "391ec98a-824f-48a3-8abe-05ca03beb9c8",
+      "name": "If7"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://chatwoot-url///api/v1/accounts/{{ $('Edit Fields').item.json.accountID }}/conversations/{{ $('Edit Fields').item.json.conversationID }}/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"content\": {{ JSON.stringify($('AI Agent').item.json.output.Response.Part3) }},\n  \"private\": false,\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}\n\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        224,
+        0
+      ],
+      "id": "bac34175-dbb2-4585-8d94-ec19db1e75b5",
+      "name": "HTTP Request3"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -592,
+        192
+      ],
+      "id": "856054cf-5c3a-4403-a65e-d54fc70bafd6",
+      "name": "Wait2",
+      "webhookId": "dfe3371c-602f-4e8b-af55-7656302fde44"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "303eb14d-cf15-4b6c-a557-f6127e1f5f8f",
+      "name": "Wait3",
+      "webhookId": "bc32e4f5-3708-4b32-b338-7565236d02bb"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-5-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -928,
+        848
+      ],
+      "id": "6409f764-a1d9-4f5a-ad81-d1bba8d09ac5",
+      "name": "OpenAI Chat Model3"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-01-15T20:11:22.643Z",
+      "createdAt": "2026-01-15T20:11:22.643Z",
+      "role": "workflow:owner",
+      "workflowId": "m8XtEmJO8mpSP2Sf",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-01-15T20:11:22.616Z",
+  "versionId": "b9531b4c-1d85-47c0-9470-1f28c6fb4aa2"
+}
