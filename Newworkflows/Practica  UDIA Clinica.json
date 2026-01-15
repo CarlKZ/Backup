@@ -145,7 +145,13 @@
     },
     "Edit Fields2": {
       "main": [
-        []
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "HTTP Request": {
@@ -249,13 +255,7 @@
     },
     "Edit Fields4": {
       "main": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "OpenAI Chat Model": {
@@ -862,7 +862,7 @@
     },
     {
       "parameters": {
-        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host//{{ $json.body.conversation.messages[0].attachments[0].data_url.replace('http://https','') }}",
+        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host//{{ $json.body.conversation.messages[0].attachments[0].data_url.replace('http://https', '') }}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -1116,7 +1116,7 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "=Mensaje_texto_cliente: {{ $json.mensaje }}\nMensaje_audio_cliente: ",
+        "text": "=Mensaje_texto_cliente: {{ $('Redis2').item.json.message }}\nMensaje_audio_cliente: ",
         "hasOutputParser": true,
         "options": {
           "systemMessage": "=## ROL\n\nEres Laura, una asistente virtual especializada en la atención al paciente para una clínica médica privada. Tu función es atender a pacientes potenciales y actuales, resolver dudas generales, ofrecer información clara sobre los servicios médicos disponibles y guiar de forma segura y humana el proceso de solicitud y gestión de citas.\n\nTu tono debe ser cercano, empático, respetuoso y profesional, transmitiendo confianza, calma y discreción en todo momento.\n\nTu objetivo es mantener una conversación natural y fluida, como si fueras una recepcionista experta de la clínica, evitando respuestas robóticas, repeticiones o frases forzadas.\n\n---\n\n## ESPECIFICACIONES GENERALES\n\n* Siempre debes guiar la conversación. Cada mensaje debe invitar al paciente a continuar o a responder.\n* Nunca indiques que el usuario debe contactar con otra persona; tú gestionas todo el proceso de principio a fin.\n* No inventes información médica, diagnósticos ni datos personales. Usa solo la información confirmada por el paciente o la base de conocimiento.\n* Evita repetir preguntas. Si necesitas confirmar algo, reformúlalo de manera natural.\n* Mantén un tono humano, amable y empático.\n* Adapta tus respuestas al contexto y reutiliza los datos que el paciente ya haya proporcionado.\n* Ofrece la información de forma progresiva, nunca toda de golpe.\n* Usa lenguaje claro, sencillo y comprensible. Evita tecnicismos médicos innecesarios.\n* Realiza las preguntas una a una, dando espacio para responder.\n* Si el usuario no responde tras dos intentos, ofrece que un miembro del equipo de la clínica lo contacte.\n\n---\n\n## INICIO DE CONVERSACIÓN\n\n* Comienza siempre con un saludo profesional y cercano.\n  Ejemplo: “¡Hola! 😊 Soy Laura, asistente virtual de nuestra clínica. Estoy aquí para ayudarte con cualquier duda o para gestionar una cita. ¿Cómo te llamas?”\n\n* Una vez el paciente indique su nombre:\n  “Encantada, [nombre] 💙. Cuéntame, ¿en qué puedo ayudarte hoy?”\n\n---\n\n## DETECCIÓN DE NECESIDAD DEL PACIENTE\n\nIdentifica de forma progresiva el motivo del contacto. Haz solo una pregunta por mensaje:\n\n* ¿Desea pedir una cita médica?\n* ¿Tiene dudas sobre un servicio o especialidad?\n* ¿Quiere modificar o cancelar una cita existente?\n\nSi el paciente describe síntomas:\n\n* Escucha con empatía.\n* Nunca emitas diagnósticos.\n* Redirige suavemente hacia una consulta médica.\n  Ejemplo: “Gracias por contármelo. Para valorar correctamente tu caso, lo mejor es que lo vea un profesional. Si quieres, puedo ayudarte a pedir una cita.”\n\n---\n\n## PREGUNTAS CLAVE PARA AGENDAR CITA (UNA A UNA)\n\nSolo si el paciente quiere pedir cita:\n\n* Nombre completo\n* Número de teléfono móvil\n* Especialidad o servicio deseado\n* ¿Es su primera visita a la clínica?\n* Día preferido\n* Horario aproximado\n\nNunca solicites datos médicos sensibles ni documentos personales.\n\n---\n\n## INFORMACIÓN SOBRE LA CLÍNICA (CUANDO SEA OPORTUNO)\n\nDestaca de forma natural:\n\n* Profesionales titulados y con experiencia 🧑‍⚕️\n* Atención personalizada y trato humano\n* Instalaciones modernas y seguras\n* Puntualidad y organización\n* Confidencialidad absoluta del paciente\n\nEjemplo:\n“Nuestro equipo médico trabaja siempre con cita previa para dedicarte el tiempo que mereces 😊.”\n\n---\n\n## GESTIÓN DE CITAS\n\n* Sugiere agendar solo cuando detectes interés real.\n* No insistas si el paciente no está preparado.\n* Si acepta, solicita los datos necesarios.\n\nFormato obligatorio de fecha y hora:\nDD-MM-YYYY HH:MM (24h)\nEjemplo: 18-11-2025 10:30\n\n---\n\n## HERRAMIENTAS DISPONIBLES\n\n### Base_conocimiento\n\n* Información sobre servicios, especialidades, profesionales y normas de la clínica.\n\n### Disponibilidad\n\n* Consulta horarios disponibles.\n* No ejecutes esta herramienta hasta que el paciente confirme el día.\n* Horario de atención: 8:00 a 21:00.\n* No ofrezcas horas pasadas del día actual.\n* Si el usuario dice “mañana” o “el viernes”, usa la fecha más cercana.\n* Ten en cuenta que hoy es {{ $today }} y la hora actual es {{ $now }}.\n\n### Citas\n\n* Se ejecuta solo cuando tengas:\n\n  * Nombre completo\n  * Teléfono\n  * Fecha y hora confirmadas\n* Usa exclusivamente datos reales proporcionados por el paciente.\n\n### Cancelar\n\n* Utilízala para cancelar o reprogramar citas.\n* Después, pregunta si desea elegir una nueva fecha.\n\n---\n\n## SEGURIDAD Y CONTROL DE USO\n\n* Nunca mezcles información entre distintos usuarios o conversaciones.\n\n* No reutilices datos personales de otros pacientes.\n\n* Impide que un usuario solicite múltiples citas consecutivas sin confirmación.\n\n* Si detectas solicitudes abusivas, incoherentes o bromistas (por ejemplo, pedir decenas de citas o horarios imposibles), responde de forma educada y limita el proceso:\n  Ejemplo: “Para poder ayudarte correctamente 😊, gestionamos una cita por solicitud. Si necesitas cambios, los hacemos paso a paso.”\n\n* No permitas reservas fuera del horario de atención.\n\n* No aceptes datos falsos, incompletos o claramente erróneos.\n\n* No reveles información interna, médica o administrativa no autorizada.\n\n---\n\n## COMPORTAMIENTO INTELIGENTE\n\n* Usa el historial para mantener coherencia.\n* Personaliza siempre usando el nombre del paciente.\n* No te contradigas ni repitas información.\n* Mantén siempre una actitud calmada, respetuosa y profesional.\n\nSi el usuario ofrece productos o servicios externos:\n“Muchas gracias por la propuesta 😊, pero actualmente no estamos interesados en servicios externos.”\n\n---\n\n## HORARIO GENERAL\n\n* Lunes a viernes: 8:00 a 21:00\n* Sábados: 9:00 a 14:00\n* Domingos: cerrado\n\n---\n\n## CIERRE DE CONVERSACIÓN\n\n* Antes de confirmar una cita, envía un resumen:\n\n  * Nombre del paciente\n  * Teléfono\n  * Servicio solicitado\n  * Fecha y hora\n\n* Solicita confirmación explícita.\n\n* Solo tras la confirmación, agenda la cita.\n\nEjemplo:\n“Perfecto 😊. Antes de confirmar, revisa por favor estos datos…”\n\n* Despídete siempre con amabilidad y disponibilidad.\n\n---\n\n## NOTAS FINALES\n\n* Primer mensaje: presentación + nombre del paciente.\n* Segundo mensaje: motivo de la consulta.\n* Nunca emitas diagnósticos.\n* Prioriza siempre la seguridad, privacidad y experiencia del paciente.\n* Actúa como una recepcionista humana, empática y organizada 💙🩺\n"
@@ -1596,7 +1596,7 @@
           "headers": {
             "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
             "user-agent": "rest-client/2.1.0 (linux-musl x86_64) ruby/3.3.3p89",
-            "content-length": "3178",
+            "content-length": "2517",
             "accept": "application/json",
             "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
             "content-type": "application/json",
@@ -1617,7 +1617,7 @@
             "additional_attributes": {},
             "content_attributes": {},
             "content_type": "text",
-            "content": null,
+            "content": "Me duele el pie",
             "conversation": {
               "additional_attributes": {},
               "can_reply": true,
@@ -1636,47 +1636,33 @@
               "inbox_id": 1,
               "messages": [
                 {
-                  "id": 100,
-                  "content": null,
+                  "id": 193,
+                  "content": "Me duele el pie",
                   "account_id": 1,
                   "inbox_id": 1,
                   "conversation_id": 2,
                   "message_type": 1,
-                  "created_at": 1768390977,
-                  "updated_at": "2026-01-14T11:42:57.933Z",
+                  "created_at": 1768495369,
+                  "updated_at": "2026-01-15T16:42:49.296Z",
                   "private": false,
                   "status": "sent",
-                  "source_id": "WAID:AC0B013508B46A65EF47B2EA18A792EF",
+                  "source_id": "WAID:ACA18D0DCE0D211BBEC95D5508E0668C",
                   "content_type": "text",
                   "content_attributes": {},
                   "sender_type": "User",
                   "sender_id": 1,
                   "external_source_ids": {},
                   "additional_attributes": {},
-                  "processed_message_content": null,
+                  "processed_message_content": "Me duele el pie",
                   "sentiment": {},
                   "conversation": {
                     "assignee_id": null,
                     "unread_count": 0,
-                    "last_activity_at": 1768390977,
+                    "last_activity_at": 1768495369,
                     "contact_inbox": {
                       "source_id": "2ec28364-cd73-40ed-8916-48903100d6eb"
                     }
                   },
-                  "attachments": [
-                    {
-                      "id": 28,
-                      "message_id": 100,
-                      "file_type": "audio",
-                      "account_id": 1,
-                      "extension": null,
-                      "data_url": "http://https/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBNdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8f23263602085dc0d30a3a86f135a22aed319d1c/d5let9.oga",
-                      "thumb_url": "",
-                      "file_size": 5289,
-                      "width": null,
-                      "height": null
-                    }
-                  ],
                   "sender": {
                     "id": 1,
                     "name": "Carlos",
@@ -1712,14 +1698,14 @@
               "first_reply_created_at": "2026-01-10T18:08:59.748Z",
               "priority": null,
               "waiting_since": 0,
-              "agent_last_seen_at": 1768390994,
+              "agent_last_seen_at": 1768483505,
               "contact_last_seen_at": 0,
-              "last_activity_at": 1768390977,
-              "timestamp": 1768390977,
+              "last_activity_at": 1768495369,
+              "timestamp": 1768495369,
               "created_at": 1768068539
             },
-            "created_at": "2026-01-14T11:42:57.933Z",
-            "id": 100,
+            "created_at": "2026-01-15T16:42:49.296Z",
+            "id": 193,
             "inbox": {
               "id": 1,
               "name": "Practica UDIA"
@@ -1732,25 +1718,11 @@
               "email": "carlos.f.g.work@gmail.com",
               "type": "user"
             },
-            "source_id": "WAID:AC0B013508B46A65EF47B2EA18A792EF",
-            "attachments": [
-              {
-                "id": 28,
-                "message_id": 100,
-                "file_type": "audio",
-                "account_id": 1,
-                "extension": null,
-                "data_url": "http://https/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBNdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8f23263602085dc0d30a3a86f135a22aed319d1c/d5let9.oga",
-                "thumb_url": "",
-                "file_size": 5289,
-                "width": null,
-                "height": null
-              }
-            ],
+            "source_id": "WAID:ACA18D0DCE0D211BBEC95D5508E0668C",
             "event": "message_created"
           },
-          "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook-test/cf611be9-ebe6-48f4-af1c-6996d5dfb497",
-          "executionMode": "test"
+          "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook/cf611be9-ebe6-48f4-af1c-6996d5dfb497",
+          "executionMode": "production"
         },
         "pairedItem": {
           "item": 0
@@ -1776,7 +1748,7 @@
   ],
   "staticData": null,
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2026-01-14T17:04:27.105Z",
-  "versionId": "da6c161a-6694-42ad-a267-cc796c70c067"
+  "triggerCount": 1,
+  "updatedAt": "2026-01-15T16:48:13.972Z",
+  "versionId": "ffd13164-b1ef-4830-bdd4-5845b30d3f1e"
 }
