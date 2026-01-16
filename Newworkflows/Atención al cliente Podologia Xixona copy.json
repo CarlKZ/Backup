@@ -354,13 +354,7 @@
     },
     "Edit Fields4": {
       "main": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Think": {
@@ -466,7 +460,9 @@
   "createdAt": "2026-01-15T20:11:22.616Z",
   "id": "m8XtEmJO8mpSP2Sf",
   "isArchived": false,
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Atención al cliente Podologia Xixona copy",
   "nodes": [
     {
@@ -506,34 +502,42 @@
         624
       ],
       "id": "495fd18b-eae3-4809-984e-6d8e6028e522",
-      "name": "OpenAI Chat Model"
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
     },
     {
       "parameters": {
         "description": "=Llama a esta herramienta cuando detectes la intención del usuario de comprobar su disponibilidad o si quiere agendar un evento, reunión, llamada etc\nLa fecha actual es {{ $now }}",
         "workflowId": {
           "__rl": true,
-          "value": "IKAL3xNh9r1A3WJ2",
+          "value": "hVb2ST8T1ILN6YyK",
           "mode": "list",
-          "cachedResultName": "Comprobar Disponibilidad Podóloga Xixona"
+          "cachedResultUrl": "/workflow/hVb2ST8T1ILN6YyK",
+          "cachedResultName": "Disponibilidad Clinica"
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",
           "value": {
-            "fecha": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fecha', ``, 'string') }}"
+            "Fecha": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha', ``, 'string') }}"
           },
           "matchingColumns": [
             "fecha"
           ],
           "schema": [
             {
-              "id": "fecha",
-              "displayName": "fecha",
+              "id": "Fecha",
+              "displayName": "Fecha",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "canBeUsedToMatch": true,
-              "type": "string"
+              "type": "string",
+              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -554,9 +558,10 @@
         "description": "=Llama a esta herramienta cuando detectes la intención en el usuario de que quiere agendar un evento, cita, reunión , llamada etc. pero siempre una vez de haber comprobado la disponibilidad\nLa fecha actual es {{ $now }}\n",
         "workflowId": {
           "__rl": true,
-          "value": "FKFnfYpuS1mYvidu",
+          "value": "9FuotR00GiWZy4qa",
           "mode": "list",
-          "cachedResultName": "Agendamiento Podologia"
+          "cachedResultUrl": "/workflow/9FuotR00GiWZy4qa",
+          "cachedResultName": "Agendar Clinica"
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",
@@ -623,9 +628,10 @@
         "description": "=Llama a esta herramienta cuando detectes la intención del usuario de modificar un evento, llamada, reunión etc. Para modificar la fecha o la hora de un evento primero tienes que comprobar la nueva fecha y la nueva hora que quiere el usuario.\nLa fecha actual es {{ $now }}",
         "workflowId": {
           "__rl": true,
-          "value": "vkEGxWsk4oH0W80N",
+          "value": "yaJGjaIHAGfmLMJJ",
           "mode": "list",
-          "cachedResultName": "Modificar Evento Podologia"
+          "cachedResultUrl": "/workflow/yaJGjaIHAGfmLMJJ",
+          "cachedResultName": "Modificar Clinica"
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",
@@ -721,16 +727,23 @@
         624
       ],
       "id": "5a7595dc-c517-4e48-a79a-d0b8beccbc42",
-      "name": "Obtener eventos"
+      "name": "Obtener eventos",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "BxLdTiBYRwntbItp",
+          "name": "Google Calendar account 2"
+        }
+      }
     },
     {
       "parameters": {
         "description": "=Llama a esta herramienta cuando detectes la intención del usuario de cancelar o eliminar un evento, llamada, reunión etc\n\nLa fecha actual es {{$now}}",
         "workflowId": {
           "__rl": true,
-          "value": "Asl28k4QPgEKrWjL",
+          "value": "o3MKJB4AHrXJM0kZ",
           "mode": "list",
-          "cachedResultName": "Cancelar evento Podologia"
+          "cachedResultUrl": "/workflow/o3MKJB4AHrXJM0kZ",
+          "cachedResultName": "Cancelar Clinica"
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",
@@ -869,7 +882,8 @@
         400
       ],
       "id": "595379aa-6304-4174-a3fd-974b5929c2f9",
-      "name": "If1"
+      "name": "If1",
+      "disabled": true
     },
     {
       "parameters": {
@@ -1106,7 +1120,13 @@
         624
       ],
       "id": "8cd163fd-9749-4ce2-a2b5-9b022eb19cdf",
-      "name": "Postgres Chat Memory"
+      "name": "Postgres Chat Memory",
+      "credentials": {
+        "postgres": {
+          "id": "lynsIk4t0FUvPeMz",
+          "name": "Postgres account 2"
+        }
+      }
     },
     {
       "parameters": {
@@ -1122,7 +1142,13 @@
         304
       ],
       "id": "7ddc5cf7-982b-4e2d-8f67-b821aaf22ed6",
-      "name": "Redis"
+      "name": "Redis",
+      "credentials": {
+        "redis": {
+          "id": "rmwGdInGMfi5lhMd",
+          "name": "Redis account"
+        }
+      }
     },
     {
       "parameters": {
@@ -1161,8 +1187,7 @@
     },
     {
       "parameters": {
-        "amount": 2,
-        "unit": "minutes"
+        "amount": 2
       },
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
@@ -1188,7 +1213,13 @@
         304
       ],
       "id": "90bd4530-317d-4651-89a6-9cea4063503e",
-      "name": "Redis3"
+      "name": "Redis3",
+      "credentials": {
+        "redis": {
+          "id": "rmwGdInGMfi5lhMd",
+          "name": "Redis account"
+        }
+      }
     },
     {
       "parameters": {
@@ -1236,11 +1267,17 @@
         304
       ],
       "id": "cffcd929-010e-4ef5-9e04-8376d0fb6ada",
-      "name": "Redis4"
+      "name": "Redis4",
+      "credentials": {
+        "redis": {
+          "id": "rmwGdInGMfi5lhMd",
+          "name": "Redis account"
+        }
+      }
     },
     {
       "parameters": {
-        "url": "=https://Tu url de chatwoot{{ $json.body.conversation.messages[0].attachments[0].data_url.replace('http://https', '') }}\n\n",
+        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host{{ $json.body.conversation.messages[0].attachments[0].data_url.replace('http://https', '') }}\n\n",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -1265,7 +1302,13 @@
         304
       ],
       "id": "3d009d67-7d07-4005-9960-b1227d936f96",
-      "name": "Transcribe a recording"
+      "name": "Transcribe a recording",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
     },
     {
       "parameters": {
@@ -1387,7 +1430,13 @@
         496
       ],
       "id": "d12be755-7d48-40d4-b139-5038aefd0ea6",
-      "name": "Redis1"
+      "name": "Redis1",
+      "credentials": {
+        "redis": {
+          "id": "rmwGdInGMfi5lhMd",
+          "name": "Redis account"
+        }
+      }
     },
     {
       "parameters": {
@@ -1453,7 +1502,13 @@
         496
       ],
       "id": "dae779cf-13a8-496d-ab8f-22f2a4580ea6",
-      "name": "Redis5"
+      "name": "Redis5",
+      "credentials": {
+        "redis": {
+          "id": "rmwGdInGMfi5lhMd",
+          "name": "Redis account"
+        }
+      }
     },
     {
       "parameters": {
@@ -1501,7 +1556,13 @@
         496
       ],
       "id": "df59976f-3451-4040-af4c-097bad6b9cf0",
-      "name": "Redis6"
+      "name": "Redis6",
+      "credentials": {
+        "redis": {
+          "id": "rmwGdInGMfi5lhMd",
+          "name": "Redis account"
+        }
+      }
     },
     {
       "parameters": {
@@ -1510,8 +1571,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolThink",
       "typeVersion": 1.1,
       "position": [
-        -1072,
-        624
+        -1184,
+        816
       ],
       "id": "99f2a102-bf26-4eb9-ad3f-22fe3ba41684",
       "name": "Think"
@@ -1697,10 +1758,184 @@
         848
       ],
       "id": "6409f764-a1d9-4f5a-ad81-d1bba8d09ac5",
-      "name": "OpenAI Chat Model3"
+      "name": "OpenAI Chat Model3",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
+            "user-agent": "rest-client/2.1.0 (linux-musl x86_64) ruby/3.3.3p89",
+            "content-length": "3178",
+            "accept": "application/json",
+            "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.19.0.1",
+            "x-forwarded-host": "n8n2nkz-n8n.vc1wee.easypanel.host",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "88eeb68a63a5",
+            "x-real-ip": "172.19.0.1"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "account": {
+              "id": 1,
+              "name": "KZ"
+            },
+            "additional_attributes": {},
+            "content_attributes": {},
+            "content_type": "text",
+            "content": null,
+            "conversation": {
+              "additional_attributes": {},
+              "can_reply": true,
+              "channel": "Channel::Api",
+              "contact_inbox": {
+                "id": 4,
+                "contact_id": 2,
+                "inbox_id": 1,
+                "source_id": "2ec28364-cd73-40ed-8916-48903100d6eb",
+                "created_at": "2026-01-10T18:08:59.565Z",
+                "updated_at": "2026-01-10T18:08:59.565Z",
+                "hmac_verified": false,
+                "pubsub_token": "gurWbVcYvsKhvLhebMRnc8kk"
+              },
+              "id": 2,
+              "inbox_id": 1,
+              "messages": [
+                {
+                  "id": 238,
+                  "content": null,
+                  "account_id": 1,
+                  "inbox_id": 1,
+                  "conversation_id": 2,
+                  "message_type": 1,
+                  "created_at": 1768566477,
+                  "updated_at": "2026-01-16T12:27:57.336Z",
+                  "private": false,
+                  "status": "sent",
+                  "source_id": "WAID:AC2607C7AC1BA3FDBF5F394A0DAE1C63",
+                  "content_type": "text",
+                  "content_attributes": {},
+                  "sender_type": "User",
+                  "sender_id": 1,
+                  "external_source_ids": {},
+                  "additional_attributes": {},
+                  "processed_message_content": null,
+                  "sentiment": {},
+                  "conversation": {
+                    "assignee_id": null,
+                    "unread_count": 0,
+                    "last_activity_at": 1768566477,
+                    "contact_inbox": {
+                      "source_id": "2ec28364-cd73-40ed-8916-48903100d6eb"
+                    }
+                  },
+                  "attachments": [
+                    {
+                      "id": 37,
+                      "message_id": 238,
+                      "file_type": "audio",
+                      "account_id": 1,
+                      "extension": null,
+                      "data_url": "http://https/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d15bd5eb92debefad3d716e96fb30ebd068e538b/h6efp8.oga",
+                      "thumb_url": "",
+                      "file_size": 9817,
+                      "width": null,
+                      "height": null
+                    }
+                  ],
+                  "sender": {
+                    "id": 1,
+                    "name": "Carlos",
+                    "available_name": "Carlos",
+                    "avatar_url": "",
+                    "type": "user",
+                    "availability_status": null,
+                    "thumbnail": ""
+                  }
+                }
+              ],
+              "labels": [],
+              "meta": {
+                "sender": {
+                  "additional_attributes": {},
+                  "custom_attributes": {},
+                  "email": null,
+                  "id": 2,
+                  "identifier": "22673300176922@lid",
+                  "name": "34622924906",
+                  "phone_number": "+34622924906",
+                  "thumbnail": "http://https/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f764ed7dff8669a9ee46cdfac52428f39f7927b6/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3ee3a98e3eb1528ac39b3dd1284c2b0d768e8e96/264751741_710510746666595_1701232651772483746_n.jpg",
+                  "type": "contact"
+                },
+                "assignee": null,
+                "team": null,
+                "hmac_verified": false
+              },
+              "status": "open",
+              "custom_attributes": {},
+              "snoozed_until": null,
+              "unread_count": 0,
+              "first_reply_created_at": "2026-01-10T18:08:59.748Z",
+              "priority": null,
+              "waiting_since": 0,
+              "agent_last_seen_at": 1768563259,
+              "contact_last_seen_at": 0,
+              "last_activity_at": 1768566477,
+              "timestamp": 1768566477,
+              "created_at": 1768068539
+            },
+            "created_at": "2026-01-16T12:27:57.336Z",
+            "id": 238,
+            "inbox": {
+              "id": 1,
+              "name": "Practica UDIA"
+            },
+            "message_type": "outgoing",
+            "private": false,
+            "sender": {
+              "id": 1,
+              "name": "Carlos",
+              "email": "carlos.f.g.work@gmail.com",
+              "type": "user"
+            },
+            "source_id": "WAID:AC2607C7AC1BA3FDBF5F394A0DAE1C63",
+            "attachments": [
+              {
+                "id": 37,
+                "message_id": 238,
+                "file_type": "audio",
+                "account_id": 1,
+                "extension": null,
+                "data_url": "http://https/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d15bd5eb92debefad3d716e96fb30ebd068e538b/h6efp8.oga",
+                "thumb_url": "",
+                "file_size": 9817,
+                "width": null,
+                "height": null
+              }
+            ],
+            "event": "message_created"
+          },
+          "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook-test/2c646833-a9dd-47b3-83c1-4cc11c891cc6",
+          "executionMode": "test"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "availableInMCP": false
@@ -1717,6 +1952,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-01-15T20:11:22.616Z",
-  "versionId": "b9531b4c-1d85-47c0-9470-1f28c6fb4aa2"
+  "updatedAt": "2026-01-16T13:40:57.774Z",
+  "versionId": "c800577d-b199-4339-9a49-106e9f346b56"
 }
