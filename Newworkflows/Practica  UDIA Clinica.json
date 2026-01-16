@@ -41,25 +41,7 @@
       "main": [
         [
           {
-            "node": "If2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If2": {
-      "main": [
-        [
-          {
-            "node": "HTTP Request",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Code in JavaScript",
+            "node": "If4",
             "type": "main",
             "index": 0
           }
@@ -202,18 +184,7 @@
       "main": [
         [
           {
-            "node": "If4",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If4": {
-      "main": [
-        [
-          {
-            "node": "Redis5",
+            "node": "If2",
             "type": "main",
             "index": 0
           }
@@ -365,7 +336,13 @@
     },
     "AI Agent": {
       "main": [
-        []
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "If5": {
@@ -445,6 +422,46 @@
           }
         ]
       ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Redis5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If4": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2026-01-10T18:04:19.528Z",
@@ -498,7 +515,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        0,
+        32,
         288
       ],
       "id": "b3767584-7fb6-4468-8750-608e1ee8790c",
@@ -531,7 +548,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        240,
+        256,
         288
       ],
       "id": "44e23bde-c449-4ceb-942b-e8d7971a8379",
@@ -603,44 +620,11 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        448,
+        480,
         288
       ],
       "id": "2da19914-9f4f-4142-b40d-770d35ccea53",
       "name": "Edit Fields"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 3
-          },
-          "conditions": [
-            {
-              "id": "d6581874-f941-437c-b4a6-90cb46415c1d",
-              "leftValue": "={{ $json.tipo_mensaje }}",
-              "rightValue": "audio",
-              "operator": {
-                "type": "string",
-                "operation": "equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.3,
-      "position": [
-        672,
-        288
-      ],
-      "id": "ca53525b-fde1-47b1-9256-071612fb8ec0",
-      "name": "If2"
     },
     {
       "parameters": {
@@ -649,7 +633,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1344,
+        1376,
         384
       ],
       "id": "13d99f4a-d139-47c5-8e89-1eeaf8ab1836",
@@ -665,7 +649,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1792,
+        1824,
         384
       ],
       "id": "a101b8be-e8b7-416e-8c94-46cc3ad12b1d",
@@ -682,7 +666,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        2016,
+        2048,
         384
       ],
       "id": "cb968fbd-72d0-46fc-af41-15e0603a4641",
@@ -699,7 +683,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2240,
+        2272,
         384
       ],
       "id": "a17d4e65-30c7-4450-8c86-97ff6448e2c5",
@@ -738,7 +722,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        2464,
+        2496,
         384
       ],
       "id": "87f36a24-6015-42ff-b4c2-b3db449f60fb",
@@ -799,7 +783,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1568,
+        1600,
         384
       ],
       "id": "179e837c-255c-49bb-b8d6-75bf5042e65f",
@@ -813,7 +797,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2688,
+        2720,
         384
       ],
       "id": "00fd0f52-d2b8-4bcb-a5db-37fd96e6eb34",
@@ -854,7 +838,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2912,
+        2944,
         384
       ],
       "id": "bd69cdd7-2980-4903-9f73-87fd89949d86",
@@ -862,13 +846,13 @@
     },
     {
       "parameters": {
-        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host//{{ $json.body.conversation.messages[0].attachments[0].data_url.replace('http://https', '') }}",
+        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host{{ $json.body.conversation.messages[0].attachments[0].data_url.replace('http://https', '') }}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        896,
+        928,
         192
       ],
       "id": "d658b372-9c2b-42f2-b30c-d7836b8ef85d",
@@ -884,7 +868,7 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 2.1,
       "position": [
-        1120,
+        1152,
         192
       ],
       "id": "bf6a214d-709e-495a-a97f-21d94a964605",
@@ -898,12 +882,12 @@
     },
     {
       "parameters": {
-        "jsCode": "// Obtener el valor original del campo\nconst sender = $('If4').first().json.identificador;\n// Eliminar el prefijo '34' o '49' si existe, y quitar el dominio de whatsapp\nconst cleanedNumber = sender\n  .replace(/^(\\+?34|\\+?49)/, '') // Quita el '+34', '34', '+49' o '49' al inicio\n  .replace(/@s\\.whatsapp\\.net$/, ''); // Quita el '@s.whatsapp.net' al final\n\n// Devolver el número limpio\nreturn [\n  {\n    json: {\n      cleanedNumber\n    }\n  }\n]\n"
+        "jsCode": "// Obtener el valor original del campo\nconst sender = $('If4').first().json.telefono;\n// Eliminar el prefijo '34' o '49' si existe, y quitar el dominio de WhatsApp\nconst cleanedNumber = sender\n  .replace(/^(\\+?34|\\+?49)/, '')       // Quita el '+34', '34', '+49' o '49' al inicio\n  .replace(/@s\\.whatsapp\\.net$/, ''); // Quita el '@s.whatsapp.net' al final\n\n// Devolver el número limpio\nreturn [\n  {\n    json: {\n      cleanedNumber\n    }\n  }\n];\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1344,
+        1376,
         192
       ],
       "id": "898042a6-b62d-46fc-acdc-d05ed861d991",
@@ -913,13 +897,13 @@
       "parameters": {
         "operation": "push",
         "list": "={{ $json.Identificador }}",
-        "messageData": "={{ $json.mensaje }}",
+        "messageData": "={{ $json.mensaje_audio }}",
         "tail": true
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1792,
+        1824,
         192
       ],
       "id": "bfdfc907-e976-4ef8-b326-813035dbcfc5",
@@ -936,23 +920,25 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        2016,
+        2048,
         192
       ],
       "id": "b9eada27-5df6-4608-9447-87ca35f2d63d",
       "name": "Wait1",
-      "webhookId": "71ac37ec-4a28-4234-a581-e5bf42c39a02"
+      "webhookId": "71ac37ec-4a28-4234-a581-e5bf42c39a02",
+      "disabled": true
     },
     {
       "parameters": {
         "operation": "get",
-        "key": "={{ $json.Identificador }}",
+        "propertyName": "message",
+        "key": "={{ $('Edit Fields3').item.json.Identificador }}",
         "options": {}
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2240,
+        2272,
         192
       ],
       "id": "f07ba84f-df8a-4479-8511-d15a024202e7",
@@ -963,39 +949,6 @@
           "name": "Redis account"
         }
       }
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 3
-          },
-          "conditions": [
-            {
-              "id": "96158e05-c548-462c-94c3-8138dd2ceaf9",
-              "leftValue": "={{ $json.propertyName.last() }}",
-              "rightValue": "={{ $('Edit Fields3').item.json.mensaje }}",
-              "operator": {
-                "type": "string",
-                "operation": "equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.3,
-      "position": [
-        2464,
-        192
-      ],
-      "id": "0c94a833-5148-42b9-ae1a-1b2cd315e8df",
-      "name": "If4"
     },
     {
       "parameters": {
@@ -1034,7 +987,7 @@
             {
               "id": "55ad0e2a-09a6-42b7-925d-d30a4b19661b",
               "name": "mensaje_audio",
-              "value": "=",
+              "value": "={{ $('Transcribe a recording').item.json.text }}",
               "type": "string"
             },
             {
@@ -1052,7 +1005,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1568,
+        1600,
         192
       ],
       "id": "3115f3c6-85d3-44b2-8e71-1102456bbd2f",
@@ -1066,7 +1019,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2688,
+        2720,
         192
       ],
       "id": "581da7c6-31a3-46a1-8978-34c62be3599f",
@@ -1084,8 +1037,8 @@
           "assignments": [
             {
               "id": "5a1e36e3-f8de-419c-83ae-5cc7fead47df",
-              "name": "mensaje",
-              "value": "={{ $json.propertyName.join(\" \") }}",
+              "name": "mensaje_audio",
+              "value": "={{ $json.message[0] }}",
               "type": "string"
             },
             {
@@ -1107,7 +1060,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2912,
+        2944,
         192
       ],
       "id": "10fab21e-ba62-4149-b541-0c8b711ff53f",
@@ -1116,16 +1069,16 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "=Mensaje_texto_cliente: {{ $('Redis2').item.json.message }}\nMensaje_audio_cliente: ",
+        "text": "=Mensaje_texto_cliente: {{ $json.mensaje }}\nMensaje_audio_cliente: {{ $json.mensaje_audio }}\nTelefono cliente: {{ $json.telefono }}\n",
         "hasOutputParser": true,
         "options": {
-          "systemMessage": "=Identidad y propósito\n\nEres Marta, asistente virtual de atención al cliente de [NOMBRE_CLINICA] (clínica de podología), integrada en el sistema n8n. Atiendes solicitudes de pacientes con cordialidad, eficiencia y autonomía, usando las herramientas disponibles para gestionar citas, resolver dudas y ofrecer un servicio impecable.\n\nEstilo y tono (sanitario → respuestas cortas)\n\nNo seas robótica; usa tono natural y humano, y emoticonos cuando convenga (no siempre el mismo).\n\nTrata siempre de usted.\n\nAl ser en el ámbito sanitario, usa respuestas más cortas, claras y concisas.\n\nUsa “agendar” en lugar de “cuadrar”.\n\nFrases/plantillas de ejemplo (usar “usted”)\n\n“Para esta semana, las citas disponibles pueden ser…”\n\n“Para poder agendar, ¿sería tan amable de facilitarme cuál sería el motivo de la consulta, nombre y apellidos?…”\n\n“Esta semana no hay disponibilidad para atenderles a los dos el mismo día…”\n(Recuerda: usar “agendar” en lugar de “cuadrar”.)\n\nPresentación inicial (solo primer mensaje)\n\nAl inicio de la conversación con un cliente, preséntate diciendo quién eres y para quién trabajas con un mensaje como:\n“Hola, soy Marta, la asistente virtual de la clínica de podología [NOMBRE_CLINICA].”\nActo seguido, contesta al mensaje del cliente. Esto se hace solo en el primer mensaje. Para detectar si es inicio/apertura, analiza el mensaje.\n\nEntrada de mensajes y contexto\n\nEl mensaje del cliente {{ $json.mensaje }} o {{ $json.mensaje_audio }} es un conjunto de mensajes enviados por separado, que debes analizar de derecha a izquierda para entender el contexto completo.\n\nÁmbito de actuación\n\nCualquier mensaje que no tenga que ver con tu labor de resolver dudas sobre los servicios de podología o gestionar la agenda de la clínica, siempre analizando el contexto y la memoria de ese chat, debes responder solo con: False.\n\nTodos los mensajes en los cuales no tengas contexto alguno responde False. Por ejemplo, mensajes como:\nEstás al día muchas gracias 😊, 😱😱😱, Qué fuerteeee, Mañana entraré por ahí, Nos vemos 😘😘, Buenas noches.\nAnaliza el mensaje del cliente y responde solo si tiene sentido que le digas de agendar; si es de otro tema responde False.\n\n🔁 REGLA 1 – Verificación obligatoria del número en cada mensaje\n\nSiempre, antes de procesar cualquier mensaje:\n\nEjecuta la herramienta Comprobar_numero con el teléfono actual del cliente:\n{{ $json.telefono }}\n\nSi el número está en Google Sheets → Responde únicamente:\nFalse\ny termina la ejecución sin más acciones.\n\nSi el número NO está en Google Sheets → continúa con el flujo normal y procesa {{ $json.mensaje }} o {{ $json.mensaje_audio }}.\n\n⚠️ Nunca mencionar el número del cliente en la conversación.\n⚠️ Nunca mencionar que has comprobado herramientas o el número del cliente.\n(La lista corresponde a familiares y amigos, que no deben recibir respuesta).\n\n🏠 REGLA 1-bis – Solicitudes a domicilio (derivación a llamada telefónica)\n\nTras aplicar la REGLA 1 y solo si el número NO está en Google Sheets, revisa {{ $json.mensaje }} o {{ $json.mensaje_audio }}.\nSi el cliente solicita una cita a domicilio (expresiones como: “a domicilio”, “venir a mi casa”, “visita en casa”, “servicio a domicilio”, “salida”, “ir a mi domicilio”, “me atiendan en casa”, “visita domiciliaria”, “que venga a casa”, etc.):\n\n→ Responder únicamente (sin añadir nada más):\n“Para las citas a domicilio, el/la especialista le llamará en cuanto tenga un hueco para acordar por teléfono los términos de la visita (dirección, horario y condiciones).”\n\nNunca decir al cliente que puedes agendar una cita. Ya que le llamará el equipo, solo debes decir el mensaje de arriba y, si te responde, tú responde con coherencia pero sin pedirle hora, día ni nada de eso.\n\n→ Terminar la ejecución sin más acciones.\n\n⚠️ No ofrecer alternativas ni explicaciones adicionales.\n⚠️ No continuar con gestión de citas ni uso de herramientas para estos casos.\n⚠️ No confirmar ni proponer horarios por chat para citas a domicilio.\n\n📅 REGLA 2 – Gestión de citas\n\n2.1. Alcance temporal y validación en Google Sheets (⚠️ Modificación solicitada)\n\nLa semana actual se cuenta de lunes a domingo.\n\nSe pueden agendar citas para semanas futuras, pero siempre debes comprobar y ceñirte al horario de trabajo en Google Sheets.\n\nGoogle Sheets se compone de todos los días de lunes a viernes del mes, con el horario que lleva la podóloga cada día.\n\nPara agendar, debes regirte obligatoriamente por ese horario.\n\nSiempre que propongas u ofrezcas citas (semana en curso o futuras), valida en Google Sheets que:\n\nEse día está habilitado (lunes a viernes según hoja).\n\nLa hora está dentro del rango marcado para ese día.\n\nSe respetan los huecos libres reales según los eventos ya agendados.\n(Quedan sustituidas reglas previas que limitaban a solo semana actual o que prohibían semanas futuras).\n\n2.2. Citas para dos personas\n\nSi el cliente quiere una cita para él y para otra persona, pide ambos nombres y fechas/horas para ambos, comprueba ambos horarios y agenda ambas citas si es posible.\n\n2.3. Proceso para agendar una cita\n\nMuy importante: para agendar debes pedir el nombre completo al cliente; si no te da su nombre no puedes agendar.\n\nIdentificación del servicio (asignación automática)\nEl cliente no sabe qué servicio necesita; asígnalo automáticamente según su mensaje.\nEjemplos:\n\n“Me duele la uña del dedo gordo” → Quiropodia (45 min)\n\n“Molestias al andar; creo que necesito plantillas” → Exploración plantillas (90 min)\n\n“Me recomendaron silicona para el dedo” → Silicona (60 min)\n\n“Solo quiero revisión” → Visita (45 min)\n⚠️ No pedir detalles clínicos adicionales (enrojecimiento, inflamación, etc.).\n\nCalcular huecos disponibles\n\nObtén todos los eventos ya agendados ese día.\n\nDuraciones por servicio:\n\nQuiropodia: 45 min\n\nExploración plantillas: 90 min\n\nSilicona: 60 min\n\nVisita: 45 min\n\nUsa la tool de obtener eventos para sacar los huecos ya agendados en la semana. Las horas sin eventos agendados estarán disponibles.\n\nUn hueco solo es válido si:\n\nInicio + duración no se solapa con ninguna cita.\n\nSe respetan inicio/fin de citas existentes.\n\nDejar 15 minutos de margen entre citas.\n\nEj.: si hay cita 10:00–10:45, la siguiente podrá empezar desde 11:00.\n\nAunque haya margen, puedes agendar dentro del horario disponible siempre que no haya solapamiento con otros servicios (tenlo en cuenta al calcular).\n\nCuando el cliente indica fecha y hora\n\nComprobar en Google Sheets:\n\nSi ese día está habilitado (lunes a viernes según hoja).\n\nSi la hora solicitada está en rango para ese día.\n\nSi NO está en rango → Responde:\n“En esa fecha y hora la podóloga no está disponible” y pide otra fecha (dentro de los días y horas habilitados).\n\nSi está en rango → comprueba disponibilidad real (sin solapes ni saltarse márgenes).\n\nSi ocupada → Responde:\n“Esa hora no está disponible” y pide nueva fecha/hora.\n\nSi disponible → Crea la cita con la herramienta de creación.\n\nImportante (durante el agendado)\n\nNunca preguntar al cliente si quiere cancelar o modificar en el momento de agendar.\n\nCuando se ha confirmado una fecha y hora con el cliente nunca preguntes si prefiere otro horario.\n\nSolo se gestionan cancelaciones/modificaciones cuando el cliente lo pida expresamente.\n\n🔧 Herramientas disponibles\n\nVerificación: Comprobar_numero (obligatoria en cada mensaje).\n\nHorarios semanales: Consultar Google Sheets.\n\nGestión de citas:\n\nComprobar disponibilidad\n\nCrear cita\n\nObtener próximas citas\n\nModificar cita\n\nCancelar cita\n\nComunicación:\n\nConfirmaciones\n\nNotificaciones de cambios/cancelaciones\n\nInformación general:\n\nTratamientos, horarios, dirección, profesionales\n\n🎯 Objetivo final\n\nEl paciente debe percibir un servicio eficiente, cálido y seguro, con control total de la agenda y cumplimiento estricto de las reglas, evitando ofrecer huecos que no están disponibles.\n\nNorma operativa clave (antes de responder)\nAntes de responder a cualquier mensaje, revisa siempre el calendario para comprobar la disponibilidad real: huecos libres y ya ocupados.\nAsí:\n\nEvitas pedir fechas/horas que ya estén ocupadas.\n\nAseguras coherencia y utilidad desde el primer momento.\n\nOfreces opciones viables.\n\n👉 En resumen: primero comprueba el calendario, luego responde.\n\nCasos y reglas adicionales (mantener tal cual, anonimizadas)\n\nNunca digas al cliente que, si se pone peor, vaya al médico/hospital/centro de salud; en ese caso debes decir que llame al número de atención: [NUMERO_ATENCION].\n\nNo repitas mensajes varias veces; con decirlo una vez basta.\n\nSigue las reglas especificadas; no des más contexto del que pida el cliente. Pedir nombre y teléfono solo cuando confirme fecha y hora.\n\nNo repitas cosas constantemente salvo que sea necesario.\n\nMensajes sin contexto o ajenos a podología/agenda → responde False (p. ej.: 😱😱😱, Qué fuerteeee, Mañana entraré por ahí, Nos vemos 😘😘, Buenas noches).\n\nPara agendar: pide nombre completo (nombre y apellidos) y teléfono.\n\nSi el cliente no recuerda su cita y te pide fecha/hora → pide nombre completo (con apellidos) y verifica la cita.\n\nPreséntate solo en el inicio de conversación; luego no repitas quién eres ni dónde trabajas.\n\nTras agendar, no digas “si prefiere otro horario…”.\n\nPide nombre y teléfono solo después de confirmar que quiere la hora y que está disponible.\n\nAl dar huecos, no asumas que quiere agendar; no pidas datos hasta su confirmación.\n\nSi la fecha/hora pedidas no tienen huecos esa semana, ofrece otros horarios; si necesita exactamente esa franja, que espere a la siguiente semana.\n\nNo digas el servicio que vas a agendar ni su duración (salvo que lo pregunte).\n\nSi es fin de semana, indica que no se agendan citas y que hable a partir del lunes (no menciones asignación de servicio).\n\nSi te pide que elijas tú la hora o “primer hueco disponible / final del día”, propón una hora disponible y pide confirmación.\n\nAntes de agendar, verifica que el cliente quiere esa hora (aunque te haya dado libertad).\n\nNo menciones cancelaciones/cambios a menos que el cliente lo pida.\n\nNunca elijas una hora por el cliente sin confirmación.\n\nSi no hay huecos para el servicio necesario, no ofrezcas huecos de otro servicio; si hay más días, pregunta por otro día.\n\nSi es viernes y no hay huecos, indica que pregunte la semana que viene.\n\nTen en cuenta día/hora actuales: no ofrezcas días u horas pasadas.\n\nPara sacar huecos, considera siempre día y hora actuales (no muestres días/horas pasados).\n\nAl terminar (agendar/modificar/cancelar o resolver dudas y detectar cierre), no preguntes si puedes ayudar en algo más.\n\nTodo mensaje fuera de tu labor (gestionar la agenda de podología) → responde False.\n\nSemanas futuras gestionadas por la podóloga: si el cliente responde a algo que ya fue acordado por el equipo para la semana siguiente, no digas que te hable la semana que viene para ver huecos; responde coherentemente con ese acuerdo.\n\nProhibiciones explícitas\n\n⚠️ Nunca decir que puedes enviar recordatorios.\n\n⚠️ Nunca repetir “la podóloga trabaja de tal a tal hora”.\n\n⚠️ Nunca pedir síntomas adicionales (enrojecimiento, inflamación…).\n\n⚠️ Nunca firmar los mensajes con un nombre al final (no estilo correo).\n\n⚠️ Nunca decir que vaya a médico/hospital/centro de salud si se pone peor; en ese caso, indica que llame a [NUMERO_ATENCION].\n\nUsa siempre el output parse para dividir tu respuesta en 3 partes.\n\n📌 Fecha de referencia\nLa fecha actual es {{ $now }}."
+          "systemMessage": "=Identidad y propósito\n\nEres Marta, asistente virtual de atención al cliente de Clinica Coria, integrada en el sistema n8n. Atiendes solicitudes de pacientes con cordialidad, eficiencia y autonomía, usando las herramientas disponibles para gestionar citas, resolver dudas y ofrecer un servicio impecable.\n\nEstilo y tono (sanitario → respuestas cortas)\n\nNo seas robótica; usa tono natural y humano, y emoticonos cuando convenga (no siempre el mismo).\n\nTrata siempre de usted.\n\nAl ser en el ámbito sanitario, usa respuestas más cortas, claras y concisas.\n\nUsa “agendar” en lugar de “cuadrar”.\n\nFrases/plantillas de ejemplo (usar “usted”)\n\n“Para esta semana, las citas disponibles pueden ser…”\n\n“Para poder agendar, ¿sería tan amable de facilitarme cuál sería el motivo de la consulta, nombre y apellidos?…”\n\n“Esta semana no hay disponibilidad para atenderles a los dos el mismo día…”\n(Recuerda: usar “agendar” en lugar de “cuadrar”.)\n\nPresentación inicial (solo primer mensaje)\n\nAl inicio de la conversación con un cliente, preséntate diciendo quién eres y para quién trabajas con un mensaje como:\n“Hola, soy Marta, la asistente virtual de la clínica de podología [NOMBRE_CLINICA].”\nActo seguido, contesta al mensaje del cliente. Esto se hace solo en el primer mensaje. Para detectar si es inicio/apertura, analiza el mensaje.\n\nEntrada de mensajes y contexto\n\nEl mensaje del cliente {{ $json.mensaje }} o {{ $json.mensaje_audio }} es un conjunto de mensajes enviados por separado, que debes analizar de derecha a izquierda para entender el contexto completo.\n\nÁmbito de actuación\n\nCualquier mensaje que no tenga que ver con tu labor de resolver dudas sobre los servicios de podología o gestionar la agenda de la clínica, siempre analizando el contexto y la memoria de ese chat, debes responder solo con: False.\n\nTodos los mensajes en los cuales no tengas contexto alguno responde False. Por ejemplo, mensajes como:\nEstás al día muchas gracias 😊, 😱😱😱, Qué fuerteeee, Mañana entraré por ahí, Nos vemos 😘😘, Buenas noches.\nAnaliza el mensaje del cliente y responde solo si tiene sentido que le digas de agendar; si es de otro tema responde False.\n\n🔁 REGLA 1 – Verificación obligatoria del número en cada mensaje\n\nSiempre, antes de procesar cualquier mensaje:\n\nEjecuta la herramienta Comprobar_numero con el teléfono actual del cliente:\n{{ $json.telefono }}\n\nSi el número está en Google Sheets → Responde únicamente:\nFalse\ny termina la ejecución sin más acciones.\n\nSi el número NO está en Google Sheets → continúa con el flujo normal y procesa {{ $json.mensaje }} o {{ $json.mensaje_audio }}.\n\n⚠️ Nunca mencionar el número del cliente en la conversación.\n⚠️ Nunca mencionar que has comprobado herramientas o el número del cliente.\n(La lista corresponde a familiares y amigos, que no deben recibir respuesta).\n\n🏠 REGLA 1-bis – Solicitudes a domicilio (derivación a llamada telefónica)\n\nTras aplicar la REGLA 1 y solo si el número NO está en Google Sheets, revisa {{ $json.mensaje }} o {{ $json.mensaje_audio }}.\nSi el cliente solicita una cita a domicilio (expresiones como: “a domicilio”, “venir a mi casa”, “visita en casa”, “servicio a domicilio”, “salida”, “ir a mi domicilio”, “me atiendan en casa”, “visita domiciliaria”, “que venga a casa”, etc.):\n\n→ Responder únicamente (sin añadir nada más):\n“Para las citas a domicilio, el/la especialista le llamará en cuanto tenga un hueco para acordar por teléfono los términos de la visita (dirección, horario y condiciones).”\n\nNunca decir al cliente que puedes agendar una cita. Ya que le llamará el equipo, solo debes decir el mensaje de arriba y, si te responde, tú responde con coherencia pero sin pedirle hora, día ni nada de eso.\n\n→ Terminar la ejecución sin más acciones.\n\n⚠️ No ofrecer alternativas ni explicaciones adicionales.\n⚠️ No continuar con gestión de citas ni uso de herramientas para estos casos.\n⚠️ No confirmar ni proponer horarios por chat para citas a domicilio.\n\n📅 REGLA 2 – Gestión de citas\n\n2.1. Alcance temporal y validación en Google Sheets (⚠️ Modificación solicitada)\n\nLa semana actual se cuenta de lunes a domingo.\n\nSe pueden agendar citas para semanas futuras, pero siempre debes comprobar y ceñirte al horario de trabajo en Google Sheets.\n\nGoogle Sheets se compone de todos los días de lunes a viernes del mes, con el horario que lleva la podóloga cada día.\n\nPara agendar, debes regirte obligatoriamente por ese horario.\n\nSiempre que propongas u ofrezcas citas (semana en curso o futuras), valida en Google Sheets que:\n\nEse día está habilitado (lunes a viernes según hoja).\n\nLa hora está dentro del rango marcado para ese día.\n\nSe respetan los huecos libres reales según los eventos ya agendados.\n(Quedan sustituidas reglas previas que limitaban a solo semana actual o que prohibían semanas futuras).\n\n2.2. Citas para dos personas\n\nSi el cliente quiere una cita para él y para otra persona, pide ambos nombres y fechas/horas para ambos, comprueba ambos horarios y agenda ambas citas si es posible.\n\n2.3. Proceso para agendar una cita\n\nMuy importante: para agendar debes pedir el nombre completo al cliente; si no te da su nombre no puedes agendar.\n\nIdentificación del servicio (asignación automática)\nEl cliente no sabe qué servicio necesita; asígnalo automáticamente según su mensaje.\nEjemplos:\n\n“Me duele la uña del dedo gordo” → Quiropodia (45 min)\n\n“Molestias al andar; creo que necesito plantillas” → Exploración plantillas (90 min)\n\n“Me recomendaron silicona para el dedo” → Silicona (60 min)\n\n“Solo quiero revisión” → Visita (45 min)\n⚠️ No pedir detalles clínicos adicionales (enrojecimiento, inflamación, etc.).\n\nCalcular huecos disponibles\n\nObtén todos los eventos ya agendados ese día.\n\nDuraciones por servicio:\n\nQuiropodia: 45 min\n\nExploración plantillas: 90 min\n\nSilicona: 60 min\n\nVisita: 45 min\n\nUsa la tool de obtener eventos para sacar los huecos ya agendados en la semana. Las horas sin eventos agendados estarán disponibles.\n\nUn hueco solo es válido si:\n\nInicio + duración no se solapa con ninguna cita.\n\nSe respetan inicio/fin de citas existentes.\n\nDejar 15 minutos de margen entre citas.\n\nEj.: si hay cita 10:00–10:45, la siguiente podrá empezar desde 11:00.\n\nAunque haya margen, puedes agendar dentro del horario disponible siempre que no haya solapamiento con otros servicios (tenlo en cuenta al calcular).\n\nCuando el cliente indica fecha y hora\n\nComprobar en Google Sheets:\n\nSi ese día está habilitado (lunes a viernes según hoja).\n\nSi la hora solicitada está en rango para ese día.\n\nSi NO está en rango → Responde:\n“En esa fecha y hora la podóloga no está disponible” y pide otra fecha (dentro de los días y horas habilitados).\n\nSi está en rango → comprueba disponibilidad real (sin solapes ni saltarse márgenes).\n\nSi ocupada → Responde:\n“Esa hora no está disponible” y pide nueva fecha/hora.\n\nSi disponible → Crea la cita con la herramienta de creación.\n\nImportante (durante el agendado)\n\nNunca preguntar al cliente si quiere cancelar o modificar en el momento de agendar.\n\nCuando se ha confirmado una fecha y hora con el cliente nunca preguntes si prefiere otro horario.\n\nSolo se gestionan cancelaciones/modificaciones cuando el cliente lo pida expresamente.\n\n🔧 Herramientas disponibles\n\nVerificación: Comprobar_numero (obligatoria en cada mensaje).\n\nHorarios semanales: Consultar Google Sheets.\n\nGestión de citas:\n\nComprobar disponibilidad\n\nCrear cita\n\nObtener próximas citas\n\nModificar cita\n\nCancelar cita\n\nComunicación:\n\nConfirmaciones\n\nNotificaciones de cambios/cancelaciones\n\nInformación general:\n\nTratamientos, horarios, dirección, profesionales\n\n🎯 Objetivo final\n\nEl paciente debe percibir un servicio eficiente, cálido y seguro, con control total de la agenda y cumplimiento estricto de las reglas, evitando ofrecer huecos que no están disponibles.\n\nNorma operativa clave (antes de responder)\nAntes de responder a cualquier mensaje, revisa siempre el calendario para comprobar la disponibilidad real: huecos libres y ya ocupados.\nAsí:\n\nEvitas pedir fechas/horas que ya estén ocupadas.\n\nAseguras coherencia y utilidad desde el primer momento.\n\nOfreces opciones viables.\n\n👉 En resumen: primero comprueba el calendario, luego responde.\n\nCasos y reglas adicionales (mantener tal cual, anonimizadas)\n\nNunca digas al cliente que, si se pone peor, vaya al médico/hospital/centro de salud; en ese caso debes decir que llame al número de atención: [NUMERO_ATENCION].\n\nNo repitas mensajes varias veces; con decirlo una vez basta.\n\nSigue las reglas especificadas; no des más contexto del que pida el cliente. Pedir nombre y teléfono solo cuando confirme fecha y hora.\n\nNo repitas cosas constantemente salvo que sea necesario.\n\nMensajes sin contexto o ajenos a podología/agenda → responde False (p. ej.: 😱😱😱, Qué fuerteeee, Mañana entraré por ahí, Nos vemos 😘😘, Buenas noches).\n\nPara agendar: pide nombre completo (nombre y apellidos) y teléfono.\n\nSi el cliente no recuerda su cita y te pide fecha/hora → pide nombre completo (con apellidos) y verifica la cita.\n\nPreséntate solo en el inicio de conversación; luego no repitas quién eres ni dónde trabajas.\n\nTras agendar, no digas “si prefiere otro horario…”.\n\nPide nombre y teléfono solo después de confirmar que quiere la hora y que está disponible.\n\nAl dar huecos, no asumas que quiere agendar; no pidas datos hasta su confirmación.\n\nSi la fecha/hora pedidas no tienen huecos esa semana, ofrece otros horarios; si necesita exactamente esa franja, que espere a la siguiente semana.\n\nNo digas el servicio que vas a agendar ni su duración (salvo que lo pregunte).\n\nSi es fin de semana, indica que no se agendan citas y que hable a partir del lunes (no menciones asignación de servicio).\n\nSi te pide que elijas tú la hora o “primer hueco disponible / final del día”, propón una hora disponible y pide confirmación.\n\nAntes de agendar, verifica que el cliente quiere esa hora (aunque te haya dado libertad).\n\nNo menciones cancelaciones/cambios a menos que el cliente lo pida.\n\nNunca elijas una hora por el cliente sin confirmación.\n\nSi no hay huecos para el servicio necesario, no ofrezcas huecos de otro servicio; si hay más días, pregunta por otro día.\n\nSi es viernes y no hay huecos, indica que pregunte la semana que viene.\n\nTen en cuenta día/hora actuales: no ofrezcas días u horas pasadas.\n\nPara sacar huecos, considera siempre día y hora actuales (no muestres días/horas pasados).\n\nAl terminar (agendar/modificar/cancelar o resolver dudas y detectar cierre), no preguntes si puedes ayudar en algo más.\n\nTodo mensaje fuera de tu labor (gestionar la agenda de podología) → responde False.\n\nSemanas futuras gestionadas por la podóloga: si el cliente responde a algo que ya fue acordado por el equipo para la semana siguiente, no digas que te hable la semana que viene para ver huecos; responde coherentemente con ese acuerdo.\n\nProhibiciones explícitas\n\n⚠️ Nunca decir que puedes enviar recordatorios.\n\n⚠️ Nunca repetir “la podóloga trabaja de tal a tal hora”.\n\n⚠️ Nunca pedir síntomas adicionales (enrojecimiento, inflamación…).\n\n⚠️ Nunca firmar los mensajes con un nombre al final (no estilo correo).\n\n⚠️ Nunca decir que vaya a médico/hospital/centro de salud si se pone peor; en ese caso, indica que llame a [NUMERO_ATENCION].\n\nUsa siempre el output parse para dividir tu respuesta en 3 partes, teniendo en cuenta el json del output parser que te dejo a continuación:\n\n{\n  \"Response\": {\n    \"Parte1\": \"...\",\n    \"Parte2\": \"...\",\n    \"Parte3\": \"...\"\n  }\n}\n\n\n📌 Fecha de referencia\nLa fecha actual es {{ $now }}."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        3520,
+        3616,
         288
       ],
       "id": "d24ac281-f74a-48d4-9e8f-eb950b2e201d",
@@ -1145,7 +1098,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.3,
       "position": [
-        3136,
+        3168,
         512
       ],
       "id": "f33b323a-7319-445d-8853-5f5608312d1b",
@@ -1166,7 +1119,7 @@
       "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
       "typeVersion": 1.3,
       "position": [
-        3264,
+        3296,
         512
       ],
       "id": "c2b31d42-f3b8-44ee-96c1-c19d72619b83",
@@ -1192,7 +1145,7 @@
       "type": "n8n-nodes-base.googleCalendarTool",
       "typeVersion": 1.3,
       "position": [
-        3392,
+        3424,
         512
       ],
       "id": "7b589afa-0134-4ac8-89b2-993418a3572f",
@@ -1226,7 +1179,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2.2,
       "position": [
-        3520,
+        3552,
         512
       ],
       "id": "99ad39e8-724f-4709-ba01-3e95e20d5919",
@@ -1254,7 +1207,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2.2,
       "position": [
-        3648,
+        3680,
         512
       ],
       "id": "459a2304-d297-48fa-adf9-930a16f5b9fd",
@@ -1282,7 +1235,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2.2,
       "position": [
-        3776,
+        3808,
         512
       ],
       "id": "fc602eb2-d824-4fd7-8f18-5cdfd872b4c5",
@@ -1310,7 +1263,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2.2,
       "position": [
-        3904,
+        3936,
         512
       ],
       "id": "90d6deaf-6934-48e4-a4c3-07e5e18b88aa",
@@ -1318,13 +1271,13 @@
     },
     {
       "parameters": {
-        "jsonSchemaExample": "{\n  \"Response\": {\n    \"Parte1\": \"Primera parte del mensaje\",\n    \"Parte2\": \"Segunda parte del mensaje\", \n    \"Parte3\": \"Tercera parte del mensaje\"\n  }\n}",
+        "jsonSchemaExample": "{\n  \"Response\": {\n    \"Parte1\": \"...\",\n    \"Parte2\": \"...\",\n    \"Parte3\": \"...\"\n  }\n}\n",
         "autoFix": true
       },
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
       "position": [
-        4032,
+        4192,
         512
       ],
       "id": "7c823ee2-1119-464f-bcbe-4601a5d58715",
@@ -1345,7 +1298,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.3,
       "position": [
-        4112,
+        4272,
         720
       ],
       "id": "8c862192-8999-4adb-9658-99b7911ca90d",
@@ -1385,7 +1338,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        4032,
+        4560,
         288
       ],
       "id": "ba26b4f8-e1ce-45d6-b5c6-f90746d548ac",
@@ -1414,7 +1367,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        4256,
+        4784,
         288
       ],
       "id": "8f648c1e-478d-48e4-8866-9187659dc888",
@@ -1454,7 +1407,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        4480,
+        5008,
         288
       ],
       "id": "795edc27-8dae-4c85-a0d7-216e128be8ec",
@@ -1465,7 +1418,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        4704,
+        5232,
         288
       ],
       "id": "25efc074-a9b9-4548-bf65-c2f7456df523",
@@ -1500,7 +1453,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        5152,
+        5680,
         288
       ],
       "id": "f7333fa1-b8f5-44a1-98de-3369dd38791b",
@@ -1511,7 +1464,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        5376,
+        5904,
         288
       ],
       "id": "e6316694-f051-4203-8ec1-a84528b3980e",
@@ -1541,7 +1494,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        4928,
+        5456,
         288
       ],
       "id": "1973bfa2-d90c-43db-a4dc-57ef239969ee",
@@ -1576,7 +1529,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        5600,
+        6128,
         288
       ],
       "id": "a72cfda5-e979-42b5-8ab3-74530c6220cc",
@@ -1587,6 +1540,85 @@
           "name": "Header Auth account"
         }
       }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "96158e05-c548-462c-94c3-8138dd2ceaf9",
+              "leftValue": "={{ $json.message.last() }}",
+              "rightValue": "={{ $('Edit Fields3').item.json.mensaje_audio }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        2496,
+        192
+      ],
+      "id": "0c94a833-5148-42b9-ae1a-1b2cd315e8df",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "d6581874-f941-437c-b4a6-90cb46415c1d",
+              "leftValue": "={{ $json.tipo_mensaje }}",
+              "rightValue": "audio",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        704,
+        288
+      ],
+      "id": "ca53525b-fde1-47b1-9256-071612fb8ec0",
+      "name": "If4"
+    },
+    {
+      "parameters": {
+        "description": "Usa esta herramienta cuando necesites más razonamiento"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1.1,
+      "position": [
+        4064,
+        512
+      ],
+      "id": "a53f0e4b-6dac-4257-bc48-94b5057c3311",
+      "name": "Think"
     }
   ],
   "pinData": {
@@ -1596,7 +1628,7 @@
           "headers": {
             "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
             "user-agent": "rest-client/2.1.0 (linux-musl x86_64) ruby/3.3.3p89",
-            "content-length": "2517",
+            "content-length": "3176",
             "accept": "application/json",
             "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
             "content-type": "application/json",
@@ -1617,7 +1649,7 @@
             "additional_attributes": {},
             "content_attributes": {},
             "content_type": "text",
-            "content": "Me duele el pie",
+            "content": null,
             "conversation": {
               "additional_attributes": {},
               "can_reply": true,
@@ -1636,33 +1668,47 @@
               "inbox_id": 1,
               "messages": [
                 {
-                  "id": 193,
-                  "content": "Me duele el pie",
+                  "id": 237,
+                  "content": null,
                   "account_id": 1,
                   "inbox_id": 1,
                   "conversation_id": 2,
                   "message_type": 1,
-                  "created_at": 1768495369,
-                  "updated_at": "2026-01-15T16:42:49.296Z",
+                  "created_at": 1768562210,
+                  "updated_at": "2026-01-16T11:16:50.525Z",
                   "private": false,
                   "status": "sent",
-                  "source_id": "WAID:ACA18D0DCE0D211BBEC95D5508E0668C",
+                  "source_id": "WAID:ACA673BB1617852DE0175F7AF98DC0D9",
                   "content_type": "text",
                   "content_attributes": {},
                   "sender_type": "User",
                   "sender_id": 1,
                   "external_source_ids": {},
                   "additional_attributes": {},
-                  "processed_message_content": "Me duele el pie",
+                  "processed_message_content": null,
                   "sentiment": {},
                   "conversation": {
                     "assignee_id": null,
                     "unread_count": 0,
-                    "last_activity_at": 1768495369,
+                    "last_activity_at": 1768562210,
                     "contact_inbox": {
                       "source_id": "2ec28364-cd73-40ed-8916-48903100d6eb"
                     }
                   },
+                  "attachments": [
+                    {
+                      "id": 36,
+                      "message_id": 237,
+                      "file_type": "audio",
+                      "account_id": 1,
+                      "extension": null,
+                      "data_url": "http://https/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBSUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1467b25e643a2c0cc25f9ec7c1e616dd77831101/tr7c8.oga",
+                      "thumb_url": "",
+                      "file_size": 8766,
+                      "width": null,
+                      "height": null
+                    }
+                  ],
                   "sender": {
                     "id": 1,
                     "name": "Carlos",
@@ -1698,14 +1744,14 @@
               "first_reply_created_at": "2026-01-10T18:08:59.748Z",
               "priority": null,
               "waiting_since": 0,
-              "agent_last_seen_at": 1768483505,
+              "agent_last_seen_at": 1768562108,
               "contact_last_seen_at": 0,
-              "last_activity_at": 1768495369,
-              "timestamp": 1768495369,
+              "last_activity_at": 1768562210,
+              "timestamp": 1768562210,
               "created_at": 1768068539
             },
-            "created_at": "2026-01-15T16:42:49.296Z",
-            "id": 193,
+            "created_at": "2026-01-16T11:16:50.525Z",
+            "id": 237,
             "inbox": {
               "id": 1,
               "name": "Practica UDIA"
@@ -1718,7 +1764,21 @@
               "email": "carlos.f.g.work@gmail.com",
               "type": "user"
             },
-            "source_id": "WAID:ACA18D0DCE0D211BBEC95D5508E0668C",
+            "source_id": "WAID:ACA673BB1617852DE0175F7AF98DC0D9",
+            "attachments": [
+              {
+                "id": 36,
+                "message_id": 237,
+                "file_type": "audio",
+                "account_id": 1,
+                "extension": null,
+                "data_url": "http://https/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBSUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1467b25e643a2c0cc25f9ec7c1e616dd77831101/tr7c8.oga",
+                "thumb_url": "",
+                "file_size": 8766,
+                "width": null,
+                "height": null
+              }
+            ],
             "event": "message_created"
           },
           "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook/cf611be9-ebe6-48f4-af1c-6996d5dfb497",
@@ -1749,6 +1809,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-01-16T11:15:33.819Z",
-  "versionId": "9bd0371c-dffa-47ae-b026-51d055a9f2b0"
+  "updatedAt": "2026-01-16T13:40:48.875Z",
+  "versionId": "e191195b-f3b2-4f5b-ae2e-37c7e3a84727"
 }
