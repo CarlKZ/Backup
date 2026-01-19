@@ -354,7 +354,13 @@
     },
     "Edit Fields4": {
       "main": [
-        []
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Think": {
@@ -1055,7 +1061,13 @@
         352
       ],
       "id": "b58ca9ea-0ee6-42d9-990c-c84bed751273",
-      "name": "HTTP Request"
+      "name": "HTTP Request",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Zhnapx6EMtJKOOW9",
+          "name": "Header Auth account"
+        }
+      }
     },
     {
       "parameters": {
@@ -1486,7 +1498,8 @@
       ],
       "id": "f3f50d41-a96b-4f1b-964f-16568e43e115",
       "name": "Wait",
-      "webhookId": "e6c8b23b-774b-4b85-bea5-4ca1071f55c3"
+      "webhookId": "e6c8b23b-774b-4b85-bea5-4ca1071f55c3",
+      "disabled": true
     },
     {
       "parameters": {
@@ -1652,7 +1665,13 @@
         192
       ],
       "id": "65dd3ac3-d8df-49c3-a732-1b6bba467ab3",
-      "name": "HTTP Request2"
+      "name": "HTTP Request2",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Zhnapx6EMtJKOOW9",
+          "name": "Header Auth account"
+        }
+      }
     },
     {
       "parameters": {
@@ -1715,7 +1734,13 @@
         0
       ],
       "id": "bac34175-dbb2-4585-8d94-ec19db1e75b5",
-      "name": "HTTP Request3"
+      "name": "HTTP Request3",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Zhnapx6EMtJKOOW9",
+          "name": "Header Auth account"
+        }
+      }
     },
     {
       "parameters": {},
@@ -1774,7 +1799,7 @@
           "headers": {
             "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
             "user-agent": "rest-client/2.1.0 (linux-musl x86_64) ruby/3.3.3p89",
-            "content-length": "3178",
+            "content-length": "2619",
             "accept": "application/json",
             "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
             "content-type": "application/json",
@@ -1795,7 +1820,7 @@
             "additional_attributes": {},
             "content_attributes": {},
             "content_type": "text",
-            "content": null,
+            "content": "Hola, quería una cita por favor, me duele el pie",
             "conversation": {
               "additional_attributes": {},
               "can_reply": true,
@@ -1814,47 +1839,33 @@
               "inbox_id": 1,
               "messages": [
                 {
-                  "id": 238,
-                  "content": null,
+                  "id": 314,
+                  "content": "Hola, quería una cita por favor, me duele el pie",
                   "account_id": 1,
                   "inbox_id": 1,
                   "conversation_id": 2,
                   "message_type": 1,
-                  "created_at": 1768566477,
-                  "updated_at": "2026-01-16T12:27:57.336Z",
+                  "created_at": 1768821904,
+                  "updated_at": "2026-01-19T11:25:04.474Z",
                   "private": false,
                   "status": "sent",
-                  "source_id": "WAID:AC2607C7AC1BA3FDBF5F394A0DAE1C63",
+                  "source_id": "WAID:ACEE88CCB47823715E99B09A83821153",
                   "content_type": "text",
                   "content_attributes": {},
                   "sender_type": "User",
                   "sender_id": 1,
                   "external_source_ids": {},
                   "additional_attributes": {},
-                  "processed_message_content": null,
+                  "processed_message_content": "Hola, quería una cita por favor, me duele el pie",
                   "sentiment": {},
                   "conversation": {
                     "assignee_id": null,
                     "unread_count": 0,
-                    "last_activity_at": 1768566477,
+                    "last_activity_at": 1768821904,
                     "contact_inbox": {
                       "source_id": "2ec28364-cd73-40ed-8916-48903100d6eb"
                     }
                   },
-                  "attachments": [
-                    {
-                      "id": 37,
-                      "message_id": 238,
-                      "file_type": "audio",
-                      "account_id": 1,
-                      "extension": null,
-                      "data_url": "http://https/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d15bd5eb92debefad3d716e96fb30ebd068e538b/h6efp8.oga",
-                      "thumb_url": "",
-                      "file_size": 9817,
-                      "width": null,
-                      "height": null
-                    }
-                  ],
                   "sender": {
                     "id": 1,
                     "name": "Carlos",
@@ -1890,14 +1901,14 @@
               "first_reply_created_at": "2026-01-10T18:08:59.748Z",
               "priority": null,
               "waiting_since": 0,
-              "agent_last_seen_at": 1768563259,
+              "agent_last_seen_at": 1768821648,
               "contact_last_seen_at": 0,
-              "last_activity_at": 1768566477,
-              "timestamp": 1768566477,
+              "last_activity_at": 1768821904,
+              "timestamp": 1768821904,
               "created_at": 1768068539
             },
-            "created_at": "2026-01-16T12:27:57.336Z",
-            "id": 238,
+            "created_at": "2026-01-19T11:25:04.474Z",
+            "id": 314,
             "inbox": {
               "id": 1,
               "name": "Practica UDIA"
@@ -1910,25 +1921,11 @@
               "email": "carlos.f.g.work@gmail.com",
               "type": "user"
             },
-            "source_id": "WAID:AC2607C7AC1BA3FDBF5F394A0DAE1C63",
-            "attachments": [
-              {
-                "id": 37,
-                "message_id": 238,
-                "file_type": "audio",
-                "account_id": 1,
-                "extension": null,
-                "data_url": "http://https/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d15bd5eb92debefad3d716e96fb30ebd068e538b/h6efp8.oga",
-                "thumb_url": "",
-                "file_size": 9817,
-                "width": null,
-                "height": null
-              }
-            ],
+            "source_id": "WAID:ACEE88CCB47823715E99B09A83821153",
             "event": "message_created"
           },
-          "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook-test/2c646833-a9dd-47b3-83c1-4cc11c891cc6",
-          "executionMode": "test"
+          "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook/2c646833-a9dd-47b3-83c1-4cc11c891cc6",
+          "executionMode": "production"
         },
         "pairedItem": {
           "item": 0
@@ -1951,7 +1948,7 @@
   ],
   "staticData": null,
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2026-01-16T13:40:57.774Z",
-  "versionId": "c800577d-b199-4339-9a49-106e9f346b56"
+  "triggerCount": 1,
+  "updatedAt": "2026-01-19T11:33:46.612Z",
+  "versionId": "f6de2937-8dfe-4640-938d-3234a4b3671b"
 }
