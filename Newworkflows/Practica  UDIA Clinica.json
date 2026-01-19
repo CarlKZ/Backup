@@ -925,8 +925,7 @@
       ],
       "id": "b9eada27-5df6-4608-9447-87ca35f2d63d",
       "name": "Wait1",
-      "webhookId": "71ac37ec-4a28-4234-a581-e5bf42c39a02",
-      "disabled": true
+      "webhookId": "71ac37ec-4a28-4234-a581-e5bf42c39a02"
     },
     {
       "parameters": {
@@ -1271,7 +1270,7 @@
     },
     {
       "parameters": {
-        "jsonSchemaExample": "{\n  \"Response\": {\n    \"Parte1\": \"...\",\n    \"Parte2\": \"...\",\n    \"Parte3\": \"...\"\n  }\n}\n",
+        "jsonSchemaExample": "{\n  \"Response\": {\n    \"Parte1\": \"...\",\n    \"Parte2\": \"...\",\n    \"Parte3\": \"...\"\n  }\n}",
         "autoFix": true
       },
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
@@ -1621,175 +1620,7 @@
       "name": "Think"
     }
   ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
-            "user-agent": "rest-client/2.1.0 (linux-musl x86_64) ruby/3.3.3p89",
-            "content-length": "3176",
-            "accept": "application/json",
-            "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-            "content-type": "application/json",
-            "x-forwarded-for": "172.19.0.1",
-            "x-forwarded-host": "n8n2nkz-n8n.vc1wee.easypanel.host",
-            "x-forwarded-port": "443",
-            "x-forwarded-proto": "https",
-            "x-forwarded-server": "88eeb68a63a5",
-            "x-real-ip": "172.19.0.1"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "account": {
-              "id": 1,
-              "name": "KZ"
-            },
-            "additional_attributes": {},
-            "content_attributes": {},
-            "content_type": "text",
-            "content": null,
-            "conversation": {
-              "additional_attributes": {},
-              "can_reply": true,
-              "channel": "Channel::Api",
-              "contact_inbox": {
-                "id": 4,
-                "contact_id": 2,
-                "inbox_id": 1,
-                "source_id": "2ec28364-cd73-40ed-8916-48903100d6eb",
-                "created_at": "2026-01-10T18:08:59.565Z",
-                "updated_at": "2026-01-10T18:08:59.565Z",
-                "hmac_verified": false,
-                "pubsub_token": "gurWbVcYvsKhvLhebMRnc8kk"
-              },
-              "id": 2,
-              "inbox_id": 1,
-              "messages": [
-                {
-                  "id": 237,
-                  "content": null,
-                  "account_id": 1,
-                  "inbox_id": 1,
-                  "conversation_id": 2,
-                  "message_type": 1,
-                  "created_at": 1768562210,
-                  "updated_at": "2026-01-16T11:16:50.525Z",
-                  "private": false,
-                  "status": "sent",
-                  "source_id": "WAID:ACA673BB1617852DE0175F7AF98DC0D9",
-                  "content_type": "text",
-                  "content_attributes": {},
-                  "sender_type": "User",
-                  "sender_id": 1,
-                  "external_source_ids": {},
-                  "additional_attributes": {},
-                  "processed_message_content": null,
-                  "sentiment": {},
-                  "conversation": {
-                    "assignee_id": null,
-                    "unread_count": 0,
-                    "last_activity_at": 1768562210,
-                    "contact_inbox": {
-                      "source_id": "2ec28364-cd73-40ed-8916-48903100d6eb"
-                    }
-                  },
-                  "attachments": [
-                    {
-                      "id": 36,
-                      "message_id": 237,
-                      "file_type": "audio",
-                      "account_id": 1,
-                      "extension": null,
-                      "data_url": "http://https/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBSUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1467b25e643a2c0cc25f9ec7c1e616dd77831101/tr7c8.oga",
-                      "thumb_url": "",
-                      "file_size": 8766,
-                      "width": null,
-                      "height": null
-                    }
-                  ],
-                  "sender": {
-                    "id": 1,
-                    "name": "Carlos",
-                    "available_name": "Carlos",
-                    "avatar_url": "",
-                    "type": "user",
-                    "availability_status": null,
-                    "thumbnail": ""
-                  }
-                }
-              ],
-              "labels": [],
-              "meta": {
-                "sender": {
-                  "additional_attributes": {},
-                  "custom_attributes": {},
-                  "email": null,
-                  "id": 2,
-                  "identifier": "22673300176922@lid",
-                  "name": "34622924906",
-                  "phone_number": "+34622924906",
-                  "thumbnail": "http://https/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f764ed7dff8669a9ee46cdfac52428f39f7927b6/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3ee3a98e3eb1528ac39b3dd1284c2b0d768e8e96/264751741_710510746666595_1701232651772483746_n.jpg",
-                  "type": "contact"
-                },
-                "assignee": null,
-                "team": null,
-                "hmac_verified": false
-              },
-              "status": "open",
-              "custom_attributes": {},
-              "snoozed_until": null,
-              "unread_count": 0,
-              "first_reply_created_at": "2026-01-10T18:08:59.748Z",
-              "priority": null,
-              "waiting_since": 0,
-              "agent_last_seen_at": 1768562108,
-              "contact_last_seen_at": 0,
-              "last_activity_at": 1768562210,
-              "timestamp": 1768562210,
-              "created_at": 1768068539
-            },
-            "created_at": "2026-01-16T11:16:50.525Z",
-            "id": 237,
-            "inbox": {
-              "id": 1,
-              "name": "Practica UDIA"
-            },
-            "message_type": "outgoing",
-            "private": false,
-            "sender": {
-              "id": 1,
-              "name": "Carlos",
-              "email": "carlos.f.g.work@gmail.com",
-              "type": "user"
-            },
-            "source_id": "WAID:ACA673BB1617852DE0175F7AF98DC0D9",
-            "attachments": [
-              {
-                "id": 36,
-                "message_id": 237,
-                "file_type": "audio",
-                "account_id": 1,
-                "extension": null,
-                "data_url": "http://https/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBSUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1467b25e643a2c0cc25f9ec7c1e616dd77831101/tr7c8.oga",
-                "thumb_url": "",
-                "file_size": 8766,
-                "width": null,
-                "height": null
-              }
-            ],
-            "event": "message_created"
-          },
-          "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook/cf611be9-ebe6-48f4-af1c-6996d5dfb497",
-          "executionMode": "production"
-        },
-        "pairedItem": {
-          "item": 0
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "availableInMCP": false,
@@ -1809,6 +1640,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-01-16T13:40:48.875Z",
-  "versionId": "e191195b-f3b2-4f5b-ae2e-37c7e3a84727"
+  "updatedAt": "2026-01-19T11:21:47.087Z",
+  "versionId": "b941cecd-6b55-4079-9e69-9b764afab928"
 }
