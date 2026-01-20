@@ -1077,7 +1077,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        3616,
+        3608,
         288
       ],
       "id": "d24ac281-f74a-48d4-9e8f-eb950b2e201d",
@@ -1640,6 +1640,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-01-19T18:46:38.508Z",
-  "versionId": "b14e03ba-93a7-4345-a6ef-7862ffd4c3e3"
+  "updatedAt": "2026-01-20T06:00:36.773Z",
+  "versionId": "0c90c14c-5ff5-47e4-a86f-985d9d519263"
 }
