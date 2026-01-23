@@ -125,17 +125,6 @@
         ]
       ]
     },
-    "Edit Fields2": {
-      "main": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "HTTP Request": {
       "main": [
         [
@@ -458,6 +447,17 @@
           {
             "node": "AI Agent",
             "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
             "index": 0
           }
         ]
@@ -811,41 +811,6 @@
     },
     {
       "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "5a1e36e3-f8de-419c-83ae-5cc7fead47df",
-              "name": "mensaje",
-              "value": "={{ $json.propertyName.join(\" \") }}",
-              "type": "string"
-            },
-            {
-              "id": "ed4e679f-704c-454a-88e4-d46623e9b6dd",
-              "name": "telefono",
-              "value": "={{ $('Edit Fields1').item.json.telefono }}",
-              "type": "string"
-            },
-            {
-              "id": "67bac86b-a225-4b80-8f56-0544eb594701",
-              "name": "Identificador",
-              "value": "={{ $('Edit Fields1').item.json.Identificador }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        2944,
-        384
-      ],
-      "id": "bd69cdd7-2980-4903-9f73-87fd89949d86",
-      "name": "Edit Fields2"
-    },
-    {
-      "parameters": {
         "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host{{ $json.body.conversation.messages[0].attachments[0].data_url.replace('http://https', '') }}",
         "options": {}
       },
@@ -1077,7 +1042,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        3608,
+        3616,
         288
       ],
       "id": "d24ac281-f74a-48d4-9e8f-eb950b2e201d",
@@ -1169,8 +1134,21 @@
         "workflowInputs": {
           "mappingMode": "defineBelow",
           "value": {},
-          "matchingColumns": [],
-          "schema": [],
+          "matchingColumns": [
+            "Fecha"
+          ],
+          "schema": [
+            {
+              "id": "Fecha",
+              "displayName": "Fecha",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
           "attemptToConvertTypes": false,
           "convertFieldsToString": false
         }
@@ -1198,7 +1176,48 @@
           "mappingMode": "defineBelow",
           "value": {},
           "matchingColumns": [],
-          "schema": [],
+          "schema": [
+            {
+              "id": "Titulo",
+              "displayName": "Titulo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Fecha Inicio",
+              "displayName": "Fecha Inicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Fecha Fin",
+              "displayName": "Fecha Fin",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Descripción",
+              "displayName": "Descripción",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
           "attemptToConvertTypes": false,
           "convertFieldsToString": false
         }
@@ -1618,6 +1637,41 @@
       ],
       "id": "a53f0e4b-6dac-4257-bc48-94b5057c3311",
       "name": "Think"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5a1e36e3-f8de-419c-83ae-5cc7fead47df",
+              "name": "mensaje",
+              "value": "={{ $json.propertyName.join(\" \") }}",
+              "type": "string"
+            },
+            {
+              "id": "ed4e679f-704c-454a-88e4-d46623e9b6dd",
+              "name": "telefono",
+              "value": "={{ $('Edit Fields1').item.json.telefono }}",
+              "type": "string"
+            },
+            {
+              "id": "67bac86b-a225-4b80-8f56-0544eb594701",
+              "name": "Identificador",
+              "value": "={{ $('Edit Fields1').item.json.Identificador }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2944,
+        384
+      ],
+      "id": "bd69cdd7-2980-4903-9f73-87fd89949d86",
+      "name": "Edit Fields2"
     }
   ],
   "pinData": {},
@@ -1640,6 +1694,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-01-20T06:00:36.773Z",
-  "versionId": "0c90c14c-5ff5-47e4-a86f-985d9d519263"
+  "updatedAt": "2026-01-23T18:32:15.789Z",
+  "versionId": "da3032b3-652e-479f-a871-0c88263d069e"
 }
