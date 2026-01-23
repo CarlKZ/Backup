@@ -1,0 +1,413 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2026-01-23T17:29:12.000Z",
+    "createdAt": "2026-01-23T16:08:08.577Z",
+    "versionId": "e8928f72-0507-4e78-9c6e-9bc881a5804f",
+    "workflowId": "L6RP5mL1JuEWBAjS",
+    "nodes": [
+      {
+        "parameters": {
+          "workflowInputs": {
+            "values": [
+              {
+                "name": "Fecha"
+              }
+            ]
+          }
+        },
+        "id": "c055762a-8fe7-4141-a639-df2372f30060",
+        "typeVersion": 1.1,
+        "name": "Disponibilidad Esturión",
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "position": [
+          272,
+          352
+        ]
+      },
+      {
+        "parameters": {
+          "jsCode": "return items.map(item => {\n  const fecha = new Date(item.json.fecha);\n  \n  const fechaInicio = new Date(fecha);\n  \n  // Función para formatear fecha + horas\n  function formatFechaConHoras(fecha) {\n    return fecha.toISOString().slice(0, 19).replace('T', ' ');\n  }\n  \n  function fechaFinal(fecha) {\n    return (fecha.getHours() + ':' + fecha.getMinutes().toString().padStart(2,'0') + ':' + fecha.getSeconds().toString().padStart(2,'0'));\n  }\n  \n  return {\n    json: {\n      ...item.json,\n      fechaInicio: formatFechaConHoras(fechaInicio),\n      fechaFinal: fechaFinal(new Date(fechaInicio.getTime() + 30*60*1000)) // +30 min\n    }\n  };\n});\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          480,
+          352
+        ],
+        "id": "9c2b364d-e2e3-4113-995d-63326fa89423",
+        "name": "Code in JavaScript"
+      },
+      {
+        "parameters": {
+          "operation": "getAll",
+          "calendar": {
+            "__rl": true,
+            "value": "6a3cafde1495464bc5dc0cb2ff50199043fa5e58fed4f46eaec4cc27d79a7c28@group.calendar.google.com",
+            "mode": "list",
+            "cachedResultName": "Practica N8N Clinica"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleCalendar",
+        "typeVersion": 1.3,
+        "position": [
+          688,
+          352
+        ],
+        "id": "0b60423b-bf00-43ac-8b03-a09238cb71ac",
+        "name": "Get many events",
+        "credentials": {
+          "googleCalendarOAuth2Api": {
+            "id": "BxLdTiBYRwntbItp",
+            "name": "Google Calendar account 2"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "// Obtener la fecha y hora del usuario desde el webhook\nconst fechaUsuario = $input.first().json.body.conversation.timestamp.toDateTime('s').toLocal();\n\n// Función verificar solapamiento (horas solicitadas vs eventos)\nfunction verificarSolapamiento(eventoInicio, eventoFin, fechaSolicitada) {\n  const inicio = new Date(eventoInicio);\n  const fin = new Date(eventoFin);\n  const solicitada = new Date(fechaSolicitada);\n  \n  return solicitada >= inicio && solicitada <= fin;\n}\n\n// Obtener todos los eventos del calendario (simula Google Calendar API)\nconst todosEventos = [\n  {\n    start: \"2026-01-12T10:00:00\",\n    end: \"2026-01-12T11:00:00\",\n    summary: \"Reunión equipo\",\n    startDateTime: \"2026-01-12 10:00\"\n  },\n  {\n    start: \"2026-01-12T14:00:00\", \n    end: \"2026-01-12T15:30:00\",\n    summary: \"Llamada cliente\",\n    startDateTime: \"2026-01-12 14:00\"\n  }\n  // ... más eventos\n];\n\n// Filtrar eventos coincidentes\nconst eventosCoincidentes = todosEventos.filter(evento => \n  verificarSolapamiento(evento.start, evento.end, fechaUsuario)\n);\n\n// Normalizar fecha para respuesta (formato legible)\nconst fechaNormalizada = fechaUsuario.toFormat('yyyy-MM-dd HH:mm:ss');\n\n// Verificar disponibilidad\nconst eventosCoincidentesCount = eventosCoincidentes.length === 0;\n\n// Preparar respuesta\nconst respuesta = {\n  eventosEncontrados: todosEventos.length,\n  eventosCoincidentes: eventosCoincidentes,\n  fechaSolicitada: fechaUsuario.toISO(),\n  fechaNormalizada: fechaNormalizada,\n  disponible: eventosCoincidentesCount,\n  mensajeUsuario: eventosCoincidentesCount ? \n    \"No hay eventos solapados. ¡Disponible!\" : \n    `Hay ${eventosCoincidentes.length} eventos en conflicto`\n};\n\n// Devolver la respuesta como un nuevo item\nreturn [{ json: respuesta }];\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          896,
+          352
+        ],
+        "id": "afbdbd58-1f5b-46e0-9c6d-37184a055efb",
+        "name": "Code in JavaScript1"
+      },
+      {
+        "parameters": {
+          "rules": {
+            "values": [
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 3
+                  },
+                  "conditions": [
+                    {
+                      "leftValue": "={{ $json.result }}",
+                      "rightValue": "is true",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals"
+                      },
+                      "id": "3403f852-77fa-4a11-9032-6b5288e87806"
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "Disponible"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 3
+                  },
+                  "conditions": [
+                    {
+                      "id": "d507c7b0-47c5-4a6b-b1bd-9a0e8d04d41e",
+                      "leftValue": "={{ $json.result }}",
+                      "rightValue": "is false",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals",
+                        "name": "filter.operator.equals"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "No Disponible"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.switch",
+        "typeVersion": 3.4,
+        "position": [
+          1104,
+          352
+        ],
+        "id": "dbdd1820-2010-4720-a5ed-5473a0948721",
+        "name": "Switch"
+      }
+    ],
+    "connections": {
+      "Disponibilidad Esturión": {
+        "main": [
+          [
+            {
+              "node": "Code in JavaScript",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code in JavaScript": {
+        "main": [
+          [
+            {
+              "node": "Get many events",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get many events": {
+        "main": [
+          [
+            {
+              "node": "Code in JavaScript1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code in JavaScript1": {
+        "main": [
+          [
+            {
+              "node": "Switch",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "Carlos Fernández",
+    "name": "Disponibilidad Esturión",
+    "description": "",
+    "autosaved": true
+  },
+  "activeVersionId": "e8928f72-0507-4e78-9c6e-9bc881a5804f",
+  "connections": {
+    "Disponibilidad Esturión": {
+      "main": [
+        [
+          {
+            "node": "Get many events",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many events": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2026-01-23T16:04:38.860Z",
+  "id": "L6RP5mL1JuEWBAjS",
+  "isArchived": false,
+  "meta": null,
+  "name": "Disponibilidad Esturión",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "Fecha"
+            }
+          ]
+        }
+      },
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "typeVersion": 1.1,
+      "name": "Disponibilidad Esturión",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        272,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "6a3cafde1495464bc5dc0cb2ff50199043fa5e58fed4f46eaec4cc27d79a7c28@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Practica N8N Clinica"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        688,
+        352
+      ],
+      "id": "0b60423b-bf00-43ac-8b03-a09238cb71ac",
+      "name": "Get many events",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "BxLdTiBYRwntbItp",
+          "name": "Google Calendar account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener la fecha y hora del usuario desde el webhook\nconst fechaUsuario = $input.first().json.body.conversation.timestamp.toDateTime('s').toLocal();\n\n// Función verificar solapamiento (horas solicitadas vs eventos)\nfunction verificarSolapamiento(eventoInicio, eventoFin, fechaSolicitada) {\n  const inicio = new Date(eventoInicio);\n  const fin = new Date(eventoFin);\n  const solicitada = new Date(fechaSolicitada);\n  \n  return solicitada >= inicio && solicitada <= fin;\n}\n\n// Obtener todos los eventos del calendario (simula Google Calendar API)\nconst todosEventos = [\n  {\n    start: \"2026-01-12T10:00:00\",\n    end: \"2026-01-12T11:00:00\",\n    summary: \"Reunión equipo\",\n    startDateTime: \"2026-01-12 10:00\"\n  },\n  {\n    start: \"2026-01-12T14:00:00\", \n    end: \"2026-01-12T15:30:00\",\n    summary: \"Llamada cliente\",\n    startDateTime: \"2026-01-12 14:00\"\n  }\n  // ... más eventos\n];\n\n// Filtrar eventos coincidentes\nconst eventosCoincidentes = todosEventos.filter(evento => \n  verificarSolapamiento(evento.start, evento.end, fechaUsuario)\n);\n\n// Normalizar fecha para respuesta (formato legible)\nconst fechaNormalizada = fechaUsuario.toFormat('yyyy-MM-dd HH:mm:ss');\n\n// Verificar disponibilidad\nconst eventosCoincidentesCount = eventosCoincidentes.length === 0;\n\n// Preparar respuesta\nconst respuesta = {\n  eventosEncontrados: todosEventos.length,\n  eventosCoincidentes: eventosCoincidentes,\n  fechaSolicitada: fechaUsuario.toISO(),\n  fechaNormalizada: fechaNormalizada,\n  disponible: eventosCoincidentesCount,\n  mensajeUsuario: eventosCoincidentesCount ? \n    \"No hay eventos solapados. ¡Disponible!\" : \n    `Hay ${eventosCoincidentes.length} eventos en conflicto`\n};\n\n// Devolver la respuesta como un nuevo item\nreturn [{ json: respuesta }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        896,
+        352
+      ],
+      "id": "afbdbd58-1f5b-46e0-9c6d-37184a055efb",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.result }}",
+                    "rightValue": "is true",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "3403f852-77fa-4a11-9032-6b5288e87806"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Disponible"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "d507c7b0-47c5-4a6b-b1bd-9a0e8d04d41e",
+                    "leftValue": "={{ $json.result }}",
+                    "rightValue": "is false",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "No Disponible"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        1104,
+        352
+      ],
+      "id": "dbdd1820-2010-4720-a5ed-5473a0948721",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  const fecha = new Date(item.json.fecha);\n  \n  const fechaInicio = new Date(fecha);\n  \n  // Función para formatear fecha + horas\n  function formatFechaConHoras(fecha) {\n    return fecha.toISOString().slice(0, 19).replace('T', ' ');\n  }\n  \n  function fechaFinal(fecha) {\n    return (fecha.getHours() + ':' + fecha.getMinutes().toString().padStart(2,'0') + ':' + fecha.getSeconds().toString().padStart(2,'0'));\n  }\n  \n  return {\n    json: {\n      ...item.json,\n      fechaInicio: formatFechaConHoras(fechaInicio),\n      fechaFinal: fechaFinal(new Date(fechaInicio.getTime() + 30*60*1000)) // +30 min\n    }\n  };\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        528
+      ],
+      "id": "9c2b364d-e2e3-4113-995d-63326fa89423",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "pinData": {
+    "Disponibilidad Esturión": [
+      {
+        "json": {
+          "Fecha": "2026-02-14T22:30:00"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-01-23T16:04:38.871Z",
+      "createdAt": "2026-01-23T16:04:38.871Z",
+      "role": "workflow:owner",
+      "workflowId": "L6RP5mL1JuEWBAjS",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-01-23T18:45:06.301Z",
+  "versionId": "435e9a00-daa4-4df8-acb1-5cde8bf14e0b"
+}
