@@ -1,0 +1,1666 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "If4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Redis1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis1": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "Redis2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Redis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Transcribe a recording",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcribe a recording": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis3": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Redis4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis4": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Redis3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis5": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many events in Google Calendar": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If5": {
+      "main": [
+        [],
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "If6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If6": {
+      "main": [
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If7": {
+      "main": [
+        [
+          {
+            "node": "Wait3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Redis5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If4": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Disponibilidad Esturion": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agendar Esturion": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Modificar Evento Esturion": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cancelar Evento Esturion": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "If7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-01-23T15:22:44.676Z",
+  "id": "-cgq3cFKFQQwwszD4Iorv",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Agente Restaurante Esturión",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "cf611be9-ebe6-48f4-af1c-6996d5dfb497",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -1280,
+        64
+      ],
+      "id": "09ebca50-aa3f-416a-9a56-347833045084",
+      "name": "Webhook",
+      "webhookId": "cf611be9-ebe6-48f4-af1c-6996d5dfb497"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "844d9ab8-f2dd-47b5-8f29-29ea70e52009",
+              "leftValue": "={{ $json.body.event }}",
+              "rightValue": "=message_created",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -1056,
+        64
+      ],
+      "id": "180dc0d6-49a2-4256-9b9f-76c828130a0a",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "db7831e6-2930-4c9d-adbd-0b6cb1a0294b",
+              "leftValue": "={{ $json.body.conversation.messages[0].sender_type }}",
+              "rightValue": "Contact",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -832,
+        64
+      ],
+      "id": "e2369819-4eee-4660-a986-d8de8920fb32",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "34908a1a-910b-4240-b270-c5bae76d6672",
+              "name": "accountID",
+              "value": "={{ $json.body.account.id }}",
+              "type": "string"
+            },
+            {
+              "id": "861750b8-6d53-4256-833c-048704fb4711",
+              "name": "conversationID",
+              "value": "={{ $json.body.conversation.messages[0].conversation_id }}",
+              "type": "string"
+            },
+            {
+              "id": "db3956f9-9900-4b56-ac29-ffe7889b2299",
+              "name": "sessionID",
+              "value": "={{ $json.body.conversation.messages[0].source_id }}",
+              "type": "string"
+            },
+            {
+              "id": "cd35006e-6aca-472c-a395-8218acf4de48",
+              "name": "Identificador",
+              "value": "={{ $json.body.conversation.meta.sender.identifier }}",
+              "type": "string"
+            },
+            {
+              "id": "1f42345f-4d66-4ac4-9368-2b08b226d4b0",
+              "name": "telefono",
+              "value": "={{ $json.body.conversation.meta.sender.phone_number }}",
+              "type": "string"
+            },
+            {
+              "id": "55ad0e2a-09a6-42b7-925d-d30a4b19661b",
+              "name": "mensaje",
+              "value": "={{ $json.body.content }}",
+              "type": "string"
+            },
+            {
+              "id": "f1e69443-9dbe-4203-b32c-98bd1dcddbc1",
+              "name": "data_time",
+              "value": "={{ $json.body.conversation.timestamp.toDateTime('s').toLocal() }}",
+              "type": "string"
+            },
+            {
+              "id": "470e66ac-542e-461a-829b-aa96232dec8c",
+              "name": "tipo_mensaje",
+              "value": "={{ $json.body.conversation.messages[0].attachments[0].file_type }}",
+              "type": "string"
+            },
+            {
+              "id": "9dd36975-250a-4e22-a33e-e7068195cd65",
+              "name": "body.conversation.messages[0].attachments[0].data_url",
+              "value": "={{ $json.body.conversation.messages[0].attachments[0].data_url }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -608,
+        64
+      ],
+      "id": "1e6f1e8c-570f-4012-875a-df45fc8d55b5",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener el valor original del campo\nconst sender = $input.first().json.telefono;\n\n// Limpiar el número:\n// - Eliminar el prefijo '34' o '49' si existe, y quitar el dominio de whatsapp\nconst cleanedNumber = sender\n  .replace(/^(\\+?34|\\+?49)/, '') // Quita el '+34', '34', '+49' o '49' al inicio\n  .replace(/@s\\.whatsapp\\.net$/, ''); // Quita el '@s.whatsapp.net' al final\n\n// Devolver el número limpio\nreturn [\n  {\n    json: {\n      cleanedNumber\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        288,
+        160
+      ],
+      "id": "3b8fd9bf-62a9-452e-a274-c1b32e943f82",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $json.Identificador }}",
+        "messageData": "={{ $json.mensaje }}",
+        "tail": true
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        736,
+        160
+      ],
+      "id": "ad75c0e8-9471-428e-b242-4836bb7b1e35",
+      "name": "Redis",
+      "credentials": {
+        "redis": {
+          "id": "rmwGdInGMfi5lhMd",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        960,
+        160
+      ],
+      "id": "995adcfc-6315-43d7-a383-8db6dc454cfa",
+      "name": "Wait",
+      "webhookId": "71ac37ec-4a28-4234-a581-e5bf42c39a02"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "message",
+        "key": "={{ $('Edit Fields1').item.json.Identificador }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1184,
+        160
+      ],
+      "id": "2dd7d577-4ec0-470b-8b80-ccc3cfcb811b",
+      "name": "Redis1",
+      "credentials": {
+        "redis": {
+          "id": "rmwGdInGMfi5lhMd",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "96158e05-c548-462c-94c3-8138dd2ceaf9",
+              "leftValue": "={{ $json.message.last() }}",
+              "rightValue": "={{ $('Edit Fields1').item.json.mensaje }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1408,
+        160
+      ],
+      "id": "af6cf21c-3432-4f21-b594-45b5cf2f0118",
+      "name": "If3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "34908a1a-910b-4240-b270-c5bae76d6672",
+              "name": "accountID",
+              "value": "={{ $('Edit Fields').item.json.accountID }}",
+              "type": "string"
+            },
+            {
+              "id": "861750b8-6d53-4256-833c-048704fb4711",
+              "name": "conversationID",
+              "value": "={{ $('Edit Fields').item.json.conversationID }}",
+              "type": "string"
+            },
+            {
+              "id": "db3956f9-9900-4b56-ac29-ffe7889b2299",
+              "name": "sessionID",
+              "value": "={{ $('Edit Fields').item.json.sessionID }}",
+              "type": "string"
+            },
+            {
+              "id": "cd35006e-6aca-472c-a395-8218acf4de48",
+              "name": "Identificador",
+              "value": "={{ $('Edit Fields').item.json.Identificador }}",
+              "type": "string"
+            },
+            {
+              "id": "54a552ab-1572-4814-8549-4887c93002c0",
+              "name": "telefono",
+              "value": "={{ $json.cleanedNumber }}",
+              "type": "string"
+            },
+            {
+              "id": "55ad0e2a-09a6-42b7-925d-d30a4b19661b",
+              "name": "mensaje",
+              "value": "={{ $('Edit Fields').item.json.mensaje }}",
+              "type": "string"
+            },
+            {
+              "id": "f1e69443-9dbe-4203-b32c-98bd1dcddbc1",
+              "name": "data_time",
+              "value": "={{ $('Edit Fields').item.json.data_time }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {
+          "ignoreConversionErrors": false
+        }
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        512,
+        160
+      ],
+      "id": "afab4f5d-bf6c-4d37-b878-c08723a28cd5",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('Edit Fields1').item.json.Identificador }}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1632,
+        160
+      ],
+      "id": "bae20086-d8af-4e54-837d-074ed2ba05fc",
+      "name": "Redis2",
+      "credentials": {
+        "redis": {
+          "id": "rmwGdInGMfi5lhMd",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5a1e36e3-f8de-419c-83ae-5cc7fead47df",
+              "name": "mensaje",
+              "value": "={{ $json.message.join(\" \") }}",
+              "type": "string"
+            },
+            {
+              "id": "ed4e679f-704c-454a-88e4-d46623e9b6dd",
+              "name": "telefono",
+              "value": "={{ $('Edit Fields1').item.json.telefono }}",
+              "type": "string"
+            },
+            {
+              "id": "67bac86b-a225-4b80-8f56-0544eb594701",
+              "name": "Identificador",
+              "value": "={{ $('Edit Fields1').item.json.Identificador }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1856,
+        160
+      ],
+      "id": "24a5b624-9aee-4f38-b41d-999932882550",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host{{ $json.body.conversation.messages[0].attachments[0].data_url.replace('http://https', '') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -160,
+        -32
+      ],
+      "id": "d5726742-496c-41b9-badb-97f4d7bd5ca9",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "binaryPropertyName": "=data",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        64,
+        -32
+      ],
+      "id": "ccbdf1f0-f637-47a6-9881-5e21aaf7310a",
+      "name": "Transcribe a recording",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener el valor original del campo\nconst sender = $('If4').first().json.telefono;\n// Eliminar el prefijo '34' o '49' si existe, y quitar el dominio de WhatsApp\nconst cleanedNumber = sender\n  .replace(/^(\\+?34|\\+?49)/, '')       // Quita el '+34', '34', '+49' o '49' al inicio\n  .replace(/@s\\.whatsapp\\.net$/, ''); // Quita el '@s.whatsapp.net' al final\n\n// Devolver el número limpio\nreturn [\n  {\n    json: {\n      cleanedNumber\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        288,
+        -32
+      ],
+      "id": "c58371cf-ea37-49f2-aae7-3453150feae5",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $json.Identificador }}",
+        "messageData": "={{ $json.mensaje_audio }}",
+        "tail": true
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        736,
+        -32
+      ],
+      "id": "309fefb2-cfb5-4b7e-8e66-38851fc379cf",
+      "name": "Redis3",
+      "credentials": {
+        "redis": {
+          "id": "rmwGdInGMfi5lhMd",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        960,
+        -32
+      ],
+      "id": "e013c1e7-d539-40e0-95e1-175614b2f19d",
+      "name": "Wait1",
+      "webhookId": "71ac37ec-4a28-4234-a581-e5bf42c39a02"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "message",
+        "key": "={{ $('Edit Fields3').item.json.Identificador }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1184,
+        -32
+      ],
+      "id": "66d7ab14-3c91-4641-90d7-07b3234c0df6",
+      "name": "Redis4",
+      "credentials": {
+        "redis": {
+          "id": "rmwGdInGMfi5lhMd",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "34908a1a-910b-4240-b270-c5bae76d6672",
+              "name": "accountID",
+              "value": "={{ $('Edit Fields').item.json.accountID }}",
+              "type": "string"
+            },
+            {
+              "id": "861750b8-6d53-4256-833c-048704fb4711",
+              "name": "conversationID",
+              "value": "={{ $('Edit Fields').item.json.conversationID }}",
+              "type": "string"
+            },
+            {
+              "id": "db3956f9-9900-4b56-ac29-ffe7889b2299",
+              "name": "sessionID",
+              "value": "={{ $('Edit Fields').item.json.sessionID }}",
+              "type": "string"
+            },
+            {
+              "id": "cd35006e-6aca-472c-a395-8218acf4de48",
+              "name": "Identificador",
+              "value": "={{ $('Edit Fields').item.json.Identificador }}",
+              "type": "string"
+            },
+            {
+              "id": "54a552ab-1572-4814-8549-4887c93002c0",
+              "name": "telefono",
+              "value": "={{ $json.cleanedNumber }}",
+              "type": "string"
+            },
+            {
+              "id": "55ad0e2a-09a6-42b7-925d-d30a4b19661b",
+              "name": "mensaje_audio",
+              "value": "={{ $('Transcribe a recording').item.json.text }}",
+              "type": "string"
+            },
+            {
+              "id": "f1e69443-9dbe-4203-b32c-98bd1dcddbc1",
+              "name": "data_time",
+              "value": "={{ $('Edit Fields').item.json.data_time }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {
+          "ignoreConversionErrors": false
+        }
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        512,
+        -32
+      ],
+      "id": "80dcc6c6-526f-4f68-8aea-c1a2288c3271",
+      "name": "Edit Fields3"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('Edit Fields3').item.json.Identificador }}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1632,
+        -32
+      ],
+      "id": "e6a77126-682c-4461-9bc3-92bdd60337d0",
+      "name": "Redis5",
+      "credentials": {
+        "redis": {
+          "id": "rmwGdInGMfi5lhMd",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5a1e36e3-f8de-419c-83ae-5cc7fead47df",
+              "name": "mensaje_audio",
+              "value": "={{ $json.message.join(\" \") }}",
+              "type": "string"
+            },
+            {
+              "id": "ed4e679f-704c-454a-88e4-d46623e9b6dd",
+              "name": "telefono",
+              "value": "={{ $('Edit Fields3').item.json.telefono }}",
+              "type": "string"
+            },
+            {
+              "id": "67bac86b-a225-4b80-8f56-0544eb594701",
+              "name": "Identificador",
+              "value": "={{ $('Edit Fields3').item.json.Identificador }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1856,
+        -32
+      ],
+      "id": "f6791cfd-531b-4697-b203-06dbc808cdf7",
+      "name": "Edit Fields4"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Mensaje_texto_cliente: {{ $json.mensaje }}\nMensaje_audio_cliente: {{ $json.mensaje_audio }}\nTelefono cliente: {{ $json.telefono }}\n",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=Identidad y propósito\nEres Marta, asistente virtual de atención al cliente del Restaurante Esturión, integrada en el sistema n8n. Atiendes solicitudes de clientes con cordialidad, eficiencia y autonomía, usando las herramientas disponibles para gestionar reservas, resolver dudas sobre el restaurante y ofrecer un servicio impecable.\n\nEstilo y tono\n\nNo seas robótica: usa tono natural y humano, y emoticonos cuando convenga (no siempre el mismo) 😊\nTrata siempre de usted al cliente\nRespuestas claras y concisas: en el sector de restauración, la brevedad y eficiencia son clave\nUsa \"reservar\" o \"hacer la reserva\" en lugar de otros términos\n\nFrases/plantillas de ejemplo (usar \"usted\")\n\n\"Para esta semana, tenemos disponibilidad el miércoles al mediodía y el viernes por la noche...\"\n\"Para poder hacer la reserva, ¿sería tan amable de facilitarme el día, la hora, número de personas y un nombre para la reserva?\"\n\"Esta semana no tenemos mesas disponibles para ese horario, pero podría ofrecerle...\"\n\n\nPresentación inicial (solo primer mensaje)\nAl inicio de la conversación con un cliente, preséntate diciendo quién eres y para quién trabajas con un mensaje como:\n\"Hola, soy Marta, la asistente virtual del Restaurante Esturión 🍽️\"\nActo seguido, contesta al mensaje del cliente. Esto se hace solo en el primer mensaje. Para detectar si es inicio/apertura, analiza el mensaje.\n\nEntrada de mensajes y contexto\nEl mensaje del cliente {{ $json.mensaje }} o {{ $json.mensaje_audio }} es un conjunto de mensajes enviados por separado, que debes analizar de derecha a izquierda para entender el contexto completo.\n\nÁmbito de actuación\nCualquier mensaje que no tenga que ver con tu labor de resolver dudas sobre el restaurante o gestionar reservas, siempre analizando el contexto y la memoria de ese chat, debes responder solo con: False.\nTodos los mensajes en los cuales no tengas contexto alguno responde False. Por ejemplo, mensajes como:\n\n\"Estás al día muchas gracias 😊\"\n\"😱😱😱\"\n\"Qué fuerteeee\"\n\"Mañana paso por ahí\"\n\"Nos vemos 😘😘\"\n\"Buenas noches\"\n\nAnaliza el mensaje del cliente y responde solo si tiene sentido que gestiones una reserva o des información del restaurante; si es de otro tema responde False.\n\n📅 REGLA 1 – Gestión de reservas\n1.1. Horarios de apertura del Restaurante Esturión\nCerrado:\n\n🟡 Lunes y Martes\n\nAbierto:\n\n🟡 Miércoles a Sábado:\n\nDesayunos: 9:00 h – 12:00 h 🍳☕\nAlmuerzo: 13:30 h – 16:30 h\nCena: 21:00 h – 23:30 h\n\n\n🟡 Domingo:\n\nDesayunos: 9:00 h – 12:00 h 🍳☕\nAlmuerzo: 13:30 h – 16:30 h\nCena: 21:30 h – 23:30 h\n\n\n\n⚠️ Importante: Siempre valida que el día y hora solicitados estén dentro de estos horarios antes de confirmar disponibilidad.\n\n1.2. Alcance temporal y validación en Google Sheets\n\nLa semana actual se cuenta de lunes a domingo\nSe pueden reservar mesas para semanas futuras, pero siempre debes comprobar y ceñirte al horario de trabajo en Google Sheets\nGoogle Sheets se compone de todos los días de miércoles a domingo del mes, con el horario que opera el restaurante cada día\nPara reservar, debes regirte obligatoriamente por ese horario\n\nSiempre que propongas u ofrezcas reservas (semana en curso o futuras), valida en Google Sheets que:\n\nEse día está habilitado (miércoles a domingo según hoja)\nLa hora está dentro del rango marcado para ese día\nSe respetan los huecos libres reales según las reservas ya agendadas\n\n\n1.3. Reservas para grupos\nSi el cliente quiere una reserva para varias personas, pide:\n\nDía y hora deseados\nNúmero de comensales\nNombre para la reserva\nTeléfono de contacto\n\nComprueba el horario y disponibilidad antes de confirmar.\n\n1.4. Proceso para hacer una reserva\nMuy importante: para reservar debes pedir el nombre completo al cliente y número de personas; si no te da estos datos no puedes reservar.\nIdentificación del servicio (tipo de reserva)\nEl cliente puede solicitar:\n\nDesayuno (9:00 h – 12:00 h)\nAlmuerzo/Comida (13:30 h – 16:30 h)\nCena (21:00 h – 23:30 h miércoles-sábado / 21:30 h – 23:30 h domingo)\n\nEjemplos:\n\n\"Quiero reservar para comer el sábado\" → Almuerzo\n\"Mesa para cenar el viernes\" → Cena\n\"Desayuno para dos personas el domingo\" → Desayuno\n\n⚠️ No pedir detalles innecesarios sobre preferencias gastronómicas en este momento (eso se gestiona en el restaurante).\n\nCalcular disponibilidad\n\nObtén todas las reservas ya agendadas ese día usando la herramienta de obtener eventos\nDuraciones aproximadas por servicio:\n\nDesayuno: 60 min\nAlmuerzo: 120 min (2 horas)\nCena: 120 min (2 horas)\n\n\nUn hueco solo es válido si:\n\nLa hora solicitada está dentro del horario de apertura\nNo se solapa con ninguna reserva existente\nHay capacidad suficiente de mesas para el número de personas\n\n\nDejar margen entre reservas si es necesario para optimizar el servicio\n\n\nCuando el cliente indica fecha y hora\n\nComprobar en Google Sheets:\n\nSi ese día está habilitado (miércoles a domingo según hoja)\nSi la hora solicitada está en rango para ese día (desayuno/almuerzo/cena)\n\n\nSi NO está en rango → Responde:\n\n\"En esa fecha y hora el restaurante no está abierto\" y pide otra fecha (dentro de los días y horas habilitados)\n\n\nSi está en rango → comprueba disponibilidad real (sin solapes y con capacidad)\nSi ocupada/sin capacidad → Responde:\n\n\"Ese horario no está disponible\" y pide nueva fecha/hora o sugiere alternativas cercanas\n\n\nSi disponible → Crea la reserva con la herramienta de creación\n\n\nImportante (durante el proceso de reserva)\n\nNunca preguntar al cliente si quiere cancelar o modificar en el momento de reservar\nCuando se ha confirmado una fecha y hora con el cliente, nunca preguntes si prefiere otro horario\nSolo se gestionan cancelaciones/modificaciones cuando el cliente lo pida expresamente\n\n\n🔧 Herramientas disponibles\n\nHorarios semanales: Consultar Google Sheets\nGestión de reservas:\n\nComprobar disponibilidad\nCrear reserva\nObtener próximas reservas\nModificar reserva\nCancelar reserva\n\n\nComunicación:\n\nConfirmaciones\nNotificaciones de cambios/cancelaciones\n\n\nInformación general:\n\nCarta y platos destacados\nHorarios\nDirección y parking\nEventos especiales (música en directo, animación infantil)\nBodas y celebraciones\n\n\n\n\n🎯 Objetivo final\nEl cliente debe percibir un servicio eficiente, cálido y profesional, con control total de la agenda y cumplimiento estricto de las reglas, evitando ofrecer huecos que no están disponibles.\n\n⚠️ Norma operativa clave (antes de responder)\nAntes de responder a cualquier mensaje, revisa siempre el calendario para comprobar la disponibilidad real: huecos libres y ya ocupados.\nAsí:\n\nEvitas pedir fechas/horas que ya estén ocupadas\nAseguras coherencia y utilidad desde el primer momento\nOfreces opciones viables\n\n👉 En resumen: primero comprueba el calendario, luego responde.\n\nInformación del Restaurante Esturión (para responder preguntas)\n📍 Datos básicos\n\nNombre: Restaurante Esturión\nDirección: Calle Batán, s/n, 41100 Coria del Río, Sevilla, España\nTeléfono: +34 955 23 56 44\nTipo de cocina: Mediterránea / Europea / tradicional con toques locales\nPrecio medio: ~20-40 € por persona 💶\nParking: Sí, parking privado disponible 🚗\nAccesible: Sí (acceso para personas con discapacidad) ♿\n\n🍷✨ Ambiente & experiencia\n\nSituado en un entorno natural precioso junto al Río Guadalquivir\nVistas únicas y ambiente tranquilo en interior y gran terraza al aire libre\nMúsica en directo en verano (jueves a sábado por la noche) 🎶\nAnimación infantil los fines de semana y festivos 👨‍👩‍👧\n\n🍽️ Gastronomía y carta\nCocina local con toques mediterráneos y platos tradicionales:\n\nPescados frescos (incluyendo elaboraciones con esturión)\nCarnes a la brasa jugosas\nArroces melosos y caldosos\nTapas y entradas para compartir\nVinos andaluces y nacionales 🍷\n\nPlatos destacados:\n\nEsturión preparado en varias formas ✨\nArroces (negro, con pato, etc.)\nVerduras salteadas, langostinos, torrijas 🍮\nCarabineros y mariscos frescos 🦐\n\n🎉 Eventos, celebraciones & bodas\nEl restaurante ofrece espacios al aire libre y salones interiores con menú personalizado para bodas, fiestas y eventos especiales.\n🐟 Historia del lugar\nEl restaurante está situado en lo que fue la histórica fábrica de caviar de Coria del Río (principios del S. XX), que producía caviar de esturión reconocido en Europa. El edificio mantiene parte de su carácter original fusionando historia con gastronomía contemporánea.\n\nCasos y reglas adicionales\n\nNo repitas mensajes varias veces; con decirlo una vez basta\nSigue las reglas especificadas; no des más contexto del que pida el cliente\nPedir nombre y teléfono solo cuando confirme fecha, hora y número de personas\nNo repitas cosas constantemente salvo que sea necesario\nMensajes sin contexto o ajenos a restaurante/reservas → responde False\nPara reservar: pide nombre completo, teléfono y número de comensales\nSi el cliente no recuerda su reserva y te pide fecha/hora → pide nombre completo y verifica la reserva\nPreséntate solo en el inicio de conversación; luego no repitas quién eres ni dónde trabajas\nTras reservar, no digas \"si prefiere otro horario...\"\nPide nombre y teléfono solo después de confirmar que quiere la hora y que está disponible\nAl dar huecos, no asumas que quiere reservar; no pidas datos hasta su confirmación\nSi la fecha/hora pedidas no tienen huecos esa semana, ofrece otros horarios; si necesita exactamente esa franja, que espere a la siguiente semana\nSi el cliente te pide que elijas tú la hora o \"primer hueco disponible\", propón una hora disponible y pide confirmación\nAntes de reservar, verifica que el cliente quiere esa hora (aunque te haya dado libertad)\nNo menciones cancelaciones/cambios a menos que el cliente lo pida\nNunca elijas una hora por el cliente sin confirmación\nTen en cuenta día/hora actuales: no ofrezcas días u horas pasadas\nPara sacar huecos, considera siempre día y hora actuales (no muestres días/horas pasados)\nAl terminar (reservar/modificar/cancelar o resolver dudas), no preguntes si puedes ayudar en algo más\nTodo mensaje fuera de tu labor (gestionar reservas del restaurante) → responde False\n\n\nProhibiciones explícitas\n⚠️ Nunca decir que puedes enviar recordatorios\n⚠️ Nunca repetir constantemente los horarios del restaurante\n⚠️ Nunca pedir detalles innecesarios sobre preferencias alimenticias durante la reserva\n⚠️ Nunca firmar los mensajes con un nombre al final (no estilo correo)\n⚠️ Nunca mencionar que has comprobado herramientas o sistemas internos\n\nOutput Parse (formato de respuesta)\nUsa siempre el output parse para dividir tu respuesta en 3 partes, teniendo en cuenta el JSON del output parser:\njson{\n  \"Response\": {\n    \"Parte1\": \"...\",\n    \"Parte2\": \"...\",\n    \"Parte3\": \"...\"\n  }\n}\n\n📌 Fecha de referencia\nLa fecha actual es {{ $now }}.\n\n¡Importante! Este prompt está diseñado para gestionar reservas del Restaurante Esturión con profesionalidad, eficiencia y un toque humano cercano. Recuerda siempre verificar disponibilidad antes de confirmar y mantener un tono amable y natural"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        2528,
+        64
+      ],
+      "id": "6d93d873-6291-4029-9e2c-496c07c313d5",
+      "name": "AI Agent",
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        2080,
+        288
+      ],
+      "id": "3b0338a4-1a50-4264-a2b0-2542f6f6b543",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.Identificador }}",
+        "tableName": "=Clínica"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        2208,
+        288
+      ],
+      "id": "1986cbbf-1b80-4765-b307-b7d893bbe5ae",
+      "name": "Postgres Chat Memory",
+      "credentials": {
+        "postgres": {
+          "id": "lynsIk4t0FUvPeMz",
+          "name": "Postgres account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "3cf455fae61998f2cf7bfffba57a4e28188afc46dd5d892692826a9254905124@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Restaurante Esturión"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        2336,
+        288
+      ],
+      "id": "f9aa0a07-2dae-4ac7-b6e5-668c36258668",
+      "name": "Get many events in Google Calendar",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "BxLdTiBYRwntbItp",
+          "name": "Google Calendar account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "c536a974-fb1f-4d5b-9970-5d59a0121721",
+              "leftValue": "={{ $json.output.Response.Parte1 }}",
+              "rightValue": "false",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        3472,
+        64
+      ],
+      "id": "e3b08d3d-b103-4476-aa8b-2bf1859c703a",
+      "name": "If5"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host//api/v1/accounts/{{ $('Edit Fields').item.json.accountID }}/conversations/{{ $('Edit Fields').item.json.conversationID }}/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"content\": \"{{ $('AI Agent').item.json.output.Response.Parte1 }}\",\n  \"private\": false,\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        3696,
+        64
+      ],
+      "id": "4103dee4-d60f-42bb-99c4-57c3e7cf00dc",
+      "name": "HTTP Request1",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "s9IC0e9qhwPtXegM",
+          "name": "Header Auth account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "7371417a-70c7-4cb2-936c-5a09884e761b",
+              "leftValue": "={{ $('AI Agent').item.json.output.Response.Parte2 }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        3920,
+        64
+      ],
+      "id": "de3d7d65-16b5-41af-a204-4bd26ab0e861",
+      "name": "If6"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        4144,
+        64
+      ],
+      "id": "6924807d-eb02-49fc-8796-a4e74989f81f",
+      "name": "Wait2",
+      "webhookId": "751bef90-71de-41d2-ac4f-795b995cc5dd"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "79d91a9e-b4fa-47bd-a54a-6dcf817d24b5",
+              "leftValue": "={{ $('AI Agent').item.json.output.Response.Parte3 }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        4592,
+        64
+      ],
+      "id": "b5ad238c-3058-4965-8b0f-9d479320bd0a",
+      "name": "If7"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        4816,
+        64
+      ],
+      "id": "6deea794-2afe-4c2e-8ec3-c0824a9e21b7",
+      "name": "Wait3",
+      "webhookId": "751bef90-71de-41d2-ac4f-795b995cc5dd"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "96158e05-c548-462c-94c3-8138dd2ceaf9",
+              "leftValue": "={{ $json.message.last() }}",
+              "rightValue": "={{ $('Edit Fields3').item.json.mensaje_audio }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1408,
+        -32
+      ],
+      "id": "2494bb3a-eb40-4139-862e-30b6163f3c7d",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "d6581874-f941-437c-b4a6-90cb46415c1d",
+              "leftValue": "={{ $json.tipo_mensaje }}",
+              "rightValue": "audio",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -384,
+        64
+      ],
+      "id": "24b6aa46-dc6e-4932-9661-2dbb4854ec08",
+      "name": "If4"
+    },
+    {
+      "parameters": {
+        "description": "Usa esta herramienta cuando necesites más razonamiento"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1.1,
+      "position": [
+        2976,
+        288
+      ],
+      "id": "cde0e889-80aa-4801-97fa-e3ebfe3ca6be",
+      "name": "Think"
+    },
+    {
+      "parameters": {
+        "description": "=llama a esta herramienta cuando detectes la intencion del usuario de comprobar su disponibilidad o si quiere agendar un evento, reunión, llamada, etc.\nLa fecha actual es {{ $now }}",
+        "workflowId": {
+          "__rl": true,
+          "value": "L6RP5mL1JuEWBAjS",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/L6RP5mL1JuEWBAjS",
+          "cachedResultName": "Disponibilidad Esturión"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Fecha": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "Fecha"
+          ],
+          "schema": [
+            {
+              "id": "Fecha",
+              "displayName": "Fecha",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        2464,
+        288
+      ],
+      "id": "a8877125-d66f-43ed-b669-63cc77507419",
+      "name": "Disponibilidad Esturion"
+    },
+    {
+      "parameters": {
+        "description": "=Llama a esta herramienta cuando detectes la intención de el usuario de que quiere agendar un evento, cita, reuinion, llamada, etc, pero siempre una vez de haber comprobado la disponibilidad.\nLa fecha actual es {{ $now }}",
+        "workflowId": {
+          "__rl": true,
+          "value": "usBIrNERTn5gZqI8",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/usBIrNERTn5gZqI8",
+          "cachedResultName": "Agendar Esturión"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Titulo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Titulo', ``, 'string') }}",
+            "Fecha Inicio": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha_Inicio', ``, 'string') }}",
+            "Fecha Fin": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha_Fin', ``, 'string') }}",
+            "Descripción": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Descripci_n', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Titulo",
+              "displayName": "Titulo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Fecha Inicio",
+              "displayName": "Fecha Inicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Fecha Fin",
+              "displayName": "Fecha Fin",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Descripción",
+              "displayName": "Descripción",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        2592,
+        288
+      ],
+      "id": "fe7832be-eeb8-4bb7-9eb5-5661b4a8e905",
+      "name": "Agendar Esturion"
+    },
+    {
+      "parameters": {
+        "description": "=Llama a esta herramienta cuando detectes la intención del usuario de modificar un evento, llamada, reunión, etc. Para modificar la fecha o la hora de un evento primero tienes que comprobar la nueva fecha o la nueva hora que quiere el usuario.\nLa fecha actual es {{ $now }}",
+        "workflowId": {
+          "__rl": true,
+          "value": "r4N2wTKIasCoYE7U",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/r4N2wTKIasCoYE7U",
+          "cachedResultName": "Modificar Evento Esturion"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        2720,
+        288
+      ],
+      "id": "c4cf055d-5be0-4cef-bd92-16a0bd2b270e",
+      "name": "Modificar Evento Esturion"
+    },
+    {
+      "parameters": {
+        "description": "=Llama a esta herramienta cuando detectes la intención del usuario de cancelar o eliminar un evento, llamada, reunión, etc.\nLa fecha actual es {{ $now }}",
+        "workflowId": {
+          "__rl": true,
+          "value": "vRBdW8Ddciq6nwFA",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/vRBdW8Ddciq6nwFA",
+          "cachedResultName": "Cancelar Evento Esturion"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        2848,
+        288
+      ],
+      "id": "aa6df1b0-9a97-4801-a212-b65125a236ba",
+      "name": "Cancelar Evento Esturion"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host//api/v1/accounts/{{ $('Edit Fields').item.json.accountID }}/conversations/{{ $('Edit Fields').item.json.conversationID }}/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"content\": \"{{ $('AI Agent').item.json.output.Response.Parte2 }}\",\n  \"private\": false,\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        4368,
+        64
+      ],
+      "id": "746ddb27-6fc8-4202-a6bd-36f3e0edc43f",
+      "name": "HTTP Request2",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Zhnapx6EMtJKOOW9",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host//api/v1/accounts/{{ $('Edit Fields').item.json.accountID }}/conversations/{{ $('Edit Fields').item.json.conversationID }}/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"content\": \"{{ $('AI Agent').item.json.output.Response.Parte3 }}\",\n  \"private\": false,\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        5024,
+        64
+      ],
+      "id": "67f2ac03-7aa4-43fa-99c9-a4e79e2b6095",
+      "name": "HTTP Request3",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Zhnapx6EMtJKOOW9",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"Response\": {\n    \"Part1\": \"Primera parte del mensaje\",\n    \"Part2\": \"Segunda parte del mensaje\",\n    \"Part3\": \"Tercera parte del mensaje\"\n  }\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        3136,
+        288
+      ],
+      "id": "152eb64d-c906-4502-9173-88d4f4f22a4a",
+      "name": "Structured Output Parser"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-01-23T15:22:44.687Z",
+      "createdAt": "2026-01-23T15:22:44.687Z",
+      "role": "workflow:owner",
+      "workflowId": "-cgq3cFKFQQwwszD4Iorv",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2026-01-23T18:47:08.698Z",
+  "versionId": "5da025db-e4b8-4b28-bb82-d53e757da805"
+}
