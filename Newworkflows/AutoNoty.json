@@ -1,0 +1,201 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respond to Webhook": {
+      "main": [
+        []
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-01-27T12:06:57.515Z",
+  "id": "meFr59UfaIfWGrOyDLTso",
+  "isArchived": false,
+  "meta": null,
+  "name": "AutoNoty",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "AutoNoty",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "f11f3e1b-daf7-432b-8bd2-aac74db92295",
+      "name": "Webhook",
+      "webhookId": "8e0c1db1-1280-4b63-95eb-d5c238472b62"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "b50f2002-3e5f-4a78-b6c2-a5c0cc6b7046",
+              "leftValue": "={{ $json.body.subscription.type }}",
+              "rightValue": "stream.online",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        208,
+        0
+      ],
+      "id": "11ffdb15-deb3-4607-900e-e6ed0d27a29f",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        768,
+        -16
+      ],
+      "id": "f0cc6873-3b65-406c-8e90-f6794a983eea",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "url": "=https://twitch36.p.rapidapi.com/streams/?id={{ $json.body.event.broadcaster_user_id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-rapidapi-host",
+              "value": "twitch36.p.rapidapi.com"
+            },
+            {
+              "name": "x-rapidapi-key",
+              "value": "vt4b694x5320dhajiwope17br0up0u"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        480,
+        -16
+      ],
+      "id": "265664b2-452d-4d47-9e8a-eb179d94616c",
+      "name": "HTTP Request"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
+            "user-agent": "PostmanRuntime/7.51.1",
+            "content-length": "204",
+            "accept": "*/*",
+            "accept-encoding": "gzip, deflate, br",
+            "cache-control": "no-cache",
+            "content-type": "application/json",
+            "postman-token": "ba06d99e-1c95-49b8-bf2b-b4a7003d00b0",
+            "x-forwarded-for": "159.147.63.37, 54.86.50.139",
+            "x-forwarded-host": "n8n2nkz-n8n.vc1wee.easypanel.host",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "88eeb68a63a5",
+            "x-real-ip": "54.86.50.139"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "subscription": {
+              "type": "stream.online"
+            },
+            "event": {
+              "broadcaster_user_id": "141981764",
+              "broadcaster_user_login": "KarZent",
+              "broadcaster_user_name": "KarZent"
+            }
+          },
+          "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook-test/LivePing",
+          "executionMode": "test"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-01-27T12:06:57.530Z",
+      "createdAt": "2026-01-27T12:06:57.530Z",
+      "role": "workflow:owner",
+      "workflowId": "meFr59UfaIfWGrOyDLTso",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-01-30T14:35:38.983Z",
+  "versionId": "c5251a30-3809-43c9-af86-733e28ba7fb7"
+}
