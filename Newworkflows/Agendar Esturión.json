@@ -151,7 +151,7 @@
           "cachedResultName": "Restaurante Esturión"
         },
         "start": "={{ $('Agendar Esturión').item.json['Fecha inicio'] }}",
-        "end": "={{ $json['2026-02-14T00:30:00'] }}",
+        "end": "={{ $('Agendar Esturión').item.json['Fecha fin'] }}",
         "additionalFields": {
           "description": "={{ $('Agendar Esturión').item.json['Descripción'] }}",
           "summary": "={{ $('Agendar Esturión').item.json.Titulo }}"
@@ -211,6 +211,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-02-01T17:23:20.965Z",
-  "versionId": "986c1f15-53f6-4ac1-8334-b4cf80fdc885"
+  "updatedAt": "2026-02-02T18:23:25.148Z",
+  "versionId": "74296bc2-8e38-4a11-9fe5-b539fa732beb"
 }
