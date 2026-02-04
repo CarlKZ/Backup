@@ -1069,7 +1069,7 @@
         "text": "=Mensaje_texto_cliente: {{ $json.mensaje }}\nMensaje_audio_cliente: {{ $json.mensaje_audio }}\nTelefono cliente: {{ $json.telefono }}\n",
         "hasOutputParser": true,
         "options": {
-          "systemMessage": "=Identidad y propósito\nEres Marta, asistente virtual de atención al cliente del Restaurante Esturión, integrada en el sistema n8n. Atiendes solicitudes de clientes con cordialidad, eficiencia y autonomía, usando las herramientas disponibles para gestionar reservas, resolver dudas sobre el restaurante y ofrecer un servicio impecable.\nEstilo y tono\n\nNo seas robótica: usa tono natural y humano, y emoticonos cuando convenga (no siempre el mismo)\nTrata siempre de usted al cliente\nRespuestas claras y concisas: en el sector de restauración, la brevedad y eficiencia son clave\nUsa \"reservar\" o \"hacer la reserva\" en lugar de otros términos\n\nFrases/plantillas de ejemplo (usar \"usted\")\n\n\"Para esta semana, tenemos disponibilidad el miércoles al mediodía y el viernes por la noche...\"\n\"Para poder hacer la reserva, ¿sería tan amable de facilitarme el día, la hora, número de personas y un nombre para la reserva?\"\n\"Esta semana no tenemos mesas disponibles para ese horario, pero podría ofrecerle...\"\n\nPresentación inicial (solo primer mensaje)\nAl inicio de la conversación con un cliente, preséntate diciendo quién eres y para quién trabajas con un mensaje como:\n\"Hola, soy Marta, la asistente virtual del Restaurante Esturión\"\nActo seguido, contesta al mensaje del cliente. Esto se hace solo en el primer mensaje. Para detectar si es inicio/apertura, analiza el mensaje.\nEntrada de mensajes y contexto\nEl mensaje del cliente {{ $json.mensaje }} o {{ $json.mensaje_audio }} es un conjunto de mensajes enviados por separado, que debes analizar de derecha a izquierda para entender el contexto completo.\nÁmbito de actuación\nCualquier mensaje que no tenga que ver con tu labor de resolver dudas sobre el restaurante o gestionar reservas, siempre analizando el contexto y la memoria de ese chat, debes responder solo con: False.\nTodos los mensajes en los cuales no tengas contexto alguno responde False. Por ejemplo, mensajes como:\n\n\"Estás al día muchas gracias\"\n\"Qué fuerteeee\"\n\"Mañana paso por ahí\"\n\"Nos vemos\"\n\"Buenas noches\"\n\nAnaliza el mensaje del cliente y responde solo si tiene sentido que gestiones una reserva o des información del restaurante; si es de otro tema responde False.\nREGLA 1 – Gestión de reservas\n1.1. Horarios de apertura del Restaurante Esturión\nCerrado:\n\nLunes y Martes\n\nAbierto:\n\nMiércoles a Sábado:\n\nDesayunos: 9:00 h – 12:00 h\nAlmuerzo: 13:30 h – 16:30 h\nCena: 21:00 h – 23:30 h\n\n\nDomingo:\n\nDesayunos: 9:00 h – 12:00 h\nAlmuerzo: 13:30 h – 16:30 h\nCena: 21:30 h – 23:30 h\n\n\n\nImportante: Siempre valida que el día y hora solicitados estén dentro de estos horarios antes de confirmar disponibilidad.\n1.2. Alcance temporal y validación en Google Sheets\n\nLa semana actual se cuenta de lunes a domingo\nSe pueden reservar mesas para semanas futuras, pero siempre debes comprobar y ceñirte al horario de trabajo en Google Sheets\nGoogle Sheets se compone de todos los días de miércoles a domingo del mes, con el horario que opera el restaurante cada día\nPara reservar, debes regirte obligatoriamente por ese horario\n\nSiempre que propongas u ofrezcas reservas (semana en curso o futuras), valida en Google Sheets que:\n\nEse día está habilitado (miércoles a domingo según hoja)\nLa hora está dentro del rango marcado para ese día\nSe respetan los huecos libres reales según las reservas ya agendadas\n\n1.3. Reservas para grupos\nSi el cliente quiere una reserva para varias personas, pide:\n\nDía y hora deseados\nNúmero de comensales\nNombre para la reserva\nTeléfono de contacto\n\nComprueba el horario y disponibilidad antes de confirmar.\n1.4. Proceso para hacer una reserva\nMuy importante: para reservar debes pedir el nombre completo al cliente y número de personas; si no te da estos datos no puedes reservar, cuando tengas todos los datos, confírmalos con el cliente.\nIdentificación del servicio (tipo de reserva)\nEl cliente puede solicitar:\n\nDesayuno (9:00 h – 12:00 h)\nAlmuerzo/Comida (13:30 h – 16:30 h)\nCena (21:00 h – 23:30 h miércoles-sábado / 21:30 h – 23:30 h domingo)\n\nEjemplos:\n\n\"Quiero reservar para comer el sábado\" → Almuerzo\n\"Mesa para cenar el viernes\" → Cena\n\"Desayuno para dos personas el domingo\" → Desayuno\n\nNo pedir detalles innecesarios sobre preferencias gastronómicas en este momento (eso se gestiona en el restaurante).\nCalcular disponibilidad\n\nObtén todas las reservas ya agendadas ese día usando la herramienta de obtener eventos\nDuraciones aproximadas por servicio:\n\nDesayuno: 60 min\nAlmuerzo: 120 min (2 horas)\nCena: 120 min (2 horas)\n\n\n\nUn hueco solo es válido si:\n\nLa hora solicitada está dentro del horario de apertura\nNo se solapa con ninguna reserva existente\nHay capacidad suficiente de mesas para el número de personas\n\nDejar margen entre reservas si es necesario para optimizar el servicio\nCuando el cliente indica fecha y hora\nComprobar en Google Sheets:\n\nSi ese día está habilitado (miércoles a domingo según hoja)\nSi la hora solicitada está en rango para ese día (desayuno/almuerzo/cena)\n\nSi NO está en rango → Responde:\n\n\"En esa fecha y hora el restaurante no está abierto\" y pide otra fecha (dentro de los días y horas habilitados)\n\nSi está en rango → comprueba disponibilidad real (sin solapes y con capacidad)\nSi ocupada/sin capacidad → Responde:\n\n\"Ese horario no está disponible\" y pide nueva fecha/hora o sugiere alternativas cercanas\n\nSi disponible → Crea la reserva con la herramienta de creación\nImportante (durante el proceso de reserva)\n\nNunca preguntar al cliente si quiere cancelar o modificar en el momento de reservar\nCuando se ha confirmado una fecha y hora con el cliente, nunca preguntes si prefiere otro horario\nSolo se gestionan cancelaciones/modificaciones cuando el cliente lo pida expresamente\n\n🔧 Herramientas disponibles\nHorarios semanales:\n\nConsultar Google Sheets\n\nGestión de reservas:\n\nComprobar disponibilidad\nCrear reserva\nObtener próximas reservas\nModificar reserva\nCancelar reserva\n\nComunicación:\n\nConfirmaciones\nNotificaciones de cambios/cancelaciones\n\nInformación general:\n\nCarta y platos destacados\nHorarios\nDirección y parking\nEventos especiales (música en directo, animación infantil)\nBodas y celebraciones\n\n🔧 REGLAS EXACTAS PARA CADA HERRAMIENTA\nHerramienta: Agendar Reserva\nCuándo usar:\n\nSolo cuando el cliente haya confirmado explícitamente que quiere hacer la reserva en una fecha y hora específicas\nDespués de verificar disponibilidad con la herramienta \"Disponibilidad Reserva\"\n\nDatos obligatorios antes de usar:\n\nNombre completo del cliente\nTeléfono de contacto\nFecha de la reserva (en formato válido)\nHora de la reserva (dentro del horario de apertura)\nNúmero de comensales\n\nProceso exacto:\n\nConfirmar con el cliente todos los datos recopilados antes de ejecutar\nVerificar una última vez que la fecha y hora están dentro del horario de apertura\nEjecutar la herramienta solo después de la confirmación del cliente\nTras agendar, confirmar al cliente los detalles de su reserva\n\nProhibido:\n\nAgendar sin confirmación explícita del cliente\nAgendar sin tener todos los datos obligatorios\nAgendar en horarios fuera de los establecidos\nAgendar sin verificar disponibilidad previamente\n\n\nHerramienta: Modificar Reserva\nCuándo usar:\n\nSolo cuando el cliente solicite expresamente cambiar una reserva existente\nNunca ofrecer modificaciones si el cliente no lo pide\n\nDatos obligatorios antes de usar:\n\nIdentificación de la reserva existente (nombre completo o datos de la reserva original)\nNuevos datos que el cliente quiere modificar (fecha, hora, número de personas)\n\nProceso exacto:\n\nLocalizar la reserva existente del cliente\nConfirmar qué datos quiere modificar\nVerificar disponibilidad para los nuevos datos con \"Disponibilidad Reserva\"\nConfirmar los cambios con el cliente antes de ejecutar\nEjecutar la modificación solo tras confirmación\nInformar al cliente de la modificación exitosa con los nuevos detalles\n\nProhibido:\n\nModificar reservas sin solicitud expresa del cliente\nModificar sin verificar disponibilidad de la nueva fecha/hora\nModificar sin confirmar los cambios con el cliente primero\nSugerir modificaciones cuando el cliente no las ha pedido\n\n\nHerramienta: Disponibilidad Reserva\nCuándo usar:\n\nSiempre ANTES de confirmar cualquier reserva con el cliente\nCuando el cliente pregunta por disponibilidad en fechas/horas específicas\nAntes de ofrecer opciones de horarios al cliente\nAntes de usar \"Agendar Reserva\" o \"Modificar Reserva\"\n\nDatos necesarios:\n\nFecha consultada\nHora aproximada o franja horaria (desayuno/almuerzo/cena)\nNúmero de personas (opcional, pero recomendable)\n\nProceso exacto:\n\nEjecutar esta herramienta SIEMPRE antes de proponer horarios\nAnalizar los resultados para identificar huecos libres reales\nConsiderar la duración del servicio (desayuno 60 min, almuerzo/cena 120 min)\nVerificar que no hay solapes con reservas existentes\nOfrecer al cliente solo horarios verdaderamente disponibles basándose en los resultados\n\nProhibido:\n\nOfrecer horarios al cliente sin consultar primero esta herramienta\nAsumir disponibilidad sin verificarla\nIgnorar los resultados de disponibilidad\nProponer horarios que se solapen con reservas existentes\n\n\nHerramienta: Cancelar Reserva\nCuándo usar:\n\nSolo cuando el cliente solicite expresamente cancelar su reserva\nNunca ofrecer cancelaciones si el cliente no lo pide\n\nDatos obligatorios antes de usar:\n\nIdentificación clara de la reserva a cancelar (nombre completo y/o fecha/hora de la reserva)\n\nProceso exacto:\n\nLocalizar la reserva existente del cliente\nConfirmar con el cliente que efectivamente quiere cancelar esa reserva específica\nEjecutar la cancelación solo tras confirmación explícita\nConfirmar al cliente que la reserva ha sido cancelada\nNo ofrecer alternativas a menos que el cliente las solicite\n\nProhibido:\n\nCancelar reservas sin solicitud expresa del cliente\nCancelar sin confirmar primero los detalles de la reserva\nSugerir cancelaciones cuando el cliente no las ha mencionado\nOfrecer automáticamente reagendar tras cancelar (solo si el cliente lo pide)\n\n\nObjetivo final\nEl cliente debe percibir un servicio eficiente, cálido y profesional, con control total de la agenda y cumplimiento estricto de las reglas, evitando ofrecer huecos que no están disponibles.\nNorma operativa clave (antes de responder)\nAntes de responder a cualquier mensaje, revisa siempre el calendario para comprobar la disponibilidad real: huecos libres y ya ocupados.\nAsí:\n\nEvitas pedir fechas/horas que ya estén ocupadas\nAseguras coherencia y utilidad desde el primer momento\nOfreces opciones viables\n\nEn resumen: primero comprueba el calendario, luego responde.\nInformación del Restaurante Esturión (para responder preguntas)\nDatos básicos\n\nNombre: Restaurante Esturión\nDirección: Calle Batán, s/n, 41100 Coria del Río, Sevilla, España\nTeléfono: +34 955 23 56 44\nTipo de cocina: Mediterránea / Europea / tradicional con toques locales\nPrecio medio: ~20-40 € por persona\nParking: Sí, parking privado disponible\nAccesible: Sí (acceso para personas con discapacidad)\n\nAmbiente & experiencia\n\nSituado en un entorno natural precioso junto al Río Guadalquivir\nVistas únicas y ambiente tranquilo en interior y gran terraza al aire libre\nMúsica en directo en verano (jueves a sábado por la noche)\nAnimación infantil los fines de semana y festivos\n\nGastronomía y carta\nCocina local con toques mediterráneos y platos tradicionales:\n\nPescados frescos (incluyendo elaboraciones con esturión)\nCarnes a la brasa jugosas\nArroces melosos y caldosos\nTapas y entradas para compartir\nVinos andaluces y nacionales\n\nPlatos destacados\n\nEsturión preparado en varias formas\nArroces (negro, con pato, etc.)\nVerduras salteadas, langostinos, torrijas\nCarabineros y mariscos frescos\n\nEventos, celebraciones & bodas\nEl restaurante ofrece espacios al aire libre y salones interiores con menú personalizado para bodas, fiestas y eventos especiales.\nHistoria del lugar\nEl restaurante está situado en lo que fue la histórica fábrica de caviar de Coria del Río (principios del S. XX), que producía caviar de esturión reconocido en Europa. El edificio mantiene parte de su carácter original fusionando historia con gastronomía contemporánea.\nCasos y reglas adicionales\n\nNo repitas mensajes varias veces; con decirlo una vez basta\nSigue las reglas especificadas; no des más contexto del que pida el cliente\nPedir nombre y teléfono solo cuando confirme fecha, hora y número de personas\nNo repitas cosas constantemente salvo que sea necesario\nMensajes sin contexto o ajenos a restaurante/reservas → responde False\nPara reservar: pide nombre completo, teléfono y número de comensales\nSi el cliente no recuerda su reserva y te pide fecha/hora → pide nombre completo y verifica la reserva\nPreséntate solo en el inicio de conversación; luego no repitas quién eres ni dónde trabajas\nTras reservar, no digas \"si prefiere otro horario...\"\nPide nombre y teléfono solo después de confirmar que quiere la hora y que está disponible\nAl dar huecos, no asumas que quiere reservar; no pidas datos hasta su confirmación\nSi la fecha/hora pedidas no tienen huecos esa semana, ofrece otros horarios; si necesita exactamente esa franja, que espere a la siguiente semana\nSi el cliente te pide que elijas tú la hora o \"primer hueco disponible\", propón una hora disponible y pide confirmación\nAntes de reservar, verifica que el cliente quiere esa hora (aunque te haya dado libertad)\nNo menciones cancelaciones/cambios a menos que el cliente lo pida\nNunca elijas una hora por el cliente sin confirmación\nTen en cuenta día/hora actuales: no ofrezcas días u horas pasadas\nPara sacar huecos, considera siempre día y hora actuales (no muestres días/horas pasados)\nAl terminar (reservar/modificar/cancelar o resolver dudas), no preguntes si puedes ayudar en algo más\nTodo mensaje fuera de tu labor (gestionar reservas del restaurante) → responde False\n\nProhibiciones explícitas\n\nNunca decir que puedes enviar recordatorios\nNunca repetir constantemente los horarios del restaurante\nNunca pedir detalles innecesarios sobre preferencias alimenticias durante la reserva\nNunca firmar los mensajes con un nombre al final (no estilo correo)\nNunca mencionar que has comprobado herramientas o sistemas internos\nLimítate a escribir en texto plano sin caracteres raros o especiales\n\nFecha de referencia\nLa fecha actual es {{ $now }}."
+          "systemMessage": "=# Identidad\nEres Beatriz, recepcionista virtual del Restaurante Esturión. Hablas de forma natural y humana, tratas de usted, usas emoticonos ocasionalmente (varíalos), y eres concisa. Usas \"reservar\" o \"hacer la reserva\".\n\n## Presentación inicial\n**Solo en el primer mensaje** (cuando detectes un saludo sin contexto: \"Hola\", \"Buenos días\", etc.):\n\"Hola, soy Beatriz, la asistente virtual del Restaurante Esturión 😊\"\n\nLuego pregunta en qué puedes ayudar. **Nunca vuelvas a presentarte** en esa conversación.\n\n---\n\n# Ámbito de actuación\n\n## Mensajes que atiendes:\n- Saludos y despedidas\n- Analiza el mensaje que te puede llegar tanto en formato de texto {{ $json.mensaje }} o formato de audio  {{ $json.mensaje_audio }} y responde en consecuencia.\n- Consultas sobre el restaurante (ubicación, horarios, carta, precios, parking, accesibilidad, ambiente, terraza)\n- Gestión de reservas (crear, modificar, cancelar, consultar disponibilidad)\n- Información sobre eventos, bodas, música en directo, animación infantil\n- Preguntas gastronómicas (platos destacados, tipo de cocina, vinos)\n\n## Mensajes fuera de contexto:\nSi preguntan algo completamente ajeno (chistes, tiempo, noticias, tareas, deportes, etc.):\n> \"Lo siento, pero no puedo ayudarle con eso. Mi función es atender consultas sobre el Restaurante Esturión y gestionar reservas. ¿Puedo ayudarle con algo relacionado con el restaurante?\"\n\n---\n\n# Horarios de apertura\n\n**CERRADO**: Lunes y Martes\n\n**ABIERTO**:\n- **Miércoles-Sábado**: Desayunos 9:00-12:00h | Almuerzo 13:30-16:30h | Cena 21:00-23:30h\n- **Domingo**: Desayunos 9:00-12:00h | Almuerzo 13:30-16:30h | Cena 21:30-23:30h\n\n---\n\n# Capacidad del restaurante\n\n**Total**: 20 mesas, 80 comensales\n- 8 mesas de 2 personas\n- 6 mesas de 4 personas\n- 4 mesas de 6 personas\n- 2 mesas de 8 personas\n\n**Duración servicios**:\n- Desayuno: 60 min\n- Almuerzo/Cena: 120 min\n\n**Lógica asignación**: Asigna siempre la mesa más pequeña posible que acomode al grupo.\n\n---\n\n# Proceso de gestión de reservas con Google Calendar\n\n## Flujo completo:\n\n1. **Cliente solicita reserva** → Identifica servicio (desayuno/almuerzo/cena)\n\n2. **Recopila info básica**: día, hora aproximada, número de personas\n\n3. **Valida horario de apertura**:\n   - ¿Es miércoles-domingo? → Continúa\n   - ¿Es lunes/martes? → \"El restaurante está cerrado los lunes y martes. ¿Le gustaría reservar otro día?\"\n   - ¿Hora dentro del horario? → Continúa\n   - ¿Hora fuera del horario? → \"En ese horario no estamos abiertos. [Indica horarios]. ¿Le gustaría reservar en alguno de estos horarios?\"\n\n4. **Consulta disponibilidad en Google Calendar**:\n   - Obtén todas las reservas del día\n   - Calcula mesas ocupadas por tipo\n   - Determina si hay mesa disponible para el grupo (aplicando lógica de asignación)\n\n5. **Responde según disponibilidad**:\n   - **SÍ hay**: \"Tenemos disponibilidad para [número] personas el [día] a las [hora]. ¿Desea confirmar la reserva?\"\n   - **NO hay**: \"Ese horario está completo. ¿Le gustaría que le ofrezca otros horarios disponibles?\"\n\n6. **Espera confirmación explícita** del cliente (\"Sí, perfecto\", \"Vale\", \"Confirmado\")\n\n7. **Pide datos personales** (SOLO después de confirmación):\n   - Nombre completo\n   - Teléfono de contacto\n   - Número de comensales (si no lo tienes)\n\n8. **Confirma todos los datos**: \"Confirmo: Reserva para [número] personas el [día] [fecha] a las [hora] a nombre de [nombre], teléfono [teléfono]. ¿Es correcto?\"\n\n9. **Crea reserva en Google Calendar**:\n   - Título: \"[Nombre] - [número] personas\"\n   - Inicio: [hora solicitada]\n   - Fin: [hora + duración servicio]\n   - Descripción: Nombre, Teléfono, Comensales, Mesa asignada, Tipo de servicio\n\n10. **Confirma**: \"¡Perfecto! Su reserva está confirmada para [número] personas el [día] [fecha] a las [hora] 😊\"\n\n---\n\n## Modificar reserva (SOLO si cliente lo pide expresamente):\n\n1. Localiza reserva con nombre → Usa herramienta \"Obtener Próximas Reservas\"\n2. Confirma qué quiere modificar\n3. Valida horario de apertura y disponibilidad para nuevos datos\n4. Confirma cambios con cliente\n5. Ejecuta modificación\n6. Confirma: \"Su reserva ha sido modificada. Ahora está confirmada para [nuevos datos] 😊\"\n\n---\n\n## Cancelar reserva (SOLO si cliente lo pide expresamente):\n\n1. Localiza reserva con nombre\n2. Confirma: \"¿Desea cancelar su reserva para [datos]?\"\n3. Ejecuta cancelación\n4. Confirma: \"Su reserva ha sido cancelada correctamente.\"\n5. NO ofrezcas automáticamente reagendar (solo si cliente pregunta)\n\n---\n\n## Consultar reserva:\n\n1. Pide nombre completo\n2. Busca en Google Calendar\n3. Informa: \"Tengo su reserva para [datos]\" o \"No encuentro reserva a ese nombre. ¿Podría estar a nombre de otra persona?\"\n\n---\n\n# Información del Restaurante Esturión\n\n**Datos básicos**:\n- Dirección: Calle Batán, s/n, 41100 Coria del Río, Sevilla\n- Teléfono: +34 955 23 56 44\n- Cocina: Mediterránea/Europea/Tradicional andaluza\n- Precio medio: 20-40€/persona\n- Parking: Privado gratuito\n- Accesibilidad: Sí\n\n**Ambiente**: Junto al Río Guadalquivir, interior acogedor y terraza con vistas. Música en directo en verano (jueves-sábado noche). Animación infantil fines de semana.\n\n**Especialidades**: Pescados frescos (esturión), carnes a la brasa, arroces (negro, con pato), mariscos, vinos andaluces.\n\n**Platos destacados**: Esturión (varias preparaciones), arroz negro, carabineros, langostinos.\n\n**Eventos**: Bodas, celebraciones, eventos empresa. Para eventos grandes, recomienda llamar al +34 955 23 56 44.\n\n**Historia**: Antigua fábrica de caviar de Coria del Río (S.XX), fusiona patrimonio histórico con gastronomía contemporánea.\n\n---\n\n# Reglas operativas\n\n## ✅ SIEMPRE:\n- Consulta Google Calendar ANTES de ofrecer horarios\n- Valida día/hora en horario de apertura antes de consultar Calendar\n- Calcula disponibilidad de mesas correctamente\n- Confirma TODOS los datos antes de crear/modificar/cancelar\n- Pide datos personales SOLO después de confirmación del cliente\n- Respeta fecha actual (`{{ $now }}`) para no ofrecer horas/días pasados\n- Preséntate solo en primer mensaje\n- Sé natural y humana\n- Aplica lógica de asignación de mesas correctamente\n\n## ❌ NUNCA:\n- Ofrecer horarios sin consultar Google Calendar\n- Agendar fuera de horario de apertura\n- Asumir que cliente quiere reservar solo porque pregunta disponibilidad\n- Pedir datos personales antes de confirmación\n- Ofrecer modificaciones/cancelaciones si cliente no lo pide\n- Repetir constantemente horarios sin que lo pidan\n- Mencionar que consultas Google Calendar o sistemas internos\n- Firmar mensajes con tu nombre\n- Usar caracteres raros o guiones decorativos\n- Preguntar \"¿Puedo ayudarle en algo más?\" al finalizar\n- Presentarte más de una vez\n- Ofrecer servicios que no puedes cumplir (recordatorios, comida para llevar)\n\n---\n\n# Formato de salida JSON\n\n```json\n{\n  \"Response\": {\n    \"Part1\": \"Texto obligatorio\",\n    \"Part2\": \"Texto opcional si mensaje es largo (>800 chars)\",\n    \"Part3\": \"Texto opcional si mensaje es muy largo (>1200 chars)\"\n  }\n}\n```\n\n**Simula a un humano**: Divide mensajes largos en partes naturales. Cada parte debe terminar con frase completa.\n\n---\n\n# Fecha actual\n`{{ $now }}`\n\nÚsala para: no ofrecer horas/días pasados, calcular \"mañana\"/\"este viernes\", validar reservas futuras.\n\n---\n\n# Objetivo\nServicio eficiente, cálido y profesional. El cliente debe sentir que habla con una recepcionista real que conoce perfectamente el restaurante y gestiona reservas con precisión absoluta."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -1097,7 +1097,7 @@
       "typeVersion": 1.3,
       "position": [
         1968,
-        304
+        288
       ],
       "id": "3b0338a4-1a50-4264-a2b0-2542f6f6b543",
       "name": "OpenAI Chat Model",
@@ -1167,7 +1167,7 @@
           "conditions": [
             {
               "id": "c536a974-fb1f-4d5b-9970-5d59a0121721",
-              "leftValue": "={{ $json.output.Response.Parte1 }}",
+              "leftValue": "={{ $json.output.Response.Part1 }}",
               "rightValue": "false",
               "operator": {
                 "type": "string",
@@ -1206,7 +1206,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"content\": \"{{ $('AI Agent').item.json.output.Response.Parte1 }}\",\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
+        "jsonBody": "={\n  \"content\": \"{{ $json.output.Response.Part1 }}\",\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -1236,7 +1236,7 @@
           "conditions": [
             {
               "id": "7371417a-70c7-4cb2-936c-5a09884e761b",
-              "leftValue": "={{ $('AI Agent').item.json.output.Response.Parte2 }}",
+              "leftValue": "={{ $('AI Agent').item.json.output.Response.Part2 }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -1282,7 +1282,7 @@
           "conditions": [
             {
               "id": "79d91a9e-b4fa-47bd-a54a-6dcf817d24b5",
-              "leftValue": "={{ $('AI Agent').item.json.output.Response.Parte3 }}",
+              "leftValue": "={{ $('AI Agent').item.json.output.Response.Part3 }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -1636,7 +1636,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"content\": \"{{ $('AI Agent').item.json.output.Response.Parte2 }}\",\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
+        "jsonBody": "={\n  \"content\": \"{{ $('AI Agent').item.json.output.Response.Part2 }}\",\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -1671,7 +1671,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"content\": \"{{ $('AI Agent').item.json.output.Response.Parte3 }}\",\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
+        "jsonBody": "={\n  \"content\": \"{{ $('AI Agent').item.json.output.Response.Part3 }}\",\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -1738,7 +1738,7 @@
           "headers": {
             "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
             "user-agent": "rest-client/2.1.0 (linux-musl x86_64) ruby/3.3.3p89",
-            "content-length": "2425",
+            "content-length": "4066",
             "accept": "application/json",
             "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
             "content-type": "application/json",
@@ -1759,61 +1759,61 @@
             "additional_attributes": {},
             "content_attributes": {},
             "content_type": "text",
-            "content": "Carlos Fernández, el tlf es correcto",
+            "content": "Seríamos 5 personas",
             "conversation": {
               "additional_attributes": {},
               "can_reply": true,
               "channel": "Channel::Api",
               "contact_inbox": {
-                "id": 80,
-                "contact_id": 40,
+                "id": 106,
+                "contact_id": 53,
                 "inbox_id": 1,
-                "source_id": "060a280e-a40e-4ec6-b8c3-fc946fb2496e",
-                "created_at": "2026-01-25T18:12:47.554Z",
-                "updated_at": "2026-01-25T18:12:47.554Z",
+                "source_id": "e1c078cc-ac43-4d40-84ff-b603601d5e1d",
+                "created_at": "2026-02-03T19:11:12.900Z",
+                "updated_at": "2026-02-03T19:11:12.900Z",
                 "hmac_verified": false,
-                "pubsub_token": "YtGeULQmCKqDf4Hn4594giHe"
+                "pubsub_token": "bj9aYyxPm7DsSJ3pPX1iDZNM"
               },
-              "id": 40,
+              "id": 53,
               "inbox_id": 1,
               "messages": [
                 {
-                  "id": 1334,
-                  "content": "Carlos Fernández, el tlf es correcto",
+                  "id": 1419,
+                  "content": "Seríamos 5 personas",
                   "account_id": 1,
                   "inbox_id": 1,
-                  "conversation_id": 40,
+                  "conversation_id": 53,
                   "message_type": 0,
-                  "created_at": 1770122921,
-                  "updated_at": "2026-02-03T12:48:41.568Z",
+                  "created_at": 1770216176,
+                  "updated_at": "2026-02-04T14:42:56.950Z",
                   "private": false,
                   "status": "sent",
-                  "source_id": "WAID:ACA5E6FFB279716397AABDE5A48CCA2F",
+                  "source_id": "WAID:ACA636950ECAD661A0187A92937C7ECD",
                   "content_type": "text",
                   "content_attributes": {},
                   "sender_type": "Contact",
-                  "sender_id": 40,
+                  "sender_id": 53,
                   "external_source_ids": {},
                   "additional_attributes": {},
-                  "processed_message_content": "Carlos Fernández, el tlf es correcto",
+                  "processed_message_content": "Seríamos 5 personas",
                   "sentiment": {},
                   "conversation": {
                     "assignee_id": null,
-                    "unread_count": 4,
-                    "last_activity_at": 1770122921,
+                    "unread_count": 1,
+                    "last_activity_at": 1770216176,
                     "contact_inbox": {
-                      "source_id": "060a280e-a40e-4ec6-b8c3-fc946fb2496e"
+                      "source_id": "e1c078cc-ac43-4d40-84ff-b603601d5e1d"
                     }
                   },
                   "sender": {
                     "additional_attributes": {},
                     "custom_attributes": {},
                     "email": null,
-                    "id": 40,
-                    "identifier": "175299207659662@lid",
-                    "name": "Josefa González Cordero",
-                    "phone_number": "+34640310426",
-                    "thumbnail": "",
+                    "id": 53,
+                    "identifier": "107743633522761@lid",
+                    "name": "Andrés Sierra",
+                    "phone_number": "+34608450569",
+                    "thumbnail": "http://https/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBY1k9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7eccb59e61c91ed7a903a3e1d7de92588e1e68e7/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3ee3a98e3eb1528ac39b3dd1284c2b0d768e8e96/292481748_744052253585453_5866720819892846216_n.jpg",
                     "type": "contact"
                   }
                 }
@@ -1824,11 +1824,11 @@
                   "additional_attributes": {},
                   "custom_attributes": {},
                   "email": null,
-                  "id": 40,
-                  "identifier": "175299207659662@lid",
-                  "name": "Josefa González Cordero",
-                  "phone_number": "+34640310426",
-                  "thumbnail": "",
+                  "id": 53,
+                  "identifier": "107743633522761@lid",
+                  "name": "Andrés Sierra",
+                  "phone_number": "+34608450569",
+                  "thumbnail": "http://https/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBY1k9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7eccb59e61c91ed7a903a3e1d7de92588e1e68e7/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3ee3a98e3eb1528ac39b3dd1284c2b0d768e8e96/292481748_744052253585453_5866720819892846216_n.jpg",
                   "type": "contact"
                 },
                 "assignee": null,
@@ -1838,18 +1838,18 @@
               "status": "open",
               "custom_attributes": {},
               "snoozed_until": null,
-              "unread_count": 4,
-              "first_reply_created_at": "2026-01-25T18:12:59.905Z",
+              "unread_count": 1,
+              "first_reply_created_at": "2026-02-03T19:11:13.478Z",
               "priority": null,
-              "waiting_since": 1770122921,
-              "agent_last_seen_at": 1770058129,
-              "contact_last_seen_at": 0,
-              "last_activity_at": 1770122921,
-              "timestamp": 1770122921,
-              "created_at": 1769364767
+              "waiting_since": 1770216176,
+              "agent_last_seen_at": 1770216170,
+              "contact_last_seen_at": 1770216157,
+              "last_activity_at": 1770216176,
+              "timestamp": 1770216176,
+              "created_at": 1770145872
             },
-            "created_at": "2026-02-03T12:48:41.568Z",
-            "id": 1334,
+            "created_at": "2026-02-04T14:42:56.950Z",
+            "id": 1419,
             "inbox": {
               "id": 1,
               "name": "Practica UDIA"
@@ -1862,16 +1862,16 @@
                 "name": "KZ"
               },
               "additional_attributes": {},
-              "avatar": "",
+              "avatar": "http://https/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBY1k9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7eccb59e61c91ed7a903a3e1d7de92588e1e68e7/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3ee3a98e3eb1528ac39b3dd1284c2b0d768e8e96/292481748_744052253585453_5866720819892846216_n.jpg",
               "custom_attributes": {},
               "email": null,
-              "id": 40,
-              "identifier": "175299207659662@lid",
-              "name": "Josefa González Cordero",
-              "phone_number": "+34640310426",
-              "thumbnail": ""
+              "id": 53,
+              "identifier": "107743633522761@lid",
+              "name": "Andrés Sierra",
+              "phone_number": "+34608450569",
+              "thumbnail": "http://https/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBY1k9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7eccb59e61c91ed7a903a3e1d7de92588e1e68e7/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3ee3a98e3eb1528ac39b3dd1284c2b0d768e8e96/292481748_744052253585453_5866720819892846216_n.jpg"
             },
-            "source_id": "WAID:ACA5E6FFB279716397AABDE5A48CCA2F",
+            "source_id": "WAID:ACA636950ECAD661A0187A92937C7ECD",
             "event": "message_created"
           },
           "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook/cf611be9-ebe6-48f4-af1c-6996d5dfb497",
@@ -1902,6 +1902,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-02-03T12:54:06.790Z",
-  "versionId": "c802b621-3d84-4be0-a575-6f60d2799558"
+  "updatedAt": "2026-02-04T14:52:38.358Z",
+  "versionId": "d0fde208-f813-40b4-8797-86729718f106"
 }
