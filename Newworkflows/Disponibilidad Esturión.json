@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-04T13:47:23.000Z",
-    "createdAt": "2026-02-04T13:47:11.321Z",
-    "versionId": "ea45cc0e-ef1c-426c-a77d-0f3aa46ccfca",
+    "updatedAt": "2026-02-05T19:00:06.000Z",
+    "createdAt": "2026-02-05T18:59:10.791Z",
+    "versionId": "cac070f5-ff73-4921-b42e-0ee30f2114f0",
     "workflowId": "L6RP5mL1JuEWBAjS",
     "nodes": [
       {
@@ -11,7 +11,7 @@
           "workflowInputs": {
             "values": [
               {
-                "name": "Fecha"
+                "name": "Fecha+Hora"
               }
             ]
           }
@@ -30,16 +30,18 @@
           "operation": "getAll",
           "calendar": {
             "__rl": true,
-            "value": "6a3cafde1495464bc5dc0cb2ff50199043fa5e58fed4f46eaec4cc27d79a7c28@group.calendar.google.com",
+            "value": "3cf455fae61998f2cf7bfffba57a4e28188afc46dd5d892692826a9254905124@group.calendar.google.com",
             "mode": "list",
-            "cachedResultName": "Practica N8N Clinica"
+            "cachedResultName": "Restaurante Esturión"
           },
+          "timeMin": "={{ $json['Fecha+Hora'] }}",
+          "timeMax": "={{ DateTime.fromISO($json['Fecha+Hora']).plus({ hours: 3 }) }}",
           "options": {}
         },
         "type": "n8n-nodes-base.googleCalendar",
         "typeVersion": 1.3,
         "position": [
-          656,
+          688,
           352
         ],
         "id": "0b60423b-bf00-43ac-8b03-a09238cb71ac",
@@ -75,7 +77,7 @@
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "ea45cc0e-ef1c-426c-a77d-0f3aa46ccfca",
+  "activeVersionId": "cac070f5-ff73-4921-b42e-0ee30f2114f0",
   "connections": {
     "Disponibilidad Esturión": {
       "main": [
@@ -105,7 +107,7 @@
         "workflowInputs": {
           "values": [
             {
-              "name": "Fecha"
+              "name": "Fecha+Hora"
             }
           ]
         }
@@ -124,16 +126,18 @@
         "operation": "getAll",
         "calendar": {
           "__rl": true,
-          "value": "6a3cafde1495464bc5dc0cb2ff50199043fa5e58fed4f46eaec4cc27d79a7c28@group.calendar.google.com",
+          "value": "3cf455fae61998f2cf7bfffba57a4e28188afc46dd5d892692826a9254905124@group.calendar.google.com",
           "mode": "list",
-          "cachedResultName": "Practica N8N Clinica"
+          "cachedResultName": "Restaurante Esturión"
         },
+        "timeMin": "={{ $json['Fecha+Hora'] }}",
+        "timeMax": "={{ DateTime.fromISO($json['Fecha+Hora']).plus({ hours: 3 }) }}",
         "options": {}
       },
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
       "position": [
-        656,
+        688,
         352
       ],
       "id": "0b60423b-bf00-43ac-8b03-a09238cb71ac",
@@ -163,6 +167,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-02-04T13:47:31.292Z",
-  "versionId": "ea45cc0e-ef1c-426c-a77d-0f3aa46ccfca"
+  "updatedAt": "2026-02-05T18:59:45.844Z",
+  "versionId": "cac070f5-ff73-4921-b42e-0ee30f2114f0"
 }
