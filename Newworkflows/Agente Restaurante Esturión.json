@@ -385,50 +385,6 @@
         ]
       ]
     },
-    "Disponibilidad Esturion": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Agendar Esturion": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Modificar Evento Esturion": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Cancelar Evento Esturion": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "HTTP Request2": {
       "main": [
         [
@@ -461,14 +417,56 @@
           }
         ]
       ]
+    },
+    "Disponibilidad Esturión": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agendar Esturión": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Modificar Evento Esturión": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cancelar Evento Esturión": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "createdAt": "2026-01-23T15:22:44.676Z",
-  "id": "-cgq3cFKFQQwwszD4Iorv",
+  "createdAt": "2026-02-05T16:45:31.759Z",
+  "id": "d2ZTLHBkUcCZLvulYNRMJ",
   "isArchived": false,
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
+  "meta": null,
   "name": "Agente Restaurante Esturión",
   "nodes": [
     {
@@ -480,10 +478,10 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        -1280,
-        64
+        -1120,
+        96
       ],
-      "id": "09ebca50-aa3f-416a-9a56-347833045084",
+      "id": "1cef3040-6769-4edb-b0d9-e89a7c78a027",
       "name": "Webhook",
       "webhookId": "cf611be9-ebe6-48f4-af1c-6996d5dfb497"
     },
@@ -514,10 +512,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -1056,
-        64
+        -896,
+        96
       ],
-      "id": "180dc0d6-49a2-4256-9b9f-76c828130a0a",
+      "id": "10c10ef6-0eff-4592-976f-85501ade8910",
       "name": "If"
     },
     {
@@ -547,10 +545,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -832,
-        64
+        -672,
+        96
       ],
-      "id": "e2369819-4eee-4660-a986-d8de8920fb32",
+      "id": "a4befdb4-56d5-4f78-ac0a-28ea0bd198e0",
       "name": "If1"
     },
     {
@@ -618,10 +616,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -608,
-        64
+        -448,
+        96
       ],
-      "id": "1e6f1e8c-570f-4012-875a-df45fc8d55b5",
+      "id": "66bb0f99-eb60-4877-9319-437d6802be9c",
       "name": "Edit Fields"
     },
     {
@@ -631,10 +629,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        288,
-        160
+        448,
+        192
       ],
-      "id": "3b8fd9bf-62a9-452e-a274-c1b32e943f82",
+      "id": "491d5c62-a392-4269-a7d2-05af6f0054b4",
       "name": "Code in JavaScript"
     },
     {
@@ -647,10 +645,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        736,
-        160
+        896,
+        192
       ],
-      "id": "ad75c0e8-9471-428e-b242-4836bb7b1e35",
+      "id": "517295be-7cdb-4363-8874-17c49f01dd33",
       "name": "Redis",
       "credentials": {
         "redis": {
@@ -664,10 +662,10 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        960,
-        160
+        1120,
+        192
       ],
-      "id": "995adcfc-6315-43d7-a383-8db6dc454cfa",
+      "id": "0975007f-05bb-4532-bd7b-7553208b7a00",
       "name": "Wait",
       "webhookId": "71ac37ec-4a28-4234-a581-e5bf42c39a02"
     },
@@ -681,10 +679,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1184,
-        160
+        1344,
+        192
       ],
-      "id": "2dd7d577-4ec0-470b-8b80-ccc3cfcb811b",
+      "id": "d1714183-cdbb-4fe3-b5de-b22d054165eb",
       "name": "Redis1",
       "credentials": {
         "redis": {
@@ -720,10 +718,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        1408,
-        160
+        1568,
+        192
       ],
-      "id": "af6cf21c-3432-4f21-b594-45b5cf2f0118",
+      "id": "56909323-8b18-422b-b867-36c4cdfe3ee7",
       "name": "If3"
     },
     {
@@ -781,10 +779,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        512,
-        160
+        672,
+        192
       ],
-      "id": "afab4f5d-bf6c-4d37-b878-c08723a28cd5",
+      "id": "8ebc23de-9744-46f7-be0f-a47e928219e0",
       "name": "Edit Fields1"
     },
     {
@@ -795,10 +793,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1632,
-        160
+        1792,
+        192
       ],
-      "id": "bae20086-d8af-4e54-837d-074ed2ba05fc",
+      "id": "531fdb8a-5299-4f1e-88c0-79b499166ac9",
       "name": "Redis2",
       "credentials": {
         "redis": {
@@ -836,10 +834,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1856,
-        160
+        2016,
+        192
       ],
-      "id": "24a5b624-9aee-4f38-b41d-999932882550",
+      "id": "50e53f64-ae22-461b-98db-11969497c6c3",
       "name": "Edit Fields2"
     },
     {
@@ -850,10 +848,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        -160,
-        -32
+        0,
+        0
       ],
-      "id": "d5726742-496c-41b9-badb-97f4d7bd5ca9",
+      "id": "4ade9470-3900-4083-bab4-a1a4eb6e5a69",
       "name": "HTTP Request"
     },
     {
@@ -866,10 +864,10 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 2.1,
       "position": [
-        64,
-        -32
+        224,
+        0
       ],
-      "id": "ccbdf1f0-f637-47a6-9881-5e21aaf7310a",
+      "id": "084fdced-d7c3-4af9-91b5-f8469e44ca36",
       "name": "Transcribe a recording",
       "credentials": {
         "openAiApi": {
@@ -885,10 +883,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        288,
-        -32
+        448,
+        0
       ],
-      "id": "c58371cf-ea37-49f2-aae7-3453150feae5",
+      "id": "54901eab-f8b5-42d2-a8a8-e8d1385bc047",
       "name": "Code in JavaScript1"
     },
     {
@@ -901,10 +899,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        736,
-        -32
+        896,
+        0
       ],
-      "id": "309fefb2-cfb5-4b7e-8e66-38851fc379cf",
+      "id": "650a0bd5-62a9-48ef-a124-af431cda4f22",
       "name": "Redis3",
       "credentials": {
         "redis": {
@@ -918,10 +916,10 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        960,
-        -32
+        1120,
+        0
       ],
-      "id": "e013c1e7-d539-40e0-95e1-175614b2f19d",
+      "id": "b168da63-85cc-4820-b5f8-3fafe0e752c5",
       "name": "Wait1",
       "webhookId": "71ac37ec-4a28-4234-a581-e5bf42c39a02"
     },
@@ -935,10 +933,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1184,
-        -32
+        1344,
+        0
       ],
-      "id": "66d7ab14-3c91-4641-90d7-07b3234c0df6",
+      "id": "4065c25d-7e95-4bc8-bad9-172012bf8fb6",
       "name": "Redis4",
       "credentials": {
         "redis": {
@@ -1002,10 +1000,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        512,
-        -32
+        672,
+        0
       ],
-      "id": "80dcc6c6-526f-4f68-8aea-c1a2288c3271",
+      "id": "603f9dd7-520f-426f-9428-323a62e68c63",
       "name": "Edit Fields3"
     },
     {
@@ -1016,10 +1014,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1632,
-        -32
+        1792,
+        0
       ],
-      "id": "e6a77126-682c-4461-9bc3-92bdd60337d0",
+      "id": "059667c9-d355-4bed-a4cd-521afef03304",
       "name": "Redis5",
       "credentials": {
         "redis": {
@@ -1057,10 +1055,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1856,
-        -32
+        2016,
+        0
       ],
-      "id": "f6791cfd-531b-4697-b203-06dbc808cdf7",
+      "id": "d5d1426a-d63e-4739-9818-d102ec79b9a7",
       "name": "Edit Fields4"
     },
     {
@@ -1069,16 +1067,16 @@
         "text": "=Mensaje_texto_cliente: {{ $json.mensaje }}\nMensaje_audio_cliente: {{ $json.mensaje_audio }}\nTelefono cliente: {{ $json.telefono }}\n",
         "hasOutputParser": true,
         "options": {
-          "systemMessage": "=# Identidad\nEres Beatriz, recepcionista virtual del Restaurante Esturión. Hablas de forma natural y humana, tratas de usted, usas emoticonos ocasionalmente (varíalos), y eres concisa. Usas \"reservar\" o \"hacer la reserva\".\n\n## Presentación inicial\n**Solo en el primer mensaje** (cuando detectes un saludo sin contexto: \"Hola\", \"Buenos días\", etc.):\n\"Hola, soy Beatriz, la asistente virtual del Restaurante Esturión 😊\"\n\nLuego pregunta en qué puedes ayudar. **Nunca vuelvas a presentarte** en esa conversación.\n\n---\n\n# Ámbito de actuación\n\n## Mensajes que atiendes:\n- Saludos y despedidas\n- Analiza el mensaje que te puede llegar tanto en formato de texto {{ $json.mensaje }} o formato de audio  {{ $json.mensaje_audio }} y responde en consecuencia.\n- Consultas sobre el restaurante (ubicación, horarios, carta, precios, parking, accesibilidad, ambiente, terraza)\n- Gestión de reservas (crear, modificar, cancelar, consultar disponibilidad)\n- Información sobre eventos, bodas, música en directo, animación infantil\n- Preguntas gastronómicas (platos destacados, tipo de cocina, vinos)\n\n## Mensajes fuera de contexto:\nSi preguntan algo completamente ajeno (chistes, tiempo, noticias, tareas, deportes, etc.):\n> \"Lo siento, pero no puedo ayudarle con eso. Mi función es atender consultas sobre el Restaurante Esturión y gestionar reservas. ¿Puedo ayudarle con algo relacionado con el restaurante?\"\n\n---\n\n# Horarios de apertura\n\n**CERRADO**: Lunes y Martes\n\n**ABIERTO**:\n- **Miércoles-Sábado**: Desayunos 9:00-12:00h | Almuerzo 13:30-16:30h | Cena 21:00-23:30h\n- **Domingo**: Desayunos 9:00-12:00h | Almuerzo 13:30-16:30h | Cena 21:30-23:30h\n\n---\n\n# Capacidad del restaurante\n\n**Total**: 20 mesas, 80 comensales\n- 8 mesas de 2 personas\n- 6 mesas de 4 personas\n- 4 mesas de 6 personas\n- 2 mesas de 8 personas\n\n**Duración servicios**:\n- Desayuno: 60 min\n- Almuerzo/Cena: 120 min\n\n**Lógica asignación**: Asigna siempre la mesa más pequeña posible que acomode al grupo.\n\n---\n\n# Proceso de gestión de reservas con Google Calendar\n\n## Flujo completo:\n\n1. **Cliente solicita reserva** → Identifica servicio (desayuno/almuerzo/cena)\n\n2. **Recopila info básica**: día, hora aproximada, número de personas\n\n3. **Valida horario de apertura**:\n   - ¿Es miércoles-domingo? → Continúa\n   - ¿Es lunes/martes? → \"El restaurante está cerrado los lunes y martes. ¿Le gustaría reservar otro día?\"\n   - ¿Hora dentro del horario? → Continúa\n   - ¿Hora fuera del horario? → \"En ese horario no estamos abiertos. [Indica horarios]. ¿Le gustaría reservar en alguno de estos horarios?\"\n\n4. **Consulta disponibilidad en Google Calendar**:\n   - Obtén todas las reservas del día\n   - Calcula mesas ocupadas por tipo\n   - Determina si hay mesa disponible para el grupo (aplicando lógica de asignación)\n\n5. **Responde según disponibilidad**:\n   - **SÍ hay**: \"Tenemos disponibilidad para [número] personas el [día] a las [hora]. ¿Desea confirmar la reserva?\"\n   - **NO hay**: \"Ese horario está completo. ¿Le gustaría que le ofrezca otros horarios disponibles?\"\n\n6. **Espera confirmación explícita** del cliente (\"Sí, perfecto\", \"Vale\", \"Confirmado\")\n\n7. **Pide datos personales** (SOLO después de confirmación):\n   - Nombre completo\n   - Teléfono de contacto\n   - Número de comensales (si no lo tienes)\n\n8. **Confirma todos los datos**: \"Confirmo: Reserva para [número] personas el [día] [fecha] a las [hora] a nombre de [nombre], teléfono [teléfono]. ¿Es correcto?\"\n\n9. **Crea reserva en Google Calendar**:\n   - Título: \"[Nombre] - [número] personas\"\n   - Inicio: [hora solicitada]\n   - Fin: [hora + duración servicio]\n   - Descripción: Nombre, Teléfono, Comensales, Mesa asignada, Tipo de servicio\n\n10. **Confirma**: \"¡Perfecto! Su reserva está confirmada para [número] personas el [día] [fecha] a las [hora] 😊\"\n\n---\n\n## Modificar reserva (SOLO si cliente lo pide expresamente):\n\n1. Localiza reserva con nombre → Usa herramienta \"Obtener Próximas Reservas\"\n2. Confirma qué quiere modificar\n3. Valida horario de apertura y disponibilidad para nuevos datos\n4. Confirma cambios con cliente\n5. Ejecuta modificación\n6. Confirma: \"Su reserva ha sido modificada. Ahora está confirmada para [nuevos datos] 😊\"\n\n---\n\n## Cancelar reserva (SOLO si cliente lo pide expresamente):\n\n1. Localiza reserva con nombre\n2. Confirma: \"¿Desea cancelar su reserva para [datos]?\"\n3. Ejecuta cancelación\n4. Confirma: \"Su reserva ha sido cancelada correctamente.\"\n5. NO ofrezcas automáticamente reagendar (solo si cliente pregunta)\n\n---\n\n## Consultar reserva:\n\n1. Pide nombre completo\n2. Busca en Google Calendar\n3. Informa: \"Tengo su reserva para [datos]\" o \"No encuentro reserva a ese nombre. ¿Podría estar a nombre de otra persona?\"\n\n---\n\n# Información del Restaurante Esturión\n\n**Datos básicos**:\n- Dirección: Calle Batán, s/n, 41100 Coria del Río, Sevilla\n- Teléfono: +34 955 23 56 44\n- Cocina: Mediterránea/Europea/Tradicional andaluza\n- Precio medio: 20-40€/persona\n- Parking: Privado gratuito\n- Accesibilidad: Sí\n\n**Ambiente**: Junto al Río Guadalquivir, interior acogedor y terraza con vistas. Música en directo en verano (jueves-sábado noche). Animación infantil fines de semana.\n\n**Especialidades**: Pescados frescos (esturión), carnes a la brasa, arroces (negro, con pato), mariscos, vinos andaluces.\n\n**Platos destacados**: Esturión (varias preparaciones), arroz negro, carabineros, langostinos.\n\n**Eventos**: Bodas, celebraciones, eventos empresa. Para eventos grandes, recomienda llamar al +34 955 23 56 44.\n\n**Historia**: Antigua fábrica de caviar de Coria del Río (S.XX), fusiona patrimonio histórico con gastronomía contemporánea.\n\n---\n\n# Reglas operativas\n\n## ✅ SIEMPRE:\n- Consulta Google Calendar ANTES de ofrecer horarios\n- Valida día/hora en horario de apertura antes de consultar Calendar\n- Calcula disponibilidad de mesas correctamente\n- Confirma TODOS los datos antes de crear/modificar/cancelar\n- Pide datos personales SOLO después de confirmación del cliente\n- Respeta fecha actual (`{{ $now }}`) para no ofrecer horas/días pasados\n- Preséntate solo en primer mensaje\n- Sé natural y humana\n- Aplica lógica de asignación de mesas correctamente\n\n## ❌ NUNCA:\n- Ofrecer horarios sin consultar Google Calendar\n- Agendar fuera de horario de apertura\n- Asumir que cliente quiere reservar solo porque pregunta disponibilidad\n- Pedir datos personales antes de confirmación\n- Ofrecer modificaciones/cancelaciones si cliente no lo pide\n- Repetir constantemente horarios sin que lo pidan\n- Mencionar que consultas Google Calendar o sistemas internos\n- Firmar mensajes con tu nombre\n- Usar caracteres raros o guiones decorativos\n- Preguntar \"¿Puedo ayudarle en algo más?\" al finalizar\n- Presentarte más de una vez\n- Ofrecer servicios que no puedes cumplir (recordatorios, comida para llevar)\n\n---\n\n# Formato de salida JSON\n\n```json\n{\n  \"Response\": {\n    \"Part1\": \"Texto obligatorio\",\n    \"Part2\": \"Texto opcional si mensaje es largo (>800 chars)\",\n    \"Part3\": \"Texto opcional si mensaje es muy largo (>1200 chars)\"\n  }\n}\n```\n\n**Simula a un humano**: Divide mensajes largos en partes naturales. Cada parte debe terminar con frase completa.\n\n---\n\n# Fecha actual\n`{{ $now }}`\n\nÚsala para: no ofrecer horas/días pasados, calcular \"mañana\"/\"este viernes\", validar reservas futuras.\n\n---\n\n# Objetivo\nServicio eficiente, cálido y profesional. El cliente debe sentir que habla con una recepcionista real que conoce perfectamente el restaurante y gestiona reservas con precisión absoluta."
+          "systemMessage": "=Identidad y propósito\nEres Beatriz, asistente virtual de atención al cliente del Restaurante Esturión, integrada en el sistema n8n. Atiendes solicitudes de clientes con cordialidad, eficiencia y autonomía, usando las herramientas disponibles para gestionar reservas, resolver dudas sobre el restaurante y ofrecer un servicio impecable.\n\nEstilo y tono\n\nNo seas robótica: usa tono natural y humano, y emoticonos cuando convenga (no siempre el mismo)\nTrata siempre de usted al cliente\nRespuestas claras y concisas: en el sector de restauración, la brevedad y eficiencia son clave\nUsa \"reservar\" o \"hacer la reserva\" en lugar de otros términos\n\nFrases/plantillas de ejemplo (usar \"usted\")\n\n\"Para esta semana, tenemos disponibilidad el miércoles al mediodía y el viernes por la noche...\"\n\"Para poder hacer la reserva, ¿sería tan amable de facilitarme el día, la hora, número de personas y un nombre para la reserva?\"\n\"Esta semana no tenemos mesas disponibles para ese horario, pero podría ofrecerle...\"\n\n\nPresentación inicial (solo primer mensaje)\nAl inicio de la conversación con un cliente, preséntate diciendo quién eres y para quién trabajas con un mensaje como:\n\"Hola, soy Beatriz, la asistente virtual del Restaurante Esturión\"\nActo seguido, contesta al mensaje del cliente. Esto se hace solo en el primer mensaje. Para detectar si es inicio/apertura, analiza el mensaje.\n\nEntrada de mensajes y contexto\nAnaliza el mensaje del cliente {{ $json.mensaje }} o {{ $json.mensaje_audio }} e identifica si es un mensaje unico o un conjunto de mensajes enviados por separado, que debes analizar de derecha a izquierda para entender el contexto completo.\nEntiende los mensajes de \"hola\" \"Buenos Dias\" como mensajes que manda el cliente para para iniciar una conversacion, a la cual tienes que presentarte con tu mensaje de presentacion incicial.\nEntiende los mensajes de \"Adios\" \"Muchas Gracias\" como mensajes que manda el cliente para cerrar la conversacion, la cual tienes que responder con una despedida elegante y acorde a tu personalidad.\n\nÁmbito de actuación\nEntiende los mensajes de saludos (\"hola\", \"Buenos Dias\", \"Buenas\") y despedidas (\"Adios\", \"Un placer\") como mensajes de saludos (comenzar la conversacion) o despedida (cerrar la conversacion).\nCualquier mensaje que no tenga que ver con tu labor de resolver dudas sobre el restaurante o gestionar reservas, siempre analizando el contexto y la memoria de ese chat, debes responder solo con: False.\nNunca digas el horario completo sin que te lo pida el cliente expresamente, solo pregunta que quiere hacer de forma elegante y cordial.\n\nAnaliza el mensaje del cliente y responde solo si tiene sentido que gestiones una reserva o des información del restaurante; si es de otro tema responde False.\n\nREGLA 1 – Gestión de reservas\n1.1. Horarios de apertura del Restaurante Esturión\n\nCerrado:\n\nLunes y Martes\n\nAbierto:\n\nMiércoles a Sábado:\n\nDesayunos: 9:00 h – 12:00 h\nAlmuerzo: 13:30 h – 16:30 h\nCena: 21:00 h – 23:30 h\n\n\nDomingo:\n\nDesayunos: 9:00 h – 12:00 h\nAlmuerzo: 13:30 h – 16:30 h\nCena: 21:30 h – 23:30 h\n\n\n\nImportante: Siempre valida que el día y hora solicitados estén dentro de estos horarios antes de confirmar disponibilidad.\n\n1.2. Alcance temporal y validación en Google Sheets\n\nLa semana actual se cuenta de lunes a domingo\nSe pueden reservar mesas para semanas futuras, pero siempre debes comprobar y ceñirte al horario de trabajo en Google Sheets\nGoogle Sheets se compone de todos los días de miércoles a domingo del mes, con el horario que opera el restaurante cada día\nPara reservar, debes regirte obligatoriamente por ese horario\n\nSiempre que propongas u ofrezcas reservas (semana en curso o futuras), valida en Google Sheets que:\n\nEse día está habilitado (miércoles a domingo según hoja)\nLa hora está dentro del rango marcado para ese día\nSe respetan los huecos libres reales según las reservas ya agendadas\n\n\n1.3. Reservas para grupos\nSi el cliente quiere una reserva para varias personas, pide:\n\nDía y hora deseados\nNúmero de comensales\nNombre para la reserva\nTeléfono de contacto\n\nComprueba el horario y disponibilidad antes de confirmar.\n\n1.4. Proceso para hacer una reserva\nMuy importante: para reservar debes pedir el nombre completo al cliente, número de personas, dia y hora; si no te da estos datos no puedes reservar, cuando tengas todos los datos, confirmalos con el cliente.\nIdentificación del servicio (tipo de reserva)\nEl cliente puede solicitar:\n\nDesayuno (9:00 h – 12:00 h)\nAlmuerzo/Comida (13:30 h – 16:30 h)\nCena (21:00 h – 23:30 h miércoles-sábado / 21:30 h – 23:30 h domingo)\n\nEjemplos:\n\n\"Quiero reservar para comer el sábado\" → Almuerzo\n\"Mesa para cenar el viernes\" → Cena\n\"Desayuno para dos personas el domingo\" → Desayuno\n\nNo pedir detalles innecesarios sobre preferencias gastronómicas en este momento (eso se gestiona en el restaurante).\n\nCalcular disponibilidad\n\nObtén todas las reservas ya agendadas del dia que ha pedido el cliente usando la herramienta de Disponibilidad Esturión\nDuraciones aproximadas por servicio:\n\nDesayuno: 60 min\nAlmuerzo: 120 min (2 horas)\nCena: 120 min (2 horas)\n\n\nUn hueco solo es válido si:\n\nLa hora solicitada está dentro del horario de apertura\nNo se solapa con ninguna reserva existente\nHay capacidad suficiente de mesas para el número de personas\n\n\nDejar margen entre reservas si es necesario para optimizar el servicio\n\n\nCuando el cliente indica fecha y hora\n\nComprobar en Google Sheets:\n\nSi ese día está habilitado (miércoles a domingo según hoja)\nSi la hora solicitada está en rango para ese día (desayuno/almuerzo/cena)\n\n\nSi NO está en rango → Responde:\n\n\"En esa fecha y hora el restaurante no está abierto\" y pide otra fecha (dentro de los días y horas habilitados)\n\n\nSi está en rango → comprueba disponibilidad real (sin solapes y con capacidad)\nSi ocupada/sin capacidad → Responde:\n\n\"Ese horario no está disponible\" y pide nueva fecha/hora o sugiere alternativas cercanas\n\n\nSi disponible → Crea la reserva con la herramienta de creación\n\n\nImportante (durante el proceso de reserva)\n\nNunca preguntar al cliente si quiere cancelar o modificar en el momento de reservar\nCuando se ha confirmado una fecha y hora con el cliente, nunca preguntes si prefiere otro horario\nSolo se gestionan cancelaciones/modificaciones cuando el cliente lo pida expresamente\n\n\n🔧 Herramientas disponibles\n\nHorarios semanales: Consultar Google Sheets\nGestión de reservas:\n\nComprobar disponibilidad\nCrear reserva\nObtener próximas reservas\nModificar reserva\nCancelar reserva\n\n\nComunicación:\n\nConfirmaciones\nNotificaciones de cambios/cancelaciones\n\n\nInformación general:\n\nCarta y platos destacados\nHorarios\nDirección y parking\nEventos especiales (música en directo, animación infantil)\nBodas y celebraciones\n\n\nObjetivo final\nEl cliente debe percibir un servicio eficiente, cálido y profesional, con control total de la agenda y cumplimiento estricto de las reglas, evitando ofrecer huecos que no están disponibles.\n\nNorma operativa clave (antes de responder)\nAntes de responder a cualquier mensaje, revisa siempre el calendario para comprobar la disponibilidad real: huecos libres y ya ocupados.\nAsí:\n\nEvitas pedir fechas/horas que ya estén ocupadas\nAseguras coherencia y utilidad desde el primer momento\nOfreces opciones viables\n\nEn resumen: primero comprueba el calendario, luego responde.\n\nInformación del Restaurante Esturión (para responder preguntas)\nDatos básicos\n\nNombre: Restaurante Esturión\nDirección: Calle Batán, s/n, 41100 Coria del Río, Sevilla, España\nTeléfono: +34 955 23 56 44\nTipo de cocina: Mediterránea / Europea / tradicional con toques locales\nPrecio medio: ~20-40 € por persona\nParking: Sí, parking privado disponible\nAccesible: Sí (acceso para personas con discapacidad)\n\nAmbiente & experiencia\n\nSituado en un entorno natural precioso junto al Río Guadalquivir\nVistas únicas y ambiente tranquilo en interior y gran terraza al aire libre\nMúsica en directo en verano (jueves a sábado por la noche)\nAnimación infantil los fines de semana y festivos\n\nGastronomía y carta\nCocina local con toques mediterráneos y platos tradicionales:\n\nPescados frescos (incluyendo elaboraciones con esturión)\nCarnes a la brasa jugosas\nArroces melosos y caldosos\nTapas y entradas para compartir\nVinos andaluces y nacionales\n\nPlatos destacados\n\nEsturión preparado en varias formas\nArroces (negro, con pato, etc.)\nVerduras salteadas, langostinos, torrijas\nCarabineros y mariscos frescos\n\nEventos, celebraciones & bodas\nEl restaurante ofrece espacios al aire libre y salones interiores con menú personalizado para bodas, fiestas y eventos especiales.\n\nHistoria del lugar\nEl restaurante está situado en lo que fue la histórica fábrica de caviar de Coria del Río (principios del S. XX), que producía caviar de esturión reconocido en Europa. El edificio mantiene parte de su carácter original fusionando historia con gastronomía contemporánea.\n\nCasos y reglas adicionales\n\nNo repitas mensajes varias veces; con decirlo una vez basta\nSigue las reglas especificadas; no des más contexto del que pida el cliente\nPedir nombre y teléfono solo cuando confirme fecha, hora y número de personas\nNo repitas cosas constantemente salvo que sea necesario\nMensajes sin contexto o ajenos a restaurante/reservas → responde False\nPara reservar: pide nombre completo, teléfono y número de comensales\nSi el cliente no recuerda su reserva y te pide fecha/hora → pide nombre completo y verifica la reserva\nPreséntate solo en el inicio de conversación; luego no repitas quién eres ni dónde trabajas\nTras reservar, no digas \"si prefiere otro horario...\"\nPide nombre y teléfono solo después de confirmar que quiere la hora y que está disponible\nAl dar huecos, no asumas que quiere reservar; no pidas datos hasta su confirmación\nSi la fecha/hora pedidas no tienen huecos esa semana, ofrece otros horarios; si necesita exactamente esa franja, que espere a la siguiente semana\nSi el cliente te pide que elijas tú la hora o \"primer hueco disponible\", propón una hora disponible y pide confirmación\nAntes de reservar, verifica que el cliente quiere esa hora (aunque te haya dado libertad)\nNo menciones cancelaciones/cambios a menos que el cliente lo pida\nNunca elijas una hora por el cliente sin confirmación\nTen en cuenta día/hora actuales: no ofrezcas días u horas pasadas\nPara sacar huecos, considera siempre día y hora actuales (no muestres días/horas pasados)\nAl terminar (reservar/modificar/cancelar o resolver dudas), no preguntes si puedes ayudar en algo más\nTodo mensaje fuera de tu labor (gestionar reservas del restaurante) → responde False\nResponde siempre y exclusivamente con el formato del Structure Ouput Parser que te dejo a continuación a la hora de responder, si el mensaje supera los 1000 caracteres dividelo en otro mensaje seguido como una persona real, haz esto hasta un limite de 3 mensajes.\n\n{\n  \"Response\": {\n    \"Part1\": \"Primera parte del mensaje\",\n    \"Part2\": \"Segunda parte del mensaje\",\n    \"Part3\": \"Tercera parte del mensaje\"\n  }\n}\n\n\nProhibiciones explícitas\nNunca decir que puedes enviar recordatorios\nNunca repetir constantemente los horarios del restaurante\nNunca pedir detalles innecesarios sobre preferencias alimenticias durante la reserva\nNunca firmar los mensajes con un nombre al final (no estilo correo)\nNunca mencionar que has comprobado herramientas o sistemas internos\nNunca le digas el horario completo al cliente, excepto cuando el te lo pida expresamente.\nLimitate a escribir en texto plano sin caracteres raros o especiales.\n \nFecha de referencia\nLa fecha actual es {{ $now }}.\n\n¡Importante! Este prompt está diseñado para gestionar reservas del Restaurante Esturión con profesionalidad, eficiencia y un toque humano cercano. Recuerda siempre verificar disponibilidad antes de confirmar y mantener un tono amable y natural."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        2400,
-        64
+        2688,
+        96
       ],
-      "id": "6d93d873-6291-4029-9e2c-496c07c313d5",
+      "id": "e23c718d-91a0-4f63-9254-56887868d867",
       "name": "AI Agent",
       "retryOnFail": false
     },
@@ -1096,10 +1094,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.3,
       "position": [
-        1968,
-        288
+        2240,
+        320
       ],
-      "id": "3b0338a4-1a50-4264-a2b0-2542f6f6b543",
+      "id": "92204458-0461-4204-8a4a-9f33cba67337",
       "name": "OpenAI Chat Model",
       "credentials": {
         "openAiApi": {
@@ -1117,10 +1115,10 @@
       "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
       "typeVersion": 1.3,
       "position": [
-        2080,
-        288
+        2368,
+        320
       ],
-      "id": "1986cbbf-1b80-4765-b307-b7d893bbe5ae",
+      "id": "0262c65a-423f-484d-8c07-4a6d664f9976",
       "name": "Postgres Chat Memory",
       "credentials": {
         "postgres": {
@@ -1143,10 +1141,10 @@
       "type": "n8n-nodes-base.googleCalendarTool",
       "typeVersion": 1.3,
       "position": [
-        2208,
-        288
+        2496,
+        320
       ],
-      "id": "f9aa0a07-2dae-4ac7-b6e5-668c36258668",
+      "id": "f15e91dd-d977-4bdf-a7a6-e6a1cca483b8",
       "name": "Get many events in Google Calendar",
       "credentials": {
         "googleCalendarOAuth2Api": {
@@ -1183,10 +1181,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        3344,
-        64
+        3632,
+        96
       ],
-      "id": "e3b08d3d-b103-4476-aa8b-2bf1859c703a",
+      "id": "a5fc13f3-adec-4c67-a984-63eb05097ba7",
       "name": "If5"
     },
     {
@@ -1206,16 +1204,16 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"content\": \"{{ $json.output.Response.Part1 }}\",\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
+        "jsonBody": "={\n  \"content\": \"{{ $('AI Agent').item.json.output.Response.Part1 }}\",\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        3568,
-        64
+        3856,
+        96
       ],
-      "id": "4103dee4-d60f-42bb-99c4-57c3e7cf00dc",
+      "id": "0b6477c1-44f6-4729-b53d-ae44b0c564a9",
       "name": "HTTP Request1",
       "credentials": {
         "httpHeaderAuth": {
@@ -1252,10 +1250,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        3792,
-        64
+        4080,
+        96
       ],
-      "id": "de3d7d65-16b5-41af-a204-4bd26ab0e861",
+      "id": "b5201e3b-de83-40a1-8d81-f04d263272df",
       "name": "If6"
     },
     {
@@ -1263,10 +1261,10 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        4016,
-        64
+        4304,
+        96
       ],
-      "id": "6924807d-eb02-49fc-8796-a4e74989f81f",
+      "id": "aad0d893-ceeb-49de-a4b1-4a682548e759",
       "name": "Wait2",
       "webhookId": "751bef90-71de-41d2-ac4f-795b995cc5dd"
     },
@@ -1298,10 +1296,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        4464,
-        64
+        4752,
+        96
       ],
-      "id": "b5ad238c-3058-4965-8b0f-9d479320bd0a",
+      "id": "b19e7a93-fb96-4508-a02b-f309dde04172",
       "name": "If7"
     },
     {
@@ -1309,10 +1307,10 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        4688,
-        64
+        4976,
+        96
       ],
-      "id": "6deea794-2afe-4c2e-8ec3-c0824a9e21b7",
+      "id": "bc7237b2-ef54-4ef7-a1d6-a0d7f7368e58",
       "name": "Wait3",
       "webhookId": "751bef90-71de-41d2-ac4f-795b995cc5dd"
     },
@@ -1343,10 +1341,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        1408,
-        -32
+        1568,
+        0
       ],
-      "id": "2494bb3a-eb40-4139-862e-30b6163f3c7d",
+      "id": "d7329183-cc69-4604-850c-113e113dad40",
       "name": "If2"
     },
     {
@@ -1376,10 +1374,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -384,
-        64
+        -224,
+        96
       ],
-      "id": "24b6aa46-dc6e-4932-9661-2dbb4854ec08",
+      "id": "7b61fdde-c739-4811-b8d9-21fc40fb6d0d",
       "name": "If4"
     },
     {
@@ -1389,11 +1387,122 @@
       "type": "@n8n/n8n-nodes-langchain.toolThink",
       "typeVersion": 1.1,
       "position": [
-        2336,
-        288
+        2624,
+        320
       ],
-      "id": "cde0e889-80aa-4801-97fa-e3ebfe3ca6be",
+      "id": "e16abec7-3e8f-433c-81b7-83da13134621",
       "name": "Think"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host//api/v1/accounts/{{ $('Edit Fields').item.json.accountID }}/conversations/{{ $('Edit Fields').item.json.conversationID }}/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"content\": \"{{ $('AI Agent').item.json.output.Response.Part2 }}\",\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        4528,
+        96
+      ],
+      "id": "407efebf-3f08-4492-b88f-04c20033f284",
+      "name": "HTTP Request2",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Zhnapx6EMtJKOOW9",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host//api/v1/accounts/{{ $('Edit Fields').item.json.accountID }}/conversations/{{ $('Edit Fields').item.json.conversationID }}/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"content\": \"{{ $('AI Agent').item.json.output.Response.Part3 }}\",\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        5200,
+        96
+      ],
+      "id": "ed82c02e-ecc9-4aea-82e4-e62b852c72b7",
+      "name": "HTTP Request3",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Zhnapx6EMtJKOOW9",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"Response\": {\n    \"Part1\": \"Primera parte del mensaje\",\n    \"Part2\": \"Segunda parte del mensaje\",\n    \"Part3\": \"Tercera parte del mensaje\"\n  }\n}",
+        "autoFix": true
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        3264,
+        320
+      ],
+      "id": "15926406-1f28-4a4a-ac85-341e96163c58",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-5-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        3344,
+        528
+      ],
+      "id": "94784c34-09ee-4e11-8dd4-33f6d69d1aee",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
     },
     {
       "parameters": {
@@ -1408,15 +1517,15 @@
         "workflowInputs": {
           "mappingMode": "defineBelow",
           "value": {
-            "Fecha": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha', ``, 'string') }}"
+            "Fecha+Hora": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha_Hora', ``, 'string') }}"
           },
           "matchingColumns": [
             "Fecha"
           ],
           "schema": [
             {
-              "id": "Fecha",
-              "displayName": "Fecha",
+              "id": "Fecha+Hora",
+              "displayName": "Fecha+Hora",
               "required": false,
               "defaultMatch": false,
               "display": true,
@@ -1432,11 +1541,11 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2.2,
       "position": [
-        2464,
-        288
+        2752,
+        320
       ],
-      "id": "a8877125-d66f-43ed-b669-63cc77507419",
-      "name": "Disponibilidad Esturion"
+      "id": "13821709-48d0-40e3-99a2-83b03a137c47",
+      "name": "Disponibilidad Esturión"
     },
     {
       "parameters": {
@@ -1506,11 +1615,11 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2.2,
       "position": [
-        2592,
-        288
+        2880,
+        320
       ],
-      "id": "fe7832be-eeb8-4bb7-9eb5-5661b4a8e905",
-      "name": "Agendar Esturion"
+      "id": "5a411a71-11a5-46f7-8608-c33a67dde05e",
+      "name": "Agendar Esturión"
     },
     {
       "parameters": {
@@ -1585,11 +1694,11 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2.2,
       "position": [
-        2720,
-        288
+        3008,
+        320
       ],
-      "id": "c4cf055d-5be0-4cef-bd92-16a0bd2b270e",
-      "name": "Modificar Evento Esturion"
+      "id": "6ab4e630-1240-431a-ac77-6891939562b0",
+      "name": "Modificar Evento Esturión"
     },
     {
       "parameters": {
@@ -1605,7 +1714,58 @@
           "mappingMode": "defineBelow",
           "value": {},
           "matchingColumns": [],
-          "schema": [],
+          "schema": [
+            {
+              "id": "Titulo",
+              "displayName": "Titulo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Fecha inicio",
+              "displayName": "Fecha inicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Fecha fin",
+              "displayName": "Fecha fin",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Descripción",
+              "displayName": "Descripción",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
           "attemptToConvertTypes": false,
           "convertFieldsToString": false
         }
@@ -1613,122 +1773,11 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2.2,
       "position": [
-        2848,
-        288
+        3136,
+        320
       ],
-      "id": "aa6df1b0-9a97-4801-a212-b65125a236ba",
-      "name": "Cancelar Evento Esturion"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host//api/v1/accounts/{{ $('Edit Fields').item.json.accountID }}/conversations/{{ $('Edit Fields').item.json.conversationID }}/messages",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Content-Type",
-              "value": "application/json"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"content\": \"{{ $('AI Agent').item.json.output.Response.Part2 }}\",\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        4240,
-        64
-      ],
-      "id": "746ddb27-6fc8-4202-a6bd-36f3e0edc43f",
-      "name": "HTTP Request2",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "Zhnapx6EMtJKOOW9",
-          "name": "Header Auth account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host//api/v1/accounts/{{ $('Edit Fields').item.json.accountID }}/conversations/{{ $('Edit Fields').item.json.conversationID }}/messages",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Content-Type",
-              "value": "application/json"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"content\": \"{{ $('AI Agent').item.json.output.Response.Part3 }}\",\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        4912,
-        64
-      ],
-      "id": "67f2ac03-7aa4-43fa-99c9-a4e79e2b6095",
-      "name": "HTTP Request3",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "Zhnapx6EMtJKOOW9",
-          "name": "Header Auth account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "schemaType": "manual",
-        "inputSchema": "{\n  \"Response\": {\n    \"Part1\": \"Primera parte del mensaje\",\n    \"Part2\": \"Segunda parte del mensaje\",\n    \"Part3\": \"Tercera parte del mensaje\"\n  }\n}",
-        "autoFix": true
-      },
-      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
-      "typeVersion": 1.3,
-      "position": [
-        2976,
-        288
-      ],
-      "id": "152eb64d-c906-4502-9173-88d4f4f22a4a",
-      "name": "Structured Output Parser"
-    },
-    {
-      "parameters": {
-        "model": {
-          "__rl": true,
-          "value": "gpt-5-mini",
-          "mode": "list",
-          "cachedResultName": "gpt-5-mini"
-        },
-        "builtInTools": {},
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.3,
-      "position": [
-        2912,
-        496
-      ],
-      "id": "e5276bae-11a4-4eb5-b606-4df65bb448bc",
-      "name": "OpenAI Chat Model1",
-      "credentials": {
-        "openAiApi": {
-          "id": "WvSLkCujVhY8jIGz",
-          "name": "OpenAi account"
-        }
-      }
+      "id": "0115e5e7-7f15-438d-9c4e-fcb48399ee18",
+      "name": "Cancelar Evento Esturión"
     }
   ],
   "pinData": {
@@ -1738,7 +1787,7 @@
           "headers": {
             "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
             "user-agent": "rest-client/2.1.0 (linux-musl x86_64) ruby/3.3.3p89",
-            "content-length": "4066",
+            "content-length": "2521",
             "accept": "application/json",
             "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
             "content-type": "application/json",
@@ -1759,61 +1808,61 @@
             "additional_attributes": {},
             "content_attributes": {},
             "content_type": "text",
-            "content": "Seríamos 5 personas",
+            "content": "Puedes volver a mirar la disponibilidad del 14 de febrero para cenar?",
             "conversation": {
               "additional_attributes": {},
               "can_reply": true,
               "channel": "Channel::Api",
               "contact_inbox": {
-                "id": 106,
-                "contact_id": 53,
+                "id": 80,
+                "contact_id": 40,
                 "inbox_id": 1,
-                "source_id": "e1c078cc-ac43-4d40-84ff-b603601d5e1d",
-                "created_at": "2026-02-03T19:11:12.900Z",
-                "updated_at": "2026-02-03T19:11:12.900Z",
+                "source_id": "060a280e-a40e-4ec6-b8c3-fc946fb2496e",
+                "created_at": "2026-01-25T18:12:47.554Z",
+                "updated_at": "2026-01-25T18:12:47.554Z",
                 "hmac_verified": false,
-                "pubsub_token": "bj9aYyxPm7DsSJ3pPX1iDZNM"
+                "pubsub_token": "YtGeULQmCKqDf4Hn4594giHe"
               },
-              "id": 53,
+              "id": 40,
               "inbox_id": 1,
               "messages": [
                 {
-                  "id": 1419,
-                  "content": "Seríamos 5 personas",
+                  "id": 1523,
+                  "content": "Puedes volver a mirar la disponibilidad del 14 de febrero para cenar?",
                   "account_id": 1,
                   "inbox_id": 1,
-                  "conversation_id": 53,
+                  "conversation_id": 40,
                   "message_type": 0,
-                  "created_at": 1770216176,
-                  "updated_at": "2026-02-04T14:42:56.950Z",
+                  "created_at": 1770314214,
+                  "updated_at": "2026-02-05T17:56:54.031Z",
                   "private": false,
                   "status": "sent",
-                  "source_id": "WAID:ACA636950ECAD661A0187A92937C7ECD",
+                  "source_id": "WAID:AC4451E841B46A7469688445E775B569",
                   "content_type": "text",
                   "content_attributes": {},
                   "sender_type": "Contact",
-                  "sender_id": 53,
+                  "sender_id": 40,
                   "external_source_ids": {},
                   "additional_attributes": {},
-                  "processed_message_content": "Seríamos 5 personas",
+                  "processed_message_content": "Puedes volver a mirar la disponibilidad del 14 de febrero para cenar?",
                   "sentiment": {},
                   "conversation": {
                     "assignee_id": null,
                     "unread_count": 1,
-                    "last_activity_at": 1770216176,
+                    "last_activity_at": 1770314214,
                     "contact_inbox": {
-                      "source_id": "e1c078cc-ac43-4d40-84ff-b603601d5e1d"
+                      "source_id": "060a280e-a40e-4ec6-b8c3-fc946fb2496e"
                     }
                   },
                   "sender": {
                     "additional_attributes": {},
                     "custom_attributes": {},
                     "email": null,
-                    "id": 53,
-                    "identifier": "107743633522761@lid",
-                    "name": "Andrés Sierra",
-                    "phone_number": "+34608450569",
-                    "thumbnail": "http://https/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBY1k9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7eccb59e61c91ed7a903a3e1d7de92588e1e68e7/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3ee3a98e3eb1528ac39b3dd1284c2b0d768e8e96/292481748_744052253585453_5866720819892846216_n.jpg",
+                    "id": 40,
+                    "identifier": "175299207659662@lid",
+                    "name": "Josefa González Cordero",
+                    "phone_number": "+34640310426",
+                    "thumbnail": "",
                     "type": "contact"
                   }
                 }
@@ -1824,11 +1873,11 @@
                   "additional_attributes": {},
                   "custom_attributes": {},
                   "email": null,
-                  "id": 53,
-                  "identifier": "107743633522761@lid",
-                  "name": "Andrés Sierra",
-                  "phone_number": "+34608450569",
-                  "thumbnail": "http://https/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBY1k9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7eccb59e61c91ed7a903a3e1d7de92588e1e68e7/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3ee3a98e3eb1528ac39b3dd1284c2b0d768e8e96/292481748_744052253585453_5866720819892846216_n.jpg",
+                  "id": 40,
+                  "identifier": "175299207659662@lid",
+                  "name": "Josefa González Cordero",
+                  "phone_number": "+34640310426",
+                  "thumbnail": "",
                   "type": "contact"
                 },
                 "assignee": null,
@@ -1839,17 +1888,17 @@
               "custom_attributes": {},
               "snoozed_until": null,
               "unread_count": 1,
-              "first_reply_created_at": "2026-02-03T19:11:13.478Z",
+              "first_reply_created_at": "2026-01-25T18:12:59.905Z",
               "priority": null,
-              "waiting_since": 1770216176,
-              "agent_last_seen_at": 1770216170,
-              "contact_last_seen_at": 1770216157,
-              "last_activity_at": 1770216176,
-              "timestamp": 1770216176,
-              "created_at": 1770145872
+              "waiting_since": 1770314214,
+              "agent_last_seen_at": 1770313783,
+              "contact_last_seen_at": 0,
+              "last_activity_at": 1770314214,
+              "timestamp": 1770314214,
+              "created_at": 1769364767
             },
-            "created_at": "2026-02-04T14:42:56.950Z",
-            "id": 1419,
+            "created_at": "2026-02-05T17:56:54.031Z",
+            "id": 1523,
             "inbox": {
               "id": 1,
               "name": "Practica UDIA"
@@ -1862,16 +1911,16 @@
                 "name": "KZ"
               },
               "additional_attributes": {},
-              "avatar": "http://https/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBY1k9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7eccb59e61c91ed7a903a3e1d7de92588e1e68e7/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3ee3a98e3eb1528ac39b3dd1284c2b0d768e8e96/292481748_744052253585453_5866720819892846216_n.jpg",
+              "avatar": "",
               "custom_attributes": {},
               "email": null,
-              "id": 53,
-              "identifier": "107743633522761@lid",
-              "name": "Andrés Sierra",
-              "phone_number": "+34608450569",
-              "thumbnail": "http://https/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBY1k9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7eccb59e61c91ed7a903a3e1d7de92588e1e68e7/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3ee3a98e3eb1528ac39b3dd1284c2b0d768e8e96/292481748_744052253585453_5866720819892846216_n.jpg"
+              "id": 40,
+              "identifier": "175299207659662@lid",
+              "name": "Josefa González Cordero",
+              "phone_number": "+34640310426",
+              "thumbnail": ""
             },
-            "source_id": "WAID:ACA636950ECAD661A0187A92937C7ECD",
+            "source_id": "WAID:AC4451E841B46A7469688445E775B569",
             "event": "message_created"
           },
           "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook/cf611be9-ebe6-48f4-af1c-6996d5dfb497",
@@ -1892,16 +1941,16 @@
   },
   "shared": [
     {
-      "updatedAt": "2026-01-23T15:22:44.687Z",
-      "createdAt": "2026-01-23T15:22:44.687Z",
+      "updatedAt": "2026-02-05T16:45:31.766Z",
+      "createdAt": "2026-02-05T16:45:31.766Z",
       "role": "workflow:owner",
-      "workflowId": "-cgq3cFKFQQwwszD4Iorv",
+      "workflowId": "d2ZTLHBkUcCZLvulYNRMJ",
       "projectId": "Mg9CftDHMIrQGniA"
     }
   ],
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-02-04T14:52:38.358Z",
-  "versionId": "d0fde208-f813-40b4-8797-86729718f106"
+  "updatedAt": "2026-02-05T18:48:15.955Z",
+  "versionId": "79502874-aec1-45fe-82e2-ecd733a7df7b"
 }
