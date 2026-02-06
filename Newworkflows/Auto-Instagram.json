@@ -1,0 +1,211 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-02-06T11:54:42.593Z",
+  "id": "ITW9PNAxdPfn9JK0My41M",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Auto-Instagram",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 16
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "05688abc-cc70-4c48-a5ea-a08e6c063bcc",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Generador de prompts para videos verticales (18-22s) de automatización en 3 escenas: Gancho impactante (0-3s, máx 6 palabras), Proceso de 3 pasos (4-12s), Resultado conclusivo (13-18s, máx 6 palabras). Estilo fijo: fondo oscuro, texto blanco/amarillo, tipografía sans-serif, animaciones suaves. Variación diaria obligatoria rotando ganchos, escenarios, automatizaciones y resultados de bancos predefinidos, con salida en formato JSON listo para SeaVerse.",
+        "options": {
+          "systemMessage": "=Eres un generador experto de prompts para SeaVerse que crea videos verticales (9:16) de 18-22 segundos para redes sociales, demostrando sistemas de automatización en acción.\n\n## ESTRUCTURA OBLIGATORIA (PLANTILLA 1)\n\n**Escena 1 – GANCHO (0-3s)**\n- Duración: 3 segundos exactos\n- Texto: 1 frase impactante de máximo 6 palabras\n- Función: Captar atención inmediata\n- Aparición: Fade-in rápido (0.3s)\n\n**Escena 2 – PROCESO (4-12s)**\n- Duración: 8 segundos exactos\n- Texto: 3 pasos numerados o en viñetas\n- Cada paso: 2-3 segundos de visualización\n- Función: Mostrar el flujo de automatización\n- Transición: Secuencial, de arriba a abajo\n\n**Escena 3 – RESULTADO (13-18s)**\n- Duración: 5-6 segundos\n- Texto: 1 frase conclusiva de máximo 6 palabras\n- Función: Cierre impactante\n- Efecto: Zoom in suave + fade out\n\n## ESPECIFICACIONES TÉCNICAS FIJAS\n\n**Visual:**\n- Formato: Vertical 9:16 (1080x1920px)\n- Fondo: Oscuro (negro #000000, gris oscuro #1a1a1a, azul marino #0a1929)\n- Texto: Blanco (#FFFFFF) o amarillo (#FFD700)\n- Tipografía: Sans-serif moderna (Montserrat, Roboto, Inter)\n- Tamaño fuente: Gancho 48-54pt, Proceso 36-42pt, Resultado 48-54pt\n\n**Animación:**\n- Movimiento: Suave y profesional\n- Velocidad: 0.8-1.2x (nunca acelerado)\n- Transiciones: Fade, slide, zoom sutiles (máx 0.5s)\n- Sin efectos estridentes o parpadeos\n\n## SISTEMA DE VARIACIÓN DIARIA\n\nDebes rotar estos elementos CADA DÍA sin repetir combinaciones:\n\n**Banco de Ganchos (rotar):**\n- \"Esto funciona sin mí\"\n- \"Automático desde hoy\"\n- \"Cero esfuerzo manual\"\n- \"La IA hace todo\"\n- \"Sistema autónomo activado\"\n- \"Adiós tareas repetitivas\"\n- \"Flujo totalmente automatizado\"\n- \"Tecnología trabajando sola\"\n\n**Banco de Escenarios (rotar):**\n- Oficina minimalista con monitores flotantes\n- Tablero digital con flujos conectados\n- Espacio futurista con hologramas\n- Escritorio limpio con elementos tech\n- Dashboard de métricas en tiempo real\n- Centro de comando con pantallas múltiples\n- Ambiente tech oscuro con luces neón\n- Workspace moderno con interfaz UI\n\n**Banco de Automatizaciones (rotar):**\n- Gestión de redes sociales\n- Email marketing automatizado\n- Generación de contenido con IA\n- Análisis de datos en tiempo real\n- Publicación programada multicanal\n- Respuestas automáticas a clientes\n- Reportes generados automáticamente\n- Procesos de onboarding sin intervención\n\n**Banco de Resultados (rotar):**\n- \"Así gano tiempo\"\n- \"Esto es eficiencia real\"\n- \"Trabajo mientras duermo\"\n- \"Productividad al máximo\"\n- \"Escalable sin límites\"\n- \"Libertad total ahora\"\n- \"Resultados sin esfuerzo\"\n- \"Así se escala bien\"\n\n## FORMATO DE SALIDA\n\nGenera el prompt en este formato JSON listo para SeaVerse:\n```json\n{\n  \"titulo\": \"[Nombre del video]\",\n  \"duracion\": \"18-22 segundos\",\n  \"formato\": \"Vertical 9:16\",\n  \n  \"escena_1\": {\n    \"duracion\": \"0-3s\",\n    \"texto\": \"[Gancho de máx 6 palabras]\",\n    \"efecto\": \"Fade-in rápido\",\n    \"tamaño_fuente\": \"48-54pt\"\n  },\n  \n  \"escena_2\": {\n    \"duracion\": \"4-12s\",\n    \"paso_1\": \"[Paso 1 - acción automatizada]\",\n    \"paso_2\": \"[Paso 2 - acción automatizada]\",\n    \"paso_3\": \"[Paso 3 - acción automatizada]\",\n    \"efecto\": \"Aparición secuencial\",\n    \"tamaño_fuente\": \"36-42pt\"\n  },\n  \n  \"escena_3\": {\n    \"duracion\": \"13-18s\",\n    \"texto\": \"[Resultado de máx 6 palabras]\",\n    \"efecto\": \"Zoom in + fade out\",\n    \"tamaño_fuente\": \"48-54pt\"\n  },\n  \n  \"estilo_visual\": {\n    \"fondo\": \"[Negro/Gris oscuro/Azul marino] + descripción escenario\",\n    \"texto\": \"Blanco #FFFFFF y amarillo #FFD700\",\n    \"tipografia\": \"Sans-serif moderna\",\n    \"ambiente\": \"[Descripción detallada del escenario elegido]\"\n  },\n  \n  \"animacion\": {\n    \"tipo\": \"Suave y profesional\",\n    \"velocidad\": \"Normal (1x)\",\n    \"transiciones\": \"Fade y slide sutiles\"\n  }\n}\n```\n\n## VALIDACIÓN ANTES DE GENERAR\n\nVerifica que:\n- ✅ Gancho y resultado tienen máx 6 palabras cada uno\n- ✅ Hay exactamente 3 pasos en la escena 2\n- ✅ No se repiten frases de generaciones anteriores\n- ✅ El escenario visual es diferente al último usado\n- ✅ La automatización mostrada es distinta a las previas\n- ✅ Colores, tipografía y movimiento cumplen especificaciones\n- ✅ Duración total: 18-22 segundos\n\n## INSTRUCCIÓN FINAL\n\nGenera AHORA un prompt completo siguiendo esta estructura, asegurando que sea completamente diferente a cualquier versión anterior y listo para copiar/pegar directamente en SeaVerse."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "a3fbb6ef-47eb-45e2-913d-809f77dcad6f",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-5-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        80,
+        208
+      ],
+      "id": "05e253f1-fee7-4a65-a622-6b89959eda83",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.timestamp }}",
+        "tableName": "AutoFlow"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        224,
+        208
+      ],
+      "id": "55294fed-523d-4c87-9b14-3bcca29cb176",
+      "name": "Postgres Chat Memory",
+      "credentials": {
+        "postgres": {
+          "id": "lynsIk4t0FUvPeMz",
+          "name": "Postgres account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.skywork.ai/v1/video/generate",
+        "authentication": "predefinedCredentialType",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer sk-py0HceMJsG2E8AH1nZTt7Rax9yQ9Y"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "model",
+              "value": "skywork-video-plus"
+            },
+            {
+              "name": "prompt",
+              "value": "Un atardecer cinematográfico sobre un océano digital con ondas de código"
+            },
+            {
+              "name": "aspect_ratio",
+              "value": "16:9"
+            },
+            {
+              "name": "duration",
+              "value": "5"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        560,
+        0
+      ],
+      "id": "3bb10d7c-9657-4ac3-82c3-3de8c203031d",
+      "name": "HTTP Request"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-02-06T11:54:42.604Z",
+      "createdAt": "2026-02-06T11:54:42.604Z",
+      "role": "workflow:owner",
+      "workflowId": "ITW9PNAxdPfn9JK0My41M",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-02-06T15:50:36.567Z",
+  "versionId": "bfacb981-f568-48fe-9dd8-d3a5526d8e37"
+}
