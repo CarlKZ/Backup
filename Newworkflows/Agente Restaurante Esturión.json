@@ -412,17 +412,6 @@
         ]
       ]
     },
-    "Disponibilidad Esturión": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Agendar Esturión": {
       "ai_tool": [
         [
@@ -446,6 +435,17 @@
       ]
     },
     "Cancelar Evento Esturión": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'Disponibilidad Esturión'": {
       "ai_tool": [
         [
           {
@@ -1500,49 +1500,6 @@
     },
     {
       "parameters": {
-        "description": "=llama a esta herramienta cuando detectes la intencion del usuario de comprobar su disponibilidad o si quiere agendar un evento, reunión, llamada, etc.\nLa fecha actual es {{ $now }}",
-        "workflowId": {
-          "__rl": true,
-          "value": "L6RP5mL1JuEWBAjS",
-          "mode": "list",
-          "cachedResultUrl": "/workflow/L6RP5mL1JuEWBAjS",
-          "cachedResultName": "Comprobar Disponibilidad Podóloga Xixona copy"
-        },
-        "workflowInputs": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "Fecha+Hora": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha_Hora', ``, 'string') }}"
-          },
-          "matchingColumns": [
-            "Fecha"
-          ],
-          "schema": [
-            {
-              "id": "Fecha+Hora",
-              "displayName": "Fecha+Hora",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 2.2,
-      "position": [
-        2752,
-        320
-      ],
-      "id": "13821709-48d0-40e3-99a2-83b03a137c47",
-      "name": "Disponibilidad Esturión"
-    },
-    {
-      "parameters": {
         "description": "=Llama a esta herramienta cuando detectes la intención de el usuario de que quiere agendar un evento, cita, reuinion, llamada, etc, pero siempre una vez de haber comprobado la disponibilidad.\nLa fecha actual es {{ $now }}",
         "workflowId": {
           "__rl": true,
@@ -1772,6 +1729,58 @@
       ],
       "id": "0115e5e7-7f15-438d-9c4e-fcb48399ee18",
       "name": "Cancelar Evento Esturión"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "QURkLGwyKLMD7n5M",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/QURkLGwyKLMD7n5M",
+          "cachedResultName": "Disponibilidad Esturión"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Fecha y Hora": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha_y_Hora', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "Fecha"
+          ],
+          "schema": [
+            {
+              "id": "Fecha y Hora",
+              "displayName": "Fecha y Hora",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Hora",
+              "displayName": "Hora",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        2752,
+        320
+      ],
+      "id": "31038141-6bb1-459f-849c-539d87f5aafb",
+      "name": "Call 'Disponibilidad Esturión'"
     }
   ],
   "pinData": {
@@ -1945,6 +1954,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-02-06T23:35:47.860Z",
-  "versionId": "b81399df-8b33-4ee5-bed3-36fd316d8deb"
+  "updatedAt": "2026-02-07T00:19:09.837Z",
+  "versionId": "bd7c3115-b94b-4395-aeb5-94e7ec229bf5"
 }
