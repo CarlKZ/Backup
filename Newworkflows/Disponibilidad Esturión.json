@@ -525,8 +525,7 @@
     "Disponibilidad Esturión": [
       {
         "json": {
-          "Fecha y Hora": "2026-02-14T21:00:00",
-          "Hora": null
+          "Fecha y Hora": "2026-02-14T21:00:00"
         },
         "pairedItem": {
           "item": 0
@@ -550,6 +549,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-02-07T00:25:28.204Z",
+  "updatedAt": "2026-02-07T15:56:01.605Z",
   "versionId": "454711fd-8a54-46aa-ba0b-f5bb1a8bf08a"
 }
