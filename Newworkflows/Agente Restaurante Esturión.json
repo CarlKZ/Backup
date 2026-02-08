@@ -1796,7 +1796,7 @@
           "headers": {
             "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
             "user-agent": "rest-client/2.1.0 (linux-musl x86_64) ruby/3.3.3p89",
-            "content-length": "2956",
+            "content-length": "2521",
             "accept": "application/json",
             "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
             "content-type": "application/json",
@@ -1817,60 +1817,62 @@
             "additional_attributes": {},
             "content_attributes": {},
             "content_type": "text",
-            "content": "Perfecto — usted quiere reservar para el 11 de febrero a las 21:00 para 2 personas. En este momento no puedo comprobar la disponibilidad. ¿Desea que lo intente de nuevo ahora? 🙂",
+            "content": "Puedes volver a mirar la disponibilidad del 14 de febrero para cenar?",
             "conversation": {
               "additional_attributes": {},
               "can_reply": true,
               "channel": "Channel::Api",
               "contact_inbox": {
-                "id": 104,
-                "contact_id": 52,
+                "id": 80,
+                "contact_id": 40,
                 "inbox_id": 1,
-                "source_id": "e29a5ed5-7f28-4205-baaa-05e37fd0e353",
-                "created_at": "2026-02-03T17:39:46.496Z",
-                "updated_at": "2026-02-03T17:39:46.496Z",
+                "source_id": "060a280e-a40e-4ec6-b8c3-fc946fb2496e",
+                "created_at": "2026-01-25T18:12:47.554Z",
+                "updated_at": "2026-01-25T18:12:47.554Z",
                 "hmac_verified": false,
-                "pubsub_token": "8YXmXktR9HF1rcGYdaiDTbnZ"
+                "pubsub_token": "YtGeULQmCKqDf4Hn4594giHe"
               },
-              "id": 52,
+              "id": 40,
               "inbox_id": 1,
               "messages": [
                 {
-                  "id": 1704,
-                  "content": "Perfecto — usted quiere reservar para el 11 de febrero a las 21:00 para 2 personas. En este momento no puedo comprobar la disponibilidad. ¿Desea que lo intente de nuevo ahora? 🙂",
+                  "id": 1523,
+                  "content": "Puedes volver a mirar la disponibilidad del 14 de febrero para cenar?",
                   "account_id": 1,
                   "inbox_id": 1,
-                  "conversation_id": 52,
-                  "message_type": 1,
-                  "created_at": 1770480046,
-                  "updated_at": "2026-02-07T16:00:46.471Z",
+                  "conversation_id": 40,
+                  "message_type": 0,
+                  "created_at": 1770314214,
+                  "updated_at": "2026-02-05T17:56:54.031Z",
                   "private": false,
                   "status": "sent",
-                  "source_id": null,
+                  "source_id": "WAID:AC4451E841B46A7469688445E775B569",
                   "content_type": "text",
                   "content_attributes": {},
-                  "sender_type": "User",
-                  "sender_id": 1,
+                  "sender_type": "Contact",
+                  "sender_id": 40,
                   "external_source_ids": {},
                   "additional_attributes": {},
-                  "processed_message_content": "Perfecto — usted quiere reservar para el 11 de febrero a las 21:00 para 2 personas. En este momento no puedo comprobar la disponibilidad. ¿Desea que lo intente de nuevo ahora? 🙂",
+                  "processed_message_content": "Puedes volver a mirar la disponibilidad del 14 de febrero para cenar?",
                   "sentiment": {},
                   "conversation": {
                     "assignee_id": null,
-                    "unread_count": 0,
-                    "last_activity_at": 1770480046,
+                    "unread_count": 1,
+                    "last_activity_at": 1770314214,
                     "contact_inbox": {
-                      "source_id": "e29a5ed5-7f28-4205-baaa-05e37fd0e353"
+                      "source_id": "060a280e-a40e-4ec6-b8c3-fc946fb2496e"
                     }
                   },
                   "sender": {
-                    "id": 1,
-                    "name": "Carlos",
-                    "available_name": "Carlos",
-                    "avatar_url": "",
-                    "type": "user",
-                    "availability_status": null,
-                    "thumbnail": ""
+                    "additional_attributes": {},
+                    "custom_attributes": {},
+                    "email": null,
+                    "id": 40,
+                    "identifier": "175299207659662@lid",
+                    "name": "Josefa González Cordero",
+                    "phone_number": "+34640310426",
+                    "thumbnail": "",
+                    "type": "contact"
                   }
                 }
               ],
@@ -1880,11 +1882,11 @@
                   "additional_attributes": {},
                   "custom_attributes": {},
                   "email": null,
-                  "id": 52,
-                  "identifier": "110818880405522@lid",
-                  "name": "Bea🌜",
-                  "phone_number": "+34695960095",
-                  "thumbnail": "http://https/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBY1U9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f602f84e0868bb077754df5c861bb593df095043/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3ee3a98e3eb1528ac39b3dd1284c2b0d768e8e96/341762855_766440351740469_8431282709461347746_n.jpg",
+                  "id": 40,
+                  "identifier": "175299207659662@lid",
+                  "name": "Josefa González Cordero",
+                  "phone_number": "+34640310426",
+                  "thumbnail": "",
                   "type": "contact"
                 },
                 "assignee": null,
@@ -1894,31 +1896,40 @@
               "status": "open",
               "custom_attributes": {},
               "snoozed_until": null,
-              "unread_count": 0,
-              "first_reply_created_at": "2026-02-03T17:39:46.799Z",
+              "unread_count": 1,
+              "first_reply_created_at": "2026-01-25T18:12:59.905Z",
               "priority": null,
-              "waiting_since": 0,
-              "agent_last_seen_at": 1770480000,
+              "waiting_since": 1770314214,
+              "agent_last_seen_at": 1770313783,
               "contact_last_seen_at": 0,
-              "last_activity_at": 1770480046,
-              "timestamp": 1770480046,
-              "created_at": 1770140386
+              "last_activity_at": 1770314214,
+              "timestamp": 1770314214,
+              "created_at": 1769364767
             },
-            "created_at": "2026-02-07T16:00:46.471Z",
-            "id": 1704,
+            "created_at": "2026-02-05T17:56:54.031Z",
+            "id": 1523,
             "inbox": {
               "id": 1,
               "name": "Practica UDIA"
             },
-            "message_type": "outgoing",
+            "message_type": "incoming",
             "private": false,
             "sender": {
-              "id": 1,
-              "name": "Carlos",
-              "email": "carlos.f.g.work@gmail.com",
-              "type": "user"
+              "account": {
+                "id": 1,
+                "name": "KZ"
+              },
+              "additional_attributes": {},
+              "avatar": "",
+              "custom_attributes": {},
+              "email": null,
+              "id": 40,
+              "identifier": "175299207659662@lid",
+              "name": "Josefa González Cordero",
+              "phone_number": "+34640310426",
+              "thumbnail": ""
             },
-            "source_id": null,
+            "source_id": "WAID:AC4451E841B46A7469688445E775B569",
             "event": "message_created"
           },
           "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook/cf611be9-ebe6-48f4-af1c-6996d5dfb497",
@@ -1949,6 +1960,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-02-07T16:55:41.989Z",
-  "versionId": "82841b05-8fea-48c8-9dfb-139194f40f91"
+  "updatedAt": "2026-02-08T17:34:35.281Z",
+  "versionId": "bfe448a9-1722-46e7-8b38-8ecf7b64b644"
 }
