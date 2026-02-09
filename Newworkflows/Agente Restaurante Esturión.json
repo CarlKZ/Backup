@@ -281,13 +281,7 @@
     "If5": {
       "main": [
         [],
-        [
-          {
-            "node": "HTTP Request1",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "HTTP Request1": {
@@ -1763,16 +1757,6 @@
               "canBeUsedToMatch": true,
               "type": "string",
               "removed": false
-            },
-            {
-              "id": "Hora",
-              "displayName": "Hora",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
             }
           ],
           "attemptToConvertTypes": false,
@@ -1960,6 +1944,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-02-08T17:34:35.281Z",
-  "versionId": "bfe448a9-1722-46e7-8b38-8ecf7b64b644"
+  "updatedAt": "2026-02-09T18:41:35.251Z",
+  "versionId": "bdd305a5-224d-40d5-a2a1-a37db8ce398a"
 }
