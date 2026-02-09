@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-07T00:25:10.000Z",
-    "createdAt": "2026-02-07T00:24:42.284Z",
-    "versionId": "99482632-7529-498b-9b6d-414dcf5f7c46",
+    "updatedAt": "2026-02-09T18:49:55.000Z",
+    "createdAt": "2026-02-09T18:48:49.670Z",
+    "versionId": "c6426178-b043-46b5-bd4a-5af9a8485860",
     "workflowId": "QURkLGwyKLMD7n5M",
     "nodes": [
       {
@@ -140,7 +140,7 @@
       },
       {
         "parameters": {
-          "jsCode": "return items.map(item => {\n  const fechaStr = item.json.fecha;\n\n  const start = new Date(fechaStr);\n  const end = new Date(start.getTime() + 60 * 60 * 1000); // +1 hora\n\n  // Función para formatear la fecha como YYYY-MM-DDTHH:mm:ss\n  function formatDate(date) {\n    const pad = (num) => num.toString().padStart(2, '0');\n    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;\n  }\n\n  item.json.start_time = formatDate(start);\n  item.json.end_time = formatDate(end);\n\n  return item;\n});\n\n"
+          "jsCode": "return items.map(item => {\n  const fechaStr = item.json[\"Fecha y Hora\"]; // Corregido: usar el nombre exacto del campo\n  const start = new Date(fechaStr);\n  const end = new Date(start.getTime() + 3 * 60 * 60 * 1000); // +3 horas (cambiado de 1 a 3)\n  \n  // Función para formatear la fecha como YYYY-MM-DDTHH:mm:ss\n  function formatDate(date) {\n    const pad = (num) => num.toString().padStart(2, '0');\n    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;\n  }\n  \n  item.json.start_time = formatDate(start);\n  item.json.end_time = formatDate(end);\n  \n  return item;\n});"
         },
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
@@ -184,6 +184,7 @@
         ],
         "id": "e7a5ae39-258d-4442-a79b-0cdcc544075f",
         "name": "Get many events",
+        "alwaysOutputData": false,
         "credentials": {
           "googleCalendarOAuth2Api": {
             "id": "BxLdTiBYRwntbItp",
@@ -261,7 +262,7 @@
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "99482632-7529-498b-9b6d-414dcf5f7c46",
+  "activeVersionId": "c6426178-b043-46b5-bd4a-5af9a8485860",
   "connections": {
     "Disponibilidad Esturión": {
       "main": [
@@ -468,7 +469,7 @@
     },
     {
       "parameters": {
-        "jsCode": "return items.map(item => {\n  const fechaStr = item.json.fecha;\n\n  const start = new Date(fechaStr);\n  const end = new Date(start.getTime() + 60 * 60 * 1000); // +1 hora\n\n  // Función para formatear la fecha como YYYY-MM-DDTHH:mm:ss\n  function formatDate(date) {\n    const pad = (num) => num.toString().padStart(2, '0');\n    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;\n  }\n\n  item.json.start_time = formatDate(start);\n  item.json.end_time = formatDate(end);\n\n  return item;\n});\n\n"
+        "jsCode": "return items.map(item => {\n  const fechaStr = item.json[\"Fecha y Hora\"]; // Corregido: usar el nombre exacto del campo\n  const start = new Date(fechaStr);\n  const end = new Date(start.getTime() + 3 * 60 * 60 * 1000); // +3 horas (cambiado de 1 a 3)\n  \n  // Función para formatear la fecha como YYYY-MM-DDTHH:mm:ss\n  function formatDate(date) {\n    const pad = (num) => num.toString().padStart(2, '0');\n    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;\n  }\n  \n  item.json.start_time = formatDate(start);\n  item.json.end_time = formatDate(end);\n  \n  return item;\n});"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -481,7 +482,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Obtener la fecha y hora del usuario desde el webhook\nconst fechaHoraUsuario = $('Webhook').item.json.fecha;\n\n// Función para verificar si la hora solicitada se solapa con un evento existente\nfunction verificarSolapamiento(inicioEvento, finEvento, usuarioFechaHora) {\n  // Convertir a objetos Date\n  const inicio = new Date(inicioEvento);\n  const fin = new Date(finEvento);\n  const usuarioFecha = new Date(usuarioFechaHora);\n\n  // Si la fecha del usuario cae dentro del rango del evento, hay solapamiento\n  return usuarioFecha >= inicio && usuarioFecha < fin;\n}\n\n// Obtener todos los eventos del calendario\nconst todosLosEventos = items;\n\n// Normalizar la fecha del usuario (zona horaria Europe/Madrid si no existe)\nlet fechaHoraNormalizada = fechaHoraUsuario;\nif (!fechaHoraNormalizada.includes('+')) {\n  fechaHoraNormalizada += '+02:00';\n}\n\n// Buscar eventos que se solapen con la fecha y hora solicitadas\nconst eventosCoincidentes = todosLosEventos.filter(evento => {\n  const inicioEvento = evento.json.start.dateTime;\n  const finEvento = evento.json.end.dateTime;\n\n  // Verificar solapamiento con el rango del evento\n  return verificarSolapamiento(inicioEvento, finEvento, fechaHoraNormalizada);\n});\n\n// Determinar disponibilidad\nconst estaDisponible = eventosCoincidentes.length === 0;\n\n// Preparar la respuesta\nconst respuesta = {\n  result: estaDisponible,\n  debug: {\n    fechaHoraSolicitada: fechaHoraUsuario,\n    fechaHoraNormalizada: fechaHoraNormalizada,\n    eventosEncontrados: todosLosEventos.map(evento => ({\n      id: evento.json.id,\n      summary: evento.json.summary,\n      start: evento.json.start.dateTime,\n      end: evento.json.end.dateTime,\n      solapa: verificarSolapamiento(evento.json.start.dateTime, evento.json.end.dateTime, fechaHoraNormalizada)\n    })),\n    eventosCoincidentes: eventosCoincidentes.map(evento => ({\n      id: evento.json.id,\n      summary: evento.json.summary,\n      start: evento.json.start.dateTime,\n      end: evento.json.end.dateTime\n    }))\n  }\n};\n\n// Devolver la respuesta como un nuevo item\nreturn [{ json: respuesta }];\n"
+        "jsCode": "// Obtener la fecha y hora del usuario desde el webhook\nconst fechaHoraUsuario = $('Webhook').item.json[\"Fecha y Hora\"];\n\n// Función para verificar si la hora solicitada se solapa con un evento existente\nfunction verificarSolapamiento(inicioEvento, finEvento, usuarioFechaHora) {\n  // Convertir a objetos Date\n  const inicio = new Date(inicioEvento);\n  const fin = new Date(finEvento);\n  const usuarioFecha = new Date(usuarioFechaHora);\n  \n  // Si la fecha del usuario cae dentro del rango del evento, hay solapamiento\n  return usuarioFecha >= inicio && usuarioFecha < fin;\n}\n\n// Obtener todos los eventos del calendario\nconst todosLosEventos = items;\n\n// Normalizar la fecha del usuario (zona horaria Europe/Madrid si no existe)\nlet fechaHoraNormalizada = fechaHoraUsuario;\nif (!fechaHoraNormalizada.includes('+') && !fechaHoraNormalizada.includes('Z')) {\n  fechaHoraNormalizada += '+01:00'; // +01:00 para hora estándar de Madrid (invierno)\n}\n\n// Buscar eventos que se solapen con la fecha y hora solicitadas\nconst eventosCoincidentes = todosLosEventos.filter(evento => {\n  const inicioEvento = evento.json.start?.dateTime ||"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -501,7 +502,8 @@
           "mode": "list",
           "cachedResultName": "Restaurante Esturión"
         },
-        "timeMin": "={{ $json['Fecha y Hora'] }}",
+        "timeMin": "={{ $json.start_time }}",
+        "timeMax": "={{ $json.end_time }}",
         "options": {}
       },
       "type": "n8n-nodes-base.googleCalendar",
@@ -512,7 +514,7 @@
       ],
       "id": "e7a5ae39-258d-4442-a79b-0cdcc544075f",
       "name": "Get many events",
-      "alwaysOutputData": true,
+      "alwaysOutputData": false,
       "credentials": {
         "googleCalendarOAuth2Api": {
           "id": "BxLdTiBYRwntbItp",
@@ -549,6 +551,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-02-07T15:56:01.605Z",
-  "versionId": "454711fd-8a54-46aa-ba0b-f5bb1a8bf08a"
+  "updatedAt": "2026-02-09T18:55:12.365Z",
+  "versionId": "00240f5a-ca0f-4541-b7de-b50fe7a03145"
 }
