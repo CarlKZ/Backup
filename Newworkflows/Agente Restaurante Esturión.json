@@ -281,7 +281,13 @@
     "If5": {
       "main": [
         [],
-        []
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "HTTP Request1": {
@@ -1780,7 +1786,7 @@
           "headers": {
             "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
             "user-agent": "rest-client/2.1.0 (linux-musl x86_64) ruby/3.3.3p89",
-            "content-length": "2521",
+            "content-length": "3973",
             "accept": "application/json",
             "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
             "content-type": "application/json",
@@ -1801,61 +1807,61 @@
             "additional_attributes": {},
             "content_attributes": {},
             "content_type": "text",
-            "content": "Puedes volver a mirar la disponibilidad del 14 de febrero para cenar?",
+            "content": "Hola",
             "conversation": {
               "additional_attributes": {},
               "can_reply": true,
               "channel": "Channel::Api",
               "contact_inbox": {
-                "id": 80,
-                "contact_id": 40,
+                "id": 134,
+                "contact_id": 67,
                 "inbox_id": 1,
-                "source_id": "060a280e-a40e-4ec6-b8c3-fc946fb2496e",
-                "created_at": "2026-01-25T18:12:47.554Z",
-                "updated_at": "2026-01-25T18:12:47.554Z",
+                "source_id": "92e98102-ac3a-4548-a3c1-c228037dbd40",
+                "created_at": "2026-02-12T16:07:55.160Z",
+                "updated_at": "2026-02-12T16:07:55.160Z",
                 "hmac_verified": false,
-                "pubsub_token": "YtGeULQmCKqDf4Hn4594giHe"
+                "pubsub_token": "MLwbPTpeCF5fEnTTU1JaRKo3"
               },
-              "id": 40,
+              "id": 67,
               "inbox_id": 1,
               "messages": [
                 {
-                  "id": 1523,
-                  "content": "Puedes volver a mirar la disponibilidad del 14 de febrero para cenar?",
+                  "id": 1850,
+                  "content": "Hola",
                   "account_id": 1,
                   "inbox_id": 1,
-                  "conversation_id": 40,
+                  "conversation_id": 67,
                   "message_type": 0,
-                  "created_at": 1770314214,
-                  "updated_at": "2026-02-05T17:56:54.031Z",
+                  "created_at": 1770913374,
+                  "updated_at": "2026-02-12T16:22:54.567Z",
                   "private": false,
                   "status": "sent",
-                  "source_id": "WAID:AC4451E841B46A7469688445E775B569",
+                  "source_id": "WAID:3ABB0EFD6379A394B34F",
                   "content_type": "text",
                   "content_attributes": {},
                   "sender_type": "Contact",
-                  "sender_id": 40,
+                  "sender_id": 67,
                   "external_source_ids": {},
                   "additional_attributes": {},
-                  "processed_message_content": "Puedes volver a mirar la disponibilidad del 14 de febrero para cenar?",
+                  "processed_message_content": "Hola",
                   "sentiment": {},
                   "conversation": {
                     "assignee_id": null,
                     "unread_count": 1,
-                    "last_activity_at": 1770314214,
+                    "last_activity_at": 1770913374,
                     "contact_inbox": {
-                      "source_id": "060a280e-a40e-4ec6-b8c3-fc946fb2496e"
+                      "source_id": "92e98102-ac3a-4548-a3c1-c228037dbd40"
                     }
                   },
                   "sender": {
                     "additional_attributes": {},
                     "custom_attributes": {},
                     "email": null,
-                    "id": 40,
-                    "identifier": "175299207659662@lid",
-                    "name": "Josefa González Cordero",
-                    "phone_number": "+34640310426",
-                    "thumbnail": "",
+                    "id": 67,
+                    "identifier": "11849982541880@lid",
+                    "name": "34603848516",
+                    "phone_number": "+34603848516",
+                    "thumbnail": "http://https/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaE1CIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5befc7fbdac48a8642db053d65e84f6dc55ef93c/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3ee3a98e3eb1528ac39b3dd1284c2b0d768e8e96/557246194_832073246167200_9044733970664162974_n.jpg",
                     "type": "contact"
                   }
                 }
@@ -1866,11 +1872,11 @@
                   "additional_attributes": {},
                   "custom_attributes": {},
                   "email": null,
-                  "id": 40,
-                  "identifier": "175299207659662@lid",
-                  "name": "Josefa González Cordero",
-                  "phone_number": "+34640310426",
-                  "thumbnail": "",
+                  "id": 67,
+                  "identifier": "11849982541880@lid",
+                  "name": "34603848516",
+                  "phone_number": "+34603848516",
+                  "thumbnail": "http://https/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaE1CIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5befc7fbdac48a8642db053d65e84f6dc55ef93c/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3ee3a98e3eb1528ac39b3dd1284c2b0d768e8e96/557246194_832073246167200_9044733970664162974_n.jpg",
                   "type": "contact"
                 },
                 "assignee": null,
@@ -1881,17 +1887,17 @@
               "custom_attributes": {},
               "snoozed_until": null,
               "unread_count": 1,
-              "first_reply_created_at": "2026-01-25T18:12:59.905Z",
+              "first_reply_created_at": "2026-02-12T16:07:55.360Z",
               "priority": null,
-              "waiting_since": 1770314214,
-              "agent_last_seen_at": 1770313783,
+              "waiting_since": 1770913298,
+              "agent_last_seen_at": 1770913315,
               "contact_last_seen_at": 0,
-              "last_activity_at": 1770314214,
-              "timestamp": 1770314214,
-              "created_at": 1769364767
+              "last_activity_at": 1770913374,
+              "timestamp": 1770913374,
+              "created_at": 1770912475
             },
-            "created_at": "2026-02-05T17:56:54.031Z",
-            "id": 1523,
+            "created_at": "2026-02-12T16:22:54.567Z",
+            "id": 1850,
             "inbox": {
               "id": 1,
               "name": "Practica UDIA"
@@ -1904,16 +1910,16 @@
                 "name": "KZ"
               },
               "additional_attributes": {},
-              "avatar": "",
+              "avatar": "http://https/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaE1CIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5befc7fbdac48a8642db053d65e84f6dc55ef93c/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3ee3a98e3eb1528ac39b3dd1284c2b0d768e8e96/557246194_832073246167200_9044733970664162974_n.jpg",
               "custom_attributes": {},
               "email": null,
-              "id": 40,
-              "identifier": "175299207659662@lid",
-              "name": "Josefa González Cordero",
-              "phone_number": "+34640310426",
-              "thumbnail": ""
+              "id": 67,
+              "identifier": "11849982541880@lid",
+              "name": "34603848516",
+              "phone_number": "+34603848516",
+              "thumbnail": "http://https/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaE1CIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5befc7fbdac48a8642db053d65e84f6dc55ef93c/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3ee3a98e3eb1528ac39b3dd1284c2b0d768e8e96/557246194_832073246167200_9044733970664162974_n.jpg"
             },
-            "source_id": "WAID:AC4451E841B46A7469688445E775B569",
+            "source_id": "WAID:3ABB0EFD6379A394B34F",
             "event": "message_created"
           },
           "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook/cf611be9-ebe6-48f4-af1c-6996d5dfb497",
@@ -1944,6 +1950,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-02-09T18:41:35.251Z",
-  "versionId": "bdd305a5-224d-40d5-a2a1-a37db8ce398a"
+  "updatedAt": "2026-02-12T16:25:26.860Z",
+  "versionId": "12ea08be-bd20-4f51-a86b-17587c6db6bc"
 }
