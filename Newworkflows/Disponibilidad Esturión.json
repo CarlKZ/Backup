@@ -502,19 +502,17 @@
           "mode": "list",
           "cachedResultName": "Restaurante Esturión"
         },
-        "timeMin": "={{ $json.start_time }}",
-        "timeMax": "={{ $json.end_time }}",
+        "timeMax": "={{ $now.plus({ hour: 3 }) }}",
         "options": {}
       },
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
       "position": [
-        -720,
+        -736,
         512
       ],
-      "id": "e7a5ae39-258d-4442-a79b-0cdcc544075f",
+      "id": "9f4133ff-7b3b-4475-ac7b-ebec26537f4b",
       "name": "Get many events",
-      "alwaysOutputData": false,
       "credentials": {
         "googleCalendarOAuth2Api": {
           "id": "BxLdTiBYRwntbItp",
@@ -551,6 +549,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-02-12T16:31:36.064Z",
-  "versionId": "00240f5a-ca0f-4541-b7de-b50fe7a03145"
+  "updatedAt": "2026-02-16T00:56:29.964Z",
+  "versionId": "879cc5c6-63ee-4fc7-9006-b8c6cb347f52"
 }
