@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-01-23T17:28:51.000Z",
-    "createdAt": "2026-01-23T16:56:52.004Z",
-    "versionId": "3f116033-c5d2-4309-a240-ffa44f2493f1",
+    "updatedAt": "2026-02-19T13:40:11.000Z",
+    "createdAt": "2026-02-19T13:39:51.079Z",
+    "versionId": "af4a0b61-b658-4892-aed4-ee84d1c5fb4b",
     "workflowId": "r4N2wTKIasCoYE7U",
     "nodes": [
       {
@@ -39,19 +39,29 @@
       },
       {
         "parameters": {
-          "operation": "update",
+          "jsCode": "// Obtener el título desde el nodo anterior (Google Calendar tiene summary)\nconst tituloBuscado = $input.first().json.summary;\n\n// Obtener todos los eventos del Google Calendar\nconst eventos = $input.all();\n\n// Buscar el evento que coincida exactamente con el título\nconst eventoEncontrado = eventos.find(evento => \n  evento.json.summary === tituloBuscado\n);\n\n// Si no se encuentra\nif (!eventoEncontrado) {\n  return [{\n    json: {\n      error: 'No se encontró el evento',\n      titulo_buscado: tituloBuscado,\n      eventos_encontrados: eventos.length\n    }\n  }];\n}\n\n// Devolver el ID real de Google Calendar y los datos del evento encontrado\nreturn [{\n  json: {\n    ID_real: eventoEncontrado.json.id,\n    Titulo: eventoEncontrado.json.summary,\n    Fecha_inicio: eventoEncontrado.json.start.dateTime,\n    Fecha_fin: eventoEncontrado.json.end.dateTime,\n    Descripcion: eventoEncontrado.json.description\n  }\n}];\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          688,
+          352
+        ],
+        "id": "966eb970-4071-4ab3-9a96-3974b781fb69",
+        "name": "Code in JavaScript"
+      },
+      {
+        "parameters": {
+          "operation": "getAll",
           "calendar": {
             "__rl": true,
             "value": "3cf455fae61998f2cf7bfffba57a4e28188afc46dd5d892692826a9254905124@group.calendar.google.com",
             "mode": "list",
             "cachedResultName": "Restaurante Esturión"
           },
-          "eventId": "={{ $json.ID }}",
-          "updateFields": {
-            "description": "={{ $json['Descripción'] }}",
-            "end": "={{ $json['Fecha Fin'] }}",
-            "start": "={{ $json['Fecha inicio'] }}",
-            "summary": "={{ $json.Titulo }}"
+          "timeMax": "={{ $now.plus({ month: 1 }) }}",
+          "options": {
+            "query": "={{ $json.Titulo }}"
           }
         },
         "type": "n8n-nodes-base.googleCalendar",
@@ -60,8 +70,35 @@
           480,
           352
         ],
-        "id": "4c4420ac-dc68-445c-8e97-f1f03b3ade08",
-        "name": "Update an event",
+        "id": "eae79a0f-9bef-46f2-b730-7f596c53c87b",
+        "name": "Get many events",
+        "credentials": {
+          "googleCalendarOAuth2Api": {
+            "id": "BxLdTiBYRwntbItp",
+            "name": "Google Calendar account 2"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "calendar": {
+            "__rl": true,
+            "value": "3cf455fae61998f2cf7bfffba57a4e28188afc46dd5d892692826a9254905124@group.calendar.google.com",
+            "mode": "list",
+            "cachedResultName": "Restaurante Esturión"
+          },
+          "eventId": "={{ $json.ID_real }}",
+          "updateFields": {}
+        },
+        "type": "n8n-nodes-base.googleCalendar",
+        "typeVersion": 1.3,
+        "position": [
+          896,
+          352
+        ],
+        "id": "3f0c4fe8-5b8d-4690-88b1-de45c297960b",
+        "name": "Update an event1",
         "credentials": {
           "googleCalendarOAuth2Api": {
             "id": "BxLdTiBYRwntbItp",
@@ -75,11 +112,38 @@
         "main": [
           [
             {
-              "node": "Update an event",
+              "node": "Get many events",
               "type": "main",
               "index": 0
             }
           ]
+        ]
+      },
+      "Code in JavaScript": {
+        "main": [
+          [
+            {
+              "node": "Update an event1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get many events": {
+        "main": [
+          [
+            {
+              "node": "Code in JavaScript",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Update an event1": {
+        "main": [
+          []
         ]
       }
     },
@@ -88,24 +152,53 @@
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "3f116033-c5d2-4309-a240-ffa44f2493f1",
+  "activeVersionId": "af4a0b61-b658-4892-aed4-ee84d1c5fb4b",
   "connections": {
     "Modificar Evento Esturion": {
       "main": [
         [
           {
-            "node": "Update an event",
+            "node": "Get many events",
             "type": "main",
             "index": 0
           }
         ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Update an event1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many events": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update an event1": {
+      "main": [
+        []
       ]
     }
   },
   "createdAt": "2026-01-23T16:53:05.049Z",
   "id": "r4N2wTKIasCoYE7U",
   "isArchived": false,
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Modificar Evento Esturion",
   "nodes": [
     {
@@ -141,19 +234,29 @@
     },
     {
       "parameters": {
-        "operation": "update",
+        "jsCode": "// Obtener el título desde el nodo anterior (Google Calendar tiene summary)\nconst tituloBuscado = $input.first().json.summary;\n\n// Obtener todos los eventos del Google Calendar\nconst eventos = $input.all();\n\n// Buscar el evento que coincida exactamente con el título\nconst eventoEncontrado = eventos.find(evento => \n  evento.json.summary === tituloBuscado\n);\n\n// Si no se encuentra\nif (!eventoEncontrado) {\n  return [{\n    json: {\n      error: 'No se encontró el evento',\n      titulo_buscado: tituloBuscado,\n      eventos_encontrados: eventos.length\n    }\n  }];\n}\n\n// Devolver el ID real de Google Calendar y los datos del evento encontrado\nreturn [{\n  json: {\n    ID_real: eventoEncontrado.json.id,\n    Titulo: eventoEncontrado.json.summary,\n    Fecha_inicio: eventoEncontrado.json.start.dateTime,\n    Fecha_fin: eventoEncontrado.json.end.dateTime,\n    Descripcion: eventoEncontrado.json.description\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        688,
+        352
+      ],
+      "id": "966eb970-4071-4ab3-9a96-3974b781fb69",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
         "calendar": {
           "__rl": true,
           "value": "3cf455fae61998f2cf7bfffba57a4e28188afc46dd5d892692826a9254905124@group.calendar.google.com",
           "mode": "list",
           "cachedResultName": "Restaurante Esturión"
         },
-        "eventId": "={{ $json.ID }}",
-        "updateFields": {
-          "description": "={{ $json['Descripción'] }}",
-          "end": "={{ $json['Fecha Fin'] }}",
-          "start": "={{ $json['Fecha inicio'] }}",
-          "summary": "={{ $json.Titulo }}"
+        "timeMax": "={{ $now.plus({ month: 1 }) }}",
+        "options": {
+          "query": "={{ $json.Titulo }}"
         }
       },
       "type": "n8n-nodes-base.googleCalendar",
@@ -162,8 +265,35 @@
         480,
         352
       ],
-      "id": "4c4420ac-dc68-445c-8e97-f1f03b3ade08",
-      "name": "Update an event",
+      "id": "eae79a0f-9bef-46f2-b730-7f596c53c87b",
+      "name": "Get many events",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "BxLdTiBYRwntbItp",
+          "name": "Google Calendar account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "calendar": {
+          "__rl": true,
+          "value": "3cf455fae61998f2cf7bfffba57a4e28188afc46dd5d892692826a9254905124@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Restaurante Esturión"
+        },
+        "eventId": "={{ $json.ID_real }}",
+        "updateFields": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        896,
+        352
+      ],
+      "id": "3f0c4fe8-5b8d-4690-88b1-de45c297960b",
+      "name": "Update an event1",
       "credentials": {
         "googleCalendarOAuth2Api": {
           "id": "BxLdTiBYRwntbItp",
@@ -172,7 +302,22 @@
       }
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Modificar Evento Esturion": [
+      {
+        "json": {
+          "Titulo": "Reserva Carlos Fernández - 5 personas",
+          "Fecha inicio": "2026-02-26T21:30:00+01:00",
+          "Fecha fin": "2026-02-26T23:30:00+01:00",
+          "Descripción": "Reserva para 5 personas. Teléfono: 640310426. Modificada por cliente vía chat.",
+          "ID": "1h903isr0262f13rui33fuj3po"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "availableInMCP": false
@@ -189,6 +334,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-01-23T16:56:52.002Z",
-  "versionId": "3f116033-c5d2-4309-a240-ffa44f2493f1"
+  "updatedAt": "2026-02-19T17:14:17.255Z",
+  "versionId": "af4a0b61-b658-4892-aed4-ee84d1c5fb4b"
 }
