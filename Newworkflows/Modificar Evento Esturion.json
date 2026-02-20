@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-19T13:40:11.000Z",
-    "createdAt": "2026-02-19T13:39:51.079Z",
-    "versionId": "af4a0b61-b658-4892-aed4-ee84d1c5fb4b",
+    "updatedAt": "2026-02-20T18:29:23.000Z",
+    "createdAt": "2026-02-20T18:28:53.192Z",
+    "versionId": "b853cc39-2a25-4a62-b657-b66ab38bbeaf",
     "workflowId": "r4N2wTKIasCoYE7U",
     "nodes": [
       {
@@ -39,7 +39,7 @@
       },
       {
         "parameters": {
-          "jsCode": "// Obtener el título desde el nodo anterior (Google Calendar tiene summary)\nconst tituloBuscado = $input.first().json.summary;\n\n// Obtener todos los eventos del Google Calendar\nconst eventos = $input.all();\n\n// Buscar el evento que coincida exactamente con el título\nconst eventoEncontrado = eventos.find(evento => \n  evento.json.summary === tituloBuscado\n);\n\n// Si no se encuentra\nif (!eventoEncontrado) {\n  return [{\n    json: {\n      error: 'No se encontró el evento',\n      titulo_buscado: tituloBuscado,\n      eventos_encontrados: eventos.length\n    }\n  }];\n}\n\n// Devolver el ID real de Google Calendar y los datos del evento encontrado\nreturn [{\n  json: {\n    ID_real: eventoEncontrado.json.id,\n    Titulo: eventoEncontrado.json.summary,\n    Fecha_inicio: eventoEncontrado.json.start.dateTime,\n    Fecha_fin: eventoEncontrado.json.end.dateTime,\n    Descripcion: eventoEncontrado.json.description\n  }\n}];\n"
+          "jsCode": "// Obtener el ID y las nuevas fechas desde el nodo \"Modificar Evento Esturion\"\nconst idBuscado = $('Modificar Evento Esturion').first().json['ID'];\nconst nuevaFechaInicio = $('Modificar Evento Esturion').first().json['Fecha inicio'];\nconst nuevaFechaFin = $('Modificar Evento Esturion').first().json['Fecha fin'];\n\n// Obtener todos los eventos del Google Calendar\nconst eventos = $input.all();\n\n// Buscar el evento que coincida con el ID\nconst eventoEncontrado = eventos.find(evento => \n  evento.json.id === idBuscado\n);\n\n// Si no se encuentra\nif (!eventoEncontrado) {\n  return [{\n    json: {\n      error: 'No se encontró el evento',\n      id_buscado: idBuscado,\n      eventos_encontrados: eventos.length\n    }\n  }];\n}\n\n// Devolver el ID real de Google Calendar con las fechas actualizadas del trigger\nreturn [{\n  json: {\n    ID_real: eventoEncontrado.json.id,\n    Titulo: eventoEncontrado.json.summary,\n    Fecha_inicio: nuevaFechaInicio,\n    Fecha_fin: nuevaFechaFin,\n    Descripcion: eventoEncontrado.json.description\n  }\n}];\n"
         },
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
@@ -89,7 +89,12 @@
             "cachedResultName": "Restaurante Esturión"
           },
           "eventId": "={{ $json.ID_real }}",
-          "updateFields": {}
+          "updateFields": {
+            "description": "={{ $json.Descripcion }}",
+            "end": "={{ $json.Fecha_fin }}",
+            "start": "={{ $json.Fecha_inicio }}",
+            "summary": "={{ $json.Titulo }}"
+          }
         },
         "type": "n8n-nodes-base.googleCalendar",
         "typeVersion": 1.3,
@@ -152,7 +157,7 @@
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "af4a0b61-b658-4892-aed4-ee84d1c5fb4b",
+  "activeVersionId": "b853cc39-2a25-4a62-b657-b66ab38bbeaf",
   "connections": {
     "Modificar Evento Esturion": {
       "main": [
@@ -234,7 +239,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Obtener el título desde el nodo anterior (Google Calendar tiene summary)\nconst tituloBuscado = $input.first().json.summary;\n\n// Obtener todos los eventos del Google Calendar\nconst eventos = $input.all();\n\n// Buscar el evento que coincida exactamente con el título\nconst eventoEncontrado = eventos.find(evento => \n  evento.json.summary === tituloBuscado\n);\n\n// Si no se encuentra\nif (!eventoEncontrado) {\n  return [{\n    json: {\n      error: 'No se encontró el evento',\n      titulo_buscado: tituloBuscado,\n      eventos_encontrados: eventos.length\n    }\n  }];\n}\n\n// Devolver el ID real de Google Calendar y los datos del evento encontrado\nreturn [{\n  json: {\n    ID_real: eventoEncontrado.json.id,\n    Titulo: eventoEncontrado.json.summary,\n    Fecha_inicio: eventoEncontrado.json.start.dateTime,\n    Fecha_fin: eventoEncontrado.json.end.dateTime,\n    Descripcion: eventoEncontrado.json.description\n  }\n}];\n"
+        "jsCode": "// Obtener el ID y las nuevas fechas desde el nodo \"Modificar Evento Esturion\"\nconst idBuscado = $('Modificar Evento Esturion').first().json['ID'];\nconst nuevaFechaInicio = $('Modificar Evento Esturion').first().json['Fecha inicio'];\nconst nuevaFechaFin = $('Modificar Evento Esturion').first().json['Fecha fin'];\n\n// Obtener todos los eventos del Google Calendar\nconst eventos = $input.all();\n\n// Buscar el evento que coincida con el ID\nconst eventoEncontrado = eventos.find(evento => \n  evento.json.id === idBuscado\n);\n\n// Si no se encuentra\nif (!eventoEncontrado) {\n  return [{\n    json: {\n      error: 'No se encontró el evento',\n      id_buscado: idBuscado,\n      eventos_encontrados: eventos.length\n    }\n  }];\n}\n\n// Devolver el ID real de Google Calendar con las fechas actualizadas del trigger\nreturn [{\n  json: {\n    ID_real: eventoEncontrado.json.id,\n    Titulo: eventoEncontrado.json.summary,\n    Fecha_inicio: nuevaFechaInicio,\n    Fecha_fin: nuevaFechaFin,\n    Descripcion: eventoEncontrado.json.description\n  }\n}];\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -284,7 +289,12 @@
           "cachedResultName": "Restaurante Esturión"
         },
         "eventId": "={{ $json.ID_real }}",
-        "updateFields": {}
+        "updateFields": {
+          "description": "={{ $json.Descripcion }}",
+          "end": "={{ $json.Fecha_fin }}",
+          "start": "={{ $json.Fecha_inicio }}",
+          "summary": "={{ $json.Titulo }}"
+        }
       },
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
@@ -309,7 +319,7 @@
           "Titulo": "Reserva Carlos Fernández - 5 personas",
           "Fecha inicio": "2026-02-26T21:30:00+01:00",
           "Fecha fin": "2026-02-26T23:30:00+01:00",
-          "Descripción": "Reserva para 5 personas. Teléfono: 640310426. Modificada por cliente vía chat.",
+          "Descripción": "Reserva para 5 personas. Teléfono: 640310426. Solicitado por el cliente vía chat.",
           "ID": "1h903isr0262f13rui33fuj3po"
         },
         "pairedItem": {
@@ -320,7 +330,11 @@
   },
   "settings": {
     "executionOrder": "v1",
-    "availableInMCP": false
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner",
+    "binaryMode": "separate"
   },
   "shared": [
     {
@@ -334,6 +348,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-02-19T17:14:17.255Z",
-  "versionId": "af4a0b61-b658-4892-aed4-ee84d1c5fb4b"
+  "updatedAt": "2026-02-20T18:28:53.190Z",
+  "versionId": "b853cc39-2a25-4a62-b657-b66ab38bbeaf"
 }
