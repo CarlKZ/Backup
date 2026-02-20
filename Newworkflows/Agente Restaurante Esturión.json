@@ -281,7 +281,13 @@
     "If5": {
       "main": [
         [],
-        []
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "HTTP Request1": {
@@ -1210,6 +1216,7 @@
       ],
       "id": "0b6477c1-44f6-4729-b53d-ae44b0c564a9",
       "name": "HTTP Request1",
+      "retryOnFail": true,
       "credentials": {
         "httpHeaderAuth": {
           "id": "s9IC0e9qhwPtXegM",
@@ -1795,7 +1802,7 @@
           "headers": {
             "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
             "user-agent": "rest-client/2.1.0 (linux-musl x86_64) ruby/3.3.3p89",
-            "content-length": "2342",
+            "content-length": "2540",
             "accept": "application/json",
             "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
             "content-type": "application/json",
@@ -1816,7 +1823,7 @@
             "additional_attributes": {},
             "content_attributes": {},
             "content_type": "text",
-            "content": "Si por favor",
+            "content": "Me gustaría modificar mi reserva al Lunes siguiente por favor a la misma hora",
             "conversation": {
               "additional_attributes": {},
               "can_reply": true,
@@ -1835,29 +1842,29 @@
               "inbox_id": 1,
               "messages": [
                 {
-                  "id": 2202,
-                  "content": "Si por favor",
+                  "id": 2279,
+                  "content": "Me gustaría modificar mi reserva al Lunes siguiente por favor a la misma hora",
                   "account_id": 1,
                   "inbox_id": 1,
                   "conversation_id": 70,
                   "message_type": 0,
-                  "created_at": 1771506956,
-                  "updated_at": "2026-02-19T13:15:56.341Z",
+                  "created_at": 1771613089,
+                  "updated_at": "2026-02-20T18:44:49.492Z",
                   "private": false,
                   "status": "sent",
-                  "source_id": "WAID:AC205C3B2315991425A6F3DB1C32323E",
+                  "source_id": "WAID:AC14D7795AD5168520DB799DBEAF6DA8",
                   "content_type": "text",
                   "content_attributes": {},
                   "sender_type": "Contact",
                   "sender_id": 70,
                   "external_source_ids": {},
                   "additional_attributes": {},
-                  "processed_message_content": "Si por favor",
+                  "processed_message_content": "Me gustaría modificar mi reserva al Lunes siguiente por favor a la misma hora",
                   "sentiment": {},
                   "conversation": {
                     "assignee_id": null,
                     "unread_count": 1,
-                    "last_activity_at": 1771506956,
+                    "last_activity_at": 1771613089,
                     "contact_inbox": {
                       "source_id": "89c984d7-1508-40c8-b90b-249e618ca1b2"
                     }
@@ -1899,14 +1906,14 @@
               "first_reply_created_at": "2026-02-16T14:49:24.962Z",
               "priority": null,
               "waiting_since": 0,
-              "agent_last_seen_at": 1771506924,
+              "agent_last_seen_at": 1771613040,
               "contact_last_seen_at": 0,
-              "last_activity_at": 1771506956,
-              "timestamp": 1771506956,
+              "last_activity_at": 1771613089,
+              "timestamp": 1771613089,
               "created_at": 1771253186
             },
-            "created_at": "2026-02-19T13:15:56.341Z",
-            "id": 2202,
+            "created_at": "2026-02-20T18:44:49.492Z",
+            "id": 2279,
             "inbox": {
               "id": 1,
               "name": "Practica UDIA"
@@ -1928,7 +1935,7 @@
               "phone_number": "+34640310426",
               "thumbnail": ""
             },
-            "source_id": "WAID:AC205C3B2315991425A6F3DB1C32323E",
+            "source_id": "WAID:AC14D7795AD5168520DB799DBEAF6DA8",
             "event": "message_created"
           },
           "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook/cf611be9-ebe6-48f4-af1c-6996d5dfb497",
@@ -1959,6 +1966,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-02-19T17:12:50.311Z",
-  "versionId": "091172f5-576e-41ba-96ea-92f9a8c99195"
+  "updatedAt": "2026-02-20T19:13:15.062Z",
+  "versionId": "f1995519-dd9a-4453-ab36-b61ee591ca06"
 }
