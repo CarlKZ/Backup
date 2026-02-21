@@ -47,17 +47,6 @@
         ]
       ]
     },
-    "Code in JavaScript": {
-      "main": [
-        [
-          {
-            "node": "Edit Fields1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Redis": {
       "main": [
         [
@@ -129,39 +118,6 @@
         [
           {
             "node": "AI Agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "HTTP Request": {
-      "main": [
-        [
-          {
-            "node": "Transcribe a recording",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Transcribe a recording": {
-      "main": [
-        [
-          {
-            "node": "Code in JavaScript1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code in JavaScript1": {
-      "main": [
-        [
-          {
-            "node": "Edit Fields3",
             "type": "main",
             "index": 0
           }
@@ -360,14 +316,14 @@
       "main": [
         [
           {
-            "node": "HTTP Request",
+            "node": "Analizar AU",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Code in JavaScript",
+            "node": "Quitar Prefijo",
             "type": "main",
             "index": 0
           }
@@ -457,6 +413,50 @@
           {
             "node": "AI Agent",
             "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Quitar Prefijo": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Quitar Prefijo AU": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analizar AU": {
+      "main": [
+        [
+          {
+            "node": "Pasar de AU a Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pasar de AU a Text": {
+      "main": [
+        [
+          {
+            "node": "Quitar Prefijo AU",
+            "type": "main",
             "index": 0
           }
         ]
@@ -624,19 +624,6 @@
     },
     {
       "parameters": {
-        "jsCode": "// Obtener el valor original del campo\nconst sender = $input.first().json.telefono;\n\n// Limpiar el número:\n// - Eliminar el prefijo '34' o '49' si existe, y quitar el dominio de whatsapp\nconst cleanedNumber = sender\n  .replace(/^(\\+?34|\\+?49)/, '') // Quita el '+34', '34', '+49' o '49' al inicio\n  .replace(/@s\\.whatsapp\\.net$/, ''); // Quita el '@s.whatsapp.net' al final\n\n// Devolver el número limpio\nreturn [\n  {\n    json: {\n      cleanedNumber\n    }\n  }\n];\n"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        448,
-        192
-      ],
-      "id": "491d5c62-a392-4269-a7d2-05af6f0054b4",
-      "name": "Code in JavaScript"
-    },
-    {
-      "parameters": {
         "operation": "push",
         "list": "={{ $json.Identificador }}",
         "messageData": "={{ $json.mensaje }}",
@@ -667,8 +654,7 @@
       ],
       "id": "0975007f-05bb-4532-bd7b-7553208b7a00",
       "name": "Wait",
-      "webhookId": "71ac37ec-4a28-4234-a581-e5bf42c39a02",
-      "disabled": true
+      "webhookId": "71ac37ec-4a28-4234-a581-e5bf42c39a02"
     },
     {
       "parameters": {
@@ -843,55 +829,6 @@
     },
     {
       "parameters": {
-        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host{{ $json.body.conversation.messages[0].attachments[0].data_url.replace('http://https', '') }}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        0,
-        0
-      ],
-      "id": "4ade9470-3900-4083-bab4-a1a4eb6e5a69",
-      "name": "HTTP Request"
-    },
-    {
-      "parameters": {
-        "resource": "audio",
-        "operation": "transcribe",
-        "binaryPropertyName": "=data",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.openAi",
-      "typeVersion": 2.1,
-      "position": [
-        224,
-        0
-      ],
-      "id": "084fdced-d7c3-4af9-91b5-f8469e44ca36",
-      "name": "Transcribe a recording",
-      "credentials": {
-        "openAiApi": {
-          "id": "WvSLkCujVhY8jIGz",
-          "name": "OpenAi account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "jsCode": "// Obtener el valor original del campo\nconst sender = $('If4').first().json.telefono;\n// Eliminar el prefijo '34' o '49' si existe, y quitar el dominio de WhatsApp\nconst cleanedNumber = sender\n  .replace(/^(\\+?34|\\+?49)/, '')       // Quita el '+34', '34', '+49' o '49' al inicio\n  .replace(/@s\\.whatsapp\\.net$/, ''); // Quita el '@s.whatsapp.net' al final\n\n// Devolver el número limpio\nreturn [\n  {\n    json: {\n      cleanedNumber\n    }\n  }\n];\n"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        448,
-        0
-      ],
-      "id": "54901eab-f8b5-42d2-a8a8-e8d1385bc047",
-      "name": "Code in JavaScript1"
-    },
-    {
-      "parameters": {
         "operation": "push",
         "list": "={{ $json.Identificador }}",
         "messageData": "={{ $json.mensaje_audio }}",
@@ -913,7 +850,9 @@
       }
     },
     {
-      "parameters": {},
+      "parameters": {
+        "amount": 30
+      },
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
@@ -983,7 +922,7 @@
             {
               "id": "55ad0e2a-09a6-42b7-925d-d30a4b19661b",
               "name": "mensaje_audio",
-              "value": "={{ $('Transcribe a recording').item.json.text }}",
+              "value": "={{ $('Pasar de AU a Text').item.json.text }}",
               "type": "string"
             },
             {
@@ -1079,7 +1018,7 @@
       ],
       "id": "e23c718d-91a0-4f63-9254-56887868d867",
       "name": "AI Agent",
-      "retryOnFail": false
+      "retryOnFail": true
     },
     {
       "parameters": {
@@ -1166,7 +1105,7 @@
           "conditions": [
             {
               "id": "c536a974-fb1f-4d5b-9970-5d59a0121721",
-              "leftValue": "={{ $json.output.Response.Part1 }}",
+              "leftValue": "={{ $json.output.parte1 }}",
               "rightValue": "false",
               "operator": {
                 "type": "string",
@@ -1205,7 +1144,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"content\": \"{{ $('AI Agent').item.json.output.Response.Part1 }}\",\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
+        "jsonBody": "={\n  \"content\": \"{{ $json.output.parte1 }}\",\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -1216,7 +1155,7 @@
       ],
       "id": "0b6477c1-44f6-4729-b53d-ae44b0c564a9",
       "name": "HTTP Request1",
-      "retryOnFail": true,
+      "retryOnFail": false,
       "credentials": {
         "httpHeaderAuth": {
           "id": "s9IC0e9qhwPtXegM",
@@ -1236,7 +1175,7 @@
           "conditions": [
             {
               "id": "7371417a-70c7-4cb2-936c-5a09884e761b",
-              "leftValue": "={{ $('AI Agent').item.json.output.Response.Part2 }}",
+              "leftValue": "={{ $('AI Agent').item.json.output.parte2 }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -1259,7 +1198,9 @@
       "name": "If6"
     },
     {
-      "parameters": {},
+      "parameters": {
+        "amount": 10
+      },
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
@@ -1268,8 +1209,7 @@
       ],
       "id": "aad0d893-ceeb-49de-a4b1-4a682548e759",
       "name": "Wait2",
-      "webhookId": "751bef90-71de-41d2-ac4f-795b995cc5dd",
-      "disabled": true
+      "webhookId": "751bef90-71de-41d2-ac4f-795b995cc5dd"
     },
     {
       "parameters": {
@@ -1306,7 +1246,9 @@
       "name": "If7"
     },
     {
-      "parameters": {},
+      "parameters": {
+        "amount": 10
+      },
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
@@ -1315,8 +1257,7 @@
       ],
       "id": "bc7237b2-ef54-4ef7-a1d6-a0d7f7368e58",
       "name": "Wait3",
-      "webhookId": "751bef90-71de-41d2-ac4f-795b995cc5dd",
-      "disabled": true
+      "webhookId": "751bef90-71de-41d2-ac4f-795b995cc5dd"
     },
     {
       "parameters": {
@@ -1414,7 +1355,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"content\": \"{{ $('AI Agent').item.json.output.Response.Part2 }}\",\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
+        "jsonBody": "={\n  \"content\": \"{{ $('AI Agent').item.json.output.parte2 }}\",\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -1449,7 +1390,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"content\": \"{{ $('AI Agent').item.json.output.Response.Part3 }}\",\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
+        "jsonBody": "={\n  \"content\": \"{{ $('AI Agent').item.json.output.parte3 }}\",\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -1793,6 +1734,68 @@
       ],
       "id": "31038141-6bb1-459f-849c-539d87f5aafb",
       "name": "Disponibilidad Esturión"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener el valor original del campo\nconst sender = $input.first().json.telefono;\n\n// Limpiar el número:\n// - Eliminar el prefijo '34' o '49' si existe, y quitar el dominio de whatsapp\nconst cleanedNumber = sender\n  .replace(/^(\\+?34|\\+?49)/, '') // Quita el '+34', '34', '+49' o '49' al inicio\n  .replace(/@s\\.whatsapp\\.net$/, ''); // Quita el '@s.whatsapp.net' al final\n\n// Devolver el número limpio\nreturn [\n  {\n    json: {\n      cleanedNumber\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        448,
+        192
+      ],
+      "id": "491d5c62-a392-4269-a7d2-05af6f0054b4",
+      "name": "Quitar Prefijo"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener el valor original del campo\nconst sender = $('If4').first().json.telefono;\n// Eliminar el prefijo '34' o '49' si existe, y quitar el dominio de WhatsApp\nconst cleanedNumber = sender\n  .replace(/^(\\+?34|\\+?49)/, '')       // Quita el '+34', '34', '+49' o '49' al inicio\n  .replace(/@s\\.whatsapp\\.net$/, ''); // Quita el '@s.whatsapp.net' al final\n\n// Devolver el número limpio\nreturn [\n  {\n    json: {\n      cleanedNumber\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        448,
+        0
+      ],
+      "id": "54901eab-f8b5-42d2-a8a8-e8d1385bc047",
+      "name": "Quitar Prefijo AU"
+    },
+    {
+      "parameters": {
+        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host{{ $json.body.conversation.messages[0].attachments[0].data_url.replace('http://https', '') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "4ade9470-3900-4083-bab4-a1a4eb6e5a69",
+      "name": "Analizar AU"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "binaryPropertyName": "=data",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        224,
+        0
+      ],
+      "id": "084fdced-d7c3-4af9-91b5-f8469e44ca36",
+      "name": "Pasar de AU a Text",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
     }
   ],
   "pinData": {
@@ -1802,7 +1805,7 @@
           "headers": {
             "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
             "user-agent": "rest-client/2.1.0 (linux-musl x86_64) ruby/3.3.3p89",
-            "content-length": "2540",
+            "content-length": "4195",
             "accept": "application/json",
             "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
             "content-type": "application/json",
@@ -1823,61 +1826,61 @@
             "additional_attributes": {},
             "content_attributes": {},
             "content_type": "text",
-            "content": "Me gustaría modificar mi reserva al Lunes siguiente por favor a la misma hora",
+            "content": "Si, confirmo. María José Fernández González. Confirmo mi teléfono",
             "conversation": {
               "additional_attributes": {},
               "can_reply": true,
               "channel": "Channel::Api",
               "contact_inbox": {
-                "id": 140,
-                "contact_id": 70,
+                "id": 148,
+                "contact_id": 74,
                 "inbox_id": 1,
-                "source_id": "89c984d7-1508-40c8-b90b-249e618ca1b2",
-                "created_at": "2026-02-16T14:46:26.014Z",
-                "updated_at": "2026-02-16T14:46:26.014Z",
+                "source_id": "2d5a1768-ff9a-41e7-a93d-caf1d6503d4f",
+                "created_at": "2026-02-21T15:17:14.127Z",
+                "updated_at": "2026-02-21T15:17:14.127Z",
                 "hmac_verified": false,
-                "pubsub_token": "H6yQnFzhqcVZQ8m9y3f15mUg"
+                "pubsub_token": "mZ2K8qwMfRMpuG66KC6KcbNA"
               },
-              "id": 70,
+              "id": 74,
               "inbox_id": 1,
               "messages": [
                 {
-                  "id": 2279,
-                  "content": "Me gustaría modificar mi reserva al Lunes siguiente por favor a la misma hora",
+                  "id": 2394,
+                  "content": "Si, confirmo. María José Fernández González. Confirmo mi teléfono",
                   "account_id": 1,
                   "inbox_id": 1,
-                  "conversation_id": 70,
+                  "conversation_id": 74,
                   "message_type": 0,
-                  "created_at": 1771613089,
-                  "updated_at": "2026-02-20T18:44:49.492Z",
+                  "created_at": 1771692825,
+                  "updated_at": "2026-02-21T16:53:45.009Z",
                   "private": false,
                   "status": "sent",
-                  "source_id": "WAID:AC14D7795AD5168520DB799DBEAF6DA8",
+                  "source_id": "WAID:AC081B476CD605A2770FF881C407E343",
                   "content_type": "text",
                   "content_attributes": {},
                   "sender_type": "Contact",
-                  "sender_id": 70,
+                  "sender_id": 74,
                   "external_source_ids": {},
                   "additional_attributes": {},
-                  "processed_message_content": "Me gustaría modificar mi reserva al Lunes siguiente por favor a la misma hora",
+                  "processed_message_content": "Si, confirmo. María José Fernández González. Confirmo mi teléfono",
                   "sentiment": {},
                   "conversation": {
                     "assignee_id": null,
                     "unread_count": 1,
-                    "last_activity_at": 1771613089,
+                    "last_activity_at": 1771692825,
                     "contact_inbox": {
-                      "source_id": "89c984d7-1508-40c8-b90b-249e618ca1b2"
+                      "source_id": "2d5a1768-ff9a-41e7-a93d-caf1d6503d4f"
                     }
                   },
                   "sender": {
                     "additional_attributes": {},
                     "custom_attributes": {},
                     "email": null,
-                    "id": 70,
-                    "identifier": "175299207659662@lid",
-                    "name": "Josefa González Cordero",
-                    "phone_number": "+34640310426",
-                    "thumbnail": "",
+                    "id": 74,
+                    "identifier": "77893560451279@lid",
+                    "name": "Maria José",
+                    "phone_number": "+34628898001",
+                    "thumbnail": "http://https/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazRCIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dc968dc75045c245940096ce7e36bb55ed476150/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3ee3a98e3eb1528ac39b3dd1284c2b0d768e8e96/106836103_193003198808079_2348159792018139196_n.jpg",
                     "type": "contact"
                   }
                 }
@@ -1888,11 +1891,11 @@
                   "additional_attributes": {},
                   "custom_attributes": {},
                   "email": null,
-                  "id": 70,
-                  "identifier": "175299207659662@lid",
-                  "name": "Josefa González Cordero",
-                  "phone_number": "+34640310426",
-                  "thumbnail": "",
+                  "id": 74,
+                  "identifier": "77893560451279@lid",
+                  "name": "Maria José",
+                  "phone_number": "+34628898001",
+                  "thumbnail": "http://https/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazRCIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dc968dc75045c245940096ce7e36bb55ed476150/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3ee3a98e3eb1528ac39b3dd1284c2b0d768e8e96/106836103_193003198808079_2348159792018139196_n.jpg",
                   "type": "contact"
                 },
                 "assignee": null,
@@ -1903,17 +1906,17 @@
               "custom_attributes": {},
               "snoozed_until": null,
               "unread_count": 1,
-              "first_reply_created_at": "2026-02-16T14:49:24.962Z",
+              "first_reply_created_at": "2026-02-21T15:18:09.023Z",
               "priority": null,
-              "waiting_since": 0,
-              "agent_last_seen_at": 1771613040,
+              "waiting_since": 1771692825,
+              "agent_last_seen_at": 1771692676,
               "contact_last_seen_at": 0,
-              "last_activity_at": 1771613089,
-              "timestamp": 1771613089,
-              "created_at": 1771253186
+              "last_activity_at": 1771692825,
+              "timestamp": 1771692825,
+              "created_at": 1771687034
             },
-            "created_at": "2026-02-20T18:44:49.492Z",
-            "id": 2279,
+            "created_at": "2026-02-21T16:53:45.009Z",
+            "id": 2394,
             "inbox": {
               "id": 1,
               "name": "Practica UDIA"
@@ -1926,16 +1929,16 @@
                 "name": "KZ"
               },
               "additional_attributes": {},
-              "avatar": "",
+              "avatar": "http://https/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazRCIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dc968dc75045c245940096ce7e36bb55ed476150/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3ee3a98e3eb1528ac39b3dd1284c2b0d768e8e96/106836103_193003198808079_2348159792018139196_n.jpg",
               "custom_attributes": {},
               "email": null,
-              "id": 70,
-              "identifier": "175299207659662@lid",
-              "name": "Josefa González Cordero",
-              "phone_number": "+34640310426",
-              "thumbnail": ""
+              "id": 74,
+              "identifier": "77893560451279@lid",
+              "name": "Maria José",
+              "phone_number": "+34628898001",
+              "thumbnail": "http://https/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazRCIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dc968dc75045c245940096ce7e36bb55ed476150/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3ee3a98e3eb1528ac39b3dd1284c2b0d768e8e96/106836103_193003198808079_2348159792018139196_n.jpg"
             },
-            "source_id": "WAID:AC14D7795AD5168520DB799DBEAF6DA8",
+            "source_id": "WAID:AC081B476CD605A2770FF881C407E343",
             "event": "message_created"
           },
           "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook/cf611be9-ebe6-48f4-af1c-6996d5dfb497",
@@ -1966,6 +1969,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-02-20T19:13:15.062Z",
-  "versionId": "f1995519-dd9a-4453-ab36-b61ee591ca06"
+  "updatedAt": "2026-02-21T16:57:41.409Z",
+  "versionId": "af965aab-10ca-4916-8edf-b07bc9997150"
 }
