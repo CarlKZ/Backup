@@ -1,0 +1,488 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Calendar": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Calendar1": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Google Calendar1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain1": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Google Calendar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-02-23T12:39:52.245Z",
+  "id": "H7EquWUB4liqIkcYAkxgP",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Agente voz retail AI",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "43e2c303-1309-46f4-af19-14b66c5a79e8",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        320,
+        448
+      ],
+      "id": "0147c5f8-189a-4395-b2ad-d3d06cb8e4bc",
+      "name": "Webhook",
+      "webhookId": "43e2c303-1309-46f4-af19-14b66c5a79e8"
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "91c29a8f3421ee6ea2651fe17f231e59b3320a1935c8ffb4686b8b1888ed337c@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Clinica "
+        },
+        "start": "={{ $json.start_time }}",
+        "end": "={{ $json.end_time }}",
+        "additionalFields": {
+          "description": "=El Telefono de  {{ $('Webhook').item.json.body.args.Nombre }} es {{ $('Webhook').item.json.body.args.Telefono }}",
+          "summary": "=Cita para {{ $('Webhook').item.json.body.args.Nombre }} en {{ $('Webhook').item.json.body.args.Servicio }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        1312,
+        416
+      ],
+      "id": "03f35ac4-c1d0-41dd-8654-6b8280af8eda",
+      "name": "Google Calendar",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "BxLdTiBYRwntbItp",
+          "name": "Google Calendar account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"msg\": \"la cita se agendo con exito\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1568,
+        416
+      ],
+      "id": "420a8795-a660-4ed5-ae4a-c9fd0a79d108",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.available }}",
+                    "rightValue": "true",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    },
+                    "id": "24da48cd-2d7c-4566-8ecd-8faa459734e6"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "si"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "7186af82-750a-4a2e-86f8-95590d35cd92",
+                    "leftValue": "={{ $json.available }}",
+                    "rightValue": "false",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "false",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "no"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -464,
+        272
+      ],
+      "id": "3004f1bf-5a1e-4cc5-9da0-a682b0b6a745",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"msg\": \"no hay disponibilidad\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        -32,
+        592
+      ],
+      "id": "030ff280-443f-4b21-9c01-a77fffcb43a6",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "0accefb1-8eb6-48ee-8f84-f0814f4df3e0",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1680,
+        304
+      ],
+      "id": "87b4a874-356c-4c55-aa8a-61669037515e",
+      "name": "Webhook1",
+      "webhookId": "0accefb1-8eb6-48ee-8f84-f0814f4df3e0"
+    },
+    {
+      "parameters": {
+        "resource": "calendar",
+        "calendar": {
+          "__rl": true,
+          "value": "73665076f2ccf2d0e125665550c468baec0e7e473b7ab32c0102b3e748cae027@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "JARVIS"
+        },
+        "timeMin": "={{ $json.start_time }}",
+        "timeMax": "={{ $json.end_time }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        -704,
+        304
+      ],
+      "id": "87e70fc0-d86c-43c9-86cd-43298082ea54",
+      "name": "Google Calendar1",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "BxLdTiBYRwntbItp",
+          "name": "Google Calendar account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"msg\": \"si hay\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "5c7dc8e7-015c-4784-8d0f-20a93c737854",
+      "name": "Respond to Webhook2"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Fecha:  {{ $json.body.args.Fecha }}\nHora: {{ $json.body.args.Hora }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "Formatea la fecha y la hora al formato de fecha y hora todo junto de google calendar, a este formato 2025-09-10T10:00:00"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        -1408,
+        304
+      ],
+      "id": "6e99a36b-6291-42be-af2c-4faf9b9ef5f5",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-5-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -1424,
+        528
+      ],
+      "id": "ab74cec3-19ab-4ba6-9c6c-bb1a05b4dc9b",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  const fechaStr = item.json.text;\n\n  const start = new Date(fechaStr);\n  const end = new Date(start.getTime() + 60 * 60 * 1000); // +1 hora\n\n  // Función para formatear la fecha como YYYY-MM-DDTHH:mm:ss\n  function formatDate(date) {\n    const pad = (num) => num.toString().padStart(2, '0');\n    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;\n  }\n\n  item.json.start_time = formatDate(start);\n  item.json.end_time = formatDate(end);\n\n  return item;\n});\n\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1008,
+        304
+      ],
+      "id": "3faa6fd8-6221-41ba-8f7f-989e4c32794b",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Fecha:  {{ $json.body.args.Fecha }}\nHora: {{ $json.body.args.Hora }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "Formatea la fecha y la hora al formato de fecha y hora todo junto de google calendar, a este formato 2025-09-10T10:00:00"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        544,
+        448
+      ],
+      "id": "0afc701b-697c-4a5c-b81c-d8990f6b13b5",
+      "name": "Basic LLM Chain1"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5",
+          "mode": "list",
+          "cachedResultName": "gpt-5"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        496,
+        656
+      ],
+      "id": "c851ead9-0fa5-4921-959f-8ee3afad1986",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  const fechaStr = item.json.text;\n\n  const start = new Date(fechaStr);\n  const end = new Date(start.getTime() + 60 * 60 * 1000); // +1 hora\n\n  // Función para formatear la fecha como YYYY-MM-DDTHH:mm:ss\n  function formatDate(date) {\n    const pad = (num) => num.toString().padStart(2, '0');\n    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;\n  }\n\n  item.json.start_time = formatDate(start);\n  item.json.end_time = formatDate(end);\n\n  return item;\n});\n\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        928,
+        448
+      ],
+      "id": "65db4aef-a63c-4ef9-843a-5415daee9d83",
+      "name": "Code1"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-02-23T12:39:52.251Z",
+      "createdAt": "2026-02-23T12:39:52.251Z",
+      "role": "workflow:owner",
+      "workflowId": "H7EquWUB4liqIkcYAkxgP",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-02-23T12:42:33.163Z",
+  "versionId": "0b338c21-cf6f-4076-a7b6-26b76a83b01c"
+}
