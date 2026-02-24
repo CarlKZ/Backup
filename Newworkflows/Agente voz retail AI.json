@@ -150,8 +150,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        320,
-        448
+        160,
+        256
       ],
       "id": "0147c5f8-189a-4395-b2ad-d3d06cb8e4bc",
       "name": "Webhook",
@@ -175,8 +175,8 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
       "position": [
-        1312,
-        416
+        1152,
+        256
       ],
       "id": "03f35ac4-c1d0-41dd-8654-6b8280af8eda",
       "name": "Google Calendar",
@@ -196,8 +196,8 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
       "position": [
-        1568,
-        416
+        1408,
+        256
       ],
       "id": "420a8795-a660-4ed5-ae4a-c9fd0a79d108",
       "name": "Respond to Webhook"
@@ -264,7 +264,7 @@
       "typeVersion": 3.2,
       "position": [
         -464,
-        272
+        304
       ],
       "id": "3004f1bf-5a1e-4cc5-9da0-a682b0b6a745",
       "name": "Switch"
@@ -278,7 +278,7 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
       "position": [
-        -32,
+        0,
         592
       ],
       "id": "030ff280-443f-4b21-9c01-a77fffcb43a6",
@@ -420,8 +420,8 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.7,
       "position": [
-        544,
-        448
+        384,
+        256
       ],
       "id": "0afc701b-697c-4a5c-b81c-d8990f6b13b5",
       "name": "Basic LLM Chain1"
@@ -439,8 +439,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        496,
-        656
+        336,
+        464
       ],
       "id": "c851ead9-0fa5-4921-959f-8ee3afad1986",
       "name": "OpenAI Chat Model1",
@@ -458,8 +458,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        928,
-        448
+        768,
+        256
       ],
       "id": "65db4aef-a63c-4ef9-843a-5415daee9d83",
       "name": "Code1"
@@ -483,6 +483,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-02-23T12:42:33.163Z",
-  "versionId": "0b338c21-cf6f-4076-a7b6-26b76a83b01c"
+  "updatedAt": "2026-02-24T10:59:56.429Z",
+  "versionId": "b56d2175-a268-4108-b2e6-eec9ec330b27"
 }
