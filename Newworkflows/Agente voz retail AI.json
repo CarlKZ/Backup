@@ -143,7 +143,7 @@
     {
       "parameters": {
         "httpMethod": "POST",
-        "path": "43e2c303-1309-46f4-af19-14b66c5a79e8",
+        "path": "=43e2c303-1309-46f4-af19-14b66c5a79e8",
         "responseMode": "responseNode",
         "options": {}
       },
@@ -483,6 +483,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-02-24T10:59:56.429Z",
-  "versionId": "b56d2175-a268-4108-b2e6-eec9ec330b27"
+  "updatedAt": "2026-02-26T16:15:04.838Z",
+  "versionId": "4cc1f918-ae0a-4105-a48f-6731024ebb0e"
 }
