@@ -45,13 +45,7 @@
     },
     "Webhook1": {
       "main": [
-        [
-          {
-            "node": "Basic LLM Chain",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Google Calendar1": {
@@ -483,6 +477,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-02-26T16:15:04.838Z",
-  "versionId": "4cc1f918-ae0a-4105-a48f-6731024ebb0e"
+  "updatedAt": "2026-02-28T12:59:15.093Z",
+  "versionId": "91f86506-633f-4f82-b2c7-50fdc82e40e2"
 }
