@@ -1,0 +1,50 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {},
+  "createdAt": "2026-02-24T13:04:08.470Z",
+  "id": "fuPPkd9lqqbnG1yyWj4p_",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Web MayteCS",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "9c382380-d710-4e1f-b794-54df23f86448",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "cfbae70e-7b65-41fd-b02a-f19ce7097cf1",
+      "name": "Webhook",
+      "webhookId": "9c382380-d710-4e1f-b794-54df23f86448"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-02-24T13:04:08.477Z",
+      "createdAt": "2026-02-24T13:04:08.477Z",
+      "role": "workflow:owner",
+      "workflowId": "fuPPkd9lqqbnG1yyWj4p_",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-03-01T12:36:14.321Z",
+  "versionId": "83caf28c-4b37-49f5-b7e5-7fde3cf0f96b"
+}
