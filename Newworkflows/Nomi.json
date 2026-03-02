@@ -18,7 +18,9 @@
   "createdAt": "2026-03-01T19:49:23.730Z",
   "id": "DTg-BPp0wfhz_BMV49b5O",
   "isArchived": false,
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Nomi",
   "nodes": [
     {
@@ -42,7 +44,11 @@
     },
     {
       "parameters": {
-        "operation": "getAll"
+        "authentication": "serviceAccount",
+        "operation": "getAll",
+        "projectId": "=nomi-489011",
+        "collection": "users",
+        "returnAll": true
       },
       "type": "n8n-nodes-base.googleFirebaseCloudFirestore",
       "typeVersion": 1.1,
@@ -51,7 +57,13 @@
         0
       ],
       "id": "0902a1a3-ad0e-4533-a5ea-b62b24ff143e",
-      "name": "Get many documents"
+      "name": "Get many documents",
+      "credentials": {
+        "googleApi": {
+          "id": "WraNUZoNIabL3fsM",
+          "name": "Google Service Account account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -75,6 +87,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-03-01T19:55:56.414Z",
-  "versionId": "7ac7dad1-dda1-4a6d-b256-ed10fd518d78"
+  "updatedAt": "2026-03-02T17:31:19.956Z",
+  "versionId": "f8a56f39-04aa-42fe-ad9c-ec0873295057"
 }
