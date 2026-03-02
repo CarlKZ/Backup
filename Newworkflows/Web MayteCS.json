@@ -2,7 +2,19 @@
   "active": false,
   "activeVersion": null,
   "activeVersionId": null,
-  "connections": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
   "createdAt": "2026-02-24T13:04:08.470Z",
   "id": "fuPPkd9lqqbnG1yyWj4p_",
   "isArchived": false,
@@ -13,6 +25,7 @@
   "nodes": [
     {
       "parameters": {
+        "httpMethod": "POST",
         "path": "9c382380-d710-4e1f-b794-54df23f86448",
         "options": {}
       },
@@ -25,6 +38,104 @@
       "id": "cfbae70e-7b65-41fd-b02a-f19ce7097cf1",
       "name": "Webhook",
       "webhookId": "9c382380-d710-4e1f-b794-54df23f86448"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "15l5MY9GGPc4lBT6zEN5mPU0Lt_wWHzNjvDpVtFXMlJg",
+          "mode": "list",
+          "cachedResultName": "Hoja de cálculo sin título",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15l5MY9GGPc4lBT6zEN5mPU0Lt_wWHzNjvDpVtFXMlJg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15l5MY9GGPc4lBT6zEN5mPU0Lt_wWHzNjvDpVtFXMlJg/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nombre": "={{ $json.body.nombre }}",
+            "Email": "={{ $json.body.email }}",
+            "Telefono": "={{ $json.body.telefono }}",
+            "Servicio": "={{ $json.body.servicio }}",
+            "Mensaje": "={{ $json.body.mensaje }}"
+          },
+          "matchingColumns": [
+            "Telefono"
+          ],
+          "schema": [
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefono",
+              "displayName": "Telefono",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Servicio",
+              "displayName": "Servicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Mensaje",
+              "displayName": "Mensaje",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        0
+      ],
+      "id": "64b26b2e-0c94-4dab-abc3-96324bad8142",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "b3iIwyK8DLzQZxfk",
+          "name": "Google Sheets account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -45,6 +156,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-03-01T12:36:14.321Z",
-  "versionId": "83caf28c-4b37-49f5-b7e5-7fde3cf0f96b"
+  "updatedAt": "2026-03-02T22:27:17.928Z",
+  "versionId": "db8c40a6-0a60-482b-ad10-313d9a2488a3"
 }
