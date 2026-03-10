@@ -40,7 +40,7 @@
       "main": [
         [
           {
-            "node": "If",
+            "node": "Code in JavaScript",
             "type": "main",
             "index": 0
           }
@@ -49,7 +49,47 @@
     },
     "If": {
       "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ],
         []
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Structured Output Parser",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     }
   },
@@ -80,9 +120,10 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "El agente recibe los comentarios de los clientes antes de publicarlos y decide automáticamente si aprobarlos o rechazarlos. Acepta todo tipo de opiniones, tanto positivas como negativas, siempre que estén escritas con respeto y sean constructivas. Rechaza silenciosamente insultos, spam, trolls, burlas hacia las terapias o cualquier contenido inapropiado. Los comentarios aprobados se publican automáticamente en la web y los rechazados simplemente se descartan sin notificación.",
+        "text": "=Modera este comentario:\n\nNombre: {{ $json.body.nombre }}\nEstrellas: {{ $json.body.estrellas }}\nComentario: {{ $json.body.comentario }}",
+        "hasOutputParser": true,
         "options": {
-          "systemMessage": "Eres un agente de moderación de comentarios para una página web \nprofesional de terapias holísticas y sanación. Tu función es analizar \nlas reseñas de clientes y decidir si APROBARLAS o RECHAZARLAS antes \nde que se publiquen de cara al público.\n\nSiempre respondes en español, independientemente del idioma en el \nque esté escrito el comentario.\n\n## TU MISIÓN\nAnalizar cada comentario de cliente entrante y determinar si cumple \nlos estándares de calidad, respeto y autenticidad de una web \nprofesional de terapias holísticas de cara al público.\n\n## FORMATO DE ENTRADA\nRecibirás un JSON con esta estructura:\n{\n  \"nombre\": \"nombre del usuario\",\n  \"estrellas\": número del 1 al 5,\n  \"comentario\": \"texto del comentario\"\n}\n\n## CRITERIOS DE APROBACIÓN — APRUEBA si:\n- El comentario está escrito con respeto, aunque sea negativo o crítico\n- Los comentarios negativos son constructivos: explican qué se podría \n  mejorar, qué faltó o qué no gustó de forma profesional\n- El comentario hace referencia a una experiencia real con alguna \n  terapia o servicio de sanación (Reiki, Sanación Energética, \n  Registros Akáshicos, Meditación Guiada, Lectura de Tarot, \n  Constelaciones Familiares)\n- El nombre parece real o al menos neutro (no ofensivo)\n- La puntuación en estrellas es coherente con el tono del comentario\n- Los comentarios cortos son aceptables siempre que sean respetuosos\n- El comentario está escrito en cualquier idioma (acéptalo igualmente)\n\n## CRITERIOS DE RECHAZO — RECHAZA si:\n- El comentario contiene insultos, lenguaje ofensivo, discurso de odio \n  o expresiones irrespetuosas hacia cualquier persona o grupo\n- El comentario contiene contenido sexual, explícito o inapropiado\n- El comentario es claramente spam o publicidad de otro servicio\n- El comentario es completamente incoherente, caracteres aleatorios \n  o sin sentido (ejemplo: \"asdfghjkl\", \"aaaaaaa\", \"123456\")\n- El comentario es un intento claro de troll sin ningún valor real\n- El nombre contiene palabras ofensivas o claramente falsas de forma \n  irrespetuosa\n- La puntuación en estrellas es completamente inconsistente con el \n  comentario con evidente mala fe (ejemplo: 1 estrella con \"todo fue \n  perfecto, me encantó\" — esto es manipulación)\n- El comentario amenaza, acosa o va dirigido contra alguna persona \n  concreta\n- El comentario se burla de las terapias, la espiritualidad o de \n  los clientes que las practican de forma irrespetuosa\n\n## MATICES IMPORTANTES\n- \"La sesión de Reiki estuvo bien pero esperaba sentir más, \n  quizás necesito más sesiones\" → APROBADO, es honesto y respetuoso\n- \"El Tarot es una farsa y la terapeuta una charlatana\" → RECHAZADO, \n  es irrespetuoso y sin valor constructivo\n- \"Las Constelaciones Familiares me removieron por dentro, \n  fue intenso pero necesario\" → APROBADO, experiencia auténtica\n- \"jajaja esto es una secta\" → RECHAZADO, es una burla sin respeto\n- \"No noté cambios tras la Sanación Energética, \n  tal vez no era para mí\" → APROBADO, opinión legítima y respetuosa\n- Ante la duda, aprueba siempre que el comentario sea respetuoso, \n  aunque sea muy crítico\n\n## ACCIÓN\nSi el comentario es RECHAZADO, descártalo silenciosamente. \nNo notifiques a nadie ni guardes registro.\n\n## FORMATO DE SALIDA\nResponde ÚNICAMENTE con un objeto JSON válido, sin explicaciones \nni texto adicional:\n\nSi APROBADO:\n{\n  \"decision\": \"APROBADO\",\n  \"nombre\": \"nombre original\",\n  \"estrellas\": número original,\n  \"comentario\": \"comentario original\",\n  \"motivo\": \"breve razón de aprobación en español\"\n}\n\nSi RECHAZADO:\n{\n  \"decision\": \"RECHAZADO\",\n  \"nombre\": \"nombre original\",\n  \"estrellas\": número original,\n  \"comentario\": \"comentario original\",\n  \"motivo\": \"breve razón de rechazo en español\"\n}\n\n## RECORDATORIO FINAL\nEsta moderación es para una web profesional de terapias holísticas \ny sanación. Tus decisiones afectan directamente la reputación \ny la energía del espacio. Sé estricto con la falta de respeto \npero justo y abierto con la crítica legítima. Las opiniones \nhonestas, aunque negativas, son bienvenidas siempre que \nse expresen con respeto y buenas formas."
+          "systemMessage": "=Eres un agente de moderación de comentarios para una página web \nprofesional de terapias holísticas y sanación. Tu función es analizar \nlas reseñas de clientes y decidir si APROBARLAS o RECHAZARLAS antes \nde que se publiquen de cara al público.\n\nSiempre respondes en español, independientemente del idioma en el \nque esté escrito el comentario.\n\n## TU MISIÓN\nAnalizar cada comentario de cliente entrante y determinar si cumple \nlos estándares de calidad, respeto y autenticidad de una web \nprofesional de terapias holísticas de cara al público.\n\n## FORMATO DE ENTRADA\nRecibirás un JSON con esta estructura:\n{\n  \"nombre\": \"nombre del usuario\",\n  \"estrellas\": número del 1 al 5,\n  \"comentario\": \"texto del comentario\"\n}\n\n## CRITERIOS DE APROBACIÓN — APRUEBA si:\n- El comentario está escrito con respeto, aunque sea negativo o crítico\n- Los comentarios negativos son constructivos: explican qué se podría \n  mejorar, qué faltó o qué no gustó de forma profesional\n- El comentario hace referencia a una experiencia real con alguna \n  terapia o servicio de sanación (Reiki, Sanación Energética, \n  Registros Akáshicos, Meditación Guiada, Lectura de Tarot, \n  Constelaciones Familiares)\n- El nombre parece real o al menos neutro (no ofensivo)\n- La puntuación en estrellas es coherente con el tono del comentario\n- Los comentarios cortos son aceptables siempre que sean respetuosos\n- El comentario está escrito en cualquier idioma (acéptalo igualmente)\n\n## CRITERIOS DE RECHAZO — RECHAZA si:\n- El comentario contiene insultos, lenguaje ofensivo, discurso de odio \n  o expresiones irrespetuosas hacia cualquier persona o grupo\n- El comentario contiene contenido sexual, explícito o inapropiado\n- El comentario es claramente spam o publicidad de otro servicio\n- El comentario es completamente incoherente, caracteres aleatorios \n  o sin sentido (ejemplo: \"asdfghjkl\", \"aaaaaaa\", \"123456\")\n- El comentario es un intento claro de troll sin ningún valor real\n- El nombre contiene palabras ofensivas o claramente falsas de forma \n  irrespetuosa\n- La puntuación en estrellas es completamente inconsistente con el \n  comentario con evidente mala fe (ejemplo: 1 estrella con \"todo fue \n  perfecto, me encantó\" — esto es manipulación)\n- El comentario amenaza, acosa o va dirigido contra alguna persona \n  concreta\n- El comentario se burla de las terapias, la espiritualidad o de \n  los clientes que las practican de forma irrespetuosa\n\n## MATICES IMPORTANTES\n- \"La sesión de Reiki estuvo bien pero esperaba sentir más, \n  quizás necesito más sesiones\" → APROBADO, es honesto y respetuoso\n- \"El Tarot es una farsa y la terapeuta una charlatana\" → RECHAZADO, \n  es irrespetuoso y sin valor constructivo\n- \"Las Constelaciones Familiares me removieron por dentro, \n  fue intenso pero necesario\" → APROBADO, experiencia auténtica\n- \"jajaja esto es una secta\" → RECHAZADO, es una burla sin respeto\n- \"No noté cambios tras la Sanación Energética, \n  tal vez no era para mí\" → APROBADO, opinión legítima y respetuosa\n- Ante la duda, aprueba siempre que el comentario sea respetuoso, \n  aunque sea muy crítico\n\n## ACCIÓN\nSi el comentario es RECHAZADO, descártalo silenciosamente. \nNo notifiques a nadie ni guardes registro.\n\n## FORMATO DE SALIDA\nResponde ÚNICAMENTE con un objeto JSON válido, sin explicaciones \nni texto adicional:\n\nSi APROBADO:\n{\n  \"decision\": \"APROBADO\",\n  \"fecha y hora\": \"fecha del mensaje\",\n  \"nombre\": \"nombre original\",\n  \"estrellas\": número original,\n  \"comentario\": \"comentario original\",\n  \"motivo\": \"breve razón de aprobación en español\"\n}\n\nSi RECHAZADO:\n{\n  \"decision\": \"RECHAZADO\",\n  \"fecha y hora\": \"fecha del mensaje\",\n  \"nombre\": \"nombre original\",\n  \"estrellas\": número original,\n  \"comentario\": \"comentario original\",\n  \"motivo\": \"breve razón de rechazo en español\"\n}\n\n## RECORDATORIO FINAL\nEsta moderación es para una web profesional de terapias holísticas \ny sanación. Tus decisiones afectan directamente la reputación \ny la energía del espacio. Sé estricto con la falta de respeto \npero justo y abierto con la crítica legítima. Las opiniones \nhonestas, aunque negativas, son bienvenidas siempre que \nse expresen con respeto y buenas formas.\n\nLa fecha actual es {{ $now }}"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -152,17 +193,8 @@
           "conditions": [
             {
               "id": "839090c4-26f9-4d12-adbe-3be77f05f6de",
-              "leftValue": "={{ $json.output }}",
-              "rightValue": "Aceptado",
-              "operator": {
-                "type": "string",
-                "operation": "equals"
-              }
-            },
-            {
-              "id": "71a7a3f4-7063-4d8a-ba38-28c95a490c6c",
-              "leftValue": "={{ $json.output }}",
-              "rightValue": "Rechazado",
+              "leftValue": "={{ $json.decision }}",
+              "rightValue": "APROBADO",
               "operator": {
                 "type": "string",
                 "operation": "equals"
@@ -176,62 +208,98 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        1136,
+        1312,
         48
       ],
       "id": "a7a27e07-7112-43f0-92a8-2675dfbe75da",
       "name": "If"
-    }
-  ],
-  "pinData": {
-    "Webhook1": [
-      {
-        "json": {
-          "headers": {
-            "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36",
-            "content-length": "52",
-            "accept": "*/*",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "accept-language": "es-ES,es;q=0.9",
-            "content-type": "application/json",
-            "origin": "https://5ef49f64-b786-4e9a-bc56-f8850c237af8.lovableproject.com",
-            "priority": "u=1, i",
-            "referer": "https://5ef49f64-b786-4e9a-bc56-f8850c237af8.lovableproject.com/",
-            "sec-ch-ua": "\"Not:A-Brand\";v=\"99\", \"Brave\";v=\"145\", \"Chromium\";v=\"145\"",
-            "sec-ch-ua-mobile": "?0",
-            "sec-ch-ua-platform": "\"Windows\"",
-            "sec-fetch-dest": "empty",
-            "sec-fetch-mode": "cors",
-            "sec-fetch-site": "cross-site",
-            "sec-gpc": "1",
-            "x-forwarded-for": "159.147.63.37",
-            "x-forwarded-host": "n8n2nkz-n8n.vc1wee.easypanel.host",
-            "x-forwarded-port": "443",
-            "x-forwarded-proto": "https",
-            "x-forwarded-server": "88eeb68a63a5",
-            "x-real-ip": "159.147.63.37"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "nombre": "Carlos",
-            "estrellas": 4,
-            "comentario": "gas"
-          },
-          "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook-test/ec6e543c-12b8-4def-bc51-5c44a2701221",
-          "executionMode": "test"
-        },
-        "pairedItem": {
-          "item": 0
+    },
+    {
+      "parameters": {
+        "chatId": "7040181107",
+        "text": "={{ $json['fecha y hora'] }}\n\nBuenas Mayte, El usuario {{ $('AI Agent').item.json.output.nombre }} ha dejado **{{ $('AI Agent').item.json.output.estrellas }} 🌟 junto con el siguiente comentario: **{{ $('AI Agent').item.json.output.comentario }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1552,
+        32
+      ],
+      "id": "e71750cc-5a6d-45db-981c-096c4dc672c1",
+      "name": "Send a text message",
+      "webhookId": "9f0cc800-4856-491b-9d13-57c25ddf491b",
+      "credentials": {
+        "telegramApi": {
+          "id": "KcOnwLzOSvSJfY1o",
+          "name": "Telegram account"
         }
       }
-    ]
-  },
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"fecha\": \"Fecha actual\",\n  \"decision\": \"Aprobado o Rechazado\",\n  \"nombre\": \"nombre original\",\n  \"estrellas\": \"número original\",\n  \"comentario\": \"comentario original\",\n  \"motivo\": \"breve razón de aprobación en español\"\n}\n",
+        "autoFix": true
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        960,
+        256
+      ],
+      "id": "61fa2f55-b0c4-4989-9bf0-c100fd47af92",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-5-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        896,
+        464
+      ],
+      "id": "1668c54e-f701-4837-b92a-1eb28e07180a",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const input = $input.first().json;\n\nconst data = input.output;\n\n// Fecha con zona horaria española automática (verano e invierno)\nconst now = new Date();\n\nconst fechaFormateada = now.toLocaleString('es-ES', {\n  timeZone: 'Europe/Madrid',\n  day: '2-digit',\n  month: '2-digit',\n  year: 'numeric',\n  hour: '2-digit',\n  minute: '2-digit',\n  second: '2-digit',\n  hour12: false\n}).replace(',', ' -');\n\nreturn [{\n  json: {\n    decision: data.decision,\n    nombre: data.nombre,\n    estrellas: data.estrellas,\n    comentario: data.comentario,\n    motivo: data.motivo,\n    \"fecha y hora\": fechaFormateada\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1104,
+        48
+      ],
+      "id": "b77aa688-82f0-49de-8ab4-5b682ddd088b",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate",
-    "availableInMCP": false
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner"
   },
   "shared": [
     {
@@ -245,6 +313,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-03-09T18:10:06.379Z",
-  "versionId": "1b316eca-a337-4486-adc5-6a44661d90d2"
+  "updatedAt": "2026-03-10T18:58:31.885Z",
+  "versionId": "48679bfe-b6e3-468f-9ac8-750e88c32d82"
 }
