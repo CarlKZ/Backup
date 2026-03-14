@@ -728,51 +728,7 @@
       "name": "Code in JavaScript1"
     }
   ],
-  "pinData": {
-    "Webhook1": [
-      {
-        "json": {
-          "headers": {
-            "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36",
-            "content-length": "81",
-            "accept": "*/*",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "accept-language": "es-ES,es;q=0.7",
-            "content-type": "application/json",
-            "origin": "https://preview--sacred-seeds-site.lovable.app",
-            "priority": "u=1, i",
-            "referer": "https://preview--sacred-seeds-site.lovable.app/",
-            "sec-ch-ua": "\"Not:A-Brand\";v=\"99\", \"Brave\";v=\"145\", \"Chromium\";v=\"145\"",
-            "sec-ch-ua-mobile": "?0",
-            "sec-ch-ua-platform": "\"Windows\"",
-            "sec-fetch-dest": "empty",
-            "sec-fetch-mode": "cors",
-            "sec-fetch-site": "cross-site",
-            "sec-gpc": "1",
-            "x-forwarded-for": "159.147.63.37",
-            "x-forwarded-host": "n8n2nkz-n8n.vc1wee.easypanel.host",
-            "x-forwarded-port": "443",
-            "x-forwarded-proto": "https",
-            "x-forwarded-server": "88eeb68a63a5",
-            "x-real-ip": "159.147.63.37"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "nombre": "Antonio",
-            "estrellas": 4,
-            "comentario": "Me gusta mucho la terapia Reiki"
-          },
-          "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook/ec6e543c-12b8-4def-bc51-5c44a2701221",
-          "executionMode": "production"
-        },
-        "pairedItem": {
-          "item": 0
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate",
@@ -793,6 +749,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-03-12T01:17:48.322Z",
+  "updatedAt": "2026-03-14T15:25:14.148Z",
   "versionId": "a8d9e8cf-76cc-4592-bf90-dab4bd05cef2"
 }
