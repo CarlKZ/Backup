@@ -1,0 +1,43 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {},
+  "createdAt": "2026-03-19T15:57:01.976Z",
+  "id": "6i8vuVqoP7zxuGE3",
+  "isArchived": false,
+  "meta": null,
+  "name": "Clase UDIA 1",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "7719d0e7-4415-48f3-b683-ac09b61d2f08",
+      "name": "When clicking ‘Execute workflow’"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-03-19T15:57:01.988Z",
+      "createdAt": "2026-03-19T15:57:01.988Z",
+      "role": "workflow:owner",
+      "workflowId": "6i8vuVqoP7zxuGE3",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-03-19T17:01:17.747Z",
+  "versionId": "b02bb9f5-049e-4871-b4c7-531c0d8b1915"
+}
