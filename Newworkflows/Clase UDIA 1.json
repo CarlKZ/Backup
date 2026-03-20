@@ -2,29 +2,121 @@
   "active": false,
   "activeVersion": null,
   "activeVersionId": null,
-  "connections": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
   "createdAt": "2026-03-19T15:57:01.976Z",
   "id": "6i8vuVqoP7zxuGE3",
   "isArchived": false,
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Clase UDIA 1",
   "nodes": [
     {
-      "parameters": {},
-      "type": "n8n-nodes-base.manualTrigger",
-      "typeVersion": 1,
+      "parameters": {
+        "formTitle": "Practica UDIA",
+        "formDescription": "Esto es pa practicar",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Nombre_completo"
+            },
+            {
+              "fieldLabel": "Email",
+              "fieldType": "email"
+            },
+            {
+              "fieldLabel": "Telefono",
+              "fieldType": "number"
+            },
+            {
+              "fieldLabel": "Mensaje"
+            },
+            {
+              "fieldLabel": "Fecha envio",
+              "fieldType": "date"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.5,
       "position": [
         0,
         0
       ],
-      "id": "7719d0e7-4415-48f3-b683-ac09b61d2f08",
-      "name": "When clicking ‘Execute workflow’"
+      "id": "56efa59e-d3e3-4ee8-8cd7-76c5d1e40c92",
+      "name": "On form submission",
+      "webhookId": "4068dd84-ac45-4c15-938c-41a989ad67d2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fea5da63-4188-42cd-bf09-76f4eda1e801",
+              "name": "Nombre y apellidos",
+              "value": "={{ $json.Nombre_completo }}",
+              "type": "string"
+            },
+            {
+              "id": "7814c49d-7b51-4974-970f-2fbde7b1d17d",
+              "name": "Email",
+              "value": "={{ $json.Email }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        272,
+        0
+      ],
+      "id": "773410d7-4957-466c-b3fb-73ef7a4521d0",
+      "name": "Edit Fields"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "On form submission": [
+      {
+        "json": {
+          "Nombre_completo": "Carlos Fernandez",
+          "Email": "Carlos@gmail.com",
+          "Telefono": 568845521,
+          "Mensaje": "Patata",
+          "Fecha envio": "2026-03-20",
+          "submittedAt": "2026-03-20T15:24:05.631+01:00",
+          "formMode": "test"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
-    "binaryMode": "separate"
+    "binaryMode": "separate",
+    "timeSavedMode": "fixed",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
   },
   "shared": [
     {
@@ -38,6 +130,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-03-19T17:01:17.747Z",
-  "versionId": "b02bb9f5-049e-4871-b4c7-531c0d8b1915"
+  "updatedAt": "2026-03-20T14:26:18.043Z",
+  "versionId": "0fb728cf-731d-4b86-b57e-1cb3a1338466"
 }
