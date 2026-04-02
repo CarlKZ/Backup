@@ -1,0 +1,313 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2026-04-02T12:32:14.000Z",
+    "createdAt": "2026-04-02T12:32:08.463Z",
+    "versionId": "44cfb583-db12-40d1-b47e-4bd83320e8ce",
+    "workflowId": "xonpWHOHGaaNdpRG",
+    "nodes": [
+      {
+        "parameters": {
+          "workflowInputs": {
+            "values": [
+              {
+                "name": "Titulo"
+              },
+              {
+                "name": "Fecha Inicio"
+              },
+              {
+                "name": "Fecha Fin"
+              },
+              {
+                "name": "Descripción"
+              },
+              {
+                "name": "ID"
+              }
+            ]
+          }
+        },
+        "id": "c055762a-8fe7-4141-a639-df2372f30060",
+        "typeVersion": 1.1,
+        "name": "When Executed by Another Workflow",
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "position": [
+          272,
+          352
+        ]
+      },
+      {
+        "parameters": {
+          "operation": "delete",
+          "calendar": {
+            "__rl": true,
+            "value": "885b33d936436b69e9ff2055456f869ce8bf391582ce1dc89fe08164be96ef17@group.calendar.google.com",
+            "mode": "list",
+            "cachedResultName": "Guardería Canina Maria"
+          },
+          "eventId": "={{ $json.ID_real }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleCalendar",
+        "typeVersion": 1.3,
+        "position": [
+          912,
+          352
+        ],
+        "id": "6ceeb563-e216-46d4-93df-15a733642fd3",
+        "name": "Delete an event",
+        "credentials": {
+          "googleCalendarOAuth2Api": {
+            "id": "BxLdTiBYRwntbItp",
+            "name": "Google Calendar account 2"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "// Obtener el título/nombre de la reserva desde el nodo trigger de este flujo\nconst tituloBuscado = $('Cancelar Evento Esturion').first().json['Titulo'];\n\n// Obtener todos los eventos del Google Calendar (nodo \"Consigue muchos eventos\")\nconst eventos = $input.all();\n\n// Buscar el evento que coincida por título (summary)\nconst eventoEncontrado = eventos.find(evento => \n  evento.json.summary === tituloBuscado\n);\n\n// Si no se encuentra\nif (!eventoEncontrado) {\n  return [{\n    json: {\n      error: 'No se encontró el evento para cancelar',\n      titulo_buscado: tituloBuscado,\n      eventos_encontrados: eventos.length\n    }\n  }];\n}\n\n// Devolver solo el ID real para que el nodo \"Eliminar un evento\" pueda borrarlo\nreturn [{\n  json: {\n    ID_real: eventoEncontrado.json.id,\n    Titulo: eventoEncontrado.json.summary,\n    Fecha_inicio: eventoEncontrado.json.start?.dateTime,\n    Fecha_fin: eventoEncontrado.json.end?.dateTime,\n    Descripcion: eventoEncontrado.json.description\n  }\n}];"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          688,
+          352
+        ],
+        "id": "01413dd0-2808-4e74-a345-767f2a2fd252",
+        "name": "Code in JavaScript"
+      },
+      {
+        "parameters": {
+          "operation": "getAll",
+          "calendar": {
+            "__rl": true,
+            "value": "885b33d936436b69e9ff2055456f869ce8bf391582ce1dc89fe08164be96ef17@group.calendar.google.com",
+            "mode": "list",
+            "cachedResultName": "Guardería Canina Maria"
+          },
+          "timeMax": "={{ $now.plus({ month: 1 }) }}",
+          "options": {
+            "query": "={{ $json.Titulo }}"
+          }
+        },
+        "type": "n8n-nodes-base.googleCalendar",
+        "typeVersion": 1.3,
+        "position": [
+          464,
+          352
+        ],
+        "id": "141c4513-911b-4500-9bc5-eece1f55be31",
+        "name": "Get many events",
+        "credentials": {
+          "googleCalendarOAuth2Api": {
+            "id": "BxLdTiBYRwntbItp",
+            "name": "Google Calendar account 2"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "When Executed by Another Workflow": {
+        "main": [
+          [
+            {
+              "node": "Get many events",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code in JavaScript": {
+        "main": [
+          [
+            {
+              "node": "Delete an event",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get many events": {
+        "main": [
+          [
+            {
+              "node": "Code in JavaScript",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "Carlos Fernández",
+    "name": "Cancelar Perros",
+    "description": "",
+    "autosaved": true
+  },
+  "activeVersionId": "44cfb583-db12-40d1-b47e-4bd83320e8ce",
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Get many events",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Delete an event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many events": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-04-02T12:19:40.242Z",
+  "id": "xonpWHOHGaaNdpRG",
+  "isArchived": false,
+  "meta": null,
+  "name": "Cancelar Maridogs",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "Titulo"
+            },
+            {
+              "name": "Fecha Inicio"
+            },
+            {
+              "name": "Fecha Fin"
+            },
+            {
+              "name": "Descripción"
+            },
+            {
+              "name": "ID"
+            }
+          ]
+        }
+      },
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "typeVersion": 1.1,
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        272,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "885b33d936436b69e9ff2055456f869ce8bf391582ce1dc89fe08164be96ef17@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Guardería Canina Maria"
+        },
+        "eventId": "={{ $json.ID_real }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        912,
+        352
+      ],
+      "id": "6ceeb563-e216-46d4-93df-15a733642fd3",
+      "name": "Delete an event",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "BxLdTiBYRwntbItp",
+          "name": "Google Calendar account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener el título/nombre de la reserva desde el nodo trigger de este flujo\nconst tituloBuscado = $('Cancelar Evento Esturion').first().json['Titulo'];\n\n// Obtener todos los eventos del Google Calendar (nodo \"Consigue muchos eventos\")\nconst eventos = $input.all();\n\n// Buscar el evento que coincida por título (summary)\nconst eventoEncontrado = eventos.find(evento => \n  evento.json.summary === tituloBuscado\n);\n\n// Si no se encuentra\nif (!eventoEncontrado) {\n  return [{\n    json: {\n      error: 'No se encontró el evento para cancelar',\n      titulo_buscado: tituloBuscado,\n      eventos_encontrados: eventos.length\n    }\n  }];\n}\n\n// Devolver solo el ID real para que el nodo \"Eliminar un evento\" pueda borrarlo\nreturn [{\n  json: {\n    ID_real: eventoEncontrado.json.id,\n    Titulo: eventoEncontrado.json.summary,\n    Fecha_inicio: eventoEncontrado.json.start?.dateTime,\n    Fecha_fin: eventoEncontrado.json.end?.dateTime,\n    Descripcion: eventoEncontrado.json.description\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        688,
+        352
+      ],
+      "id": "01413dd0-2808-4e74-a345-767f2a2fd252",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "885b33d936436b69e9ff2055456f869ce8bf391582ce1dc89fe08164be96ef17@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Guardería Canina Maria"
+        },
+        "timeMax": "={{ $now.plus({ month: 1 }) }}",
+        "options": {
+          "query": "={{ $json.Titulo }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        464,
+        352
+      ],
+      "id": "141c4513-911b-4500-9bc5-eece1f55be31",
+      "name": "Get many events",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "BxLdTiBYRwntbItp",
+          "name": "Google Calendar account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false,
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-04-02T12:19:40.247Z",
+      "createdAt": "2026-04-02T12:19:40.247Z",
+      "role": "workflow:owner",
+      "workflowId": "xonpWHOHGaaNdpRG",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-04-02T12:55:38.157Z",
+  "versionId": "44cfb583-db12-40d1-b47e-4bd83320e8ce"
+}
