@@ -1,0 +1,323 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2026-04-02T12:30:34.000Z",
+    "createdAt": "2026-04-02T12:27:50.185Z",
+    "versionId": "b1586538-63af-4784-b947-5e46cbf7cde6",
+    "workflowId": "oDsa8jZlgphoPbzy",
+    "nodes": [
+      {
+        "parameters": {
+          "workflowInputs": {
+            "values": [
+              {
+                "name": "Titulo"
+              },
+              {
+                "name": "Fecha Inicio"
+              },
+              {
+                "name": "Fecha Fin"
+              },
+              {
+                "name": "Descipción"
+              },
+              {
+                "name": "ID"
+              }
+            ]
+          }
+        },
+        "id": "c055762a-8fe7-4141-a639-df2372f30060",
+        "typeVersion": 1.1,
+        "name": "When Executed by Another Workflow",
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "position": [
+          272,
+          352
+        ]
+      },
+      {
+        "parameters": {
+          "jsCode": "// Obtener el ID y las nuevas fechas desde el nodo \"Modificar Evento Esturion\"\nconst idBuscado = $('Modificar Evento Esturion').first().json['ID'];\nconst nuevaFechaInicio = $('Modificar Evento Esturion').first().json['Fecha inicio'];\nconst nuevaFechaFin = $('Modificar Evento Esturion').first().json['Fecha fin'];\n\n// Obtener todos los eventos del Google Calendar\nconst eventos = $input.all();\n\n// Buscar el evento que coincida con el ID\nconst eventoEncontrado = eventos.find(evento => \n  evento.json.id === idBuscado\n);\n\n// Si no se encuentra\nif (!eventoEncontrado) {\n  return [{\n    json: {\n      error: 'No se encontró el evento',\n      id_buscado: idBuscado,\n      eventos_encontrados: eventos.length\n    }\n  }];\n}\n\n// Devolver el ID real de Google Calendar con las fechas actualizadas del trigger\nreturn [{\n  json: {\n    ID_real: eventoEncontrado.json.id,\n    Titulo: eventoEncontrado.json.summary,\n    Fecha_inicio: nuevaFechaInicio,\n    Fecha_fin: nuevaFechaFin,\n    Descripcion: eventoEncontrado.json.description\n  }\n}];\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          704,
+          352
+        ],
+        "id": "daf8b497-91bd-45f3-b96a-4fd3ddb8b0cc",
+        "name": "Code in JavaScript"
+      },
+      {
+        "parameters": {
+          "operation": "getAll",
+          "calendar": {
+            "__rl": true,
+            "value": "885b33d936436b69e9ff2055456f869ce8bf391582ce1dc89fe08164be96ef17@group.calendar.google.com",
+            "mode": "list",
+            "cachedResultName": "Guardería Canina Maria"
+          },
+          "timeMax": "={{ $now.plus({ month: 1 }) }}",
+          "options": {
+            "query": "={{ $json.Titulo }}"
+          }
+        },
+        "type": "n8n-nodes-base.googleCalendar",
+        "typeVersion": 1.3,
+        "position": [
+          496,
+          352
+        ],
+        "id": "4aee5c44-958a-4cf1-8724-db96e08fb652",
+        "name": "Get many events",
+        "credentials": {
+          "googleCalendarOAuth2Api": {
+            "id": "BxLdTiBYRwntbItp",
+            "name": "Google Calendar account 2"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "calendar": {
+            "__rl": true,
+            "value": "885b33d936436b69e9ff2055456f869ce8bf391582ce1dc89fe08164be96ef17@group.calendar.google.com",
+            "mode": "list",
+            "cachedResultName": "Guardería Canina Maria"
+          },
+          "eventId": "={{ $json.ID_real }}",
+          "updateFields": {
+            "description": "={{ $json.Descripcion }}",
+            "end": "={{ $json.Fecha_fin }}",
+            "start": "={{ $json.Fecha_inicio }}",
+            "summary": "={{ $json.Titulo }}"
+          }
+        },
+        "type": "n8n-nodes-base.googleCalendar",
+        "typeVersion": 1.3,
+        "position": [
+          912,
+          352
+        ],
+        "id": "f556cf66-6c28-46de-be97-59a40de92d46",
+        "name": "Update an event1",
+        "credentials": {
+          "googleCalendarOAuth2Api": {
+            "id": "BxLdTiBYRwntbItp",
+            "name": "Google Calendar account 2"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "When Executed by Another Workflow": {
+        "main": [
+          [
+            {
+              "node": "Get many events",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code in JavaScript": {
+        "main": [
+          [
+            {
+              "node": "Update an event1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get many events": {
+        "main": [
+          [
+            {
+              "node": "Code in JavaScript",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "Carlos Fernández",
+    "name": "Modificar Perros",
+    "description": "",
+    "autosaved": true
+  },
+  "activeVersionId": "b1586538-63af-4784-b947-5e46cbf7cde6",
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Get many events",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Update an event1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many events": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-04-02T12:20:17.045Z",
+  "id": "oDsa8jZlgphoPbzy",
+  "isArchived": false,
+  "meta": null,
+  "name": "Modificar Maridogs",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "Titulo"
+            },
+            {
+              "name": "Fecha Inicio"
+            },
+            {
+              "name": "Fecha Fin"
+            },
+            {
+              "name": "Descipción"
+            },
+            {
+              "name": "ID"
+            }
+          ]
+        }
+      },
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "typeVersion": 1.1,
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        272,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener el ID y las nuevas fechas desde el nodo \"Modificar Evento Esturion\"\nconst idBuscado = $('Modificar Evento Esturion').first().json['ID'];\nconst nuevaFechaInicio = $('Modificar Evento Esturion').first().json['Fecha inicio'];\nconst nuevaFechaFin = $('Modificar Evento Esturion').first().json['Fecha fin'];\n\n// Obtener todos los eventos del Google Calendar\nconst eventos = $input.all();\n\n// Buscar el evento que coincida con el ID\nconst eventoEncontrado = eventos.find(evento => \n  evento.json.id === idBuscado\n);\n\n// Si no se encuentra\nif (!eventoEncontrado) {\n  return [{\n    json: {\n      error: 'No se encontró el evento',\n      id_buscado: idBuscado,\n      eventos_encontrados: eventos.length\n    }\n  }];\n}\n\n// Devolver el ID real de Google Calendar con las fechas actualizadas del trigger\nreturn [{\n  json: {\n    ID_real: eventoEncontrado.json.id,\n    Titulo: eventoEncontrado.json.summary,\n    Fecha_inicio: nuevaFechaInicio,\n    Fecha_fin: nuevaFechaFin,\n    Descripcion: eventoEncontrado.json.description\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        704,
+        352
+      ],
+      "id": "daf8b497-91bd-45f3-b96a-4fd3ddb8b0cc",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "885b33d936436b69e9ff2055456f869ce8bf391582ce1dc89fe08164be96ef17@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Guardería Canina Maria"
+        },
+        "timeMax": "={{ $now.plus({ month: 1 }) }}",
+        "options": {
+          "query": "={{ $json.Titulo }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        496,
+        352
+      ],
+      "id": "4aee5c44-958a-4cf1-8724-db96e08fb652",
+      "name": "Get many events",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "BxLdTiBYRwntbItp",
+          "name": "Google Calendar account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "calendar": {
+          "__rl": true,
+          "value": "885b33d936436b69e9ff2055456f869ce8bf391582ce1dc89fe08164be96ef17@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Guardería Canina Maria"
+        },
+        "eventId": "={{ $json.ID_real }}",
+        "updateFields": {
+          "description": "={{ $json.Descripcion }}",
+          "end": "={{ $json.Fecha_fin }}",
+          "start": "={{ $json.Fecha_inicio }}",
+          "summary": "={{ $json.Titulo }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        912,
+        352
+      ],
+      "id": "f556cf66-6c28-46de-be97-59a40de92d46",
+      "name": "Update an event1",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "BxLdTiBYRwntbItp",
+          "name": "Google Calendar account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false,
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-04-02T12:20:17.051Z",
+      "createdAt": "2026-04-02T12:20:17.051Z",
+      "role": "workflow:owner",
+      "workflowId": "oDsa8jZlgphoPbzy",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-04-02T12:56:17.545Z",
+  "versionId": "b1586538-63af-4784-b947-5e46cbf7cde6"
+}
