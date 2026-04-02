@@ -1,0 +1,233 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2026-04-02T12:30:14.000Z",
+    "createdAt": "2026-04-02T12:29:22.702Z",
+    "versionId": "96337653-4820-4109-b51f-602ef03da135",
+    "workflowId": "VYdZQc4Zatsbt6gt",
+    "nodes": [
+      {
+        "parameters": {
+          "workflowInputs": {
+            "values": [
+              {
+                "name": "Titulo"
+              },
+              {
+                "name": "Fecha Inicio"
+              },
+              {
+                "name": "Fecha Fin"
+              },
+              {
+                "name": "Descripción"
+              }
+            ]
+          }
+        },
+        "id": "c055762a-8fe7-4141-a639-df2372f30060",
+        "typeVersion": 1.1,
+        "name": "Agendar",
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "position": [
+          272,
+          352
+        ]
+      },
+      {
+        "parameters": {
+          "calendar": {
+            "__rl": true,
+            "value": "885b33d936436b69e9ff2055456f869ce8bf391582ce1dc89fe08164be96ef17@group.calendar.google.com",
+            "mode": "list",
+            "cachedResultName": "Guardería Canina Maria"
+          },
+          "start": "={{ $('Agendar Esturión').item.json['Fecha inicio'] }}",
+          "end": "={{ $('Agendar Esturión').item.json['Fecha fin'] }}",
+          "additionalFields": {
+            "description": "={{ $('Agendar Esturión').item.json['Descripción'] }}",
+            "summary": "={{ $('Agendar Esturión').item.json.Titulo }}"
+          }
+        },
+        "type": "n8n-nodes-base.googleCalendar",
+        "typeVersion": 1.3,
+        "position": [
+          688,
+          352
+        ],
+        "id": "ddaff843-478f-4fa3-9c41-a5fc33eb1cc7",
+        "name": "Create an event",
+        "credentials": {
+          "googleCalendarOAuth2Api": {
+            "id": "BxLdTiBYRwntbItp",
+            "name": "Google Calendar account 2"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "// Obtener la fecha de inicio desde el trigger\nconst fechaInicio = $('Agendar Esturión').first().json['Fecha inicio'];\n\n// Si no hay fecha de inicio, usar la fecha actual (fallback)\nif (!fechaInicio) {\n  return [{\n    json: {\n      error: \"No se proporcionó Fecha inicio\"\n    }\n  }];\n}\n\n// Calcular fecha fin (añadir 2 horas = 120 minutos)\nconst inicio = new Date(fechaInicio);\nconst fin = new Date(inicio.getTime() + (120 * 60 * 1000));\n\n// Devolver ambas fechas en formato ISO\nreturn [{\n  json: {\n    'Fecha inicio': inicio.toISOString(),\n    'Fecha fin': fin.toISOString()\n  }\n}];"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          496,
+          352
+        ],
+        "id": "11f0c86e-24bb-43e5-abad-6f5ed1aeaa86",
+        "name": "Code in JavaScript"
+      }
+    ],
+    "connections": {
+      "Agendar": {
+        "main": [
+          [
+            {
+              "node": "Code in JavaScript",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code in JavaScript": {
+        "main": [
+          [
+            {
+              "node": "Create an event",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "Carlos Fernández",
+    "name": "Agendar Perros",
+    "description": "",
+    "autosaved": true
+  },
+  "activeVersionId": "96337653-4820-4109-b51f-602ef03da135",
+  "connections": {
+    "Agendar": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Create an event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-04-02T12:18:11.790Z",
+  "id": "VYdZQc4Zatsbt6gt",
+  "isArchived": false,
+  "meta": null,
+  "name": "Agendar Maridogs",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "Titulo"
+            },
+            {
+              "name": "Fecha Inicio"
+            },
+            {
+              "name": "Fecha Fin"
+            },
+            {
+              "name": "Descripción"
+            }
+          ]
+        }
+      },
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "typeVersion": 1.1,
+      "name": "Agendar",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        272,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "885b33d936436b69e9ff2055456f869ce8bf391582ce1dc89fe08164be96ef17@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Guardería Canina Maria"
+        },
+        "start": "={{ $('Agendar Esturión').item.json['Fecha inicio'] }}",
+        "end": "={{ $('Agendar Esturión').item.json['Fecha fin'] }}",
+        "additionalFields": {
+          "description": "={{ $('Agendar Esturión').item.json['Descripción'] }}",
+          "summary": "={{ $('Agendar Esturión').item.json.Titulo }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        688,
+        352
+      ],
+      "id": "ddaff843-478f-4fa3-9c41-a5fc33eb1cc7",
+      "name": "Create an event",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "BxLdTiBYRwntbItp",
+          "name": "Google Calendar account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener la fecha de inicio desde el trigger\nconst fechaInicio = $('Agendar Esturión').first().json['Fecha inicio'];\n\n// Si no hay fecha de inicio, usar la fecha actual (fallback)\nif (!fechaInicio) {\n  return [{\n    json: {\n      error: \"No se proporcionó Fecha inicio\"\n    }\n  }];\n}\n\n// Calcular fecha fin (añadir 2 horas = 120 minutos)\nconst inicio = new Date(fechaInicio);\nconst fin = new Date(inicio.getTime() + (120 * 60 * 1000));\n\n// Devolver ambas fechas en formato ISO\nreturn [{\n  json: {\n    'Fecha inicio': inicio.toISOString(),\n    'Fecha fin': fin.toISOString()\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        496,
+        352
+      ],
+      "id": "11f0c86e-24bb-43e5-abad-6f5ed1aeaa86",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false,
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-04-02T12:18:11.816Z",
+      "createdAt": "2026-04-02T12:18:11.816Z",
+      "role": "workflow:owner",
+      "workflowId": "VYdZQc4Zatsbt6gt",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-04-02T12:56:05.191Z",
+  "versionId": "96337653-4820-4109-b51f-602ef03da135"
+}
