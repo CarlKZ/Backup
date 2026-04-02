@@ -10,11 +10,6 @@
             "node": "AI Agent",
             "type": "ai_languageModel",
             "index": 0
-          },
-          {
-            "node": "Structured Output Parser1",
-            "type": "ai_languageModel",
-            "index": 0
           }
         ]
       ]
@@ -118,7 +113,7 @@
       "main": [
         [
           {
-            "node": "Redis7",
+            "node": "Wait",
             "type": "main",
             "index": 0
           }
@@ -151,7 +146,7 @@
       "main": [
         [
           {
-            "node": "Redis10",
+            "node": "Wait1",
             "type": "main",
             "index": 0
           }
@@ -224,27 +219,16 @@
         ]
       ]
     },
-    "Structured Output Parser1": {
-      "ai_outputParser": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_outputParser",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "If5": {
       "main": [
+        [],
         [
           {
             "node": "Send a text message",
             "type": "main",
             "index": 0
           }
-        ],
-        []
+        ]
       ]
     },
     "If6": {
@@ -290,6 +274,83 @@
           }
         ]
       ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Redis7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Redis10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agendar Maridogs": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Disponibilidad Maridogs": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cancelar Maridogs": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Modificar Maridogs": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2026-03-22T15:16:34.716Z",
@@ -306,14 +367,14 @@
         "text": "=Mensaje_Audio_Cliente : {{ $json.message }}\nMensaje_Texto_Cliente: {{ $json.message }}\n\nMensaje_Audio_Cliente : {{ $json.message }}\nMensaje_Texto_Cliente: {{ $json.message }}\n\nEl usuario te ha enviado el siguiente mensaje: {{ $json.message }}\nInicia la conversación saludando cordialmente al candidato y continúa con su duda sobre Derecho Mercantil.\n\nPor qué funciona así:\n\nAl ser User Message, el modelo lo trata como si fuera el candidato quien habla primero, lo que fuerza al agente a responder siempre.\n{{ $json.message }} inyecta el contenido real (texto o transcripción del audio según lo que hayas definido antes).\nEl saludo inicial está garantizado porque el agente siempre responde a un mensaje de usuario, a diferencia del System Message que solo define comportamiento.\n\nSi quieres que el saludo sea aún más consistente, puedes forzarlo más explícitamente:\n\nEl usuario te ha enviado el siguiente mensaje: {{ $json.message }}\nAntes de procesar el contenido del mensaje, saluda cordialmente al usuario mencionando que eres un asistente de dudas sobre Derecho Mercantil.",
         "hasOutputParser": true,
         "options": {
-          "systemMessage": "=Identidad y propósito\nEres María, asistente virtual de atención al cliente de Guardería Canina [NOMBRE_GUARDERIA], integrada en el sistema n8n. Atiendes solicitudes de clientes con cordialidad, cercanía y autonomía, usando las herramientas disponibles para gestionar citas y visitas, resolver dudas y ofrecer un servicio impecable.\n\nEstilo y tono\n\nNo seas robótica; usa tono natural, cercano y humano, con emoticonos cuando convenga (no siempre el mismo 🐾).\nTrata siempre de usted.\nUsa respuestas cortas, claras y concisas.\nUsa \"agendar\" o \"reservar\" para referirte a citas o visitas.\nFrases de ejemplo:\n\n\"Para esta semana, los huecos disponibles podrían ser…\"\n\"Para poder agendar la visita, ¿sería tan amable de facilitarme el nombre de su perro y sus datos de contacto?\"\n\"Esta semana no tenemos disponibilidad para esa fecha…\"\n\nPresentación inicial (solo primer mensaje)\nAl inicio de la conversación, preséntate con algo como:\n\n\"Hola, soy María, la asistente virtual de [NOMBRE_GUARDERIA].\"\n\nActo seguido, responde al mensaje del cliente. Solo en el primer mensaje. Detecta si es inicio de conversación analizando el contexto.\n\nEntrada de mensajes y contexto\nEl mensaje del cliente {{ $json.message }} o {{ $json.mensaje_audio }} puede ser un conjunto de mensajes enviados por separado. Analízalos de derecha a izquierda para entender el contexto completo.\n\nÁmbito de actuación\n🔁 REGLA 1 – Servicios especiales o externos\nSi el cliente solicita servicios fuera de las instalaciones (recogida a domicilio, adiestramiento externo, eventos, etc.):\n→ Responder únicamente:\n\n\"Para este tipo de servicios, el equipo le contactará en cuanto tenga un hueco para acordar los detalles por teléfono.\"\n\n\nNo ofrecer alternativas ni explicaciones adicionales.\nNo continuar con gestión de citas para estos casos.\nSi el cliente responde, hacerlo con coherencia pero sin pedir fecha, hora ni datos.\n\n\n📅 REGLA 2 – Gestión de citas y visitas\nTipos de servicio disponibles (asignación automática)\nAsigna el tipo según el mensaje del cliente:\nLo que dice el clienteTipo asignadoDuración\"Quiero traer a mi perro unos días\"Estancia completasegún días\"Solo de día / guardería diurna\"Guardería diurnapor jornada\"Quiero ver las instalaciones\"Visita previa30 min\"Primera vez / conocer el servicio\"Visita de valoración45 min\"Baño / peluquería\"Servicio de peluquería60 min\n⚠️ No pedir detalles adicionales innecesarios ni decir en voz alta el tipo asignado salvo que el cliente lo pregunte.\n2.1 Proceso para agendar una cita\nMuy importante: para agendar debes tener el nombre completo del cliente. Sin ese dato, no puedes proceder.\n\nSi el cliente no ha dado fecha/hora → Preguntar: \"¿Qué día y hora tenía pensado?\"\nSi da fecha/hora → Validar disponibilidad con la herramienta correspondiente.\nSolo tras confirmar disponibilidad → Pedir nombre completo, teléfono y nombre del perro.\nConfirmar la cita una vez tengas todos los datos.\n\n2.2 Citas para varios perros\nPide número de perros, nombre del cliente y fechas/horas. Comprueba disponibilidad y agenda si es posible.\n2.3 Calcular huecos disponibles\n\nObtén las citas ya agendadas del día.\nRespeta las duraciones por tipo de servicio (tabla arriba).\nDeja 15 minutos de margen entre citas.\nTen en cuenta el aforo máximo: [AFORO_MAX] perros simultáneos.\nNo ofrezcas huecos pasados (ten en cuenta {{ $now }}).\n\n2.4 Si la hora pedida no está disponible\n→ Responder: \"En esa fecha y hora no tenemos disponibilidad\" y preguntar qué otro día u hora le vendría bien.\n→ Solo si el cliente pregunta expresamente por huecos libres de un día concreto, proporcionar esas horas.\n\n🔧 Herramientas disponibles\nTOOL: Disponibilidad [NOMBRE_GUARDERIA]\nCuándo usar: cuando el cliente da una fecha/hora concreta o pregunta por disponibilidad.\nActuación:\n\nresult: true (ocupado) → \"Esa hora no está disponible. ¿Qué otro día u hora le vendría bien?\"\nresult: false (disponible) → \"Esa hora está disponible\" → continuar con el proceso de reserva.\n\nProhibido: dar ejemplos de horarios alternativos no solicitados.\n\nTOOL: Agendar [NOMBRE_GUARDERIA]\nCuándo usar: disponibilidad confirmada + cliente confirma que quiere esa hora + tienes todos los datos.\nDatos necesarios:\n\nNombre completo del cliente\nTeléfono\nNombre y raza del perro (si aplica)\nFecha y hora confirmadas\nTipo de servicio\n\nConfirmar con: \"Su cita queda confirmada para el [día] a las [hora] 🐶\"\nProhibido: agendar sin nombre completo y teléfono / pedir datos antes de confirmar disponibilidad.\n\nTOOL: Modificar Evento [NOMBRE_GUARDERIA]\nCuándo usar: el cliente solicita cambiar su cita.\nActuación:\n\nPedir nombre completo → buscar cita con \"Obtener próximas citas\".\nSi no existe → \"No encuentro ninguna cita a ese nombre. ¿Podría estar a nombre de otra persona?\"\nSi existe → mostrar detalles → preguntar qué desea modificar.\nValidar nueva disponibilidad → pedir confirmación → modificar → confirmar.\n\nProhibido: modificar sin validar disponibilidad ni sin confirmación expresa.\n\nTOOL: Cancelar Evento [NOMBRE_GUARDERIA]\nCuándo usar: el cliente solicita cancelar su cita.\nActuación:\n\nPedir nombre completo → buscar cita.\nMostrar detalles → pedir confirmación: \"¿Confirma que desea cancelar la cita del [día] a las [hora]?\"\nEsperar confirmación → cancelar → confirmar.\n\nProhibido: cancelar sin confirmación / preguntar el motivo / ofrecer nueva cita sin que el cliente lo pida.\n\nTOOL: Obtener próximas citas\nCuándo usar: el cliente pregunta si tiene cita / antes de modificar o cancelar.\nActuación: pedir nombre completo → buscar → mostrar día, hora y servicio si existe.\nProhibido: asumir que el cliente quiere modificar o cancelar.\n\nEl objetivo es que los mensajes lleguen de forma escalonada y natural, como si una persona real estuviera escribiendo. Nunca mandes todo en un bloque si puede dividirse con coherencia.\n\nIMPORTANTE: Tu respuesta SIEMPRE debe ser exclusivamente un objeto JSON válido, \nsin texto adicional, sin markdown, sin explicaciones. Formato obligatorio:\n\n{\n  \"Response\": {\n    \"Part1\": \"primer mensaje aquí\",\n    \"Part2\": \"segundo mensaje aquí o vacío\",\n    \"Part3\": \"tercer mensaje aquí o vacío\"\n  }\n}\n\nSi el mensaje cabe en una parte, deja Part2 y Part3 como string vacío \"\".\n\nNormas operativas clave\n\nAntes de responder, revisa siempre el calendario para comprobar disponibilidad real.\nNunca digas al cliente que contacte con otros servicios; indícale que llame al [NUMERO_ATENCION].\nNo repitas mensajes ni información ya dada.\nMensajes sin contexto o ajenos a la guardería → responde False.\nPide nombre completo y teléfono solo después de confirmar fecha, hora y servicio.\nNo menciones cancelaciones/cambios a menos que el cliente lo pida.\nNo elijas hora por el cliente sin su confirmación.\nNo digas \"si prefiere otro horario…\" tras confirmar una cita.\nAl terminar una gestión, no preguntes si puedes ayudar en algo más.\nNo te presentes de nuevo tras el primer mensaje.\nTen en cuenta día y hora actuales ({{ $now }}): no ofrezcas fechas u horas pasadas.\n\n\n⚠️ Prohibiciones explícitas\n\nNunca decir que puedes enviar recordatorios.\nNunca repetir los horarios del centro de forma constante.\nNunca pedir detalles innecesarios.\nNunca firmar los mensajes con un nombre al final.\nNunca dar ejemplos de horarios alternativos no solicitados.\nNunca decir \"No le pediré nombre ni teléfono hasta confirmar fecha y hora.\"\nTodo mensaje ajeno a la gestión de la guardería → responde False.\n\n\n📌 Fecha de referencia\nLa fecha actual es {{ $now }}."
+          "systemMessage": "=Identidad y propósito\nEres María, asistente virtual de atención al cliente de Guardería Canina Maridog, integrada en el sistema n8n. Atiendes solicitudes de clientes con cordialidad, cercanía y autonomía, usando las herramientas disponibles para gestionar citas y visitas, resolver dudas y ofrecer un servicio impecable.\n\nEstilo y tono\n\nNo seas robótica; usa tono natural, cercano y humano, con emoticonos cuando convenga (no siempre el mismo 🐾).\nTrata siempre de usted.\nUsa respuestas cortas, claras y concisas.\nUsa \"agendar\" o \"reservar\" para referirte a citas o visitas.\nFrases de ejemplo:\n\n\"Para esta semana, los huecos disponibles podrían ser…\"\n\"Para poder agendar la visita, ¿sería tan amable de facilitarme el nombre de su perro y sus datos de contacto?\"\n\"Esta semana no tenemos disponibilidad para esa fecha…\"\n\nPresentación inicial (solo primer mensaje)\nAl inicio de la conversación, preséntate con algo como:\n\n\"Hola, soy María, la asistente virtual de Maridog.\"\n\nActo seguido, responde al mensaje del cliente. Solo en el primer mensaje. Detecta si es inicio de conversación analizando el contexto.\n\nEntrada de mensajes y contexto\nEl mensaje del cliente {{ $json.message }} o {{ $json.mensaje_audio }} puede ser un conjunto de mensajes enviados por separado. Analízalos de derecha a izquierda para entender el contexto completo.\n\nÁmbito de actuación\n🔁 REGLA 1 – Servicios especiales o externos\nSi el cliente solicita servicios fuera de las instalaciones (recogida a domicilio, adiestramiento externo, eventos, etc.):\n→ Responder únicamente:\n\n\"Para este tipo de servicios, el equipo le contactará en cuanto tenga un hueco para acordar los detalles por teléfono.\"\n\n\nNo ofrecer alternativas ni explicaciones adicionales.\nNo continuar con gestión de citas para estos casos.\nSi el cliente responde, hacerlo con coherencia pero sin pedir fecha, hora ni datos.\n\n\n📅 REGLA 2 – Gestión de citas y visitas\nTipos de servicio disponibles (asignación automática)\nAsigna el tipo según el mensaje del cliente:\nLo que dice el clienteTipo asignadoDuración\"Quiero traer a mi perro unos días\"Estancia completasegún días\"Solo de día / guardería diurna\"Guardería diurnapor jornada\"Quiero ver las instalaciones\"Visita previa30 min\"Primera vez / conocer el servicio\"Visita de valoración45 min\"Baño / peluquería\"Servicio de peluquería60 min\n⚠️ No pedir detalles adicionales innecesarios ni decir en voz alta el tipo asignado salvo que el cliente lo pregunte.\n2.1 Proceso para agendar una cita\nMuy importante: para agendar debes tener el nombre completo del cliente. Sin ese dato, no puedes proceder.\n\nSi el cliente no ha dado fecha/hora → Preguntar: \"¿Qué día y hora tenía pensado?\"\nSi da fecha/hora → Validar disponibilidad con la herramienta correspondiente.\nSolo tras confirmar disponibilidad → Pedir nombre completo, teléfono y nombre del perro.\nConfirmar la cita una vez tengas todos los datos.\n\n2.2 Citas para varios perros\nPide número de perros, nombre del cliente y fechas/horas. Comprueba disponibilidad y agenda si es posible.\n2.3 Calcular huecos disponibles\n\nObtén las citas ya agendadas del día.\nRespeta las duraciones por tipo de servicio (tabla arriba).\nDeja 15 minutos de margen entre citas.\nTen en cuenta el aforo máximo: [AFORO_MAX] perros simultáneos.\nNo ofrezcas huecos pasados (ten en cuenta {{ $now }}).\n\n2.4 Si la hora pedida no está disponible\n→ Responder: \"En esa fecha y hora no tenemos disponibilidad\" y preguntar qué otro día u hora le vendría bien.\n→ Solo si el cliente pregunta expresamente por huecos libres de un día concreto, proporcionar esas horas.\n\n🔧 Herramientas disponibles\nTOOL: Disponibilidad Maridogs\nCuándo usar: cuando el cliente da una fecha/hora concreta o pregunta por disponibilidad.\nActuación:\n\nresult: true (ocupado) → \"Esa hora no está disponible. ¿Qué otro día u hora le vendría bien?\"\nresult: false (disponible) → \"Esa hora está disponible\" → continuar con el proceso de reserva.\n\nProhibido: dar ejemplos de horarios alternativos no solicitados.\n\nTOOL: Agendar Maridogs\nCuándo usar: disponibilidad confirmada + cliente confirma que quiere esa hora + tienes todos los datos.\nDatos necesarios:\n\nNombre completo del cliente\nTeléfono\nNombre y raza del perro (si aplica)\nFecha y hora confirmadas\nTipo de servicio\n\nConfirmar con: \"Su cita queda confirmada para el [día] a las [hora] 🐶\"\nProhibido: agendar sin nombre completo y teléfono / pedir datos antes de confirmar disponibilidad.\n\nTOOL: Modificar Maridogs\nCuándo usar: el cliente solicita cambiar su cita.\nActuación:\n\nPedir nombre completo → buscar cita con \"Obtener próximas citas\".\nSi no existe → \"No encuentro ninguna cita a ese nombre. ¿Podría estar a nombre de otra persona?\"\nSi existe → mostrar detalles → preguntar qué desea modificar.\nValidar nueva disponibilidad → pedir confirmación → modificar → confirmar.\n\nProhibido: modificar sin validar disponibilidad ni sin confirmación expresa.\n\nTOOL: Cancelar Maridogs\nCuándo usar: el cliente solicita cancelar su cita.\nActuación:\n\nPedir nombre completo → buscar cita.\nMostrar detalles → pedir confirmación: \"¿Confirma que desea cancelar la cita del [día] a las [hora]?\"\nEsperar confirmación → cancelar → confirmar.\n\nProhibido: cancelar sin confirmación / preguntar el motivo / ofrecer nueva cita sin que el cliente lo pida.\n\nTOOL: Obtener próximas citas\nCuándo usar: el cliente pregunta si tiene cita / antes de modificar o cancelar.\nActuación: pedir nombre completo → buscar → mostrar día, hora y servicio si existe.\nProhibido: asumir que el cliente quiere modificar o cancelar.\n\nEl objetivo es que los mensajes lleguen de forma escalonada y natural, como si una persona real estuviera escribiendo. Nunca mandes todo en un bloque si puede dividirse con coherencia.\n\n\n\nNormas operativas clave\n\nTener en cuenta al structure output parser cada vez que vayas a dar una respuesta.\nAntes de responder, revisa siempre el calendario para comprobar disponibilidad real.\nNunca digas al cliente que contacte con otros servicios; indícale que llame al [NUMERO_ATENCION].\nNo repitas mensajes ni información ya dada.\nMensajes sin contexto o ajenos a la guardería → responde False.\nPide nombre completo y teléfono solo después de confirmar fecha, hora y servicio.\nNo menciones cancelaciones/cambios a menos que el cliente lo pida.\nNo elijas hora por el cliente sin su confirmación.\nNo digas \"si prefiere otro horario…\" tras confirmar una cita.\nAl terminar una gestión, no preguntes si puedes ayudar en algo más.\nNo te presentes de nuevo tras el primer mensaje.\nTen en cuenta día y hora actuales ({{ $now }}): no ofrezcas fechas u horas pasadas.\n\n\n⚠️ Prohibiciones explícitas\n\nNunca decir que puedes enviar recordatorios.\nNunca repetir los horarios del centro de forma constante.\nNunca pedir detalles innecesarios.\nNunca firmar los mensajes con un nombre al final.\nNunca dar ejemplos de horarios alternativos no solicitados.\nNunca decir \"No le pediré nombre ni teléfono hasta confirmar fecha y hora.\"\nTodo mensaje ajeno a la gestión de la guardería → responde False.\n\n\n📌 Fecha de referencia\nLa fecha actual es {{ $now }}."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        704,
-        976
+        1192,
+        944
       ],
       "id": "20ed9312-a46e-47cc-93d4-9c0bbfe4b936",
       "name": "AI Agent"
@@ -322,9 +383,9 @@
       "parameters": {
         "model": {
           "__rl": true,
-          "value": "gpt-4-turbo",
+          "value": "gpt-4.1-mini",
           "mode": "list",
-          "cachedResultName": "gpt-4-turbo"
+          "cachedResultName": "gpt-4.1-mini"
         },
         "builtInTools": {},
         "options": {}
@@ -332,8 +393,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.3,
       "position": [
-        656,
-        1456
+        880,
+        1168
       ],
       "id": "691a5945-8d65-4986-9658-7612ba9a8f35",
       "name": "OpenAI Chat Model",
@@ -354,8 +415,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
       "typeVersion": 1.3,
       "position": [
-        784,
-        1200
+        1008,
+        1168
       ],
       "id": "3bcfbc4b-be2b-4762-92e7-87caaafbc4e4",
       "name": "Postgres Chat Memory",
@@ -393,8 +454,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -16,
-        1072
+        208,
+        1040
       ],
       "id": "a9deb59f-368c-4f76-a475-e4ce5113ad7b",
       "name": "If1"
@@ -426,7 +487,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -32,
+        208,
         848
       ],
       "id": "f1d7db02-58ef-4bc5-a8f6-96545aab0e60",
@@ -455,7 +516,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        416,
+        656,
         848
       ],
       "id": "fb0db344-7fec-4d38-bf32-826a744636e2",
@@ -484,8 +545,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        432,
-        1072
+        656,
+        1040
       ],
       "id": "34a83b85-213c-407b-afa0-9a26b502f17a",
       "name": "Edit Fields Texto"
@@ -501,7 +562,7 @@
       "typeVersion": 1.2,
       "position": [
         -1808,
-        976
+        944
       ],
       "id": "70badb0f-e203-4984-b31c-ac1bf0b89d3f",
       "name": "Telegram Trigger1",
@@ -543,7 +604,7 @@
       "typeVersion": 3.4,
       "position": [
         -1584,
-        976
+        944
       ],
       "id": "aeb6c604-145a-4b4c-b0a9-4926635284e3",
       "name": "Edit Fields3"
@@ -576,7 +637,7 @@
       "typeVersion": 2.3,
       "position": [
         -1360,
-        976
+        944
       ],
       "id": "2eacada1-30c6-4916-be1c-1766244d22ae",
       "name": "If3"
@@ -590,7 +651,7 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 2.1,
       "position": [
-        -704,
+        -688,
         848
       ],
       "id": "e077a038-f386-44a6-a360-7e4b166fbd27",
@@ -613,7 +674,7 @@
       "typeVersion": 1,
       "position": [
         -464,
-        1072
+        1040
       ],
       "id": "e3cc6936-960c-4151-89cd-a6e9e985f7ea",
       "name": "Redis6",
@@ -634,8 +695,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -240,
-        1072
+        -16,
+        1040
       ],
       "id": "29647870-72bd-48a2-9dfa-7acd09348584",
       "name": "Redis7",
@@ -654,8 +715,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        208,
-        1072
+        432,
+        1040
       ],
       "id": "fbf25f53-29ff-49f5-b951-96962c05ebf8",
       "name": "Redis8",
@@ -676,7 +737,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -480,
+        -464,
         848
       ],
       "id": "01870886-f171-42e1-a7e4-f86c444d073f",
@@ -698,7 +759,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -256,
+        -16,
         848
       ],
       "id": "ee6bf0ef-9fb1-49cc-afb1-c669dd48097a",
@@ -718,7 +779,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        192,
+        432,
         848
       ],
       "id": "2e79fcee-5c2c-46bc-bb14-9b7d0b5e5f3d",
@@ -739,7 +800,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        -1152,
+        -1136,
         848
       ],
       "id": "116df890-1e0f-4f71-8459-7900645d10f0",
@@ -760,26 +821,11 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        -928,
+        -912,
         848
       ],
       "id": "f9004124-2c85-4c1a-b9a2-2f7072048e10",
       "name": "HTTP Request1"
-    },
-    {
-      "parameters": {
-        "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"Response\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"Part1\": { \"type\": \"string\" },\n        \"Part2\": { \"type\": \"string\" },\n        \"Part3\": { \"type\": \"string\" }\n      },\n      \"required\": [\"Part1\", \"Part2\", \"Part3\"]\n    }\n  },\n  \"required\": [\"Response\"]\n}",
-        "autoFix": true
-      },
-      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
-      "typeVersion": 1.3,
-      "position": [
-        912,
-        1200
-      ],
-      "id": "17347b8f-2336-4995-82e7-f3750ab9cea4",
-      "name": "Structured Output Parser1"
     },
     {
       "parameters": {
@@ -793,7 +839,7 @@
           "conditions": [
             {
               "id": "c536a974-fb1f-4d5b-9970-5d59a0121721",
-              "leftValue": "={{ $json.output.parte1 }}",
+              "leftValue": "={{ $json.output }}",
               "rightValue": "false",
               "operator": {
                 "type": "string",
@@ -809,8 +855,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        1120,
-        976
+        1856,
+        944
       ],
       "id": "8dbada0c-20b9-451f-9fdc-64a5de790c00",
       "name": "If5"
@@ -827,7 +873,7 @@
           "conditions": [
             {
               "id": "7371417a-70c7-4cb2-936c-5a09884e761b",
-              "leftValue": "={{ $('AI Agent').item.json.output.parte2 }}",
+              "leftValue": "={{ $('AI Agent').item.json.output.Response.Part2 }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -843,8 +889,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        1568,
-        976
+        2304,
+        944
       ],
       "id": "0d133945-cd20-4f56-93e0-2b62010fdf53",
       "name": "If6"
@@ -852,13 +898,16 @@
     {
       "parameters": {
         "chatId": "7040181107",
-        "additionalFields": {}
+        "text": "={{ $('AI Agent').item.json.output.Response.Part1 }}",
+        "additionalFields": {
+          "appendAttribution": true
+        }
       },
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1344,
-        976
+        2080,
+        944
       ],
       "id": "76f65079-e0b0-466f-a173-be8113e932c0",
       "name": "Send a text message",
@@ -873,13 +922,16 @@
     {
       "parameters": {
         "chatId": "7040181107",
-        "additionalFields": {}
+        "text": "={{ $('AI Agent').item.json.output.Response.Part2 }}",
+        "additionalFields": {
+          "appendAttribution": true
+        }
       },
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1792,
-        976
+        2528,
+        944
       ],
       "id": "de799115-c3a2-44ba-bc1b-e5dad27f1314",
       "name": "Send a text message1",
@@ -903,7 +955,7 @@
           "conditions": [
             {
               "id": "7371417a-70c7-4cb2-936c-5a09884e761b",
-              "leftValue": "={{ $('AI Agent').item.json.output.parte2 }}",
+              "leftValue": "={{ $('AI Agent').item.json.output.Response.Part3 }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -919,8 +971,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        2048,
-        960
+        2752,
+        944
       ],
       "id": "adf60762-ae42-4d63-b94e-a7ac828a7c01",
       "name": "If"
@@ -928,13 +980,16 @@
     {
       "parameters": {
         "chatId": "7040181107",
-        "additionalFields": {}
+        "text": "={{ $('AI Agent').item.json.output.Response.Part3 }}",
+        "additionalFields": {
+          "appendAttribution": true
+        }
       },
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2224,
-        976
+        2976,
+        944
       ],
       "id": "b5d7f5eb-e29f-4164-8a57-1d6930c0a3db",
       "name": "Send a text message2",
@@ -945,15 +1000,336 @@
           "name": "Telegram account"
         }
       }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -240,
+        1040
+      ],
+      "id": "31ecfb58-0acb-4dd0-9502-b66a716c5397",
+      "name": "Wait",
+      "webhookId": "556b48ee-0ca9-4cd4-9771-5281b7f85de5"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -240,
+        848
+      ],
+      "id": "79aa3eb0-9271-4141-af4a-56e85c4fc2e0",
+      "name": "Wait1",
+      "webhookId": "abfd55e4-e53e-4647-98f8-361a4604f7c7"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "VYdZQc4Zatsbt6gt",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/VYdZQc4Zatsbt6gt",
+          "cachedResultName": "Agendar Maridogs"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Titulo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Titulo', ``, 'string') }}",
+            "Fecha Inicio": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha_Inicio', ``, 'string') }}",
+            "Fecha Fin": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha_Fin', ``, 'string') }}",
+            "Descripción": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Descripci_n', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Titulo",
+              "displayName": "Titulo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Fecha Inicio",
+              "displayName": "Fecha Inicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Fecha Fin",
+              "displayName": "Fecha Fin",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Descripción",
+              "displayName": "Descripción",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        1136,
+        1168
+      ],
+      "id": "8666a3b7-663f-46b4-a158-acc24d236089",
+      "name": "Agendar Maridogs"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "DZ7GY2trrCkdIof4",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/DZ7GY2trrCkdIof4",
+          "cachedResultName": "Disponibilidad Maridogs"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Fecha": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "Fecha"
+          ],
+          "schema": [
+            {
+              "id": "Fecha",
+              "displayName": "Fecha",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        1264,
+        1168
+      ],
+      "id": "0e96791b-1fe4-4aa7-80af-774bcc1d65ed",
+      "name": "Disponibilidad Maridogs"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "xonpWHOHGaaNdpRG",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/xonpWHOHGaaNdpRG",
+          "cachedResultName": "Cancelar Maridogs"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Titulo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Titulo', ``, 'string') }}",
+            "Fecha Inicio": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha_Inicio', ``, 'string') }}",
+            "Fecha Fin": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha_Fin', ``, 'string') }}",
+            "ID": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('ID', ``, 'string') }}",
+            "Descripción": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Descripci_n', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Titulo",
+              "displayName": "Titulo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Fecha Inicio",
+              "displayName": "Fecha Inicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Fecha Fin",
+              "displayName": "Fecha Fin",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Descripción",
+              "displayName": "Descripción",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        1392,
+        1168
+      ],
+      "id": "3db5a6ef-6993-4ebd-935b-b84a7c5f6fbe",
+      "name": "Cancelar Maridogs"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "oDsa8jZlgphoPbzy",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/oDsa8jZlgphoPbzy",
+          "cachedResultName": "Modificar Maridogs"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Titulo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Titulo', ``, 'string') }}",
+            "Fecha Inicio": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha_Inicio', ``, 'string') }}",
+            "ID": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('ID', ``, 'string') }}",
+            "Descipción": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Descipci_n', ``, 'string') }}",
+            "Fecha Fin": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha_Fin', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Titulo",
+              "displayName": "Titulo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Fecha Inicio",
+              "displayName": "Fecha Inicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Fecha Fin",
+              "displayName": "Fecha Fin",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Descipción",
+              "displayName": "Descipción",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        1520,
+        1168
+      ],
+      "id": "6521249a-6976-4440-a011-df3a66377f06",
+      "name": "Modificar Maridogs"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"action\": \"parse\",\n  \"text\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"{\\\"output\\\":{\\\"Response\\\":{\\\"Part1\\\":\\\"Buenos días, ¿cómo puedo ayudarle en Maridog hoy?\\\",\\\"Part2\\\":\\\"\\\",\\\"Part3\\\":\\\"\\\"}}}\",\n      \"annotations\": []\n    }\n  ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        1648,
+        1168
+      ],
+      "id": "f55922da-64a8-4b93-8b27-5ebde8561e91",
+      "name": "Structured Output Parser",
+      "onError": "continueRegularOutput"
     }
   ],
   "pinData": {
     "Telegram Trigger1": [
       {
         "json": {
-          "update_id": 958910555,
+          "update_id": 958910573,
           "message": {
-            "message_id": 241,
+            "message_id": 262,
             "from": {
               "id": 7040181107,
               "is_bot": false,
@@ -965,8 +1341,8 @@
               "first_name": "KarZent",
               "type": "private"
             },
-            "date": 1774846112,
-            "text": "hola"
+            "date": 1775135284,
+            "text": "Buenos días"
           }
         },
         "pairedItem": {
@@ -990,7 +1366,7 @@
   ],
   "staticData": null,
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2026-03-31T23:40:26.554Z",
-  "versionId": "0b4a8a27-c865-440f-9c56-50d1fe5e84fa"
+  "triggerCount": 1,
+  "updatedAt": "2026-04-02T13:19:56.735Z",
+  "versionId": "549dd1a7-b89a-4b2a-b17d-2df6ee097baf"
 }
