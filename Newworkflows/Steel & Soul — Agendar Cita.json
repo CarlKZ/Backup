@@ -1,0 +1,102 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Agendar": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-02-23T12:39:52.245Z",
+  "id": "H7EquWUB4liqIkcYAkxgP",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Steel & Soul — Agendar Cita",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "e2287af4-043f-4638-9231-161aa156b7bd",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -1296,
+        -304
+      ],
+      "id": "0932737b-910c-4546-8fd0-6069bfb1a390",
+      "name": "Agendar",
+      "webhookId": "e2287af4-043f-4638-9231-161aa156b7bd"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "e97c4c17-58cf-4e28-a89c-40a04adf3671"
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -1072,
+        -304
+      ],
+      "id": "4ab9a727-8ecd-4235-8fdb-3c7a3fb54642",
+      "name": "Switch1"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-02-23T12:39:52.251Z",
+      "createdAt": "2026-02-23T12:39:52.251Z",
+      "role": "workflow:owner",
+      "workflowId": "H7EquWUB4liqIkcYAkxgP",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-04-08T12:05:42.121Z",
+  "versionId": "17eb820f-ee5b-4c07-82cc-363c868bfe13"
+}
