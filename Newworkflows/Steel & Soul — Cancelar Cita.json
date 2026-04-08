@@ -1,0 +1,48 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {},
+  "createdAt": "2026-04-08T12:05:59.702Z",
+  "id": "Q0enUCunXrEAABqI",
+  "isArchived": false,
+  "meta": null,
+  "name": "Steel & Soul — Cancelar Cita",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ccd8a178-6957-4148-add7-bac86f94b5e2",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "0598c19a-80b0-41f2-920c-60151a186e34",
+      "name": "Webhook",
+      "webhookId": "ccd8a178-6957-4148-add7-bac86f94b5e2"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-04-08T12:05:59.711Z",
+      "createdAt": "2026-04-08T12:05:59.711Z",
+      "role": "workflow:owner",
+      "workflowId": "Q0enUCunXrEAABqI",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-04-08T12:06:05.906Z",
+  "versionId": "c47bfbfe-3b48-46e1-a329-82d9bedbc3b6"
+}
