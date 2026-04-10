@@ -7,8 +7,63 @@
       "main": [
         [
           {
-            "node": "Switch1",
+            "node": "Code in JavaScript",
             "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many events in Google Calendar": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
             "index": 0
           }
         ]
@@ -32,8 +87,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        -1296,
-        -304
+        -992,
+        48
       ],
       "id": "0932737b-910c-4546-8fd0-6069bfb1a390",
       "name": "Agendar",
@@ -41,42 +96,120 @@
     },
     {
       "parameters": {
-        "rules": {
-          "values": [
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 3
-                },
-                "conditions": [
-                  {
-                    "leftValue": "",
-                    "rightValue": "",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals"
-                    },
-                    "id": "e97c4c17-58cf-4e28-a89c-40a04adf3671"
-                  }
-                ],
-                "combinator": "and"
-              }
-            }
-          ]
-        },
+        "respondWith": "json",
+        "responseBody": "={\n  \"results\":[\n      {\n           \"toolCallId\": \"{{ $('Webhook1').item.json.body.message.toolCalls[0].id }}\",\n           \"result\": {{ JSON.stringify($json.output) }}\n      }\n  ]\n}",
         "options": {}
       },
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 3.4,
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
       "position": [
-        -1072,
-        -304
+        -80,
+        48
       ],
-      "id": "4ab9a727-8ecd-4235-8fdb-3c7a3fb54642",
-      "name": "Switch1"
+      "id": "5b7640c2-48a6-49e2-8a02-683fb811cc7a",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Fecha a la que el cliente quiere agendar:  \n{{ $json.fecha }}\nHora a la que el cliente quiere agendar:\n{{ $json.hora }}",
+        "options": {
+          "systemMessage": "=Eres un asistente interno de Steel & Soul Original Edition. Tu única función es consultar el calendario de Google Calendar y determinar si hay disponibilidad para una cita.\n\nHORARIO DE LA BARBERIA:\n- Lunes a viernes: 10:00-14:00 y 17:00-21:00\n- Sabado: 10:00-14:00\n- Domingo: cerrado\n\nINSTRUCCIONES:\n1. Usa la tool de Google Calendar para obtener todos los eventos del dia indicado.\n2. Comprueba si el hueco solicitado (fecha + hora + duracion) esta libre o ocupado.\n3. Si el hueco esta ocupado, calcula y ofrece los proximos 3 huecos libres del mismo dia dentro del horario. Si no hay mas huecos ese dia, indica que no hay disponibilidad.\n4. Responde SIEMPRE en español de España.\n5. Responde SOLO con el resultado — sin saludos, sin explicaciones, sin texto adicional.\n6. La fecha actual es { $now }\n\nFORMATO DE RESPUESTA:\n- Si hay disponibilidad: \"Disponible el [fecha] a las [hora].\"\n- Si no hay disponibilidad: \"No hay disponibilidad el [fecha] a las [hora]. Los proximos huecos libres son: [hora1], [hora2], [hora3].\"\n- Si el dia esta cerrado: \"La barberia no abre ese dia.\"\n\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        -488,
+        48
+      ],
+      "id": "bb1bd42e-0e76-42e9-8beb-6917882ebb05",
+      "name": "AI Agent1"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -544,
+        272
+      ],
+      "id": "f8b0134c-24a8-4917-9794-2bb2637d5e8b",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const args = $input.first().json.body.message.toolCalls[0].function.arguments;\nconst toolCallId = $input.first().json.body.message.toolCalls[0].id;\n\nreturn [{\n  json: {\n    tool_call_id: toolCallId,\n    fecha: args.fecha || null,\n    hora: args.hora || null,\n    duracion_minutos: args.duracion_minutos || 30\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -768,
+        48
+      ],
+      "id": "0a537a3e-5253-4fe2-9c6e-1f080ad3edbb",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Code in JavaScript').item.json.tool_call_id }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.5,
+      "position": [
+        -416,
+        272
+      ],
+      "id": "3cfff6b8-58a5-424a-803a-35240c27e483",
+      "name": "Redis Chat Memory",
+      "credentials": {
+        "redis": {
+          "id": "rmwGdInGMfi5lhMd",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "30e5d3919f0baf3890a0a23cf852c554193852256f08a1eb071bdc8f963bfe67@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Steel and Soul"
+        },
+        "timeMax": "={{ $now.plus({ year: 1 }) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        -288,
+        272
+      ],
+      "id": "8df3f286-714d-4a91-9e04-227c1312371e",
+      "name": "Get many events in Google Calendar",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "BxLdTiBYRwntbItp",
+          "name": "Google Calendar account 2"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -97,6 +230,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-04-08T12:05:42.121Z",
-  "versionId": "17eb820f-ee5b-4c07-82cc-363c868bfe13"
+  "updatedAt": "2026-04-10T15:36:53.655Z",
+  "versionId": "2267a380-5419-4257-b992-9574832bb653"
 }
