@@ -1,7 +1,232 @@
 {
-  "active": false,
-  "activeVersion": null,
-  "activeVersionId": null,
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2026-04-13T12:10:34.000Z",
+    "createdAt": "2026-04-13T12:03:48.472Z",
+    "versionId": "b02309c5-5f1f-427f-8caf-055d2e51e9d4",
+    "workflowId": "Ojm4L0K6gn2fgW5F",
+    "nodes": [
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "d0f285d2-58a3-4234-a71a-4b298f9068ac",
+          "responseMode": "responseNode",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2.1,
+        "position": [
+          432,
+          320
+        ],
+        "id": "abb394bb-e669-4c93-bd9e-e311ebafcfda",
+        "name": "Webhook",
+        "webhookId": "d0f285d2-58a3-4234-a71a-4b298f9068ac"
+      },
+      {
+        "parameters": {
+          "respondWith": "json",
+          "responseBody": "={\n  \"results\": [\n    {\n      \"toolCallId\": \"{{ $('code').item.json.tool_call_id }}\",\n      \"result\": \"{{ $json.output }}\"\n    }\n  ]\n}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.respondToWebhook",
+        "typeVersion": 1.4,
+        "position": [
+          1344,
+          320
+        ],
+        "id": "ce4412f7-2213-4b33-a971-18e23c257f29",
+        "name": "Respond to Webhook"
+      },
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "=Nombre cliente: {{ $json.nombre_cliente }}\nTelefono: {{ $json.telefono_cliente }}\n\nCambios solicitados:\n- Nueva fecha: {{ $json.nueva_fecha }}\n- Nueva hora: {{ $json.nueva_hora }}\n- Nuevo profesional: {{ $json.nuevo_profesional }}\n- Nuevo servicio: {{ $json.nuevo_servicio }}\n- Nueva duracion: {{ $json.nueva_duracion_minutos }} minutos\n\nBusca la cita de este cliente por su telefono en Google Calendar y aplica los cambios.",
+          "options": {
+            "systemMessage": "=Eres un asistente interno de Steel & Soul Original Edition. Tu única función es modificar citas existentes en Google Calendar.\n\nINSTRUCCIONES:\n1. Usa la tool Get Many de Google Calendar para obtener todos los eventos futuros.\n2. Busca el evento cuya descripcion contenga el telefono del cliente.\n3. Si encuentras el evento, aplica los cambios solicitados usando la tool Update.\n4. Modifica solo los campos informados — no toques los que no cambian.\n5. Si nueva_fecha esta vacia, mantén la fecha actual del evento.\n6. Si nueva_hora esta vacia, mantén la hora actual del evento.\n7. Si nuevo_servicio esta informado, actualiza el titulo del evento.\n8. Si nuevo_profesional esta informado, actualiza la descripcion del evento.\n9. Responde SIEMPRE en español de España.\n10. Responde SOLO con el resultado — sin saludos ni texto adicional.\n\nFORMATO DE RESPUESTA:\n- Si se modifica correctamente: \"Cita modificada correctamente para [nombre_cliente]. Nueva cita el [fecha] a las [hora] con [profesional] para [servicio].\"\n- Si no se encuentra la cita: \"No encontre ninguna cita asociada al telefono [telefono_cliente]. Por favor verifica los datos.\"\n- Si hay error: \"Error al modificar la cita. Por favor intentalo de nuevo.\""
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 3,
+        "position": [
+          936,
+          320
+        ],
+        "id": "94592bc2-05dd-4842-8f57-f87e1ac9a63b",
+        "name": "AI Agent1"
+      },
+      {
+        "parameters": {
+          "jsCode": "const body = $input.first().json.body;\nconst toolCall = body.message.toolCalls[0];\nconst args = toolCall.function.arguments;\n\nreturn [{\n  json: {\n    tool_call_id: toolCall.id,\n    nombre_cliente: args.nombre_cliente || '',\n    telefono_cliente: args.telefono_cliente || '',\n    nueva_fecha: args.nueva_fecha || '',\n    nueva_hora: args.nueva_hora || '',\n    nuevo_profesional: args.nuevo_profesional || '',\n    nuevo_servicio: args.nuevo_servicio || '',\n    nueva_duracion_minutos: args.nueva_duracion_minutos || 30\n  }\n}];"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          656,
+          320
+        ],
+        "id": "dbfac606-1927-4186-acc9-1fc15582ec16",
+        "name": "code"
+      },
+      {
+        "parameters": {
+          "operation": "getAll",
+          "calendar": {
+            "__rl": true,
+            "value": "30e5d3919f0baf3890a0a23cf852c554193852256f08a1eb071bdc8f963bfe67@group.calendar.google.com",
+            "mode": "list",
+            "cachedResultName": "Steel and Soul"
+          },
+          "timeMax": "={{ $now.plus({ year: 1 }) }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleCalendarTool",
+        "typeVersion": 1.3,
+        "position": [
+          1008,
+          544
+        ],
+        "id": "9fbfd61a-c6d9-49db-a253-170923bca44b",
+        "name": "Get many events",
+        "credentials": {
+          "googleCalendarOAuth2Api": {
+            "id": "BxLdTiBYRwntbItp",
+            "name": "Google Calendar account 2"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "calendar": {
+            "__rl": true,
+            "value": "30e5d3919f0baf3890a0a23cf852c554193852256f08a1eb071bdc8f963bfe67@group.calendar.google.com",
+            "mode": "list",
+            "cachedResultName": "Steel and Soul"
+          },
+          "eventId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Event_ID', ``, 'string') }}",
+          "updateFields": {
+            "description": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Description', ``, 'string') }}",
+            "end": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('End', ``, 'string') }}",
+            "start": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Start', ``, 'string') }}",
+            "summary": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Summary', ``, 'string') }}"
+          }
+        },
+        "type": "n8n-nodes-base.googleCalendarTool",
+        "typeVersion": 1.3,
+        "position": [
+          1136,
+          544
+        ],
+        "id": "ad517c80-7140-4c18-9e29-080e60163afe",
+        "name": "Update event",
+        "credentials": {
+          "googleCalendarOAuth2Api": {
+            "id": "BxLdTiBYRwntbItp",
+            "name": "Google Calendar account 2"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "model": {
+            "__rl": true,
+            "mode": "list",
+            "value": "gpt-4.1-mini"
+          },
+          "builtInTools": {},
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+        "typeVersion": 1.3,
+        "position": [
+          880,
+          544
+        ],
+        "id": "c417c627-6235-478b-9867-7f666d43783f",
+        "name": "OpenAI",
+        "credentials": {
+          "openAiApi": {
+            "id": "WvSLkCujVhY8jIGz",
+            "name": "OpenAi account"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "AI Agent1": {
+        "main": [
+          [
+            {
+              "node": "Respond to Webhook",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Webhook": {
+        "main": [
+          [
+            {
+              "node": "code",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "code": {
+        "main": [
+          [
+            {
+              "node": "AI Agent1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get many events": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent1",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Update event": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent1",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OpenAI": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "AI Agent1",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "Carlos Fernández",
+    "name": "Steel & Soul — Modificar Cita",
+    "description": "",
+    "autosaved": true
+  },
+  "activeVersionId": "b02309c5-5f1f-427f-8caf-055d2e51e9d4",
   "connections": {
     "AI Agent1": {
       "main": [
@@ -14,18 +239,18 @@
         ]
       ]
     },
-    "OpenAI Chat Model1": {
-      "ai_languageModel": [
+    "Webhook": {
+      "main": [
         [
           {
-            "node": "AI Agent1",
-            "type": "ai_languageModel",
+            "node": "code",
+            "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Code in JavaScript": {
+    "code": {
       "main": [
         [
           {
@@ -36,18 +261,7 @@
         ]
       ]
     },
-    "Redis Chat Memory": {
-      "ai_memory": [
-        [
-          {
-            "node": "AI Agent1",
-            "type": "ai_memory",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get many events in Google Calendar": {
+    "Get many events": {
       "ai_tool": [
         [
           {
@@ -58,12 +272,23 @@
         ]
       ]
     },
-    "Webhook": {
-      "main": [
+    "Update event": {
+      "ai_tool": [
         [
           {
-            "node": "Code in JavaScript",
-            "type": "main",
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -73,19 +298,22 @@
   "createdAt": "2026-04-08T12:06:34.448Z",
   "id": "Ojm4L0K6gn2fgW5F",
   "isArchived": false,
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Steel & Soul — Modificar Cita",
   "nodes": [
     {
       "parameters": {
         "httpMethod": "POST",
         "path": "d0f285d2-58a3-4234-a71a-4b298f9068ac",
+        "responseMode": "responseNode",
         "options": {}
       },
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        464,
+        432,
         320
       ],
       "id": "abb394bb-e669-4c93-bd9e-e311ebafcfda",
@@ -95,13 +323,13 @@
     {
       "parameters": {
         "respondWith": "json",
-        "responseBody": "={\n  \"results\":[\n      {\n           \"toolCallId\": \"{{ $('Webhook1').item.json.body.message.toolCalls[0].id }}\",\n           \"result\": {{ JSON.stringify($json.output) }}\n      }\n  ]\n}",
+        "responseBody": "={\n  \"results\": [\n    {\n      \"toolCallId\": \"{{ $('code').item.json.tool_call_id }}\",\n      \"result\": \"{{ $json.output }}\"\n    }\n  ]\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.4,
       "position": [
-        1376,
+        1344,
         320
       ],
       "id": "ce4412f7-2213-4b33-a971-18e23c257f29",
@@ -110,15 +338,15 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "=Fecha a la que el cliente quiere agendar:  \n{{ $json.fecha }}\nHora a la que el cliente quiere agendar:\n{{ $json.hora }}",
+        "text": "=Nombre cliente: {{ $json.nombre_cliente }}\nTelefono: {{ $json.telefono_cliente }}\n\nCambios solicitados:\n- Nueva fecha: {{ $json.nueva_fecha }}\n- Nueva hora: {{ $json.nueva_hora }}\n- Nuevo profesional: {{ $json.nuevo_profesional }}\n- Nuevo servicio: {{ $json.nuevo_servicio }}\n- Nueva duracion: {{ $json.nueva_duracion_minutos }} minutos\n\nBusca la cita de este cliente por su telefono en Google Calendar y aplica los cambios.",
         "options": {
-          "systemMessage": "=Eres un asistente interno de Steel & Soul Original Edition. Tu única función es consultar el calendario de Google Calendar y determinar si hay disponibilidad para una cita.\n\nHORARIO DE LA BARBERIA:\n- Lunes a viernes: 10:00-14:00 y 17:00-21:00\n- Sabado: 10:00-14:00\n- Domingo: cerrado\n\nINSTRUCCIONES:\n1. Usa la tool de Google Calendar para obtener todos los eventos del dia indicado.\n2. Comprueba si el hueco solicitado (fecha + hora + duracion) esta libre o ocupado.\n3. Si el hueco esta ocupado, calcula y ofrece los proximos 3 huecos libres del mismo dia dentro del horario. Si no hay mas huecos ese dia, indica que no hay disponibilidad.\n4. Responde SIEMPRE en español de España.\n5. Responde SOLO con el resultado — sin saludos, sin explicaciones, sin texto adicional.\n6. La fecha actual es { $now }\n\nFORMATO DE RESPUESTA:\n- Si hay disponibilidad: \"Disponible el [fecha] a las [hora].\"\n- Si no hay disponibilidad: \"No hay disponibilidad el [fecha] a las [hora]. Los proximos huecos libres son: [hora1], [hora2], [hora3].\"\n- Si el dia esta cerrado: \"La barberia no abre ese dia.\"\n\n"
+          "systemMessage": "=Eres un asistente interno de Steel & Soul Original Edition. Tu única función es modificar citas existentes en Google Calendar.\n\nINSTRUCCIONES:\n1. Usa la tool Get Many de Google Calendar para obtener todos los eventos futuros.\n2. Busca el evento cuya descripcion contenga el telefono del cliente.\n3. Si encuentras el evento, aplica los cambios solicitados usando la tool Update.\n4. Modifica solo los campos informados — no toques los que no cambian.\n5. Si nueva_fecha esta vacia, mantén la fecha actual del evento.\n6. Si nueva_hora esta vacia, mantén la hora actual del evento.\n7. Si nuevo_servicio esta informado, actualiza el titulo del evento.\n8. Si nuevo_profesional esta informado, actualiza la descripcion del evento.\n9. Responde SIEMPRE en español de España.\n10. Responde SOLO con el resultado — sin saludos ni texto adicional.\n\nFORMATO DE RESPUESTA:\n- Si se modifica correctamente: \"Cita modificada correctamente para [nombre_cliente]. Nueva cita el [fecha] a las [hora] con [profesional] para [servicio].\"\n- Si no se encuentra la cita: \"No encontre ninguna cita asociada al telefono [telefono_cliente]. Por favor verifica los datos.\"\n- Si hay error: \"Error al modificar la cita. Por favor intentalo de nuevo.\""
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        968,
+        936,
         320
       ],
       "id": "94592bc2-05dd-4842-8f57-f87e1ac9a63b",
@@ -126,61 +354,16 @@
     },
     {
       "parameters": {
-        "model": {
-          "__rl": true,
-          "mode": "list",
-          "value": "gpt-4.1-mini"
-        },
-        "builtInTools": {},
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.3,
-      "position": [
-        912,
-        544
-      ],
-      "id": "c417c627-6235-478b-9867-7f666d43783f",
-      "name": "OpenAI Chat Model1",
-      "credentials": {
-        "openAiApi": {
-          "id": "WvSLkCujVhY8jIGz",
-          "name": "OpenAi account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "jsCode": "const args = $input.first().json.body.message.toolCalls[0].function.arguments;\nconst toolCallId = $input.first().json.body.message.toolCalls[0].id;\n\nreturn [{\n  json: {\n    tool_call_id: toolCallId,\n    fecha: args.fecha || null,\n    hora: args.hora || null,\n    duracion_minutos: args.duracion_minutos || 30\n  }\n}];"
+        "jsCode": "const body = $input.first().json.body;\nconst toolCall = body.message.toolCalls[0];\nconst args = toolCall.function.arguments;\n\nreturn [{\n  json: {\n    tool_call_id: toolCall.id,\n    nombre_cliente: args.nombre_cliente || '',\n    telefono_cliente: args.telefono_cliente || '',\n    nueva_fecha: args.nueva_fecha || '',\n    nueva_hora: args.nueva_hora || '',\n    nuevo_profesional: args.nuevo_profesional || '',\n    nuevo_servicio: args.nuevo_servicio || '',\n    nueva_duracion_minutos: args.nueva_duracion_minutos || 30\n  }\n}];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        688,
+        656,
         320
       ],
       "id": "dbfac606-1927-4186-acc9-1fc15582ec16",
-      "name": "Code in JavaScript"
-    },
-    {
-      "parameters": {
-        "sessionIdType": "customKey",
-        "sessionKey": "={{ $('Code in JavaScript').item.json.tool_call_id }}"
-      },
-      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
-      "typeVersion": 1.5,
-      "position": [
-        1040,
-        544
-      ],
-      "id": "c466b697-53dc-4ecf-a506-e4ca91c8844e",
-      "name": "Redis Chat Memory",
-      "credentials": {
-        "redis": {
-          "id": "rmwGdInGMfi5lhMd",
-          "name": "Redis account"
-        }
-      }
+      "name": "code"
     },
     {
       "parameters": {
@@ -197,15 +380,72 @@
       "type": "n8n-nodes-base.googleCalendarTool",
       "typeVersion": 1.3,
       "position": [
-        1168,
+        1008,
         544
       ],
       "id": "9fbfd61a-c6d9-49db-a253-170923bca44b",
-      "name": "Get many events in Google Calendar",
+      "name": "Get many events",
       "credentials": {
         "googleCalendarOAuth2Api": {
           "id": "BxLdTiBYRwntbItp",
           "name": "Google Calendar account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "calendar": {
+          "__rl": true,
+          "value": "30e5d3919f0baf3890a0a23cf852c554193852256f08a1eb071bdc8f963bfe67@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Steel and Soul"
+        },
+        "eventId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Event_ID', ``, 'string') }}",
+        "updateFields": {
+          "description": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Description', ``, 'string') }}",
+          "end": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('End', ``, 'string') }}",
+          "start": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Start', ``, 'string') }}",
+          "summary": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Summary', ``, 'string') }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        1136,
+        544
+      ],
+      "id": "ad517c80-7140-4c18-9e29-080e60163afe",
+      "name": "Update event",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "BxLdTiBYRwntbItp",
+          "name": "Google Calendar account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        880,
+        544
+      ],
+      "id": "c417c627-6235-478b-9867-7f666d43783f",
+      "name": "OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
         }
       }
     }
@@ -226,7 +466,7 @@
   ],
   "staticData": null,
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2026-04-10T15:36:35.571Z",
-  "versionId": "090a90c7-f9bd-4f59-8cd9-e09cb8ad7614"
+  "triggerCount": 1,
+  "updatedAt": "2026-04-13T12:03:48.469Z",
+  "versionId": "b02309c5-5f1f-427f-8caf-055d2e51e9d4"
 }
