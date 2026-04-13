@@ -1,0 +1,370 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2026-04-12T11:53:50.000Z",
+    "createdAt": "2026-04-12T11:53:40.025Z",
+    "versionId": "b5a8e1d7-614d-4184-96d9-5135a22c911e",
+    "workflowId": "G3LUdMqnpavs5AUk",
+    "nodes": [
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.errorTrigger",
+        "typeVersion": 1,
+        "position": [
+          0,
+          0
+        ],
+        "id": "fc64ea9e-7102-4961-a814-18fa5f0e3c37",
+        "name": "Error Trigger"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "c001bea4-36a3-4d83-817d-6f43482f0c63",
+                "name": "execution.error.description",
+                "value": "={{ $json.execution.error.description }}",
+                "type": "string"
+              },
+              {
+                "id": "f22f6f80-5d6b-4a7c-b73e-538c0710263b",
+                "name": "execution.error.message",
+                "value": "={{ $json.execution.error.message }}",
+                "type": "string"
+              },
+              {
+                "id": "66874eb8-19a5-43ff-b8fa-af4c207b8f32",
+                "name": "workflow.name",
+                "value": "={{ $json.workflow.name }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          224,
+          0
+        ],
+        "id": "682d2087-2283-4c40-8eba-e2b76a20ed6e",
+        "name": "Edit Fields"
+      },
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "=Información del error: \n  Descripción: {{ $json.execution.error.description }}\nMensaje: {{ $json.execution.error.message }}\n\nFlujo: {{ $json.workflow.name }}",
+          "messages": {
+            "messageValues": [
+              {
+                "message": "Eres un experto en análisis de errores de sistemas y flujos automatizados. Tu tarea es analizar los mensajes de error proporcionados, extraer toda la información relevante y rellenar la siguiente plantilla HTML para generar un correo de notificación de errores.\n\n## ANÁLISIS REQUERIDO\nAntes de rellenar la plantilla, analiza cada error e identifica:\n1. **Flujo afectado**: nombre del flujo donde ocurrió el error\n2. **Descripción del error**: qué ha fallado exactamente, en lenguaje claro\n3. **Causa raíz**: por qué se ha producido el error\n4. **Solución propuesta**: pasos concretos y accionables para resolverlo\n5. **Nivel de criticidad**:\n   - 🔴 CRÍTICO: flujo completamente detenido, pérdida de datos o impacto en producción inmediato\n   - 🟡 MEDIO: flujo funciona parcialmente, error recurrente pero no bloqueante\n   - 🟢 BAJO: error puntual, sin impacto funcional significativo\n\n## INSTRUCCIONES DE RELLENO\n- Sustituye todos los valores entre {{ }} con la información extraída del análisis\n- En la sección de tarjetas de error, replica el bloque <!-- ERROR CARD --> tantas veces como errores haya, eliminando los comentarios\n- En la tabla resumen, indica el número real de errores por nivel\n- Ajusta los colores del badge y borde según el nivel: CRÍTICO=#dc2626, MEDIO=#d97706, BAJO=#16a34a\n- Si solo hay un error, elimina las tarjetas sobrantes\n- Ordena las tarjetas de mayor a menor criticidad\n- NO modifiques la estructura HTML ni los estilos, solo rellena los valores\n\n## PLANTILLA HTML\n\n<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Informe de Errores de Flujo</title>\n</head>\n<body style=\"margin:0;padding:0;background-color:#f0f2f5;font-family:Arial,Helvetica,sans-serif;\">\n\n<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color:#f0f2f5;padding:30px 0;\">\n  <tr>\n    <td align=\"center\">\n      <table width=\"680\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width:680px;width:100%;\">\n\n        <!-- HEADER -->\n        <tr>\n          <td style=\"background-color:#0f172a;border-radius:12px 12px 0 0;padding:36px 40px;\">\n            <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n              <tr>\n                <td>\n                  <p style=\"margin:0 0 6px 0;font-size:12px;color:#94a3b8;letter-spacing:2px;text-transform:uppercase;\">Sistema de Monitorización</p>\n                  <h1 style=\"margin:0;font-size:26px;color:#ffffff;font-weight:700;\">🚨 Informe de Errores de Flujo</h1>\n                </td>\n                <td align=\"right\" valign=\"top\">\n                  <p style=\"margin:0;font-size:12px;color:#64748b;\">{{ FECHA_HORA }}</p>\n                </td>\n              </tr>\n            </table>\n          </td>\n        </tr>\n\n        <!-- BANNER NIVEL CRÍTICO (cambiar color de fondo según nivel más alto: #dc2626 crítico, #d97706 medio, #16a34a bajo) -->\n        <tr>\n          <td style=\"background-color:{{ COLOR_BANNER }};padding:12px 40px;\">\n            <p style=\"margin:0;font-size:13px;color:#ffffff;font-weight:600;\">{{ ICONO_NIVEL }} {{ TEXTO_RESUMEN_BANNER }} — Se requiere atención {{ URGENCIA }}</p>\n          </td>\n        </tr>\n\n        <!-- CUERPO -->\n        <tr>\n          <td style=\"background-color:#ffffff;padding:36px 40px;\">\n\n            <!-- TABLA RESUMEN -->\n            <p style=\"margin:0 0 16px 0;font-size:13px;font-weight:700;color:#0f172a;text-transform:uppercase;letter-spacing:1px;\">Resumen de errores detectados</p>\n            <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"border-radius:8px;overflow:hidden;margin-bottom:36px;border:1px solid #e2e8f0;\">\n              <tr style=\"background-color:#f8fafc;\">\n                <td style=\"padding:12px 16px;font-size:12px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1px;width:34%;\">Nivel</td>\n                <td style=\"padding:12px 16px;font-size:12px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1px;width:33%;\">Cantidad</td>\n                <td style=\"padding:12px 16px;font-size:12px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1px;width:33%;\">Estado</td>\n              </tr>\n              <tr style=\"border-top:1px solid #e2e8f0;\">\n                <td style=\"padding:12px 16px;font-size:13px;color:#0f172a;\">🔴 Crítico</td>\n                <td style=\"padding:12px 16px;font-size:13px;font-weight:700;color:#dc2626;\">{{ NUM_CRITICOS }}</td>\n                <td style=\"padding:12px 16px;font-size:12px;color:#dc2626;\">{{ ESTADO_CRITICOS }}</td>\n              </tr>\n              <tr style=\"border-top:1px solid #e2e8f0;background-color:#fafafa;\">\n                <td style=\"padding:12px 16px;font-size:13px;color:#0f172a;\">🟡 Medio</td>\n                <td style=\"padding:12px 16px;font-size:13px;font-weight:700;color:#d97706;\">{{ NUM_MEDIOS }}</td>\n                <td style=\"padding:12px 16px;font-size:12px;color:#d97706;\">{{ ESTADO_MEDIOS }}</td>\n              </tr>\n              <tr style=\"border-top:1px solid #e2e8f0;\">\n                <td style=\"padding:12px 16px;font-size:13px;color:#0f172a;\">🟢 Bajo</td>\n                <td style=\"padding:12px 16px;font-size:13px;font-weight:700;color:#16a34a;\">{{ NUM_BAJOS }}</td>\n                <td style=\"padding:12px 16px;font-size:12px;color:#16a34a;\">{{ ESTADO_BAJOS }}</td>\n              </tr>\n            </table>\n\n            <!-- SEPARADOR DE SECCIÓN -->\n            <p style=\"margin:0 0 20px 0;font-size:13px;font-weight:700;color:#0f172a;text-transform:uppercase;letter-spacing:1px;\">Detalle de errores</p>\n\n            <!-- ================================ -->\n            <!-- ERROR CARD (repetir por cada error, ordenado de mayor a menor criticidad) -->\n            <!-- ================================ -->\n            <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"border-radius:8px;border:1px solid #e2e8f0;border-left:4px solid {{ COLOR_BORDE_ERROR_1 }};margin-bottom:24px;\">\n              <tr>\n                <td style=\"padding:20px 24px;\">\n\n                  <!-- CABECERA TARJETA -->\n                  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-bottom:16px;\">\n                    <tr>\n                      <td>\n                        <span style=\"display:inline-block;background-color:{{ COLOR_BADGE_ERROR_1 }};color:#ffffff;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:20px;\">{{ NIVEL_ERROR_1 }}</span>\n                      </td>\n                      <td align=\"right\">\n                        <span style=\"font-size:11px;color:#94a3b8;\">Error #1</span>\n                      </td>\n                    </tr>\n                  </table>\n\n                  <!-- FLUJO -->\n                  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-bottom:12px;\">\n                    <tr>\n                      <td width=\"20\" valign=\"top\"><span style=\"font-size:14px;\">⚙️</span></td>\n                      <td style=\"padding-left:8px;\">\n                        <p style=\"margin:0 0 2px 0;font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1px;\">Flujo afectado</p>\n                        <p style=\"margin:0;font-size:14px;font-weight:700;color:#0f172a;\">{{ NOMBRE_FLUJO_ERROR_1 }}</p>\n                      </td>\n                    </tr>\n                  </table>\n\n                  <!-- ERROR -->\n                  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-bottom:12px;\">\n                    <tr>\n                      <td width=\"20\" valign=\"top\"><span style=\"font-size:14px;\">❌</span></td>\n                      <td style=\"padding-left:8px;\">\n                        <p style=\"margin:0 0 2px 0;font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1px;\">Descripción del error</p>\n                        <p style=\"margin:0;font-size:13px;color:#1e293b;line-height:1.5;\">{{ DESCRIPCION_ERROR_1 }}</p>\n                      </td>\n                    </tr>\n                  </table>\n\n                  <!-- CAUSA -->\n                  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-bottom:12px;\">\n                    <tr>\n                      <td width=\"20\" valign=\"top\"><span style=\"font-size:14px;\">🔍</span></td>\n                      <td style=\"padding-left:8px;\">\n                        <p style=\"margin:0 0 2px 0;font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1px;\">Causa raíz</p>\n                        <p style=\"margin:0;font-size:13px;color:#1e293b;line-height:1.5;\">{{ CAUSA_ERROR_1 }}</p>\n                      </td>\n                    </tr>\n                  </table>\n\n                  <!-- SOLUCIÓN -->\n                  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color:#f0fdf4;border-radius:6px;padding:0;\">\n                    <tr>\n                      <td style=\"padding:12px 14px;\">\n                        <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n                          <tr>\n                            <td width=\"20\" valign=\"top\"><span style=\"font-size:14px;\">✅</span></td>\n                            <td style=\"padding-left:8px;\">\n                              <p style=\"margin:0 0 2px 0;font-size:10px;font-weight:700;color:#16a34a;text-transform:uppercase;letter-spacing:1px;\">Solución propuesta</p>\n                              <p style=\"margin:0;font-size:13px;color:#1e293b;line-height:1.5;\">{{ SOLUCION_ERROR_1 }}</p>\n                            </td>\n                          </tr>\n                        </table>\n                      </td>\n                    </tr>\n                  </table>\n\n                </td>\n              </tr>\n            </table>\n            <!-- FIN ERROR CARD (repetir el bloque anterior para cada error adicional, incrementando el número) -->\n\n          </td>\n        </tr>\n\n        <!-- FOOTER -->\n        <tr>\n          <td style=\"background-color:#f8fafc;border-top:1px solid #e2e8f0;border-radius:0 0 12px 12px;padding:20px 40px;\">\n            <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n              <tr>\n                <td>\n                  <p style=\"margin:0;font-size:11px;color:#94a3b8;\">Generado automáticamente por el sistema de monitorización de flujos.</p>\n                  <p style=\"margin:4px 0 0 0;font-size:11px;color:#94a3b8;\">No responda a este correo directamente.</p>\n                </td>\n                <td align=\"right\">\n                  <p style=\"margin:0;font-size:11px;color:#cbd5e1;font-weight:700;\">{{ NOMBRE_SISTEMA }}</p>\n                </td>\n              </tr>\n            </table>\n          </td>\n        </tr>\n\n      </table>\n    </td>\n  </tr>\n</table>\n\n</body>\n</html>\n\n## VALORES A SUSTITUIR\n| Variable | Descripción |\n|---|---|\n| {{ FECHA_HORA }} | Fecha y hora actual del análisis (ej: 20 Feb 2026, 14:32h) |\n| {{ COLOR_BANNER }} | Color hex del nivel más grave detectado |\n| {{ ICONO_NIVEL }} | Emoji del nivel más grave (🔴🟡🟢) |\n| {{ TEXTO_RESUMEN_BANNER }} | Ej: \"1 error crítico y 2 errores medios detectados\" |\n| {{ URGENCIA }} | \"inmediata\", \"a la mayor brevedad\" o \"en el próximo ciclo\" |\n| {{ NUM_CRITICOS / MEDIOS / BAJOS }} | Número de errores por nivel |\n| {{ ESTADO_CRITICOS / MEDIOS / BAJOS }} | Ej: \"Acción inmediata\" / \"Monitorizar\" / \"Planificar\" (o \"Sin errores\") |\n| {{ COLOR_BORDE/BADGE_ERROR_N }} | Color hex según nivel del error N |\n| {{ NIVEL_ERROR_N }} | Texto del nivel: \"CRÍTICO\", \"MEDIO\" o \"BAJO\" |\n| {{ NOMBRE_FLUJO_ERROR_N }} | Nombre del flujo afectado |\n| {{ DESCRIPCION_ERROR_N }} | Descripción clara del error |\n| {{ CAUSA_ERROR_N }} | Causa raíz identificada |\n| {{ SOLUCION_ERROR_N }} | Pasos para resolverlo |\n| {{ NOMBRE_SISTEMA }} | Nombre de tu sistema o empresa |\n\n---\nA continuación, analiza los siguientes errores y devuelve únicamente el HTML completo con todos los valores rellenos:\n\n**Mensajes de error:**\n[PEGAR AQUÍ LOS LOGS / MENSAJES DE ERROR]"
+              }
+            ]
+          },
+          "batching": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.chainLlm",
+        "typeVersion": 1.9,
+        "position": [
+          448,
+          0
+        ],
+        "id": "1dd8e5ef-e177-406f-a684-ad72b5d943ad",
+        "name": "Basic LLM Chain"
+      },
+      {
+        "parameters": {
+          "model": {
+            "__rl": true,
+            "mode": "list",
+            "value": "gpt-5-mini"
+          },
+          "builtInTools": {},
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+        "typeVersion": 1.3,
+        "position": [
+          520,
+          224
+        ],
+        "id": "1c49b9d0-db95-498f-9aca-0e67bd3f5f99",
+        "name": "OpenAI Chat Model",
+        "credentials": {
+          "openAiApi": {
+            "id": "WvSLkCujVhY8jIGz",
+            "name": "OpenAi account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "sendTo": "carlos.f.g.work",
+          "subject": "=Ha ocurrido un error en el flujo {{ $('Edit Fields').item.json.workflow.name }}",
+          "message": "={{ $json.text }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.gmail",
+        "typeVersion": 2.2,
+        "position": [
+          800,
+          0
+        ],
+        "id": "f2ac7195-d22b-478d-81c1-9cbda0a3a74c",
+        "name": "Send a message",
+        "webhookId": "71dc10ba-c38a-4482-a74f-dad54577e68b",
+        "credentials": {
+          "gmailOAuth2": {
+            "id": "BYnusElzyLGzOhVZ",
+            "name": "Gmail account"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "Error Trigger": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields": {
+        "main": [
+          [
+            {
+              "node": "Basic LLM Chain",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OpenAI Chat Model": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "Basic LLM Chain",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Basic LLM Chain": {
+        "main": [
+          [
+            {
+              "node": "Send a message",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "Carlos Fernández",
+    "name": "Notificación de error",
+    "description": "",
+    "autosaved": true
+  },
+  "activeVersionId": "b5a8e1d7-614d-4184-96d9-5135a22c911e",
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-09-27T11:20:54.271Z",
+  "id": "G3LUdMqnpavs5AUk",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Notificación de error",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "fc64ea9e-7102-4961-a814-18fa5f0e3c37",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c001bea4-36a3-4d83-817d-6f43482f0c63",
+              "name": "execution.error.description",
+              "value": "={{ $json.execution.error.description }}",
+              "type": "string"
+            },
+            {
+              "id": "f22f6f80-5d6b-4a7c-b73e-538c0710263b",
+              "name": "execution.error.message",
+              "value": "={{ $json.execution.error.message }}",
+              "type": "string"
+            },
+            {
+              "id": "66874eb8-19a5-43ff-b8fa-af4c207b8f32",
+              "name": "workflow.name",
+              "value": "={{ $json.workflow.name }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        224,
+        0
+      ],
+      "id": "682d2087-2283-4c40-8eba-e2b76a20ed6e",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Información del error: \n  Descripción: {{ $json.execution.error.description }}\nMensaje: {{ $json.execution.error.message }}\n\nFlujo: {{ $json.workflow.name }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "Eres un experto en análisis de errores de sistemas y flujos automatizados. Tu tarea es analizar los mensajes de error proporcionados, extraer toda la información relevante y rellenar la siguiente plantilla HTML para generar un correo de notificación de errores.\n\n## ANÁLISIS REQUERIDO\nAntes de rellenar la plantilla, analiza cada error e identifica:\n1. **Flujo afectado**: nombre del flujo donde ocurrió el error\n2. **Descripción del error**: qué ha fallado exactamente, en lenguaje claro\n3. **Causa raíz**: por qué se ha producido el error\n4. **Solución propuesta**: pasos concretos y accionables para resolverlo\n5. **Nivel de criticidad**:\n   - 🔴 CRÍTICO: flujo completamente detenido, pérdida de datos o impacto en producción inmediato\n   - 🟡 MEDIO: flujo funciona parcialmente, error recurrente pero no bloqueante\n   - 🟢 BAJO: error puntual, sin impacto funcional significativo\n\n## INSTRUCCIONES DE RELLENO\n- Sustituye todos los valores entre {{ }} con la información extraída del análisis\n- En la sección de tarjetas de error, replica el bloque <!-- ERROR CARD --> tantas veces como errores haya, eliminando los comentarios\n- En la tabla resumen, indica el número real de errores por nivel\n- Ajusta los colores del badge y borde según el nivel: CRÍTICO=#dc2626, MEDIO=#d97706, BAJO=#16a34a\n- Si solo hay un error, elimina las tarjetas sobrantes\n- Ordena las tarjetas de mayor a menor criticidad\n- NO modifiques la estructura HTML ni los estilos, solo rellena los valores\n\n## PLANTILLA HTML\n\n<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Informe de Errores de Flujo</title>\n</head>\n<body style=\"margin:0;padding:0;background-color:#f0f2f5;font-family:Arial,Helvetica,sans-serif;\">\n\n<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color:#f0f2f5;padding:30px 0;\">\n  <tr>\n    <td align=\"center\">\n      <table width=\"680\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width:680px;width:100%;\">\n\n        <!-- HEADER -->\n        <tr>\n          <td style=\"background-color:#0f172a;border-radius:12px 12px 0 0;padding:36px 40px;\">\n            <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n              <tr>\n                <td>\n                  <p style=\"margin:0 0 6px 0;font-size:12px;color:#94a3b8;letter-spacing:2px;text-transform:uppercase;\">Sistema de Monitorización</p>\n                  <h1 style=\"margin:0;font-size:26px;color:#ffffff;font-weight:700;\">🚨 Informe de Errores de Flujo</h1>\n                </td>\n                <td align=\"right\" valign=\"top\">\n                  <p style=\"margin:0;font-size:12px;color:#64748b;\">{{ FECHA_HORA }}</p>\n                </td>\n              </tr>\n            </table>\n          </td>\n        </tr>\n\n        <!-- BANNER NIVEL CRÍTICO (cambiar color de fondo según nivel más alto: #dc2626 crítico, #d97706 medio, #16a34a bajo) -->\n        <tr>\n          <td style=\"background-color:{{ COLOR_BANNER }};padding:12px 40px;\">\n            <p style=\"margin:0;font-size:13px;color:#ffffff;font-weight:600;\">{{ ICONO_NIVEL }} {{ TEXTO_RESUMEN_BANNER }} — Se requiere atención {{ URGENCIA }}</p>\n          </td>\n        </tr>\n\n        <!-- CUERPO -->\n        <tr>\n          <td style=\"background-color:#ffffff;padding:36px 40px;\">\n\n            <!-- TABLA RESUMEN -->\n            <p style=\"margin:0 0 16px 0;font-size:13px;font-weight:700;color:#0f172a;text-transform:uppercase;letter-spacing:1px;\">Resumen de errores detectados</p>\n            <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"border-radius:8px;overflow:hidden;margin-bottom:36px;border:1px solid #e2e8f0;\">\n              <tr style=\"background-color:#f8fafc;\">\n                <td style=\"padding:12px 16px;font-size:12px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1px;width:34%;\">Nivel</td>\n                <td style=\"padding:12px 16px;font-size:12px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1px;width:33%;\">Cantidad</td>\n                <td style=\"padding:12px 16px;font-size:12px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1px;width:33%;\">Estado</td>\n              </tr>\n              <tr style=\"border-top:1px solid #e2e8f0;\">\n                <td style=\"padding:12px 16px;font-size:13px;color:#0f172a;\">🔴 Crítico</td>\n                <td style=\"padding:12px 16px;font-size:13px;font-weight:700;color:#dc2626;\">{{ NUM_CRITICOS }}</td>\n                <td style=\"padding:12px 16px;font-size:12px;color:#dc2626;\">{{ ESTADO_CRITICOS }}</td>\n              </tr>\n              <tr style=\"border-top:1px solid #e2e8f0;background-color:#fafafa;\">\n                <td style=\"padding:12px 16px;font-size:13px;color:#0f172a;\">🟡 Medio</td>\n                <td style=\"padding:12px 16px;font-size:13px;font-weight:700;color:#d97706;\">{{ NUM_MEDIOS }}</td>\n                <td style=\"padding:12px 16px;font-size:12px;color:#d97706;\">{{ ESTADO_MEDIOS }}</td>\n              </tr>\n              <tr style=\"border-top:1px solid #e2e8f0;\">\n                <td style=\"padding:12px 16px;font-size:13px;color:#0f172a;\">🟢 Bajo</td>\n                <td style=\"padding:12px 16px;font-size:13px;font-weight:700;color:#16a34a;\">{{ NUM_BAJOS }}</td>\n                <td style=\"padding:12px 16px;font-size:12px;color:#16a34a;\">{{ ESTADO_BAJOS }}</td>\n              </tr>\n            </table>\n\n            <!-- SEPARADOR DE SECCIÓN -->\n            <p style=\"margin:0 0 20px 0;font-size:13px;font-weight:700;color:#0f172a;text-transform:uppercase;letter-spacing:1px;\">Detalle de errores</p>\n\n            <!-- ================================ -->\n            <!-- ERROR CARD (repetir por cada error, ordenado de mayor a menor criticidad) -->\n            <!-- ================================ -->\n            <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"border-radius:8px;border:1px solid #e2e8f0;border-left:4px solid {{ COLOR_BORDE_ERROR_1 }};margin-bottom:24px;\">\n              <tr>\n                <td style=\"padding:20px 24px;\">\n\n                  <!-- CABECERA TARJETA -->\n                  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-bottom:16px;\">\n                    <tr>\n                      <td>\n                        <span style=\"display:inline-block;background-color:{{ COLOR_BADGE_ERROR_1 }};color:#ffffff;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:20px;\">{{ NIVEL_ERROR_1 }}</span>\n                      </td>\n                      <td align=\"right\">\n                        <span style=\"font-size:11px;color:#94a3b8;\">Error #1</span>\n                      </td>\n                    </tr>\n                  </table>\n\n                  <!-- FLUJO -->\n                  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-bottom:12px;\">\n                    <tr>\n                      <td width=\"20\" valign=\"top\"><span style=\"font-size:14px;\">⚙️</span></td>\n                      <td style=\"padding-left:8px;\">\n                        <p style=\"margin:0 0 2px 0;font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1px;\">Flujo afectado</p>\n                        <p style=\"margin:0;font-size:14px;font-weight:700;color:#0f172a;\">{{ NOMBRE_FLUJO_ERROR_1 }}</p>\n                      </td>\n                    </tr>\n                  </table>\n\n                  <!-- ERROR -->\n                  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-bottom:12px;\">\n                    <tr>\n                      <td width=\"20\" valign=\"top\"><span style=\"font-size:14px;\">❌</span></td>\n                      <td style=\"padding-left:8px;\">\n                        <p style=\"margin:0 0 2px 0;font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1px;\">Descripción del error</p>\n                        <p style=\"margin:0;font-size:13px;color:#1e293b;line-height:1.5;\">{{ DESCRIPCION_ERROR_1 }}</p>\n                      </td>\n                    </tr>\n                  </table>\n\n                  <!-- CAUSA -->\n                  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-bottom:12px;\">\n                    <tr>\n                      <td width=\"20\" valign=\"top\"><span style=\"font-size:14px;\">🔍</span></td>\n                      <td style=\"padding-left:8px;\">\n                        <p style=\"margin:0 0 2px 0;font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1px;\">Causa raíz</p>\n                        <p style=\"margin:0;font-size:13px;color:#1e293b;line-height:1.5;\">{{ CAUSA_ERROR_1 }}</p>\n                      </td>\n                    </tr>\n                  </table>\n\n                  <!-- SOLUCIÓN -->\n                  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color:#f0fdf4;border-radius:6px;padding:0;\">\n                    <tr>\n                      <td style=\"padding:12px 14px;\">\n                        <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n                          <tr>\n                            <td width=\"20\" valign=\"top\"><span style=\"font-size:14px;\">✅</span></td>\n                            <td style=\"padding-left:8px;\">\n                              <p style=\"margin:0 0 2px 0;font-size:10px;font-weight:700;color:#16a34a;text-transform:uppercase;letter-spacing:1px;\">Solución propuesta</p>\n                              <p style=\"margin:0;font-size:13px;color:#1e293b;line-height:1.5;\">{{ SOLUCION_ERROR_1 }}</p>\n                            </td>\n                          </tr>\n                        </table>\n                      </td>\n                    </tr>\n                  </table>\n\n                </td>\n              </tr>\n            </table>\n            <!-- FIN ERROR CARD (repetir el bloque anterior para cada error adicional, incrementando el número) -->\n\n          </td>\n        </tr>\n\n        <!-- FOOTER -->\n        <tr>\n          <td style=\"background-color:#f8fafc;border-top:1px solid #e2e8f0;border-radius:0 0 12px 12px;padding:20px 40px;\">\n            <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n              <tr>\n                <td>\n                  <p style=\"margin:0;font-size:11px;color:#94a3b8;\">Generado automáticamente por el sistema de monitorización de flujos.</p>\n                  <p style=\"margin:4px 0 0 0;font-size:11px;color:#94a3b8;\">No responda a este correo directamente.</p>\n                </td>\n                <td align=\"right\">\n                  <p style=\"margin:0;font-size:11px;color:#cbd5e1;font-weight:700;\">{{ NOMBRE_SISTEMA }}</p>\n                </td>\n              </tr>\n            </table>\n          </td>\n        </tr>\n\n      </table>\n    </td>\n  </tr>\n</table>\n\n</body>\n</html>\n\n## VALORES A SUSTITUIR\n| Variable | Descripción |\n|---|---|\n| {{ FECHA_HORA }} | Fecha y hora actual del análisis (ej: 20 Feb 2026, 14:32h) |\n| {{ COLOR_BANNER }} | Color hex del nivel más grave detectado |\n| {{ ICONO_NIVEL }} | Emoji del nivel más grave (🔴🟡🟢) |\n| {{ TEXTO_RESUMEN_BANNER }} | Ej: \"1 error crítico y 2 errores medios detectados\" |\n| {{ URGENCIA }} | \"inmediata\", \"a la mayor brevedad\" o \"en el próximo ciclo\" |\n| {{ NUM_CRITICOS / MEDIOS / BAJOS }} | Número de errores por nivel |\n| {{ ESTADO_CRITICOS / MEDIOS / BAJOS }} | Ej: \"Acción inmediata\" / \"Monitorizar\" / \"Planificar\" (o \"Sin errores\") |\n| {{ COLOR_BORDE/BADGE_ERROR_N }} | Color hex según nivel del error N |\n| {{ NIVEL_ERROR_N }} | Texto del nivel: \"CRÍTICO\", \"MEDIO\" o \"BAJO\" |\n| {{ NOMBRE_FLUJO_ERROR_N }} | Nombre del flujo afectado |\n| {{ DESCRIPCION_ERROR_N }} | Descripción clara del error |\n| {{ CAUSA_ERROR_N }} | Causa raíz identificada |\n| {{ SOLUCION_ERROR_N }} | Pasos para resolverlo |\n| {{ NOMBRE_SISTEMA }} | Nombre de tu sistema o empresa |\n\n---\nA continuación, analiza los siguientes errores y devuelve únicamente el HTML completo con todos los valores rellenos:\n\n**Mensajes de error:**\n[PEGAR AQUÍ LOS LOGS / MENSAJES DE ERROR]"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        448,
+        0
+      ],
+      "id": "1dd8e5ef-e177-406f-a684-ad72b5d943ad",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-5-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        528,
+        224
+      ],
+      "id": "1c49b9d0-db95-498f-9aca-0e67bd3f5f99",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "carlos.f.g.work@gmail.com",
+        "subject": "=Ha ocurrido un error en el flujo {{ $('Edit Fields').item.json.workflow.name }}",
+        "message": "={{ $json.text }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        800,
+        0
+      ],
+      "id": "f2ac7195-d22b-478d-81c1-9cbda0a3a74c",
+      "name": "Send a message",
+      "webhookId": "71dc10ba-c38a-4482-a74f-dad54577e68b",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "BYnusElzyLGzOhVZ",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner",
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-09-27T11:20:54.273Z",
+      "createdAt": "2025-09-27T11:20:54.273Z",
+      "role": "workflow:owner",
+      "workflowId": "G3LUdMqnpavs5AUk",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-04-12T11:56:26.511Z",
+  "versionId": "04ad3f8f-6c46-4c6d-ae54-987d3c700526"
+}
