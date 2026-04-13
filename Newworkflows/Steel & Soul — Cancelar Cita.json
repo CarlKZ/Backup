@@ -1,7 +1,227 @@
 {
-  "active": false,
-  "activeVersion": null,
-  "activeVersionId": null,
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2026-04-13T12:26:01.000Z",
+    "createdAt": "2026-04-13T12:23:45.266Z",
+    "versionId": "76f9b27f-3815-4499-8189-39de82784a56",
+    "workflowId": "Q0enUCunXrEAABqI",
+    "nodes": [
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "ccd8a178-6957-4148-add7-bac86f94b5e2",
+          "responseMode": "responseNode",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2.1,
+        "position": [
+          448,
+          336
+        ],
+        "id": "0598c19a-80b0-41f2-920c-60151a186e34",
+        "name": "Webhook",
+        "webhookId": "ccd8a178-6957-4148-add7-bac86f94b5e2"
+      },
+      {
+        "parameters": {
+          "respondWith": "json",
+          "responseBody": "={\n  \"results\": [\n    {\n      \"toolCallId\": \"{{ $('Code').item.json.tool_call_id }}\",\n      \"result\": \"{{ $json.output }}\"\n    }\n  ]\n}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.respondToWebhook",
+        "typeVersion": 1.4,
+        "position": [
+          1360,
+          336
+        ],
+        "id": "efee71f2-fb7b-48ca-b238-c78ca77a028d",
+        "name": "Respond to Webhook"
+      },
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "=Nombre cliente: {{ $json.nombre_cliente }}\nTelefono: {{ $json.telefono_cliente }}\n\nBusca la cita de este cliente por su telefono en Google Calendar y cancelala.",
+          "options": {
+            "systemMessage": "=Eres un asistente interno de Steel & Soul Original Edition. Tu única función es cancelar citas existentes en Google Calendar.\n\nINSTRUCCIONES:\n1. Usa la tool Get Many de Google Calendar para obtener todos los eventos futuros.\n2. Busca el evento cuya descripcion contenga el telefono del cliente.\n3. Si encuentras el evento, eliminalo usando la tool Delete.\n4. Responde SIEMPRE en español de España.\n5. Responde SOLO con el resultado — sin saludos ni texto adicional.\n\nFORMATO DE RESPUESTA:\n- Si se cancela correctamente: \"Cita cancelada correctamente para [nombre_cliente]. Si necesitas reservar de nuevo, estoy a tu disposicion.\"\n- Si no se encuentra la cita: \"No encontre ninguna cita asociada al telefono [telefono_cliente]. Por favor verifica los datos.\"\n- Si hay error: \"Error al cancelar la cita. Por favor intentalo de nuevo.\""
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 3,
+        "position": [
+          952,
+          336
+        ],
+        "id": "2de5e83e-7625-44b3-9962-cc584667774c",
+        "name": "AI Agent1"
+      },
+      {
+        "parameters": {
+          "operation": "getAll",
+          "calendar": {
+            "__rl": true,
+            "value": "30e5d3919f0baf3890a0a23cf852c554193852256f08a1eb071bdc8f963bfe67@group.calendar.google.com",
+            "mode": "list",
+            "cachedResultName": "Steel and Soul"
+          },
+          "timeMax": "={{ $now.plus({ year: 1 }) }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleCalendarTool",
+        "typeVersion": 1.3,
+        "position": [
+          1024,
+          560
+        ],
+        "id": "53ce2f8c-b5d6-4931-9dca-032d36ccfd75",
+        "name": "Get many events in Google Calendar",
+        "credentials": {
+          "googleCalendarOAuth2Api": {
+            "id": "BxLdTiBYRwntbItp",
+            "name": "Google Calendar account 2"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "const body = $input.first().json.body;\nconst toolCall = body.message.toolCalls[0];\nconst args = toolCall.function.arguments;\n\nreturn [{\n  json: {\n    tool_call_id: toolCall.id,\n    nombre_cliente: args.nombre_cliente || '',\n    telefono_cliente: args.telefono_cliente || '',\n    fecha: args.fecha || '',\n    hora: args.hora || ''\n  }\n}];"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          672,
+          336
+        ],
+        "id": "5a209de8-ce3e-4f47-8299-371f3c2a55f3",
+        "name": "Code"
+      },
+      {
+        "parameters": {
+          "model": {
+            "__rl": true,
+            "mode": "list",
+            "value": "gpt-4.1-mini"
+          },
+          "builtInTools": {},
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+        "typeVersion": 1.3,
+        "position": [
+          896,
+          560
+        ],
+        "id": "beb67575-9c12-4ee9-82f2-757f68c7f126",
+        "name": "OpenAI",
+        "credentials": {
+          "openAiApi": {
+            "id": "WvSLkCujVhY8jIGz",
+            "name": "OpenAi account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "delete",
+          "calendar": {
+            "__rl": true,
+            "value": "30e5d3919f0baf3890a0a23cf852c554193852256f08a1eb071bdc8f963bfe67@group.calendar.google.com",
+            "mode": "list",
+            "cachedResultName": "Steel and Soul"
+          },
+          "eventId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Event_ID', ``, 'string') }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleCalendarTool",
+        "typeVersion": 1.3,
+        "position": [
+          1152,
+          560
+        ],
+        "id": "de1e6a35-ebdd-4187-bfc9-789b337e1bca",
+        "name": "Delete an event in Google Calendar",
+        "credentials": {
+          "googleCalendarOAuth2Api": {
+            "id": "BxLdTiBYRwntbItp",
+            "name": "Google Calendar account 2"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "AI Agent1": {
+        "main": [
+          [
+            {
+              "node": "Respond to Webhook",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get many events in Google Calendar": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent1",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Webhook": {
+        "main": [
+          [
+            {
+              "node": "Code",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code": {
+        "main": [
+          [
+            {
+              "node": "AI Agent1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OpenAI": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "AI Agent1",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Delete an event in Google Calendar": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent1",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "Carlos Fernández",
+    "name": "Steel & Soul — Cancelar Cita",
+    "description": "",
+    "autosaved": false
+  },
+  "activeVersionId": "76f9b27f-3815-4499-8189-39de82784a56",
   "connections": {
     "AI Agent1": {
       "main": [
@@ -9,39 +229,6 @@
           {
             "node": "Respond to Webhook",
             "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenAI Chat Model1": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent1",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code in JavaScript": {
-      "main": [
-        [
-          {
-            "node": "AI Agent1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Redis Chat Memory": {
-      "ai_memory": [
-        [
-          {
-            "node": "AI Agent1",
-            "type": "ai_memory",
             "index": 0
           }
         ]
@@ -62,8 +249,41 @@
       "main": [
         [
           {
-            "node": "Code in JavaScript",
+            "node": "Code",
             "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete an event in Google Calendar": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
             "index": 0
           }
         ]
@@ -73,13 +293,16 @@
   "createdAt": "2026-04-08T12:05:59.702Z",
   "id": "Q0enUCunXrEAABqI",
   "isArchived": false,
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Steel & Soul — Cancelar Cita",
   "nodes": [
     {
       "parameters": {
         "httpMethod": "POST",
         "path": "ccd8a178-6957-4148-add7-bac86f94b5e2",
+        "responseMode": "responseNode",
         "options": {}
       },
       "type": "n8n-nodes-base.webhook",
@@ -95,7 +318,7 @@
     {
       "parameters": {
         "respondWith": "json",
-        "responseBody": "={\n  \"results\":[\n      {\n           \"toolCallId\": \"{{ $('Webhook1').item.json.body.message.toolCalls[0].id }}\",\n           \"result\": {{ JSON.stringify($json.output) }}\n      }\n  ]\n}",
+        "responseBody": "={\n  \"results\": [\n    {\n      \"toolCallId\": \"{{ $('Code').item.json.tool_call_id }}\",\n      \"result\": \"{{ $json.output }}\"\n    }\n  ]\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.respondToWebhook",
@@ -110,9 +333,9 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "=Fecha a la que el cliente quiere agendar:  \n{{ $json.fecha }}\nHora a la que el cliente quiere agendar:\n{{ $json.hora }}",
+        "text": "=Nombre cliente: {{ $json.nombre_cliente }}\nTelefono: {{ $json.telefono_cliente }}\n\nBusca la cita de este cliente por su telefono en Google Calendar y cancelala.",
         "options": {
-          "systemMessage": "=Eres un asistente interno de Steel & Soul Original Edition. Tu única función es consultar el calendario de Google Calendar y determinar si hay disponibilidad para una cita.\n\nHORARIO DE LA BARBERIA:\n- Lunes a viernes: 10:00-14:00 y 17:00-21:00\n- Sabado: 10:00-14:00\n- Domingo: cerrado\n\nINSTRUCCIONES:\n1. Usa la tool de Google Calendar para obtener todos los eventos del dia indicado.\n2. Comprueba si el hueco solicitado (fecha + hora + duracion) esta libre o ocupado.\n3. Si el hueco esta ocupado, calcula y ofrece los proximos 3 huecos libres del mismo dia dentro del horario. Si no hay mas huecos ese dia, indica que no hay disponibilidad.\n4. Responde SIEMPRE en español de España.\n5. Responde SOLO con el resultado — sin saludos, sin explicaciones, sin texto adicional.\n6. La fecha actual es { $now }\n\nFORMATO DE RESPUESTA:\n- Si hay disponibilidad: \"Disponible el [fecha] a las [hora].\"\n- Si no hay disponibilidad: \"No hay disponibilidad el [fecha] a las [hora]. Los proximos huecos libres son: [hora1], [hora2], [hora3].\"\n- Si el dia esta cerrado: \"La barberia no abre ese dia.\"\n\n"
+          "systemMessage": "=Eres un asistente interno de Steel & Soul Original Edition. Tu única función es cancelar citas existentes en Google Calendar.\n\nINSTRUCCIONES:\n1. Usa la tool Get Many de Google Calendar para obtener todos los eventos futuros.\n2. Busca el evento cuya descripcion contenga el telefono del cliente.\n3. Si encuentras el evento, eliminalo usando la tool Delete.\n4. Responde SIEMPRE en español de España.\n5. Responde SOLO con el resultado — sin saludos ni texto adicional.\n\nFORMATO DE RESPUESTA:\n- Si se cancela correctamente: \"Cita cancelada correctamente para [nombre_cliente]. Si necesitas reservar de nuevo, estoy a tu disposicion.\"\n- Si no se encuentra la cita: \"No encontre ninguna cita asociada al telefono [telefono_cliente]. Por favor verifica los datos.\"\n- Si hay error: \"Error al cancelar la cita. Por favor intentalo de nuevo.\""
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -123,6 +346,46 @@
       ],
       "id": "2de5e83e-7625-44b3-9962-cc584667774c",
       "name": "AI Agent1"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "30e5d3919f0baf3890a0a23cf852c554193852256f08a1eb071bdc8f963bfe67@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Steel and Soul"
+        },
+        "timeMax": "={{ $now.plus({ year: 1 }) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        1024,
+        560
+      ],
+      "id": "53ce2f8c-b5d6-4931-9dca-032d36ccfd75",
+      "name": "Get many events in Google Calendar",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "BxLdTiBYRwntbItp",
+          "name": "Google Calendar account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $input.first().json.body;\nconst toolCall = body.message.toolCalls[0];\nconst args = toolCall.function.arguments;\n\nreturn [{\n  json: {\n    tool_call_id: toolCall.id,\n    nombre_cliente: args.nombre_cliente || '',\n    telefono_cliente: args.telefono_cliente || '',\n    fecha: args.fecha || '',\n    hora: args.hora || ''\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        672,
+        336
+      ],
+      "id": "5a209de8-ce3e-4f47-8299-371f3c2a55f3",
+      "name": "Code"
     },
     {
       "parameters": {
@@ -141,7 +404,7 @@
         560
       ],
       "id": "beb67575-9c12-4ee9-82f2-757f68c7f126",
-      "name": "OpenAI Chat Model1",
+      "name": "OpenAI",
       "credentials": {
         "openAiApi": {
           "id": "WvSLkCujVhY8jIGz",
@@ -151,47 +414,14 @@
     },
     {
       "parameters": {
-        "jsCode": "const args = $input.first().json.body.message.toolCalls[0].function.arguments;\nconst toolCallId = $input.first().json.body.message.toolCalls[0].id;\n\nreturn [{\n  json: {\n    tool_call_id: toolCallId,\n    fecha: args.fecha || null,\n    hora: args.hora || null,\n    duracion_minutos: args.duracion_minutos || 30\n  }\n}];"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        672,
-        336
-      ],
-      "id": "5a209de8-ce3e-4f47-8299-371f3c2a55f3",
-      "name": "Code in JavaScript"
-    },
-    {
-      "parameters": {
-        "sessionIdType": "customKey",
-        "sessionKey": "={{ $('Code in JavaScript').item.json.tool_call_id }}"
-      },
-      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
-      "typeVersion": 1.5,
-      "position": [
-        1024,
-        560
-      ],
-      "id": "496ab2cf-2d2b-4b1b-933e-33ac440aaed2",
-      "name": "Redis Chat Memory",
-      "credentials": {
-        "redis": {
-          "id": "rmwGdInGMfi5lhMd",
-          "name": "Redis account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "getAll",
+        "operation": "delete",
         "calendar": {
           "__rl": true,
           "value": "30e5d3919f0baf3890a0a23cf852c554193852256f08a1eb071bdc8f963bfe67@group.calendar.google.com",
           "mode": "list",
           "cachedResultName": "Steel and Soul"
         },
-        "timeMax": "={{ $now.plus({ year: 1 }) }}",
+        "eventId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Event_ID', ``, 'string') }}",
         "options": {}
       },
       "type": "n8n-nodes-base.googleCalendarTool",
@@ -200,8 +430,8 @@
         1152,
         560
       ],
-      "id": "53ce2f8c-b5d6-4931-9dca-032d36ccfd75",
-      "name": "Get many events in Google Calendar",
+      "id": "de1e6a35-ebdd-4187-bfc9-789b337e1bca",
+      "name": "Delete an event in Google Calendar",
       "credentials": {
         "googleCalendarOAuth2Api": {
           "id": "BxLdTiBYRwntbItp",
@@ -226,7 +456,7 @@
   ],
   "staticData": null,
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2026-04-10T15:36:29.851Z",
-  "versionId": "e19e8395-10f4-4b54-b187-c9c1d353a052"
+  "triggerCount": 1,
+  "updatedAt": "2026-04-13T12:23:45.528Z",
+  "versionId": "76f9b27f-3815-4499-8189-39de82784a56"
 }
