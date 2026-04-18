@@ -1,0 +1,1975 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "If4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Redis1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis1": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "Redis2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Redis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis3": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Redis4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis4": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Redis3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis5": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many events in Google Calendar": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If5": {
+      "main": [
+        [],
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "If6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If6": {
+      "main": [
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If7": {
+      "main": [
+        [
+          {
+            "node": "Wait3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Redis5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If4": {
+      "main": [
+        [
+          {
+            "node": "Analizar AU",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Quitar Prefijo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "If7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Structured Output Parser",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agendar Esturión": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Modificar Evento Esturión": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cancelar Evento Esturión": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Disponibilidad Esturión": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Quitar Prefijo": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Quitar Prefijo AU": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analizar AU": {
+      "main": [
+        [
+          {
+            "node": "Pasar de AU a Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pasar de AU a Text": {
+      "main": [
+        [
+          {
+            "node": "Quitar Prefijo AU",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-02-05T16:45:31.759Z",
+  "id": "d2ZTLHBkUcCZLvulYNRMJ",
+  "isArchived": false,
+  "meta": null,
+  "name": "Agente Restaurante Esturion",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "cf611be9-ebe6-48f4-af1c-6996d5dfb497",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -1120,
+        96
+      ],
+      "id": "1cef3040-6769-4edb-b0d9-e89a7c78a027",
+      "name": "Webhook",
+      "webhookId": "cf611be9-ebe6-48f4-af1c-6996d5dfb497"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "844d9ab8-f2dd-47b5-8f29-29ea70e52009",
+              "leftValue": "={{ $json.body.event }}",
+              "rightValue": "=message_created",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -896,
+        96
+      ],
+      "id": "10c10ef6-0eff-4592-976f-85501ade8910",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "db7831e6-2930-4c9d-adbd-0b6cb1a0294b",
+              "leftValue": "={{ $json.body.conversation.messages[0].sender_type }}",
+              "rightValue": "Contact",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -672,
+        96
+      ],
+      "id": "a4befdb4-56d5-4f78-ac0a-28ea0bd198e0",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "34908a1a-910b-4240-b270-c5bae76d6672",
+              "name": "accountID",
+              "value": "={{ $json.body.account.id }}",
+              "type": "string"
+            },
+            {
+              "id": "861750b8-6d53-4256-833c-048704fb4711",
+              "name": "conversationID",
+              "value": "={{ $json.body.conversation.messages[0].conversation_id }}",
+              "type": "string"
+            },
+            {
+              "id": "db3956f9-9900-4b56-ac29-ffe7889b2299",
+              "name": "sessionID",
+              "value": "={{ $json.body.conversation.messages[0].source_id }}",
+              "type": "string"
+            },
+            {
+              "id": "cd35006e-6aca-472c-a395-8218acf4de48",
+              "name": "Identificador",
+              "value": "={{ $json.body.conversation.meta.sender.identifier }}",
+              "type": "string"
+            },
+            {
+              "id": "1f42345f-4d66-4ac4-9368-2b08b226d4b0",
+              "name": "telefono",
+              "value": "={{ $json.body.conversation.meta.sender.phone_number }}",
+              "type": "string"
+            },
+            {
+              "id": "55ad0e2a-09a6-42b7-925d-d30a4b19661b",
+              "name": "mensaje",
+              "value": "={{ $json.body.content }}",
+              "type": "string"
+            },
+            {
+              "id": "f1e69443-9dbe-4203-b32c-98bd1dcddbc1",
+              "name": "data_time",
+              "value": "={{ $json.body.conversation.timestamp.toDateTime('s').toLocal() }}",
+              "type": "string"
+            },
+            {
+              "id": "470e66ac-542e-461a-829b-aa96232dec8c",
+              "name": "tipo_mensaje",
+              "value": "={{ $json.body.conversation.messages[0].attachments[0].file_type }}",
+              "type": "string"
+            },
+            {
+              "id": "9dd36975-250a-4e22-a33e-e7068195cd65",
+              "name": "body.conversation.messages[0].attachments[0].data_url",
+              "value": "={{ $json.body.conversation.messages[0].attachments[0].data_url }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -448,
+        96
+      ],
+      "id": "66bb0f99-eb60-4877-9319-437d6802be9c",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $json.Identificador }}",
+        "messageData": "={{ $json.mensaje }}",
+        "tail": true
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        896,
+        192
+      ],
+      "id": "517295be-7cdb-4363-8874-17c49f01dd33",
+      "name": "Redis",
+      "credentials": {
+        "redis": {
+          "id": "rmwGdInGMfi5lhMd",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1120,
+        192
+      ],
+      "id": "0975007f-05bb-4532-bd7b-7553208b7a00",
+      "name": "Wait",
+      "webhookId": "71ac37ec-4a28-4234-a581-e5bf42c39a02"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "message",
+        "key": "={{ $('Edit Fields1').item.json.Identificador }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1344,
+        192
+      ],
+      "id": "d1714183-cdbb-4fe3-b5de-b22d054165eb",
+      "name": "Redis1",
+      "credentials": {
+        "redis": {
+          "id": "rmwGdInGMfi5lhMd",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "96158e05-c548-462c-94c3-8138dd2ceaf9",
+              "leftValue": "={{ $json.message.last() }}",
+              "rightValue": "={{ $('Edit Fields1').item.json.mensaje }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1568,
+        192
+      ],
+      "id": "56909323-8b18-422b-b867-36c4cdfe3ee7",
+      "name": "If3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "34908a1a-910b-4240-b270-c5bae76d6672",
+              "name": "accountID",
+              "value": "={{ $('Edit Fields').item.json.accountID }}",
+              "type": "string"
+            },
+            {
+              "id": "861750b8-6d53-4256-833c-048704fb4711",
+              "name": "conversationID",
+              "value": "={{ $('Edit Fields').item.json.conversationID }}",
+              "type": "string"
+            },
+            {
+              "id": "db3956f9-9900-4b56-ac29-ffe7889b2299",
+              "name": "sessionID",
+              "value": "={{ $('Edit Fields').item.json.sessionID }}",
+              "type": "string"
+            },
+            {
+              "id": "cd35006e-6aca-472c-a395-8218acf4de48",
+              "name": "Identificador",
+              "value": "={{ $('Edit Fields').item.json.Identificador }}",
+              "type": "string"
+            },
+            {
+              "id": "54a552ab-1572-4814-8549-4887c93002c0",
+              "name": "telefono",
+              "value": "={{ $json.cleanedNumber }}",
+              "type": "string"
+            },
+            {
+              "id": "55ad0e2a-09a6-42b7-925d-d30a4b19661b",
+              "name": "mensaje",
+              "value": "={{ $('Edit Fields').item.json.mensaje }}",
+              "type": "string"
+            },
+            {
+              "id": "f1e69443-9dbe-4203-b32c-98bd1dcddbc1",
+              "name": "data_time",
+              "value": "={{ $('Edit Fields').item.json.data_time }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {
+          "ignoreConversionErrors": false
+        }
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        672,
+        192
+      ],
+      "id": "8ebc23de-9744-46f7-be0f-a47e928219e0",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('Edit Fields1').item.json.Identificador }}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1792,
+        192
+      ],
+      "id": "531fdb8a-5299-4f1e-88c0-79b499166ac9",
+      "name": "Redis2",
+      "credentials": {
+        "redis": {
+          "id": "rmwGdInGMfi5lhMd",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5a1e36e3-f8de-419c-83ae-5cc7fead47df",
+              "name": "mensaje",
+              "value": "={{ $json.message.join(\" \") }}",
+              "type": "string"
+            },
+            {
+              "id": "ed4e679f-704c-454a-88e4-d46623e9b6dd",
+              "name": "telefono",
+              "value": "={{ $('Edit Fields1').item.json.telefono }}",
+              "type": "string"
+            },
+            {
+              "id": "67bac86b-a225-4b80-8f56-0544eb594701",
+              "name": "Identificador",
+              "value": "={{ $('Edit Fields1').item.json.Identificador }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2016,
+        192
+      ],
+      "id": "50e53f64-ae22-461b-98db-11969497c6c3",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $json.Identificador }}",
+        "messageData": "={{ $json.mensaje_audio }}",
+        "tail": true
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        896,
+        0
+      ],
+      "id": "650a0bd5-62a9-48ef-a124-af431cda4f22",
+      "name": "Redis3",
+      "credentials": {
+        "redis": {
+          "id": "rmwGdInGMfi5lhMd",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 30
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1120,
+        0
+      ],
+      "id": "b168da63-85cc-4820-b5f8-3fafe0e752c5",
+      "name": "Wait1",
+      "webhookId": "71ac37ec-4a28-4234-a581-e5bf42c39a02"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "message",
+        "key": "={{ $('Edit Fields3').item.json.Identificador }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1344,
+        0
+      ],
+      "id": "4065c25d-7e95-4bc8-bad9-172012bf8fb6",
+      "name": "Redis4",
+      "credentials": {
+        "redis": {
+          "id": "rmwGdInGMfi5lhMd",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "34908a1a-910b-4240-b270-c5bae76d6672",
+              "name": "accountID",
+              "value": "={{ $('Edit Fields').item.json.accountID }}",
+              "type": "string"
+            },
+            {
+              "id": "861750b8-6d53-4256-833c-048704fb4711",
+              "name": "conversationID",
+              "value": "={{ $('Edit Fields').item.json.conversationID }}",
+              "type": "string"
+            },
+            {
+              "id": "db3956f9-9900-4b56-ac29-ffe7889b2299",
+              "name": "sessionID",
+              "value": "={{ $('Edit Fields').item.json.sessionID }}",
+              "type": "string"
+            },
+            {
+              "id": "cd35006e-6aca-472c-a395-8218acf4de48",
+              "name": "Identificador",
+              "value": "={{ $('Edit Fields').item.json.Identificador }}",
+              "type": "string"
+            },
+            {
+              "id": "54a552ab-1572-4814-8549-4887c93002c0",
+              "name": "telefono",
+              "value": "={{ $json.cleanedNumber }}",
+              "type": "string"
+            },
+            {
+              "id": "55ad0e2a-09a6-42b7-925d-d30a4b19661b",
+              "name": "mensaje_audio",
+              "value": "={{ $('Pasar de AU a Text').item.json.text }}",
+              "type": "string"
+            },
+            {
+              "id": "f1e69443-9dbe-4203-b32c-98bd1dcddbc1",
+              "name": "data_time",
+              "value": "={{ $('Edit Fields').item.json.data_time }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {
+          "ignoreConversionErrors": false
+        }
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        672,
+        0
+      ],
+      "id": "603f9dd7-520f-426f-9428-323a62e68c63",
+      "name": "Edit Fields3"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('Edit Fields3').item.json.Identificador }}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1792,
+        0
+      ],
+      "id": "059667c9-d355-4bed-a4cd-521afef03304",
+      "name": "Redis5",
+      "credentials": {
+        "redis": {
+          "id": "rmwGdInGMfi5lhMd",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5a1e36e3-f8de-419c-83ae-5cc7fead47df",
+              "name": "mensaje_audio",
+              "value": "={{ $json.message.join(\" \") }}",
+              "type": "string"
+            },
+            {
+              "id": "ed4e679f-704c-454a-88e4-d46623e9b6dd",
+              "name": "telefono",
+              "value": "={{ $('Edit Fields3').item.json.telefono }}",
+              "type": "string"
+            },
+            {
+              "id": "67bac86b-a225-4b80-8f56-0544eb594701",
+              "name": "Identificador",
+              "value": "={{ $('Edit Fields3').item.json.Identificador }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2016,
+        0
+      ],
+      "id": "d5d1426a-d63e-4739-9818-d102ec79b9a7",
+      "name": "Edit Fields4"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Mensaje_texto_cliente: {{ $json.mensaje }}\nMensaje_audio_cliente: {{ $json.mensaje_audio }}\nTelefono cliente: {{ $json.telefono }}\n",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=Identidad y propósito\nEres Beatriz, asistente virtual de atención al cliente de Restaurante Esturios, integrada en el sistema n8n. Atiendes solicitudes de clientes con cordialidad, eficiencia y autonomía, usando las herramientas disponibles para gestionar reservas, resolver dudas y ofrecer un servicio impecable.\n\nEstilo y tono (hostelería → respuestas cortas)\nNo seas robótica; usa tono natural y humano, y emoticonos cuando convenga (no siempre el mismo).\nTrata siempre de usted.\nAl ser en el ámbito de hostelería, usa respuestas más cortas, claras y concisas.\nUsa \"reservar\" en lugar de \"cuadrar\".\nFrases/plantillas de ejemplo (usar \"usted\")\n\"Para esta semana, las mesas disponibles pueden ser…\"\n\"Para poder reservar, ¿sería tan amable de facilitarme el número de comensales, nombre y apellidos?…\"\n\"Esta semana no hay disponibilidad para atenderles a todos el mismo día…\"\n(Recuerda: usar \"reservar\" en lugar de \"cuadrar\".)\nPresentación inicial (solo primer mensaje)\nAl inicio de la conversación con un cliente, preséntate diciendo quién eres y para quién trabajas con un mensaje como:\n\"Hola, soy Beatriz, la asistente virtual del Restaurante Esturios.\"\nActo seguido, contesta al mensaje del cliente. Esto se hace solo en el primer mensaje. Para detectar si es inicio/apertura, analiza el mensaje.\nEntrada de mensajes y contexto\nEl mensaje del cliente {{ $json.mensaje }} o {{ $json.mensaje_audio }} es un conjunto de mensajes enviados por separado, que debes analizar de derecha a izquierda para entender el contexto completo.\nÁmbito de actuación\n\n🔁 REGLA 1 – Servicios a domicilio y catering\nSi el cliente solicita servicio a domicilio o catering (expresiones como: \"a domicilio\", \"llevar a casa\", \"servicio en casa\", \"catering\", \"evento externo\", \"llevar comida\", \"servicio fuera del restaurante\", \"delivery privado\", etc.):\n→ Responder únicamente (sin añadir nada más):\n\"Para los servicios a domicilio y catering, el equipo le llamará en cuanto tenga un hueco para acordar por teléfono los términos del servicio (dirección, horario y condiciones).\"\nNunca decir al cliente que puedes reservar. Ya que le llamará el equipo, solo debes decir el mensaje de arriba y, si te responde, tú responde con coherencia pero sin pedirle hora, día ni nada de eso.\n→ Terminar la ejecución sin más acciones.\n⚠️ No ofrecer alternativas ni explicaciones adicionales.\n⚠️ No continuar con gestión de reservas ni uso de herramientas para estos casos.\n⚠️ No confirmar ni proponer horarios por chat para servicios a domicilio.\n\n📅 REGLA 2 – Gestión de reservas\nLa semana actual se cuenta de lunes a domingo.\nSe pueden reservar mesas para semanas futuras, siempre comprobando disponibilidad.\nSiempre que propongas u ofrezcas reservas (semana en curso o futuras), valida la disponibilidad que:\n\nEse día está habilitado\nLa hora está dentro del rango disponible\nSe respetan los huecos libres reales según las reservas ya agendadas\n\n2.2. Reservas para varios comensales\nSi el cliente quiere una reserva para varias personas, pide el número total de comensales, nombre y fechas/horas, comprueba disponibilidad de mesa y agenda la reserva si es posible.\n2.3. Proceso para reservar una mesa\nMuy importante: para reservar debes pedir el nombre completo al cliente; si no te da su nombre no puedes reservar.\nIdentificación del tipo de reserva (asignación automática)\nEl cliente puede especificar el tipo de reserva; asígnalo automáticamente según su mensaje.\nEjemplos:\n\n\"Mesa para comer\" → Comida (120 min)\n\"Cena romántica\" → Cena (120 min)\n\"Solo para tomar algo\" → Barra/Aperitivo (60 min)\n\"Menú degustación\" → Menú especial (150 min)\n\n⚠️ No pedir detalles adicionales innecesarios.\nCalcular huecos disponibles\nObtén todas las reservas ya agendadas ese día.\nDuraciones por tipo de servicio:\n\nComida: 120 min\nCena: 120 min\nBarra/Aperitivo: 60 min\nMenú especial: 150 min\n\nUsa la tool de obtener eventos para sacar los huecos ya reservados en la semana. Las horas sin reservas agendadas estarán disponibles.\nUn hueco solo es válido si:\n\nInicio + duración no se solapa con ninguna reserva.\nSe respetan inicio/fin de reservas existentes.\nDejar 15 minutos de margen entre reservas.\nTen en cuenta el aforo Max:\nAforo maximo en interior: 50\nAforo maximo en exterior/terraza: 30\nPuede haber 50 personas maximo dentro del local a la vez, y otras 30 en terraza.\n\nEj.: si hay reserva 13:00–15:00, la siguiente podrá empezar desde 15:15.\nAunque haya margen, puedes reservar dentro del horario disponible siempre que no haya solapamiento con otros servicios (tenlo en cuenta al calcular).\nCuando el cliente indica fecha y hora\nComprobar disponibilidad:\n\nSi ese día está habilitado\nSi la hora solicitada está en rango para ese día\n\nSi NO está disponible → Responde:\n\"En esa fecha y hora el restaurante no está disponible\" o \"Esa hora no está disponible\" y pregunta qué otro día u hora le vendría bien.\nSi está disponible → Informa que está disponible y continúa con el proceso de reserva.\nImportante (durante la reserva)\n\nNunca preguntar al cliente si quiere cancelar o modificar en el momento de reservar.\nCuando se ha confirmado una fecha y hora con el cliente nunca preguntes si prefiere otro horario.\nSolo se gestionan cancelaciones/modificaciones cuando el cliente lo pida expresamente.\n\n\n🔧 HERRAMIENTAS DISPONIBLES\nTOOL: Disponibilidad Esturión\nCuándo usar:\n\nEl cliente indica una fecha y hora específicas\nNecesitas validar si hay disponibilidad para una hora concreta\nEl cliente pregunta por disponibilidad de un día/hora específicos\n\nActuación:\n\nSi el cliente NO ha dado fecha/hora → Preguntar: \"¿Qué día y hora tenía pensado?\"\nSi el cliente SÍ ha dado fecha/hora → Usar la herramienta \"Disponibilidad Esturión\" con la fecha/hora proporcionada\nLa herramienta devuelve result: true (ocupado/hay solapamiento) o result: false (disponible/no hay solapamiento)\nSi result: true (ocupado):\n\nResponder: \"Esa hora no está disponible\"\nPreguntar: \"¿Qué otro día u hora le vendría bien?\"\nSolo si el cliente pregunta expresamente por horas libres en un día concreto que él ha elegido, entonces proporciona las horas disponibles de ese día específico\n\n\nSi result: false (disponible):\n\nConfirmar: \"Esa hora está disponible\"\nContinuar con el proceso de reserva pidiendo los datos necesarios\n\n\n\nProhibido:\n\nDar ejemplos de horarios alternativos no solicitados\nOfrecer días/horas de ejemplo sin que el cliente lo pida\nMencionar que no pedirás datos hasta confirmar\n\n\nTOOL: Agendar Esturión\nCuándo usar:\n\nLa disponibilidad ha sido confirmada (result: false)\nEl cliente confirma que quiere reservar esa hora\nYa tienes todos los datos necesarios\n\nActuación:\n\nAsegurarte de tener todos los datos necesarios:\n\nNombre completo (nombre + apellidos)\nTeléfono\nNúmero de comensales\nFecha y hora confirmadas\n\n\nSi falta algún dato → Pedirlo de forma natural\nUsar la herramienta \"Agendar Esturión\" con todos los parámetros\nConfirmar la reserva: \"Su reserva queda confirmada para el [día] a las [hora] para [X] personas\"\n\nProhibido:\n\nAgendar sin nombre completo y teléfono\nPedir datos antes de confirmar disponibilidad\nDecir \"si prefiere otro horario...\"\nPreguntar \"¿necesita algo más?\" al finalizar\n\n\nTOOL: Modificar Evento Esturión\nCuándo usar:\n\nEl cliente solicita cambiar su reserva\nEl cliente quiere modificar fecha, hora o número de comensales\n\nActuación:\n\nPedir nombre completo del cliente\nBuscar la reserva usando \"Obtener próximas reservas\"\nSi NO existe la reserva:\n\nInformar: \"No encuentro ninguna reserva a ese nombre\"\nPreguntar si puede estar a nombre de otra persona\n\n\nSi existe la reserva:\n\nMostrar los detalles actuales (día, hora, comensales)\nPreguntar: \"¿Qué desea modificar?\"\n\n\nEl cliente indica el nuevo dato (fecha/hora/comensales)\nSi cambia fecha u hora → Validar disponibilidad con \"Disponibilidad Esturión\"\nSi está disponible → Pedir confirmación al cliente\nUsar la herramienta \"Modificar Esturión\" con los nuevos datos\nConfirmar: \"Su reserva ha sido modificada para el [nuevo día] a las [nueva hora]\"\n\nProhibido:\n\nModificar sin validar la nueva disponibilidad\nModificar sin confirmación expresa del cliente\n\n\nTOOL: Cancelar Evento Esturión\nCuándo usar:\n\nEl cliente solicita cancelar su reserva\nEl cliente dice que no podrá asistir\n\nActuación:\n\nPedir nombre completo del cliente\nBuscar la reserva usando \"Obtener próximas reservas\"\nSi NO existe la reserva:\n\nInformar: \"No encuentro ninguna reserva a ese nombre\"\nPreguntar si puede estar a nombre de otra persona\n\n\nSi existe la reserva:\n\nMostrar los detalles (día, hora, comensales)\nPedir confirmación: \"¿Confirma que desea cancelar la reserva del [día] a las [hora]?\"\n\n\nEsperar confirmación explícita del cliente\nUsar la herramienta \"Cancelar Esturión\"\nConfirmar: \"Su reserva del [día] a las [hora] ha sido cancelada\"\n\nProhibido:\n\nCancelar sin confirmación expresa\nPreguntar el motivo de la cancelación\nOfrecer nueva reserva sin que el cliente lo solicite\n\n\nTOOL: Obtener próximas reservas\nCuándo usar:\n\nEl cliente pregunta si tiene reserva\nEl cliente pregunta cuándo era su reserva\nAntes de modificar o cancelar una reserva\n\nActuación:\n\nPedir nombre completo del cliente\nUsar la herramienta con el nombre\nSi existe la reserva: Mostrar día, hora y número de comensales\nSi NO existe: Informar y preguntar si puede estar a otro nombre\n\nProhibido:\n\nAsumir que el cliente quiere modificar o cancelar\nProporcionar solo la información solicitada\n\n\n🎯 Objetivo final\nEl cliente debe percibir un servicio eficiente, cálido y seguro, con control total de las reservas y cumplimiento estricto de las reglas, evitando ofrecer huecos que no están disponibles.\nNorma operativa clave (antes de responder)\nAntes de responder a cualquier mensaje, revisa siempre el calendario para comprobar la disponibilidad real: huecos libres y ya ocupados.\nAsí:\n\nEvitas pedir fechas/horas que ya estén ocupadas.\nAseguras coherencia y utilidad desde el primer momento.\nOfreces opciones viables.\n\n👉 En resumen: primero comprueba el calendario, luego responde.\nCasos y reglas adicionales\n\n-Nunca digas al cliente que, si tiene algún problema, contacte con otros servicios; en ese caso debes decir que llame al número de atención: [NUMERO_ATENCION].\n-No repitas mensajes varias veces; con decirlo una vez basta.\n-Sigue las reglas especificadas; no des más contexto del que pida el cliente. Pedir nombre y teléfono solo cuando confirme fecha y hora.\n-No repitas cosas constantemente.\n-Mensajes sin contexto o ajenos a restaurante/reservas → responde False (p. ej.: 😱😱😱, Qué fuerteeee, Mañana entraré por ahí, Nos vemos 😘😘, Buenas noches).\n-Para reservar: pide nombre completo (nombre y apellidos) y teléfono.\n-Si el cliente no recuerda su reserva y te pide fecha/hora → pide nombre completo (con apellidos) y verifica la reserva.\n-Preséntate solo en el inicio de conversación; luego no repitas quién eres ni dónde trabajas.\n-Tras reservar, no digas \"si prefiere otro horario…\".\n-Pide nombre y teléfono solo después de confirmar que quiere la hora y que está disponible.\n-Al dar huecos, no asumas que quiere reservar; no pidas datos hasta su confirmación.\n-Si la fecha/hora pedidas no tienen huecos, pregunta qué otro día u hora le vendría bien. Solo si el cliente pregunta expresamente por las horas libres de un día concreto que él elija, proporciona esas horas.\n-No digas el tipo de servicio que vas a reservar ni su duración (salvo que lo pregunte).\n-Si es fin de semana, indica que no se aceptan reservas y que hable a partir del lunes (no menciones asignación de servicio).\n-Si te pide que elijas tú la hora o \"primer hueco disponible / final del día\", pregunta qué día tenía pensado y luego propón una hora disponible pidiendo confirmación.\n-Antes de reservar, verifica que el cliente quiere esa hora (aunque te haya dado libertad).\n-No menciones cancelaciones/cambios a menos que el cliente lo pida.\n-Nunca elijas una hora por el cliente sin confirmación.\n-Si no hay huecos para el servicio necesario, no ofrezcas huecos de otro servicio; si hay más días, pregunta por otro día.\n-Ten en cuenta día/hora actuales: no ofrezcas días u horas pasadas.\n-Para sacar huecos, considera siempre día y hora actuales (no muestres días/horas pasados).\n-Al terminar (reservar/modificar/cancelar o resolver dudas y detectar cierre), no preguntes si puedes ayudar en algo más.\n-Todo mensaje fuera de tu labor (gestionar las reservas del restaurante) → responde False.\n-Semanas futuras gestionadas por el equipo: si el cliente responde a algo que ya fue acordado por el equipo para la semana siguiente, no digas que te hable la semana que viene para ver huecos; responde coherentemente con ese acuerdo.\n\nProhibiciones explícitas y estrictas.\n⚠️ Nunca decir que puedes enviar recordatorios.\n⚠️ Nunca repetir \"el restaurante trabaja de tal a tal hora\".\n⚠️ Nunca pedir detalles adicionales innecesarios.\n⚠️ Nunca firmar los mensajes con un nombre al final (no estilo correo).\n⚠️ Nunca decir que contacte con otros servicios si tiene problemas; en ese caso, indica que llame a [NUMERO_ATENCION].\n⚠️ Nunca dar ejemplos de horarios alternativos no solicitados expresamente por el cliente.\n⚠️ Nunca decir mensajes como \"No le pediré nombre ni teléfono hasta confirmar la fecha, la hora y el número de comensales.\"\nUsa siempre el output parse para dividir tu respuesta en 3 partes.\n📌 Fecha de referencia\nLa fecha actual es {{ $now }}."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        2688,
+        96
+      ],
+      "id": "e23c718d-91a0-4f63-9254-56887868d867",
+      "name": "AI Agent",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-5-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        2240,
+        320
+      ],
+      "id": "92204458-0461-4204-8a4a-9f33cba67337",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.Identificador }}",
+        "tableName": "=Clínica"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        2368,
+        320
+      ],
+      "id": "0262c65a-423f-484d-8c07-4a6d664f9976",
+      "name": "Postgres Chat Memory",
+      "credentials": {
+        "postgres": {
+          "id": "lynsIk4t0FUvPeMz",
+          "name": "Postgres account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "3cf455fae61998f2cf7bfffba57a4e28188afc46dd5d892692826a9254905124@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Restaurante Esturión"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        2496,
+        320
+      ],
+      "id": "f15e91dd-d977-4bdf-a7a6-e6a1cca483b8",
+      "name": "Get many events in Google Calendar",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "BxLdTiBYRwntbItp",
+          "name": "Google Calendar account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "c536a974-fb1f-4d5b-9970-5d59a0121721",
+              "leftValue": "={{ $json.output.parte1 }}",
+              "rightValue": "false",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        3632,
+        96
+      ],
+      "id": "a5fc13f3-adec-4c67-a984-63eb05097ba7",
+      "name": "If5"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host//api/v1/accounts/{{ $('Edit Fields').item.json.accountID }}/conversations/{{ $('Edit Fields').item.json.conversationID }}/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"content\": \"{{ $json.output.parte1 }}\",\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        3856,
+        96
+      ],
+      "id": "0b6477c1-44f6-4729-b53d-ae44b0c564a9",
+      "name": "HTTP Request1",
+      "retryOnFail": false,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "s9IC0e9qhwPtXegM",
+          "name": "Header Auth account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "7371417a-70c7-4cb2-936c-5a09884e761b",
+              "leftValue": "={{ $('AI Agent').item.json.output.parte2 }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        4080,
+        96
+      ],
+      "id": "b5201e3b-de83-40a1-8d81-f04d263272df",
+      "name": "If6"
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        4304,
+        96
+      ],
+      "id": "aad0d893-ceeb-49de-a4b1-4a682548e759",
+      "name": "Wait2",
+      "webhookId": "751bef90-71de-41d2-ac4f-795b995cc5dd"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "79d91a9e-b4fa-47bd-a54a-6dcf817d24b5",
+              "leftValue": "={{ $('AI Agent').item.json.output.Response.Part3 }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        4752,
+        96
+      ],
+      "id": "b19e7a93-fb96-4508-a02b-f309dde04172",
+      "name": "If7"
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        4976,
+        96
+      ],
+      "id": "bc7237b2-ef54-4ef7-a1d6-a0d7f7368e58",
+      "name": "Wait3",
+      "webhookId": "751bef90-71de-41d2-ac4f-795b995cc5dd"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "96158e05-c548-462c-94c3-8138dd2ceaf9",
+              "leftValue": "={{ $json.message.last() }}",
+              "rightValue": "={{ $('Edit Fields3').item.json.mensaje_audio }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1568,
+        0
+      ],
+      "id": "d7329183-cc69-4604-850c-113e113dad40",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "d6581874-f941-437c-b4a6-90cb46415c1d",
+              "leftValue": "={{ $json.tipo_mensaje }}",
+              "rightValue": "audio",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -224,
+        96
+      ],
+      "id": "7b61fdde-c739-4811-b8d9-21fc40fb6d0d",
+      "name": "If4"
+    },
+    {
+      "parameters": {
+        "description": "Usa esta herramienta cuando necesites más razonamiento"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1.1,
+      "position": [
+        2624,
+        320
+      ],
+      "id": "e16abec7-3e8f-433c-81b7-83da13134621",
+      "name": "Think"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host//api/v1/accounts/{{ $('Edit Fields').item.json.accountID }}/conversations/{{ $('Edit Fields').item.json.conversationID }}/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"content\": \"{{ $('AI Agent').item.json.output.parte2 }}\",\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        4528,
+        96
+      ],
+      "id": "407efebf-3f08-4492-b88f-04c20033f284",
+      "name": "HTTP Request2",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Zhnapx6EMtJKOOW9",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host//api/v1/accounts/{{ $('Edit Fields').item.json.accountID }}/conversations/{{ $('Edit Fields').item.json.conversationID }}/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"content\": \"{{ $('AI Agent').item.json.output.parte3 }}\",\n  \"message_type\": \"outgoing\",\n  \"sender\": {\n    \"type\": \"bot\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        5200,
+        96
+      ],
+      "id": "ed82c02e-ecc9-4aea-82e4-e62b852c72b7",
+      "name": "HTTP Request3",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Zhnapx6EMtJKOOW9",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"Response\": {\n    \"Part1\": \"Primera parte del mensaje\",\n    \"Part2\": \"Segunda parte del mensaje\",\n    \"Part3\": \"Tercera parte del mensaje\"\n  }\n}",
+        "autoFix": true
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        3264,
+        320
+      ],
+      "id": "15926406-1f28-4a4a-ac85-341e96163c58",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-5-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        3344,
+        528
+      ],
+      "id": "94784c34-09ee-4e11-8dd4-33f6d69d1aee",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "description": "=Llama a esta herramienta cuando detectes la intención de el usuario de que quiere agendar un evento, cita, reuinion, llamada, etc, pero siempre una vez de haber comprobado la disponibilidad.\nLa fecha actual es {{ $now }}",
+        "workflowId": {
+          "__rl": true,
+          "value": "usBIrNERTn5gZqI8",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/usBIrNERTn5gZqI8",
+          "cachedResultName": "Agendar Esturión"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Titulo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Titulo', ``, 'string') }}",
+            "Descripción": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Descripci_n', ``, 'string') }}",
+            "Fecha inicio": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha_inicio', ``, 'string') }}",
+            "Fecha fin": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha_fin', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Titulo",
+              "displayName": "Titulo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Fecha inicio",
+              "displayName": "Fecha inicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Fecha fin",
+              "displayName": "Fecha fin",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Descripción",
+              "displayName": "Descripción",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        2864,
+        320
+      ],
+      "id": "5a411a71-11a5-46f7-8608-c33a67dde05e",
+      "name": "Agendar Esturión"
+    },
+    {
+      "parameters": {
+        "description": "=Llama a esta herramienta cuando detectes la intención del usuario de modificar un evento, llamada, reunión, etc. Para modificar la fecha o la hora de un evento primero tienes que comprobar la nueva fecha o la nueva hora que quiere el usuario.\nLa fecha actual es {{ $now }}",
+        "workflowId": {
+          "__rl": true,
+          "value": "r4N2wTKIasCoYE7U",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/r4N2wTKIasCoYE7U",
+          "cachedResultName": "Modificar Evento Esturion"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Titulo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Titulo', ``, 'string') }}",
+            "Fecha inicio": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha_inicio', ``, 'string') }}",
+            "Fecha fin": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha_fin', ``, 'string') }}",
+            "Descripción": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Descripci_n', ``, 'string') }}",
+            "ID": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('ID', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Titulo",
+              "displayName": "Titulo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Fecha inicio",
+              "displayName": "Fecha inicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Fecha fin",
+              "displayName": "Fecha fin",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Descripción",
+              "displayName": "Descripción",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        3008,
+        320
+      ],
+      "id": "6ab4e630-1240-431a-ac77-6891939562b0",
+      "name": "Modificar Evento Esturión"
+    },
+    {
+      "parameters": {
+        "description": "=Llama a esta herramienta cuando detectes la intención del usuario de cancelar o eliminar un evento, llamada, reunión, etc.\nLa fecha actual es {{ $now }}",
+        "workflowId": {
+          "__rl": true,
+          "value": "vRBdW8Ddciq6nwFA",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/vRBdW8Ddciq6nwFA",
+          "cachedResultName": "Cancelar Evento Esturion"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Titulo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Titulo', ``, 'string') }}",
+            "Fecha inicio": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha_inicio', ``, 'string') }}",
+            "Fecha fin": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha_fin', ``, 'string') }}",
+            "Descripción": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Descripci_n', ``, 'string') }}",
+            "ID": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('ID', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Titulo",
+              "displayName": "Titulo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Fecha inicio",
+              "displayName": "Fecha inicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Fecha fin",
+              "displayName": "Fecha fin",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Descripción",
+              "displayName": "Descripción",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        3152,
+        320
+      ],
+      "id": "0115e5e7-7f15-438d-9c4e-fcb48399ee18",
+      "name": "Cancelar Evento Esturión"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "QURkLGwyKLMD7n5M",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/QURkLGwyKLMD7n5M",
+          "cachedResultName": "Disponibilidad Esturión"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Fecha y Hora": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fecha_y_Hora', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "Fecha"
+          ],
+          "schema": [
+            {
+              "id": "Fecha y Hora",
+              "displayName": "Fecha y Hora",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        2736,
+        320
+      ],
+      "id": "31038141-6bb1-459f-849c-539d87f5aafb",
+      "name": "Disponibilidad Esturión"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener el valor original del campo\nconst sender = $input.first().json.telefono;\n\n// Limpiar el número:\n// - Eliminar el prefijo '34' o '49' si existe, y quitar el dominio de whatsapp\nconst cleanedNumber = sender\n  .replace(/^(\\+?34|\\+?49)/, '') // Quita el '+34', '34', '+49' o '49' al inicio\n  .replace(/@s\\.whatsapp\\.net$/, ''); // Quita el '@s.whatsapp.net' al final\n\n// Devolver el número limpio\nreturn [\n  {\n    json: {\n      cleanedNumber\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        448,
+        192
+      ],
+      "id": "491d5c62-a392-4269-a7d2-05af6f0054b4",
+      "name": "Quitar Prefijo"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener el valor original del campo\nconst sender = $('If4').first().json.telefono;\n// Eliminar el prefijo '34' o '49' si existe, y quitar el dominio de WhatsApp\nconst cleanedNumber = sender\n  .replace(/^(\\+?34|\\+?49)/, '')       // Quita el '+34', '34', '+49' o '49' al inicio\n  .replace(/@s\\.whatsapp\\.net$/, ''); // Quita el '@s.whatsapp.net' al final\n\n// Devolver el número limpio\nreturn [\n  {\n    json: {\n      cleanedNumber\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        448,
+        0
+      ],
+      "id": "54901eab-f8b5-42d2-a8a8-e8d1385bc047",
+      "name": "Quitar Prefijo AU"
+    },
+    {
+      "parameters": {
+        "url": "=https://n8n2nkz-chatwoot.vc1wee.easypanel.host{{ $json.body.conversation.messages[0].attachments[0].data_url.replace('http://https', '') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "4ade9470-3900-4083-bab4-a1a4eb6e5a69",
+      "name": "Analizar AU"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "binaryPropertyName": "=data",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        224,
+        0
+      ],
+      "id": "084fdced-d7c3-4af9-91b5-f8469e44ca36",
+      "name": "Pasar de AU a Text",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
+            "user-agent": "rest-client/2.1.0 (linux-musl x86_64) ruby/3.3.3p89",
+            "content-length": "4195",
+            "accept": "application/json",
+            "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.19.0.1",
+            "x-forwarded-host": "n8n2nkz-n8n.vc1wee.easypanel.host",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "88eeb68a63a5",
+            "x-real-ip": "172.19.0.1"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "account": {
+              "id": 1,
+              "name": "KZ"
+            },
+            "additional_attributes": {},
+            "content_attributes": {},
+            "content_type": "text",
+            "content": "Si, confirmo. María José Fernández González. Confirmo mi teléfono",
+            "conversation": {
+              "additional_attributes": {},
+              "can_reply": true,
+              "channel": "Channel::Api",
+              "contact_inbox": {
+                "id": 148,
+                "contact_id": 74,
+                "inbox_id": 1,
+                "source_id": "2d5a1768-ff9a-41e7-a93d-caf1d6503d4f",
+                "created_at": "2026-02-21T15:17:14.127Z",
+                "updated_at": "2026-02-21T15:17:14.127Z",
+                "hmac_verified": false,
+                "pubsub_token": "mZ2K8qwMfRMpuG66KC6KcbNA"
+              },
+              "id": 74,
+              "inbox_id": 1,
+              "messages": [
+                {
+                  "id": 2394,
+                  "content": "Si, confirmo. María José Fernández González. Confirmo mi teléfono",
+                  "account_id": 1,
+                  "inbox_id": 1,
+                  "conversation_id": 74,
+                  "message_type": 0,
+                  "created_at": 1771692825,
+                  "updated_at": "2026-02-21T16:53:45.009Z",
+                  "private": false,
+                  "status": "sent",
+                  "source_id": "WAID:AC081B476CD605A2770FF881C407E343",
+                  "content_type": "text",
+                  "content_attributes": {},
+                  "sender_type": "Contact",
+                  "sender_id": 74,
+                  "external_source_ids": {},
+                  "additional_attributes": {},
+                  "processed_message_content": "Si, confirmo. María José Fernández González. Confirmo mi teléfono",
+                  "sentiment": {},
+                  "conversation": {
+                    "assignee_id": null,
+                    "unread_count": 1,
+                    "last_activity_at": 1771692825,
+                    "contact_inbox": {
+                      "source_id": "2d5a1768-ff9a-41e7-a93d-caf1d6503d4f"
+                    }
+                  },
+                  "sender": {
+                    "additional_attributes": {},
+                    "custom_attributes": {},
+                    "email": null,
+                    "id": 74,
+                    "identifier": "77893560451279@lid",
+                    "name": "Maria José",
+                    "phone_number": "+34628898001",
+                    "thumbnail": "http://https/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazRCIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dc968dc75045c245940096ce7e36bb55ed476150/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3ee3a98e3eb1528ac39b3dd1284c2b0d768e8e96/106836103_193003198808079_2348159792018139196_n.jpg",
+                    "type": "contact"
+                  }
+                }
+              ],
+              "labels": [],
+              "meta": {
+                "sender": {
+                  "additional_attributes": {},
+                  "custom_attributes": {},
+                  "email": null,
+                  "id": 74,
+                  "identifier": "77893560451279@lid",
+                  "name": "Maria José",
+                  "phone_number": "+34628898001",
+                  "thumbnail": "http://https/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazRCIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dc968dc75045c245940096ce7e36bb55ed476150/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3ee3a98e3eb1528ac39b3dd1284c2b0d768e8e96/106836103_193003198808079_2348159792018139196_n.jpg",
+                  "type": "contact"
+                },
+                "assignee": null,
+                "team": null,
+                "hmac_verified": false
+              },
+              "status": "open",
+              "custom_attributes": {},
+              "snoozed_until": null,
+              "unread_count": 1,
+              "first_reply_created_at": "2026-02-21T15:18:09.023Z",
+              "priority": null,
+              "waiting_since": 1771692825,
+              "agent_last_seen_at": 1771692676,
+              "contact_last_seen_at": 0,
+              "last_activity_at": 1771692825,
+              "timestamp": 1771692825,
+              "created_at": 1771687034
+            },
+            "created_at": "2026-02-21T16:53:45.009Z",
+            "id": 2394,
+            "inbox": {
+              "id": 1,
+              "name": "Practica UDIA"
+            },
+            "message_type": "incoming",
+            "private": false,
+            "sender": {
+              "account": {
+                "id": 1,
+                "name": "KZ"
+              },
+              "additional_attributes": {},
+              "avatar": "http://https/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazRCIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dc968dc75045c245940096ce7e36bb55ed476150/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3ee3a98e3eb1528ac39b3dd1284c2b0d768e8e96/106836103_193003198808079_2348159792018139196_n.jpg",
+              "custom_attributes": {},
+              "email": null,
+              "id": 74,
+              "identifier": "77893560451279@lid",
+              "name": "Maria José",
+              "phone_number": "+34628898001",
+              "thumbnail": "http://https/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazRCIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dc968dc75045c245940096ce7e36bb55ed476150/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3ee3a98e3eb1528ac39b3dd1284c2b0d768e8e96/106836103_193003198808079_2348159792018139196_n.jpg"
+            },
+            "source_id": "WAID:AC081B476CD605A2770FF881C407E343",
+            "event": "message_created"
+          },
+          "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook/cf611be9-ebe6-48f4-af1c-6996d5dfb497",
+          "executionMode": "production"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner",
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-02-05T16:45:31.766Z",
+      "createdAt": "2026-02-05T16:45:31.766Z",
+      "role": "workflow:owner",
+      "workflowId": "d2ZTLHBkUcCZLvulYNRMJ",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2026-04-16T22:18:55.657Z",
+  "versionId": "a6c8fe27-5eed-43a1-adbf-6704033dd6d2"
+}
