@@ -308,7 +308,7 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        448,
+        512,
         336
       ],
       "id": "0598c19a-80b0-41f2-920c-60151a186e34",
@@ -341,7 +341,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        952,
+        960,
         336
       ],
       "id": "2de5e83e-7625-44b3-9962-cc584667774c",
@@ -381,7 +381,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        672,
+        736,
         336
       ],
       "id": "5a209de8-ce3e-4f47-8299-371f3c2a55f3",
@@ -457,6 +457,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-04-13T12:23:45.528Z",
-  "versionId": "76f9b27f-3815-4499-8189-39de82784a56"
+  "updatedAt": "2026-04-13T17:15:34.597Z",
+  "versionId": "e6ab0b10-b716-4c39-ab08-512c36801064"
 }
