@@ -373,7 +373,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        1192,
+        1200,
         944
       ],
       "id": "20ed9312-a46e-47cc-93d4-9c0bbfe4b936",
@@ -1323,34 +1323,7 @@
       "onError": "continueRegularOutput"
     }
   ],
-  "pinData": {
-    "Telegram Trigger1": [
-      {
-        "json": {
-          "update_id": 958910573,
-          "message": {
-            "message_id": 262,
-            "from": {
-              "id": 7040181107,
-              "is_bot": false,
-              "first_name": "KarZent",
-              "language_code": "es"
-            },
-            "chat": {
-              "id": 7040181107,
-              "first_name": "KarZent",
-              "type": "private"
-            },
-            "date": 1775135284,
-            "text": "Buenos días"
-          }
-        },
-        "pairedItem": {
-          "item": 0
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate"
@@ -1367,6 +1340,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-04-02T13:19:56.735Z",
-  "versionId": "549dd1a7-b89a-4b2a-b17d-2df6ee097baf"
+  "updatedAt": "2026-04-16T00:15:41.524Z",
+  "versionId": "5cfb1d2b-a0bc-49d9-8560-d2c77177f920"
 }
