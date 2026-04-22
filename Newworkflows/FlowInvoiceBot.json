@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-16T00:08:14.000Z",
-    "createdAt": "2026-04-15T23:40:46.747Z",
-    "versionId": "341bd1e8-c02c-4f57-bd7e-e373c2f3b2a8",
+    "updatedAt": "2026-04-22T10:13:04.000Z",
+    "createdAt": "2026-04-22T10:12:41.445Z",
+    "versionId": "8c59a4de-cc0d-435b-ae12-4158905b9987",
     "workflowId": "6i8vuVqoP7zxuGE3",
     "nodes": [
       {
@@ -16,8 +16,8 @@
         "type": "n8n-nodes-base.telegramTrigger",
         "typeVersion": 1.2,
         "position": [
-          16,
-          192
+          -400,
+          -96
         ],
         "id": "bcf1595d-8eb3-458b-80a0-650b6f3c2109",
         "name": "Telegram Trigger",
@@ -88,8 +88,8 @@
         "type": "n8n-nodes-base.switch",
         "typeVersion": 3.2,
         "position": [
-          256,
-          192
+          -192,
+          -96
         ],
         "id": "981baedd-2817-4c86-947e-854e5722efb5",
         "name": "Switch"
@@ -111,8 +111,8 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          464,
-          96
+          1360,
+          -208
         ],
         "id": "ee3c83dc-8095-4cf1-bb96-aa5dc705033b",
         "name": "Edit Fields"
@@ -128,7 +128,7 @@
           "messages": {
             "values": [
               {
-                "content": "=Tu objetivo es analizar los mensajes y obtener el nombre de la empresa a la que se le va a crear la factura, la fecha, número de factura, localidad del cliente, CIF o NIF, servicio, descripción (sobre que trata el servicio) y precio del servicio. Deberás devolver un JSON con esta estructura SIEMPRE:\n\nSiempre devuelve como respuesta un json como este\n{\n  \"empresa\": \"\",\n  \"fecha\": \"\",\n  \"factura\": \"\",\n  \"servicio\": \"\",\n  \"descripcion\": \"\",\n  \"precio\": \"\"\n}\n\n\nSi el usuario no te proporciona la fecha, utiliza la fecha actual: {{ $today.format(\"dd/MM/yyyy\") }}\nEl “precio” deberás poner solamente el precio sin utilizar el símbolo de “€”\nEl “servicio” solamente tiene que ser de 1 o 2 palabras (ej. Automatización, Agente de IA, Sitio web etc), palabras muy directas.\n\nMensaje: {{ $json.Texto }}"
+                "content": "=Tu objetivo es analizar los mensajes y obtener el nombre de la empresa a la que se le va a crear la factura, la fecha, número de factura, localidad del cliente, CIF o NIF, servicio, descripción (sobre que trata el servicio) y precio del servicio. Deberás devolver un JSON con esta estructura SIEMPRE:\n\nSiempre devuelve como respuesta un json como este\n{\n  \"empresa\": \"\",\n  \"fecha\": \"\",\n  \"factura\": \"\",\n  \"servicio\": \"\",\n  \"descripcion\": \"\",\n  \"precio\": \"\"\n}\n\n\nSi el usuario no te proporciona la fecha, utiliza la fecha actual: {{ $today.format(\"dd/MM/yyyy\") }}\nEl “precio” deberás poner solamente el precio sin utilizar el símbolo de “€”\nEl “servicio” solamente tiene que ser de 1 o 2 palabras (ej. Automatización, Agente de IA, Sitio web etc), palabras muy directas.\n\nMensaje: {{ $json.Texto }} o {{ $('Switch1').item.json.Texto }}"
               }
             ]
           },
@@ -137,8 +137,8 @@
         "type": "@n8n/n8n-nodes-langchain.openAi",
         "typeVersion": 1.8,
         "position": [
-          688,
-          -144
+          1584,
+          -208
         ],
         "id": "e7483ec9-2bd2-4c3e-ab3e-4aba09f06545",
         "name": "Message a model",
@@ -156,8 +156,8 @@
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [
-          1104,
-          80
+          1936,
+          -208
         ],
         "id": "59e5dcf1-c329-48e7-a174-8ece34c4441d",
         "name": "Code1"
@@ -178,8 +178,8 @@
         "type": "n8n-nodes-base.googleDrive",
         "typeVersion": 3,
         "position": [
-          1536,
-          80
+          2384,
+          -208
         ],
         "id": "2adec5b6-3a6b-4080-99fd-bad114ae1267",
         "name": "Copy file",
@@ -262,8 +262,8 @@
         "type": "n8n-nodes-base.googleDocs",
         "typeVersion": 2,
         "position": [
-          1744,
-          80
+          2608,
+          -208
         ],
         "id": "be3b9524-716e-4047-b49b-0056cd8d36c9",
         "name": "Update a document",
@@ -277,7 +277,7 @@
       {
         "parameters": {
           "chatId": "={{ $('Telegram Trigger').first().json.message.chat.id }}",
-          "text": "=Factura  {{ $('Code1').item.json.factura }} generada para {{ $('Code1').item.json.empresa }}",
+          "text": "=Factura {{ $('Code1').item.json.factura }} generada para {{ $('Code1').item.json.empresa }}",
           "additionalFields": {
             "appendAttribution": false
           }
@@ -285,8 +285,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          1952,
-          80
+          2832,
+          -208
         ],
         "id": "e3d4002f-84da-405e-8311-99d1274c5445",
         "name": "Send a text message",
@@ -320,8 +320,8 @@
         "type": "n8n-nodes-base.googleDrive",
         "typeVersion": 3,
         "position": [
-          2160,
-          80
+          3056,
+          -208
         ],
         "id": "42a67418-1057-472a-b70e-8c21ccd3bafc",
         "name": "Download file",
@@ -342,8 +342,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          2384,
-          240
+          3280,
+          -208
         ],
         "id": "a38415e5-c615-477c-bcae-6f2c6fdd4e4e",
         "name": "Send a document",
@@ -361,7 +361,7 @@
             "__rl": true,
             "value": "1QPNVhK6DJlsbpo4p3R30Gfy1ssxXV9MeX3KVil3AbUg",
             "mode": "list",
-            "cachedResultName": "CRM KZ-Automation",
+            "cachedResultName": "CRM Hasekura automation",
             "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1QPNVhK6DJlsbpo4p3R30Gfy1ssxXV9MeX3KVil3AbUg/edit?usp=drivesdk"
           },
           "sheetName": {
@@ -384,8 +384,8 @@
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.6,
         "position": [
-          1328,
-          16
+          2160,
+          -208
         ],
         "id": "ff4f6a2a-cff6-4142-aa73-e3103a208500",
         "name": "Get row(s) in sheet",
@@ -395,6 +395,416 @@
             "name": "Google Sheets account"
           }
         }
+      },
+      {
+        "parameters": {
+          "rules": {
+            "values": [
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": false,
+                    "leftValue": "",
+                    "typeValidation": "loose",
+                    "version": 3
+                  },
+                  "conditions": [
+                    {
+                      "id": "41efe072-85c2-4e02-aa49-39ba029f5922",
+                      "leftValue": "={{ $json.message.text }}",
+                      "rightValue": "/Factura",
+                      "operator": {
+                        "type": "string",
+                        "operation": "startsWith"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "/Factura"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": false,
+                    "leftValue": "",
+                    "typeValidation": "loose",
+                    "version": 3
+                  },
+                  "conditions": [
+                    {
+                      "id": "8a74a2c7-651d-42f8-91f9-0d94b86762a5",
+                      "leftValue": "={{ $json.Texto }}",
+                      "rightValue": "/factura",
+                      "operator": {
+                        "type": "string",
+                        "operation": "startsWith"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "Au /factura"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": false,
+                    "leftValue": "",
+                    "typeValidation": "loose",
+                    "version": 3
+                  },
+                  "conditions": [
+                    {
+                      "leftValue": "={{ $json.message.text }}",
+                      "rightValue": "/Cliente",
+                      "operator": {
+                        "type": "string",
+                        "operation": "startsWith"
+                      },
+                      "id": "1afc99a8-28d4-47a9-bf77-66d38e4dfcbe"
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "/Cliente"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": false,
+                    "leftValue": "",
+                    "typeValidation": "loose",
+                    "version": 3
+                  },
+                  "conditions": [
+                    {
+                      "id": "d48ad844-b3c9-490e-bf2e-7eee1e551226",
+                      "leftValue": "={{ $json.Texto }}",
+                      "rightValue": "/cliente",
+                      "operator": {
+                        "type": "string",
+                        "operation": "startsWith"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "Au /cliente"
+              }
+            ]
+          },
+          "looseTypeValidation": true,
+          "options": {
+            "ignoreCase": true
+          }
+        },
+        "type": "n8n-nodes-base.switch",
+        "typeVersion": 3.4,
+        "position": [
+          928,
+          -144
+        ],
+        "id": "235cd48f-57d3-437d-ae17-2f2110b41e3d",
+        "name": "Switch1"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "fa31fba7-29b4-4fe8-8a27-807fe46bedfe",
+                "name": "Texto",
+                "value": "={{ $json.message.text }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          1360,
+          -16
+        ],
+        "id": "bed292bd-bfe3-47bf-bd74-b71240dc36d8",
+        "name": "Edit Fields1"
+      },
+      {
+        "parameters": {
+          "modelId": {
+            "__rl": true,
+            "value": "gpt-4.1-mini",
+            "mode": "list",
+            "cachedResultName": "GPT-4.1-MINI"
+          },
+          "messages": {
+            "values": [
+              {
+                "content": "=Extrae los datos del siguiente mensaje y devuelve SIEMPRE este JSON:\n{\n  \"nombre\": \"\",\n  \"cif\": \"\",\n  \"direccion\": \"\",\n  \"zip\": \"\",\n  \"localidad\": \"\",\n  \"provincia\": \"\",\n  \"pais\": \"\",\n  \"email\": \"\"\n}\n\n- El \"zip\" solo el número, sin texto adicional\n- Si falta algún campo déjalo como \"\"\n\nMensaje: {{ $json.Texto }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.openAi",
+        "typeVersion": 1.8,
+        "position": [
+          1584,
+          -16
+        ],
+        "id": "3c7a21fb-e64d-4bd3-ab5a-c98bb49577ef",
+        "name": "Message a model1",
+        "credentials": {
+          "openAiApi": {
+            "id": "WvSLkCujVhY8jIGz",
+            "name": "OpenAi account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "// Lee el texto devuelto por el LLM\nconst raw = $('Message a model1').first().json.message.content;\n\n// --- Limpieza robusta del string ---\nlet s = String(raw).trim();\ns = s\n  .replace(/^```(?:json)?\\s*/i, '')\n  .replace(/```$/i, '')\n  .trim();\n\nconst firstBrace = s.indexOf('{');\nconst lastBrace  = s.lastIndexOf('}');\nif (firstBrace !== -1 && lastBrace !== -1) {\n  s = s.slice(firstBrace, lastBrace + 1).trim();\n}\ns = s.replace(/,\\s*([}\\]])/g, '$1');\n\nlet obj;\ntry {\n  obj = JSON.parse(s);\n} catch (e) {\n  throw new Error('No se pudo parsear el JSON del modelo. Recibido:\\n' + s);\n}\n\n// Devuelve los campos estructurados\nreturn [{ json: {\n  nombre:    obj.nombre    ?? '',\n  cif:       obj.cif       ?? '',\n  direccion: obj.direccion ?? '',\n  zip:       obj.zip       ?? '',\n  localidad: obj.localidad ?? '',\n  provincia: obj.provincia ?? '',\n  pais:      obj.pais      ?? '',\n  email:     obj.email     ?? '',\n}}];;"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          1936,
+          -16
+        ],
+        "id": "82135023-fb66-4e13-bfc6-77d5b7e4436e",
+        "name": "Code in JavaScript"
+      },
+      {
+        "parameters": {
+          "operation": "append",
+          "documentId": {
+            "__rl": true,
+            "value": "1QPNVhK6DJlsbpo4p3R30Gfy1ssxXV9MeX3KVil3AbUg",
+            "mode": "list",
+            "cachedResultName": "CRM Hasekura automation",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1QPNVhK6DJlsbpo4p3R30Gfy1ssxXV9MeX3KVil3AbUg/edit?usp=drivesdk"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "gid=0",
+            "mode": "list",
+            "cachedResultName": "Hoja 1",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1QPNVhK6DJlsbpo4p3R30Gfy1ssxXV9MeX3KVil3AbUg/edit#gid=0"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "Nombre": "={{ $json.nombre }}",
+              "CIF": "={{ $json.cif }}",
+              "Direccion": "={{ $json.direccion }}",
+              "ZIP": "={{ $json.zip }}",
+              "Localidad": "={{ $json.localidad }}",
+              "Provincia": "={{ $json.provincia }}",
+              "Pais": "={{ $json.pais }}",
+              "Email": "={{ $json.email }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "Nombre",
+                "displayName": "Nombre",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "CIF",
+                "displayName": "CIF",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "Direccion",
+                "displayName": "Direccion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "ZIP",
+                "displayName": "ZIP",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "Localidad",
+                "displayName": "Localidad",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "Provincia",
+                "displayName": "Provincia",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "Pais",
+                "displayName": "Pais",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "Email",
+                "displayName": "Email",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.7,
+        "position": [
+          2160,
+          -16
+        ],
+        "id": "d858a813-36d1-44e3-88d8-21248571d0dd",
+        "name": "Append row in sheet",
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "b3iIwyK8DLzQZxfk",
+            "name": "Google Sheets account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "chatId": "7040181107",
+          "text": "=✅ Cliente {{ $json.Nombre }} guardado correctamente",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          2384,
+          -16
+        ],
+        "id": "90168a2d-55cc-4d25-93e9-c9437d056028",
+        "name": "Send a text message1",
+        "webhookId": "53f242d5-b6ea-42b6-a1c9-20c1b9efde18",
+        "credentials": {
+          "telegramApi": {
+            "id": "KcOnwLzOSvSJfY1o",
+            "name": "Telegram account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "url": "=https://api.telegram.org/bot8036032541:AAG54LqJNGt-8JWz4VuumrMrkzFmEQ-6O0c/getFile?file_id={{ $json.message.voice.file_id }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4,
+        "position": [
+          32,
+          -16
+        ],
+        "id": "5c547f9b-396a-4990-a9f2-a350f22626d3",
+        "name": "HTTP Request"
+      },
+      {
+        "parameters": {
+          "resource": "audio",
+          "operation": "transcribe",
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.openAi",
+        "typeVersion": 2.1,
+        "position": [
+          480,
+          -16
+        ],
+        "id": "f56fb819-1735-44dd-bcdd-18449a56a34b",
+        "name": "Transcribe a recording",
+        "credentials": {
+          "openAiApi": {
+            "id": "WvSLkCujVhY8jIGz",
+            "name": "OpenAi account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "url": "=https://api.telegram.org/file/bot8036032541:AAG54LqJNGt-8JWz4VuumrMrkzFmEQ-6O0c/{{ $json.result.file_path }}",
+          "options": {
+            "response": {
+              "response": {
+                "responseFormat": "file"
+              }
+            }
+          }
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4,
+        "position": [
+          256,
+          -16
+        ],
+        "id": "fa550235-6f4c-4525-aa7a-ccedfc24f30e",
+        "name": "HTTP Request1"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "1a99e4b3-846b-46dc-92ce-fa40c8440e90",
+                "name": "Texto",
+                "value": "={{ $json.text.replace(/^[Bb]arra\\s+/i, '/') }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          704,
+          -16
+        ],
+        "id": "fd4393e6-e2a2-4720-a064-451941bdaa80",
+        "name": "Edit Fields2"
       }
     ],
     "connections": {
@@ -413,7 +823,14 @@
         "main": [
           [
             {
-              "node": "Edit Fields",
+              "node": "Switch1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "HTTP Request",
               "type": "main",
               "index": 0
             }
@@ -507,6 +924,126 @@
             }
           ]
         ]
+      },
+      "Switch1": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Edit Fields1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Edit Fields1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields1": {
+        "main": [
+          [
+            {
+              "node": "Message a model1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Message a model1": {
+        "main": [
+          [
+            {
+              "node": "Code in JavaScript",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code in JavaScript": {
+        "main": [
+          [
+            {
+              "node": "Append row in sheet",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Append row in sheet": {
+        "main": [
+          [
+            {
+              "node": "Send a text message1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "HTTP Request": {
+        "main": [
+          [
+            {
+              "node": "HTTP Request1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "HTTP Request1": {
+        "main": [
+          [
+            {
+              "node": "Transcribe a recording",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Transcribe a recording": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields2": {
+        "main": [
+          [
+            {
+              "node": "Switch1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "Carlos Fernández",
@@ -514,7 +1051,7 @@
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "341bd1e8-c02c-4f57-bd7e-e373c2f3b2a8",
+  "activeVersionId": "8c59a4de-cc0d-435b-ae12-4158905b9987",
   "connections": {
     "Telegram Trigger": {
       "main": [
@@ -531,7 +1068,14 @@
       "main": [
         [
           {
-            "node": "Edit Fields",
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request",
             "type": "main",
             "index": 0
           }
@@ -625,6 +1169,126 @@
           }
         ]
       ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Message a model1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Send a text message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Transcribe a recording",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcribe a recording": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2026-03-19T15:57:01.976Z",
@@ -645,8 +1309,8 @@
       "type": "n8n-nodes-base.telegramTrigger",
       "typeVersion": 1.2,
       "position": [
-        16,
-        192
+        -400,
+        -96
       ],
       "id": "bcf1595d-8eb3-458b-80a0-650b6f3c2109",
       "name": "Telegram Trigger",
@@ -717,8 +1381,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        256,
-        192
+        -192,
+        -96
       ],
       "id": "981baedd-2817-4c86-947e-854e5722efb5",
       "name": "Switch"
@@ -740,8 +1404,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        464,
-        96
+        1360,
+        -208
       ],
       "id": "ee3c83dc-8095-4cf1-bb96-aa5dc705033b",
       "name": "Edit Fields"
@@ -757,7 +1421,7 @@
         "messages": {
           "values": [
             {
-              "content": "=Tu objetivo es analizar los mensajes y obtener el nombre de la empresa a la que se le va a crear la factura, la fecha, número de factura, localidad del cliente, CIF o NIF, servicio, descripción (sobre que trata el servicio) y precio del servicio. Deberás devolver un JSON con esta estructura SIEMPRE:\n\nSiempre devuelve como respuesta un json como este\n{\n  \"empresa\": \"\",\n  \"fecha\": \"\",\n  \"factura\": \"\",\n  \"servicio\": \"\",\n  \"descripcion\": \"\",\n  \"precio\": \"\"\n}\n\n\nSi el usuario no te proporciona la fecha, utiliza la fecha actual: {{ $today.format(\"dd/MM/yyyy\") }}\nEl “precio” deberás poner solamente el precio sin utilizar el símbolo de “€”\nEl “servicio” solamente tiene que ser de 1 o 2 palabras (ej. Automatización, Agente de IA, Sitio web etc), palabras muy directas.\n\nMensaje: {{ $json.Texto }}"
+              "content": "=Tu objetivo es analizar los mensajes y obtener el nombre de la empresa a la que se le va a crear la factura, la fecha, número de factura, localidad del cliente, CIF o NIF, servicio, descripción (sobre que trata el servicio) y precio del servicio. Deberás devolver un JSON con esta estructura SIEMPRE:\n\nSiempre devuelve como respuesta un json como este\n{\n  \"empresa\": \"\",\n  \"fecha\": \"\",\n  \"factura\": \"\",\n  \"servicio\": \"\",\n  \"descripcion\": \"\",\n  \"precio\": \"\"\n}\n\n\nSi el usuario no te proporciona la fecha, utiliza la fecha actual: {{ $today.format(\"dd/MM/yyyy\") }}\nEl “precio” deberás poner solamente el precio sin utilizar el símbolo de “€”\nEl “servicio” solamente tiene que ser de 1 o 2 palabras (ej. Automatización, Agente de IA, Sitio web etc), palabras muy directas.\n\nMensaje: {{ $json.Texto }} o {{ $('Switch1').item.json.Texto }}"
             }
           ]
         },
@@ -766,8 +1430,8 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.8,
       "position": [
-        688,
-        -144
+        1584,
+        -208
       ],
       "id": "e7483ec9-2bd2-4c3e-ab3e-4aba09f06545",
       "name": "Message a model",
@@ -785,8 +1449,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1104,
-        80
+        1936,
+        -208
       ],
       "id": "59e5dcf1-c329-48e7-a174-8ece34c4441d",
       "name": "Code1"
@@ -807,8 +1471,8 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        1536,
-        80
+        2384,
+        -208
       ],
       "id": "2adec5b6-3a6b-4080-99fd-bad114ae1267",
       "name": "Copy file",
@@ -891,8 +1555,8 @@
       "type": "n8n-nodes-base.googleDocs",
       "typeVersion": 2,
       "position": [
-        1744,
-        80
+        2608,
+        -208
       ],
       "id": "be3b9524-716e-4047-b49b-0056cd8d36c9",
       "name": "Update a document",
@@ -906,7 +1570,7 @@
     {
       "parameters": {
         "chatId": "={{ $('Telegram Trigger').first().json.message.chat.id }}",
-        "text": "=Factura  {{ $('Code1').item.json.factura }} generada para {{ $('Code1').item.json.empresa }}",
+        "text": "=Factura {{ $('Code1').item.json.factura }} generada para {{ $('Code1').item.json.empresa }}",
         "additionalFields": {
           "appendAttribution": false
         }
@@ -914,8 +1578,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1952,
-        80
+        2832,
+        -208
       ],
       "id": "e3d4002f-84da-405e-8311-99d1274c5445",
       "name": "Send a text message",
@@ -949,8 +1613,8 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        2160,
-        80
+        3056,
+        -208
       ],
       "id": "42a67418-1057-472a-b70e-8c21ccd3bafc",
       "name": "Download file",
@@ -971,8 +1635,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2384,
-        240
+        3280,
+        -208
       ],
       "id": "a38415e5-c615-477c-bcae-6f2c6fdd4e4e",
       "name": "Send a document",
@@ -990,7 +1654,7 @@
           "__rl": true,
           "value": "1QPNVhK6DJlsbpo4p3R30Gfy1ssxXV9MeX3KVil3AbUg",
           "mode": "list",
-          "cachedResultName": "CRM KZ-Automation",
+          "cachedResultName": "CRM Hasekura automation",
           "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1QPNVhK6DJlsbpo4p3R30Gfy1ssxXV9MeX3KVil3AbUg/edit?usp=drivesdk"
         },
         "sheetName": {
@@ -1013,8 +1677,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.6,
       "position": [
-        1328,
-        16
+        2160,
+        -208
       ],
       "id": "ff4f6a2a-cff6-4142-aa73-e3103a208500",
       "name": "Get row(s) in sheet",
@@ -1024,9 +1688,458 @@
           "name": "Google Sheets account"
         }
       }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "41efe072-85c2-4e02-aa49-39ba029f5922",
+                    "leftValue": "={{ $json.message.text }}",
+                    "rightValue": "/Factura",
+                    "operator": {
+                      "type": "string",
+                      "operation": "startsWith"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "/Factura"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "8a74a2c7-651d-42f8-91f9-0d94b86762a5",
+                    "leftValue": "={{ $json.Texto }}",
+                    "rightValue": "/factura",
+                    "operator": {
+                      "type": "string",
+                      "operation": "startsWith"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Au /factura"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.message.text }}",
+                    "rightValue": "/Cliente",
+                    "operator": {
+                      "type": "string",
+                      "operation": "startsWith"
+                    },
+                    "id": "1afc99a8-28d4-47a9-bf77-66d38e4dfcbe"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "/Cliente"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "d48ad844-b3c9-490e-bf2e-7eee1e551226",
+                    "leftValue": "={{ $json.Texto }}",
+                    "rightValue": "/cliente",
+                    "operator": {
+                      "type": "string",
+                      "operation": "startsWith"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Au /cliente"
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {
+          "ignoreCase": true
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        928,
+        -144
+      ],
+      "id": "235cd48f-57d3-437d-ae17-2f2110b41e3d",
+      "name": "Switch1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fa31fba7-29b4-4fe8-8a27-807fe46bedfe",
+              "name": "Texto",
+              "value": "={{ $json.message.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1360,
+        -16
+      ],
+      "id": "bed292bd-bfe3-47bf-bd74-b71240dc36d8",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Extrae los datos del siguiente mensaje y devuelve SIEMPRE este JSON:\n{\n  \"nombre\": \"\",\n  \"cif\": \"\",\n  \"direccion\": \"\",\n  \"zip\": \"\",\n  \"localidad\": \"\",\n  \"provincia\": \"\",\n  \"pais\": \"\",\n  \"email\": \"\"\n}\n\n- El \"zip\" solo el número, sin texto adicional\n- Si falta algún campo déjalo como \"\"\n\nMensaje: {{ $json.Texto }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        1584,
+        -16
+      ],
+      "id": "3c7a21fb-e64d-4bd3-ab5a-c98bb49577ef",
+      "name": "Message a model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Lee el texto devuelto por el LLM\nconst raw = $('Message a model1').first().json.message.content;\n\n// --- Limpieza robusta del string ---\nlet s = String(raw).trim();\ns = s\n  .replace(/^```(?:json)?\\s*/i, '')\n  .replace(/```$/i, '')\n  .trim();\n\nconst firstBrace = s.indexOf('{');\nconst lastBrace  = s.lastIndexOf('}');\nif (firstBrace !== -1 && lastBrace !== -1) {\n  s = s.slice(firstBrace, lastBrace + 1).trim();\n}\ns = s.replace(/,\\s*([}\\]])/g, '$1');\n\nlet obj;\ntry {\n  obj = JSON.parse(s);\n} catch (e) {\n  throw new Error('No se pudo parsear el JSON del modelo. Recibido:\\n' + s);\n}\n\n// Devuelve los campos estructurados\nreturn [{ json: {\n  nombre:    obj.nombre    ?? '',\n  cif:       obj.cif       ?? '',\n  direccion: obj.direccion ?? '',\n  zip:       obj.zip       ?? '',\n  localidad: obj.localidad ?? '',\n  provincia: obj.provincia ?? '',\n  pais:      obj.pais      ?? '',\n  email:     obj.email     ?? '',\n}}];;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1936,
+        -16
+      ],
+      "id": "82135023-fb66-4e13-bfc6-77d5b7e4436e",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1QPNVhK6DJlsbpo4p3R30Gfy1ssxXV9MeX3KVil3AbUg",
+          "mode": "list",
+          "cachedResultName": "CRM Hasekura automation",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1QPNVhK6DJlsbpo4p3R30Gfy1ssxXV9MeX3KVil3AbUg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1QPNVhK6DJlsbpo4p3R30Gfy1ssxXV9MeX3KVil3AbUg/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nombre": "={{ $json.nombre }}",
+            "CIF": "={{ $json.cif }}",
+            "Direccion": "={{ $json.direccion }}",
+            "ZIP": "={{ $json.zip }}",
+            "Localidad": "={{ $json.localidad }}",
+            "Provincia": "={{ $json.provincia }}",
+            "Pais": "={{ $json.pais }}",
+            "Email": "={{ $json.email }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "CIF",
+              "displayName": "CIF",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Direccion",
+              "displayName": "Direccion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ZIP",
+              "displayName": "ZIP",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Localidad",
+              "displayName": "Localidad",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Provincia",
+              "displayName": "Provincia",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Pais",
+              "displayName": "Pais",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2160,
+        -16
+      ],
+      "id": "d858a813-36d1-44e3-88d8-21248571d0dd",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "b3iIwyK8DLzQZxfk",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "7040181107",
+        "text": "=✅ Cliente {{ $json.Nombre }} guardado correctamente",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2384,
+        -16
+      ],
+      "id": "90168a2d-55cc-4d25-93e9-c9437d056028",
+      "name": "Send a text message1",
+      "webhookId": "53f242d5-b6ea-42b6-a1c9-20c1b9efde18",
+      "credentials": {
+        "telegramApi": {
+          "id": "KcOnwLzOSvSJfY1o",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.telegram.org/bot8036032541:AAG54LqJNGt-8JWz4VuumrMrkzFmEQ-6O0c/getFile?file_id={{ $json.message.voice.file_id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        32,
+        -16
+      ],
+      "id": "5c547f9b-396a-4990-a9f2-a350f22626d3",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        480,
+        -16
+      ],
+      "id": "f56fb819-1735-44dd-bcdd-18449a56a34b",
+      "name": "Transcribe a recording",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.telegram.org/file/bot8036032541:AAG54LqJNGt-8JWz4VuumrMrkzFmEQ-6O0c/{{ $json.result.file_path }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        256,
+        -16
+      ],
+      "id": "fa550235-6f4c-4525-aa7a-ccedfc24f30e",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1a99e4b3-846b-46dc-92ce-fa40c8440e90",
+              "name": "Texto",
+              "value": "={{ $json.text.replace(/^[Bb]arra\\s+/i, '/') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        704,
+        -16
+      ],
+      "id": "fd4393e6-e2a2-4720-a064-451941bdaa80",
+      "name": "Edit Fields2"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Telegram Trigger": [
+      {
+        "json": {
+          "update_id": 807505770,
+          "message": {
+            "message_id": 59,
+            "from": {
+              "id": 5630687999,
+              "is_bot": false,
+              "first_name": "Beita🐈‍⬛",
+              "language_code": "es"
+            },
+            "chat": {
+              "id": 5630687999,
+              "first_name": "Beita🐈‍⬛",
+              "type": "private"
+            },
+            "date": 1776852213,
+            "text": "/factura, crea una factura número 2 para Soluciones Iberia con CIF B45876231 con la dirección Calle Innovación 24 con el CIF 47008 en la localidad de Valladolid, en la provincia de Castilla y León, en el país de España y email solucionesoloiberias.gmail.com por valor de 2500 euros por un agente de voz que gestiona llamadas",
+            "entities": [
+              {
+                "offset": 0,
+                "length": 8,
+                "type": "bot_command"
+              },
+              {
+                "offset": 227,
+                "length": 30,
+                "type": "url"
+              }
+            ]
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate",
@@ -1047,6 +2160,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-04-16T00:23:51.673Z",
-  "versionId": "341bd1e8-c02c-4f57-bd7e-e373c2f3b2a8"
+  "updatedAt": "2026-04-22T10:12:41.442Z",
+  "versionId": "8c59a4de-cc0d-435b-ae12-4158905b9987"
 }
