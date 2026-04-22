@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-12T12:54:41.000Z",
-    "createdAt": "2026-04-12T12:46:21.656Z",
-    "versionId": "bfd4d346-b0ee-4a18-b80d-f97318e6af37",
+    "updatedAt": "2026-04-19T19:13:13.000Z",
+    "createdAt": "2026-04-13T00:41:52.458Z",
+    "versionId": "2a23effd-f01f-481f-a093-1aca737360d5",
     "workflowId": "RxZPn9OmATNZg18r",
     "nodes": [
       {
@@ -49,7 +49,7 @@
         "type": "@n8n/n8n-nodes-langchain.agent",
         "typeVersion": 3,
         "position": [
-          -1048,
+          -1056,
           -144
         ],
         "id": "9eeba7a6-eb90-4498-8fd1-69027b6938af",
@@ -68,8 +68,8 @@
         "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
         "typeVersion": 1.3,
         "position": [
-          -1104,
-          80
+          -1200,
+          48
         ],
         "id": "cb1b5e6d-64ce-4230-993c-a32794fe627e",
         "name": "OpenAI Chat Model1",
@@ -88,7 +88,7 @@
         "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
         "typeVersion": 1.5,
         "position": [
-          -976,
+          -1024,
           80
         ],
         "id": "8d2f3a1c-0977-468f-b0b8-0ff06f1ce484",
@@ -116,7 +116,7 @@
         "typeVersion": 1.3,
         "position": [
           -848,
-          80
+          64
         ],
         "id": "3877f97c-d4f4-4778-b965-43e5316f6886",
         "name": "Get many events in Google Calendar",
@@ -214,7 +214,7 @@
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "bfd4d346-b0ee-4a18-b80d-f97318e6af37",
+  "activeVersionId": "2a23effd-f01f-481f-a093-1aca737360d5",
   "connections": {
     "Webhook": {
       "main": [
@@ -1148,7 +1148,8 @@
     "timeSavedMode": "fixed",
     "timezone": "Europe/Madrid",
     "callerPolicy": "workflowsFromSameOwner",
-    "availableInMCP": false
+    "availableInMCP": false,
+    "errorWorkflow": "G3LUdMqnpavs5AUk"
   },
   "shared": [
     {
@@ -1162,6 +1163,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-04-13T00:41:52.457Z",
+  "updatedAt": "2026-04-20T17:47:42.848Z",
   "versionId": "2a23effd-f01f-481f-a093-1aca737360d5"
 }
