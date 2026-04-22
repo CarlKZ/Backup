@@ -807,6 +807,11 @@
             "node": "Get many workflows",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Variables",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -1340,7 +1345,7 @@
       "typeVersion": 3,
       "position": [
         -720,
-        768
+        896
       ],
       "id": "87aeda6d-3832-4cf8-a3e6-26f42036ca7a",
       "name": "Search files and folders",
@@ -1375,6 +1380,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-04-16T22:39:42.568Z",
-  "versionId": "0613cbb4-95e3-4f43-b789-3a34dabd0e28"
+  "updatedAt": "2026-04-22T10:49:52.531Z",
+  "versionId": "c4111313-a18c-4e4b-8cea-5c5ee2fd7f0c"
 }
