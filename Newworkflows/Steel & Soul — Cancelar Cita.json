@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-13T12:26:01.000Z",
-    "createdAt": "2026-04-13T12:23:45.266Z",
-    "versionId": "76f9b27f-3815-4499-8189-39de82784a56",
+    "updatedAt": "2026-04-20T17:47:20.000Z",
+    "createdAt": "2026-04-19T19:14:39.263Z",
+    "versionId": "210fc40d-aa0b-499b-a0a5-e72ff9ba52f9",
     "workflowId": "Q0enUCunXrEAABqI",
     "nodes": [
       {
@@ -16,7 +16,7 @@
         "type": "n8n-nodes-base.webhook",
         "typeVersion": 2.1,
         "position": [
-          448,
+          512,
           336
         ],
         "id": "0598c19a-80b0-41f2-920c-60151a186e34",
@@ -49,7 +49,7 @@
         "type": "@n8n/n8n-nodes-langchain.agent",
         "typeVersion": 3,
         "position": [
-          952,
+          960,
           336
         ],
         "id": "2de5e83e-7625-44b3-9962-cc584667774c",
@@ -64,7 +64,7 @@
             "mode": "list",
             "cachedResultName": "Steel and Soul"
           },
-          "timeMax": "={{ $now.plus({ year: 1 }) }}",
+          "timeMax": "={{ $now.plus({ month: 1 }) }}",
           "options": {}
         },
         "type": "n8n-nodes-base.googleCalendarTool",
@@ -89,7 +89,7 @@
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [
-          672,
+          736,
           336
         ],
         "id": "5a209de8-ce3e-4f47-8299-371f3c2a55f3",
@@ -219,9 +219,9 @@
     "authors": "Carlos Fernández",
     "name": "Steel & Soul — Cancelar Cita",
     "description": "",
-    "autosaved": false
+    "autosaved": true
   },
-  "activeVersionId": "76f9b27f-3815-4499-8189-39de82784a56",
+  "activeVersionId": "210fc40d-aa0b-499b-a0a5-e72ff9ba52f9",
   "connections": {
     "AI Agent1": {
       "main": [
@@ -356,7 +356,7 @@
           "mode": "list",
           "cachedResultName": "Steel and Soul"
         },
-        "timeMax": "={{ $now.plus({ year: 1 }) }}",
+        "timeMax": "={{ $now.plus({ month: 1 }) }}",
         "options": {}
       },
       "type": "n8n-nodes-base.googleCalendarTool",
@@ -443,7 +443,11 @@
   "pinData": {},
   "settings": {
     "executionOrder": "v1",
-    "binaryMode": "separate"
+    "binaryMode": "separate",
+    "timeSavedMode": "fixed",
+    "errorWorkflow": "G3LUdMqnpavs5AUk",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
   },
   "shared": [
     {
@@ -457,6 +461,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-04-13T17:15:34.597Z",
-  "versionId": "e6ab0b10-b716-4c39-ab08-512c36801064"
+  "updatedAt": "2026-04-20T17:47:26.652Z",
+  "versionId": "210fc40d-aa0b-499b-a0a5-e72ff9ba52f9"
 }
