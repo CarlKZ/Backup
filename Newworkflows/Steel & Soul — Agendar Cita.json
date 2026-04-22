@@ -1,7 +1,7 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-13T11:42:28.000Z",
+    "updatedAt": "2026-04-19T19:09:24.000Z",
     "createdAt": "2026-04-13T00:38:05.144Z",
     "versionId": "08d9d4d8-f39c-41be-a1e8-dabb5301612f",
     "workflowId": "H7EquWUB4liqIkcYAkxgP",
@@ -439,7 +439,8 @@
     "availableInMCP": false,
     "timeSavedMode": "fixed",
     "timezone": "Europe/Madrid",
-    "callerPolicy": "workflowsFromSameOwner"
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "G3LUdMqnpavs5AUk"
   },
   "shared": [
     {
@@ -453,6 +454,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-04-13T00:38:05.138Z",
+  "updatedAt": "2026-04-20T17:47:52.726Z",
   "versionId": "08d9d4d8-f39c-41be-a1e8-dabb5301612f"
 }
