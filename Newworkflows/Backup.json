@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-12T11:49:15.000Z",
-    "createdAt": "2026-04-12T11:49:03.783Z",
-    "versionId": "3133abce-155b-4009-8fe0-9be8da2ad3f3",
+    "updatedAt": "2026-04-22T11:53:00.000Z",
+    "createdAt": "2026-04-22T11:51:48.856Z",
+    "versionId": "84d35bfe-2dc7-4a01-bf47-2b53f5bf1c52",
     "workflowId": "Lbg3Eal63hxA6Uvk",
     "nodes": [
       {
@@ -42,7 +42,7 @@
         "type": "n8n-nodes-base.switch",
         "position": [
           224,
-          232
+          240
         ],
         "typeVersion": 1
       },
@@ -142,7 +142,7 @@
         "type": "n8n-nodes-base.n8n",
         "position": [
           -896,
-          376
+          384
         ],
         "typeVersion": 1,
         "credentials": {
@@ -161,7 +161,7 @@
         "type": "n8n-nodes-base.code",
         "position": [
           0,
-          264
+          272
         ],
         "typeVersion": 1
       },
@@ -172,7 +172,7 @@
         "type": "n8n-nodes-base.merge",
         "position": [
           -224,
-          264
+          272
         ],
         "typeVersion": 2
       },
@@ -201,7 +201,7 @@
         "type": "n8n-nodes-base.set",
         "position": [
           -1344,
-          376
+          384
         ],
         "typeVersion": 1
       },
@@ -226,7 +226,7 @@
         "typeVersion": 3,
         "position": [
           -672,
-          376
+          384
         ]
       },
       {
@@ -265,7 +265,7 @@
         "typeVersion": 2,
         "position": [
           -1120,
-          376
+          384
         ],
         "id": "9632fc8a-6c4c-44ab-ad68-5f784141df4e",
         "name": "Code in JavaScript"
@@ -274,9 +274,7 @@
         "parameters": {
           "rule": {
             "interval": [
-              {
-                "field": "weeks"
-              }
+              {}
             ]
           }
         },
@@ -324,12 +322,12 @@
       },
       {
         "parameters": {
-          "jsCode": "const workflow = items[0].json;\nconst contenido = JSON.stringify(workflow, null, 2);\nconst nombre = `${workflow.name}'_mensual_${new Date().toISOString().split('T')[0]}.json`;\n\nconst binaryData = await this.helpers.prepareBinaryData(\n  Buffer.from(contenido, 'utf8'),\n  nombre,\n  'application/json'\n);\n\nreturn [{\n  json: { nombre },\n  binary: { data: binaryData }\n}];"
+          "jsCode": "const workflow = items[0].json;\nconst fecha = new Date().toISOString().split('T')[0];\nconst contenido = JSON.stringify({\n  ...workflow,\n  _backup_fecha: fecha,\n  _backup_timestamp: new Date().toISOString()\n}, null, 2);\n\nconst nombre = `${workflow.name.replace(/[^a-z0-9]/gi, '_')}.json`;\n\nconst binaryData = await this.helpers.prepareBinaryData(\n  Buffer.from(contenido, 'utf8'),\n  nombre,\n  'application/json'\n);\n\nreturn [{\n  json: { nombre },\n  binary: { data: binaryData }\n}]"
         },
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [
-          -896,
+          -928,
           768
         ],
         "id": "7c57ede1-e8b0-4fd8-9164-9321b74ee317",
@@ -337,7 +335,8 @@
       },
       {
         "parameters": {
-          "name": "={{ $json.nombre }}",
+          "inputDataFieldName": "={{ $('Code in JavaScript1').item.binary.data }}",
+          "name": "={{ $('Code in JavaScript1').item.json.nombre }}",
           "driveId": {
             "__rl": true,
             "value": "My Drive",
@@ -357,11 +356,107 @@
         "type": "n8n-nodes-base.googleDrive",
         "typeVersion": 3,
         "position": [
-          -720,
-          928
+          -32,
+          1088
         ],
         "id": "5fa90509-0854-4955-8015-28e9295d1bff",
         "name": "Upload file",
+        "credentials": {
+          "googleDriveOAuth2Api": {
+            "id": "LtqVq84eX4sOdWIu",
+            "name": "Google Drive account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "fileId": {
+            "__rl": true,
+            "value": "={{ $json.id }}",
+            "mode": "id"
+          },
+          "newUpdatedFileName": "={{ $json.name }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleDrive",
+        "typeVersion": 3,
+        "position": [
+          -32,
+          880
+        ],
+        "id": "dd78e66f-97ba-43d0-bdcd-55d1f952645e",
+        "name": "Update file",
+        "credentials": {
+          "googleDriveOAuth2Api": {
+            "id": "WraNUZoNIabL3fsM",
+            "name": "Google Service Account account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "b57cec4c-e622-4cbc-8ac0-9ff66a1e5fc3",
+                "leftValue": "={{ $json.id }}",
+                "rightValue": "=",
+                "operator": {
+                  "type": "string",
+                  "operation": "exists",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -464,
+          896
+        ],
+        "id": "1a7e7bca-aff3-407e-8414-c771253df1b6",
+        "name": "If"
+      },
+      {
+        "parameters": {
+          "resource": "fileFolder",
+          "queryString": "={{ $json.nombre }}",
+          "limit": 1,
+          "filter": {
+            "driveId": {
+              "mode": "list",
+              "value": "My Drive"
+            },
+            "folderId": {
+              "__rl": true,
+              "value": "1YHx-zgJ_4XcRhyp42LaE-52urhVWLzkW",
+              "mode": "list",
+              "cachedResultName": "Backup n8n",
+              "cachedResultUrl": "https://drive.google.com/drive/folders/1YHx-zgJ_4XcRhyp42LaE-52urhVWLzkW"
+            }
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleDrive",
+        "typeVersion": 3,
+        "position": [
+          -720,
+          896
+        ],
+        "id": "87aeda6d-3832-4cf8-a3e6-26f42036ca7a",
+        "name": "Search files and folders",
+        "alwaysOutputData": false,
         "credentials": {
           "googleDriveOAuth2Api": {
             "id": "LtqVq84eX4sOdWIu",
@@ -594,7 +689,7 @@
         "main": [
           [
             {
-              "node": "Upload file",
+              "node": "Search files and folders",
               "type": "main",
               "index": 0
             }
@@ -611,6 +706,46 @@
             }
           ]
         ]
+      },
+      "Update file": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If": {
+        "main": [
+          [
+            {
+              "node": "Update file",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Upload file",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Search files and folders": {
+        "main": [
+          [
+            {
+              "node": "If",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "Carlos Fernández",
@@ -618,7 +753,7 @@
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "3133abce-155b-4009-8fe0-9be8da2ad3f3",
+  "activeVersionId": "84d35bfe-2dc7-4a01-bf47-2b53f5bf1c52",
   "connections": {
     "On clicking 'execute'": {
       "main": [
@@ -1178,9 +1313,7 @@
       "parameters": {
         "rule": {
           "interval": [
-            {
-              "field": "weeks"
-            }
+            {}
           ]
         }
       },
@@ -1241,7 +1374,8 @@
     },
     {
       "parameters": {
-        "name": "={{ $json.nombre }}",
+        "inputDataFieldName": "={{ $('Code in JavaScript1').item.binary.data }}",
+        "name": "={{ $('Code in JavaScript1').item.json.nombre }}",
         "driveId": {
           "__rl": true,
           "value": "My Drive",
@@ -1261,7 +1395,7 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        16,
+        -32,
         1088
       ],
       "id": "5fa90509-0854-4955-8015-28e9295d1bff",
@@ -1338,7 +1472,19 @@
         "resource": "fileFolder",
         "queryString": "={{ $json.nombre }}",
         "limit": 1,
-        "filter": {},
+        "filter": {
+          "driveId": {
+            "mode": "list",
+            "value": "My Drive"
+          },
+          "folderId": {
+            "__rl": true,
+            "value": "1YHx-zgJ_4XcRhyp42LaE-52urhVWLzkW",
+            "mode": "list",
+            "cachedResultName": "Backup n8n",
+            "cachedResultUrl": "https://drive.google.com/drive/folders/1YHx-zgJ_4XcRhyp42LaE-52urhVWLzkW"
+          }
+        },
         "options": {}
       },
       "type": "n8n-nodes-base.googleDrive",
@@ -1349,10 +1495,11 @@
       ],
       "id": "87aeda6d-3832-4cf8-a3e6-26f42036ca7a",
       "name": "Search files and folders",
+      "alwaysOutputData": false,
       "credentials": {
         "googleDriveOAuth2Api": {
-          "id": "WraNUZoNIabL3fsM",
-          "name": "Google Service Account account"
+          "id": "LtqVq84eX4sOdWIu",
+          "name": "Google Drive account"
         }
       }
     }
@@ -1380,6 +1527,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-04-22T10:49:52.531Z",
-  "versionId": "c4111313-a18c-4e4b-8cea-5c5ee2fd7f0c"
+  "updatedAt": "2026-04-22T11:51:48.855Z",
+  "versionId": "84d35bfe-2dc7-4a01-bf47-2b53f5bf1c52"
 }
