@@ -1,0 +1,283 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Disponibilidad Pruebas": {
+      "main": [
+        [
+          {
+            "node": "Code6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch4": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields7",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code6": {
+      "main": [
+        [
+          {
+            "node": "Get many events",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code7": {
+      "main": [
+        [
+          {
+            "node": "Switch4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many events": {
+      "main": [
+        [
+          {
+            "node": "Code7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-05-03T16:33:55.958Z",
+  "id": "PatJQQO0y7D8Ig2v",
+  "isArchived": false,
+  "meta": null,
+  "name": "Disponibilidad Pruebas",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "Fecha y hora"
+            }
+          ]
+        }
+      },
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "typeVersion": 1.1,
+      "name": "Disponibilidad Pruebas",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        -192,
+        496
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a3949635-7477-4332-9aa6-b6912dee31c4",
+              "name": "Disponibilidad",
+              "value": false,
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        928,
+        592
+      ],
+      "id": "4766d74c-e5d1-4b58-aad5-2a2e5dc87729",
+      "name": "Edit Fields6"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "77a01a69-ca3b-4ba1-97b6-496e734c7128",
+              "name": "disponibilidad",
+              "value": true,
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        928,
+        400
+      ],
+      "id": "fd9f5f6d-1c4b-4379-a951-40832eb3252b",
+      "name": "Edit Fields7"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "307f8081-ea6e-4446-8296-56983cabeb74",
+                    "leftValue": "={{ $json.result }}",
+                    "rightValue": "={{ $json.start.dateTime }}",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "No Disponible"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "db38c069-4b77-47e4-9b23-c6e86477c7c5",
+                    "leftValue": "={{ $json.result }}",
+                    "rightValue": "={{ $json.start.dateTime }}",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "false",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Disponible"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        704,
+        496
+      ],
+      "id": "c043454e-0f10-461e-be00-33c4ba078646",
+      "name": "Switch4"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  const fechaStr = item.json[\"Fecha y Hora\"]; // Corregido: usar el nombre exacto del campo\n  const start = new Date(fechaStr);\n  const end = new Date(start.getTime() + 3 * 60 * 60 * 1000); // +3 horas (cambiado de 1 a 3)\n  \n  // Función para formatear la fecha como YYYY-MM-DDTHH:mm:ss\n  function formatDate(date) {\n    const pad = (num) => num.toString().padStart(2, '0');\n    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;\n  }\n  \n  item.json.start_time = formatDate(start);\n  item.json.end_time = formatDate(end);\n  \n  return item;\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        32,
+        496
+      ],
+      "id": "f0e1df29-cda9-4d8c-9b5c-431fb9a01c10",
+      "name": "Code6"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener la fecha solicitada del nodo trigger (Disponibilidad Esturión)\nconst fechaHoraSolicitada = $('Disponibilidad Esturión').first().json['Fecha y Hora'];\n\n// Validar que existe la fecha\nif (!fechaHoraSolicitada) {\n  return [{json: {error: \"No se proporcionó 'Fecha y Hora'\"}}];\n}\n\n// Obtener todos los eventos del calendario desde Get many events\nconst todosLosEventos = $input.all();\n\n// Normalizar la fecha del usuario (zona horaria Europe/Madrid)\nlet fechaHoraNormalizada = fechaHoraSolicitada;\nif (!fechaHoraNormalizada.includes('+') && !fechaHoraNormalizada.includes('Z')) {\n  fechaHoraNormalizada = fechaHoraNormalizada + '+01:00'; // Hora estándar Madrid (invierno)\n}\n\n// Función para verificar si la hora solicitada se solapa con un evento existente\nfunction verificarSolapamiento(inicioEvento, finEvento, usuarioFechaHora) {\n  const inicio = new Date(inicioEvento);\n  const fin = new Date(finEvento);\n  const usuarioFecha = new Date(usuarioFechaHora);\n  \n  // Si la fecha del usuario cae dentro del rango del evento, hay solapamiento\n  return usuarioFecha >= inicio && usuarioFecha < fin;\n}\n\n// Procesar todos los eventos y verificar solapamientos\nconst eventosEncontrados = todosLosEventos.map(evento => {\n  const inicioEvento = evento.json.start?.dateTime || evento.json.start?.date;\n  const finEvento = evento.json.end?.dateTime || evento.json.end?.date;\n  const solapa = verificarSolapamiento(inicioEvento, finEvento, fechaHoraNormalizada);\n  \n  return {\n    id: evento.json.id,\n    summary: evento.json.summary,\n    start: inicioEvento,\n    end: finEvento,\n    solapa: solapa\n  };\n});\n\n// Verificar si hay algún evento que se solape\nconst haySolapamiento = eventosEncontrados.some(evento => evento.solapa === true);\n\n// Devolver resultado en el formato solicitado\nreturn [{\n  json: {\n    result: haySolapamiento,\n    debug: {\n      fechaHoraSolicitada: fechaHoraSolicitada,\n      fechaHoraNormalizada: fechaHoraNormalizada,\n      eventosEncontrados: eventosEncontrados\n    }\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        496
+      ],
+      "id": "41a355b5-1afe-4e85-aeb5-554cbfb582c4",
+      "name": "Code7"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "3cf455fae61998f2cf7bfffba57a4e28188afc46dd5d892692826a9254905124@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Restaurante Esturión"
+        },
+        "returnAll": true,
+        "timeMax": "={{ $now.plus({ year: 1 }) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        256,
+        496
+      ],
+      "id": "83867cd9-b783-4353-ab2e-92e70f864599",
+      "name": "Get many events",
+      "alwaysOutputData": false,
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "BxLdTiBYRwntbItp",
+          "name": "Google Calendar account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false,
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-05-03T16:33:55.964Z",
+      "createdAt": "2026-05-03T16:33:55.964Z",
+      "role": "workflow:owner",
+      "workflowId": "PatJQQO0y7D8Ig2v",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-05-03T16:43:20.491Z",
+  "versionId": "76b52734-1a00-485c-ab05-10c97a02d8dc"
+}
