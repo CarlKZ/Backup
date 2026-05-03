@@ -1,0 +1,172 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Modificar Pruebas": {
+      "main": [
+        [
+          {
+            "node": "Get many events",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Update an event1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many events": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-05-03T16:33:02.351Z",
+  "id": "U2cFwwb6E8Q4RMaC",
+  "isArchived": false,
+  "meta": null,
+  "name": "Modificar Pruebas",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "Titulo"
+            },
+            {
+              "name": "Fecha inicio"
+            },
+            {
+              "name": "Fecha fin"
+            },
+            {
+              "name": "Descripcion"
+            },
+            {
+              "name": "ID"
+            }
+          ]
+        }
+      },
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "typeVersion": 1.1,
+      "name": "Modificar Pruebas",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        432,
+        496
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener el ID y las nuevas fechas desde el nodo \"Modificar Evento Esturion\"\nconst idBuscado = $('Modificar Evento Esturion').first().json['ID'];\nconst nuevaFechaInicio = $('Modificar Evento Esturion').first().json['Fecha inicio'];\nconst nuevaFechaFin = $('Modificar Evento Esturion').first().json['Fecha fin'];\n\n// Obtener todos los eventos del Google Calendar\nconst eventos = $input.all();\n\n// Buscar el evento que coincida con el ID\nconst eventoEncontrado = eventos.find(evento => \n  evento.json.id === idBuscado\n);\n\n// Si no se encuentra\nif (!eventoEncontrado) {\n  return [{\n    json: {\n      error: 'No se encontró el evento',\n      id_buscado: idBuscado,\n      eventos_encontrados: eventos.length\n    }\n  }];\n}\n\n// Devolver el ID real de Google Calendar con las fechas actualizadas del trigger\nreturn [{\n  json: {\n    ID_real: eventoEncontrado.json.id,\n    Titulo: eventoEncontrado.json.summary,\n    Fecha_inicio: nuevaFechaInicio,\n    Fecha_fin: nuevaFechaFin,\n    Descripcion: eventoEncontrado.json.description\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        496
+      ],
+      "id": "25bc028e-6a35-47bf-8645-cd8badd650a5",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "3cf455fae61998f2cf7bfffba57a4e28188afc46dd5d892692826a9254905124@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Restaurante Esturión"
+        },
+        "timeMax": "={{ $now.plus({ month: 1 }) }}",
+        "options": {
+          "query": "={{ $json.Titulo }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        656,
+        496
+      ],
+      "id": "2d063712-85b1-4fad-ade5-975b3e5b5c7c",
+      "name": "Get many events",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "BxLdTiBYRwntbItp",
+          "name": "Google Calendar account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "calendar": {
+          "__rl": true,
+          "value": "3cf455fae61998f2cf7bfffba57a4e28188afc46dd5d892692826a9254905124@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Restaurante Esturión"
+        },
+        "eventId": "={{ $json.ID_real }}",
+        "updateFields": {
+          "description": "={{ $json.Descripcion }}",
+          "end": "={{ $json.Fecha_fin }}",
+          "start": "={{ $json.Fecha_inicio }}",
+          "summary": "={{ $json.Titulo }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        1104,
+        496
+      ],
+      "id": "b0cff47c-2f82-4491-b7a6-e4fb0402227d",
+      "name": "Update an event1",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "BxLdTiBYRwntbItp",
+          "name": "Google Calendar account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false,
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-05-03T16:33:02.358Z",
+      "createdAt": "2026-05-03T16:33:02.358Z",
+      "role": "workflow:owner",
+      "workflowId": "U2cFwwb6E8Q4RMaC",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-05-03T16:45:39.677Z",
+  "versionId": "fe68effe-66ed-42a6-b19b-f34f93db02f7"
+}
