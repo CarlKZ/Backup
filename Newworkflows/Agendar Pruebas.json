@@ -28,7 +28,7 @@
   },
   "createdAt": "2026-05-03T16:32:34.461Z",
   "id": "maPtE2EIyJRTppWC",
-  "isArchived": false,
+  "isArchived": true,
   "meta": null,
   "name": "Agendar Pruebas",
   "nodes": [
@@ -64,15 +64,15 @@
       "parameters": {
         "calendar": {
           "__rl": true,
-          "value": "3cf455fae61998f2cf7bfffba57a4e28188afc46dd5d892692826a9254905124@group.calendar.google.com",
+          "value": "b3be31f352404ba86060acb35b136d80e91f4c9d2fadf91921d0b632d982ff29@group.calendar.google.com",
           "mode": "list",
-          "cachedResultName": "Restaurante Esturión"
+          "cachedResultName": "Pruebas"
         },
-        "start": "={{ $('Agendar Pruebas').item.json['Fecha inicio'] }}",
-        "end": "={{ $('Agendar Pruebas').item.json['Fecha fin'] }}",
+        "start": "={{ $json[\"Fecha Inicio\"] }}",
+        "end": "={{ $json[\"Fecha Fin\"] }}",
         "additionalFields": {
-          "description": "={{ $('Agendar Pruebas').item.json['Descripción'] }}",
-          "summary": "={{ $('Agendar Pruebas').item.json.Titulo }}"
+          "description": "={{ $json.Descripcion }}",
+          "summary": "={{ $json.Nombre }}"
         }
       },
       "type": "n8n-nodes-base.googleCalendar",
@@ -92,7 +92,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Obtener la fecha de inicio desde el trigger\nconst fechaInicio = $('Agendar Pruebas').first().json['Fecha inicio'];\n\n// Si no hay fecha de inicio, usar la fecha actual (fallback)\nif (!fechaInicio) {\n  return [{\n    json: {\n      error: \"No se proporcionó Fecha inicio\"\n    }\n  }];\n}\n\n// Calcular fecha fin (añadir 2 horas = 120 minutos)\nconst inicio = new Date(fechaInicio);\nconst fin = new Date(inicio.getTime() + (120 * 60 * 1000));\n\n// Devolver ambas fechas en formato ISO\nreturn [{\n  json: {\n    'Fecha inicio': inicio.toISOString(),\n    'Fecha fin': fin.toISOString()\n  }\n}];"
+        "jsCode": "const fechaInicio = $('Agendar Pruebas').first().json['Fecha Inicio'];\nconst nombre = $('Agendar Pruebas').first().json['Nombre'];\nconst descripcion = $('Agendar Pruebas').first().json['Descripcion'];\n\nif (!fechaInicio) {\n  return [{json: {error: \"No se proporcionó Fecha Inicio\"}}];\n}\n\nconst inicio = new Date(fechaInicio);\nconst fin = new Date(inicio.getTime() + (30 * 60 * 1000));\n\n// Función para formatear la fecha manualmente sin el desfase UTC (quitar la Z)\nconst formatLocal = (date) => {\n  return date.toLocaleString('sv-SE').replace(' ', 'T');\n};\n\nreturn [{\n  json: {\n    'Nombre': nombre,\n    'Fecha Inicio': formatLocal(inicio), // Output: 2026-05-05T18:00:00\n    'Fecha Fin': formatLocal(fin),       // Output: 2026-05-05T18:30:00\n    'Descripcion': descripcion\n  }\n}];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -104,11 +104,28 @@
       "name": "Code in JavaScript"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Agendar Pruebas": [
+      {
+        "json": {
+          "Nombre": "Beatriz Garcia",
+          "Fecha Inicio": "2026-05-05T18:00:00",
+          "Fecha Fin": "2026-05-05T19:00:00",
+          "Descripcion": "corte de puntas - Tel: 632215545"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "availableInMCP": false,
-    "binaryMode": "separate"
+    "binaryMode": "separate",
+    "timeSavedMode": "fixed",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner"
   },
   "shared": [
     {
@@ -122,6 +139,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-05-03T16:42:23.180Z",
-  "versionId": "21431344-0d95-484b-81be-0a1112f92419"
+  "updatedAt": "2026-05-04T17:54:23.000Z",
+  "versionId": "77bef241-6357-42cc-aedf-a787865b123d"
 }
