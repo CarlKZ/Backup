@@ -18,7 +18,7 @@
       "main": [
         [
           {
-            "node": "Update an event1",
+            "node": "Update an event",
             "type": "main",
             "index": 0
           }
@@ -39,8 +39,10 @@
   },
   "createdAt": "2026-05-03T16:33:02.351Z",
   "id": "U2cFwwb6E8Q4RMaC",
-  "isArchived": false,
-  "meta": null,
+  "isArchived": true,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Modificar Pruebas",
   "nodes": [
     {
@@ -54,7 +56,13 @@
               "name": "Fecha inicio"
             },
             {
+              "name": "Nueva fecha inicio"
+            },
+            {
               "name": "Fecha fin"
+            },
+            {
+              "name": "Nueva fecha fin"
             },
             {
               "name": "Descripcion"
@@ -76,7 +84,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Obtener el ID y las nuevas fechas desde el nodo \"Modificar Evento Esturion\"\nconst idBuscado = $('Modificar Evento Esturion').first().json['ID'];\nconst nuevaFechaInicio = $('Modificar Evento Esturion').first().json['Fecha inicio'];\nconst nuevaFechaFin = $('Modificar Evento Esturion').first().json['Fecha fin'];\n\n// Obtener todos los eventos del Google Calendar\nconst eventos = $input.all();\n\n// Buscar el evento que coincida con el ID\nconst eventoEncontrado = eventos.find(evento => \n  evento.json.id === idBuscado\n);\n\n// Si no se encuentra\nif (!eventoEncontrado) {\n  return [{\n    json: {\n      error: 'No se encontró el evento',\n      id_buscado: idBuscado,\n      eventos_encontrados: eventos.length\n    }\n  }];\n}\n\n// Devolver el ID real de Google Calendar con las fechas actualizadas del trigger\nreturn [{\n  json: {\n    ID_real: eventoEncontrado.json.id,\n    Titulo: eventoEncontrado.json.summary,\n    Fecha_inicio: nuevaFechaInicio,\n    Fecha_fin: nuevaFechaFin,\n    Descripcion: eventoEncontrado.json.description\n  }\n}];\n"
+        "jsCode": "// Accedemos a los datos que vienen del Trigger del Subworkflow (\"Modificar Pruebas\")\nconst input = $('Modificar Pruebas').item.json;\n\nconst id = input['ID'];\nconst titulo = input['Titulo'];\nconst fechaInicioStr = input['Fecha inicio'];\nconst descripcion = input['Descripcion'];\n\nif (!id || !fechaInicioStr) {\n  return [{ json: { error: \"Faltan datos obligatorios (ID o Fecha inicio)\" } }];\n}\n\n// Creamos los objetos de fecha\nconst inicio = new Date(fechaInicioStr);\n// Calculamos 30 minutos después para el fin (puedes usar el campo 'Fecha fin' si prefieres)\nconst fin = new Date(inicio.getTime() + (30 * 60 * 1000));\n\n// Función para formatear sin la 'Z' de UTC\nconst formatLocal = (date) => {\n  return date.toLocaleString('sv-SE').replace(' ', 'T');\n};\n\nreturn [{\n  json: {\n    'eventId': id,\n    'summary': titulo,\n    'description': descripcion,\n    'start': formatLocal(inicio),\n    'end': formatLocal(fin)\n  }\n}];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -92,9 +100,9 @@
         "operation": "getAll",
         "calendar": {
           "__rl": true,
-          "value": "3cf455fae61998f2cf7bfffba57a4e28188afc46dd5d892692826a9254905124@group.calendar.google.com",
+          "value": "b3be31f352404ba86060acb35b136d80e91f4c9d2fadf91921d0b632d982ff29@group.calendar.google.com",
           "mode": "list",
-          "cachedResultName": "Restaurante Esturión"
+          "cachedResultName": "Pruebas"
         },
         "timeMax": "={{ $now.plus({ month: 1 }) }}",
         "options": {
@@ -121,26 +129,26 @@
         "operation": "update",
         "calendar": {
           "__rl": true,
-          "value": "3cf455fae61998f2cf7bfffba57a4e28188afc46dd5d892692826a9254905124@group.calendar.google.com",
+          "value": "b3be31f352404ba86060acb35b136d80e91f4c9d2fadf91921d0b632d982ff29@group.calendar.google.com",
           "mode": "list",
-          "cachedResultName": "Restaurante Esturión"
+          "cachedResultName": "Pruebas"
         },
-        "eventId": "={{ $json.ID_real }}",
+        "eventId": "={{ $json.eventId }}",
         "updateFields": {
-          "description": "={{ $json.Descripcion }}",
-          "end": "={{ $json.Fecha_fin }}",
-          "start": "={{ $json.Fecha_inicio }}",
-          "summary": "={{ $json.Titulo }}"
+          "description": "={{ $json.description }}",
+          "end": "={{ $json.start }}",
+          "start": "={{ $json.end }}",
+          "summary": "={{ $json.summary }}"
         }
       },
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
       "position": [
-        1104,
+        1088,
         496
       ],
-      "id": "b0cff47c-2f82-4491-b7a6-e4fb0402227d",
-      "name": "Update an event1",
+      "id": "916f7465-17d0-4f12-8fff-cc4fd5a879c2",
+      "name": "Update an event",
       "credentials": {
         "googleCalendarOAuth2Api": {
           "id": "BxLdTiBYRwntbItp",
@@ -149,11 +157,29 @@
       }
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Modificar Pruebas": [
+      {
+        "json": {
+          "Titulo": "Beatriz Garcia",
+          "Fecha inicio": "2026-05-08T18:00:00+02:00",
+          "Fecha fin": "2026-05-08T18:30:00+02:00",
+          "Descripcion": "corte de puntas - Tel: 632215545",
+          "ID": "a2gms03vqfe6spdstnhcnqp6ek"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "availableInMCP": false,
-    "binaryMode": "separate"
+    "binaryMode": "separate",
+    "timeSavedMode": "fixed",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner"
   },
   "shared": [
     {
@@ -167,6 +193,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-05-03T16:45:39.677Z",
-  "versionId": "fe68effe-66ed-42a6-b19b-f34f93db02f7"
+  "updatedAt": "2026-05-04T17:54:18.000Z",
+  "versionId": "4fc2d5dd-319c-48f6-b182-4e90c2615e2b"
 }
