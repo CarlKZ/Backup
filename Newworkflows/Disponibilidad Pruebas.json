@@ -68,7 +68,7 @@
   },
   "createdAt": "2026-05-03T16:33:55.958Z",
   "id": "PatJQQO0y7D8Ig2v",
-  "isArchived": false,
+  "isArchived": true,
   "meta": null,
   "name": "Disponibilidad Pruebas",
   "nodes": [
@@ -206,7 +206,7 @@
     },
     {
       "parameters": {
-        "jsCode": "return items.map(item => {\n  const fechaStr = item.json[\"Fecha y Hora\"]; // Corregido: usar el nombre exacto del campo\n  const start = new Date(fechaStr);\n  const end = new Date(start.getTime() + 3 * 60 * 60 * 1000); // +3 horas (cambiado de 1 a 3)\n  \n  // Función para formatear la fecha como YYYY-MM-DDTHH:mm:ss\n  function formatDate(date) {\n    const pad = (num) => num.toString().padStart(2, '0');\n    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;\n  }\n  \n  item.json.start_time = formatDate(start);\n  item.json.end_time = formatDate(end);\n  \n  return item;\n});"
+        "jsCode": "return items.map(item => {\n  const fechaStr = item.json[\"Fecha y hora\"];\n  const start = new Date(fechaStr);\n const end = new Date(start.getTime() + 30 * 60 * 1000);\n\n  const formatDate = (date) => {\n    const pad = (num) => num.toString().padStart(2, '0');\n    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;\n  };\n\n  item.json.start_time = formatDate(start);\n  item.json.end_time = formatDate(end);\n\n  return item;\n});"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -219,7 +219,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Obtener la fecha solicitada del nodo trigger (Disponibilidad Esturión)\nconst fechaHoraSolicitada = $('Disponibilidad Esturión').first().json['Fecha y Hora'];\n\n// Validar que existe la fecha\nif (!fechaHoraSolicitada) {\n  return [{json: {error: \"No se proporcionó 'Fecha y Hora'\"}}];\n}\n\n// Obtener todos los eventos del calendario desde Get many events\nconst todosLosEventos = $input.all();\n\n// Normalizar la fecha del usuario (zona horaria Europe/Madrid)\nlet fechaHoraNormalizada = fechaHoraSolicitada;\nif (!fechaHoraNormalizada.includes('+') && !fechaHoraNormalizada.includes('Z')) {\n  fechaHoraNormalizada = fechaHoraNormalizada + '+01:00'; // Hora estándar Madrid (invierno)\n}\n\n// Función para verificar si la hora solicitada se solapa con un evento existente\nfunction verificarSolapamiento(inicioEvento, finEvento, usuarioFechaHora) {\n  const inicio = new Date(inicioEvento);\n  const fin = new Date(finEvento);\n  const usuarioFecha = new Date(usuarioFechaHora);\n  \n  // Si la fecha del usuario cae dentro del rango del evento, hay solapamiento\n  return usuarioFecha >= inicio && usuarioFecha < fin;\n}\n\n// Procesar todos los eventos y verificar solapamientos\nconst eventosEncontrados = todosLosEventos.map(evento => {\n  const inicioEvento = evento.json.start?.dateTime || evento.json.start?.date;\n  const finEvento = evento.json.end?.dateTime || evento.json.end?.date;\n  const solapa = verificarSolapamiento(inicioEvento, finEvento, fechaHoraNormalizada);\n  \n  return {\n    id: evento.json.id,\n    summary: evento.json.summary,\n    start: inicioEvento,\n    end: finEvento,\n    solapa: solapa\n  };\n});\n\n// Verificar si hay algún evento que se solape\nconst haySolapamiento = eventosEncontrados.some(evento => evento.solapa === true);\n\n// Devolver resultado en el formato solicitado\nreturn [{\n  json: {\n    result: haySolapamiento,\n    debug: {\n      fechaHoraSolicitada: fechaHoraSolicitada,\n      fechaHoraNormalizada: fechaHoraNormalizada,\n      eventosEncontrados: eventosEncontrados\n    }\n  }\n}];"
+        "jsCode": "const fechaHoraSolicitada = $('Disponibilidad Pruebas').first().json['Fecha y hora'];\n\nif (!fechaHoraSolicitada) {\n  return [{json: {error: \"No se proporcionó 'Fecha y hora'\"}}];\n}\n\nconst todosLosEventos = $input.all();\n\nlet fechaHoraNormalizada = fechaHoraSolicitada;\nif (!fechaHoraNormalizada.includes('+') && !fechaHoraNormalizada.includes('Z')) {\n  fechaHoraNormalizada = fechaHoraNormalizada + '+02:00'; // Hora verano Madrid\n}\n\nfunction verificarSolapamiento(inicioEvento, finEvento, usuarioFechaHora) {\n  const inicio = new Date(inicioEvento);\n  const fin = new Date(finEvento);\n  const usuarioFecha = new Date(usuarioFechaHora);\n  return usuarioFecha >= inicio && usuarioFecha < fin;\n}\n\nconst eventosEncontrados = todosLosEventos.map(evento => {\n  const inicioEvento = evento.json.start?.dateTime || evento.json.start?.date;\n  const finEvento = evento.json.end?.dateTime || evento.json.end?.date;\n  const solapa = verificarSolapamiento(inicioEvento, finEvento, fechaHoraNormalizada);\n  return {\n    id: evento.json.id,\n    summary: evento.json.summary,\n    start: inicioEvento,\n    end: finEvento,\n    solapa: solapa\n  };\n});\n\nconst haySolapamiento = eventosEncontrados.some(evento => evento.solapa === true);\n\nreturn [{\n  json: {\n    result: haySolapamiento,\n    debug: {\n      fechaHoraSolicitada,\n      fechaHoraNormalizada,\n      eventosEncontrados\n    }\n  }\n}];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -235,9 +235,9 @@
         "operation": "getAll",
         "calendar": {
           "__rl": true,
-          "value": "3cf455fae61998f2cf7bfffba57a4e28188afc46dd5d892692826a9254905124@group.calendar.google.com",
+          "value": "b3be31f352404ba86060acb35b136d80e91f4c9d2fadf91921d0b632d982ff29@group.calendar.google.com",
           "mode": "list",
-          "cachedResultName": "Restaurante Esturión"
+          "cachedResultName": "Pruebas"
         },
         "returnAll": true,
         "timeMax": "={{ $now.plus({ year: 1 }) }}",
@@ -260,7 +260,18 @@
       }
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Disponibilidad Pruebas": [
+      {
+        "json": {
+          "Fecha y hora": "2026-05-05T18:00:00"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "availableInMCP": false,
@@ -278,6 +289,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-05-03T16:43:20.491Z",
-  "versionId": "76b52734-1a00-485c-ab05-10c97a02d8dc"
+  "updatedAt": "2026-05-04T17:54:28.000Z",
+  "versionId": "512fb6b6-d09b-4cd4-af91-37ead5c35826"
 }
