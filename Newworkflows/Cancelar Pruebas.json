@@ -39,7 +39,7 @@
   },
   "createdAt": "2026-05-03T16:33:30.873Z",
   "id": "kqeNfmY5qULQURVn",
-  "isArchived": false,
+  "isArchived": true,
   "meta": null,
   "name": "Cancelar Pruebas",
   "nodes": [
@@ -162,6 +162,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-05-03T16:44:29.623Z",
-  "versionId": "4eb9bc35-b8c2-4e58-acee-8a893d2fa93f"
+  "updatedAt": "2026-05-04T17:55:40.000Z",
+  "versionId": "c02fd168-a1a6-4366-992c-d97946b358f8"
 }
