@@ -1,0 +1,939 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        []
+      ]
+    },
+    "Search records": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create a record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a record": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search records1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create a record1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a record1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Search records1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-05-13T10:56:10.528Z",
+  "id": "ykGvtwf9jxmxjWVe",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "1 - Entrada Telegram",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        80,
+        496
+      ],
+      "id": "81920930-a26c-4b70-a948-5ac3b4ad162e",
+      "name": "Telegram Trigger",
+      "webhookId": "1033bbca-5c68-4d97-a526-7e0163d7ef63",
+      "credentials": {
+        "telegramApi": {
+          "id": "KcOnwLzOSvSJfY1o",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "applcbZboR60TgUBv",
+          "mode": "list",
+          "cachedResultName": "InmobiDemo",
+          "cachedResultUrl": "https://airtable.com/applcbZboR60TgUBv"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblrzsOaDpeOJTxLh",
+          "mode": "list",
+          "cachedResultName": "Leads",
+          "cachedResultUrl": "https://airtable.com/applcbZboR60TgUBv/tblrzsOaDpeOJTxLh"
+        },
+        "filterByFormula": "={Telegram ID} = '{{ $json.message.chat.id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.2,
+      "position": [
+        176,
+        -288
+      ],
+      "id": "73be2ae2-dd89-403a-adee-0ef8d084ebd2",
+      "name": "Search records",
+      "alwaysOutputData": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "9qNYx6zInG95JmKO",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "6c015e42-3abd-49c6-9eb1-6b8dd3f99ffd",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        400,
+        -288
+      ],
+      "id": "b35181af-bee0-4d67-bd96-50f086d47be4",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "applcbZboR60TgUBv",
+          "mode": "list",
+          "cachedResultName": "InmobiDemo",
+          "cachedResultUrl": "https://airtable.com/applcbZboR60TgUBv"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblrzsOaDpeOJTxLh",
+          "mode": "list",
+          "cachedResultName": "Leads",
+          "cachedResultUrl": "https://airtable.com/applcbZboR60TgUBv/tblrzsOaDpeOJTxLh"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nombre": "={{ $('Telegram Trigger').item.json.message.chat.first_name }}",
+            "Telegram ID": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+            "Canal Origen": "Telegram",
+            "Estado Ciclo": "Nuevo"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Lead ID",
+              "displayName": "Lead ID",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Telefono",
+              "displayName": "Telefono",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Telegram ID",
+              "displayName": "Telegram ID",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Canal Origen",
+              "displayName": "Canal Origen",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Fecha Primer Contacto",
+              "displayName": "Fecha Primer Contacto",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Score Actual",
+              "displayName": "Score Actual",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Prioridad",
+              "displayName": "Prioridad",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Alta",
+                  "value": "Alta"
+                },
+                {
+                  "name": "Media",
+                  "value": "Media"
+                },
+                {
+                  "name": "Baja",
+                  "value": "Baja"
+                }
+              ],
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Estado Ciclo",
+              "displayName": "Estado Ciclo",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Nuevo",
+                  "value": "Nuevo"
+                },
+                {
+                  "name": "Cualificando",
+                  "value": "Cualificando"
+                },
+                {
+                  "name": "Visita Agendada",
+                  "value": "Visita Agendada"
+                },
+                {
+                  "name": "Visita Realizada",
+                  "value": "Visita Realizada"
+                },
+                {
+                  "name": "Cerrado",
+                  "value": "Cerrado"
+                },
+                {
+                  "name": "Seguimiento Largo",
+                  "value": "Seguimiento Largo"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Presupuesto Min",
+              "displayName": "Presupuesto Min",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Presupuesto Max",
+              "displayName": "Presupuesto Max",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Zona Deseada",
+              "displayName": "Zona Deseada",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Estado Hipoteca",
+              "displayName": "Estado Hipoteca",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Aprobada",
+                  "value": "Aprobada"
+                },
+                {
+                  "name": "En tramite",
+                  "value": "En tramite"
+                },
+                {
+                  "name": "Sin iniciar",
+                  "value": "Sin iniciar"
+                },
+                {
+                  "name": "Compra Directa",
+                  "value": "Compra Directa"
+                }
+              ],
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Plazo Compra",
+              "displayName": "Plazo Compra",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Menos 1 Mes",
+                  "value": "Menos 1 Mes"
+                },
+                {
+                  "name": "De 1 a 3 Meses",
+                  "value": "De 1 a 3 Meses"
+                },
+                {
+                  "name": "De 3 a 6 Meses",
+                  "value": "De 3 a 6 Meses"
+                },
+                {
+                  "name": "Mas 6 Meses",
+                  "value": "Mas 6 Meses"
+                }
+              ],
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Motivación Real",
+              "displayName": "Motivación Real",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Objeciones detectadas",
+              "displayName": "Objeciones detectadas",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Agente Asignado",
+              "displayName": "Agente Asignado",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Conversaciones",
+              "displayName": "Conversaciones",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Visitas",
+              "displayName": "Visitas",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.2,
+      "position": [
+        576,
+        -208
+      ],
+      "id": "a5ef0aef-0c67-4e6f-8082-74e9f5118077",
+      "name": "Create a record",
+      "alwaysOutputData": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "9qNYx6zInG95JmKO",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "applcbZboR60TgUBv",
+          "mode": "list",
+          "cachedResultName": "InmobiDemo",
+          "cachedResultUrl": "https://airtable.com/applcbZboR60TgUBv"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbljQKUqzJPBJ33I4",
+          "mode": "list",
+          "cachedResultName": "Conversaciones",
+          "cachedResultUrl": "https://airtable.com/applcbZboR60TgUBv/tbljQKUqzJPBJ33I4"
+        },
+        "filterByFormula": "={Estado} = 'activa'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.2,
+      "position": [
+        992,
+        -288
+      ],
+      "id": "d05f9cf0-8ee6-4826-8426-1e4da6762bcf",
+      "name": "Search records1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "9qNYx6zInG95JmKO",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "da6bd14a-dffd-434c-bbd7-ae92f2ede609",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1200,
+        -288
+      ],
+      "id": "bba23c65-87c9-4232-921b-530b6f5ff03b",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "applcbZboR60TgUBv",
+          "mode": "list",
+          "cachedResultName": "InmobiDemo",
+          "cachedResultUrl": "https://airtable.com/applcbZboR60TgUBv"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbljQKUqzJPBJ33I4",
+          "mode": "list",
+          "cachedResultName": "Conversaciones",
+          "cachedResultUrl": "https://airtable.com/applcbZboR60TgUBv/tbljQKUqzJPBJ33I4"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Estado": "Activa",
+            "Fecha Inicio": "={{ new Date().toISOString() }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Conversación ID",
+              "displayName": "Conversación ID",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Lead ID",
+              "displayName": "Lead ID",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Estado",
+              "displayName": "Estado",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Activa",
+                  "value": "Activa"
+                },
+                {
+                  "name": "Cerrada",
+                  "value": "Cerrada"
+                },
+                {
+                  "name": "Expirada",
+                  "value": "Expirada"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Fecha Inicio",
+              "displayName": "Fecha Inicio",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Ultimo Mensaje At",
+              "displayName": "Ultimo Mensaje At",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Historial Mensaje",
+              "displayName": "Historial Mensaje",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Resumen IA",
+              "displayName": "Resumen IA",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.2,
+      "position": [
+        1424,
+        -208
+      ],
+      "id": "0c8c2ea6-86a1-414d-8317-bb2fefd38d8d",
+      "name": "Create a record1",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "9qNYx6zInG95JmKO",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Telegram Trigger').item.json.message.text }}",
+        "options": {
+          "systemMessage": "Eres Beatriz, el asistente virtual de Inmobiliaria Demo SL, una agencia inmobiliaria en Sevilla y alrededores.\n\nTu objetivo es atender a clientes potenciales de forma natural y cercana, como lo haría un asesor inmobiliario profesional. Nunca debes parecer un robot ni un formulario.\n\nTu misión es conocer al cliente y extraer de forma natural esta información durante la conversación:\n- Nombre completo\n- Presupuesto aproximado (mínimo y máximo)\n- Zona donde quiere comprar\n- Si tiene hipoteca aprobada, en trámite, sin iniciar, o compra al contado\n- Con qué urgencia quiere comprar\n- Por qué quiere comprar (motivación real)\n\nREGLAS:\n- Saluda al cliente por su nombre si lo sabes\n- Haz máximo 1 o 2 preguntas por mensaje, nunca un interrogatorio\n- Sé empático, no hagas preguntas frías\n- Si el cliente pregunta por un inmueble concreto, responde con interés y luego continúa conociendo su perfil\n- Cuando tengas suficiente información, propón agendar una visita\n- Responde siempre en español\n- Mensajes cortos, máximo 3-4 líneas"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        1840,
+        -288
+      ],
+      "id": "66f7fd89-64ca-426d-be28-11bdedc12460",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-5-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        1728,
+        -80
+      ],
+      "id": "54bc65d5-7d2d-4f60-a918-14fec42030a3",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "contextWindowLength": 20
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1872,
+        -80
+      ],
+      "id": "19ae6347-f5cd-4f25-ad5d-f11b38660538",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "={{ $json.output }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2160,
+        -288
+      ],
+      "id": "f2ddc2ef-5cba-4d26-bb20-0f7966202a6b",
+      "name": "Send a text message",
+      "webhookId": "7770065d-9d63-4605-a754-491caf897817",
+      "credentials": {
+        "telegramApi": {
+          "id": "KcOnwLzOSvSJfY1o",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const telegramData = $('Telegram Trigger').first().json;\nconst leadData = $input.first().json;\n\nreturn [{\n  json: {\n    mensaje: telegramData.message.text,\n    chat_id: String(telegramData.message.chat.id),\n    nombre: telegramData.message.chat.first_name,\n    lead_id: leadData.id,\n    estado_ciclo: leadData.fields['Estado Ciclo'],\n    score: leadData.fields['Score Actual']\n  }\n}];;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        784,
+        -304
+      ],
+      "id": "7420c0e9-4cfc-452d-8f62-523d4e561670",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1648,
+        -288
+      ],
+      "id": "dd94c5b9-7361-4fe6-9820-7523e2e641fd",
+      "name": "Code in JavaScript1"
+    }
+  ],
+  "pinData": {
+    "Telegram Trigger": [
+      {
+        "json": {
+          "update_id": 44882554,
+          "message": {
+            "message_id": 3,
+            "from": {
+              "id": 7040181107,
+              "is_bot": false,
+              "first_name": "KarZent",
+              "language_code": "es"
+            },
+            "chat": {
+              "id": 7040181107,
+              "first_name": "KarZent",
+              "type": "private"
+            },
+            "date": 1778678379,
+            "text": "Hola, me interesa comprar un piso"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-05-13T10:56:10.548Z",
+      "createdAt": "2026-05-13T10:56:10.548Z",
+      "role": "workflow:owner",
+      "workflowId": "ykGvtwf9jxmxjWVe",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-05-13T14:22:38.625Z",
+  "versionId": "cf4780d5-8c0d-4318-99a1-253e5c5d6eee"
+}
