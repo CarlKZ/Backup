@@ -1188,19 +1188,18 @@
   "staticData": {
     "node:Gmail Trigger": {
       "Gmail Trigger": {
-        "lastTimeChecked": 1778705007,
+        "lastTimeChecked": 1778791409,
         "possibleDuplicates": [
-          "19e231488f68d9c6",
-          "19e230514df97b53",
-          "19e16e7da5ed1cbb"
+          "19e283aec3846a16",
+          "19e231488f68d9c6"
         ]
       }
     },
     "node:Gmail Trigger1": {
       "Gmail Trigger1": {
-        "lastTimeChecked": 1778703994,
+        "lastTimeChecked": 1778705007,
         "possibleDuplicates": [
-          "19e230514df97b53"
+          "19e231488f68d9c6"
         ]
       }
     }
