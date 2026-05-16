@@ -1,38 +1,11 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-05-11T12:02:18.000Z",
-    "createdAt": "2026-05-11T12:00:15.924Z",
-    "versionId": "a3ba11c5-5ec4-42cd-8a06-6859f12ffea6",
+    "updatedAt": "2026-05-16T20:04:59.000Z",
+    "createdAt": "2026-05-16T20:04:28.114Z",
+    "versionId": "1dcfc34c-4564-4cb0-93f1-85af0b61b700",
     "workflowId": "F9lKEUWN1qdbq0oE",
     "nodes": [
-      {
-        "parameters": {
-          "pollTimes": {
-            "item": [
-              {
-                "mode": "everyX",
-                "value": 1
-              }
-            ]
-          },
-          "filters": {}
-        },
-        "type": "n8n-nodes-base.gmailTrigger",
-        "typeVersion": 1.3,
-        "position": [
-          160,
-          0
-        ],
-        "id": "97ecda1f-78f0-4cd6-975a-1d2aa43c485d",
-        "name": "Gmail Trigger",
-        "credentials": {
-          "gmailOAuth2": {
-            "id": "BYnusElzyLGzOhVZ",
-            "name": "Gmail account"
-          }
-        }
-      },
       {
         "parameters": {
           "amount": 1
@@ -41,7 +14,7 @@
         "typeVersion": 1.1,
         "position": [
           384,
-          0
+          112
         ],
         "id": "39bbf54f-e1ee-43ef-b741-f057ea535e9f",
         "name": "Wait",
@@ -61,7 +34,7 @@
         "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
         "typeVersion": 1.2,
         "position": [
-          384,
+          608,
           224
         ],
         "id": "fd29cba6-a4bd-40d7-a690-3f668e510837",
@@ -82,7 +55,7 @@
         "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
         "typeVersion": 1.3,
         "position": [
-          544,
+          736,
           224
         ],
         "id": "ce532cf1-7083-4249-94db-fca3af103bb1",
@@ -100,7 +73,7 @@
         "type": "n8n-nodes-base.gmailTool",
         "typeVersion": 2.1,
         "position": [
-          688,
+          864,
           224
         ],
         "id": "0c579a74-5437-4a67-92d1-8ef73870a196",
@@ -123,7 +96,7 @@
         "type": "n8n-nodes-base.gmailTool",
         "typeVersion": 2.1,
         "position": [
-          848,
+          992,
           224
         ],
         "id": "f921ff86-9356-4d62-8b8f-2cc1a1d3d5c7",
@@ -147,7 +120,7 @@
         "type": "n8n-nodes-base.gmailTool",
         "typeVersion": 2.1,
         "position": [
-          1008,
+          1120,
           224
         ],
         "id": "f0dfb291-509a-48e9-a02c-159b404e00d0",
@@ -170,7 +143,7 @@
         "type": "n8n-nodes-base.gmailTool",
         "typeVersion": 2.1,
         "position": [
-          1184,
+          1248,
           224
         ],
         "id": "5cb13990-f2a2-4d21-8904-19e121458e44",
@@ -195,7 +168,7 @@
         "type": "@n8n/n8n-nodes-langchain.agent",
         "typeVersion": 2.2,
         "position": [
-          704,
+          864,
           0
         ],
         "id": "d133e10d-247e-4a08-8388-06b8f3ba4384",
@@ -219,7 +192,7 @@
         "typeVersion": 1.3,
         "position": [
           160,
-          384
+          544
         ],
         "id": "59d617a9-bd86-416b-8111-1bb996459558",
         "name": "Gmail Trigger1",
@@ -238,7 +211,7 @@
         "typeVersion": 1.1,
         "position": [
           384,
-          384
+          544
         ],
         "id": "e7874725-7235-469a-8765-34af01998ee8",
         "name": "Wait1",
@@ -258,8 +231,8 @@
         "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
         "typeVersion": 1.2,
         "position": [
-          384,
-          608
+          608,
+          768
         ],
         "id": "d6b8b8df-134d-4fee-ac6b-dd5ac5f5c175",
         "name": "OpenAI Chat Model1",
@@ -279,8 +252,8 @@
         "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
         "typeVersion": 1.3,
         "position": [
-          544,
-          608
+          736,
+          768
         ],
         "id": "11d24089-e99f-4739-9abc-91737c6bb8ba",
         "name": "Simple Memory1"
@@ -296,8 +269,8 @@
         "type": "n8n-nodes-base.gmailTool",
         "typeVersion": 2.1,
         "position": [
-          1008,
-          608
+          864,
+          768
         ],
         "id": "1abae834-be92-43e1-a4aa-f6384f067ffe",
         "name": "Gmail - add label to message1",
@@ -319,8 +292,8 @@
         "type": "n8n-nodes-base.gmailTool",
         "typeVersion": 2.1,
         "position": [
-          1184,
-          608
+          992,
+          768
         ],
         "id": "7dfcbbd8-77d1-49cb-9991-7a0dbbdd3877",
         "name": "Gmail - Get Message1",
@@ -344,8 +317,8 @@
         "type": "@n8n/n8n-nodes-langchain.agent",
         "typeVersion": 2.2,
         "position": [
-          704,
-          384
+          864,
+          544
         ],
         "id": "18704ea3-c5b0-4ac9-b9c4-8154d1150c25",
         "name": "Etiquetador Gmail1",
@@ -364,8 +337,8 @@
         "type": "n8n-nodes-base.gmailTool",
         "typeVersion": 2.1,
         "position": [
-          688,
-          608
+          1120,
+          768
         ],
         "id": "70b3e14e-3efb-42fb-9e19-f0facb5851c5",
         "name": "Crear",
@@ -387,8 +360,8 @@
         "type": "n8n-nodes-base.gmailTool",
         "typeVersion": 2.1,
         "position": [
-          848,
-          608
+          1248,
+          768
         ],
         "id": "54e124b3-437f-4067-b8fd-3f51505f1089",
         "name": "Leer Etiquetas",
@@ -402,17 +375,6 @@
       }
     ],
     "connections": {
-      "Gmail Trigger": {
-        "main": [
-          [
-            {
-              "node": "Wait",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
       "OpenAI Chat Model": {
         "ai_languageModel": [
           [
@@ -580,23 +542,12 @@
       }
     },
     "authors": "Carlos Fernández",
-    "name": "Version a3ba11c5",
+    "name": "Version 1dcfc34c",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "a3ba11c5-5ec4-42cd-8a06-6859f12ffea6",
+  "activeVersionId": "1dcfc34c-4564-4cb0-93f1-85af0b61b700",
   "connections": {
-    "Gmail Trigger": {
-      "main": [
-        [
-          {
-            "node": "Wait",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "OpenAI Chat Model": {
       "ai_languageModel": [
         [
@@ -773,40 +724,13 @@
   "nodes": [
     {
       "parameters": {
-        "pollTimes": {
-          "item": [
-            {
-              "mode": "everyX",
-              "value": 1
-            }
-          ]
-        },
-        "filters": {}
-      },
-      "type": "n8n-nodes-base.gmailTrigger",
-      "typeVersion": 1.3,
-      "position": [
-        160,
-        104
-      ],
-      "id": "97ecda1f-78f0-4cd6-975a-1d2aa43c485d",
-      "name": "Gmail Trigger",
-      "credentials": {
-        "gmailOAuth2": {
-          "id": "BYnusElzyLGzOhVZ",
-          "name": "Gmail account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "amount": 1
       },
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
         384,
-        104
+        112
       ],
       "id": "39bbf54f-e1ee-43ef-b741-f057ea535e9f",
       "name": "Wait",
@@ -960,7 +884,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
       "position": [
-        856,
+        864,
         0
       ],
       "id": "d133e10d-247e-4a08-8388-06b8f3ba4384",
@@ -984,7 +908,7 @@
       "typeVersion": 1.3,
       "position": [
         160,
-        536
+        544
       ],
       "id": "59d617a9-bd86-416b-8111-1bb996459558",
       "name": "Gmail Trigger1",
@@ -1003,7 +927,7 @@
       "typeVersion": 1.1,
       "position": [
         384,
-        536
+        544
       ],
       "id": "e7874725-7235-469a-8765-34af01998ee8",
       "name": "Wait1",
@@ -1024,7 +948,7 @@
       "typeVersion": 1.2,
       "position": [
         608,
-        760
+        768
       ],
       "id": "d6b8b8df-134d-4fee-ac6b-dd5ac5f5c175",
       "name": "OpenAI Chat Model1",
@@ -1045,7 +969,7 @@
       "typeVersion": 1.3,
       "position": [
         736,
-        760
+        768
       ],
       "id": "11d24089-e99f-4739-9abc-91737c6bb8ba",
       "name": "Simple Memory1"
@@ -1062,7 +986,7 @@
       "typeVersion": 2.1,
       "position": [
         864,
-        760
+        768
       ],
       "id": "1abae834-be92-43e1-a4aa-f6384f067ffe",
       "name": "Gmail - add label to message1",
@@ -1085,7 +1009,7 @@
       "typeVersion": 2.1,
       "position": [
         992,
-        760
+        768
       ],
       "id": "7dfcbbd8-77d1-49cb-9991-7a0dbbdd3877",
       "name": "Gmail - Get Message1",
@@ -1109,8 +1033,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
       "position": [
-        856,
-        536
+        864,
+        544
       ],
       "id": "18704ea3-c5b0-4ac9-b9c4-8154d1150c25",
       "name": "Etiquetador Gmail1",
@@ -1130,7 +1054,7 @@
       "typeVersion": 2.1,
       "position": [
         1120,
-        760
+        768
       ],
       "id": "70b3e14e-3efb-42fb-9e19-f0facb5851c5",
       "name": "Crear",
@@ -1153,7 +1077,7 @@
       "typeVersion": 2.1,
       "position": [
         1248,
-        760
+        768
       ],
       "id": "54e124b3-437f-4067-b8fd-3f51505f1089",
       "name": "Leer Etiquetas",
@@ -1190,22 +1114,22 @@
       "Gmail Trigger": {
         "lastTimeChecked": 1778877811,
         "possibleDuplicates": [
-          "19e2d614c62cc1e1",
-          "19e283aec3846a16"
+          "19e2d614c62cc1e1"
         ]
       }
     },
     "node:Gmail Trigger1": {
       "Gmail Trigger1": {
-        "lastTimeChecked": 1778791409,
+        "lastTimeChecked": 1778961879,
         "possibleDuplicates": [
-          "19e283aec3846a16"
+          "19e3264188b38d77",
+          "19e2d614c62cc1e1"
         ]
       }
     }
   },
   "tags": [],
-  "triggerCount": 2,
-  "updatedAt": "2026-05-11T12:02:39.658Z",
-  "versionId": "751a12c0-9867-4a21-9322-6fe0a3006f6e"
+  "triggerCount": 1,
+  "updatedAt": "2026-05-16T20:04:28.112Z",
+  "versionId": "1dcfc34c-4564-4cb0-93f1-85af0b61b700"
 }
