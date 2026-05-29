@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-05-16T20:04:59.000Z",
-    "createdAt": "2026-05-16T20:04:28.114Z",
-    "versionId": "1dcfc34c-4564-4cb0-93f1-85af0b61b700",
+    "updatedAt": "2026-05-28T11:48:17.000Z",
+    "createdAt": "2026-05-28T11:48:08.398Z",
+    "versionId": "a4ef2885-c787-44ae-aff9-3bd01afb134b",
     "workflowId": "F9lKEUWN1qdbq0oE",
     "nodes": [
       {
@@ -14,7 +14,7 @@
         "typeVersion": 1.1,
         "position": [
           384,
-          112
+          104
         ],
         "id": "39bbf54f-e1ee-43ef-b741-f057ea535e9f",
         "name": "Wait",
@@ -168,7 +168,7 @@
         "type": "@n8n/n8n-nodes-langchain.agent",
         "typeVersion": 2.2,
         "position": [
-          864,
+          856,
           0
         ],
         "id": "d133e10d-247e-4a08-8388-06b8f3ba4384",
@@ -192,7 +192,7 @@
         "typeVersion": 1.3,
         "position": [
           160,
-          544
+          536
         ],
         "id": "59d617a9-bd86-416b-8111-1bb996459558",
         "name": "Gmail Trigger1",
@@ -211,7 +211,7 @@
         "typeVersion": 1.1,
         "position": [
           384,
-          544
+          536
         ],
         "id": "e7874725-7235-469a-8765-34af01998ee8",
         "name": "Wait1",
@@ -232,7 +232,7 @@
         "typeVersion": 1.2,
         "position": [
           608,
-          768
+          760
         ],
         "id": "d6b8b8df-134d-4fee-ac6b-dd5ac5f5c175",
         "name": "OpenAI Chat Model1",
@@ -253,7 +253,7 @@
         "typeVersion": 1.3,
         "position": [
           736,
-          768
+          760
         ],
         "id": "11d24089-e99f-4739-9abc-91737c6bb8ba",
         "name": "Simple Memory1"
@@ -270,7 +270,7 @@
         "typeVersion": 2.1,
         "position": [
           864,
-          768
+          760
         ],
         "id": "1abae834-be92-43e1-a4aa-f6384f067ffe",
         "name": "Gmail - add label to message1",
@@ -293,7 +293,7 @@
         "typeVersion": 2.1,
         "position": [
           992,
-          768
+          760
         ],
         "id": "7dfcbbd8-77d1-49cb-9991-7a0dbbdd3877",
         "name": "Gmail - Get Message1",
@@ -317,8 +317,8 @@
         "type": "@n8n/n8n-nodes-langchain.agent",
         "typeVersion": 2.2,
         "position": [
-          864,
-          544
+          856,
+          536
         ],
         "id": "18704ea3-c5b0-4ac9-b9c4-8154d1150c25",
         "name": "Etiquetador Gmail1",
@@ -338,7 +338,7 @@
         "typeVersion": 2.1,
         "position": [
           1120,
-          768
+          760
         ],
         "id": "70b3e14e-3efb-42fb-9e19-f0facb5851c5",
         "name": "Crear",
@@ -361,11 +361,38 @@
         "typeVersion": 2.1,
         "position": [
           1248,
-          768
+          760
         ],
         "id": "54e124b3-437f-4067-b8fd-3f51505f1089",
         "name": "Leer Etiquetas",
         "webhookId": "527a8aca-1c5e-4c26-af73-c2af1c17c480",
+        "credentials": {
+          "gmailOAuth2": {
+            "id": "BYnusElzyLGzOhVZ",
+            "name": "Gmail account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "pollTimes": {
+            "item": [
+              {
+                "mode": "everyX",
+                "value": 1
+              }
+            ]
+          },
+          "filters": {}
+        },
+        "type": "n8n-nodes-base.gmailTrigger",
+        "typeVersion": 1.3,
+        "position": [
+          160,
+          104
+        ],
+        "id": "ae6dd2f7-9edd-4b20-bd77-f83fd6fc338f",
+        "name": "Gmail Trigger",
         "credentials": {
           "gmailOAuth2": {
             "id": "BYnusElzyLGzOhVZ",
@@ -539,14 +566,25 @@
             }
           ]
         ]
+      },
+      "Gmail Trigger": {
+        "main": [
+          [
+            {
+              "node": "Wait",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "Carlos Fernández",
-    "name": "Version 1dcfc34c",
+    "name": "Version a4ef2885",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "1dcfc34c-4564-4cb0-93f1-85af0b61b700",
+  "activeVersionId": "a4ef2885-c787-44ae-aff9-3bd01afb134b",
   "connections": {
     "OpenAI Chat Model": {
       "ai_languageModel": [
@@ -712,6 +750,17 @@
           }
         ]
       ]
+    },
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-09-27T11:44:26.302Z",
@@ -730,7 +779,7 @@
       "typeVersion": 1.1,
       "position": [
         384,
-        112
+        104
       ],
       "id": "39bbf54f-e1ee-43ef-b741-f057ea535e9f",
       "name": "Wait",
@@ -884,7 +933,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
       "position": [
-        864,
+        856,
         0
       ],
       "id": "d133e10d-247e-4a08-8388-06b8f3ba4384",
@@ -908,7 +957,7 @@
       "typeVersion": 1.3,
       "position": [
         160,
-        544
+        536
       ],
       "id": "59d617a9-bd86-416b-8111-1bb996459558",
       "name": "Gmail Trigger1",
@@ -927,7 +976,7 @@
       "typeVersion": 1.1,
       "position": [
         384,
-        544
+        536
       ],
       "id": "e7874725-7235-469a-8765-34af01998ee8",
       "name": "Wait1",
@@ -948,7 +997,7 @@
       "typeVersion": 1.2,
       "position": [
         608,
-        768
+        760
       ],
       "id": "d6b8b8df-134d-4fee-ac6b-dd5ac5f5c175",
       "name": "OpenAI Chat Model1",
@@ -969,7 +1018,7 @@
       "typeVersion": 1.3,
       "position": [
         736,
-        768
+        760
       ],
       "id": "11d24089-e99f-4739-9abc-91737c6bb8ba",
       "name": "Simple Memory1"
@@ -986,7 +1035,7 @@
       "typeVersion": 2.1,
       "position": [
         864,
-        768
+        760
       ],
       "id": "1abae834-be92-43e1-a4aa-f6384f067ffe",
       "name": "Gmail - add label to message1",
@@ -1009,7 +1058,7 @@
       "typeVersion": 2.1,
       "position": [
         992,
-        768
+        760
       ],
       "id": "7dfcbbd8-77d1-49cb-9991-7a0dbbdd3877",
       "name": "Gmail - Get Message1",
@@ -1033,8 +1082,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
       "position": [
-        864,
-        544
+        856,
+        536
       ],
       "id": "18704ea3-c5b0-4ac9-b9c4-8154d1150c25",
       "name": "Etiquetador Gmail1",
@@ -1054,7 +1103,7 @@
       "typeVersion": 2.1,
       "position": [
         1120,
-        768
+        760
       ],
       "id": "70b3e14e-3efb-42fb-9e19-f0facb5851c5",
       "name": "Crear",
@@ -1077,11 +1126,38 @@
       "typeVersion": 2.1,
       "position": [
         1248,
-        768
+        760
       ],
       "id": "54e124b3-437f-4067-b8fd-3f51505f1089",
       "name": "Leer Etiquetas",
       "webhookId": "527a8aca-1c5e-4c26-af73-c2af1c17c480",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "BYnusElzyLGzOhVZ",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyX",
+              "value": 1
+            }
+          ]
+        },
+        "filters": {}
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        160,
+        104
+      ],
+      "id": "ae6dd2f7-9edd-4b20-bd77-f83fd6fc338f",
+      "name": "Gmail Trigger",
       "credentials": {
         "gmailOAuth2": {
           "id": "BYnusElzyLGzOhVZ",
@@ -1112,34 +1188,25 @@
   "staticData": {
     "node:Gmail Trigger": {
       "Gmail Trigger": {
-        "lastTimeChecked": 1778877811,
+        "lastTimeChecked": 1780086672,
         "possibleDuplicates": [
-          "19e2d614c62cc1e1"
+          "19e756f11bbec0c7",
+          "19e70415af09827f"
         ]
       }
     },
     "node:Gmail Trigger1": {
       "Gmail Trigger1": {
-        "lastTimeChecked": 1779883835,
+        "lastTimeChecked": 1780086672,
         "possibleDuplicates": [
-          "19e695802c5c15b6",
-          "19e6957edbcc0f6a",
-          "19e69563e400cd1a",
-          "19e69551553f9f9e",
-          "19e694f371eaf51a",
-          "19e694cef215aa0b",
-          "19e694be104e1aa7",
-          "19e694ab26ef2129",
-          "19e694952fd6962a",
-          "19e69479ada2fb67",
-          "19e6946ed3af900c",
-          "19e69261c2e1ceae"
+          "19e756f11bbec0c7",
+          "19e70415af09827f"
         ]
       }
     }
   },
   "tags": [],
-  "triggerCount": 1,
-  "updatedAt": "2026-05-16T20:04:28.112Z",
-  "versionId": "1dcfc34c-4564-4cb0-93f1-85af0b61b700"
+  "triggerCount": 2,
+  "updatedAt": "2026-05-28T11:48:08.396Z",
+  "versionId": "a4ef2885-c787-44ae-aff9-3bd01afb134b"
 }
