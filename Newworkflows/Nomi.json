@@ -1,13 +1,287 @@
 {
-  "active": false,
-  "activeVersion": null,
-  "activeVersionId": null,
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2026-06-03T14:06:35.000Z",
+    "createdAt": "2026-06-03T14:03:51.132Z",
+    "versionId": "ac6ec25a-1428-465a-bfc5-e6802c385697",
+    "workflowId": "DTg-BPp0wfhz_BMV49b5O",
+    "nodes": [
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "dc187e5f-454c-47cf-bc69-a3f8b3473103",
+          "responseMode": "responseNode",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2.1,
+        "position": [
+          -272,
+          0
+        ],
+        "id": "0fcd9634-b5c2-4cb2-bea7-9c06a035209d",
+        "name": "Webhook",
+        "webhookId": "dc187e5f-454c-47cf-bc69-a3f8b3473103"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "5919a374-59bb-44a3-829d-5dc400adfd96",
+                "name": "message",
+                "value": "={{ $json.body.message }}",
+                "type": "string"
+              },
+              {
+                "id": "d7777e02-c8a9-48e2-91f8-45c45c4f6d39",
+                "name": "userId",
+                "value": "={{ $json.body.userId }}",
+                "type": "string"
+              },
+              {
+                "id": "c7368acd-280a-4498-a667-c9ac1be3ae7b",
+                "name": "userName",
+                "value": "={{ $json.body.userName }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -16,
+          0
+        ],
+        "id": "dd6eb3d6-3396-4989-9f78-ce310f6d7578",
+        "name": "Edit Fields"
+      },
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "=UserId: {{ $json.userId }}\nNombre: {{ $json.userName }}\nMensaje: {{ $json.message }}",
+          "options": {
+            "systemMessage": "=Eres Nomi, el asistente financiero personal e inteligente del usuario. Eres conciso, empático y siempre usas datos reales.\n\n## IDENTIDAD\n- Tu nombre es Nomi\n- Hablas siempre en español\n- Eres el asistente financiero personal del usuario\n- El userId del usuario es: {{ $json.userId }}\n- El nombre del usuario es: {{ $json.userName }}\n\n## LO QUE PUEDES HACER\n- Consultar el presupuesto y gastos de cada categoría del usuario\n- Consultar las transacciones del mes actual\n- Consultar el perfil del usuario (ingresos mensuales)\n- Responder preguntas sobre su situación financiera\n- Aconsejar si puede permitirse un gasto\n- Dar resúmenes de gastos por categoría o total\n- Detectar si el usuario está mencionando un gasto y confirmárselo\n\n## CUANDO USAR LAS TOOLS\n- Usa la tool de CATEGORÍAS cuando: el usuario pregunte por su presupuesto, cuánto le queda, cómo va en alguna categoría, o mencione un gasto concreto\n- Usa la tool de TRANSACCIONES cuando: el usuario pida un resumen del mes, quiera ver sus últimos movimientos, o pregunte cuánto ha gastado en total\n- Usa la tool de PERFIL cuando: necesites saber sus ingresos mensuales para calcular el disponible total\n- Usa SIEMPRE las tools antes de responder con números — nunca inventes cifras\n- Puedes usar varias tools a la vez si la pregunta lo requiere\n\n## FORMATO DE RESPUESTAS\n- Máximo 4 frases por respuesta\n- Usa emojis con moderación (máximo 2 por mensaje)\n- Sé específico con los números: siempre en euros con 2 decimales\n- Si el usuario menciona un gasto, confirma la categoría y dile cuánto le queda en ella\n- Si el usuario pregunta si puede permitirse algo, consulta el disponible real y da una respuesta clara con recomendación\n\n## LO QUE NO DEBES HACER\n- Nunca inventes cifras o datos financieros\n- Nunca respondas con números sin haber consultado las tools primero\n- Nunca hables de temas que no sean finanzas personales\n- No des respuestas de más de 4 frases\n- No uses más de 2 emojis por mensaje\n- No repitas información que el usuario ya sabe\n- No uses tecnicismos financieros complejos"
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 3.1,
+        "position": [
+          400,
+          -96
+        ],
+        "id": "fd325544-5bfb-41aa-8cea-8456d7c61be7",
+        "name": "AI Agent"
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+        "typeVersion": 1.1,
+        "position": [
+          192,
+          176
+        ],
+        "id": "30fe3e0c-ef13-4081-afd9-185048544ba8",
+        "name": "Google Gemini Chat Model",
+        "credentials": {
+          "googlePalmApi": {
+            "id": "Mc2R3LGsjZR4tUJl",
+            "name": "Google Gemini(PaLM) Api account 2"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "sessionIdType": "customKey",
+          "sessionKey": "={{ $('Edit Fields').item.json.userId }}"
+        },
+        "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+        "typeVersion": 1.4,
+        "position": [
+          336,
+          240
+        ],
+        "id": "e8dd3a37-4813-43a5-b87e-d4939856ec82",
+        "name": "Simple Memory"
+      },
+      {
+        "parameters": {
+          "operation": "getAll",
+          "tableId": "categories",
+          "filters": {
+            "conditions": []
+          }
+        },
+        "type": "n8n-nodes-base.supabaseTool",
+        "typeVersion": 1,
+        "position": [
+          496,
+          160
+        ],
+        "id": "5333e0d1-b502-484a-be2d-1e8ac8a8c4b9",
+        "name": "Get many rows in Supabase",
+        "credentials": {
+          "supabaseApi": {
+            "id": "Ry71z6dCp01HZRqK",
+            "name": "Supabase account 2"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "respondWith": "json",
+          "responseBody": "={\n  \"response\": \"{{ $json.output }}\"\n}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.respondToWebhook",
+        "typeVersion": 1.5,
+        "position": [
+          768,
+          -96
+        ],
+        "id": "e0b4288a-e168-4f33-a448-c0b656fd6ff5",
+        "name": "Respond to Webhook"
+      }
+    ],
+    "connections": {
+      "Webhook": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields": {
+        "main": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Google Gemini Chat Model": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Simple Memory": {
+        "ai_memory": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_memory",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get many rows in Supabase": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "AI Agent": {
+        "main": [
+          [
+            {
+              "node": "Respond to Webhook",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "Carlos Fernández",
+    "name": "Version ac6ec25a",
+    "description": "",
+    "autosaved": true
+  },
+  "activeVersionId": "ac6ec25a-1428-465a-bfc5-e6802c385697",
   "connections": {
-    "Schedule Trigger": {
+    "Webhook": {
       "main": [
         [
           {
-            "node": "Get many documents",
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many rows in Supabase": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
             "type": "main",
             "index": 0
           }
@@ -25,45 +299,143 @@
   "nodes": [
     {
       "parameters": {
-        "rule": {
-          "interval": [
-            {
-              "field": "months"
-            }
-          ]
-        }
+        "httpMethod": "POST",
+        "path": "dc187e5f-454c-47cf-bc69-a3f8b3473103",
+        "responseMode": "responseNode",
+        "options": {}
       },
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1.3,
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
       "position": [
-        0,
+        -272,
         0
       ],
-      "id": "3296180f-1ed4-40e7-a5b7-6746141f01ea",
-      "name": "Schedule Trigger"
+      "id": "0fcd9634-b5c2-4cb2-bea7-9c06a035209d",
+      "name": "Webhook",
+      "webhookId": "dc187e5f-454c-47cf-bc69-a3f8b3473103"
     },
     {
       "parameters": {
-        "authentication": "serviceAccount",
-        "operation": "getAll",
-        "projectId": "=nomi-489011",
-        "collection": "users",
-        "returnAll": true
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5919a374-59bb-44a3-829d-5dc400adfd96",
+              "name": "message",
+              "value": "={{ $json.body.message }}",
+              "type": "string"
+            },
+            {
+              "id": "d7777e02-c8a9-48e2-91f8-45c45c4f6d39",
+              "name": "userId",
+              "value": "={{ $json.body.userId }}",
+              "type": "string"
+            },
+            {
+              "id": "c7368acd-280a-4498-a667-c9ac1be3ae7b",
+              "name": "userName",
+              "value": "={{ $json.body.userName }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
       },
-      "type": "n8n-nodes-base.googleFirebaseCloudFirestore",
-      "typeVersion": 1.1,
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
       "position": [
-        208,
+        -16,
         0
       ],
-      "id": "0902a1a3-ad0e-4533-a5ea-b62b24ff143e",
-      "name": "Get many documents",
+      "id": "dd6eb3d6-3396-4989-9f78-ce310f6d7578",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=UserId: {{ $json.userId }}\nNombre: {{ $json.userName }}\nMensaje: {{ $json.message }}",
+        "options": {
+          "systemMessage": "=Eres Nomi, el asistente financiero personal e inteligente del usuario. Eres conciso, empático y siempre usas datos reales.\n\n## IDENTIDAD\n- Tu nombre es Nomi\n- Hablas siempre en español\n- Eres el asistente financiero personal del usuario\n- El userId del usuario es: {{ $json.userId }}\n- El nombre del usuario es: {{ $json.userName }}\n\n## LO QUE PUEDES HACER\n- Consultar el presupuesto y gastos de cada categoría del usuario\n- Consultar las transacciones del mes actual\n- Consultar el perfil del usuario (ingresos mensuales)\n- Responder preguntas sobre su situación financiera\n- Aconsejar si puede permitirse un gasto\n- Dar resúmenes de gastos por categoría o total\n- Detectar si el usuario está mencionando un gasto y confirmárselo\n\n## CUANDO USAR LAS TOOLS\n- Usa la tool de CATEGORÍAS cuando: el usuario pregunte por su presupuesto, cuánto le queda, cómo va en alguna categoría, o mencione un gasto concreto\n- Usa la tool de TRANSACCIONES cuando: el usuario pida un resumen del mes, quiera ver sus últimos movimientos, o pregunte cuánto ha gastado en total\n- Usa la tool de PERFIL cuando: necesites saber sus ingresos mensuales para calcular el disponible total\n- Usa SIEMPRE las tools antes de responder con números — nunca inventes cifras\n- Puedes usar varias tools a la vez si la pregunta lo requiere\n\n## FORMATO DE RESPUESTAS\n- Máximo 4 frases por respuesta\n- Usa emojis con moderación (máximo 2 por mensaje)\n- Sé específico con los números: siempre en euros con 2 decimales\n- Si el usuario menciona un gasto, confirma la categoría y dile cuánto le queda en ella\n- Si el usuario pregunta si puede permitirse algo, consulta el disponible real y da una respuesta clara con recomendación\n\n## LO QUE NO DEBES HACER\n- Nunca inventes cifras o datos financieros\n- Nunca respondas con números sin haber consultado las tools primero\n- Nunca hables de temas que no sean finanzas personales\n- No des respuestas de más de 4 frases\n- No uses más de 2 emojis por mensaje\n- No repitas información que el usuario ya sabe\n- No uses tecnicismos financieros complejos"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        400,
+        -96
+      ],
+      "id": "fd325544-5bfb-41aa-8cea-8456d7c61be7",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        192,
+        176
+      ],
+      "id": "30fe3e0c-ef13-4081-afd9-185048544ba8",
+      "name": "Google Gemini Chat Model",
       "credentials": {
-        "googleApi": {
-          "id": "WraNUZoNIabL3fsM",
-          "name": "Google Service Account account"
+        "googlePalmApi": {
+          "id": "Mc2R3LGsjZR4tUJl",
+          "name": "Google Gemini(PaLM) Api account 2"
         }
       }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Edit Fields').item.json.userId }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        336,
+        240
+      ],
+      "id": "e8dd3a37-4813-43a5-b87e-d4939856ec82",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "categories",
+        "filters": {
+          "conditions": []
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        496,
+        160
+      ],
+      "id": "5333e0d1-b502-484a-be2d-1e8ac8a8c4b9",
+      "name": "Get many rows in Supabase",
+      "credentials": {
+        "supabaseApi": {
+          "id": "Ry71z6dCp01HZRqK",
+          "name": "Supabase account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"response\": \"{{ $json.output }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        768,
+        -96
+      ],
+      "id": "e0b4288a-e168-4f33-a448-c0b656fd6ff5",
+      "name": "Respond to Webhook"
     }
   ],
   "pinData": {},
@@ -86,7 +458,7 @@
   ],
   "staticData": null,
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2026-03-19T15:59:35.515Z",
-  "versionId": "f8a56f39-04aa-42fe-ad9c-ec0873295057"
+  "triggerCount": 1,
+  "updatedAt": "2026-06-03T14:06:32.042Z",
+  "versionId": "ac6ec25a-1428-465a-bfc5-e6802c385697"
 }
