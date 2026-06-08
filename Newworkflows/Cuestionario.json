@@ -1,0 +1,80 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2026-06-08T13:08:05.000Z",
+    "createdAt": "2026-06-08T13:08:04.531Z",
+    "versionId": "86ae4597-2e9a-4f77-9b95-53822bc7dc86",
+    "workflowId": "l5bnps1sitLgoucl",
+    "nodes": [
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "a317f864-65f2-4910-8fe3-65097be79321",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2.1,
+        "position": [
+          0,
+          0
+        ],
+        "id": "e20759e8-9f9f-4304-a03c-5c317e0d2478",
+        "name": "Webhook",
+        "webhookId": "a317f864-65f2-4910-8fe3-65097be79321"
+      }
+    ],
+    "connections": {},
+    "authors": "Carlos Fernández",
+    "name": "Version 86ae4597",
+    "description": "",
+    "autosaved": false
+  },
+  "activeVersionId": "86ae4597-2e9a-4f77-9b95-53822bc7dc86",
+  "connections": {},
+  "createdAt": "2026-06-08T08:13:55.076Z",
+  "id": "l5bnps1sitLgoucl",
+  "isArchived": false,
+  "meta": null,
+  "name": "Cuestionario",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "a317f864-65f2-4910-8fe3-65097be79321",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "e20759e8-9f9f-4304-a03c-5c317e0d2478",
+      "name": "Webhook",
+      "webhookId": "a317f864-65f2-4910-8fe3-65097be79321"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "timeSavedMode": "fixed",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-06-08T08:13:55.099Z",
+      "createdAt": "2026-06-08T08:13:55.099Z",
+      "role": "workflow:owner",
+      "workflowId": "l5bnps1sitLgoucl",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2026-06-08T13:08:04.527Z",
+  "versionId": "86ae4597-2e9a-4f77-9b95-53822bc7dc86"
+}
