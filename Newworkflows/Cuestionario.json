@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-06-08T13:08:05.000Z",
-    "createdAt": "2026-06-08T13:08:04.531Z",
-    "versionId": "86ae4597-2e9a-4f77-9b95-53822bc7dc86",
+    "updatedAt": "2026-06-11T17:49:26.000Z",
+    "createdAt": "2026-06-11T17:49:18.075Z",
+    "versionId": "d9079c65-72dd-4db6-a4e2-591296cdb040",
     "workflowId": "l5bnps1sitLgoucl",
     "nodes": [
       {
@@ -21,20 +21,474 @@
         "id": "e20759e8-9f9f-4304-a03c-5c317e0d2478",
         "name": "Webhook",
         "webhookId": "a317f864-65f2-4910-8fe3-65097be79321"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "21d8e8f0-ff59-4b42-b855-aeda0f7fe091",
+                "name": "Nombre",
+                "value": "={{ $json.body.name }}",
+                "type": "string"
+              },
+              {
+                "id": "aac5a333-f227-49c0-99a9-85b86de8ba81",
+                "name": "Email",
+                "value": "={{ $json.body.email }}",
+                "type": "string"
+              },
+              {
+                "id": "60c9d016-57c4-4805-b89b-077376a6c879",
+                "name": "Sector",
+                "value": "={{ $json.body.sector }}",
+                "type": "string"
+              },
+              {
+                "id": "47c0080b-c59f-46ad-8a8e-e9a5715727ca",
+                "name": "Equipo",
+                "value": "={{ $json.body.teamSize }}",
+                "type": "string"
+              },
+              {
+                "id": "2231ea9e-3280-4af0-b4e7-f1dfa09af178",
+                "name": "Automatizacion",
+                "value": "={{ $json.body.task }}",
+                "type": "string"
+              },
+              {
+                "id": "087fe25b-0fb6-4b22-ba57-ff52b88f1fba",
+                "name": "Frecuencia",
+                "value": "={{ $json.body.frequency }}",
+                "type": "string"
+              },
+              {
+                "id": "8d1b4c3c-3f18-48f8-a471-65c130698749",
+                "name": "Herramientas",
+                "value": "={{ $json.body.currentTools }}",
+                "type": "string"
+              },
+              {
+                "id": "b13dafe8-9795-4f43-a7e4-8b3db77c187a",
+                "name": "Sofware Gestion",
+                "value": "={{ $json.body.existingSoftware }}",
+                "type": "string"
+              },
+              {
+                "id": "33eb134a-bce3-4a29-8602-6d77328f0b3d",
+                "name": "Tiempo Terdido Semanal",
+                "value": "={{ $json.body.hoursLost }}",
+                "type": "string"
+              },
+              {
+                "id": "9bc45f00-e0eb-499f-90aa-551726f9ebc4",
+                "name": "Objetivo automatizacion",
+                "value": "={{ $json.body.outcomes[0] }}",
+                "type": "string"
+              },
+              {
+                "id": "ea7c560b-bbc3-4f17-b7c8-b76e4bcfd2b0",
+                "name": "Presupuesto",
+                "value": "={{ $json.body.budget }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          208,
+          0
+        ],
+        "id": "37868938-bf5d-4f7e-96fa-3f82fecfef4b",
+        "name": "Edit Fields"
+      },
+      {
+        "parameters": {
+          "operation": "append",
+          "documentId": {
+            "__rl": true,
+            "value": "1J2vBs15Rthd4m7hjena8VrmNwnzkNun-Olm3M5TR-SM",
+            "mode": "list",
+            "cachedResultName": "Clientes Form Web",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1J2vBs15Rthd4m7hjena8VrmNwnzkNun-Olm3M5TR-SM/edit?usp=drivesdk"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "gid=0",
+            "mode": "list",
+            "cachedResultName": "Hoja 1",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1J2vBs15Rthd4m7hjena8VrmNwnzkNun-Olm3M5TR-SM/edit#gid=0"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "Nombre": "={{ $json.Nombre }}",
+              " Email": "={{ $json.Email }}",
+              "Sector": "={{ $json.Sector }}",
+              "Equipo": "={{ $json.Equipo }}",
+              "Automatizacion": "={{ $json.Automatizacion }}",
+              "Frecuencia": "={{ $json.Frecuencia }}",
+              "Herramientas": "={{ $json.Herramientas }}",
+              "Sofware Gestion": "={{ $json['Sofware Gestion'] }}",
+              "Tiempo Perdido Semanal": "={{ $json['Tiempo Terdido Semanal'] }}",
+              "Objetivo Automatizacion": "={{ $json['Objetivo automatizacion'] }}",
+              "Presupuesto": "={{ $json.Presupuesto }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "Nombre",
+                "displayName": "Nombre",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": " Email",
+                "displayName": " Email",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "Sector",
+                "displayName": "Sector",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "Equipo",
+                "displayName": "Equipo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "Automatizacion",
+                "displayName": "Automatizacion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "Frecuencia",
+                "displayName": "Frecuencia",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "Herramientas",
+                "displayName": "Herramientas",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "Sofware Gestion",
+                "displayName": "Sofware Gestion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "Tiempo Perdido Semanal",
+                "displayName": "Tiempo Perdido Semanal",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "Objetivo Automatizacion",
+                "displayName": "Objetivo Automatizacion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "Presupuesto",
+                "displayName": "Presupuesto",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.7,
+        "position": [
+          432,
+          0
+        ],
+        "id": "f121697e-2375-4a63-a952-d1354371fa46",
+        "name": "Append row in sheet",
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "b3iIwyK8DLzQZxfk",
+            "name": "Google Sheets account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "=Eres un asistente que genera correos electrónicos HTML profesionales.\nSe ha recibido un nuevo lead a través del formulario de Hasekura Automation. Genera el HTML completo de un correo electrónico con los siguientes datos:\nNombre: {{ $json.Nombre }}\nEmail: {{ $json[' Email'] }}\nSector: {{ $json.Sector }}\nEquipo: {{ $json.Equipo }}\nTarea a automatizar: {{ $json.Automatizacion }}\nFrecuencia: {{ $json.Frecuencia }}\nHerramientas actuales: {{ $json.Herramientas }}\nSoftware de gestión: {{ $json[\"Sofware Gestion\"] }}\nTiempo perdido por semana: {{ $json[\"Tiempo Perdido Semanal\"] }}\nObjetivo principal: {{ $json[\"Objetivo Automatizacion\"] }}\nPresupuesto: {{ $json.Presupuesto }}\nDiseña el correo con estas especificaciones:\n\nFondo exterior: #f4f6f8\nTarjeta central blanca, border-radius 12px, max-width 600px, centrada\nHeader verde #1D9E75 con badge \"Nuevo lead\", título \"Formulario recibido\" y subtítulo \"Un cliente ha completado el formulario de Hasekura Automation\"\nCampos agrupados en 3 secciones: \"Datos de contacto\", \"Contexto de automatización\", \"Intención y presupuesto\"\nCuadrícula de 2 columnas para los campos con separadores finos\nEl objetivo principal destacado en caja con fondo #E1F5EE y borde izquierdo verde\nFooter con \"Hasekura Automation\" a la izquierda y fecha/hora a la derecha\nFuente sans-serif del sistema, 14px base\nTodo en inline styles, compatible con clientes de email\n\nDevuelve ÚNICAMENTE el HTML completo empezando por <!DOCTYPE html>, sin explicaciones ni bloques markdown.",
+          "messages": {
+            "messageValues": []
+          },
+          "batching": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.chainLlm",
+        "typeVersion": 1.9,
+        "position": [
+          640,
+          0
+        ],
+        "id": "923ac9ef-33af-4fcc-b619-2a5e72c05953",
+        "name": "Basic LLM Chain"
+      },
+      {
+        "parameters": {
+          "model": {
+            "__rl": true,
+            "mode": "list",
+            "value": "gpt-5-mini"
+          },
+          "builtInTools": {},
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+        "typeVersion": 1.3,
+        "position": [
+          576,
+          208
+        ],
+        "id": "b1c359ac-d1c4-438b-a39a-313cb823d594",
+        "name": "OpenAI Chat Model",
+        "credentials": {
+          "openAiApi": {
+            "id": "WvSLkCujVhY8jIGz",
+            "name": "OpenAi account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "const raw = items[0].json.text || '';\n\n// 1) intenta bloque ```html ... ```\nconst mHtml = raw.match(/```html([\\s\\S]*?)```/i);\n// 2) o bloque genérico ``` ... ```\nconst mAny  = raw.match(/```([\\s\\S]*?)```/);\n\nlet cleaned = mHtml?.[1] ?? mAny?.[1] ?? raw;\ncleaned = cleaned.trim();\n\n// (OPCIONAL) si después del bloque hay notas separadas por '---', córtalas\ncleaned = cleaned.split('---')[0].trim();\n\nreturn [{ json: { html: cleaned } }];\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          1024,
+          0
+        ],
+        "id": "41657914-bfc4-46fd-a5cf-3f254afc5858",
+        "name": "Code in JavaScript"
+      },
+      {
+        "parameters": {
+          "sendTo": "=hasekuraia@gmail.com",
+          "subject": "=Formulario de {{ $('Webhook').item.json.body.name }}",
+          "message": "={{ $json.html }}",
+          "options": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.gmail",
+        "typeVersion": 2.1,
+        "position": [
+          1296,
+          0
+        ],
+        "id": "90346492-7d9f-40bf-b044-eaf07c6501b1",
+        "name": "Send a message",
+        "webhookId": "f8cb8627-b9e4-4500-8034-bca813abc2d0",
+        "credentials": {
+          "gmailOAuth2": {
+            "id": "BYnusElzyLGzOhVZ",
+            "name": "Gmail account"
+          }
+        }
       }
     ],
-    "connections": {},
+    "connections": {
+      "Webhook": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields": {
+        "main": [
+          [
+            {
+              "node": "Append row in sheet",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Append row in sheet": {
+        "main": [
+          [
+            {
+              "node": "Basic LLM Chain",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OpenAI Chat Model": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "Basic LLM Chain",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Basic LLM Chain": {
+        "main": [
+          [
+            {
+              "node": "Code in JavaScript",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code in JavaScript": {
+        "main": [
+          [
+            {
+              "node": "Send a message",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
     "authors": "Carlos Fernández",
-    "name": "Version 86ae4597",
+    "name": "Version d9079c65",
     "description": "",
-    "autosaved": false
+    "autosaved": true
   },
-  "activeVersionId": "86ae4597-2e9a-4f77-9b95-53822bc7dc86",
-  "connections": {},
+  "activeVersionId": "d9079c65-72dd-4db6-a4e2-591296cdb040",
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
   "createdAt": "2026-06-08T08:13:55.076Z",
   "id": "l5bnps1sitLgoucl",
   "isArchived": false,
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Cuestionario",
   "nodes": [
     {
@@ -52,16 +506,391 @@
       "id": "e20759e8-9f9f-4304-a03c-5c317e0d2478",
       "name": "Webhook",
       "webhookId": "a317f864-65f2-4910-8fe3-65097be79321"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "21d8e8f0-ff59-4b42-b855-aeda0f7fe091",
+              "name": "Nombre",
+              "value": "={{ $json.body.name }}",
+              "type": "string"
+            },
+            {
+              "id": "aac5a333-f227-49c0-99a9-85b86de8ba81",
+              "name": "Email",
+              "value": "={{ $json.body.email }}",
+              "type": "string"
+            },
+            {
+              "id": "60c9d016-57c4-4805-b89b-077376a6c879",
+              "name": "Sector",
+              "value": "={{ $json.body.sector }}",
+              "type": "string"
+            },
+            {
+              "id": "47c0080b-c59f-46ad-8a8e-e9a5715727ca",
+              "name": "Equipo",
+              "value": "={{ $json.body.teamSize }}",
+              "type": "string"
+            },
+            {
+              "id": "2231ea9e-3280-4af0-b4e7-f1dfa09af178",
+              "name": "Automatizacion",
+              "value": "={{ $json.body.task }}",
+              "type": "string"
+            },
+            {
+              "id": "087fe25b-0fb6-4b22-ba57-ff52b88f1fba",
+              "name": "Frecuencia",
+              "value": "={{ $json.body.frequency }}",
+              "type": "string"
+            },
+            {
+              "id": "8d1b4c3c-3f18-48f8-a471-65c130698749",
+              "name": "Herramientas",
+              "value": "={{ $json.body.currentTools }}",
+              "type": "string"
+            },
+            {
+              "id": "b13dafe8-9795-4f43-a7e4-8b3db77c187a",
+              "name": "Sofware Gestion",
+              "value": "={{ $json.body.existingSoftware }}",
+              "type": "string"
+            },
+            {
+              "id": "33eb134a-bce3-4a29-8602-6d77328f0b3d",
+              "name": "Tiempo Terdido Semanal",
+              "value": "={{ $json.body.hoursLost }}",
+              "type": "string"
+            },
+            {
+              "id": "9bc45f00-e0eb-499f-90aa-551726f9ebc4",
+              "name": "Objetivo automatizacion",
+              "value": "={{ $json.body.outcomes[0] }}",
+              "type": "string"
+            },
+            {
+              "id": "ea7c560b-bbc3-4f17-b7c8-b76e4bcfd2b0",
+              "name": "Presupuesto",
+              "value": "={{ $json.body.budget }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "37868938-bf5d-4f7e-96fa-3f82fecfef4b",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1J2vBs15Rthd4m7hjena8VrmNwnzkNun-Olm3M5TR-SM",
+          "mode": "list",
+          "cachedResultName": "Clientes Form Web",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1J2vBs15Rthd4m7hjena8VrmNwnzkNun-Olm3M5TR-SM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1J2vBs15Rthd4m7hjena8VrmNwnzkNun-Olm3M5TR-SM/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nombre": "={{ $json.Nombre }}",
+            " Email": "={{ $json.Email }}",
+            "Sector": "={{ $json.Sector }}",
+            "Equipo": "={{ $json.Equipo }}",
+            "Automatizacion": "={{ $json.Automatizacion }}",
+            "Frecuencia": "={{ $json.Frecuencia }}",
+            "Herramientas": "={{ $json.Herramientas }}",
+            "Sofware Gestion": "={{ $json['Sofware Gestion'] }}",
+            "Tiempo Perdido Semanal": "={{ $json['Tiempo Terdido Semanal'] }}",
+            "Objetivo Automatizacion": "={{ $json['Objetivo automatizacion'] }}",
+            "Presupuesto": "={{ $json.Presupuesto }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": " Email",
+              "displayName": " Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sector",
+              "displayName": "Sector",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Equipo",
+              "displayName": "Equipo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Automatizacion",
+              "displayName": "Automatizacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Frecuencia",
+              "displayName": "Frecuencia",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Herramientas",
+              "displayName": "Herramientas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sofware Gestion",
+              "displayName": "Sofware Gestion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Tiempo Perdido Semanal",
+              "displayName": "Tiempo Perdido Semanal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Objetivo Automatizacion",
+              "displayName": "Objetivo Automatizacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Presupuesto",
+              "displayName": "Presupuesto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        432,
+        0
+      ],
+      "id": "f121697e-2375-4a63-a952-d1354371fa46",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "b3iIwyK8DLzQZxfk",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Eres un asistente que genera correos electrónicos HTML profesionales.\nSe ha recibido un nuevo lead a través del formulario de Hasekura Automation. Genera el HTML completo de un correo electrónico con los siguientes datos:\nNombre: {{ $json.Nombre }}\nEmail: {{ $json[' Email'] }}\nSector: {{ $json.Sector }}\nEquipo: {{ $json.Equipo }}\nTarea a automatizar: {{ $json.Automatizacion }}\nFrecuencia: {{ $json.Frecuencia }}\nHerramientas actuales: {{ $json.Herramientas }}\nSoftware de gestión: {{ $json[\"Sofware Gestion\"] }}\nTiempo perdido por semana: {{ $json[\"Tiempo Perdido Semanal\"] }}\nObjetivo principal: {{ $json[\"Objetivo Automatizacion\"] }}\nPresupuesto: {{ $json.Presupuesto }}\nDiseña el correo con estas especificaciones:\n\nFondo exterior: #f4f6f8\nTarjeta central blanca, border-radius 12px, max-width 600px, centrada\nHeader verde #1D9E75 con badge \"Nuevo lead\", título \"Formulario recibido\" y subtítulo \"Un cliente ha completado el formulario de Hasekura Automation\"\nCampos agrupados en 3 secciones: \"Datos de contacto\", \"Contexto de automatización\", \"Intención y presupuesto\"\nCuadrícula de 2 columnas para los campos con separadores finos\nEl objetivo principal destacado en caja con fondo #E1F5EE y borde izquierdo verde\nFooter con \"Hasekura Automation\" a la izquierda y fecha/hora a la derecha\nFuente sans-serif del sistema, 14px base\nTodo en inline styles, compatible con clientes de email\n\nDevuelve ÚNICAMENTE el HTML completo empezando por <!DOCTYPE html>, sin explicaciones ni bloques markdown.",
+        "messages": {
+          "messageValues": []
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        640,
+        0
+      ],
+      "id": "923ac9ef-33af-4fcc-b619-2a5e72c05953",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-5-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        576,
+        208
+      ],
+      "id": "b1c359ac-d1c4-438b-a39a-313cb823d594",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = items[0].json.text || '';\n\n// 1) intenta bloque ```html ... ```\nconst mHtml = raw.match(/```html([\\s\\S]*?)```/i);\n// 2) o bloque genérico ``` ... ```\nconst mAny  = raw.match(/```([\\s\\S]*?)```/);\n\nlet cleaned = mHtml?.[1] ?? mAny?.[1] ?? raw;\ncleaned = cleaned.trim();\n\n// (OPCIONAL) si después del bloque hay notas separadas por '---', córtalas\ncleaned = cleaned.split('---')[0].trim();\n\nreturn [{ json: { html: cleaned } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1024,
+        0
+      ],
+      "id": "41657914-bfc4-46fd-a5cf-3f254afc5858",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "sendTo": "=hasekuraia@gmail.com",
+        "subject": "=Formulario de {{ $('Webhook').item.json.body.name }}",
+        "message": "={{ $json.html }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        1296,
+        0
+      ],
+      "id": "90346492-7d9f-40bf-b044-eaf07c6501b1",
+      "name": "Send a message",
+      "webhookId": "f8cb8627-b9e4-4500-8034-bca813abc2d0",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "BYnusElzyLGzOhVZ",
+          "name": "Gmail account"
+        }
+      }
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+            "content-length": "389",
+            "accept": "*/*",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "es-ES,es;q=0.9",
+            "content-type": "application/json",
+            "origin": "https://www.hasekura-automation.es",
+            "priority": "u=1, i",
+            "referer": "https://www.hasekura-automation.es/",
+            "sec-ch-ua": "\"Google Chrome\";v=\"149\", \"Chromium\";v=\"149\", \"Not)A;Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "cross-site",
+            "x-forwarded-for": "188.26.223.28",
+            "x-forwarded-host": "n8n2nkz-n8n.vc1wee.easypanel.host",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "88eeb68a63a5",
+            "x-real-ip": "188.26.223.28"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "sector": "Hostelería y restauración",
+            "teamSize": "5-10",
+            "task": "atencion al cliente",
+            "frequency": "A diario",
+            "currentTools": "telefono, whatsapp y instagram",
+            "existingSoftware": "CRM",
+            "hoursLost": "5-10h",
+            "outcomes": [
+              "Ahorrar tiempo",
+              "Reducir errores",
+              "Mejorar la atención al cliente",
+              "Escalar sin contratar"
+            ],
+            "budget": "Aún no lo sé",
+            "name": "fran",
+            "email": "franciscojavier2066@gmail.com"
+          },
+          "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook/a317f864-65f2-4910-8fe3-65097be79321",
+          "executionMode": "production"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate",
     "timeSavedMode": "fixed",
     "timezone": "Europe/Madrid",
     "callerPolicy": "workflowsFromSameOwner",
-    "availableInMCP": false
+    "availableInMCP": false,
+    "errorWorkflow": "G3LUdMqnpavs5AUk"
   },
   "shared": [
     {
@@ -75,6 +904,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-06-08T13:08:04.527Z",
-  "versionId": "86ae4597-2e9a-4f77-9b95-53822bc7dc86"
+  "updatedAt": "2026-06-11T17:49:36.576Z",
+  "versionId": "d9079c65-72dd-4db6-a4e2-591296cdb040"
 }
