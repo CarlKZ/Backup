@@ -351,7 +351,10 @@
     "executionOrder": "v1",
     "timezone": "Europe/Madrid",
     "callerPolicy": "workflowsFromSameOwner",
-    "binaryMode": "separate"
+    "binaryMode": "separate",
+    "timeSavedMode": "fixed",
+    "errorWorkflow": "G3LUdMqnpavs5AUk",
+    "availableInMCP": false
   },
   "shared": [
     {
@@ -365,6 +368,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-11T17:43:20.761Z",
+  "updatedAt": "2026-06-16T14:21:34.320Z",
   "versionId": "a778e16d-d66c-4011-bdc0-f86de8257464"
 }
