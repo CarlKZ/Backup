@@ -1509,7 +1509,10 @@
     "executionOrder": "v1",
     "timezone": "Europe/Madrid",
     "callerPolicy": "workflowsFromSameOwner",
-    "binaryMode": "separate"
+    "binaryMode": "separate",
+    "timeSavedMode": "fixed",
+    "errorWorkflow": "G3LUdMqnpavs5AUk",
+    "availableInMCP": false
   },
   "shared": [
     {
@@ -1527,6 +1530,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-04-22T11:51:48.855Z",
+  "updatedAt": "2026-06-16T14:22:37.906Z",
   "versionId": "84d35bfe-2dc7-4a01-bf47-2b53f5bf1c52"
 }
