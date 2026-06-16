@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-05-20T18:42:01.000Z",
-    "createdAt": "2026-05-20T18:41:21.650Z",
-    "versionId": "1b20c623-1a43-459e-a16c-9363f44ac456",
+    "updatedAt": "2026-06-16T14:21:58.000Z",
+    "createdAt": "2026-06-01T18:54:44.220Z",
+    "versionId": "d2e9bfb6-e683-4026-8894-5d7dfcd25e9c",
     "workflowId": "fuPPkd9lqqbnG1yyWj4p_",
     "nodes": [
       {
@@ -121,7 +121,7 @@
       },
       {
         "parameters": {
-          "chatId": "7040181107",
+          "chatId": "7926769590",
           "text": "={{ $json['fecha y hora'] }}\n\nBuenas Mayte, El usuario {{ $('AI Agent').item.json.output.nombre }} ha dejado **{{ $('AI Agent').item.json.output.estrellas }} 🌟 junto con el siguiente comentario: **{{ $('AI Agent').item.json.output.comentario }}",
           "additionalFields": {
             "appendAttribution": false
@@ -138,8 +138,8 @@
         "webhookId": "9f0cc800-4856-491b-9d13-57c25ddf491b",
         "credentials": {
           "telegramApi": {
-            "id": "KcOnwLzOSvSJfY1o",
-            "name": "Telegram account"
+            "id": "pSyRiz8rN02n6i3V",
+            "name": "Telegram account 2"
           }
         }
       },
@@ -534,11 +534,11 @@
       }
     },
     "authors": "Carlos Fernández",
-    "name": "Version 1b20c623",
+    "name": "Version d2e9bfb6",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "1b20c623-1a43-459e-a16c-9363f44ac456",
+  "activeVersionId": "d2e9bfb6-e683-4026-8894-5d7dfcd25e9c",
   "connections": {
     "Webhook1": {
       "main": [
@@ -1140,6 +1140,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2026-06-01T18:54:44.212Z",
+  "updatedAt": "2026-06-16T14:22:03.262Z",
   "versionId": "d2e9bfb6-e683-4026-8894-5d7dfcd25e9c"
 }
