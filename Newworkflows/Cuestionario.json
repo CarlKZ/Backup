@@ -481,6 +481,17 @@
           }
         ]
       ]
+    },
+    "Send a message": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2026-06-08T08:13:55.076Z",
@@ -824,6 +835,33 @@
           "name": "Gmail account"
         }
       }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://portal.hasekura-automation.es/api/leads/external",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "8c646fe3b210cf480a1abb92f5938bf3713bc503ed43049fa1564d667b94efda"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"name\": \"{{ $('Webhook').item.json.body.name }}\",\n  \"email\": \"{{ $('Webhook').item.json.body.email }}\",\n  \"sector\": \"{{ $('Webhook').item.json.body.sector }}\",\n  \"teamSize\": \"{{ $('Webhook').item.json.body.teamSize }}\",\n  \"task\": \"{{ $('Webhook').item.json.body.task }}\",\n  \"frequency\": \"{{ $('Webhook').item.json.body.frequency }}\",\n  \"currentTools\": \"{{ $('Webhook').item.json.body.currentTools }}\",\n  \"existingSoftware\": \"{{ $('Webhook').item.json.body.existingSoftware }}\",\n  \"hoursLost\": \"{{ $('Webhook').item.json.body.hoursLost }}\",\n  \"outcomes\": {{ JSON.stringify($('Webhook').item.json.body.outcomes) }},\n  \"budget\": \"{{ $('Webhook').item.json.body.budget }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1504,
+        0
+      ],
+      "id": "87da7894-ab55-49ab-9982-4f5ff21b84bb",
+      "name": "HTTP Request"
     }
   ],
   "pinData": {
@@ -904,6 +942,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-06-16T14:21:05.336Z",
-  "versionId": "d9079c65-72dd-4db6-a4e2-591296cdb040"
+  "updatedAt": "2026-06-22T11:53:13.145Z",
+  "versionId": "8c1fee17-a24c-472b-a05b-f8e1e087e6f7"
 }
