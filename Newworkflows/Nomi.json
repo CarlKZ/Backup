@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-06-04T12:29:01.000Z",
-    "createdAt": "2026-06-04T12:27:56.721Z",
-    "versionId": "e1c494df-fcb5-49d0-b0fc-3791db34b57f",
+    "updatedAt": "2026-06-27T18:24:01.000Z",
+    "createdAt": "2026-06-27T18:22:44.534Z",
+    "versionId": "3971b9c4-e005-49fd-ac50-9ed6146dfcf6",
     "workflowId": "DTg-BPp0wfhz_BMV49b5O",
     "nodes": [
       {
@@ -315,6 +315,136 @@
         ],
         "id": "8ce1c4a5-5f23-44f5-8a7b-66f247b14b7a",
         "name": "Code in JavaScript"
+      },
+      {
+        "parameters": {
+          "path": "fa77e965-57a7-4592-9296-817e7a620ebd",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2.1,
+        "position": [
+          -288,
+          432
+        ],
+        "id": "dec5ddf1-8c55-424c-bcbf-cb047991d1c9",
+        "name": "Webhook1",
+        "webhookId": "fa77e965-57a7-4592-9296-817e7a620ebd"
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -48,
+          432
+        ],
+        "id": "21152c4e-1ade-4437-8296-521d34091d6c",
+        "name": "Edit Fields1"
+      },
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "Eres un analista financiero. Analiza estas respuestas de onboarding y crea entre 5 y 8 \ncategorías de gasto personalizadas con presupuestos sensatos según el ingreso mensual.\n\nIngreso mensual: {{ $json.monthlyIncome }}€\nSituación de vivienda: {{ $json.livingSituation }}\nGastos principales: {{ $json.mainExpenses }}\nObjetivo financiero: {{ $json.financialGoal }}\nDetalles adicionales: {{ $json.details }}\n\nReglas:\n- Los presupuestos deben sumar como máximo el 90% del ingreso mensual\n- Usa nombres y emojis claros en español\n- alert_threshold = aproximadamente 15-20% del budget de esa categoría\n- Prioriza las categorías mencionadas en \"gastos principales\"",
+          "hasOutputParser": true,
+          "messages": {
+            "messageValues": []
+          },
+          "batching": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.chainLlm",
+        "typeVersion": 1.9,
+        "position": [
+          144,
+          432
+        ],
+        "id": "6bb54529-1c49-4ca6-903a-79ea9f0f466c",
+        "name": "Basic LLM Chain"
+      },
+      {
+        "parameters": {
+          "model": {
+            "__rl": true,
+            "mode": "list",
+            "value": "gpt-5-mini"
+          },
+          "builtInTools": {},
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+        "typeVersion": 1.3,
+        "position": [
+          96,
+          640
+        ],
+        "id": "801c13f7-1c89-414e-98a0-59e020b3d568",
+        "name": "OpenAI Chat Model1",
+        "credentials": {
+          "openAiApi": {
+            "id": "WvSLkCujVhY8jIGz",
+            "name": "OpenAi account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          480,
+          432
+        ],
+        "id": "fec83824-f3eb-4df2-a2d3-cecb6356eb5d",
+        "name": "Code in JavaScript1"
+      },
+      {
+        "parameters": {
+          "jsonSchemaExample": "{\n  \"type\": \"array\",\n  \"items\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"name\": { \"type\": \"string\" },\n      \"emoji\": { \"type\": \"string\" },\n      \"budget\": { \"type\": \"number\" },\n      \"alert_threshold\": { \"type\": \"number\" }\n    },\n    \"required\": [\"name\", \"emoji\", \"budget\", \"alert_threshold\"]\n  }\n}"
+        },
+        "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+        "typeVersion": 1.3,
+        "position": [
+          352,
+          640
+        ],
+        "id": "a583eb22-976e-4fad-8ebf-ce757df900d1",
+        "name": "Structured Output Parser"
+      },
+      {
+        "parameters": {
+          "tableId": "categories"
+        },
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          912,
+          432
+        ],
+        "id": "e2526b65-3747-4bd9-a276-5b764e73e369",
+        "name": "Create a row",
+        "credentials": {
+          "supabaseApi": {
+            "id": "Ry71z6dCp01HZRqK",
+            "name": "Supabase account 2"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.respondToWebhook",
+        "typeVersion": 1.5,
+        "position": [
+          1088,
+          432
+        ],
+        "id": "d27c2a06-aa1c-47ef-97b6-fabef4af8b8b",
+        "name": "Respond to Webhook1"
       }
     ],
     "connections": {
@@ -438,14 +568,85 @@
             }
           ]
         ]
+      },
+      "Webhook1": {
+        "main": [
+          []
+        ]
+      },
+      "Edit Fields1": {
+        "main": [
+          [
+            {
+              "node": "Basic LLM Chain",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OpenAI Chat Model1": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "Basic LLM Chain",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Basic LLM Chain": {
+        "main": [
+          [
+            {
+              "node": "Code in JavaScript1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Structured Output Parser": {
+        "ai_outputParser": [
+          [
+            {
+              "node": "Basic LLM Chain",
+              "type": "ai_outputParser",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code in JavaScript1": {
+        "main": [
+          [
+            {
+              "node": "Create a row",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Create a row": {
+        "main": [
+          [
+            {
+              "node": "Respond to Webhook1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "Carlos Fernández",
-    "name": "Version e1c494df",
+    "name": "Version 3971b9c4",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "e1c494df-fcb5-49d0-b0fc-3791db34b57f",
+  "activeVersionId": "3971b9c4-e005-49fd-ac50-9ed6146dfcf6",
   "connections": {
     "Webhook": {
       "main": [
@@ -562,6 +763,77 @@
         [
           {
             "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        []
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Create a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a row": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
             "type": "main",
             "index": 0
           }
@@ -886,210 +1158,139 @@
       ],
       "id": "8ce1c4a5-5f23-44f5-8a7b-66f247b14b7a",
       "name": "Code in JavaScript"
-    }
-  ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
-            "content-length": "2236",
-            "accept": "*/*",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "accept-language": "es-ES,es;q=0.6",
-            "content-type": "application/json",
-            "origin": "http://localhost:8080",
-            "priority": "u=1, i",
-            "referer": "http://localhost:8080/",
-            "sec-ch-ua": "\"Chromium\";v=\"148\", \"Brave\";v=\"148\", \"Not/A)Brand\";v=\"99\"",
-            "sec-ch-ua-mobile": "?0",
-            "sec-ch-ua-platform": "\"Windows\"",
-            "sec-fetch-dest": "empty",
-            "sec-fetch-mode": "cors",
-            "sec-fetch-site": "cross-site",
-            "sec-gpc": "1",
-            "x-forwarded-for": "47.61.176.228",
-            "x-forwarded-host": "n8n2nkz-n8n.vc1wee.easypanel.host",
-            "x-forwarded-port": "443",
-            "x-forwarded-proto": "https",
-            "x-forwarded-server": "88eeb68a63a5",
-            "x-nomi-secret": "nomi-secret-2026",
-            "x-real-ip": "47.61.176.228"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "message": "me he gastado 50€ en gasolina",
-            "userId": "bbb2709e-363d-41db-91fc-7b2d5d8212cd",
-            "userName": "Carlos",
-            "monthlyIncome": 2500,
-            "categories": [
-              {
-                "name": "Hogar",
-                "emoji": "🏠",
-                "budget": 600,
-                "spent": 0,
-                "available": 600,
-                "alert_threshold": 50
-              },
-              {
-                "name": "Transporte",
-                "emoji": "🚗",
-                "budget": 150,
-                "spent": 90,
-                "available": 60,
-                "alert_threshold": 30
-              },
-              {
-                "name": "Alimentación",
-                "emoji": "🛒",
-                "budget": 400,
-                "spent": 0,
-                "available": 400,
-                "alert_threshold": 50
-              },
-              {
-                "name": "Ocio",
-                "emoji": "🎉",
-                "budget": 200,
-                "spent": 0,
-                "available": 200,
-                "alert_threshold": 25
-              },
-              {
-                "name": "Salud",
-                "emoji": "💊",
-                "budget": 100,
-                "spent": 0,
-                "available": 100,
-                "alert_threshold": 20
-              },
-              {
-                "name": "Compras",
-                "emoji": "👕",
-                "budget": 150,
-                "spent": 0,
-                "available": 150,
-                "alert_threshold": 30
-              },
-              {
-                "name": "Ahorro",
-                "emoji": "💰",
-                "budget": 300,
-                "spent": 0,
-                "available": 300,
-                "alert_threshold": 0
-              },
-              {
-                "name": "Otros",
-                "emoji": "📦",
-                "budget": 100,
-                "spent": 0,
-                "available": 100,
-                "alert_threshold": 20
-              }
-            ],
-            "recentTransactions": [
-              {
-                "date": "2026-06-05",
-                "description": "Gasto en gasolina",
-                "category": "Transporte",
-                "amount": 50,
-                "type": "expense"
-              },
-              {
-                "date": "2026-06-04",
-                "description": "Gasto en ocio",
-                "category": "3b100794-5ecf-487c-98cd-d5f8da79f6e4",
-                "amount": 40,
-                "type": "expense"
-              },
-              {
-                "date": "2026-06-04",
-                "description": "Gasto en ocio",
-                "category": "3b100794-5ecf-487c-98cd-d5f8da79f6e4",
-                "amount": 40,
-                "type": "expense"
-              },
-              {
-                "date": "2026-06-04",
-                "description": "Gasto en gasolina",
-                "category": "Transporte",
-                "amount": 40,
-                "type": "expense"
-              },
-              {
-                "date": "2026-06-03",
-                "description": "Ingreso",
-                "category": "Ingreso",
-                "amount": 1500,
-                "type": "income"
-              },
-              {
-                "date": "2026-06-03",
-                "description": "Ingreso",
-                "category": "Ingreso",
-                "amount": 1500,
-                "type": "income"
-              },
-              {
-                "date": "2025-05-20",
-                "description": "Gasto en ocio",
-                "category": "3b100794-5ecf-487c-98cd-d5f8da79f6e4",
-                "amount": 40,
-                "type": "expense"
-              }
-            ],
-            "history": [
-              {
-                "role": "user",
-                "content": "Me gasté 40€ en gasolina"
-              },
-              {
-                "role": "user",
-                "content": "Me gasté 40€ en gasolina"
-              },
-              {
-                "role": "user",
-                "content": "Me gasté 40€ en gasolina"
-              },
-              {
-                "role": "user",
-                "content": "Me gasté 40€ en gasolina"
-              },
-              {
-                "role": "user",
-                "content": "me he gastado 50€en gasolina"
-              },
-              {
-                "role": "user",
-                "content": "me he gastado 50€en gasolina"
-              },
-              {
-                "role": "user",
-                "content": "me he gastado 50€ en gasolina"
-              },
-              {
-                "role": "user",
-                "content": "me he gastado 50€ en gasolina"
-              },
-              {
-                "role": "assistant",
-                "content": "="
-              }
-            ]
-          },
-          "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook/dc187e5f-454c-47cf-bc69-a3f8b3473103",
-          "executionMode": "production"
+    },
+    {
+      "parameters": {
+        "path": "fa77e965-57a7-4592-9296-817e7a620ebd",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -288,
+        432
+      ],
+      "id": "dec5ddf1-8c55-424c-bcbf-cb047991d1c9",
+      "name": "Webhook1",
+      "webhookId": "fa77e965-57a7-4592-9296-817e7a620ebd"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -48,
+        432
+      ],
+      "id": "21152c4e-1ade-4437-8296-521d34091d6c",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "Eres un analista financiero. Analiza estas respuestas de onboarding y crea entre 5 y 8 \ncategorías de gasto personalizadas con presupuestos sensatos según el ingreso mensual.\n\nIngreso mensual: {{ $json.monthlyIncome }}€\nSituación de vivienda: {{ $json.livingSituation }}\nGastos principales: {{ $json.mainExpenses }}\nObjetivo financiero: {{ $json.financialGoal }}\nDetalles adicionales: {{ $json.details }}\n\nReglas:\n- Los presupuestos deben sumar como máximo el 90% del ingreso mensual\n- Usa nombres y emojis claros en español\n- alert_threshold = aproximadamente 15-20% del budget de esa categoría\n- Prioriza las categorías mencionadas en \"gastos principales\"",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": []
         },
-        "pairedItem": {
-          "item": 0
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        144,
+        432
+      ],
+      "id": "6bb54529-1c49-4ca6-903a-79ea9f0f466c",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-5-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        96,
+        640
+      ],
+      "id": "801c13f7-1c89-414e-98a0-59e020b3d568",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
         }
       }
-    ]
-  },
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        432
+      ],
+      "id": "fec83824-f3eb-4df2-a2d3-cecb6356eb5d",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"type\": \"array\",\n  \"items\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"name\": { \"type\": \"string\" },\n      \"emoji\": { \"type\": \"string\" },\n      \"budget\": { \"type\": \"number\" },\n      \"alert_threshold\": { \"type\": \"number\" }\n    },\n    \"required\": [\"name\", \"emoji\", \"budget\", \"alert_threshold\"]\n  }\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        352,
+        640
+      ],
+      "id": "a583eb22-976e-4fad-8ebf-ce757df900d1",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "tableId": "categories"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        912,
+        432
+      ],
+      "id": "e2526b65-3747-4bd9-a276-5b764e73e369",
+      "name": "Create a row",
+      "credentials": {
+        "supabaseApi": {
+          "id": "Ry71z6dCp01HZRqK",
+          "name": "Supabase account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        1088,
+        432
+      ],
+      "id": "d27c2a06-aa1c-47ef-97b6-fabef4af8b8b",
+      "name": "Respond to Webhook1"
+    }
+  ],
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate",
@@ -1110,7 +1311,7 @@
   ],
   "staticData": null,
   "tags": [],
-  "triggerCount": 1,
-  "updatedAt": "2026-06-16T14:21:46.362Z",
-  "versionId": "e1c494df-fcb5-49d0-b0fc-3791db34b57f"
+  "triggerCount": 2,
+  "updatedAt": "2026-06-27T18:22:44.530Z",
+  "versionId": "3971b9c4-e005-49fd-ac50-9ed6146dfcf6"
 }
