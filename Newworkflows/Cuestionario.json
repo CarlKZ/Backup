@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-06-11T17:49:26.000Z",
-    "createdAt": "2026-06-11T17:49:18.075Z",
-    "versionId": "d9079c65-72dd-4db6-a4e2-591296cdb040",
+    "updatedAt": "2026-06-27T17:51:05.000Z",
+    "createdAt": "2026-06-27T17:50:42.303Z",
+    "versionId": "1934472e-25ce-46cf-ad59-22d2dd80aaad",
     "workflowId": "l5bnps1sitLgoucl",
     "nodes": [
       {
@@ -318,7 +318,7 @@
       {
         "parameters": {
           "sendTo": "=hasekuraia@gmail.com",
-          "subject": "=Formulario de {{ $('Webhook').item.json.body.name }}",
+          "subject": "=Formulario de {{ $('Edit Fields').item.json.Nombre }}",
           "message": "={{ $json.html }}",
           "options": {
             "appendAttribution": false
@@ -339,6 +339,33 @@
             "name": "Gmail account"
           }
         }
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://portal.hasekura-automation.es/api/leads/external",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "x-api-key",
+                "value": "8c646fe3b210cf480a1abb92f5938bf3713bc503ed43049fa1564d667b94efda"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n  \"name\": \"{{ $('Webhook').item.json.body.name }}\",\n  \"email\": \"{{ $('Webhook').item.json.body.email }}\",\n  \"sector\": \"{{ $('Webhook').item.json.body.sector }}\",\n  \"teamSize\": \"{{ $('Webhook').item.json.body.teamSize }}\",\n  \"task\": \"{{ $('Webhook').item.json.body.task }}\",\n  \"frequency\": \"{{ $('Webhook').item.json.body.frequency }}\",\n  \"currentTools\": \"{{ $('Webhook').item.json.body.currentTools }}\",\n  \"existingSoftware\": \"{{ $('Webhook').item.json.body.existingSoftware }}\",\n  \"hoursLost\": \"{{ $('Webhook').item.json.body.hoursLost }}\",\n  \"outcomes\": {{ JSON.stringify($('Webhook').item.json.body.outcomes) }},\n  \"budget\": \"{{ $('Webhook').item.json.body.budget }}\"\n}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4,
+        "position": [
+          1504,
+          0
+        ],
+        "id": "87da7894-ab55-49ab-9982-4f5ff21b84bb",
+        "name": "HTTP Request"
       }
     ],
     "connections": {
@@ -407,14 +434,25 @@
             }
           ]
         ]
+      },
+      "Send a message": {
+        "main": [
+          [
+            {
+              "node": "HTTP Request",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "Carlos Fernández",
-    "name": "Version d9079c65",
+    "name": "Version 1934472e",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "d9079c65-72dd-4db6-a4e2-591296cdb040",
+  "activeVersionId": "1934472e-25ce-46cf-ad59-22d2dd80aaad",
   "connections": {
     "Webhook": {
       "main": [
@@ -814,7 +852,7 @@
     {
       "parameters": {
         "sendTo": "=hasekuraia@gmail.com",
-        "subject": "=Formulario de {{ $('Webhook').item.json.body.name }}",
+        "subject": "=Formulario de {{ $('Edit Fields').item.json.Nombre }}",
         "message": "={{ $json.html }}",
         "options": {
           "appendAttribution": false
@@ -871,46 +909,42 @@
           "headers": {
             "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
             "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
-            "content-length": "389",
+            "content-length": "175",
             "accept": "*/*",
             "accept-encoding": "gzip, deflate, br, zstd",
-            "accept-language": "es-ES,es;q=0.9",
+            "accept-language": "es-ES,es;q=0.6",
             "content-type": "application/json",
-            "origin": "https://www.hasekura-automation.es",
+            "origin": "https://nomi-chat-wise.vercel.app",
             "priority": "u=1, i",
-            "referer": "https://www.hasekura-automation.es/",
-            "sec-ch-ua": "\"Google Chrome\";v=\"149\", \"Chromium\";v=\"149\", \"Not)A;Brand\";v=\"24\"",
+            "referer": "https://nomi-chat-wise.vercel.app/",
+            "sec-ch-ua": "\"Brave\";v=\"149\", \"Chromium\";v=\"149\", \"Not)A;Brand\";v=\"24\"",
             "sec-ch-ua-mobile": "?0",
             "sec-ch-ua-platform": "\"Windows\"",
             "sec-fetch-dest": "empty",
             "sec-fetch-mode": "cors",
             "sec-fetch-site": "cross-site",
-            "x-forwarded-for": "188.26.223.28",
+            "sec-gpc": "1",
+            "x-forwarded-for": "77.231.26.155",
             "x-forwarded-host": "n8n2nkz-n8n.vc1wee.easypanel.host",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
-            "x-forwarded-server": "88eeb68a63a5",
-            "x-real-ip": "188.26.223.28"
+            "x-forwarded-server": "59accd6548a6",
+            "x-nomi-secret": "nomi-secret-2026",
+            "x-real-ip": "77.231.26.155"
           },
           "params": {},
           "query": {},
           "body": {
-            "sector": "Hostelería y restauración",
-            "teamSize": "5-10",
-            "task": "atencion al cliente",
-            "frequency": "A diario",
-            "currentTools": "telefono, whatsapp y instagram",
-            "existingSoftware": "CRM",
-            "hoursLost": "5-10h",
-            "outcomes": [
-              "Ahorrar tiempo",
-              "Reducir errores",
-              "Mejorar la atención al cliente",
-              "Escalar sin contratar"
+            "userId": "test",
+            "userName": "test",
+            "language": "Spanish",
+            "monthlyIncome": 1500,
+            "livingSituation": "En pareja",
+            "mainExpenses": [
+              "Ocio"
             ],
-            "budget": "Aún no lo sé",
-            "name": "fran",
-            "email": "franciscojavier2066@gmail.com"
+            "financialGoal": "Ahorrar más",
+            "details": ""
           },
           "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook/a317f864-65f2-4910-8fe3-65097be79321",
           "executionMode": "production"
@@ -942,6 +976,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-06-22T11:53:13.145Z",
-  "versionId": "8c1fee17-a24c-472b-a05b-f8e1e087e6f7"
+  "updatedAt": "2026-06-27T18:00:02.696Z",
+  "versionId": "1934472e-25ce-46cf-ad59-22d2dd80aaad"
 }
