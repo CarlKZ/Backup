@@ -142,6 +142,7 @@
         ]
       }
     },
+    "nodeGroups": [],
     "authors": "Carlos Fernández",
     "name": "Cancelar Perros",
     "description": "",
