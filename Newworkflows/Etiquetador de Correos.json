@@ -579,6 +579,7 @@
         ]
       }
     },
+    "nodeGroups": [],
     "authors": "Carlos Fernández",
     "name": "Version a4ef2885",
     "description": "",
@@ -1188,37 +1189,21 @@
   "staticData": {
     "node:Gmail Trigger": {
       "Gmail Trigger": {
-        "lastTimeChecked": 1782584721,
+        "lastTimeChecked": 1782673083,
         "possibleDuplicates": [
-          "19f0a54419369404",
-          "19f0a543790ee358",
-          "19f0a5428dc23ae8",
-          "19f0a53b5aab5167",
-          "19f0a53a6cbe7389",
-          "19f0a53a60be93fa",
-          "19f0a534d6142c5d",
-          "19f0a534381d173d",
-          "19f0a52bce3dc2e6",
-          "19f0a52abc4a446b",
-          "19f0a3a8e96815a0"
+          "19f0f988dcba8882",
+          "19f0f9812576c44c",
+          "19f0f0885b5c9176"
         ]
       }
     },
     "node:Gmail Trigger1": {
       "Gmail Trigger1": {
-        "lastTimeChecked": 1782584721,
+        "lastTimeChecked": 1782673083,
         "possibleDuplicates": [
-          "19f0a54419369404",
-          "19f0a543790ee358",
-          "19f0a5428dc23ae8",
-          "19f0a53b5aab5167",
-          "19f0a53a6cbe7389",
-          "19f0a53a60be93fa",
-          "19f0a534d6142c5d",
-          "19f0a534381d173d",
-          "19f0a52bce3dc2e6",
-          "19f0a52abc4a446b",
-          "19f0a3a8e96815a0"
+          "19f0f988dcba8882",
+          "19f0f9812576c44c",
+          "19f0f0885b5c9176"
         ]
       }
     }
