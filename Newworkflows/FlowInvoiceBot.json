@@ -1046,6 +1046,7 @@
         ]
       }
     },
+    "nodeGroups": [],
     "authors": "Carlos Fernández",
     "name": "FlowInvoiceBot",
     "description": "",
