@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-06-27T18:24:01.000Z",
-    "createdAt": "2026-06-27T18:22:44.534Z",
-    "versionId": "3971b9c4-e005-49fd-ac50-9ed6146dfcf6",
+    "updatedAt": "2026-06-28T18:57:21.000Z",
+    "createdAt": "2026-06-28T18:57:16.061Z",
+    "versionId": "6593fd67-cc6d-4262-9e90-feb848cec738",
     "workflowId": "DTg-BPp0wfhz_BMV49b5O",
     "nodes": [
       {
@@ -318,21 +318,58 @@
       },
       {
         "parameters": {
-          "path": "fa77e965-57a7-4592-9296-817e7a620ebd",
-          "options": {}
-        },
-        "type": "n8n-nodes-base.webhook",
-        "typeVersion": 2.1,
-        "position": [
-          -288,
-          432
-        ],
-        "id": "dec5ddf1-8c55-424c-bcbf-cb047991d1c9",
-        "name": "Webhook1",
-        "webhookId": "fa77e965-57a7-4592-9296-817e7a620ebd"
-      },
-      {
-        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "8be6c334-a58c-4bab-a4c4-23380a728c58",
+                "name": "userId",
+                "value": "={{ $json.body.userId }}",
+                "type": "string"
+              },
+              {
+                "id": "4157a348-fdc8-40eb-ba4a-b43ba08e2000",
+                "name": "Nombre",
+                "value": "={{ $json.body.userName }}",
+                "type": "string"
+              },
+              {
+                "id": "9b1f1daf-a8b3-434e-a751-2d1abe989d7f",
+                "name": "Idioma",
+                "value": "={{ $json.body.language }}",
+                "type": "string"
+              },
+              {
+                "id": "de9d4cb3-2f69-4129-ae23-e419f722c293",
+                "name": "Ingreso-mensual",
+                "value": "={{ $json.body.monthlyIncome }}",
+                "type": "number"
+              },
+              {
+                "id": "23c990af-4981-4f1c-a4da-937b9caf9c2b",
+                "name": "Situacion-vivienda",
+                "value": "={{ $json.body.livingSituation }}",
+                "type": "string"
+              },
+              {
+                "id": "a5ab5c75-490d-4b89-9a77-ce2ff92ef364",
+                "name": "Gastos",
+                "value": "={{ $json.body.mainExpenses }}",
+                "type": "array"
+              },
+              {
+                "id": "03bd7042-05ea-4f72-baea-650f72ac2cb0",
+                "name": "Objetivo",
+                "value": "={{ $json.body.financialGoal }}",
+                "type": "string"
+              },
+              {
+                "id": "6dcf5a17-078e-422b-8df8-914534c05cf4",
+                "name": "Detalles",
+                "value": "={{ $json.body.details }}",
+                "type": "string"
+              }
+            ]
+          },
           "options": {}
         },
         "type": "n8n-nodes-base.set",
@@ -347,7 +384,7 @@
       {
         "parameters": {
           "promptType": "define",
-          "text": "Eres un analista financiero. Analiza estas respuestas de onboarding y crea entre 5 y 8 \ncategorías de gasto personalizadas con presupuestos sensatos según el ingreso mensual.\n\nIngreso mensual: {{ $json.monthlyIncome }}€\nSituación de vivienda: {{ $json.livingSituation }}\nGastos principales: {{ $json.mainExpenses }}\nObjetivo financiero: {{ $json.financialGoal }}\nDetalles adicionales: {{ $json.details }}\n\nReglas:\n- Los presupuestos deben sumar como máximo el 90% del ingreso mensual\n- Usa nombres y emojis claros en español\n- alert_threshold = aproximadamente 15-20% del budget de esa categoría\n- Prioriza las categorías mencionadas en \"gastos principales\"",
+          "text": "=Eres un analista financiero experto. Analiza estos datos de un nuevo usuario y crea \nentre 5 y 8 categorías de gasto 100% personalizadas con presupuestos realistas.\n\nDATOS DEL USUARIO:\n- Ingreso mensual: {{ $json['Ingreso-mensual'] }}€\n- Situación de vivienda: {{ $json['Situacion-vivienda'] }}\n- Gastos principales mencionados: {{ $json.Gastos.join(', ') }}\n- Objetivo financiero: {{ $json.Objetivo }}\n- Detalles adicionales: {{ $json.Detalles }}\n\nREGLAS:\n1. La suma de todos los presupuestos no debe superar el 90% del ingreso mensual\n2. Prioriza categorías para los gastos que el usuario mencionó explícitamente\n3. Incluye siempre una categoría \"Ahorro\" si el objetivo es ahorrar o invertir\n4. Usa nombres claros en español y emojis apropiados y variados\n5. alert_threshold = aproximadamente 15-20% del budget de esa categoría\n6. Si vive \"En pareja\" o \"Con familia\", ajusta los gastos de hogar/comida proporcionalmente\n7. Los presupuestos deben sumar de forma coherente con el ingreso real, no inventes cifras absurdas\n\nDevuelve SOLO las categorías en el formato solicitado, sin explicaciones adicionales.",
           "hasOutputParser": true,
           "messages": {
             "messageValues": []
@@ -357,7 +394,7 @@
         "type": "@n8n/n8n-nodes-langchain.chainLlm",
         "typeVersion": 1.9,
         "position": [
-          144,
+          192,
           432
         ],
         "id": "6bb54529-1c49-4ca6-903a-79ea9f0f466c",
@@ -376,8 +413,8 @@
         "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
         "typeVersion": 1.3,
         "position": [
-          96,
-          640
+          176,
+          624
         ],
         "id": "801c13f7-1c89-414e-98a0-59e020b3d568",
         "name": "OpenAI Chat Model1",
@@ -390,12 +427,12 @@
       },
       {
         "parameters": {
-          "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
+          "jsCode": "const data = $input.first().json.output;\nconst monthlyIncome = Number($('Edit Fields1').first().json['Ingreso-mensual']);\nconst userId = $('Edit Fields1').first().json.userId;\n\nconst categories = data.categories.map(cat => ({\n  userId: userId,\n  name: cat.name,\n  emoji: cat.emoji,\n  budget: Math.round(cat.budget * monthlyIncome),\n  alert_threshold: Math.round(cat.alert_threshold * monthlyIncome),\n}));\n\nreturn [{ json: { categories } }];"
         },
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [
-          480,
+          544,
           432
         ],
         "id": "fec83824-f3eb-4df2-a2d3-cecb6356eb5d",
@@ -403,20 +440,46 @@
       },
       {
         "parameters": {
-          "jsonSchemaExample": "{\n  \"type\": \"array\",\n  \"items\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"name\": { \"type\": \"string\" },\n      \"emoji\": { \"type\": \"string\" },\n      \"budget\": { \"type\": \"number\" },\n      \"alert_threshold\": { \"type\": \"number\" }\n    },\n    \"required\": [\"name\", \"emoji\", \"budget\", \"alert_threshold\"]\n  }\n}"
+          "schemaType": "manual",
+          "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"categories\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"name\": { \"type\": \"string\" },\n          \"emoji\": { \"type\": \"string\" },\n          \"budget\": { \"type\": \"number\" },\n          \"alert_threshold\": { \"type\": \"number\" }\n        },\n        \"required\": [\"name\", \"emoji\", \"budget\", \"alert_threshold\"]\n      }\n    }\n  },\n  \"required\": [\"categories\"]\n}"
         },
         "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
         "typeVersion": 1.3,
         "position": [
           352,
-          640
+          624
         ],
         "id": "a583eb22-976e-4fad-8ebf-ce757df900d1",
         "name": "Structured Output Parser"
       },
       {
         "parameters": {
-          "tableId": "categories"
+          "useCustomSchema": true,
+          "tableId": "categories",
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "user_id",
+                "fieldValue": "={{ $json.userId }}"
+              },
+              {
+                "fieldId": "name",
+                "fieldValue": "={{ $json.name }}"
+              },
+              {
+                "fieldId": "emoji",
+                "fieldValue": "={{ $json.emoji }}"
+              },
+              {
+                "fieldId": "budget",
+                "fieldValue": "={{ $json.budget }}"
+              },
+              {
+                "fieldId": "alert_threshold",
+                "fieldValue": "={{ $json.alert_threshold }}"
+              }
+            ]
+          }
         },
         "type": "n8n-nodes-base.supabase",
         "typeVersion": 1,
@@ -428,13 +491,15 @@
         "name": "Create a row",
         "credentials": {
           "supabaseApi": {
-            "id": "Ry71z6dCp01HZRqK",
-            "name": "Supabase account 2"
+            "id": "szD5UDy6ZgKM6HaG",
+            "name": "Supabase account 3"
           }
         }
       },
       {
         "parameters": {
+          "respondWith": "json",
+          "responseBody": "{ \"status\": \"ok\" }",
           "options": {}
         },
         "type": "n8n-nodes-base.respondToWebhook",
@@ -445,6 +510,100 @@
         ],
         "id": "d27c2a06-aa1c-47ef-97b6-fabef4af8b8b",
         "name": "Respond to Webhook1"
+      },
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "4a9c3486-a938-4ec6-b82e-de8bd5ce2176",
+          "responseMode": "responseNode",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2.1,
+        "position": [
+          -288,
+          432
+        ],
+        "id": "fb802344-958c-4729-835a-b8d0ad2cfd94",
+        "name": "Webhook1",
+        "webhookId": "4a9c3486-a938-4ec6-b82e-de8bd5ce2176"
+      },
+      {
+        "parameters": {
+          "fieldToSplitOut": "categories",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitOut",
+        "typeVersion": 1,
+        "position": [
+          720,
+          432
+        ],
+        "id": "1243314f-25b2-4e72-95fd-8e1fdc62a315",
+        "name": "Split Out"
+      },
+      {
+        "parameters": {
+          "content": "Flujo Chat Nomi\n",
+          "height": 192,
+          "width": 192
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          -320,
+          -144
+        ],
+        "id": "a1ec8683-d87c-49d9-b200-80ba991c061b",
+        "name": "Sticky Note"
+      },
+      {
+        "parameters": {
+          "content": "Flujo Cuest Inicial",
+          "height": 208,
+          "width": 192,
+          "color": 5
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          -336,
+          384
+        ],
+        "id": "6627f315-6f47-4bfb-9eff-76d1df80edfb",
+        "name": "Sticky Note1"
+      },
+      {
+        "parameters": {
+          "content": "Flujo Borrar Cuenta\n",
+          "height": 208,
+          "width": 192,
+          "color": 5
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          -336,
+          848
+        ],
+        "id": "31714b0d-fa31-4ec4-97ff-bb35b10785c6",
+        "name": "Sticky Note2"
+      },
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "nomi-delete-account",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2.1,
+        "position": [
+          -288,
+          912
+        ],
+        "id": "2e799077-212f-414c-924e-93aac284c604",
+        "name": "Webhook2",
+        "webhookId": "9d3c03ca-cd6f-4501-8d28-3ecfd52bf678"
       }
     ],
     "connections": {
@@ -569,11 +728,6 @@
           ]
         ]
       },
-      "Webhook1": {
-        "main": [
-          []
-        ]
-      },
       "Edit Fields1": {
         "main": [
           [
@@ -622,7 +776,7 @@
         "main": [
           [
             {
-              "node": "Create a row",
+              "node": "Split Out",
               "type": "main",
               "index": 0
             }
@@ -639,14 +793,37 @@
             }
           ]
         ]
+      },
+      "Webhook1": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Split Out": {
+        "main": [
+          [
+            {
+              "node": "Create a row",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
+    "nodeGroups": [],
     "authors": "Carlos Fernández",
-    "name": "Version 3971b9c4",
+    "name": "Version 6593fd67",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "3971b9c4-e005-49fd-ac50-9ed6146dfcf6",
+  "activeVersionId": "6593fd67-cc6d-4262-9e90-feb848cec738",
   "connections": {
     "Webhook": {
       "main": [
@@ -769,11 +946,6 @@
         ]
       ]
     },
-    "Webhook1": {
-      "main": [
-        []
-      ]
-    },
     "Edit Fields1": {
       "main": [
         [
@@ -822,7 +994,7 @@
       "main": [
         [
           {
-            "node": "Create a row",
+            "node": "Split Out",
             "type": "main",
             "index": 0
           }
@@ -834,6 +1006,50 @@
         [
           {
             "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Create a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
             "type": "main",
             "index": 0
           }
@@ -1161,21 +1377,58 @@
     },
     {
       "parameters": {
-        "path": "fa77e965-57a7-4592-9296-817e7a620ebd",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2.1,
-      "position": [
-        -288,
-        432
-      ],
-      "id": "dec5ddf1-8c55-424c-bcbf-cb047991d1c9",
-      "name": "Webhook1",
-      "webhookId": "fa77e965-57a7-4592-9296-817e7a620ebd"
-    },
-    {
-      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8be6c334-a58c-4bab-a4c4-23380a728c58",
+              "name": "userId",
+              "value": "={{ $json.body.userId }}",
+              "type": "string"
+            },
+            {
+              "id": "4157a348-fdc8-40eb-ba4a-b43ba08e2000",
+              "name": "Nombre",
+              "value": "={{ $json.body.userName }}",
+              "type": "string"
+            },
+            {
+              "id": "9b1f1daf-a8b3-434e-a751-2d1abe989d7f",
+              "name": "Idioma",
+              "value": "={{ $json.body.language }}",
+              "type": "string"
+            },
+            {
+              "id": "de9d4cb3-2f69-4129-ae23-e419f722c293",
+              "name": "Ingreso-mensual",
+              "value": "={{ $json.body.monthlyIncome }}",
+              "type": "number"
+            },
+            {
+              "id": "23c990af-4981-4f1c-a4da-937b9caf9c2b",
+              "name": "Situacion-vivienda",
+              "value": "={{ $json.body.livingSituation }}",
+              "type": "string"
+            },
+            {
+              "id": "a5ab5c75-490d-4b89-9a77-ce2ff92ef364",
+              "name": "Gastos",
+              "value": "={{ $json.body.mainExpenses }}",
+              "type": "array"
+            },
+            {
+              "id": "03bd7042-05ea-4f72-baea-650f72ac2cb0",
+              "name": "Objetivo",
+              "value": "={{ $json.body.financialGoal }}",
+              "type": "string"
+            },
+            {
+              "id": "6dcf5a17-078e-422b-8df8-914534c05cf4",
+              "name": "Detalles",
+              "value": "={{ $json.body.details }}",
+              "type": "string"
+            }
+          ]
+        },
         "options": {}
       },
       "type": "n8n-nodes-base.set",
@@ -1190,7 +1443,7 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "Eres un analista financiero. Analiza estas respuestas de onboarding y crea entre 5 y 8 \ncategorías de gasto personalizadas con presupuestos sensatos según el ingreso mensual.\n\nIngreso mensual: {{ $json.monthlyIncome }}€\nSituación de vivienda: {{ $json.livingSituation }}\nGastos principales: {{ $json.mainExpenses }}\nObjetivo financiero: {{ $json.financialGoal }}\nDetalles adicionales: {{ $json.details }}\n\nReglas:\n- Los presupuestos deben sumar como máximo el 90% del ingreso mensual\n- Usa nombres y emojis claros en español\n- alert_threshold = aproximadamente 15-20% del budget de esa categoría\n- Prioriza las categorías mencionadas en \"gastos principales\"",
+        "text": "=Eres un analista financiero experto. Analiza estos datos de un nuevo usuario y crea \nentre 5 y 8 categorías de gasto 100% personalizadas con presupuestos realistas.\n\nDATOS DEL USUARIO:\n- Ingreso mensual: {{ $json['Ingreso-mensual'] }}€\n- Situación de vivienda: {{ $json['Situacion-vivienda'] }}\n- Gastos principales mencionados: {{ $json.Gastos.join(', ') }}\n- Objetivo financiero: {{ $json.Objetivo }}\n- Detalles adicionales: {{ $json.Detalles }}\n\nREGLAS:\n1. La suma de todos los presupuestos no debe superar el 90% del ingreso mensual\n2. Prioriza categorías para los gastos que el usuario mencionó explícitamente\n3. Incluye siempre una categoría \"Ahorro\" si el objetivo es ahorrar o invertir\n4. Usa nombres claros en español y emojis apropiados y variados\n5. alert_threshold = aproximadamente 15-20% del budget de esa categoría\n6. Si vive \"En pareja\" o \"Con familia\", ajusta los gastos de hogar/comida proporcionalmente\n7. Los presupuestos deben sumar de forma coherente con el ingreso real, no inventes cifras absurdas\n\nDevuelve SOLO las categorías en el formato solicitado, sin explicaciones adicionales.",
         "hasOutputParser": true,
         "messages": {
           "messageValues": []
@@ -1200,7 +1453,7 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.9,
       "position": [
-        144,
+        192,
         432
       ],
       "id": "6bb54529-1c49-4ca6-903a-79ea9f0f466c",
@@ -1219,8 +1472,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.3,
       "position": [
-        96,
-        640
+        176,
+        624
       ],
       "id": "801c13f7-1c89-414e-98a0-59e020b3d568",
       "name": "OpenAI Chat Model1",
@@ -1233,12 +1486,12 @@
     },
     {
       "parameters": {
-        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
+        "jsCode": "const data = $input.first().json.output;\nconst monthlyIncome = Number($('Edit Fields1').first().json['Ingreso-mensual']);\nconst userId = $('Edit Fields1').first().json.userId;\n\nconst categories = data.categories.map(cat => ({\n  userId: userId,\n  name: cat.name,\n  emoji: cat.emoji,\n  budget: Math.round(cat.budget * monthlyIncome),\n  alert_threshold: Math.round(cat.alert_threshold * monthlyIncome),\n}));\n\nreturn [{ json: { categories } }];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        480,
+        544,
         432
       ],
       "id": "fec83824-f3eb-4df2-a2d3-cecb6356eb5d",
@@ -1246,20 +1499,46 @@
     },
     {
       "parameters": {
-        "jsonSchemaExample": "{\n  \"type\": \"array\",\n  \"items\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"name\": { \"type\": \"string\" },\n      \"emoji\": { \"type\": \"string\" },\n      \"budget\": { \"type\": \"number\" },\n      \"alert_threshold\": { \"type\": \"number\" }\n    },\n    \"required\": [\"name\", \"emoji\", \"budget\", \"alert_threshold\"]\n  }\n}"
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"categories\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"name\": { \"type\": \"string\" },\n          \"emoji\": { \"type\": \"string\" },\n          \"budget\": { \"type\": \"number\" },\n          \"alert_threshold\": { \"type\": \"number\" }\n        },\n        \"required\": [\"name\", \"emoji\", \"budget\", \"alert_threshold\"]\n      }\n    }\n  },\n  \"required\": [\"categories\"]\n}"
       },
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
       "position": [
         352,
-        640
+        624
       ],
       "id": "a583eb22-976e-4fad-8ebf-ce757df900d1",
       "name": "Structured Output Parser"
     },
     {
       "parameters": {
-        "tableId": "categories"
+        "useCustomSchema": true,
+        "tableId": "categories",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "user_id",
+              "fieldValue": "={{ $json.userId }}"
+            },
+            {
+              "fieldId": "name",
+              "fieldValue": "={{ $json.name }}"
+            },
+            {
+              "fieldId": "emoji",
+              "fieldValue": "={{ $json.emoji }}"
+            },
+            {
+              "fieldId": "budget",
+              "fieldValue": "={{ $json.budget }}"
+            },
+            {
+              "fieldId": "alert_threshold",
+              "fieldValue": "={{ $json.alert_threshold }}"
+            }
+          ]
+        }
       },
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
@@ -1271,13 +1550,15 @@
       "name": "Create a row",
       "credentials": {
         "supabaseApi": {
-          "id": "Ry71z6dCp01HZRqK",
-          "name": "Supabase account 2"
+          "id": "szD5UDy6ZgKM6HaG",
+          "name": "Supabase account 3"
         }
       }
     },
     {
       "parameters": {
+        "respondWith": "json",
+        "responseBody": "{ \"status\": \"ok\" }",
         "options": {}
       },
       "type": "n8n-nodes-base.respondToWebhook",
@@ -1288,9 +1569,256 @@
       ],
       "id": "d27c2a06-aa1c-47ef-97b6-fabef4af8b8b",
       "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "4a9c3486-a938-4ec6-b82e-de8bd5ce2176",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -288,
+        432
+      ],
+      "id": "fb802344-958c-4729-835a-b8d0ad2cfd94",
+      "name": "Webhook1",
+      "webhookId": "4a9c3486-a938-4ec6-b82e-de8bd5ce2176"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "categories",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        720,
+        432
+      ],
+      "id": "1243314f-25b2-4e72-95fd-8e1fdc62a315",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "content": "Flujo Chat Nomi\n",
+        "height": 192,
+        "width": 192
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        -144
+      ],
+      "id": "a1ec8683-d87c-49d9-b200-80ba991c061b",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "Flujo Cuest Inicial",
+        "height": 208,
+        "width": 192,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -336,
+        384
+      ],
+      "id": "6627f315-6f47-4bfb-9eff-76d1df80edfb",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "Flujo Borrar Cuenta\n",
+        "height": 208,
+        "width": 192,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -336,
+        848
+      ],
+      "id": "31714b0d-fa31-4ec4-97ff-bb35b10785c6",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "nomi-delete-account",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -288,
+        912
+      ],
+      "id": "2e799077-212f-414c-924e-93aac284c604",
+      "name": "Webhook2",
+      "webhookId": "9d3c03ca-cd6f-4501-8d28-3ecfd52bf678"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "cfaafb2d-87b5-41f1-8487-ea5e962ae1c4",
+              "name": "userId",
+              "value": "={{ $json.body.userId }}",
+              "type": "string"
+            },
+            {
+              "id": "fab7e00a-c7c2-44c3-9497-33addf22081c",
+              "name": "headers[\"x-nomi-secret\"]",
+              "value": "={{ $json.headers[\"x-nomi-secret\"] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -80,
+        912
+      ],
+      "id": "13434e9b-05f8-4d01-a8f5-7090e64456e1",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "= https://audbnmkhynmrigbeejuc.supabase.co/auth/v1/admin/users/{{ $json.userId }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.SUPABASE_SERVICE_ROLE_KEY }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        128,
+        912
+      ],
+      "id": "93a8da24-bd76-4160-9625-a89f701bb9aa",
+      "name": "HTTP Request"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook1": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+            "content-length": "252",
+            "accept": "*/*",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "es-ES,es;q=0.6",
+            "content-type": "application/json",
+            "origin": "https://nomi-chat-wise.vercel.app",
+            "priority": "u=1, i",
+            "referer": "https://nomi-chat-wise.vercel.app/",
+            "sec-ch-ua": "\"Brave\";v=\"149\", \"Chromium\";v=\"149\", \"Not)A;Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "cross-site",
+            "sec-gpc": "1",
+            "x-forwarded-for": "77.231.26.155",
+            "x-forwarded-host": "n8n2nkz-n8n.vc1wee.easypanel.host",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "59accd6548a6",
+            "x-nomi-secret": "nomi-secret-2026",
+            "x-real-ip": "77.231.26.155"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "userId": "cff8c898-1603-44df-9fca-4a163152acc4",
+            "userName": "carl",
+            "language": "Spanish",
+            "monthlyIncome": 1500,
+            "livingSituation": "En pareja",
+            "mainExpenses": [
+              "Alquiler/Hipoteca",
+              "Comida",
+              "Ocio",
+              "Suscripciones"
+            ],
+            "financialGoal": "Ahorrar más",
+            "details": ""
+          },
+          "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook/4a9c3486-a938-4ec6-b82e-de8bd5ce2176",
+          "executionMode": "production"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Webhook2": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+            "content-length": "49",
+            "accept": "*/*",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "es-ES,es;q=0.6",
+            "content-type": "application/json",
+            "origin": "https://nomi-chat-wise.vercel.app",
+            "priority": "u=1, i",
+            "referer": "https://nomi-chat-wise.vercel.app/",
+            "sec-ch-ua": "\"Brave\";v=\"149\", \"Chromium\";v=\"149\", \"Not)A;Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "cross-site",
+            "sec-gpc": "1",
+            "x-forwarded-for": "77.231.26.155",
+            "x-forwarded-host": "n8n2nkz-n8n.vc1wee.easypanel.host",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "59accd6548a6",
+            "x-nomi-secret": "nomi-secret-2026",
+            "x-real-ip": "77.231.26.155"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "userId": "29c3a553-450b-43f1-9745-13b16adc098f"
+          },
+          "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook/nomi-delete-account",
+          "executionMode": "production"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate",
@@ -1311,7 +1839,7 @@
   ],
   "staticData": null,
   "tags": [],
-  "triggerCount": 2,
-  "updatedAt": "2026-06-27T18:22:44.530Z",
-  "versionId": "3971b9c4-e005-49fd-ac50-9ed6146dfcf6"
+  "triggerCount": 3,
+  "updatedAt": "2026-06-28T19:08:47.682Z",
+  "versionId": "f91e047c-3022-492f-acf4-7e5aadec890e"
 }
