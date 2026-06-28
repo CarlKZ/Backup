@@ -147,6 +147,7 @@
         ]
       }
     },
+    "nodeGroups": [],
     "authors": "Carlos Fernández",
     "name": "Modificar Perros",
     "description": "",
