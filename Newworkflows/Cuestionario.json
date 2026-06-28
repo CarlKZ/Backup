@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-06-27T17:51:05.000Z",
-    "createdAt": "2026-06-27T17:50:42.303Z",
-    "versionId": "1934472e-25ce-46cf-ad59-22d2dd80aaad",
+    "updatedAt": "2026-06-28T15:39:31.000Z",
+    "createdAt": "2026-06-28T15:39:29.547Z",
+    "versionId": "4ffc34f2-c191-4cef-a720-73043493c362",
     "workflowId": "l5bnps1sitLgoucl",
     "nodes": [
       {
@@ -361,7 +361,7 @@
         "type": "n8n-nodes-base.httpRequest",
         "typeVersion": 4.4,
         "position": [
-          1504,
+          1552,
           0
         ],
         "id": "87da7894-ab55-49ab-9982-4f5ff21b84bb",
@@ -437,22 +437,17 @@
       },
       "Send a message": {
         "main": [
-          [
-            {
-              "node": "HTTP Request",
-              "type": "main",
-              "index": 0
-            }
-          ]
+          []
         ]
       }
     },
+    "nodeGroups": [],
     "authors": "Carlos Fernández",
-    "name": "Version 1934472e",
+    "name": "Version 4ffc34f2",
     "description": "",
-    "autosaved": true
+    "autosaved": false
   },
-  "activeVersionId": "1934472e-25ce-46cf-ad59-22d2dd80aaad",
+  "activeVersionId": "4ffc34f2-c191-4cef-a720-73043493c362",
   "connections": {
     "Webhook": {
       "main": [
@@ -522,13 +517,7 @@
     },
     "Send a message": {
       "main": [
-        [
-          {
-            "node": "HTTP Request",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     }
   },
@@ -895,66 +884,14 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        1504,
+        1552,
         0
       ],
       "id": "87da7894-ab55-49ab-9982-4f5ff21b84bb",
       "name": "HTTP Request"
     }
   ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
-            "content-length": "175",
-            "accept": "*/*",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "accept-language": "es-ES,es;q=0.6",
-            "content-type": "application/json",
-            "origin": "https://nomi-chat-wise.vercel.app",
-            "priority": "u=1, i",
-            "referer": "https://nomi-chat-wise.vercel.app/",
-            "sec-ch-ua": "\"Brave\";v=\"149\", \"Chromium\";v=\"149\", \"Not)A;Brand\";v=\"24\"",
-            "sec-ch-ua-mobile": "?0",
-            "sec-ch-ua-platform": "\"Windows\"",
-            "sec-fetch-dest": "empty",
-            "sec-fetch-mode": "cors",
-            "sec-fetch-site": "cross-site",
-            "sec-gpc": "1",
-            "x-forwarded-for": "77.231.26.155",
-            "x-forwarded-host": "n8n2nkz-n8n.vc1wee.easypanel.host",
-            "x-forwarded-port": "443",
-            "x-forwarded-proto": "https",
-            "x-forwarded-server": "59accd6548a6",
-            "x-nomi-secret": "nomi-secret-2026",
-            "x-real-ip": "77.231.26.155"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "userId": "test",
-            "userName": "test",
-            "language": "Spanish",
-            "monthlyIncome": 1500,
-            "livingSituation": "En pareja",
-            "mainExpenses": [
-              "Ocio"
-            ],
-            "financialGoal": "Ahorrar más",
-            "details": ""
-          },
-          "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook/a317f864-65f2-4910-8fe3-65097be79321",
-          "executionMode": "production"
-        },
-        "pairedItem": {
-          "item": 0
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate",
@@ -976,6 +913,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-06-27T18:00:02.696Z",
-  "versionId": "1934472e-25ce-46cf-ad59-22d2dd80aaad"
+  "updatedAt": "2026-06-28T15:39:29.535Z",
+  "versionId": "4ffc34f2-c191-4cef-a720-73043493c362"
 }
