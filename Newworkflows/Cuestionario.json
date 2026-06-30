@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-06-29T12:45:02.000Z",
-    "createdAt": "2026-06-29T12:36:40.479Z",
-    "versionId": "18503361-7a88-4c36-8a06-b1912c4ea24b",
+    "updatedAt": "2026-06-30T12:07:03.000Z",
+    "createdAt": "2026-06-30T12:06:58.230Z",
+    "versionId": "21e07fe7-23fd-4795-90d2-2229786647d3",
     "workflowId": "l5bnps1sitLgoucl",
     "nodes": [
       {
@@ -466,11 +466,11 @@
     },
     "nodeGroups": [],
     "authors": "Carlos Fernández",
-    "name": "Version 18503361",
+    "name": "Version 21e07fe7",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "18503361-7a88-4c36-8a06-b1912c4ea24b",
+  "activeVersionId": "21e07fe7-23fd-4795-90d2-2229786647d3",
   "connections": {
     "Webhook": {
       "main": [
@@ -937,64 +937,7 @@
       "name": "HTTP Request"
     }
   ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
-            "content-length": "368",
-            "accept": "*/*",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "accept-language": "es-ES,es;q=0.8",
-            "content-type": "application/json",
-            "origin": "https://www.hasekura-automation.es",
-            "priority": "u=1, i",
-            "referer": "https://www.hasekura-automation.es/",
-            "sec-ch-ua": "\"Brave\";v=\"149\", \"Chromium\";v=\"149\", \"Not)A;Brand\";v=\"24\"",
-            "sec-ch-ua-mobile": "?0",
-            "sec-ch-ua-platform": "\"Windows\"",
-            "sec-fetch-dest": "empty",
-            "sec-fetch-mode": "cors",
-            "sec-fetch-site": "cross-site",
-            "sec-gpc": "1",
-            "x-forwarded-for": "159.147.132.69",
-            "x-forwarded-host": "n8n2nkz-n8n.vc1wee.easypanel.host",
-            "x-forwarded-port": "443",
-            "x-forwarded-proto": "https",
-            "x-forwarded-server": "59accd6548a6",
-            "x-real-ip": "159.147.132.69"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "sector": "Inmobiliaria",
-            "teamSize": "2-5",
-            "task": "filtrar lead potenciales",
-            "frequency": "Varias veces al día",
-            "currentTools": "Excel y email",
-            "existingSoftware": "CRM",
-            "hoursLost": "5-10h",
-            "outcomes": [
-              "Ahorrar tiempo",
-              "Escalar sin contratar",
-              "Mejorar la atención al cliente"
-            ],
-            "budget": "Más de 2000 €",
-            "name": "Carlos",
-            "phone": "622924906",
-            "email": "CarlosFG@gmail.com"
-          },
-          "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook/a317f864-65f2-4910-8fe3-65097be79321",
-          "executionMode": "production"
-        },
-        "pairedItem": {
-          "item": 0
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate",
@@ -1016,6 +959,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-06-29T12:45:41.952Z",
-  "versionId": "18503361-7a88-4c36-8a06-b1912c4ea24b"
+  "updatedAt": "2026-06-30T12:07:16.245Z",
+  "versionId": "21e07fe7-23fd-4795-90d2-2229786647d3"
 }
