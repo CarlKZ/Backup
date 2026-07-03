@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-06-30T12:07:03.000Z",
-    "createdAt": "2026-06-30T12:06:58.230Z",
-    "versionId": "21e07fe7-23fd-4795-90d2-2229786647d3",
+    "updatedAt": "2026-07-03T12:22:43.000Z",
+    "createdAt": "2026-07-03T12:22:11.169Z",
+    "versionId": "4792772c-bfed-438c-8a39-0e9db106d7fb",
     "workflowId": "l5bnps1sitLgoucl",
     "nodes": [
       {
@@ -89,7 +89,7 @@
               {
                 "id": "9bc45f00-e0eb-499f-90aa-551726f9ebc4",
                 "name": "Objetivo automatizacion",
-                "value": "={{ $json.body.outcomes[0] }}",
+                "value": "={{ $json.body.outcomes }}",
                 "type": "string"
               },
               {
@@ -279,7 +279,7 @@
       {
         "parameters": {
           "promptType": "define",
-          "text": "=Eres un asistente que genera correos electrónicos HTML profesionales.\nSe ha recibido un nuevo lead a través del formulario de Hasekura Automation. Genera el HTML completo de un correo electrónico con los siguientes datos:\nNombre: {{ $json.Nombre }}\nEmail: {{ $json[' Email'] }}\nTelefono: {{ $json.Telefono }}\nSector: {{ $json.Sector }}\nEquipo: {{ $json.Equipo }}\nTarea a automatizar: {{ $json.Automatizacion }}\nFrecuencia: {{ $json.Frecuencia }}\nHerramientas actuales: {{ $json.Herramientas }}\nSoftware de gestión: {{ $json[\"Sofware Gestion\"] }}\nTiempo perdido por semana: {{ $json[\"Tiempo Perdido Semanal\"] }}\nObjetivo principal: {{ $json[\"Objetivo Automatizacion\"] }}\nPresupuesto: {{ $json.Presupuesto }}\nDiseña el correo con estas especificaciones:\n\nFondo exterior: #f4f6f8\nTarjeta central blanca, border-radius 12px, max-width 600px, centrada\nHeader verde #1D9E75 con badge \"Nuevo lead\", título \"Formulario recibido\" y subtítulo \"Un cliente ha completado el formulario de Hasekura Automation\"\nCampos agrupados en 3 secciones: \"Datos de contacto\", \"Contexto de automatización\", \"Intención y presupuesto\"\nCuadrícula de 2 columnas para los campos con separadores finos\nEl objetivo principal destacado en caja con fondo #E1F5EE y borde izquierdo verde\nFooter con \"Hasekura Automation\" a la izquierda y fecha/hora a la derecha\nFuente sans-serif del sistema, 14px base\nTodo en inline styles, compatible con clientes de email\n\nDevuelve ÚNICAMENTE el HTML completo empezando por <!DOCTYPE html>, sin explicaciones ni bloques markdown.",
+          "text": "=Eres un asistente que genera correos electrónicos HTML profesionales.\nSe ha recibido un nuevo lead a través del formulario de Hasekura Automation. Genera el HTML completo de un correo electrónico con los siguientes datos:\n\nNombre: {{ $json.Nombre }}\nEmail: {{ $json[' Email'] }}\nTelefono: {{ $json.Telefono }}\nSector: {{ $json.Sector }}\nEquipo: {{ $json.Equipo }}\nTarea a automatizar: {{ $json.Automatizacion }}\nFrecuencia: {{ $json.Frecuencia }}\nHerramientas actuales: {{ $json.Herramientas }}\nSoftware de gestión: {{ $json[\"Sofware Gestion\"] }}\nTiempo perdido por semana: {{ $json[\"Tiempo Perdido Semanal\"] }}\nResultados que quiere conseguir (el cliente pudo marcar varios): {{ $json['Objetivo Automatizacion'] }}\nPresupuesto: {{ $json.Presupuesto }}\n\nDiseña el correo con estas especificaciones:\n- Fondo exterior: #f4f6f8\n- Tarjeta central blanca, border-radius 12px, max-width 600px, centrada\n- Header verde #1D9E75 con badge \"Nuevo lead\", título \"Formulario recibido\" y subtítulo \"Un cliente ha completado el formulario de Hasekura Automation\"\n- Campos agrupados en 3 secciones: \"Datos de contacto\", \"Contexto de automatización\", \"Intención y presupuesto\"\n- Cuadrícula de 2 columnas para los campos con separadores finos\n- En la sección \"Intención y presupuesto\", muestra TODOS los resultados que el cliente quiere conseguir. Renderiza cada resultado como una etiqueta/badge independiente (fondo #E1F5EE, texto verde #1D9E75, border-radius 20px, padding 5px 12px) dentro de una caja con borde izquierdo verde. Si solo hay uno, muéstralo igual como etiqueta.\n- Justo encima de las etiquetas, escribe UNA frase natural y dinámica que resuma en lenguaje humano lo que busca el cliente combinando TODOS los resultados marcados. Ejemplo: si marcó \"Ahorrar tiempo\" y \"Reducir errores\", algo como \"El cliente busca principalmente ahorrar tiempo y reducir errores en sus procesos\". La frase debe adaptarse SIEMPRE a los resultados reales recibidos, sin inventar objetivos que no estén en la lista ni usar una frase fija.\n- Footer con \"Hasekura Automation\" a la izquierda y fecha/hora a la derecha\n- Fuente sans-serif del sistema, 14px base\n- Todo en inline styles, compatible con clientes de email\n\nDevuelve ÚNICAMENTE el HTML completo empezando por <!DOCTYPE html>, sin explicaciones ni bloques markdown.",
           "messages": {
             "messageValues": []
           },
@@ -372,7 +372,7 @@
           },
           "sendBody": true,
           "specifyBody": "json",
-          "jsonBody": "={\n  \"name\": \"{{ $('Webhook').item.json.body.name }}\",\n  \"email\": \"{{ $('Webhook').item.json.body.email }}\",\n  \"Telefono\": \"{{ $('Webhook').item.json.body.phone }}\",\n  \"sector\": \"{{ $('Webhook').item.json.body.sector }}\",\n  \"teamSize\": \"{{ $('Webhook').item.json.body.teamSize }}\",\n  \"task\": \"{{ $('Webhook').item.json.body.task }}\",\n  \"frequency\": \"{{ $('Webhook').item.json.body.frequency }}\",\n  \"currentTools\": \"{{ $('Webhook').item.json.body.currentTools }}\",\n  \"existingSoftware\": \"{{ $('Webhook').item.json.body.existingSoftware }}\",\n  \"hoursLost\": \"{{ $('Webhook').item.json.body.hoursLost }}\",\n  \"outcomes\": {{ JSON.stringify($('Webhook').item.json.body.outcomes) }},\n  \"budget\": \"{{ $('Webhook').item.json.body.budget }}\"\n}",
+          "jsonBody": "={{ JSON.stringify({\n  name: $('Webhook').item.json.body.name,\n  email: $('Webhook').item.json.body.email,\n  Telefono: $('Webhook').item.json.body.phone,\n  sector: $('Webhook').item.json.body.sector,\n  teamSize: $('Webhook').item.json.body.teamSize,\n  task: $('Webhook').item.json.body.task,\n  frequency: $('Webhook').item.json.body.frequency,\n  currentTools: $('Webhook').item.json.body.currentTools,\n  existingSoftware: $('Webhook').item.json.body.existingSoftware,\n  hoursLost: $('Webhook').item.json.body.hoursLost,\n  outcomes: $('Webhook').item.json.body.outcomes ?? [],\n  budget: $('Webhook').item.json.body.budget\n}) }}",
           "options": {}
         },
         "type": "n8n-nodes-base.httpRequest",
@@ -466,11 +466,11 @@
     },
     "nodeGroups": [],
     "authors": "Carlos Fernández",
-    "name": "Version 21e07fe7",
+    "name": "Version 4792772c",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "21e07fe7-23fd-4795-90d2-2229786647d3",
+  "activeVersionId": "4792772c-bfed-438c-8a39-0e9db106d7fb",
   "connections": {
     "Webhook": {
       "main": [
@@ -641,7 +641,7 @@
             {
               "id": "9bc45f00-e0eb-499f-90aa-551726f9ebc4",
               "name": "Objetivo automatizacion",
-              "value": "={{ $json.body.outcomes[0] }}",
+              "value": "={{ $json.body.outcomes }}",
               "type": "string"
             },
             {
@@ -831,7 +831,7 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "=Eres un asistente que genera correos electrónicos HTML profesionales.\nSe ha recibido un nuevo lead a través del formulario de Hasekura Automation. Genera el HTML completo de un correo electrónico con los siguientes datos:\nNombre: {{ $json.Nombre }}\nEmail: {{ $json[' Email'] }}\nTelefono: {{ $json.Telefono }}\nSector: {{ $json.Sector }}\nEquipo: {{ $json.Equipo }}\nTarea a automatizar: {{ $json.Automatizacion }}\nFrecuencia: {{ $json.Frecuencia }}\nHerramientas actuales: {{ $json.Herramientas }}\nSoftware de gestión: {{ $json[\"Sofware Gestion\"] }}\nTiempo perdido por semana: {{ $json[\"Tiempo Perdido Semanal\"] }}\nObjetivo principal: {{ $json[\"Objetivo Automatizacion\"] }}\nPresupuesto: {{ $json.Presupuesto }}\nDiseña el correo con estas especificaciones:\n\nFondo exterior: #f4f6f8\nTarjeta central blanca, border-radius 12px, max-width 600px, centrada\nHeader verde #1D9E75 con badge \"Nuevo lead\", título \"Formulario recibido\" y subtítulo \"Un cliente ha completado el formulario de Hasekura Automation\"\nCampos agrupados en 3 secciones: \"Datos de contacto\", \"Contexto de automatización\", \"Intención y presupuesto\"\nCuadrícula de 2 columnas para los campos con separadores finos\nEl objetivo principal destacado en caja con fondo #E1F5EE y borde izquierdo verde\nFooter con \"Hasekura Automation\" a la izquierda y fecha/hora a la derecha\nFuente sans-serif del sistema, 14px base\nTodo en inline styles, compatible con clientes de email\n\nDevuelve ÚNICAMENTE el HTML completo empezando por <!DOCTYPE html>, sin explicaciones ni bloques markdown.",
+        "text": "=Eres un asistente que genera correos electrónicos HTML profesionales.\nSe ha recibido un nuevo lead a través del formulario de Hasekura Automation. Genera el HTML completo de un correo electrónico con los siguientes datos:\n\nNombre: {{ $json.Nombre }}\nEmail: {{ $json[' Email'] }}\nTelefono: {{ $json.Telefono }}\nSector: {{ $json.Sector }}\nEquipo: {{ $json.Equipo }}\nTarea a automatizar: {{ $json.Automatizacion }}\nFrecuencia: {{ $json.Frecuencia }}\nHerramientas actuales: {{ $json.Herramientas }}\nSoftware de gestión: {{ $json[\"Sofware Gestion\"] }}\nTiempo perdido por semana: {{ $json[\"Tiempo Perdido Semanal\"] }}\nResultados que quiere conseguir (el cliente pudo marcar varios): {{ $json['Objetivo Automatizacion'] }}\nPresupuesto: {{ $json.Presupuesto }}\n\nDiseña el correo con estas especificaciones:\n- Fondo exterior: #f4f6f8\n- Tarjeta central blanca, border-radius 12px, max-width 600px, centrada\n- Header verde #1D9E75 con badge \"Nuevo lead\", título \"Formulario recibido\" y subtítulo \"Un cliente ha completado el formulario de Hasekura Automation\"\n- Campos agrupados en 3 secciones: \"Datos de contacto\", \"Contexto de automatización\", \"Intención y presupuesto\"\n- Cuadrícula de 2 columnas para los campos con separadores finos\n- En la sección \"Intención y presupuesto\", muestra TODOS los resultados que el cliente quiere conseguir. Renderiza cada resultado como una etiqueta/badge independiente (fondo #E1F5EE, texto verde #1D9E75, border-radius 20px, padding 5px 12px) dentro de una caja con borde izquierdo verde. Si solo hay uno, muéstralo igual como etiqueta.\n- Justo encima de las etiquetas, escribe UNA frase natural y dinámica que resuma en lenguaje humano lo que busca el cliente combinando TODOS los resultados marcados. Ejemplo: si marcó \"Ahorrar tiempo\" y \"Reducir errores\", algo como \"El cliente busca principalmente ahorrar tiempo y reducir errores en sus procesos\". La frase debe adaptarse SIEMPRE a los resultados reales recibidos, sin inventar objetivos que no estén en la lista ni usar una frase fija.\n- Footer con \"Hasekura Automation\" a la izquierda y fecha/hora a la derecha\n- Fuente sans-serif del sistema, 14px base\n- Todo en inline styles, compatible con clientes de email\n\nDevuelve ÚNICAMENTE el HTML completo empezando por <!DOCTYPE html>, sin explicaciones ni bloques markdown.",
         "messages": {
           "messageValues": []
         },
@@ -924,7 +924,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"name\": \"{{ $('Webhook').item.json.body.name }}\",\n  \"email\": \"{{ $('Webhook').item.json.body.email }}\",\n  \"Telefono\": \"{{ $('Webhook').item.json.body.phone }}\",\n  \"sector\": \"{{ $('Webhook').item.json.body.sector }}\",\n  \"teamSize\": \"{{ $('Webhook').item.json.body.teamSize }}\",\n  \"task\": \"{{ $('Webhook').item.json.body.task }}\",\n  \"frequency\": \"{{ $('Webhook').item.json.body.frequency }}\",\n  \"currentTools\": \"{{ $('Webhook').item.json.body.currentTools }}\",\n  \"existingSoftware\": \"{{ $('Webhook').item.json.body.existingSoftware }}\",\n  \"hoursLost\": \"{{ $('Webhook').item.json.body.hoursLost }}\",\n  \"outcomes\": {{ JSON.stringify($('Webhook').item.json.body.outcomes) }},\n  \"budget\": \"{{ $('Webhook').item.json.body.budget }}\"\n}",
+        "jsonBody": "={{ JSON.stringify({\n  name: $('Webhook').item.json.body.name,\n  email: $('Webhook').item.json.body.email,\n  Telefono: $('Webhook').item.json.body.phone,\n  sector: $('Webhook').item.json.body.sector,\n  teamSize: $('Webhook').item.json.body.teamSize,\n  task: $('Webhook').item.json.body.task,\n  frequency: $('Webhook').item.json.body.frequency,\n  currentTools: $('Webhook').item.json.body.currentTools,\n  existingSoftware: $('Webhook').item.json.body.existingSoftware,\n  hoursLost: $('Webhook').item.json.body.hoursLost,\n  outcomes: $('Webhook').item.json.body.outcomes ?? [],\n  budget: $('Webhook').item.json.body.budget\n}) }}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -937,7 +937,65 @@
       "name": "HTTP Request"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+            "content-length": "372",
+            "accept": "*/*",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "es-ES,es;q=0.8",
+            "content-type": "application/json",
+            "origin": "https://www.hasekura-automation.es",
+            "priority": "u=1, i",
+            "referer": "https://www.hasekura-automation.es/",
+            "sec-ch-ua": "\"Not;A=Brand\";v=\"8\", \"Chromium\";v=\"150\", \"Brave\";v=\"150\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "cross-site",
+            "sec-gpc": "1",
+            "x-forwarded-for": "137.101.51.123",
+            "x-forwarded-host": "n8n2nkz-n8n.vc1wee.easypanel.host",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "59accd6548a6",
+            "x-real-ip": "137.101.51.123"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "sector": "Inmobiliaria",
+            "teamSize": "2-5",
+            "task": "filtrar leads potenciales",
+            "frequency": "A diario",
+            "currentTools": "excel y email",
+            "existingSoftware": "no",
+            "hoursLost": "5-10h",
+            "outcomes": [
+              "Ahorrar tiempo",
+              "Escalar sin contratar",
+              "Mejorar la atención al cliente",
+              "Reducir errores"
+            ],
+            "budget": "Más de 2000 €",
+            "name": "Carlos",
+            "phone": "654478854",
+            "email": "carlos@gmail.com"
+          },
+          "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook/a317f864-65f2-4910-8fe3-65097be79321",
+          "executionMode": "production"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate",
@@ -959,6 +1017,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-06-30T12:07:16.245Z",
-  "versionId": "21e07fe7-23fd-4795-90d2-2229786647d3"
+  "updatedAt": "2026-07-03T12:22:28.867Z",
+  "versionId": "4792772c-bfed-438c-8a39-0e9db106d7fb"
 }
