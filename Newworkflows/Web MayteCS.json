@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-06-16T14:21:58.000Z",
-    "createdAt": "2026-06-01T18:54:44.220Z",
-    "versionId": "d2e9bfb6-e683-4026-8894-5d7dfcd25e9c",
+    "updatedAt": "2026-07-06T16:10:27.000Z",
+    "createdAt": "2026-07-06T16:10:16.313Z",
+    "versionId": "018c4388-33f1-4995-92e8-beaad911db47",
     "workflowId": "fuPPkd9lqqbnG1yyWj4p_",
     "nodes": [
       {
@@ -121,7 +121,7 @@
       },
       {
         "parameters": {
-          "chatId": "7926769590",
+          "chatId": "632473141",
           "text": "={{ $json['fecha y hora'] }}\n\nBuenas Mayte, El usuario {{ $('AI Agent').item.json.output.nombre }} ha dejado **{{ $('AI Agent').item.json.output.estrellas }} 🌟 junto con el siguiente comentario: **{{ $('AI Agent').item.json.output.comentario }}",
           "additionalFields": {
             "appendAttribution": false
@@ -535,11 +535,11 @@
     },
     "nodeGroups": [],
     "authors": "Carlos Fernández",
-    "name": "Version d2e9bfb6",
+    "name": "Version 018c4388",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "d2e9bfb6-e683-4026-8894-5d7dfcd25e9c",
+  "activeVersionId": "018c4388-33f1-4995-92e8-beaad911db47",
   "connections": {
     "Webhook1": {
       "main": [
@@ -825,7 +825,7 @@
     },
     {
       "parameters": {
-        "chatId": "7926769590",
+        "chatId": "632473141",
         "text": "={{ $json['fecha y hora'] }}\n\nBuenas Mayte, El usuario {{ $('AI Agent').item.json.output.nombre }} ha dejado **{{ $('AI Agent').item.json.output.estrellas }} 🌟 junto con el siguiente comentario: **{{ $('AI Agent').item.json.output.comentario }}",
         "additionalFields": {
           "appendAttribution": false
@@ -1097,6 +1097,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2026-06-30T15:03:12.789Z",
-  "versionId": "d2e9bfb6-e683-4026-8894-5d7dfcd25e9c"
+  "updatedAt": "2026-07-06T16:10:16.310Z",
+  "versionId": "018c4388-33f1-4995-92e8-beaad911db47"
 }
