@@ -1299,6 +1299,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "FlowInvoiceBot",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
