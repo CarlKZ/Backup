@@ -709,6 +709,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "Web MayteCS",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
