@@ -44,6 +44,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "Modificar Pruebas",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
