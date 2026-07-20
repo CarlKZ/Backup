@@ -360,6 +360,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "Guarderia Canina Maria",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
