@@ -557,6 +557,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "Cuestionario",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
