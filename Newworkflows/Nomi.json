@@ -1,63 +1,11 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-07-17T12:19:21.000Z",
-    "createdAt": "2026-07-17T12:17:46.577Z",
-    "versionId": "7dcdb64d-a05d-454d-995b-9fdc2d3cb476",
+    "updatedAt": "2026-07-20T13:29:27.000Z",
+    "createdAt": "2026-07-20T13:24:57.007Z",
+    "versionId": "4e605770-c0e4-4dcc-8325-85f9467b5fe3",
     "workflowId": "DTg-BPp0wfhz_BMV49b5O",
     "nodes": [
-      {
-        "parameters": {
-          "httpMethod": "POST",
-          "path": "dc187e5f-454c-47cf-bc69-a3f8b3473103",
-          "responseMode": "responseNode",
-          "options": {}
-        },
-        "type": "n8n-nodes-base.webhook",
-        "typeVersion": 2.1,
-        "position": [
-          -1120,
-          -96
-        ],
-        "id": "0fcd9634-b5c2-4cb2-bea7-9c06a035209d",
-        "name": "Webhook",
-        "webhookId": "dc187e5f-454c-47cf-bc69-a3f8b3473103"
-      },
-      {
-        "parameters": {
-          "assignments": {
-            "assignments": [
-              {
-                "id": "5919a374-59bb-44a3-829d-5dc400adfd96",
-                "name": "message",
-                "value": "={{ $('Webhook').item.json.body.message }}",
-                "type": "string"
-              },
-              {
-                "id": "d7777e02-c8a9-48e2-91f8-45c45c4f6d39",
-                "name": "userId",
-                "value": "={{ $('HTTP Request').item.json.id }}",
-                "type": "string"
-              },
-              {
-                "id": "c7368acd-280a-4498-a667-c9ac1be3ae7b",
-                "name": "userName",
-                "value": "={{ $('Webhook').item.json.body.userName }}",
-                "type": "string"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.set",
-        "typeVersion": 3.4,
-        "position": [
-          -448,
-          -96
-        ],
-        "id": "dd6eb3d6-3396-4989-9f78-ce310f6d7578",
-        "name": "Edit Fields"
-      },
       {
         "parameters": {
           "promptType": "define",
@@ -69,7 +17,7 @@
         "type": "@n8n/n8n-nodes-langchain.agent",
         "typeVersion": 3.1,
         "position": [
-          96,
+          -448,
           -96
         ],
         "id": "fd325544-5bfb-41aa-8cea-8456d7c61be7",
@@ -77,30 +25,189 @@
       },
       {
         "parameters": {
+          "content": "Flujo Chat Nomi\n",
+          "height": 192,
+          "width": 192
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          -1712,
+          -16
+        ],
+        "id": "a1ec8683-d87c-49d9-b200-80ba991c061b",
+        "name": "Sticky Note"
+      },
+      {
+        "parameters": {
+          "content": "Flujo Cuest Inicial",
+          "height": 208,
+          "width": 192,
+          "color": 5
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          -1712,
+          400
+        ],
+        "id": "6627f315-6f47-4bfb-9eff-76d1df80edfb",
+        "name": "Sticky Note1"
+      },
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "dc187e5f-454c-47cf-bc69-a3f8b3473103",
+          "responseMode": "responseNode",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2.1,
+        "position": [
+          -1664,
+          16
+        ],
+        "id": "0fcd9634-b5c2-4cb2-bea7-9c06a035209d",
+        "name": "Recibir mensaje",
+        "webhookId": "dc187e5f-454c-47cf-bc69-a3f8b3473103"
+      },
+      {
+        "parameters": {
+          "url": "https://audbnmkhynmrigbeejuc.supabase.co/auth/v1/user",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Authorization",
+                "value": "={{ $json.headers.authorization }}"
+              },
+              {
+                "name": "apikey",
+                "value": "sb_publishable_l3WpldXjqxCT_y6w7NHdYw_2DdfusUv"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4,
+        "position": [
+          -1440,
+          16
+        ],
+        "id": "e5b1ec8d-0128-483a-b214-f4948e67cde2",
+        "name": "Validar token",
+        "alwaysOutputData": true,
+        "onError": "continueErrorOutput"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "307e762f-96fa-4e87-8b0d-182b4b9a30ff",
+                "leftValue": "={{ $json.id }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "string",
+                  "operation": "notEmpty",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -1216,
+          16
+        ],
+        "id": "eda06878-c0bd-482a-a3bc-14b6cddcb7d7",
+        "name": "¿Usuario válido?"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "5919a374-59bb-44a3-829d-5dc400adfd96",
+                "name": "message",
+                "value": "={{ $('Recibir mensaje').item.json.body.message }}",
+                "type": "string"
+              },
+              {
+                "id": "d7777e02-c8a9-48e2-91f8-45c45c4f6d39",
+                "name": "userId",
+                "value": "={{ $('Validar token').item.json.id }}",
+                "type": "string"
+              },
+              {
+                "id": "c7368acd-280a-4498-a667-c9ac1be3ae7b",
+                "name": "userName",
+                "value": "={{ $('Recibir mensaje').item.json.body.userName }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -992,
+          16
+        ],
+        "id": "dd6eb3d6-3396-4989-9f78-ce310f6d7578",
+        "name": "Preparar datos"
+      },
+      {
+        "parameters": {
+          "model": {
+            "__rl": true,
+            "value": "gpt-4o-mini",
+            "mode": "list",
+            "cachedResultName": "gpt-4o-mini"
+          },
+          "builtInTools": {},
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+        "typeVersion": 1.3,
+        "position": [
+          -864,
+          128
+        ],
+        "id": "cbb474a0-bf55-427a-81b4-ce6b98d9aa6c",
+        "name": "Modelo IA",
+        "credentials": {
+          "openAiApi": {
+            "id": "WvSLkCujVhY8jIGz",
+            "name": "OpenAi account"
+          }
+        }
+      },
+      {
+        "parameters": {
           "sessionIdType": "customKey",
-          "sessionKey": "={{ $('Edit Fields').item.json.userId }}"
+          "sessionKey": "={{ $('Preparar datos').item.json.userId }}"
         },
         "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
         "typeVersion": 1.4,
         "position": [
-          -96,
+          -736,
           128
         ],
         "id": "e8dd3a37-4813-43a5-b87e-d4939856ec82",
-        "name": "Simple Memory"
-      },
-      {
-        "parameters": {
-          "options": {}
-        },
-        "type": "n8n-nodes-base.respondToWebhook",
-        "typeVersion": 1.5,
-        "position": [
-          976,
-          -96
-        ],
-        "id": "e0b4288a-e168-4f33-a448-c0b656fd6ff5",
-        "name": "Respond to Webhook"
+        "name": "Memoria"
       },
       {
         "parameters": {
@@ -119,11 +226,11 @@
         "type": "n8n-nodes-base.supabaseTool",
         "typeVersion": 1,
         "position": [
-          32,
+          -592,
           128
         ],
         "id": "02ee1840-cb74-4f95-8852-63a0c98673e6",
-        "name": "Get Many Transactions",
+        "name": "Leer transacciones",
         "credentials": {
           "supabaseApi": {
             "id": "Ry71z6dCp01HZRqK",
@@ -170,11 +277,11 @@
         "type": "n8n-nodes-base.supabaseTool",
         "typeVersion": 1,
         "position": [
-          160,
+          -416,
           128
         ],
         "id": "dd56da02-e172-4a85-883e-580a01bdf3d6",
-        "name": "Create Transactions",
+        "name": "Crear transacción",
         "credentials": {
           "supabaseApi": {
             "id": "Ry71z6dCp01HZRqK",
@@ -199,11 +306,11 @@
         "type": "n8n-nodes-base.supabaseTool",
         "typeVersion": 1,
         "position": [
-          288,
+          -256,
           128
         ],
         "id": "5333e0d1-b502-484a-be2d-1e8ac8a8c4b9",
-        "name": "Get Many Categories",
+        "name": "Leer categorías",
         "credentials": {
           "supabaseApi": {
             "id": "Ry71z6dCp01HZRqK",
@@ -236,11 +343,11 @@
         "type": "n8n-nodes-base.supabaseTool",
         "typeVersion": 1,
         "position": [
-          416,
+          -96,
           128
         ],
         "id": "41687777-7a8e-4779-ab46-693864978543",
-        "name": "Update Categories",
+        "name": "Actualizar categoría",
         "credentials": {
           "supabaseApi": {
             "id": "Ry71z6dCp01HZRqK",
@@ -265,41 +372,15 @@
         "type": "n8n-nodes-base.supabaseTool",
         "typeVersion": 1,
         "position": [
-          544,
+          80,
           128
         ],
         "id": "33ec9240-5a87-439e-b207-b90086f5f453",
-        "name": "Delete Transaction",
+        "name": "Borrar transacción",
         "credentials": {
           "supabaseApi": {
             "id": "Ry71z6dCp01HZRqK",
             "name": "Supabase account 2"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "model": {
-            "__rl": true,
-            "value": "gpt-4o-mini",
-            "mode": "list",
-            "cachedResultName": "gpt-4o-mini"
-          },
-          "builtInTools": {},
-          "options": {}
-        },
-        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-        "typeVersion": 1.3,
-        "position": [
-          -224,
-          128
-        ],
-        "id": "cbb474a0-bf55-427a-81b4-ce6b98d9aa6c",
-        "name": "OpenAI Chat Model",
-        "credentials": {
-          "openAiApi": {
-            "id": "WvSLkCujVhY8jIGz",
-            "name": "OpenAi account"
           }
         }
       },
@@ -310,11 +391,103 @@
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [
-          752,
-          -96
+          208,
+          16
         ],
         "id": "8ce1c4a5-5f23-44f5-8a7b-66f247b14b7a",
-        "name": "Code in JavaScript"
+        "name": "Formatear respuesta"
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.respondToWebhook",
+        "typeVersion": 1.5,
+        "position": [
+          432,
+          16
+        ],
+        "id": "e0b4288a-e168-4f33-a448-c0b656fd6ff5",
+        "name": "Responder"
+      },
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "4a9c3486-a938-4ec6-b82e-de8bd5ce2176",
+          "responseMode": "responseNode",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2.1,
+        "position": [
+          -1664,
+          448
+        ],
+        "id": "fb802344-958c-4729-835a-b8d0ad2cfd94",
+        "name": "Recibir cuestionario",
+        "webhookId": "4a9c3486-a938-4ec6-b82e-de8bd5ce2176"
+      },
+      {
+        "parameters": {
+          "url": "https://audbnmkhynmrigbeejuc.supabase.co/auth/v1/user",
+          "sendQuery": true,
+          "queryParameters": {
+            "parameters": [
+              {
+                "name": "Authorization",
+                "value": "={{ $json.headers.authorization }}"
+              },
+              {
+                "name": "apikey",
+                "value": "sb_publishable_l3WpldXjqxCT_y6w7NHdYw_2DdfusUv"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4,
+        "position": [
+          -1440,
+          448
+        ],
+        "id": "b31a8153-0d43-4d8f-9f39-a10a7990df7f",
+        "name": "Validar token1",
+        "onError": "continueErrorOutput"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "3feb69ba-3c67-4888-9bf8-0a752e4e8eba",
+                "leftValue": "={{ $json.id }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "string",
+                  "operation": "notEmpty",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -1216,
+          448
+        ],
+        "id": "2179cc24-8e46-4cc0-8f93-70c4dceaf96d",
+        "name": "¿Usuario válido?1"
       },
       {
         "parameters": {
@@ -323,49 +496,49 @@
               {
                 "id": "8be6c334-a58c-4bab-a4c4-23380a728c58",
                 "name": "userId",
-                "value": "={{ $('Validar JWT').item.json.id }}",
+                "value": "={{ $('Validar token').item.json.id }}",
                 "type": "string"
               },
               {
                 "id": "4157a348-fdc8-40eb-ba4a-b43ba08e2000",
                 "name": "Nombre",
-                "value": "={{ $json.body.userName }}",
+                "value": "={{ $('Recibir cuestionario').item.json.body.userName }}",
                 "type": "string"
               },
               {
                 "id": "9b1f1daf-a8b3-434e-a751-2d1abe989d7f",
                 "name": "Idioma",
-                "value": "={{ $json.body.language }}",
+                "value": "={{ $('Recibir cuestionario').item.json.body.language }}",
                 "type": "string"
               },
               {
                 "id": "de9d4cb3-2f69-4129-ae23-e419f722c293",
                 "name": "Ingreso-mensual",
-                "value": "={{ $json.body.monthlyIncome }}",
+                "value": "={{ $('Recibir cuestionario').item.json.body.monthlyIncome }}",
                 "type": "number"
               },
               {
                 "id": "23c990af-4981-4f1c-a4da-937b9caf9c2b",
                 "name": "Situacion-vivienda",
-                "value": "={{ $json.body.livingSituation }}",
+                "value": "={{ $('Recibir cuestionario').item.json.body.livingSituation }}",
                 "type": "string"
               },
               {
                 "id": "a5ab5c75-490d-4b89-9a77-ce2ff92ef364",
                 "name": "Gastos",
-                "value": "={{ $json.body.mainExpenses }}",
+                "value": "={{ $('Recibir cuestionario').item.json.body.mainExpenses }}",
                 "type": "array"
               },
               {
                 "id": "03bd7042-05ea-4f72-baea-650f72ac2cb0",
                 "name": "Objetivo",
-                "value": "={{ $json.body.financialGoal }}",
+                "value": "={{ $('Recibir cuestionario').item.json.body.financialGoal }}",
                 "type": "string"
               },
               {
                 "id": "6dcf5a17-078e-422b-8df8-914534c05cf4",
                 "name": "Detalles",
-                "value": "={{ $json.body.details }}",
+                "value": "={{ $('Recibir cuestionario').item.json.body.details }}",
                 "type": "string"
               }
             ]
@@ -375,11 +548,11 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          -896,
-          336
+          -992,
+          448
         ],
         "id": "21152c4e-1ade-4437-8296-521d34091d6c",
-        "name": "Edit Fields1"
+        "name": "Preparar datos1"
       },
       {
         "parameters": {
@@ -394,11 +567,11 @@
         "type": "@n8n/n8n-nodes-langchain.chainLlm",
         "typeVersion": 1.9,
         "position": [
-          -672,
-          336
+          -768,
+          448
         ],
         "id": "6bb54529-1c49-4ca6-903a-79ea9f0f466c",
-        "name": "Basic LLM Chain"
+        "name": "Generar categorías (IA)"
       },
       {
         "parameters": {
@@ -413,11 +586,11 @@
         "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
         "typeVersion": 1.3,
         "position": [
-          -656,
-          560
+          -816,
+          672
         ],
         "id": "801c13f7-1c89-414e-98a0-59e020b3d568",
-        "name": "OpenAI Chat Model1",
+        "name": "Modelo IA1",
         "credentials": {
           "openAiApi": {
             "id": "WvSLkCujVhY8jIGz",
@@ -427,30 +600,44 @@
       },
       {
         "parameters": {
-          "jsCode": "const data = $input.first().json.output;\nconst monthlyIncome = Number($('Edit Fields1').first().json['Ingreso-mensual']);\nconst userId = $('Edit Fields1').first().json.userId;\n\n// El LLM devuelve \"budget\" y \"alert_threshold\" como PORCENTAJES (0-100),\n// nunca euros. Todo el cálculo de dinero real se hace aquí, no en el LLM.\nlet categories = data.categories.map(cat => ({\n  name: String(cat.name ?? 'Otros'),\n  emoji: String(cat.emoji ?? '📦'),\n  budgetPct: Math.max(0, Number(cat.budget) || 0),\n  alertPct: Math.min(100, Math.max(0, Number(cat.alert_threshold) || 0)),\n}));\n\nconst totalPct = categories.reduce((sum, c) => sum + c.budgetPct, 0);\nconst MAX_TOTAL_PCT = 90; // misma regla que el prompt: nunca más del 90% del ingreso\n\n// Red de seguridad: pase lo que pase en el LLM, nunca se supera el 90% del ingreso.\nconst scale = totalPct > MAX_TOTAL_PCT ? MAX_TOTAL_PCT / totalPct : 1;\n\nconst finalCategories = categories.map(cat => {\n  const budget = Math.round(monthlyIncome * (cat.budgetPct * scale) / 100);\n  const alert_threshold = Math.round(budget * (cat.alertPct / 100));\n  return { userId, name: cat.name, emoji: cat.emoji, budget, alert_threshold };\n});\n\nreturn [{ json: { categories: finalCategories } }];"
-        },
-        "type": "n8n-nodes-base.code",
-        "typeVersion": 2,
-        "position": [
-          -320,
-          336
-        ],
-        "id": "fec83824-f3eb-4df2-a2d3-cecb6356eb5d",
-        "name": "Code in JavaScript1"
-      },
-      {
-        "parameters": {
           "schemaType": "manual",
           "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"categories\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"name\": { \"type\": \"string\" },\n          \"emoji\": { \"type\": \"string\" },\n          \"budget\": { \"type\": \"number\" },\n          \"alert_threshold\": { \"type\": \"number\" }\n        },\n        \"required\": [\"name\", \"emoji\", \"budget\", \"alert_threshold\"]\n      }\n    }\n  },\n  \"required\": [\"categories\"]\n}"
         },
         "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
         "typeVersion": 1.3,
         "position": [
-          -528,
-          560
+          -624,
+          672
         ],
         "id": "a583eb22-976e-4fad-8ebf-ce757df900d1",
-        "name": "Structured Output Parser"
+        "name": "Formato de salida"
+      },
+      {
+        "parameters": {
+          "jsCode": "const data = $input.first().json.output;\nconst monthlyIncome = Number($('Preparar datos1').first().json['Ingreso-mensual']);\nconst userId = $('Preparar datos1').first().json.userId;\n\n// El LLM devuelve \"budget\" y \"alert_threshold\" como PORCENTAJES (0-100),\n// nunca euros. Todo el cálculo de dinero real se hace aquí, no en el LLM.\nlet categories = data.categories.map(cat => ({\n  name: String(cat.name ?? 'Otros'),\n  emoji: String(cat.emoji ?? '📦'),\n  budgetPct: Math.max(0, Number(cat.budget) || 0),\n  alertPct: Math.min(100, Math.max(0, Number(cat.alert_threshold) || 0)),\n}));\n\nconst totalPct = categories.reduce((sum, c) => sum + c.budgetPct, 0);\nconst MAX_TOTAL_PCT = 90; // misma regla que el prompt: nunca más del 90% del ingreso\n\n// Red de seguridad: pase lo que pase en el LLM, nunca se supera el 90% del ingreso.\nconst scale = totalPct > MAX_TOTAL_PCT ? MAX_TOTAL_PCT / totalPct : 1;\n\nconst finalCategories = categories.map(cat => {\n  const budget = Math.round(monthlyIncome * (cat.budgetPct * scale) / 100);\n  const alert_threshold = Math.round(budget * (cat.alertPct / 100));\n  return { userId, name: cat.name, emoji: cat.emoji, budget, alert_threshold };\n});\n\nreturn [{ json: { categories: finalCategories } }];"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -416,
+          448
+        ],
+        "id": "fec83824-f3eb-4df2-a2d3-cecb6356eb5d",
+        "name": "Calcular presupuestos"
+      },
+      {
+        "parameters": {
+          "fieldToSplitOut": "categories",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitOut",
+        "typeVersion": 1,
+        "position": [
+          -192,
+          448
+        ],
+        "id": "1243314f-25b2-4e72-95fd-8e1fdc62a315",
+        "name": "Separar categorías"
       },
       {
         "parameters": {
@@ -484,11 +671,11 @@
         "type": "n8n-nodes-base.supabase",
         "typeVersion": 1,
         "position": [
-          128,
-          336
+          32,
+          448
         ],
         "id": "e2526b65-3747-4bd9-a276-5b764e73e369",
-        "name": "Create a row",
+        "name": "Guardar categorías",
         "credentials": {
           "supabaseApi": {
             "id": "szD5UDy6ZgKM6HaG",
@@ -505,151 +692,59 @@
         "type": "n8n-nodes-base.respondToWebhook",
         "typeVersion": 1.5,
         "position": [
-          352,
-          336
+          256,
+          448
         ],
         "id": "d27c2a06-aa1c-47ef-97b6-fabef4af8b8b",
-        "name": "Respond to Webhook1"
-      },
-      {
-        "parameters": {
-          "httpMethod": "POST",
-          "path": "4a9c3486-a938-4ec6-b82e-de8bd5ce2176",
-          "responseMode": "responseNode",
-          "options": {}
-        },
-        "type": "n8n-nodes-base.webhook",
-        "typeVersion": 2.1,
-        "position": [
-          -1120,
-          336
-        ],
-        "id": "fb802344-958c-4729-835a-b8d0ad2cfd94",
-        "name": "Webhook1",
-        "webhookId": "4a9c3486-a938-4ec6-b82e-de8bd5ce2176"
-      },
-      {
-        "parameters": {
-          "fieldToSplitOut": "categories",
-          "options": {}
-        },
-        "type": "n8n-nodes-base.splitOut",
-        "typeVersion": 1,
-        "position": [
-          -96,
-          336
-        ],
-        "id": "1243314f-25b2-4e72-95fd-8e1fdc62a315",
-        "name": "Split Out"
-      },
-      {
-        "parameters": {
-          "content": "Flujo Chat Nomi\n",
-          "height": 192,
-          "width": 192
-        },
-        "type": "n8n-nodes-base.stickyNote",
-        "typeVersion": 1,
-        "position": [
-          -1168,
-          -128
-        ],
-        "id": "a1ec8683-d87c-49d9-b200-80ba991c061b",
-        "name": "Sticky Note"
-      },
-      {
-        "parameters": {
-          "content": "Flujo Cuest Inicial",
-          "height": 208,
-          "width": 192,
-          "color": 5
-        },
-        "type": "n8n-nodes-base.stickyNote",
-        "typeVersion": 1,
-        "position": [
-          -1168,
-          288
-        ],
-        "id": "6627f315-6f47-4bfb-9eff-76d1df80edfb",
-        "name": "Sticky Note1"
-      },
-      {
-        "parameters": {
-          "url": "https://audbnmkhynmrigbeejuc.supabase.co/auth/v1/user",
-          "sendHeaders": true,
-          "headerParameters": {
-            "parameters": [
-              {
-                "name": "Authorization",
-                "value": "={{ $json.headers.authorization }}"
-              },
-              {
-                "name": "apikey",
-                "value": "sb_publishable_l3WpldXjqxCT_y6w7NHdYw_2DdfusUv"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.httpRequest",
-        "typeVersion": 4.4,
-        "position": [
-          -896,
-          -96
-        ],
-        "id": "e5b1ec8d-0128-483a-b214-f4948e67cde2",
-        "name": "HTTP Request",
-        "alwaysOutputData": true,
-        "onError": "continueErrorOutput"
-      },
-      {
-        "parameters": {
-          "conditions": {
-            "options": {
-              "caseSensitive": true,
-              "leftValue": "",
-              "typeValidation": "strict",
-              "version": 3
-            },
-            "conditions": [
-              {
-                "id": "307e762f-96fa-4e87-8b0d-182b4b9a30ff",
-                "leftValue": "={{ $json.id }}",
-                "rightValue": "",
-                "operator": {
-                  "type": "string",
-                  "operation": "notEmpty",
-                  "singleValue": true
-                }
-              }
-            ],
-            "combinator": "and"
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.if",
-        "typeVersion": 2.3,
-        "position": [
-          -672,
-          -96
-        ],
-        "id": "eda06878-c0bd-482a-a3bc-14b6cddcb7d7",
-        "name": "If"
+        "name": "Responder1"
       }
     ],
     "connections": {
-      "Webhook": {
+      "AI Agent": {
         "main": [
           [
             {
-              "node": "HTTP Request",
+              "node": "Formatear respuesta",
               "type": "main",
               "index": 0
             }
           ]
         ]
       },
-      "Edit Fields": {
+      "Recibir mensaje": {
+        "main": [
+          [
+            {
+              "node": "Validar token",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Validar token": {
+        "main": [
+          [
+            {
+              "node": "¿Usuario válido?",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "¿Usuario válido?": {
+        "main": [
+          [
+            {
+              "node": "Preparar datos",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Preparar datos": {
         "main": [
           [
             {
@@ -660,7 +755,18 @@
           ]
         ]
       },
-      "Simple Memory": {
+      "Modelo IA": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Memoria": {
         "ai_memory": [
           [
             {
@@ -671,198 +777,176 @@
           ]
         ]
       },
-      "AI Agent": {
+      "Leer transacciones": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Crear transacción": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Leer categorías": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Actualizar categoría": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Borrar transacción": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Formatear respuesta": {
         "main": [
           [
             {
-              "node": "Code in JavaScript",
+              "node": "Responder",
               "type": "main",
               "index": 0
             }
           ]
         ]
       },
-      "Get Many Transactions": {
-        "ai_tool": [
+      "Recibir cuestionario": {
+        "main": [
           [
             {
-              "node": "AI Agent",
-              "type": "ai_tool",
+              "node": "Validar token1",
+              "type": "main",
               "index": 0
             }
           ]
         ]
       },
-      "Create Transactions": {
-        "ai_tool": [
+      "Validar token1": {
+        "main": [
           [
             {
-              "node": "AI Agent",
-              "type": "ai_tool",
+              "node": "¿Usuario válido?1",
+              "type": "main",
               "index": 0
             }
           ]
         ]
       },
-      "Get Many Categories": {
-        "ai_tool": [
+      "¿Usuario válido?1": {
+        "main": [
           [
             {
-              "node": "AI Agent",
-              "type": "ai_tool",
+              "node": "Preparar datos1",
+              "type": "main",
               "index": 0
             }
           ]
         ]
       },
-      "Update Categories": {
-        "ai_tool": [
+      "Preparar datos1": {
+        "main": [
           [
             {
-              "node": "AI Agent",
-              "type": "ai_tool",
+              "node": "Generar categorías (IA)",
+              "type": "main",
               "index": 0
             }
           ]
         ]
       },
-      "Delete Transaction": {
-        "ai_tool": [
+      "Generar categorías (IA)": {
+        "main": [
           [
             {
-              "node": "AI Agent",
-              "type": "ai_tool",
+              "node": "Calcular presupuestos",
+              "type": "main",
               "index": 0
             }
           ]
         ]
       },
-      "OpenAI Chat Model": {
+      "Modelo IA1": {
         "ai_languageModel": [
           [
             {
-              "node": "AI Agent",
+              "node": "Generar categorías (IA)",
               "type": "ai_languageModel",
               "index": 0
             }
           ]
         ]
       },
-      "Code in JavaScript": {
-        "main": [
-          [
-            {
-              "node": "Respond to Webhook",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Edit Fields1": {
-        "main": [
-          [
-            {
-              "node": "Basic LLM Chain",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "OpenAI Chat Model1": {
-        "ai_languageModel": [
-          [
-            {
-              "node": "Basic LLM Chain",
-              "type": "ai_languageModel",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Basic LLM Chain": {
-        "main": [
-          [
-            {
-              "node": "Code in JavaScript1",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Structured Output Parser": {
+      "Formato de salida": {
         "ai_outputParser": [
           [
             {
-              "node": "Basic LLM Chain",
+              "node": "Generar categorías (IA)",
               "type": "ai_outputParser",
               "index": 0
             }
           ]
         ]
       },
-      "Code in JavaScript1": {
+      "Calcular presupuestos": {
         "main": [
           [
             {
-              "node": "Split Out",
+              "node": "Separar categorías",
               "type": "main",
               "index": 0
             }
           ]
         ]
       },
-      "Create a row": {
+      "Separar categorías": {
         "main": [
           [
             {
-              "node": "Respond to Webhook1",
+              "node": "Guardar categorías",
               "type": "main",
               "index": 0
             }
           ]
         ]
       },
-      "Webhook1": {
+      "Guardar categorías": {
         "main": [
           [
             {
-              "node": "Edit Fields1",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Split Out": {
-        "main": [
-          [
-            {
-              "node": "Create a row",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "HTTP Request": {
-        "main": [
-          [
-            {
-              "node": "If",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "If": {
-        "main": [
-          [
-            {
-              "node": "Edit Fields",
+              "node": "Responder1",
               "type": "main",
               "index": 0
             }
@@ -872,24 +956,57 @@
     },
     "nodeGroups": [],
     "authors": "Carlos Fernández",
-    "name": "Version 7dcdb64d",
+    "name": "Version 4e605770",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "7dcdb64d-a05d-454d-995b-9fdc2d3cb476",
+  "activeVersionId": "4e605770-c0e4-4dcc-8325-85f9467b5fe3",
   "connections": {
-    "Webhook": {
+    "AI Agent": {
       "main": [
         [
           {
-            "node": "HTTP Request",
+            "node": "Formatear respuesta",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Edit Fields": {
+    "Recibir mensaje": {
+      "main": [
+        [
+          {
+            "node": "Validar token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validar token": {
+      "main": [
+        [
+          {
+            "node": "¿Usuario válido?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "¿Usuario válido?": {
+      "main": [
+        [
+          {
+            "node": "Preparar datos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preparar datos": {
       "main": [
         [
           {
@@ -900,7 +1017,18 @@
         ]
       ]
     },
-    "Simple Memory": {
+    "Modelo IA": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Memoria": {
       "ai_memory": [
         [
           {
@@ -911,198 +1039,176 @@
         ]
       ]
     },
-    "AI Agent": {
+    "Leer transacciones": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crear transacción": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leer categorías": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Actualizar categoría": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Borrar transacción": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formatear respuesta": {
       "main": [
         [
           {
-            "node": "Code in JavaScript",
+            "node": "Responder",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Get Many Transactions": {
-      "ai_tool": [
+    "Recibir cuestionario": {
+      "main": [
         [
           {
-            "node": "AI Agent",
-            "type": "ai_tool",
+            "node": "Validar token1",
+            "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Create Transactions": {
-      "ai_tool": [
+    "Validar token1": {
+      "main": [
         [
           {
-            "node": "AI Agent",
-            "type": "ai_tool",
+            "node": "¿Usuario válido?1",
+            "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Get Many Categories": {
-      "ai_tool": [
+    "¿Usuario válido?1": {
+      "main": [
         [
           {
-            "node": "AI Agent",
-            "type": "ai_tool",
+            "node": "Preparar datos1",
+            "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Update Categories": {
-      "ai_tool": [
+    "Preparar datos1": {
+      "main": [
         [
           {
-            "node": "AI Agent",
-            "type": "ai_tool",
+            "node": "Generar categorías (IA)",
+            "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Delete Transaction": {
-      "ai_tool": [
+    "Generar categorías (IA)": {
+      "main": [
         [
           {
-            "node": "AI Agent",
-            "type": "ai_tool",
+            "node": "Calcular presupuestos",
+            "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "OpenAI Chat Model": {
+    "Modelo IA1": {
       "ai_languageModel": [
         [
           {
-            "node": "AI Agent",
+            "node": "Generar categorías (IA)",
             "type": "ai_languageModel",
             "index": 0
           }
         ]
       ]
     },
-    "Code in JavaScript": {
-      "main": [
-        [
-          {
-            "node": "Respond to Webhook",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Edit Fields1": {
-      "main": [
-        [
-          {
-            "node": "Basic LLM Chain",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenAI Chat Model1": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Basic LLM Chain",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Basic LLM Chain": {
-      "main": [
-        [
-          {
-            "node": "Code in JavaScript1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Structured Output Parser": {
+    "Formato de salida": {
       "ai_outputParser": [
         [
           {
-            "node": "Basic LLM Chain",
+            "node": "Generar categorías (IA)",
             "type": "ai_outputParser",
             "index": 0
           }
         ]
       ]
     },
-    "Code in JavaScript1": {
+    "Calcular presupuestos": {
       "main": [
         [
           {
-            "node": "Split Out",
+            "node": "Separar categorías",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Create a row": {
+    "Separar categorías": {
       "main": [
         [
           {
-            "node": "Respond to Webhook1",
+            "node": "Guardar categorías",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Webhook1": {
+    "Guardar categorías": {
       "main": [
         [
           {
-            "node": "Edit Fields1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Split Out": {
-      "main": [
-        [
-          {
-            "node": "Create a row",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "HTTP Request": {
-      "main": [
-        [
-          {
-            "node": "If",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If": {
-      "main": [
-        [
-          {
-            "node": "Edit Fields",
+            "node": "Responder1",
             "type": "main",
             "index": 0
           }
@@ -1117,59 +1223,8 @@
     "templateCredsSetupCompleted": true
   },
   "name": "Nomi",
+  "nodeGroups": [],
   "nodes": [
-    {
-      "parameters": {
-        "httpMethod": "POST",
-        "path": "dc187e5f-454c-47cf-bc69-a3f8b3473103",
-        "responseMode": "responseNode",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2.1,
-      "position": [
-        -1120,
-        -96
-      ],
-      "id": "0fcd9634-b5c2-4cb2-bea7-9c06a035209d",
-      "name": "Webhook",
-      "webhookId": "dc187e5f-454c-47cf-bc69-a3f8b3473103"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "5919a374-59bb-44a3-829d-5dc400adfd96",
-              "name": "message",
-              "value": "={{ $('Webhook').item.json.body.message }}",
-              "type": "string"
-            },
-            {
-              "id": "d7777e02-c8a9-48e2-91f8-45c45c4f6d39",
-              "name": "userId",
-              "value": "={{ $('HTTP Request').item.json.id }}",
-              "type": "string"
-            },
-            {
-              "id": "c7368acd-280a-4498-a667-c9ac1be3ae7b",
-              "name": "userName",
-              "value": "={{ $('Webhook').item.json.body.userName }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -448,
-        -96
-      ],
-      "id": "dd6eb3d6-3396-4989-9f78-ce310f6d7578",
-      "name": "Edit Fields"
-    },
     {
       "parameters": {
         "promptType": "define",
@@ -1181,7 +1236,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        96,
+        -448,
         -96
       ],
       "id": "fd325544-5bfb-41aa-8cea-8456d7c61be7",
@@ -1189,30 +1244,189 @@
     },
     {
       "parameters": {
+        "content": "Flujo Chat Nomi\n",
+        "height": 192,
+        "width": 192
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1712,
+        -16
+      ],
+      "id": "a1ec8683-d87c-49d9-b200-80ba991c061b",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "Flujo Cuest Inicial",
+        "height": 208,
+        "width": 192,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1712,
+        400
+      ],
+      "id": "6627f315-6f47-4bfb-9eff-76d1df80edfb",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "dc187e5f-454c-47cf-bc69-a3f8b3473103",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -1664,
+        16
+      ],
+      "id": "0fcd9634-b5c2-4cb2-bea7-9c06a035209d",
+      "name": "Recibir mensaje",
+      "webhookId": "dc187e5f-454c-47cf-bc69-a3f8b3473103"
+    },
+    {
+      "parameters": {
+        "url": "https://audbnmkhynmrigbeejuc.supabase.co/auth/v1/user",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $json.headers.authorization }}"
+            },
+            {
+              "name": "apikey",
+              "value": "sb_publishable_l3WpldXjqxCT_y6w7NHdYw_2DdfusUv"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -1440,
+        16
+      ],
+      "id": "e5b1ec8d-0128-483a-b214-f4948e67cde2",
+      "name": "Validar token",
+      "alwaysOutputData": true,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "307e762f-96fa-4e87-8b0d-182b4b9a30ff",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -1216,
+        16
+      ],
+      "id": "eda06878-c0bd-482a-a3bc-14b6cddcb7d7",
+      "name": "¿Usuario válido?"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5919a374-59bb-44a3-829d-5dc400adfd96",
+              "name": "message",
+              "value": "={{ $('Recibir mensaje').item.json.body.message }}",
+              "type": "string"
+            },
+            {
+              "id": "d7777e02-c8a9-48e2-91f8-45c45c4f6d39",
+              "name": "userId",
+              "value": "={{ $('Validar token').item.json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "c7368acd-280a-4498-a667-c9ac1be3ae7b",
+              "name": "userName",
+              "value": "={{ $('Recibir mensaje').item.json.body.userName }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -992,
+        16
+      ],
+      "id": "dd6eb3d6-3396-4989-9f78-ce310f6d7578",
+      "name": "Preparar datos"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -864,
+        128
+      ],
+      "id": "cbb474a0-bf55-427a-81b4-ce6b98d9aa6c",
+      "name": "Modelo IA",
+      "credentials": {
+        "openAiApi": {
+          "id": "WvSLkCujVhY8jIGz",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
         "sessionIdType": "customKey",
-        "sessionKey": "={{ $('Edit Fields').item.json.userId }}"
+        "sessionKey": "={{ $('Preparar datos').item.json.userId }}"
       },
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.4,
       "position": [
-        -96,
+        -736,
         128
       ],
       "id": "e8dd3a37-4813-43a5-b87e-d4939856ec82",
-      "name": "Simple Memory"
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "type": "n8n-nodes-base.respondToWebhook",
-      "typeVersion": 1.5,
-      "position": [
-        976,
-        -96
-      ],
-      "id": "e0b4288a-e168-4f33-a448-c0b656fd6ff5",
-      "name": "Respond to Webhook"
+      "name": "Memoria"
     },
     {
       "parameters": {
@@ -1231,11 +1445,11 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        32,
+        -592,
         128
       ],
       "id": "02ee1840-cb74-4f95-8852-63a0c98673e6",
-      "name": "Get Many Transactions",
+      "name": "Leer transacciones",
       "credentials": {
         "supabaseApi": {
           "id": "Ry71z6dCp01HZRqK",
@@ -1282,11 +1496,11 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        160,
+        -416,
         128
       ],
       "id": "dd56da02-e172-4a85-883e-580a01bdf3d6",
-      "name": "Create Transactions",
+      "name": "Crear transacción",
       "credentials": {
         "supabaseApi": {
           "id": "Ry71z6dCp01HZRqK",
@@ -1311,11 +1525,11 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        288,
+        -256,
         128
       ],
       "id": "5333e0d1-b502-484a-be2d-1e8ac8a8c4b9",
-      "name": "Get Many Categories",
+      "name": "Leer categorías",
       "credentials": {
         "supabaseApi": {
           "id": "Ry71z6dCp01HZRqK",
@@ -1348,11 +1562,11 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        416,
+        -96,
         128
       ],
       "id": "41687777-7a8e-4779-ab46-693864978543",
-      "name": "Update Categories",
+      "name": "Actualizar categoría",
       "credentials": {
         "supabaseApi": {
           "id": "Ry71z6dCp01HZRqK",
@@ -1377,41 +1591,15 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        544,
+        80,
         128
       ],
       "id": "33ec9240-5a87-439e-b207-b90086f5f453",
-      "name": "Delete Transaction",
+      "name": "Borrar transacción",
       "credentials": {
         "supabaseApi": {
           "id": "Ry71z6dCp01HZRqK",
           "name": "Supabase account 2"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "model": {
-          "__rl": true,
-          "value": "gpt-4o-mini",
-          "mode": "list",
-          "cachedResultName": "gpt-4o-mini"
-        },
-        "builtInTools": {},
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.3,
-      "position": [
-        -224,
-        128
-      ],
-      "id": "cbb474a0-bf55-427a-81b4-ce6b98d9aa6c",
-      "name": "OpenAI Chat Model",
-      "credentials": {
-        "openAiApi": {
-          "id": "WvSLkCujVhY8jIGz",
-          "name": "OpenAi account"
         }
       }
     },
@@ -1422,11 +1610,103 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        752,
-        -96
+        208,
+        16
       ],
       "id": "8ce1c4a5-5f23-44f5-8a7b-66f247b14b7a",
-      "name": "Code in JavaScript"
+      "name": "Formatear respuesta"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        432,
+        16
+      ],
+      "id": "e0b4288a-e168-4f33-a448-c0b656fd6ff5",
+      "name": "Responder"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "4a9c3486-a938-4ec6-b82e-de8bd5ce2176",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -1664,
+        448
+      ],
+      "id": "fb802344-958c-4729-835a-b8d0ad2cfd94",
+      "name": "Recibir cuestionario",
+      "webhookId": "4a9c3486-a938-4ec6-b82e-de8bd5ce2176"
+    },
+    {
+      "parameters": {
+        "url": "https://audbnmkhynmrigbeejuc.supabase.co/auth/v1/user",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $json.headers.authorization }}"
+            },
+            {
+              "name": "apikey",
+              "value": "sb_publishable_l3WpldXjqxCT_y6w7NHdYw_2DdfusUv"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -1440,
+        448
+      ],
+      "id": "b31a8153-0d43-4d8f-9f39-a10a7990df7f",
+      "name": "Validar token1",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "3feb69ba-3c67-4888-9bf8-0a752e4e8eba",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -1216,
+        448
+      ],
+      "id": "2179cc24-8e46-4cc0-8f93-70c4dceaf96d",
+      "name": "¿Usuario válido?1"
     },
     {
       "parameters": {
@@ -1435,49 +1715,49 @@
             {
               "id": "8be6c334-a58c-4bab-a4c4-23380a728c58",
               "name": "userId",
-              "value": "={{ $('Validar JWT').item.json.id }}",
+              "value": "={{ $('Validar token').item.json.id }}",
               "type": "string"
             },
             {
               "id": "4157a348-fdc8-40eb-ba4a-b43ba08e2000",
               "name": "Nombre",
-              "value": "={{ $json.body.userName }}",
+              "value": "={{ $('Recibir cuestionario').item.json.body.userName }}",
               "type": "string"
             },
             {
               "id": "9b1f1daf-a8b3-434e-a751-2d1abe989d7f",
               "name": "Idioma",
-              "value": "={{ $json.body.language }}",
+              "value": "={{ $('Recibir cuestionario').item.json.body.language }}",
               "type": "string"
             },
             {
               "id": "de9d4cb3-2f69-4129-ae23-e419f722c293",
               "name": "Ingreso-mensual",
-              "value": "={{ $json.body.monthlyIncome }}",
+              "value": "={{ $('Recibir cuestionario').item.json.body.monthlyIncome }}",
               "type": "number"
             },
             {
               "id": "23c990af-4981-4f1c-a4da-937b9caf9c2b",
               "name": "Situacion-vivienda",
-              "value": "={{ $json.body.livingSituation }}",
+              "value": "={{ $('Recibir cuestionario').item.json.body.livingSituation }}",
               "type": "string"
             },
             {
               "id": "a5ab5c75-490d-4b89-9a77-ce2ff92ef364",
               "name": "Gastos",
-              "value": "={{ $json.body.mainExpenses }}",
+              "value": "={{ $('Recibir cuestionario').item.json.body.mainExpenses }}",
               "type": "array"
             },
             {
               "id": "03bd7042-05ea-4f72-baea-650f72ac2cb0",
               "name": "Objetivo",
-              "value": "={{ $json.body.financialGoal }}",
+              "value": "={{ $('Recibir cuestionario').item.json.body.financialGoal }}",
               "type": "string"
             },
             {
               "id": "6dcf5a17-078e-422b-8df8-914534c05cf4",
               "name": "Detalles",
-              "value": "={{ $json.body.details }}",
+              "value": "={{ $('Recibir cuestionario').item.json.body.details }}",
               "type": "string"
             }
           ]
@@ -1487,11 +1767,11 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -896,
-        336
+        -992,
+        448
       ],
       "id": "21152c4e-1ade-4437-8296-521d34091d6c",
-      "name": "Edit Fields1"
+      "name": "Preparar datos1"
     },
     {
       "parameters": {
@@ -1506,11 +1786,11 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.9,
       "position": [
-        -672,
-        336
+        -768,
+        448
       ],
       "id": "6bb54529-1c49-4ca6-903a-79ea9f0f466c",
-      "name": "Basic LLM Chain"
+      "name": "Generar categorías (IA)"
     },
     {
       "parameters": {
@@ -1525,11 +1805,11 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.3,
       "position": [
-        -656,
-        560
+        -816,
+        672
       ],
       "id": "801c13f7-1c89-414e-98a0-59e020b3d568",
-      "name": "OpenAI Chat Model1",
+      "name": "Modelo IA1",
       "credentials": {
         "openAiApi": {
           "id": "WvSLkCujVhY8jIGz",
@@ -1539,30 +1819,44 @@
     },
     {
       "parameters": {
-        "jsCode": "const data = $input.first().json.output;\nconst monthlyIncome = Number($('Edit Fields1').first().json['Ingreso-mensual']);\nconst userId = $('Edit Fields1').first().json.userId;\n\n// El LLM devuelve \"budget\" y \"alert_threshold\" como PORCENTAJES (0-100),\n// nunca euros. Todo el cálculo de dinero real se hace aquí, no en el LLM.\nlet categories = data.categories.map(cat => ({\n  name: String(cat.name ?? 'Otros'),\n  emoji: String(cat.emoji ?? '📦'),\n  budgetPct: Math.max(0, Number(cat.budget) || 0),\n  alertPct: Math.min(100, Math.max(0, Number(cat.alert_threshold) || 0)),\n}));\n\nconst totalPct = categories.reduce((sum, c) => sum + c.budgetPct, 0);\nconst MAX_TOTAL_PCT = 90; // misma regla que el prompt: nunca más del 90% del ingreso\n\n// Red de seguridad: pase lo que pase en el LLM, nunca se supera el 90% del ingreso.\nconst scale = totalPct > MAX_TOTAL_PCT ? MAX_TOTAL_PCT / totalPct : 1;\n\nconst finalCategories = categories.map(cat => {\n  const budget = Math.round(monthlyIncome * (cat.budgetPct * scale) / 100);\n  const alert_threshold = Math.round(budget * (cat.alertPct / 100));\n  return { userId, name: cat.name, emoji: cat.emoji, budget, alert_threshold };\n});\n\nreturn [{ json: { categories: finalCategories } }];"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        -320,
-        336
-      ],
-      "id": "fec83824-f3eb-4df2-a2d3-cecb6356eb5d",
-      "name": "Code in JavaScript1"
-    },
-    {
-      "parameters": {
         "schemaType": "manual",
         "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"categories\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"name\": { \"type\": \"string\" },\n          \"emoji\": { \"type\": \"string\" },\n          \"budget\": { \"type\": \"number\" },\n          \"alert_threshold\": { \"type\": \"number\" }\n        },\n        \"required\": [\"name\", \"emoji\", \"budget\", \"alert_threshold\"]\n      }\n    }\n  },\n  \"required\": [\"categories\"]\n}"
       },
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
       "position": [
-        -528,
-        560
+        -624,
+        672
       ],
       "id": "a583eb22-976e-4fad-8ebf-ce757df900d1",
-      "name": "Structured Output Parser"
+      "name": "Formato de salida"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = $input.first().json.output;\nconst monthlyIncome = Number($('Preparar datos1').first().json['Ingreso-mensual']);\nconst userId = $('Preparar datos1').first().json.userId;\n\n// El LLM devuelve \"budget\" y \"alert_threshold\" como PORCENTAJES (0-100),\n// nunca euros. Todo el cálculo de dinero real se hace aquí, no en el LLM.\nlet categories = data.categories.map(cat => ({\n  name: String(cat.name ?? 'Otros'),\n  emoji: String(cat.emoji ?? '📦'),\n  budgetPct: Math.max(0, Number(cat.budget) || 0),\n  alertPct: Math.min(100, Math.max(0, Number(cat.alert_threshold) || 0)),\n}));\n\nconst totalPct = categories.reduce((sum, c) => sum + c.budgetPct, 0);\nconst MAX_TOTAL_PCT = 90; // misma regla que el prompt: nunca más del 90% del ingreso\n\n// Red de seguridad: pase lo que pase en el LLM, nunca se supera el 90% del ingreso.\nconst scale = totalPct > MAX_TOTAL_PCT ? MAX_TOTAL_PCT / totalPct : 1;\n\nconst finalCategories = categories.map(cat => {\n  const budget = Math.round(monthlyIncome * (cat.budgetPct * scale) / 100);\n  const alert_threshold = Math.round(budget * (cat.alertPct / 100));\n  return { userId, name: cat.name, emoji: cat.emoji, budget, alert_threshold };\n});\n\nreturn [{ json: { categories: finalCategories } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -416,
+        448
+      ],
+      "id": "fec83824-f3eb-4df2-a2d3-cecb6356eb5d",
+      "name": "Calcular presupuestos"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "categories",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -192,
+        448
+      ],
+      "id": "1243314f-25b2-4e72-95fd-8e1fdc62a315",
+      "name": "Separar categorías"
     },
     {
       "parameters": {
@@ -1596,11 +1890,11 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        128,
-        336
+        32,
+        448
       ],
       "id": "e2526b65-3747-4bd9-a276-5b764e73e369",
-      "name": "Create a row",
+      "name": "Guardar categorías",
       "credentials": {
         "supabaseApi": {
           "id": "szD5UDy6ZgKM6HaG",
@@ -1617,194 +1911,15 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.5,
       "position": [
-        352,
-        336
+        256,
+        448
       ],
       "id": "d27c2a06-aa1c-47ef-97b6-fabef4af8b8b",
-      "name": "Respond to Webhook1"
-    },
-    {
-      "parameters": {
-        "httpMethod": "POST",
-        "path": "4a9c3486-a938-4ec6-b82e-de8bd5ce2176",
-        "responseMode": "responseNode",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2.1,
-      "position": [
-        -1120,
-        336
-      ],
-      "id": "fb802344-958c-4729-835a-b8d0ad2cfd94",
-      "name": "Webhook1",
-      "webhookId": "4a9c3486-a938-4ec6-b82e-de8bd5ce2176"
-    },
-    {
-      "parameters": {
-        "fieldToSplitOut": "categories",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.splitOut",
-      "typeVersion": 1,
-      "position": [
-        -96,
-        336
-      ],
-      "id": "1243314f-25b2-4e72-95fd-8e1fdc62a315",
-      "name": "Split Out"
-    },
-    {
-      "parameters": {
-        "content": "Flujo Chat Nomi\n",
-        "height": 192,
-        "width": 192
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        -1168,
-        -128
-      ],
-      "id": "a1ec8683-d87c-49d9-b200-80ba991c061b",
-      "name": "Sticky Note"
-    },
-    {
-      "parameters": {
-        "content": "Flujo Cuest Inicial",
-        "height": 208,
-        "width": 192,
-        "color": 5
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        -1168,
-        288
-      ],
-      "id": "6627f315-6f47-4bfb-9eff-76d1df80edfb",
-      "name": "Sticky Note1"
-    },
-    {
-      "parameters": {
-        "url": "https://audbnmkhynmrigbeejuc.supabase.co/auth/v1/user",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "={{ $json.headers.authorization }}"
-            },
-            {
-              "name": "apikey",
-              "value": "sb_publishable_l3WpldXjqxCT_y6w7NHdYw_2DdfusUv"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.4,
-      "position": [
-        -896,
-        -96
-      ],
-      "id": "e5b1ec8d-0128-483a-b214-f4948e67cde2",
-      "name": "HTTP Request",
-      "alwaysOutputData": true,
-      "onError": "continueErrorOutput"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 3
-          },
-          "conditions": [
-            {
-              "id": "307e762f-96fa-4e87-8b0d-182b4b9a30ff",
-              "leftValue": "={{ $json.id }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "notEmpty",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.3,
-      "position": [
-        -672,
-        -96
-      ],
-      "id": "eda06878-c0bd-482a-a3bc-14b6cddcb7d7",
-      "name": "If"
+      "name": "Responder1"
     }
   ],
   "pinData": {
-    "Webhook1": [
-      {
-        "json": {
-          "headers": {
-            "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
-            "content-length": "252",
-            "accept": "*/*",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "accept-language": "es-ES,es;q=0.6",
-            "content-type": "application/json",
-            "origin": "https://nomi-chat-wise.vercel.app",
-            "priority": "u=1, i",
-            "referer": "https://nomi-chat-wise.vercel.app/",
-            "sec-ch-ua": "\"Brave\";v=\"149\", \"Chromium\";v=\"149\", \"Not)A;Brand\";v=\"24\"",
-            "sec-ch-ua-mobile": "?0",
-            "sec-ch-ua-platform": "\"Windows\"",
-            "sec-fetch-dest": "empty",
-            "sec-fetch-mode": "cors",
-            "sec-fetch-site": "cross-site",
-            "sec-gpc": "1",
-            "x-forwarded-for": "77.231.26.155",
-            "x-forwarded-host": "n8n2nkz-n8n.vc1wee.easypanel.host",
-            "x-forwarded-port": "443",
-            "x-forwarded-proto": "https",
-            "x-forwarded-server": "59accd6548a6",
-            "x-nomi-secret": "nomi-secret-2026",
-            "x-real-ip": "77.231.26.155"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "userId": "cff8c898-1603-44df-9fca-4a163152acc4",
-            "userName": "carl",
-            "language": "Spanish",
-            "monthlyIncome": 1500,
-            "livingSituation": "En pareja",
-            "mainExpenses": [
-              "Alquiler/Hipoteca",
-              "Comida",
-              "Ocio",
-              "Suscripciones"
-            ],
-            "financialGoal": "Ahorrar más",
-            "details": ""
-          },
-          "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook/4a9c3486-a938-4ec6-b82e-de8bd5ce2176",
-          "executionMode": "production"
-        },
-        "pairedItem": {
-          "item": 0
-        }
-      }
-    ],
-    "Webhook": [
+    "Recibir mensaje": [
       {
         "json": {
           "headers": {
@@ -1926,6 +2041,60 @@
           "item": 0
         }
       }
+    ],
+    "Recibir cuestionario": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+            "content-length": "252",
+            "accept": "*/*",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "es-ES,es;q=0.6",
+            "content-type": "application/json",
+            "origin": "https://nomi-chat-wise.vercel.app",
+            "priority": "u=1, i",
+            "referer": "https://nomi-chat-wise.vercel.app/",
+            "sec-ch-ua": "\"Brave\";v=\"149\", \"Chromium\";v=\"149\", \"Not)A;Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "cross-site",
+            "sec-gpc": "1",
+            "x-forwarded-for": "77.231.26.155",
+            "x-forwarded-host": "n8n2nkz-n8n.vc1wee.easypanel.host",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "59accd6548a6",
+            "x-nomi-secret": "nomi-secret-2026",
+            "x-real-ip": "77.231.26.155"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "userId": "cff8c898-1603-44df-9fca-4a163152acc4",
+            "userName": "carl",
+            "language": "Spanish",
+            "monthlyIncome": 1500,
+            "livingSituation": "En pareja",
+            "mainExpenses": [
+              "Alquiler/Hipoteca",
+              "Comida",
+              "Ocio",
+              "Suscripciones"
+            ],
+            "financialGoal": "Ahorrar más",
+            "details": ""
+          },
+          "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook/4a9c3486-a938-4ec6-b82e-de8bd5ce2176",
+          "executionMode": "production"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
     ]
   },
   "settings": {
@@ -1949,6 +2118,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2026-07-17T12:25:14.801Z",
-  "versionId": "7dcdb64d-a05d-454d-995b-9fdc2d3cb476"
+  "updatedAt": "2026-07-20T13:24:56.998Z",
+  "versionId": "4e605770-c0e4-4dcc-8325-85f9467b5fe3"
 }
