@@ -47,6 +47,7 @@
   "isArchived": false,
   "meta": null,
   "name": "AutoNoty",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
