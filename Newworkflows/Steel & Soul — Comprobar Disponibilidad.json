@@ -291,6 +291,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "Steel & Soul — Comprobar Disponibilidad",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
