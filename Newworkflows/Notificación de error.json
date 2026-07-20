@@ -229,6 +229,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "Notificación de error",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {},
