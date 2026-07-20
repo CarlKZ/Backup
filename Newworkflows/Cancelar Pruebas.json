@@ -42,6 +42,7 @@
   "isArchived": true,
   "meta": null,
   "name": "Cancelar Pruebas",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
