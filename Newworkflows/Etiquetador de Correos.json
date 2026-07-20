@@ -771,6 +771,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "Etiquetador de Correos",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
@@ -1189,25 +1190,19 @@
   "staticData": {
     "node:Gmail Trigger": {
       "Gmail Trigger": {
-        "lastTimeChecked": 1784285464,
+        "lastTimeChecked": 1784563262,
         "possibleDuplicates": [
-          "19f6fb387c48b1c8",
-          "19f6fb2e871940dc",
-          "19f6fb2e50ec3786",
-          "19f6f988a739d99d",
-          "19f6ba877a009172"
+          "19f804266d1afa9c",
+          "19f7ff48914a15eb"
         ]
       }
     },
     "node:Gmail Trigger1": {
       "Gmail Trigger1": {
-        "lastTimeChecked": 1784285464,
+        "lastTimeChecked": 1784563262,
         "possibleDuplicates": [
-          "19f6fb387c48b1c8",
-          "19f6fb2e871940dc",
-          "19f6fb2e50ec3786",
-          "19f6f988a739d99d",
-          "19f6ba877a009172"
+          "19f804266d1afa9c",
+          "19f7ff48914a15eb"
         ]
       }
     }
