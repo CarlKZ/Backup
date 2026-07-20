@@ -248,6 +248,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "1 - Entrada Telegram",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
