@@ -1,0 +1,36 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {},
+  "createdAt": "2026-07-23T14:36:37.138Z",
+  "id": "1coqSj0ELthbpmma",
+  "isArchived": false,
+  "meta": null,
+  "name": "[REVISAR] Formulario Contacto MayteCS",
+  "nodeGroups": [],
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveManualExecutions": true,
+    "saveExecutionProgress": true,
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-07-23T14:36:37.150Z",
+      "createdAt": "2026-07-23T14:36:37.150Z",
+      "role": "workflow:owner",
+      "workflowId": "1coqSj0ELthbpmma",
+      "projectId": "Mg9CftDHMIrQGniA"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-07-23T16:23:28.356Z",
+  "versionId": "af5a5826-e565-4453-b447-5ced3973ef0e"
+}
