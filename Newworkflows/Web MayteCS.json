@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-07-22T09:58:00.968Z",
-    "createdAt": "2026-07-22T09:58:00.968Z",
-    "versionId": "e94ab638-cce4-4c76-b92f-83c56ad23b31",
+    "updatedAt": "2026-07-23T16:24:54.000Z",
+    "createdAt": "2026-07-23T16:23:43.716Z",
+    "versionId": "7f67b419-09e6-458b-b2e1-050f995e6220",
     "workflowId": "fuPPkd9lqqbnG1yyWj4p_",
     "nodes": [
       {
@@ -15,8 +15,8 @@
         "type": "n8n-nodes-base.webhook",
         "typeVersion": 2.1,
         "position": [
-          368,
-          128
+          352,
+          144
         ],
         "id": "72c0a68c-f3cb-4712-b7f8-2de8cc5b258e",
         "name": "Webhook1",
@@ -34,8 +34,8 @@
         "type": "@n8n/n8n-nodes-langchain.agent",
         "typeVersion": 3.1,
         "position": [
-          1072,
-          128
+          1088,
+          32
         ],
         "id": "fca29f84-bfdf-4999-8a23-66bacb36aba7",
         "name": "AI Agent"
@@ -53,8 +53,8 @@
         "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
         "typeVersion": 1.3,
         "position": [
-          800,
-          352
+          1024,
+          256
         ],
         "id": "b671d282-7df4-45d0-9635-5a27758f3869",
         "name": "OpenAI Chat Model",
@@ -74,8 +74,8 @@
         "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
         "typeVersion": 1.3,
         "position": [
-          1024,
-          464
+          1152,
+          256
         ],
         "id": "2ba5147b-5346-4452-a098-6d7ef19945ac",
         "name": "Postgres Chat Memory",
@@ -113,8 +113,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          1696,
-          128
+          1712,
+          144
         ],
         "id": "a7a27e07-7112-43f0-92a8-2675dfbe75da",
         "name": "If"
@@ -130,8 +130,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          2080,
-          32
+          1936,
+          48
         ],
         "id": "e71750cc-5a6d-45db-981c-096c4dc672c1",
         "name": "Send a text message",
@@ -152,7 +152,7 @@
         "typeVersion": 1.3,
         "position": [
           1280,
-          352
+          256
         ],
         "id": "61fa2f55-b0c4-4989-9bf0-c100fd47af92",
         "name": "Structured Output Parser"
@@ -165,7 +165,7 @@
         "typeVersion": 2,
         "position": [
           1488,
-          128
+          144
         ],
         "id": "b77aa688-82f0-49de-8ab4-5b682ddd088b",
         "name": "Code in JavaScript"
@@ -201,8 +201,8 @@
         "type": "n8n-nodes-base.supabase",
         "typeVersion": 1,
         "position": [
-          2304,
-          224
+          2160,
+          240
         ],
         "id": "ea4af1d9-194d-43e4-ac41-0db5cbc3b6ee",
         "name": "Create a row",
@@ -220,8 +220,8 @@
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [
-          2080,
-          224
+          1936,
+          240
         ],
         "id": "53b0b3c3-5454-421a-bb18-130a90762cd5",
         "name": "Code in JavaScript1"
@@ -255,8 +255,8 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          560,
-          128
+          576,
+          144
         ],
         "id": "1ade8099-c9f4-4395-89a3-6edf51c2c0c4",
         "name": "Edit Fields"
@@ -268,8 +268,8 @@
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [
-          768,
-          128
+          800,
+          144
         ],
         "id": "7bbb4885-8d12-4bf8-a8ea-1f3fec8361b1",
         "name": "Code in JavaScript2"
@@ -285,7 +285,7 @@
         "typeVersion": 2.1,
         "position": [
           352,
-          768
+          576
         ],
         "id": "673e6478-a887-4586-8567-12e993b6a057",
         "name": "Webhook",
@@ -308,8 +308,8 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          560,
-          768
+          576,
+          576
         ],
         "id": "3aa7ce86-8e37-456e-b448-7c303c586169",
         "name": "Edit Fields1"
@@ -330,8 +330,8 @@
         "type": "@n8n/n8n-nodes-langchain.chainLlm",
         "typeVersion": 1.9,
         "position": [
-          784,
-          768
+          800,
+          464
         ],
         "id": "c88343e1-5545-41ee-b5c4-7030bf0905e1",
         "name": "Basic LLM Chain"
@@ -343,8 +343,8 @@
         "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
         "typeVersion": 1.1,
         "position": [
-          784,
-          976
+          880,
+          688
         ],
         "id": "dd85b25d-3672-4292-b72a-15b497d8f787",
         "name": "Google Gemini Chat Model",
@@ -364,44 +364,34 @@
         "type": "n8n-nodes-base.respondToWebhook",
         "typeVersion": 1.5,
         "position": [
-          1200,
-          768
+          1152,
+          576
         ],
         "id": "f7e66ee8-a61c-4bda-8110-40b83e932160",
         "name": "Respond to Webhook"
       },
       {
+        "parameters": {
+          "rule": {
+            "interval": [
+              {
+                "triggerAtHour": 4
+              }
+            ]
+          }
+        },
         "id": "1fb875c0-4662-4b7c-ba36-9d3b23f1d940",
         "name": "Schedule - Diario",
         "type": "n8n-nodes-base.scheduleTrigger",
         "typeVersion": 1.2,
         "position": [
           352,
-          1300
-        ],
-        "parameters": {
-          "rule": {
-            "interval": [
-              {
-                "field": "days",
-                "triggerAtHour": 4
-              }
-            ]
-          }
-        }
+          896
+        ]
       },
       {
-        "id": "c07ec058-0f26-45f4-a3f7-96632f39b3fb",
-        "name": "KeepAlive - Insert",
-        "type": "n8n-nodes-base.supabase",
-        "typeVersion": 1,
-        "position": [
-          600,
-          1300
-        ],
         "parameters": {
           "tableId": "keep_alive",
-          "dataToSend": "defineBelow",
           "fieldsUi": {
             "fieldValues": [
               {
@@ -411,6 +401,14 @@
             ]
           }
         },
+        "id": "c07ec058-0f26-45f4-a3f7-96632f39b3fb",
+        "name": "KeepAlive - Insert",
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          576,
+          896
+        ],
         "credentials": {
           "supabaseApi": {
             "id": "J4PIPSYq33rPIYyJ",
@@ -419,18 +417,9 @@
         }
       },
       {
-        "id": "6fefc8fd-9644-47b1-968e-686dc879779e",
-        "name": "KeepAlive - Delete",
-        "type": "n8n-nodes-base.supabase",
-        "typeVersion": 1,
-        "position": [
-          850,
-          1300
-        ],
         "parameters": {
           "operation": "delete",
           "tableId": "keep_alive",
-          "filterType": "manual",
           "matchType": "allFilters",
           "filters": {
             "conditions": [
@@ -442,12 +431,104 @@
             ]
           }
         },
+        "id": "6fefc8fd-9644-47b1-968e-686dc879779e",
+        "name": "KeepAlive - Delete",
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          800,
+          896
+        ],
         "credentials": {
           "supabaseApi": {
             "id": "J4PIPSYq33rPIYyJ",
             "name": "Supabase account"
           }
         }
+      },
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "77e0c46c-1d0e-4d58-96ad-ab9778141974",
+          "options": {}
+        },
+        "id": "982c1c4c-9faf-418f-af5e-fa42f54aa4dc",
+        "name": "Webhook Contacto",
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2.1,
+        "position": [
+          352,
+          -176
+        ],
+        "webhookId": "830b1bf9-b909-45ca-a612-1837404cb5a8",
+        "notes": "Recibe los datos del formulario Reserva tu Cita de la web."
+      },
+      {
+        "parameters": {
+          "jsCode": "// Normaliza la solicitud de contacto y construye el HTML del correo.\n// El texto se escapa para que nadie pueda inyectar markup en el email.\nconst b = $input.first().json.body ?? {};\n\nconst esc = (v, max) => String(v ?? '').trim().slice(0, max)\n  .replace(/&/g, '&amp;')\n  .replace(/</g, '&lt;')\n  .replace(/>/g, '&gt;')\n  .replace(/\"/g, '&quot;');\n\nconst oVacio = (s) => s || 'No indicado';\n\nconst emailRaw = String(b.email ?? '').trim().slice(0, 255);\nconst emailValido = /^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/.test(emailRaw);\n\nconst nombre   = oVacio(esc(b.nombre, 100));\nconst email    = oVacio(esc(emailRaw, 255));\nconst telefono = oVacio(esc(b.telefono, 20));\nconst servicio = oVacio(esc(b.servicio, 100));\nconst mensaje  = oVacio(esc(b.mensaje, 2000)).replace(/\\n/g, '<br>');\n\nconst fecha = new Date().toLocaleString('es-ES', {\n  timeZone: 'Europe/Madrid',\n  day: '2-digit', month: '2-digit', year: 'numeric',\n  hour: '2-digit', minute: '2-digit', hour12: false\n}).replace(',', ' -');\n\nconst html = `\n<div style=\"font-family:Arial,Helvetica,sans-serif;max-width:600px;color:#2d2438\">\n  <h2 style=\"color:#6b4f8a;margin-bottom:4px\">Nueva solicitud de cita</h2>\n  <p style=\"color:#7a7a7a;margin-top:0;font-size:13px\">Recibida el ${fecha}</p>\n  <table cellpadding=\"8\" cellspacing=\"0\" style=\"border-collapse:collapse;width:100%;margin-top:16px\">\n    <tr style=\"background:#f6f2fa\"><td><strong>Nombre</strong></td><td>${nombre}</td></tr>\n    <tr><td><strong>Email</strong></td><td>${email}</td></tr>\n    <tr style=\"background:#f6f2fa\"><td><strong>Telefono</strong></td><td>${telefono}</td></tr>\n    <tr><td><strong>Servicio</strong></td><td>${servicio}</td></tr>\n  </table>\n  <h3 style=\"color:#6b4f8a;margin-bottom:4px\">Mensaje</h3>\n  <div style=\"background:#f6f2fa;padding:14px;border-radius:8px;line-height:1.5\">${mensaje}</div>\n  <p style=\"margin-top:20px;font-size:13px;color:#7a7a7a\">\n    Responde directamente a este correo y tu respuesta llegara a la clienta.\n  </p>\n</div>`;\n\nreturn [{ json: { nombre, email, telefono, servicio, mensaje, fecha, html, replyTo: emailValido ? emailRaw : '' } }];"
+        },
+        "id": "7119ca2c-e8b0-499a-be93-13167056f3e9",
+        "name": "Formatear Contacto",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          608,
+          -176
+        ],
+        "notes": "Limpia los datos, escapa el texto para evitar inyeccion de HTML y arma el correo."
+      },
+      {
+        "parameters": {
+          "sendTo": "=maytecsweb@gmail.com",
+          "subject": "=Cita para {{ $json.nombre }} - {{ $json.servicio }}",
+          "message": "={{ $json.html }}",
+          "options": {
+            "appendAttribution": false,
+            "senderName": "={{ $json.nombre }}",
+            "replyTo": "={{ $json.replyTo }}"
+          }
+        },
+        "id": "28d82618-165b-4d0d-bc49-723e1dc809b4",
+        "name": "Email Solicitud Cita",
+        "type": "n8n-nodes-base.gmail",
+        "typeVersion": 2.1,
+        "position": [
+          864,
+          -176
+        ],
+        "webhookId": "5e2dc9f7-9433-4602-9634-9c17d4d0a2e3",
+        "credentials": {
+          "gmailOAuth2": {
+            "id": "FFIwFOqAlDSLZKil",
+            "name": "Gmail account 2"
+          }
+        },
+        "notes": "Envia el aviso al correo del negocio. Responder-a apunta a la clienta."
+      },
+      {
+        "parameters": {
+          "operation": "addLabels",
+          "messageId": "={{ $json.id }}",
+          "labelIds": [
+            "INBOX"
+          ]
+        },
+        "id": "5d0b3e3e-f419-4b8f-ad48-2210881b0b62",
+        "name": "Mover a Recibidos",
+        "type": "n8n-nodes-base.gmail",
+        "typeVersion": 2.1,
+        "position": [
+          1136,
+          -176
+        ],
+        "webhookId": "f1a5e425-b149-4fe4-ac5d-c5250d2fbbf9",
+        "credentials": {
+          "gmailOAuth2": {
+            "id": "FFIwFOqAlDSLZKil",
+            "name": "Gmail account 2"
+          }
+        },
+        "notes": "Gmail no mete en Recibidos los correos que una cuenta se envia a si misma. Esto le pone la etiqueta INBOX para que aparezca en la bandeja."
       }
     ],
     "connections": {
@@ -632,15 +713,48 @@
             }
           ]
         ]
+      },
+      "Webhook Contacto": {
+        "main": [
+          [
+            {
+              "node": "Formatear Contacto",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Formatear Contacto": {
+        "main": [
+          [
+            {
+              "node": "Email Solicitud Cita",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Email Solicitud Cita": {
+        "main": [
+          [
+            {
+              "node": "Mover a Recibidos",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "nodeGroups": [],
     "authors": "Carlos Fernández",
-    "name": null,
-    "description": null,
-    "autosaved": false
+    "name": "Version 7f67b419",
+    "description": "",
+    "autosaved": true
   },
-  "activeVersionId": "e94ab638-cce4-4c76-b92f-83c56ad23b31",
+  "activeVersionId": "7f67b419-09e6-458b-b2e1-050f995e6220",
   "connections": {
     "Webhook1": {
       "main": [
@@ -823,6 +937,39 @@
           }
         ]
       ]
+    },
+    "Webhook Contacto": {
+      "main": [
+        [
+          {
+            "node": "Formatear Contacto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formatear Contacto": {
+      "main": [
+        [
+          {
+            "node": "Email Solicitud Cita",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email Solicitud Cita": {
+      "main": [
+        [
+          {
+            "node": "Mover a Recibidos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2026-02-24T13:04:08.470Z",
@@ -843,8 +990,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        368,
-        128
+        352,
+        144
       ],
       "id": "72c0a68c-f3cb-4712-b7f8-2de8cc5b258e",
       "name": "Webhook1",
@@ -862,8 +1009,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        1072,
-        128
+        1088,
+        32
       ],
       "id": "fca29f84-bfdf-4999-8a23-66bacb36aba7",
       "name": "AI Agent"
@@ -881,8 +1028,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.3,
       "position": [
-        800,
-        352
+        1024,
+        256
       ],
       "id": "b671d282-7df4-45d0-9635-5a27758f3869",
       "name": "OpenAI Chat Model",
@@ -902,8 +1049,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
       "typeVersion": 1.3,
       "position": [
-        1024,
-        464
+        1152,
+        256
       ],
       "id": "2ba5147b-5346-4452-a098-6d7ef19945ac",
       "name": "Postgres Chat Memory",
@@ -941,8 +1088,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        1696,
-        128
+        1712,
+        144
       ],
       "id": "a7a27e07-7112-43f0-92a8-2675dfbe75da",
       "name": "If"
@@ -958,8 +1105,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2080,
-        32
+        1936,
+        48
       ],
       "id": "e71750cc-5a6d-45db-981c-096c4dc672c1",
       "name": "Send a text message",
@@ -980,7 +1127,7 @@
       "typeVersion": 1.3,
       "position": [
         1280,
-        352
+        256
       ],
       "id": "61fa2f55-b0c4-4989-9bf0-c100fd47af92",
       "name": "Structured Output Parser"
@@ -993,7 +1140,7 @@
       "typeVersion": 2,
       "position": [
         1488,
-        128
+        144
       ],
       "id": "b77aa688-82f0-49de-8ab4-5b682ddd088b",
       "name": "Code in JavaScript"
@@ -1029,8 +1176,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        2304,
-        224
+        2160,
+        240
       ],
       "id": "ea4af1d9-194d-43e4-ac41-0db5cbc3b6ee",
       "name": "Create a row",
@@ -1048,8 +1195,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2080,
-        224
+        1936,
+        240
       ],
       "id": "53b0b3c3-5454-421a-bb18-130a90762cd5",
       "name": "Code in JavaScript1"
@@ -1083,8 +1230,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        560,
-        128
+        576,
+        144
       ],
       "id": "1ade8099-c9f4-4395-89a3-6edf51c2c0c4",
       "name": "Edit Fields"
@@ -1096,8 +1243,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        768,
-        128
+        800,
+        144
       ],
       "id": "7bbb4885-8d12-4bf8-a8ea-1f3fec8361b1",
       "name": "Code in JavaScript2"
@@ -1113,7 +1260,7 @@
       "typeVersion": 2.1,
       "position": [
         352,
-        768
+        576
       ],
       "id": "673e6478-a887-4586-8567-12e993b6a057",
       "name": "Webhook",
@@ -1136,8 +1283,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        560,
-        768
+        576,
+        576
       ],
       "id": "3aa7ce86-8e37-456e-b448-7c303c586169",
       "name": "Edit Fields1"
@@ -1158,8 +1305,8 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.9,
       "position": [
-        784,
-        768
+        800,
+        464
       ],
       "id": "c88343e1-5545-41ee-b5c4-7030bf0905e1",
       "name": "Basic LLM Chain"
@@ -1171,8 +1318,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1.1,
       "position": [
-        784,
-        976
+        880,
+        688
       ],
       "id": "dd85b25d-3672-4292-b72a-15b497d8f787",
       "name": "Google Gemini Chat Model",
@@ -1192,44 +1339,34 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.5,
       "position": [
-        1200,
-        768
+        1152,
+        576
       ],
       "id": "f7e66ee8-a61c-4bda-8110-40b83e932160",
       "name": "Respond to Webhook"
     },
     {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 4
+            }
+          ]
+        }
+      },
       "id": "1fb875c0-4662-4b7c-ba36-9d3b23f1d940",
       "name": "Schedule - Diario",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
         352,
-        1300
-      ],
-      "parameters": {
-        "rule": {
-          "interval": [
-            {
-              "field": "days",
-              "triggerAtHour": 4
-            }
-          ]
-        }
-      }
+        896
+      ]
     },
     {
-      "id": "c07ec058-0f26-45f4-a3f7-96632f39b3fb",
-      "name": "KeepAlive - Insert",
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        600,
-        1300
-      ],
       "parameters": {
         "tableId": "keep_alive",
-        "dataToSend": "defineBelow",
         "fieldsUi": {
           "fieldValues": [
             {
@@ -1239,6 +1376,14 @@
           ]
         }
       },
+      "id": "c07ec058-0f26-45f4-a3f7-96632f39b3fb",
+      "name": "KeepAlive - Insert",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        576,
+        896
+      ],
       "credentials": {
         "supabaseApi": {
           "id": "J4PIPSYq33rPIYyJ",
@@ -1247,18 +1392,9 @@
       }
     },
     {
-      "id": "6fefc8fd-9644-47b1-968e-686dc879779e",
-      "name": "KeepAlive - Delete",
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        850,
-        1300
-      ],
       "parameters": {
         "operation": "delete",
         "tableId": "keep_alive",
-        "filterType": "manual",
         "matchType": "allFilters",
         "filters": {
           "conditions": [
@@ -1270,15 +1406,139 @@
           ]
         }
       },
+      "id": "6fefc8fd-9644-47b1-968e-686dc879779e",
+      "name": "KeepAlive - Delete",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        800,
+        896
+      ],
       "credentials": {
         "supabaseApi": {
           "id": "J4PIPSYq33rPIYyJ",
           "name": "Supabase account"
         }
       }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "77e0c46c-1d0e-4d58-96ad-ab9778141974",
+        "options": {}
+      },
+      "id": "982c1c4c-9faf-418f-af5e-fa42f54aa4dc",
+      "name": "Webhook Contacto",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        352,
+        -176
+      ],
+      "webhookId": "830b1bf9-b909-45ca-a612-1837404cb5a8",
+      "notes": "Recibe los datos del formulario Reserva tu Cita de la web."
+    },
+    {
+      "parameters": {
+        "jsCode": "// Normaliza la solicitud de contacto y construye el HTML del correo.\n// El texto se escapa para que nadie pueda inyectar markup en el email.\nconst b = $input.first().json.body ?? {};\n\nconst esc = (v, max) => String(v ?? '').trim().slice(0, max)\n  .replace(/&/g, '&amp;')\n  .replace(/</g, '&lt;')\n  .replace(/>/g, '&gt;')\n  .replace(/\"/g, '&quot;');\n\nconst oVacio = (s) => s || 'No indicado';\n\nconst emailRaw = String(b.email ?? '').trim().slice(0, 255);\nconst emailValido = /^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/.test(emailRaw);\n\nconst nombre   = oVacio(esc(b.nombre, 100));\nconst email    = oVacio(esc(emailRaw, 255));\nconst telefono = oVacio(esc(b.telefono, 20));\nconst servicio = oVacio(esc(b.servicio, 100));\nconst mensaje  = oVacio(esc(b.mensaje, 2000)).replace(/\\n/g, '<br>');\n\nconst fecha = new Date().toLocaleString('es-ES', {\n  timeZone: 'Europe/Madrid',\n  day: '2-digit', month: '2-digit', year: 'numeric',\n  hour: '2-digit', minute: '2-digit', hour12: false\n}).replace(',', ' -');\n\nconst html = `\n<div style=\"font-family:Arial,Helvetica,sans-serif;max-width:600px;color:#2d2438\">\n  <h2 style=\"color:#6b4f8a;margin-bottom:4px\">Nueva solicitud de cita</h2>\n  <p style=\"color:#7a7a7a;margin-top:0;font-size:13px\">Recibida el ${fecha}</p>\n  <table cellpadding=\"8\" cellspacing=\"0\" style=\"border-collapse:collapse;width:100%;margin-top:16px\">\n    <tr style=\"background:#f6f2fa\"><td><strong>Nombre</strong></td><td>${nombre}</td></tr>\n    <tr><td><strong>Email</strong></td><td>${email}</td></tr>\n    <tr style=\"background:#f6f2fa\"><td><strong>Telefono</strong></td><td>${telefono}</td></tr>\n    <tr><td><strong>Servicio</strong></td><td>${servicio}</td></tr>\n  </table>\n  <h3 style=\"color:#6b4f8a;margin-bottom:4px\">Mensaje</h3>\n  <div style=\"background:#f6f2fa;padding:14px;border-radius:8px;line-height:1.5\">${mensaje}</div>\n  <p style=\"margin-top:20px;font-size:13px;color:#7a7a7a\">\n    Responde directamente a este correo y tu respuesta llegara a la clienta.\n  </p>\n</div>`;\n\nreturn [{ json: { nombre, email, telefono, servicio, mensaje, fecha, html, replyTo: emailValido ? emailRaw : '' } }];"
+      },
+      "id": "7119ca2c-e8b0-499a-be93-13167056f3e9",
+      "name": "Formatear Contacto",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        608,
+        -176
+      ],
+      "notes": "Limpia los datos, escapa el texto para evitar inyeccion de HTML y arma el correo."
+    },
+    {
+      "parameters": {
+        "sendTo": "=maytecsweb@gmail.com",
+        "subject": "=Cita para {{ $json.nombre }} - {{ $json.servicio }}",
+        "message": "={{ $json.html }}",
+        "options": {
+          "appendAttribution": false,
+          "senderName": "={{ $json.nombre }}",
+          "replyTo": "={{ $json.replyTo }}"
+        }
+      },
+      "id": "28d82618-165b-4d0d-bc49-723e1dc809b4",
+      "name": "Email Solicitud Cita",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        864,
+        -176
+      ],
+      "webhookId": "5e2dc9f7-9433-4602-9634-9c17d4d0a2e3",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "FFIwFOqAlDSLZKil",
+          "name": "Gmail account 2"
+        }
+      },
+      "notes": "Envia el aviso al correo del negocio. Responder-a apunta a la clienta."
+    },
+    {
+      "parameters": {
+        "operation": "addLabels",
+        "messageId": "={{ $json.id }}",
+        "labelIds": [
+          "INBOX"
+        ]
+      },
+      "id": "5d0b3e3e-f419-4b8f-ad48-2210881b0b62",
+      "name": "Mover a Recibidos",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        1136,
+        -176
+      ],
+      "webhookId": "f1a5e425-b149-4fe4-ac5d-c5250d2fbbf9",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "FFIwFOqAlDSLZKil",
+          "name": "Gmail account 2"
+        }
+      },
+      "notes": "Gmail no mete en Recibidos los correos que una cuenta se envia a si misma. Esto le pone la etiqueta INBOX para que aparezca en la bandeja."
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook Contacto": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n2nkz-n8n.vc1wee.easypanel.host",
+            "user-agent": "curl/8.19.0",
+            "content-length": "262",
+            "accept": "*/*",
+            "content-type": "application/json",
+            "x-forwarded-for": "87.125.103.26",
+            "x-forwarded-host": "n8n2nkz-n8n.vc1wee.easypanel.host",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "59accd6548a6",
+            "x-real-ip": "87.125.103.26",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "nombre": "PRUEBA - Carlos",
+            "email": "carlos.f.g.work@gmail.com",
+            "telefono": "622924906",
+            "servicio": "Reiki",
+            "mensaje": "Buenas Mayte, soy Carlos. Esto es una prueba del formulario de contacto.\n\nSi lees esto en tu correo, significa que ya funciona correctamente."
+          },
+          "webhookUrl": "https://n8n2nkz-n8n.vc1wee.easypanel.host/webhook-test/77e0c46c-1d0e-4d58-96ad-ab9778141974",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate",
@@ -1308,7 +1568,7 @@
     }
   },
   "tags": [],
-  "triggerCount": 3,
-  "updatedAt": "2026-07-22T09:58:00.964Z",
-  "versionId": "e94ab638-cce4-4c76-b92f-83c56ad23b31"
+  "triggerCount": 4,
+  "updatedAt": "2026-07-23T16:23:43.713Z",
+  "versionId": "7f67b419-09e6-458b-b2e1-050f995e6220"
 }
