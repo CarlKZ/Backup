@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-07-03T12:22:43.000Z",
-    "createdAt": "2026-07-03T12:22:11.169Z",
-    "versionId": "4792772c-bfed-438c-8a39-0e9db106d7fb",
+    "updatedAt": "2026-08-06T19:13:25.000Z",
+    "createdAt": "2026-08-06T19:13:22.484Z",
+    "versionId": "f6f79db2-2338-4d7b-8a2c-b9fc99a4fa6e",
     "workflowId": "l5bnps1sitLgoucl",
     "nodes": [
       {
@@ -383,6 +383,63 @@
         ],
         "id": "87da7894-ab55-49ab-9982-4f5ff21b84bb",
         "name": "HTTP Request"
+      },
+      {
+        "parameters": {
+          "tableId": "keep_alive",
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "valor",
+                "fieldValue": "={{ Math.floor(Math.random() * 100000) }}"
+              }
+            ]
+          }
+        },
+        "id": "445ab22f-a5b0-4f66-965c-f7cc935a74db",
+        "name": "KeepAlive - Insert",
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          208,
+          384
+        ],
+        "credentials": {
+          "supabaseApi": {
+            "id": "J4PIPSYq33rPIYyJ",
+            "name": "Supabase account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "delete",
+          "tableId": "keep_alive",
+          "matchType": "allFilters",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "id",
+                "condition": "eq",
+                "keyValue": "={{ $json.id }}"
+              }
+            ]
+          }
+        },
+        "id": "763b31ec-ba46-4f5c-8387-ea3cd32fc3d1",
+        "name": "KeepAlive - Delete",
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          432,
+          384
+        ],
+        "credentials": {
+          "supabaseApi": {
+            "id": "J4PIPSYq33rPIYyJ",
+            "name": "Supabase account"
+          }
+        }
       }
     ],
     "connections": {
@@ -462,15 +519,26 @@
             }
           ]
         ]
+      },
+      "KeepAlive - Insert": {
+        "main": [
+          [
+            {
+              "node": "KeepAlive - Delete",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "nodeGroups": [],
     "authors": "Carlos Fernández",
-    "name": "Version 4792772c",
+    "name": "Version f6f79db2",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "4792772c-bfed-438c-8a39-0e9db106d7fb",
+  "activeVersionId": "f6f79db2-2338-4d7b-8a2c-b9fc99a4fa6e",
   "connections": {
     "Webhook": {
       "main": [
@@ -543,6 +611,17 @@
         [
           {
             "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KeepAlive - Insert": {
+      "main": [
+        [
+          {
+            "node": "KeepAlive - Delete",
             "type": "main",
             "index": 0
           }
@@ -936,6 +1015,63 @@
       ],
       "id": "87da7894-ab55-49ab-9982-4f5ff21b84bb",
       "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "tableId": "keep_alive",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "valor",
+              "fieldValue": "={{ Math.floor(Math.random() * 100000) }}"
+            }
+          ]
+        }
+      },
+      "id": "445ab22f-a5b0-4f66-965c-f7cc935a74db",
+      "name": "KeepAlive - Insert",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        208,
+        384
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "J4PIPSYq33rPIYyJ",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "tableId": "keep_alive",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $json.id }}"
+            }
+          ]
+        }
+      },
+      "id": "763b31ec-ba46-4f5c-8387-ea3cd32fc3d1",
+      "name": "KeepAlive - Delete",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        432,
+        384
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "J4PIPSYq33rPIYyJ",
+          "name": "Supabase account"
+        }
+      }
     }
   ],
   "pinData": {
@@ -1018,6 +1154,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-07-03T12:22:28.867Z",
-  "versionId": "4792772c-bfed-438c-8a39-0e9db106d7fb"
+  "updatedAt": "2026-08-06T19:13:22.481Z",
+  "versionId": "f6f79db2-2338-4d7b-8a2c-b9fc99a4fa6e"
 }
