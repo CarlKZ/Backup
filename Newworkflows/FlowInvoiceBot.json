@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-22T10:13:04.000Z",
-    "createdAt": "2026-04-22T10:12:41.445Z",
-    "versionId": "8c59a4de-cc0d-435b-ae12-4158905b9987",
+    "updatedAt": "2026-09-02T18:14:51.000Z",
+    "createdAt": "2026-09-02T18:14:06.287Z",
+    "versionId": "21c455c3-ce1e-4ce1-9544-da96a0740012",
     "workflowId": "6i8vuVqoP7zxuGE3",
     "nodes": [
       {
@@ -293,8 +293,8 @@
         "webhookId": "ec4b843a-4c41-4f18-aff7-705c79f7dad1",
         "credentials": {
           "telegramApi": {
-            "id": "KcOnwLzOSvSJfY1o",
-            "name": "Telegram account"
+            "id": "2LigG2fpC5nD46uI",
+            "name": "Telegram account 3"
           }
         }
       },
@@ -350,8 +350,8 @@
         "webhookId": "0d40a312-a19e-4e9c-ac14-f26f3067c383",
         "credentials": {
           "telegramApi": {
-            "id": "KcOnwLzOSvSJfY1o",
-            "name": "Telegram account"
+            "id": "2LigG2fpC5nD46uI",
+            "name": "Telegram account 3"
           }
         }
       },
@@ -723,8 +723,8 @@
         "webhookId": "53f242d5-b6ea-42b6-a1c9-20c1b9efde18",
         "credentials": {
           "telegramApi": {
-            "id": "KcOnwLzOSvSJfY1o",
-            "name": "Telegram account"
+            "id": "2LigG2fpC5nD46uI",
+            "name": "Telegram account 3"
           }
         }
       },
@@ -1048,11 +1048,11 @@
     },
     "nodeGroups": [],
     "authors": "Carlos Fernández",
-    "name": "FlowInvoiceBot",
+    "name": "Version 21c455c3",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "8c59a4de-cc0d-435b-ae12-4158905b9987",
+  "activeVersionId": "21c455c3-ce1e-4ce1-9544-da96a0740012",
   "connections": {
     "Telegram Trigger": {
       "main": [
@@ -1588,8 +1588,8 @@
       "webhookId": "ec4b843a-4c41-4f18-aff7-705c79f7dad1",
       "credentials": {
         "telegramApi": {
-          "id": "KcOnwLzOSvSJfY1o",
-          "name": "Telegram account"
+          "id": "2LigG2fpC5nD46uI",
+          "name": "Telegram account 3"
         }
       }
     },
@@ -1645,8 +1645,8 @@
       "webhookId": "0d40a312-a19e-4e9c-ac14-f26f3067c383",
       "credentials": {
         "telegramApi": {
-          "id": "KcOnwLzOSvSJfY1o",
-          "name": "Telegram account"
+          "id": "2LigG2fpC5nD46uI",
+          "name": "Telegram account 3"
         }
       }
     },
@@ -2018,8 +2018,8 @@
       "webhookId": "53f242d5-b6ea-42b6-a1c9-20c1b9efde18",
       "credentials": {
         "telegramApi": {
-          "id": "KcOnwLzOSvSJfY1o",
-          "name": "Telegram account"
+          "id": "2LigG2fpC5nD46uI",
+          "name": "Telegram account 3"
         }
       }
     },
@@ -2106,22 +2106,22 @@
     "Telegram Trigger": [
       {
         "json": {
-          "update_id": 807505770,
+          "update_id": 807505776,
           "message": {
-            "message_id": 59,
+            "message_id": 68,
             "from": {
-              "id": 5630687999,
+              "id": 7040181107,
               "is_bot": false,
-              "first_name": "Beita🐈‍⬛",
+              "first_name": "KarZent",
               "language_code": "es"
             },
             "chat": {
-              "id": 5630687999,
-              "first_name": "Beita🐈‍⬛",
+              "id": 7040181107,
+              "first_name": "KarZent",
               "type": "private"
             },
-            "date": 1776852213,
-            "text": "/factura, crea una factura número 2 para Soluciones Iberia con CIF B45876231 con la dirección Calle Innovación 24 con el CIF 47008 en la localidad de Valladolid, en la provincia de Castilla y León, en el país de España y email solucionesoloiberias.gmail.com por valor de 2500 euros por un agente de voz que gestiona llamadas",
+            "date": 1788373092,
+            "text": "/Factura: Crea una factura Nº 5 para Talleres Montseny S.L. con CIF: B67482915 , dirección: Calle de la Industria, 42, Nave 3 , zip: 08310, con email: administracion@talleresmontseny.es por agente de voz por valor de 2500€",
             "entities": [
               {
                 "offset": 0,
@@ -2129,9 +2129,39 @@
                 "type": "bot_command"
               },
               {
-                "offset": 227,
-                "length": 30,
-                "type": "url"
+                "offset": 37,
+                "length": 22,
+                "type": "bold"
+              },
+              {
+                "offset": 69,
+                "length": 9,
+                "type": "bold"
+              },
+              {
+                "offset": 92,
+                "length": 33,
+                "type": "bold"
+              },
+              {
+                "offset": 133,
+                "length": 5,
+                "type": "bold"
+              },
+              {
+                "offset": 151,
+                "length": 34,
+                "type": "email"
+              },
+              {
+                "offset": 151,
+                "length": 34,
+                "type": "bold"
+              },
+              {
+                "offset": 221,
+                "length": 1,
+                "type": "bold"
               }
             ]
           }
@@ -2163,6 +2193,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-06-16T14:22:27.196Z",
-  "versionId": "8c59a4de-cc0d-435b-ae12-4158905b9987"
+  "updatedAt": "2026-09-02T18:19:16.983Z",
+  "versionId": "21c455c3-ce1e-4ce1-9544-da96a0740012"
 }
