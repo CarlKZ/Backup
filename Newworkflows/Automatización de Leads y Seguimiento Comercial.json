@@ -232,11 +232,11 @@
   },
   "shared": [
     {
-      "updatedAt": "2025-11-05T12:46:08.418Z",
-      "createdAt": "2025-11-05T12:46:08.418Z",
       "role": "workflow:owner",
       "workflowId": "VDnhle1M0IuhjIgU",
-      "projectId": "Mg9CftDHMIrQGniA"
+      "projectId": "Mg9CftDHMIrQGniA",
+      "createdAt": "2025-11-05T12:46:08.418Z",
+      "updatedAt": "2025-11-05T12:46:08.418Z"
     }
   ],
   "staticData": {
