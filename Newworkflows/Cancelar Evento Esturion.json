@@ -1,8 +1,6 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-20T19:07:54.000Z",
-    "createdAt": "2026-02-20T19:07:12.277Z",
     "versionId": "b61615b6-1f29-490c-b0cd-b6e11da9f6ab",
     "workflowId": "vRBdW8Ddciq6nwFA",
     "nodes": [
@@ -146,7 +144,9 @@
     "authors": "Carlos Fernández",
     "name": "Cancelar Evento Esturion",
     "description": "",
-    "autosaved": true
+    "autosaved": true,
+    "createdAt": "2026-02-20T19:07:12.277Z",
+    "updatedAt": "2026-02-20T19:07:54.000Z"
   },
   "activeVersionId": "b61615b6-1f29-490c-b0cd-b6e11da9f6ab",
   "connections": {
@@ -318,11 +318,11 @@
   },
   "shared": [
     {
-      "updatedAt": "2026-01-23T16:57:45.648Z",
-      "createdAt": "2026-01-23T16:57:45.648Z",
       "role": "workflow:owner",
       "workflowId": "vRBdW8Ddciq6nwFA",
-      "projectId": "Mg9CftDHMIrQGniA"
+      "projectId": "Mg9CftDHMIrQGniA",
+      "createdAt": "2026-01-23T16:57:45.648Z",
+      "updatedAt": "2026-01-23T16:57:45.648Z"
     }
   ],
   "staticData": null,
