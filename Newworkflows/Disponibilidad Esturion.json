@@ -1,8 +1,6 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-21T14:08:15.000Z",
-    "createdAt": "2026-02-21T14:08:07.723Z",
     "versionId": "670fc6a8-e019-4501-9d28-8e8fd554305f",
     "workflowId": "QURkLGwyKLMD7n5M",
     "nodes": [
@@ -262,7 +260,9 @@
     "authors": "Carlos Fernández",
     "name": "Disponibilidad Esturión",
     "description": "",
-    "autosaved": true
+    "autosaved": true,
+    "createdAt": "2026-02-21T14:08:07.723Z",
+    "updatedAt": "2026-02-21T14:08:15.000Z"
   },
   "activeVersionId": "670fc6a8-e019-4501-9d28-8e8fd554305f",
   "connections": {
@@ -548,11 +548,11 @@
   },
   "shared": [
     {
-      "updatedAt": "2026-02-07T00:00:35.513Z",
-      "createdAt": "2026-02-07T00:00:35.513Z",
       "role": "workflow:owner",
       "workflowId": "QURkLGwyKLMD7n5M",
-      "projectId": "Mg9CftDHMIrQGniA"
+      "projectId": "Mg9CftDHMIrQGniA",
+      "createdAt": "2026-02-07T00:00:35.513Z",
+      "updatedAt": "2026-02-07T00:00:35.513Z"
     }
   ],
   "staticData": null,
