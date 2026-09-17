@@ -1,8 +1,6 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-02T12:30:14.000Z",
-    "createdAt": "2026-04-02T12:29:22.702Z",
     "versionId": "96337653-4820-4109-b51f-602ef03da135",
     "workflowId": "VYdZQc4Zatsbt6gt",
     "nodes": [
@@ -106,7 +104,9 @@
     "authors": "Carlos Fernández",
     "name": "Agendar Perros",
     "description": "",
-    "autosaved": true
+    "autosaved": true,
+    "createdAt": "2026-04-02T12:29:22.702Z",
+    "updatedAt": "2026-04-02T12:30:14.000Z"
   },
   "activeVersionId": "96337653-4820-4109-b51f-602ef03da135",
   "connections": {
@@ -220,11 +220,11 @@
   },
   "shared": [
     {
-      "updatedAt": "2026-04-02T12:18:11.816Z",
-      "createdAt": "2026-04-02T12:18:11.816Z",
       "role": "workflow:owner",
       "workflowId": "VYdZQc4Zatsbt6gt",
-      "projectId": "Mg9CftDHMIrQGniA"
+      "projectId": "Mg9CftDHMIrQGniA",
+      "createdAt": "2026-04-02T12:18:11.816Z",
+      "updatedAt": "2026-04-02T12:18:11.816Z"
     }
   ],
   "staticData": null,
