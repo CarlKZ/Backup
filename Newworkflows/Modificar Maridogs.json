@@ -1,8 +1,6 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-02T12:30:34.000Z",
-    "createdAt": "2026-04-02T12:27:50.185Z",
     "versionId": "b1586538-63af-4784-b947-5e46cbf7cde6",
     "workflowId": "oDsa8jZlgphoPbzy",
     "nodes": [
@@ -151,7 +149,9 @@
     "authors": "Carlos Fernández",
     "name": "Modificar Perros",
     "description": "",
-    "autosaved": true
+    "autosaved": true,
+    "createdAt": "2026-04-02T12:27:50.185Z",
+    "updatedAt": "2026-04-02T12:30:34.000Z"
   },
   "activeVersionId": "b1586538-63af-4784-b947-5e46cbf7cde6",
   "connections": {
@@ -310,11 +310,11 @@
   },
   "shared": [
     {
-      "updatedAt": "2026-04-02T12:20:17.051Z",
-      "createdAt": "2026-04-02T12:20:17.051Z",
       "role": "workflow:owner",
       "workflowId": "oDsa8jZlgphoPbzy",
-      "projectId": "Mg9CftDHMIrQGniA"
+      "projectId": "Mg9CftDHMIrQGniA",
+      "createdAt": "2026-04-02T12:20:17.051Z",
+      "updatedAt": "2026-04-02T12:20:17.051Z"
     }
   ],
   "staticData": null,
