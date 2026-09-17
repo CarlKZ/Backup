@@ -1,8 +1,6 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-22T11:53:00.000Z",
-    "createdAt": "2026-04-22T11:51:48.856Z",
     "versionId": "84d35bfe-2dc7-4a01-bf47-2b53f5bf1c52",
     "workflowId": "Lbg3Eal63hxA6Uvk",
     "nodes": [
@@ -752,7 +750,9 @@
     "authors": "Carlos Fernández",
     "name": "Backup",
     "description": "",
-    "autosaved": true
+    "autosaved": true,
+    "createdAt": "2026-04-22T11:51:48.856Z",
+    "updatedAt": "2026-04-22T11:53:00.000Z"
   },
   "activeVersionId": "84d35bfe-2dc7-4a01-bf47-2b53f5bf1c52",
   "connections": {
@@ -1518,11 +1518,11 @@
   },
   "shared": [
     {
-      "updatedAt": "2025-09-27T10:32:55.872Z",
-      "createdAt": "2025-09-27T10:32:55.872Z",
       "role": "workflow:owner",
       "workflowId": "Lbg3Eal63hxA6Uvk",
-      "projectId": "Mg9CftDHMIrQGniA"
+      "projectId": "Mg9CftDHMIrQGniA",
+      "createdAt": "2025-09-27T10:32:55.872Z",
+      "updatedAt": "2025-09-27T10:32:55.872Z"
     }
   ],
   "staticData": {
