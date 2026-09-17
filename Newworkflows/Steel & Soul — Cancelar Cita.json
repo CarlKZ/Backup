@@ -1,8 +1,6 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-20T17:47:20.000Z",
-    "createdAt": "2026-04-19T19:14:39.263Z",
     "versionId": "210fc40d-aa0b-499b-a0a5-e72ff9ba52f9",
     "workflowId": "Q0enUCunXrEAABqI",
     "nodes": [
@@ -220,7 +218,9 @@
     "authors": "Carlos Fernández",
     "name": "Steel & Soul — Cancelar Cita",
     "description": "",
-    "autosaved": true
+    "autosaved": true,
+    "createdAt": "2026-04-19T19:14:39.263Z",
+    "updatedAt": "2026-04-20T17:47:20.000Z"
   },
   "activeVersionId": "210fc40d-aa0b-499b-a0a5-e72ff9ba52f9",
   "connections": {
@@ -453,11 +453,11 @@
   },
   "shared": [
     {
-      "updatedAt": "2026-04-08T12:05:59.711Z",
-      "createdAt": "2026-04-08T12:05:59.711Z",
       "role": "workflow:owner",
       "workflowId": "Q0enUCunXrEAABqI",
-      "projectId": "Mg9CftDHMIrQGniA"
+      "projectId": "Mg9CftDHMIrQGniA",
+      "createdAt": "2026-04-08T12:05:59.711Z",
+      "updatedAt": "2026-04-08T12:05:59.711Z"
     }
   ],
   "staticData": null,
