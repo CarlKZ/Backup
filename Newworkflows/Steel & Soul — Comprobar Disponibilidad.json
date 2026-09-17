@@ -1,8 +1,6 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-19T19:13:13.000Z",
-    "createdAt": "2026-04-13T00:41:52.458Z",
     "versionId": "2a23effd-f01f-481f-a093-1aca737360d5",
     "workflowId": "RxZPn9OmATNZg18r",
     "nodes": [
@@ -213,7 +211,9 @@
     "authors": "Carlos Fernández",
     "name": "Steel & Soul — Comprobar Disponibilidad",
     "description": "",
-    "autosaved": true
+    "autosaved": true,
+    "createdAt": "2026-04-13T00:41:52.458Z",
+    "updatedAt": "2026-04-19T19:13:13.000Z"
   },
   "activeVersionId": "2a23effd-f01f-481f-a093-1aca737360d5",
   "connections": {
@@ -1155,11 +1155,11 @@
   },
   "shared": [
     {
-      "updatedAt": "2026-04-08T12:06:58.524Z",
-      "createdAt": "2026-04-08T12:06:58.524Z",
       "role": "workflow:owner",
       "workflowId": "RxZPn9OmATNZg18r",
-      "projectId": "Mg9CftDHMIrQGniA"
+      "projectId": "Mg9CftDHMIrQGniA",
+      "createdAt": "2026-04-08T12:06:58.524Z",
+      "updatedAt": "2026-04-08T12:06:58.524Z"
     }
   ],
   "staticData": null,
