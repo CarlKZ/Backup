@@ -1,8 +1,6 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-06-01T12:15:45.000Z",
-    "createdAt": "2026-06-01T12:11:40.266Z",
     "versionId": "b8a1c197-020a-4dbe-967b-3d964231f57d",
     "workflowId": "H7EquWUB4liqIkcYAkxgP",
     "nodes": [
@@ -216,7 +214,9 @@
     "authors": "Carlos Fernández",
     "name": "Version b8a1c197",
     "description": "",
-    "autosaved": true
+    "autosaved": true,
+    "createdAt": "2026-06-01T12:11:40.266Z",
+    "updatedAt": "2026-06-01T12:15:45.000Z"
   },
   "activeVersionId": "b8a1c197-020a-4dbe-967b-3d964231f57d",
   "connections": {
@@ -1752,11 +1752,11 @@
   },
   "shared": [
     {
-      "updatedAt": "2026-02-23T12:39:52.251Z",
-      "createdAt": "2026-02-23T12:39:52.251Z",
       "role": "workflow:owner",
       "workflowId": "H7EquWUB4liqIkcYAkxgP",
-      "projectId": "Mg9CftDHMIrQGniA"
+      "projectId": "Mg9CftDHMIrQGniA",
+      "createdAt": "2026-02-23T12:39:52.251Z",
+      "updatedAt": "2026-02-23T12:39:52.251Z"
     }
   ],
   "staticData": null,
