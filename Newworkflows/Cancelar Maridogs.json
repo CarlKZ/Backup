@@ -1,8 +1,6 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-02T12:32:14.000Z",
-    "createdAt": "2026-04-02T12:32:08.463Z",
     "versionId": "44cfb583-db12-40d1-b47e-4bd83320e8ce",
     "workflowId": "xonpWHOHGaaNdpRG",
     "nodes": [
@@ -146,7 +144,9 @@
     "authors": "Carlos Fernández",
     "name": "Cancelar Perros",
     "description": "",
-    "autosaved": true
+    "autosaved": true,
+    "createdAt": "2026-04-02T12:32:08.463Z",
+    "updatedAt": "2026-04-02T12:32:14.000Z"
   },
   "activeVersionId": "44cfb583-db12-40d1-b47e-4bd83320e8ce",
   "connections": {
@@ -300,11 +300,11 @@
   },
   "shared": [
     {
-      "updatedAt": "2026-04-02T12:19:40.247Z",
-      "createdAt": "2026-04-02T12:19:40.247Z",
       "role": "workflow:owner",
       "workflowId": "xonpWHOHGaaNdpRG",
-      "projectId": "Mg9CftDHMIrQGniA"
+      "projectId": "Mg9CftDHMIrQGniA",
+      "createdAt": "2026-04-02T12:19:40.247Z",
+      "updatedAt": "2026-04-02T12:19:40.247Z"
     }
   ],
   "staticData": null,
