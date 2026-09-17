@@ -1,8 +1,6 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-02T12:30:44.000Z",
-    "createdAt": "2026-04-02T12:26:28.506Z",
     "versionId": "84b8285e-591d-4ae2-8701-3a621fc0f874",
     "workflowId": "DZ7GY2trrCkdIof4",
     "nodes": [
@@ -262,7 +260,9 @@
     "authors": "Carlos Fernández",
     "name": "Disponibilidad Perros",
     "description": "",
-    "autosaved": true
+    "autosaved": true,
+    "createdAt": "2026-04-02T12:26:28.506Z",
+    "updatedAt": "2026-04-02T12:30:44.000Z"
   },
   "activeVersionId": "84b8285e-591d-4ae2-8701-3a621fc0f874",
   "connections": {
@@ -532,11 +532,11 @@
   },
   "shared": [
     {
-      "updatedAt": "2026-04-02T12:18:57.599Z",
-      "createdAt": "2026-04-02T12:18:57.599Z",
       "role": "workflow:owner",
       "workflowId": "DZ7GY2trrCkdIof4",
-      "projectId": "Mg9CftDHMIrQGniA"
+      "projectId": "Mg9CftDHMIrQGniA",
+      "createdAt": "2026-04-02T12:18:57.599Z",
+      "updatedAt": "2026-04-02T12:18:57.599Z"
     }
   ],
   "staticData": null,
