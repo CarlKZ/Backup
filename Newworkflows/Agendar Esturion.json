@@ -1,8 +1,6 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-19T12:53:04.000Z",
-    "createdAt": "2026-02-19T12:52:59.941Z",
     "versionId": "6ea1b89c-e88a-4377-bcc2-cc39074bc453",
     "workflowId": "usBIrNERTn5gZqI8",
     "nodes": [
@@ -106,7 +104,9 @@
     "authors": "Carlos Fernández",
     "name": "Agendar Esturión",
     "description": "",
-    "autosaved": true
+    "autosaved": true,
+    "createdAt": "2026-02-19T12:52:59.941Z",
+    "updatedAt": "2026-02-19T12:53:04.000Z"
   },
   "activeVersionId": "6ea1b89c-e88a-4377-bcc2-cc39074bc453",
   "connections": {
@@ -237,11 +237,11 @@
   },
   "shared": [
     {
-      "updatedAt": "2026-01-23T16:13:58.971Z",
-      "createdAt": "2026-01-23T16:13:58.971Z",
       "role": "workflow:owner",
       "workflowId": "usBIrNERTn5gZqI8",
-      "projectId": "Mg9CftDHMIrQGniA"
+      "projectId": "Mg9CftDHMIrQGniA",
+      "createdAt": "2026-01-23T16:13:58.971Z",
+      "updatedAt": "2026-01-23T16:13:58.971Z"
     }
   ],
   "staticData": null,
