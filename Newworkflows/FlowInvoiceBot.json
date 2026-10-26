@@ -2178,7 +2178,7 @@
     "timeSavedMode": "fixed",
     "timezone": "Europe/Madrid",
     "callerPolicy": "workflowsFromSameOwner",
-    "availableInMCP": false,
+    "availableInMCP": true,
     "errorWorkflow": "G3LUdMqnpavs5AUk"
   },
   "shared": [
@@ -2193,6 +2193,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-09-02T18:19:16.983Z",
+  "updatedAt": "2026-10-26T08:55:20.641Z",
   "versionId": "21c455c3-ce1e-4ce1-9544-da96a0740012"
 }
