@@ -1327,7 +1327,8 @@
   "pinData": {},
   "settings": {
     "executionOrder": "v1",
-    "binaryMode": "separate"
+    "binaryMode": "separate",
+    "availableInMCP": true
   },
   "shared": [
     {
@@ -1341,6 +1342,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-04-16T00:15:41.524Z",
+  "updatedAt": "2026-10-26T08:55:20.641Z",
   "versionId": "5cfb1d2b-a0bc-49d9-8560-d2c77177f920"
 }
