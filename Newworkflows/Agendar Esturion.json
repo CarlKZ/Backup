@@ -229,7 +229,7 @@
   },
   "settings": {
     "executionOrder": "v1",
-    "availableInMCP": false,
+    "availableInMCP": true,
     "timeSavedMode": "fixed",
     "timezone": "Europe/Madrid",
     "callerPolicy": "workflowsFromSameOwner",
@@ -247,6 +247,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-05-26T22:50:08.294Z",
+  "updatedAt": "2026-10-26T08:55:20.641Z",
   "versionId": "6ea1b89c-e88a-4377-bcc2-cc39074bc453"
 }
