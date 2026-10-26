@@ -228,7 +228,7 @@
     "timeSavedMode": "fixed",
     "errorWorkflow": "G3LUdMqnpavs5AUk",
     "callerPolicy": "workflowsFromSameOwner",
-    "availableInMCP": false
+    "availableInMCP": true
   },
   "shared": [
     {
@@ -248,6 +248,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-04-12T12:01:09.336Z",
+  "updatedAt": "2026-10-26T08:55:20.641Z",
   "versionId": "426278c1-782a-4f01-ba03-f54c2d99cd43"
 }
