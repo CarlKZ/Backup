@@ -459,7 +459,7 @@
     "timeSavedMode": "fixed",
     "errorWorkflow": "G3LUdMqnpavs5AUk",
     "callerPolicy": "workflowsFromSameOwner",
-    "availableInMCP": false
+    "availableInMCP": true
   },
   "shared": [
     {
@@ -473,6 +473,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-04-20T17:46:59.325Z",
+  "updatedAt": "2026-10-26T08:55:20.641Z",
   "versionId": "0b4139f6-8b1c-40b3-8713-ddb4b26d8d36"
 }
