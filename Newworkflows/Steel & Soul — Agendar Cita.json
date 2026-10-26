@@ -1744,7 +1744,7 @@
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate",
-    "availableInMCP": false,
+    "availableInMCP": true,
     "timeSavedMode": "fixed",
     "timezone": "Europe/Madrid",
     "callerPolicy": "workflowsFromSameOwner",
@@ -1762,6 +1762,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-06-16T14:23:16.834Z",
+  "updatedAt": "2026-10-26T08:55:20.641Z",
   "versionId": "b8a1c197-020a-4dbe-967b-3d964231f57d"
 }
