@@ -1514,7 +1514,7 @@
     "binaryMode": "separate",
     "timeSavedMode": "fixed",
     "errorWorkflow": "G3LUdMqnpavs5AUk",
-    "availableInMCP": false
+    "availableInMCP": true
   },
   "shared": [
     {
@@ -1537,6 +1537,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-06-16T14:22:37.906Z",
+  "updatedAt": "2026-10-26T08:55:20.641Z",
   "versionId": "84d35bfe-2dc7-4a01-bf47-2b53f5bf1c52"
 }
