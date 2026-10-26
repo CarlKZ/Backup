@@ -305,7 +305,7 @@
   "pinData": {},
   "settings": {
     "executionOrder": "v1",
-    "availableInMCP": false,
+    "availableInMCP": true,
     "binaryMode": "separate"
   },
   "shared": [
@@ -320,6 +320,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-05-26T22:50:39.531Z",
+  "updatedAt": "2026-10-26T08:55:20.641Z",
   "versionId": "b1586538-63af-4784-b947-5e46cbf7cde6"
 }
