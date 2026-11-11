@@ -68,7 +68,7 @@
   },
   "createdAt": "2026-05-03T16:33:55.958Z",
   "id": "PatJQQO0y7D8Ig2v",
-  "isArchived": true,
+  "isArchived": false,
   "meta": null,
   "name": "Disponibilidad Pruebas",
   "nodeGroups": [],
@@ -290,6 +290,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-05-04T17:54:28.000Z",
-  "versionId": "512fb6b6-d09b-4cd4-af91-37ead5c35826"
+  "updatedAt": "2026-11-11T18:06:21.588Z",
+  "versionId": "4c301b30-d572-42b5-81cc-0d90e58ecfff"
 }
