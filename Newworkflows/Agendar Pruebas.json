@@ -28,7 +28,7 @@
   },
   "createdAt": "2026-05-03T16:32:34.461Z",
   "id": "maPtE2EIyJRTppWC",
-  "isArchived": true,
+  "isArchived": false,
   "meta": null,
   "name": "Agendar Pruebas",
   "nodeGroups": [],
@@ -140,6 +140,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-05-04T17:54:23.000Z",
-  "versionId": "77bef241-6357-42cc-aedf-a787865b123d"
+  "updatedAt": "2026-11-11T18:06:18.666Z",
+  "versionId": "5102b635-a661-4a36-acca-84daef6ede62"
 }
