@@ -1,7 +1,7 @@
 {
   "active": true,
   "activeVersion": {
-    "versionId": "a778e16d-d66c-4011-bdc0-f86de8257464",
+    "versionId": "21a335d4-c5c0-4d88-acef-3b1c87ba89cd",
     "workflowId": "G3LUdMqnpavs5AUk",
     "nodes": [
       {
@@ -115,8 +115,8 @@
         "webhookId": "71dc10ba-c38a-4482-a74f-dad54577e68b",
         "credentials": {
           "gmailOAuth2": {
-            "id": "BYnusElzyLGzOhVZ",
-            "name": "Gmail account"
+            "id": "LZQfan0yK102FJSw",
+            "name": "Gmail - hasekuraia"
           }
         }
       }
@@ -169,13 +169,13 @@
     },
     "nodeGroups": [],
     "authors": "Carlos Fernández",
-    "name": "Version a778e16d",
+    "name": "Version 21a335d4",
     "description": "",
     "autosaved": true,
-    "createdAt": "2026-06-11T17:43:20.765Z",
-    "updatedAt": "2026-06-11T17:43:25.000Z"
+    "createdAt": "2026-11-10T17:46:24.584Z",
+    "updatedAt": "2026-11-10T17:46:41.000Z"
   },
-  "activeVersionId": "a778e16d-d66c-4011-bdc0-f86de8257464",
+  "activeVersionId": "21a335d4-c5c0-4d88-acef-3b1c87ba89cd",
   "connections": {
     "Error Trigger": {
       "main": [
@@ -342,8 +342,8 @@
       "webhookId": "71dc10ba-c38a-4482-a74f-dad54577e68b",
       "credentials": {
         "gmailOAuth2": {
-          "id": "BYnusElzyLGzOhVZ",
-          "name": "Gmail account"
+          "id": "LZQfan0yK102FJSw",
+          "name": "Gmail - hasekuraia"
         }
       }
     }
@@ -370,6 +370,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-10-26T08:55:20.641Z",
-  "versionId": "a778e16d-d66c-4011-bdc0-f86de8257464"
+  "updatedAt": "2026-11-10T17:46:24.500Z",
+  "versionId": "21a335d4-c5c0-4d88-acef-3b1c87ba89cd"
 }
