@@ -1190,22 +1190,20 @@
   "staticData": {
     "node:Gmail Trigger": {
       "Gmail Trigger": {
-        "lastTimeChecked": 1795705801,
+        "lastTimeChecked": 1795806905,
         "possibleDuplicates": [
-          "1a218680fb23b1e7",
-          "1a2186777b7295a3",
-          "1a2185d771ce8db1",
-          "1a2184520b407d76",
-          "1a214323ca528748"
+          "1a21e6ec64c4b969",
+          "1a21c1a296bb5121"
         ]
       }
     },
     "node:Gmail Trigger1": {
       "Gmail Trigger1": {
-        "lastTimeChecked": 1795712981,
+        "lastTimeChecked": 1795799681,
         "possibleDuplicates": [
-          "1a218d59a15692ab",
-          "1a2188f3cd1ce948"
+          "1a21e0088f40dcf7",
+          "1a21dfbf4340a40a",
+          "1a21cb6f00e00243"
         ]
       }
     }
